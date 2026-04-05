@@ -445,25 +445,53 @@ async function runOpenClaude() {
   console.log('║   🤖 AIOX OpenClaude Runner v3 (Pool+Multi) ║');
   console.log('╚══════════════════════════════════════════════╝');
 
-  // ── POOL MODE (highest priority): api-pool.json with auto-rotation ──
+  // ── POOL MODE: Read api-pool.json and route intelligently ──
   const poolPath = path.join(process.cwd(), '.aiox-core', 'local', 'api-pool.json');
+  let poolLoaded = false;
   if (fs.existsSync(poolPath)) {
-    const poolProxyScript = path.join(process.cwd(), 'scripts', 'api-pool-proxy.js');
-    if (fs.existsSync(poolProxyScript)) {
-      console.log('🔄 Modo: API Pool (multi-provider com rotação automática)');
-      shieldProcess = fork(poolProxyScript, [], { silent: false, cwd: process.cwd() });
-      env.CLAUDE_CODE_USE_OPENAI = '1';
-      env.OPENAI_BASE_URL = 'http://localhost:3100/v1';
-      env.OPENAI_API_KEY = 'pool-managed';
-      // Mantenha um modelo padrão válido para não quebrar a validação interna do OpenClaude.
-      // O Pool Proxy irá sobrescrever com o modelo real (Gemini/Groq) automaticamente.
-      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'gpt-4o';
-      await new Promise(resolve => setTimeout(resolve, 2000));
+    try {
+      const pool = JSON.parse(fs.readFileSync(poolPath, 'utf8'));
+      const activeProviders = (pool.providers || [])
+        .filter(p => p.enabled)
+        .sort((a, b) => a.priority - b.priority);
+
+      if (activeProviders.length > 0) {
+        const primary = activeProviders[0];
+        console.log(`🔄 Pool carregado: ${activeProviders.length} provider(s) — Primário: ${primary.id} (${primary.provider})`);
+
+        if (primary.provider === 'gemini') {
+          // ── GEMINI NATIVO: OpenClaude suporta nativamente sem proxy ──
+          console.log('🌐 Rota: Gemini nativo (sem proxy)');
+          env.GEMINI_API_KEY = primary.api_key;
+          poolLoaded = true;
+
+        } else {
+          // ── PROXY MODE: Para Groq/OpenAI/outros que precisam do tunnel ──
+          const poolProxyScript = path.join(process.cwd(), 'scripts', 'api-pool-proxy.js');
+          if (fs.existsSync(poolProxyScript)) {
+            console.log(`🛡️  Rota: Pool Proxy (porta 3100) → ${primary.provider}`);
+            shieldProcess = fork(poolProxyScript, [], { silent: false, cwd: process.cwd() });
+            env.CLAUDE_CODE_USE_OPENAI = '1';
+            env.OPENAI_BASE_URL = 'http://localhost:3100/v1';
+            env.OPENAI_API_KEY = primary.api_key;
+            if (!env.OPENAI_MODEL) env.OPENAI_MODEL = primary.model;
+            await new Promise(resolve => setTimeout(resolve, 2000));
+          }
+          poolLoaded = true;
+        }
+
+        // Store fallback info for future rotation awareness
+        if (activeProviders.length > 1) {
+          console.log(`   └─ Fallback: ${activeProviders.slice(1).map(p => p.id).join(' → ')}`);
+        }
+      }
+    } catch (e) {
+      console.log(`⚠️  Erro ao ler api-pool.json: ${e.message}`);
     }
   }
 
-  // ── SINGLE PROVIDER MODE (fallback when no pool active) ──
-  if (!shieldProcess) {
+  // ── SINGLE PROVIDER MODE (fallback when no pool loaded) ──
+  if (!poolLoaded && !shieldProcess) {
     if (provider === 'gemini') {
       console.log('🌐 Provider: Google Gemini (native)');
       env.GEMINI_API_KEY = apiKey;

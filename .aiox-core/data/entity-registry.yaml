@@ -1,6 +1,6 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-04-05T00:44:58.380Z'
+  lastUpdated: '2026-04-05T01:18:50.506Z'
   entityCount: 746
   checksumAlgorithm: sha256
   resolutionRate: 100
@@ -8237,36 +8237,22 @@ entities:
       checksum: sha256:10586193db3efc151c4347d24786a657a01f611a0ffb55ce4008e62c6fe89e40
       lastVerified: '2026-04-04T23:08:50.575Z'
     index:
-      path: .aiox-core/core/index.js
+      path: .aiox-core/core/mcp-servers/antigravity-bridge/index.js
       layer: L1
       type: module
-      purpose: Entity at .aiox-core\core\index.js
+      purpose: >-
+        'Lê o contexto dinâmico do agente Antigravity buscando a última conversa, planos arquiteturais e status de
+        execução da master branch atual. Útil para entender o que o Antigravity IDE Agent acabou de c
       keywords:
         - index
       usedBy: []
-      dependencies:
-        - config-cache
-        - config-loader
-        - context-detector
-        - context-loader
-        - elicitation-engine
-        - session-manager
-        - agent-elicitation
-        - task-elicitation
-        - workflow-elicitation
-        - output-formatter
-        - yaml-validator
-        - registry-loader
-      externalDeps: []
-      plannedDeps:
-        - health-check
-      lifecycle: experimental
+      dependencies: []
       adaptability:
         score: 0.4
         constraints: []
         extensionPoints: []
-      checksum: sha256:970b617b0e723e8248065f698eca2298a5a0b72e3e43ee820ea85294555736e2
-      lastVerified: '2026-04-04T23:08:50.575Z'
+      checksum: sha256:644ef268a017fd935b382372ca131bba7c2a1559518f676a64b0c1de2609416d
+      lastVerified: '2026-04-05T01:18:50.502Z'
     code-intel-client:
       path: .aiox-core/core/code-intel/code-intel-client.js
       layer: L1
@@ -8529,7 +8515,6 @@ entities:
         - elicitation
       usedBy:
         - index.esm
-        - index
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -8550,7 +8535,6 @@ entities:
         - engine
       usedBy:
         - index.esm
-        - index
         - batch-creator
         - component-generator
       dependencies:
@@ -8575,7 +8559,6 @@ entities:
         - manager
       usedBy:
         - index.esm
-        - index
         - elicitation-engine
       dependencies: []
       externalDeps: []
@@ -8597,7 +8580,6 @@ entities:
         - elicitation
       usedBy:
         - index.esm
-        - index
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -8619,7 +8601,6 @@ entities:
       usedBy:
         - verify-workflow-gaps
         - index.esm
-        - index
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -9171,7 +9152,6 @@ entities:
         - registry
         - loader
       usedBy:
-        - index
         - registry-syncer
         - framework-governor
         - code-intel-source
@@ -10312,7 +10292,6 @@ entities:
         - greeting-builder
         - unified-activation-pipeline
         - index.esm
-        - index
         - context-loader
       dependencies:
         - atomic-write
@@ -10337,7 +10316,6 @@ entities:
         - context-loading
         - unified-activation-pipeline
         - index.esm
-        - index
       dependencies:
         - context-detector
       externalDeps: []
@@ -14954,7 +14932,6 @@ entities:
       usedBy:
         - agent-config-loader
         - index.esm
-        - index
         - config-resolver
       dependencies: []
       externalDeps: []
@@ -14976,7 +14953,6 @@ entities:
         - loader
       usedBy:
         - index.esm
-        - index
       dependencies:
         - agent-config-loader
       externalDeps: []
@@ -15378,7 +15354,6 @@ entities:
       usedBy:
         - next
         - index.esm
-        - index
       dependencies: []
       externalDeps: []
       plannedDeps: []
@@ -16333,7 +16308,6 @@ entities:
       usedBy:
         - modification-validator
         - index.esm
-        - index
         - component-generator
       dependencies: []
       externalDeps: []
