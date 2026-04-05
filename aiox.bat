@@ -8,6 +8,10 @@ echo ===================================================
 where ollama >nul 2>nul
 if %errorlevel% equ 0 (
     start /b ollama serve >nul 2>&1
+) else (
+    if exist "%LOCALAPPDATA%\Programs\Ollama\ollama.exe" (
+        start /b "" "%LOCALAPPDATA%\Programs\Ollama\ollama.exe" serve >nul 2>&1
+    )
 )
 node bin\aiox.js openclaude %*
 endlocal
