@@ -421,11 +421,16 @@ async function runOpenClaude() {
       if (!fs.existsSync(mcpDirPath)) fs.mkdirSync(mcpDirPath, { recursive: true });
       const mcpConfigPath = path.join(mcpDirPath, 'aiox-mcp.json');
       
+      const unifiedMcpScript = path.resolve(__dirname, '..', 'scripts', 'aiox-mcp-server.js');
       const mcpConfigContent = {
         mcpServers: {
           "aiox-antigravity": {
             command: "node",
             args: [bridgeScript]
+          },
+          "aiox-unified-mcp": {
+            command: "node",
+            args: [unifiedMcpScript]
           }
         }
       };
