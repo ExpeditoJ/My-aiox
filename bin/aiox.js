@@ -531,14 +531,24 @@ async function runOpenClaude() {
       shell: process.platform === 'win32',
     });
 
+    // Função para varrer a memória RAM e matar os processos do Ollama
+    const killOllama = () => {
+      if (process.platform === 'win32') {
+        const { execSync } = require('child_process');
+        try { execSync('taskkill /f /im ollama* /t', { stdio: 'ignore' }); } catch (e) {}
+      }
+    };
+
     ocProcess.on('close', (code) => {
       if (shieldProcess) shieldProcess.kill();
+      killOllama(); // Liberação da Placa de Vídeo (Gaming Mode Passivo)
       process.exit(code || 0);
     });
 
     process.on('SIGINT', () => {
       if (shieldProcess) shieldProcess.kill();
       ocProcess.kill('SIGINT');
+      killOllama();
       process.exit(0);
     });
   } catch (error) {
