@@ -221,7 +221,20 @@ const server = http.createServer((req, res) => {
         const raw = Buffer.concat(body).toString();
         const data = JSON.parse(raw);
         console.log(dim(`[PROXY] Payload size: ${raw.length} chars. Messages: ${data.messages?.length || 0}`));
-        const p = current();
+        
+        let p = current();
+
+        // ── AIOX ESTRATÉGIA HÍBRIDA (Smart Demand Routing) ──
+        // Se a demanda de contexto (arquivos) estourar o limite local razoável,
+        // o roteador faz um hot-swap automático para nuvem apenas para esta request.
+        if (raw.length > 15000 && p.provider === 'ollama') {
+          const cloudP = providers.find(prov => prov.provider !== 'ollama' && prov.provider !== 'groq' && prov.enabled);
+          if (cloudP) {
+            console.log(cyan(`\n⚡ [HYBRID ROUTER] Demanda massiva detectada (${Math.round(raw.length/1024)} KB)!`));
+            console.log(cyan(`⚡ Bypass Local-First: Direcionando para Nuvem Gratuita (${cloudP.id}) provisoriamente.\n`));
+            p = cloudP;
+          }
+        }
 
         // Override model with pool's configured model
         if (p.model) data.model = p.model;
