@@ -1,7 +1,7 @@
 metadata:
   version: 1.0.0
-  lastUpdated: '2026-04-05T01:18:50.506Z'
-  entityCount: 746
+  lastUpdated: '2026-04-05T01:23:40.312Z'
+  entityCount: 747
   checksumAlgorithm: sha256
   resolutionRate: 100
 entities:
@@ -12788,6 +12788,22 @@ entities:
         extensionPoints: []
       checksum: sha256:dd025894f8f0d3bd22a147dbc0debef8b83e96f3c59483653404b3cd5a01d5aa
       lastVerified: '2026-04-04T23:08:50.609Z'
+    test_mcp:
+      path: .aiox-core/core/mcp-servers/antigravity-bridge/test_mcp.js
+      layer: L1
+      type: module
+      purpose: Entity at .aiox-core\core\mcp-servers\antigravity-bridge\test_mcp.js
+      keywords:
+        - test
+        - mcp
+      usedBy: []
+      dependencies: []
+      adaptability:
+        score: 0.4
+        constraints: []
+        extensionPoints: []
+      checksum: sha256:aaf74d46e6c00f1dd5f1ceca473fcce7e93c654a8d4b7eecfbf368f8d306b79d
+      lastVerified: '2026-04-05T01:23:40.309Z'
   agents:
     aiox-master:
       path: .aiox-core/development/agents/aiox-master.md

@@ -85,7 +85,8 @@ function applyShield(data, providerObj) {
 // ── Forward request to actual provider ──
 function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, res, retryCount) {
   const parsed = new URL(providerObj.base_url);
-  const targetPath = parsed.pathname.replace(/\/$/, '') + reqPath;
+  const relativePath = reqPath.startsWith('/v1') ? reqPath.substring(3) : reqPath;
+  const targetPath = parsed.pathname.replace(/\/$/, '') + relativePath;
 
   const options = {
     hostname: parsed.hostname,
@@ -117,7 +118,27 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
       return;
     }
 
-    // ── Success or non-retryable error: pipe through ──
+    if (retryCount >= providers.length) {
+      console.error(red(`[POOL] ALL PROVIDERS EXHAUSTED OR ERRORING. Returning fake AI response.`));
+      const fakeResponse = {
+        id: 'chatcmpl-aiox-err',
+        object: 'chat.completion',
+        created: Date.now(),
+        model: 'gemini/groq-pool',
+        choices: [
+          {
+            index: 0,
+            message: { role: 'assistant', content: '❌ **AIOX Pool Failure:** Todas as APIs estão sobrecarregadas (Rate Limit). Espere um minuto antes de continuar.' },
+            finish_reason: 'stop'
+          }
+        ],
+        usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }
+      };
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(fakeResponse));
+      return;
+    }
+
     res.writeHead(proxyRes.statusCode, proxyRes.headers);
     proxyRes.pipe(res);
   });
@@ -137,11 +158,27 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
   proxyReq.end();
 }
 
-// ── HTTP Server ──
 const server = http.createServer((req, res) => {
+  console.log(`[PROXY DEBUG] Incoming request: ${req.method} ${req.url}`);
   // GET /v1/models — return synthetic list so OpenClaude's validator is satisfied.
-  // The proxy swaps the model on real POST requests to the pool's configured model.
-  if (req.url === '/v1/models' && req.method === 'GET') {
+  // We match startsWith because OpenClaude queries /v1/models/gpt-4o specifically.
+  if (req.url.startsWith('/v1/models') && req.method === 'GET') {
+    const isSingleModel = req.url.length > '/v1/models'.length;
+    
+    // If it's querying a specific model (e.g. /v1/models/gpt-4o), return just that model object
+    if (isSingleModel) {
+      const requestedId = req.url.split('/').pop() || 'gpt-4o';
+      const syntheticModel = {
+        id: requestedId,
+        object: 'model',
+        created: Date.now(),
+        owned_by: 'aiox-pool',
+      };
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(syntheticModel));
+      console.log(dim(`[POOL] ${req.url} → synthetic model object served`));
+      return;
+    }
     const syntheticModels = {
       object: 'list',
       data: [
@@ -185,9 +222,11 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify({ error: 'Invalid JSON' }));
       }
     });
-  } else if (req.method !== 'GET') {
-    res.statusCode = 405;
-    res.end();
+  } else {
+    // Catch-all for any unhandled routes to prevent indefinite connection hanging
+    console.log(red(`[POOL] Route not found: ${req.method} ${req.url}`));
+    res.statusCode = 404;
+    res.end(JSON.stringify({ error: { message: "Route not found in AIOX proxy." } }));
   }
 });
 

@@ -445,7 +445,7 @@ async function runOpenClaude() {
   console.log('║   🤖 AIOX OpenClaude Runner v3 (Pool+Multi) ║');
   console.log('╚══════════════════════════════════════════════╝');
 
-  // ── POOL MODE: Read api-pool.json and route intelligently ──
+  // ── POOL MODE: Read api-pool.json and route ALL logic through local proxy ──
   const poolPath = path.join(process.cwd(), '.aiox-core', 'local', 'api-pool.json');
   let poolLoaded = false;
   if (fs.existsSync(poolPath)) {
@@ -459,26 +459,25 @@ async function runOpenClaude() {
         const primary = activeProviders[0];
         console.log(`🔄 Pool carregado: ${activeProviders.length} provider(s) — Primário: ${primary.id} (${primary.provider})`);
 
-        if (primary.provider === 'gemini') {
-          // ── GEMINI NATIVO: OpenClaude suporta nativamente sem proxy ──
-          console.log('🌐 Rota: Gemini nativo (sem proxy)');
-          env.GEMINI_API_KEY = primary.api_key;
-          poolLoaded = true;
-
-        } else {
-          // ── PROXY MODE: Para Groq/OpenAI/outros que precisam do tunnel ──
-          const poolProxyScript = path.join(process.cwd(), 'scripts', 'api-pool-proxy.js');
-          if (fs.existsSync(poolProxyScript)) {
-            console.log(`🛡️  Rota: Pool Proxy (porta 3100) → ${primary.provider}`);
-            shieldProcess = fork(poolProxyScript, [], { silent: false, cwd: process.cwd() });
-            env.CLAUDE_CODE_USE_OPENAI = '1';
-            env.OPENAI_BASE_URL = 'http://localhost:3100/v1';
-            env.OPENAI_API_KEY = primary.api_key;
-            if (!env.OPENAI_MODEL) env.OPENAI_MODEL = primary.model;
-            await new Promise(resolve => setTimeout(resolve, 2000));
-          }
-          poolLoaded = true;
+        // ALL providers get routed through the pool proxy to emulate OpenAI
+        // This universally bypasses OpenClaude's interactive setup screens
+        const poolProxyScript = path.join(process.cwd(), 'scripts', 'api-pool-proxy.js');
+        if (fs.existsSync(poolProxyScript)) {
+          const dynamicPort = Math.floor(Math.random() * 10000) + 30000;
+          console.log(`🛡️  Rota: Pool Proxy (porta dinâmica: ${dynamicPort}) → ${primary.provider}`);
+          
+          env.AIOX_POOL_PORT = dynamicPort.toString();
+          shieldProcess = fork(poolProxyScript, [], { silent: false, cwd: process.cwd(), env: env });
+          
+          env.CLAUDE_CODE_USE_OPENAI = '1';
+          env.OPENAI_BASE_URL = `http://localhost:${dynamicPort}/v1`;
+          env.OPENAI_API_KEY = 'aiox-pool-token'; 
+          // Fake gpt-4o mask so OpenClaude validates internally; proxy overwrites with real model
+          if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'gpt-4o';
+          await new Promise(resolve => setTimeout(resolve, 2000));
         }
+        
+        poolLoaded = true;
 
         // Store fallback info for future rotation awareness
         if (activeProviders.length > 1) {
