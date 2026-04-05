@@ -58,25 +58,39 @@ function rotate(reason) {
 // ── Shield: truncate large payloads (Groq protection) ──
 function applyShield(data, providerObj) {
   if (!SHIELD_ON) return false;
-  // Only apply aggressive truncation for Groq (small context)
-  const limit = providerObj.provider === 'groq' ? MAX_SHIELD : MAX_SHIELD * 4;
+  // Apply aggressive truncation for Groq (small context)
+  const limit = providerObj.provider === 'groq' ? 8000 : MAX_SHIELD * 4;
   let chopped = false;
   if (data.messages && Array.isArray(data.messages)) {
     data.messages = data.messages.map(msg => {
       if (msg.content && typeof msg.content === 'string' && msg.content.length > limit) {
-        console.log(dim(`[SHIELD] Truncando ${msg.role}: ${msg.content.length} → ${limit}`));
-        msg.content = msg.content.substring(0, limit) + '\n...[TRUNCATED BY AIOX POOL]...';
+        msg.content = msg.content.substring(0, limit) + '\n...[TRUNCATED]...';
         chopped = true;
       }
       if (Array.isArray(msg.content)) {
         msg.content.forEach(c => {
           if (c.type === 'text' && c.text && c.text.length > limit) {
-            c.text = c.text.substring(0, limit) + '\n...[TRUNCATED BY AIOX POOL]...';
+            c.text = c.text.substring(0, limit) + '\n...[TRUNCATED]...';
             chopped = true;
           }
         });
       }
       return msg;
+    });
+  }
+
+  // AIOX AGGRESSIVE COMPRESSION for Tools!
+  if (providerObj.provider === 'groq' && data.tools && Array.isArray(data.tools)) {
+    data.tools = data.tools.map(t => {
+      if (t.function && t.function.description && t.function.description.length > 200) {
+        t.function.description = t.function.description.substring(0, 200) + '...';
+        chopped = true;
+      }
+      if (t.description && t.description.length > 200) {
+        t.description = t.description.substring(0, 200) + '...';
+        chopped = true;
+      }
+      return t;
     });
   }
   return chopped;
@@ -102,11 +116,11 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
 
   const proto = parsed.protocol === 'http:' ? http : https;
   const proxyReq = proto.request(options, proxyRes => {
-    // ── Quota exceeded? Rotate and retry ──
-    if ((proxyRes.statusCode === 429 || proxyRes.statusCode === 503) && retryCount < providers.length) {
+    // ── Any provider error >= 400? Rotate and retry next provider ──
+    if (proxyRes.statusCode >= 400 && retryCount < providers.length - 1) {
       // Consume body to free socket
       proxyRes.resume();
-      const next = rotate(`HTTP ${proxyRes.statusCode}`);
+      const next = rotate(`HTTP ${proxyRes.statusCode} (${proxyRes.statusMessage})`);
 
       // Re-parse & re-shield for new provider
       const newData = JSON.parse(payload);
@@ -118,7 +132,7 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
       return;
     }
 
-    if (retryCount >= providers.length) {
+    if (proxyRes.statusCode >= 400 && retryCount >= providers.length - 1) {
       console.error(red(`[POOL] ALL PROVIDERS EXHAUSTED OR ERRORING. Returning fake AI response.`));
       const fakeResponse = {
         id: 'chatcmpl-aiox-err',
@@ -206,6 +220,7 @@ const server = http.createServer((req, res) => {
       try {
         const raw = Buffer.concat(body).toString();
         const data = JSON.parse(raw);
+        console.log(dim(`[PROXY] Payload size: ${raw.length} chars. Messages: ${data.messages?.length || 0}`));
         const p = current();
 
         // Override model with pool's configured model
