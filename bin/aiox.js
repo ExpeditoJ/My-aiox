@@ -530,6 +530,14 @@ async function runOpenClaude() {
   console.log('');
 
   try {
+    // Resolving Ollama path for Windows (Handles cases where PATH is not updated)
+    const getOllamaCmd = () => {
+      if (process.platform !== 'win32') return 'ollama';
+      const localAppData = process.env.LOCALAPPDATA;
+      const explicitPath = require('path').join(localAppData, 'Programs', 'Ollama', 'ollama.exe');
+      return require('fs').existsSync(explicitPath) ? `"${explicitPath}"` : 'ollama';
+    };
+
     // ── Gaming Mode Auto-Wake: Start Ollama invisibly if it's in the pool ──
     if (poolLoaded && require('fs').existsSync(poolPath)) {
       try {
@@ -537,7 +545,16 @@ async function runOpenClaude() {
         const hasOllama = pt.providers && pt.providers.some(p => p.provider === 'ollama' && p.enabled);
         if (hasOllama && process.platform === 'win32') {
           const { spawn: sysSpawn } = require('child_process');
-          sysSpawn('ollama', ['serve'], { detached: true, stdio: 'ignore', windowsHide: true }).unref();
+          const ollamaExec = getOllamaCmd().replace(/"/g, ''); // strip quotes for spawn
+          sysSpawn(ollamaExec, ['serve'], { 
+            detached: true, 
+            stdio: 'ignore', 
+            windowsHide: true,
+            shell: false 
+          }).on('error', (e) => { console.log('Ollama auto-start error:', e.message); }).unref();
+          
+          // Pause execution to allow Ollama to load its weights into RAM/VRAM
+          require('child_process').execSync('ping 127.0.0.1 -n 3 > nul');
         }
       } catch (e) {}
     }
