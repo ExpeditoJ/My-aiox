@@ -530,6 +530,18 @@ async function runOpenClaude() {
   console.log('');
 
   try {
+    // ── Gaming Mode Auto-Wake: Start Ollama invisibly if it's in the pool ──
+    if (poolLoaded && require('fs').existsSync(poolPath)) {
+      try {
+        const pt = JSON.parse(require('fs').readFileSync(poolPath, 'utf8'));
+        const hasOllama = pt.providers && pt.providers.some(p => p.provider === 'ollama' && p.enabled);
+        if (hasOllama && process.platform === 'win32') {
+          const { spawn: sysSpawn } = require('child_process');
+          sysSpawn('ollama', ['serve'], { detached: true, stdio: 'ignore', windowsHide: true }).unref();
+        }
+      } catch (e) {}
+    }
+
     const ocProcess = spawn('openclaude', openClaudeArgs, {
       stdio: 'inherit',
       env,

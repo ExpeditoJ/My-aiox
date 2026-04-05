@@ -178,13 +178,19 @@ describe('Integration - Task 8.3: Local NPX Execution', () => {
       const binPath = path.join(PKG_DIR, 'bin/aiox-install.js');
 
       // When
-      const result = execSync(`node "${binPath}" --invalid-flag 2>&1 || true`, {
-        encoding: 'utf8',
-        timeout: 10000,
-      });
+      let result = '';
+      try {
+        result = execSync(`node "${binPath}" --invalid-flag`, {
+          encoding: 'utf8',
+          stdio: 'pipe',
+          timeout: 10000,
+        });
+      } catch (error) {
+        result = (error.stderr || '') + (error.stdout || '') + error.message;
+      }
 
       // Then
-      expect(result).toContain('error');
+      expect(result.toLowerCase()).toContain('error');
     });
   });
 

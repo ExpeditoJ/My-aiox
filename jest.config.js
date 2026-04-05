@@ -14,6 +14,7 @@ module.exports = {
   // Ignore patterns - exclude incompatible test frameworks
   testPathIgnorePatterns: [
     '/node_modules/',
+    '/\\.claude/worktrees/',
     // Pro submodule tests — run via pro-integration.yml CI workflow, not local npm test
     // Use anchored regex to only match the pro/ submodule dir, not tests/pro/
     '<rootDir>/pro/',

@@ -351,7 +351,8 @@ describe('TerminalSpawner', () => {
 // ============================================
 // pm.sh Script Tests (Task 6.2)
 // ============================================
-describe('pm.sh Script', () => {
+const describeBash = process.platform === 'win32' ? describe.skip : describe;
+describeBash('pm.sh Script', () => {
   const { execSync } = require('child_process');
   const scriptPath = TerminalSpawner.getScriptPath();
 
