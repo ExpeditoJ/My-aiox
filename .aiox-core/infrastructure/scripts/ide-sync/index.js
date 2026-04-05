@@ -77,6 +77,11 @@ function loadConfig(projectRoot) {
         path: '.github/agents',
         format: 'github-copilot',
       },
+      openclaude: {
+        enabled: true,
+        path: '.claude/commands/AIOX/agents',
+        format: 'full-markdown-yaml',
+      },
       cursor: {
         enabled: true,
         path: '.cursor/rules/agents',
@@ -489,6 +494,7 @@ ${colors.bright}Examples:${colors.reset}
   node ide-sync/index.js sync --ide codex
   node ide-sync/index.js sync --ide gemini
   node ide-sync/index.js sync --ide cursor
+  node ide-sync/index.js sync --ide openclaude
   node ide-sync/index.js validate --ide gemini --strict
   node ide-sync/index.js validate --strict
   node ide-sync/index.js sync --dry-run --verbose

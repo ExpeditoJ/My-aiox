@@ -91,6 +91,10 @@ CONFIGURATION:
   aiox config validate                   # Validate config files
   aiox config init-local                 # Create local-config.yaml
 
+AGENTS & EXECUTION:
+  aiox openclaude                        # Run OpenClaude natively integrated
+  aiox run openclaude                    # Alias for aiox openclaude
+
 SERVICE DISCOVERY:
   aiox workers search <query>            # Search for workers
   aiox workers search "json" --category=data
@@ -347,6 +351,148 @@ async function runUpdate() {
     if (args.includes('--verbose') || args.includes('-v')) {
       console.error(error.stack);
     }
+    process.exit(1);
+  }
+}
+
+// Helper: Run OpenClaude natively integrated (Multi-Provider v2)
+async function runOpenClaude() {
+  const { spawn, fork } = require('child_process');
+
+  // ── Step 1: Load .env (if exists) ──
+  const dotenvPath = path.join(process.cwd(), '.env');
+  if (fs.existsSync(dotenvPath)) {
+    const envConfig = fs.readFileSync(dotenvPath, 'utf8');
+    for (const line of envConfig.split('\n')) {
+      const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)??\s*$/);
+      if (match) {
+        let key = match[1];
+        let value = match[2] || '';
+        if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+          value = value.slice(1, -1);
+        }
+        // Safegaurd: Ignore placeholder dummy keys from .env templates
+        if (value.includes('your_') && value.includes('_here')) continue;
+        
+        if (!process.env[key]) process.env[key] = value;
+      }
+    }
+  }
+
+  // ── Step 2: Load key from .aiox-core/local/.agent-keys.txt (other agent's store) ──
+  const agentKeysPath = path.join(process.cwd(), '.aiox-core', 'local', '.agent-keys.txt');
+  let storedKey = '';
+  if (fs.existsSync(agentKeysPath)) {
+    storedKey = fs.readFileSync(agentKeysPath, 'utf8').trim();
+  }
+
+  // ── Step 3: Detect provider from available keys ──
+  // Priority: explicit env vars > stored key > fallback
+  const apiKey = process.env.GEMINI_API_KEY || process.env.OPENAI_API_KEY || storedKey || '';
+  let provider = 'unknown';
+
+  if (apiKey.startsWith('AIza')) {
+    provider = 'gemini';
+  } else if (apiKey.startsWith('gsk_')) {
+    provider = 'groq';
+  } else if (apiKey.startsWith('sk-or-')) {
+    provider = 'openrouter';
+  } else if (apiKey.startsWith('csk-')) {
+    provider = 'cerebras';
+  } else if (apiKey.startsWith('sk-')) {
+    provider = 'openai';
+  } else if (apiKey.split('-').length === 5 && apiKey.length === 36) {
+    provider = 'sambanova'; // UUID format
+  } else if (apiKey.length > 10) {
+    provider = 'openai-compat'; // generic OpenAI-compatible
+  }
+
+  // ── Step 4: Build env for child process ──
+  const isAgentSubcommand = args[0] === 'run' || args[0] === 'agent';
+  const openClaudeArgs = isAgentSubcommand ? args.slice(2) : args.slice(1);
+  const env = { ...process.env };
+  
+  // AIOX Shield: Remove Anthropic API Key to prevent OpenClaude from stopping to prompt the user interactively
+  delete env.ANTHROPIC_API_KEY;
+  
+  let shieldProcess = null;
+
+  console.log('');
+  console.log('╔══════════════════════════════════════════════╗');
+  console.log('║   🤖 AIOX OpenClaude Runner v3 (Pool+Multi) ║');
+  console.log('╚══════════════════════════════════════════════╝');
+
+  // ── POOL MODE (highest priority): api-pool.json with auto-rotation ──
+  const poolPath = path.join(process.cwd(), '.aiox-core', 'local', 'api-pool.json');
+  if (fs.existsSync(poolPath)) {
+    const poolProxyScript = path.join(process.cwd(), 'scripts', 'api-pool-proxy.js');
+    if (fs.existsSync(poolProxyScript)) {
+      console.log('🔄 Modo: API Pool (multi-provider com rotação automática)');
+      shieldProcess = fork(poolProxyScript, [], { silent: false, cwd: process.cwd() });
+      env.CLAUDE_CODE_USE_OPENAI = '1';
+      env.OPENAI_BASE_URL = 'http://localhost:3000/v1';
+      env.OPENAI_API_KEY = 'pool-managed';
+      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'pool-auto';
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+  }
+
+  // ── SINGLE PROVIDER MODE (fallback when no pool active) ──
+  if (!shieldProcess) {
+    if (provider === 'gemini') {
+      console.log('🌐 Provider: Google Gemini (native)');
+      env.GEMINI_API_KEY = apiKey;
+    } else if (provider === 'openrouter') {
+      console.log('🌌 Provider: OpenRouter');
+      env.CLAUDE_CODE_USE_OPENAI = '1';
+      env.OPENAI_BASE_URL = 'https://openrouter.ai/api/v1';
+      env.OPENAI_API_KEY = apiKey;
+      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'meta-llama/llama-3.3-70b-instruct'; // Stable fallback
+    } else if (provider === 'cerebras') {
+      console.log('🧠 Provider: Cerebras (Ultra-Fast Llama)');
+      env.CLAUDE_CODE_USE_OPENAI = '1';
+      env.OPENAI_BASE_URL = 'https://api.cerebras.ai/v1';
+      env.OPENAI_API_KEY = apiKey;
+      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'llama3.1-8b'; // Fallback safer ID for Cerebras
+    } else if (provider === 'groq') {
+      console.log('🛡️  Provider: Groq (direct)');
+      env.CLAUDE_CODE_USE_OPENAI = '1';
+      env.OPENAI_BASE_URL = 'https://api.groq.com/openai/v1';
+      env.OPENAI_API_KEY = apiKey;
+      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'llama-3.3-70b-versatile';
+    } else if (provider === 'openai' || provider === 'openai-compat') {
+      console.log(`🔑 Provider: ${provider === 'openai' ? 'OpenAI' : 'OpenAI-Compatible'}`);
+      env.CLAUDE_CODE_USE_OPENAI = '1';
+      env.OPENAI_API_KEY = apiKey;
+      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'gpt-4o';
+    } else {
+      console.log('⚠️  Nenhuma API Key detectada. OpenClaude iniciará em modo interativo (/provider).');
+    }
+  }
+
+  console.log('');
+
+  try {
+    const ocProcess = spawn('openclaude', openClaudeArgs, {
+      stdio: 'inherit',
+      env,
+      shell: process.platform === 'win32',
+    });
+
+    ocProcess.on('close', (code) => {
+      if (shieldProcess) shieldProcess.kill();
+      process.exit(code || 0);
+    });
+
+    process.on('SIGINT', () => {
+      if (shieldProcess) shieldProcess.kill();
+      ocProcess.kill('SIGINT');
+      process.exit(0);
+    });
+  } catch (error) {
+    if (shieldProcess) shieldProcess.kill();
+    console.error(`❌ Failed to run OpenClaude: ${error.message}`);
+    console.error('Make sure it is installed: npm install -g @gitlawb/openclaude');
     process.exit(1);
   }
 }
@@ -830,6 +976,21 @@ async function main() {
         await run(process.argv);
       } catch (error) {
         console.error(`❌ Pro command error: ${error.message}`);
+        process.exit(1);
+      }
+      break;
+
+    case 'openclaude':
+    case 'oc':
+      await runOpenClaude();
+      break;
+
+    case 'run':
+    case 'agent':
+      if (args[1] === 'openclaude' || args[1] === 'oc') {
+        await runOpenClaude();
+      } else {
+        console.error(`❌ Unknown agent/runner: ${args[1]}`);
         process.exit(1);
       }
       break;

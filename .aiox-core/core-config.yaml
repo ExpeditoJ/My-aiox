@@ -333,6 +333,10 @@ ideSync:
       enabled: true
       path: .antigravity/rules/agents
       format: cursor-style
+    openclaude:
+      enabled: true
+      path: .claude/commands/AIOX/agents
+      format: full-markdown-yaml
   redirects: {}
   validation:
     strictMode: true

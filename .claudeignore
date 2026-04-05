@@ -1,0 +1,19 @@
+# Proteções de Janela de Contexto (Context Window) Exclusiva pro LLM Agente
+# O OpenClaude lê tudo abaixo e suprime quando usar sua ferramenta Read de arquivos, 
+# evitando estouro de payload (20MB) no Llama que mandei acionar via Groq API.
+node_modules/
+package-lock.json
+*.jsonl
+*.lock
+
+# Arquivos de dados pesados da estrutura
+.aiox-core/data/
+docs/
+tests/
+.git/
+.synapse/
+coverage/
+
+# Submódulos pesados
+pro/
+squads/

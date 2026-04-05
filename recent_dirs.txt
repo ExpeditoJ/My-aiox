@@ -1,0 +1,24 @@
+ O volume na unidade C n∆o tem nome.
+ O N£mero de SÇrie do Volume Ç 3CCB-C0F3
+
+ Pasta de C:\Users\expea\.gemini\antigravity\brain
+
+28/02/2026  19:36    <DIR>          24fe0da7-d278-4ddb-8725-08647db939d5
+28/02/2026  22:26    <DIR>          tempmediaStorage
+01/03/2026  17:02    <DIR>          e677afdd-a32f-403e-8439-1e87c639de88
+01/03/2026  17:26    <DIR>          e24df567-1d25-4b5b-a432-855f0228f629
+06/03/2026  19:31    <DIR>          52e42182-53fa-488d-9457-93a02523bc85
+06/03/2026  20:18    <DIR>          f3b1d7c9-1ced-4e67-a656-dedc1d12730a
+17/03/2026  20:59    <DIR>          43f5d987-0e9b-4c0c-9cd3-dafd5290aaa2
+02/04/2026  21:42    <DIR>          ebcffae7-982d-4f1b-97b1-3e1d475e44fd
+02/04/2026  22:56    <DIR>          4129da1f-fad6-4b3b-b005-9bb731b95c98
+02/04/2026  23:06    <DIR>          ..
+03/04/2026  18:01    <DIR>          e93cde96-af80-4aa3-8f5c-861d57898838
+03/04/2026  21:33    <DIR>          fd79ee2f-51c0-477c-b400-dd9c91d9a04c
+03/04/2026  21:42    <DIR>          408d695c-460f-46cd-b8d5-22bea7f5651a
+03/04/2026  21:59    <DIR>          54afc88c-5d54-4f0e-8550-c0016ce1948a
+04/04/2026  19:10    <DIR>          .
+04/04/2026  19:24    <DIR>          bd88fd6d-20a7-4472-b7cc-a69b49f11d5a
+04/04/2026  20:39    <DIR>          6b0fa529-3ba2-49c9-807a-d45385e205b4
+               0 arquivo(s)              0 bytes
+              17 pasta(s)   89.007.824.896 bytes dispon°veis
