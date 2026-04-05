@@ -407,10 +407,33 @@ async function runOpenClaude() {
     provider = 'openai-compat'; // generic OpenAI-compatible
   }
 
-  // ── Step 4: Build env for child process ──
+  // ── Step 4: Build env and args for child process ──
   const isAgentSubcommand = args[0] === 'run' || args[0] === 'agent';
-  const openClaudeArgs = isAgentSubcommand ? args.slice(2) : args.slice(1);
+  let openClaudeArgs = isAgentSubcommand ? args.slice(2) : args.slice(1);
   const env = { ...process.env };
+  
+  // ── Step 4.5: Configure Antigravity MCP Bridge ──
+  // Auto-inject the bridge server if the user hasn't explicitly specified an mcp config
+  if (!openClaudeArgs.includes('--mcp-config')) {
+    const bridgeScript = path.resolve(__dirname, '..', '.aiox-core', 'core', 'mcp-servers', 'antigravity-bridge', 'index.js');
+    if (fs.existsSync(bridgeScript)) {
+      const mcpDirPath = path.join(process.cwd(), '.aiox-core', 'local');
+      if (!fs.existsSync(mcpDirPath)) fs.mkdirSync(mcpDirPath, { recursive: true });
+      const mcpConfigPath = path.join(mcpDirPath, 'aiox-mcp.json');
+      
+      const mcpConfigContent = {
+        mcpServers: {
+          "aiox-antigravity": {
+            command: "node",
+            args: [bridgeScript]
+          }
+        }
+      };
+      fs.writeFileSync(mcpConfigPath, JSON.stringify(mcpConfigContent, null, 2), 'utf8');
+      
+      openClaudeArgs.push('--mcp-config', mcpConfigPath);
+    }
+  }
   
   // AIOX Shield: Remove Anthropic API Key to prevent OpenClaude from stopping to prompt the user interactively
   delete env.ANTHROPIC_API_KEY;
@@ -430,9 +453,11 @@ async function runOpenClaude() {
       console.log('🔄 Modo: API Pool (multi-provider com rotação automática)');
       shieldProcess = fork(poolProxyScript, [], { silent: false, cwd: process.cwd() });
       env.CLAUDE_CODE_USE_OPENAI = '1';
-      env.OPENAI_BASE_URL = 'http://localhost:3000/v1';
+      env.OPENAI_BASE_URL = 'http://localhost:3100/v1';
       env.OPENAI_API_KEY = 'pool-managed';
-      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'pool-auto';
+      // Mantenha um modelo padrão válido para não quebrar a validação interna do OpenClaude.
+      // O Pool Proxy irá sobrescrever com o modelo real (Gemini/Groq) automaticamente.
+      if (!env.OPENAI_MODEL) env.OPENAI_MODEL = 'gpt-4o';
       await new Promise(resolve => setTimeout(resolve, 2000));
     }
   }

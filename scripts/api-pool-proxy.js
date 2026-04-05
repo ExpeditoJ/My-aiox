@@ -139,19 +139,25 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
 
 // ── HTTP Server ──
 const server = http.createServer((req, res) => {
-  // GET /v1/models — aggregate from active provider
+  // GET /v1/models — return synthetic list so OpenClaude's validator is satisfied.
+  // The proxy swaps the model on real POST requests to the pool's configured model.
   if (req.url === '/v1/models' && req.method === 'GET') {
-    const p = current();
-    const parsed = new URL(p.base_url);
-    const targetPath = parsed.pathname.replace(/\/$/, '') + '/models';
-    const proto = parsed.protocol === 'http:' ? http : https;
-    const headers = { 'Authorization': `Bearer ${p.api_key}` };
-    const proxyReq = proto.request({ hostname: parsed.hostname, path: targetPath, method: 'GET', headers }, proxyRes => {
-      res.writeHead(proxyRes.statusCode, proxyRes.headers);
-      proxyRes.pipe(res);
-    });
-    proxyReq.on('error', () => { res.statusCode = 500; res.end(); });
-    proxyReq.end();
+    const syntheticModels = {
+      object: 'list',
+      data: [
+        // Include all models the pool knows about + the placeholder OpenClaude expects
+        { id: 'gpt-4o', object: 'model', created: Date.now(), owned_by: 'aiox-pool' },
+        ...providers.map(p => ({
+          id: p.model,
+          object: 'model',
+          created: Date.now(),
+          owned_by: `aiox-pool:${p.provider}`,
+        })),
+      ],
+    };
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(syntheticModels));
+    console.log(dim(`[POOL] /v1/models → synthetic list served (${syntheticModels.data.length} models)`));
     return;
   }
 
@@ -185,7 +191,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
-const PORT = process.env.AIOX_POOL_PORT || 3000;
+const PORT = process.env.AIOX_POOL_PORT || 3100;
 server.listen(PORT, () => {
   console.log('');
   console.log(cyan('╔══════════════════════════════════════════════════╗'));

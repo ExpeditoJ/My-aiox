@@ -8,9 +8,9 @@
 # - File types for categorization
 #
 version: 5.0.3
-generated_at: "2026-04-05T00:44:56.136Z"
+generated_at: "2026-04-05T01:18:18.043Z"
 generator: scripts/generate-install-manifest.js
-file_count: 1090
+file_count: 1093
 files:
   - path: cli/commands/config/index.js
     hash: sha256:25c4b9bf4e0241abf7754b55153f49f1a214f1fb5fe904a576675634cb7b3da9
@@ -764,6 +764,18 @@ files:
     hash: sha256:3558e7dbf653eac385222a299d0eddaaf77e119a70ec034f7a7291c401d7be2c
     type: core
     size: 11296
+  - path: core/mcp-servers/antigravity-bridge/index.js
+    hash: sha256:644ef268a017fd935b382372ca131bba7c2a1559518f676a64b0c1de2609416d
+    type: core
+    size: 5891
+  - path: core/mcp-servers/antigravity-bridge/package-lock.json
+    hash: sha256:0c0f37a6409e2935a58e76125f780775b2741ecdd94341018bf9d92856c1e34c
+    type: core
+    size: 40204
+  - path: core/mcp-servers/antigravity-bridge/package.json
+    hash: sha256:0b46e5218207d053631be0d7b9fd449424d9e0b44be2a95d5fe6d3e7416ec662
+    type: core
+    size: 322
   - path: core/mcp/config-migrator.js
     hash: sha256:0603a288d79e8526a2c757834bab5191bbc240b1b9dcb548b09d10cee97de322
     type: core
@@ -1221,7 +1233,7 @@ files:
     type: data
     size: 9575
   - path: data/entity-registry.yaml
-    hash: sha256:8b5a7cba98692725c63e6efbedae499e1206bfad1c3d52b80c087005ffb0982f
+    hash: sha256:4fd31a07de0a6772c6fa3842f69aab0c4ec855f4fdccee00974a0a3d17c819c5
     type: data
     size: 523110
   - path: data/learned-patterns.yaml
