@@ -26,12 +26,12 @@ Workflow para el ciclo completo de desarrollo de una story, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @sm | Facilitacion del ciclo |
-| @dev | Implementacion |
-| @qa | Tests y validacion |
-| @devops | Deploy |
+| Agente  | Rol                    |
+| ------- | ---------------------- |
+| @sm     | Facilitacion del ciclo |
+| @dev    | Implementacion         |
+| @qa     | Tests y validacion     |
+| @devops | Deploy                 |
 
 ## Ver Mas
 
@@ -39,4 +39,4 @@ Workflow para el ciclo completo de desarrollo de una story, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

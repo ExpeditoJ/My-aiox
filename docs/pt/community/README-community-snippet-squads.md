@@ -12,20 +12,20 @@ Para discussões, perguntas e interação com a comunidade, visite nosso hub cen
 
 **[Discussões da Comunidade AIOX](https://github.com/SynkraAI/aiox-core/discussions)**
 
-| Necessidade | Onde Ir |
-|-------------|---------|
-| **Perguntas sobre Squad?** | Use a [categoria "Squads"](https://github.com/SynkraAI/aiox-core/discussions/categories/squads) |
-| **Ideias de funcionalidades?** | Inicie uma [Discussão em "Ideas"](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas) |
-| **Encontrou um bug?** | [Abra uma issue](https://github.com/SynkraAI/aiox-squads/issues/new/choose) **neste repositório** |
-| **Precisa de ajuda?** | Pergunte em ["Q&A"](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a) |
-| **Construiu algo legal?** | Compartilhe em ["Show and Tell"](https://github.com/SynkraAI/aiox-core/discussions/categories/show-and-tell) |
+| Necessidade                    | Onde Ir                                                                                                      |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Perguntas sobre Squad?**     | Use a [categoria "Squads"](https://github.com/SynkraAI/aiox-core/discussions/categories/squads)              |
+| **Ideias de funcionalidades?** | Inicie uma [Discussão em "Ideas"](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas)        |
+| **Encontrou um bug?**          | [Abra uma issue](https://github.com/SynkraAI/aiox-squads/issues/new/choose) **neste repositório**            |
+| **Precisa de ajuda?**          | Pergunte em ["Q&A"](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a)                        |
+| **Construiu algo legal?**      | Compartilhe em ["Show and Tell"](https://github.com/SynkraAI/aiox-core/discussions/categories/show-and-tell) |
 
 ### Squads Disponíveis
 
-| Squad | Descrição | Status |
-|-------|-----------|--------|
-| **ETL Squad** | Coleta de dados, transformação e automação de pipelines | Ativo |
-| **Creator Squad** | Geração de conteúdo, posts de blog, criação de cursos | Ativo |
+| Squad             | Descrição                                               | Status |
+| ----------------- | ------------------------------------------------------- | ------ |
+| **ETL Squad**     | Coleta de dados, transformação e automação de pipelines | Ativo  |
+| **Creator Squad** | Geração de conteúdo, posts de blog, criação de cursos   | Ativo  |
 
 ### Propondo um Novo Squad
 
@@ -37,4 +37,4 @@ Tem uma ideia para um novo AIOX Squad? Adoraríamos ouvir!
 
 ---
 
-**Tagline:** *AIOX Squads: Equipes de AI agents trabalhando com você*
+**Tagline:** _AIOX Squads: Equipes de AI agents trabalhando com você_

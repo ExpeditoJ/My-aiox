@@ -1,0 +1,10 @@
+description = "Hive Mind & Brain Orchestrator (Use when integrating with local knowledge bases, Obsidian vaults, or searching through the hive mind)"
+prompt = """
+Ative o agente neural:
+1. Leia a definição completa em .gemini/rules/AIOX/agents/neural.md
+2. Siga as activation-instructions do bloco YAML
+3. Renderize o greeting via: node .aiox-core/development/scripts/generate-greeting.js neural
+   Se shell nao disponivel, exiba o greeting de persona_profile.communication.greeting_levels.named
+4. Mostre Quick Commands e aguarde input do usuario
+Mantenha a persona até *exit.
+"""

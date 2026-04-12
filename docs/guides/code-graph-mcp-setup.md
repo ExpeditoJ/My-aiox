@@ -6,12 +6,12 @@ Setup guide para instalacao, configuracao e validacao do Code Graph MCP como pro
 
 ## Pre-requisitos
 
-| Requisito | Versao Minima | Verificar |
-|-----------|---------------|-----------|
-| Python | 3.12+ | `python --version` |
-| pip | 24+ | `pip --version` |
-| Node.js | 18+ | `node --version` |
-| Claude Code | latest | `claude --version` |
+| Requisito   | Versao Minima | Verificar          |
+| ----------- | ------------- | ------------------ |
+| Python      | 3.12+         | `python --version` |
+| pip         | 24+           | `pip --version`    |
+| Node.js     | 18+           | `node --version`   |
+| Claude Code | latest        | `claude --version` |
 
 ---
 
@@ -24,6 +24,7 @@ pip install code-graph-mcp ast-grep-py rustworkx
 ```
 
 **Packages instalados:**
+
 - `code-graph-mcp` (v1.2.4+) — MCP server principal
 - `ast-grep-py` — AST parsing engine (tree-sitter based)
 - `rustworkx` — Graph analysis library
@@ -35,6 +36,7 @@ code-graph-mcp --help
 ```
 
 Output esperado:
+
 ```
 Usage: code-graph-mcp [OPTIONS]
 
@@ -100,6 +102,7 @@ node scripts/code-intel-health-check.js
 ```
 
 Output esperado (provider ativo):
+
 ```json
 {
   "status": "available",
@@ -123,6 +126,7 @@ Output esperado (provider ativo):
 **Causa:** Package nao instalado ou nao esta no PATH.
 
 **Solucao:**
+
 ```bash
 # Verificar instalacao
 pip show code-graph-mcp
@@ -139,6 +143,7 @@ python -c "import shutil; print(shutil.which('code-graph-mcp'))"
 **Causa:** `.mcp.json` com sintaxe incorreta ou Claude Code nao reiniciado.
 
 **Solucao:**
+
 1. Validar JSON: `python -m json.tool .mcp.json`
 2. Reiniciar Claude Code completamente
 3. Verificar que o path no `--project-root` existe
@@ -148,6 +153,7 @@ python -c "import shutil; print(shutil.which('code-graph-mcp'))"
 **Causa:** Codebase muito grande, primeira execucao faz indexacao.
 
 **Solucao:**
+
 1. Primeira execucao pode levar 10-30s em codebases grandes
 2. Execucoes subsequentes usam cache LRU
 3. Se persistir, use `--verbose` para diagnostico:
@@ -160,6 +166,7 @@ python -c "import shutil; print(shutil.which('code-graph-mcp'))"
 **Causa:** Symbol nao encontrado ou linguagem nao suportada.
 
 **Solucao:**
+
 1. Verificar que o arquivo alvo usa linguagem suportada (25+ linguagens)
 2. Verificar nome exato do symbol (case-sensitive)
 3. Executar `analyze_codebase` primeiro para confirmar que o provider reconhece o projeto
@@ -169,6 +176,7 @@ python -c "import shutil; print(shutil.which('code-graph-mcp'))"
 **Causa:** `code-graph-mcp` requer httpx >= 0.27.1 que pode conflitar com supabase.
 
 **Solucao:**
+
 - Conflito nao afeta funcionalidade do Code Graph MCP
 - Se necessario, use virtualenv isolado:
   ```bash
@@ -190,5 +198,5 @@ python -c "import shutil; print(shutil.which('code-graph-mcp'))"
 
 ---
 
-*NOG-0 — Code Graph MCP Setup Guide v1.0*
-*@devops (Gage) — 2026-02-15*
+_NOG-0 — Code Graph MCP Setup Guide v1.0_
+_@devops (Gage) — 2026-02-15_

@@ -25,14 +25,14 @@ Workflow para evolucionar backends/APIs existentes, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Requisitos de API |
-| @architect | Impacto en servicio |
-| @data-engineer | Cambios de schema |
-| @dev | Implementacion |
-| @qa | Tests de API |
-| @devops | Deploy |
+| Agente         | Rol                 |
+| -------------- | ------------------- |
+| @pm            | Requisitos de API   |
+| @architect     | Impacto en servicio |
+| @data-engineer | Cambios de schema   |
+| @dev           | Implementacion      |
+| @qa            | Tests de API        |
+| @devops        | Deploy              |
 
 ## Ver Mas
 
@@ -40,4 +40,4 @@ Workflow para evolucionar backends/APIs existentes, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

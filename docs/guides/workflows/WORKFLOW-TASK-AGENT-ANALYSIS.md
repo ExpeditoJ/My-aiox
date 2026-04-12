@@ -55,22 +55,22 @@ graph TD
 
 ### Workflow-Agent Participation Matrix
 
-| Workflow | @aiox-master | @analyst | @architect | @data-eng | @dev | @devops | @pm | @po | @qa | @sm | @ux-expert | @squad-creator |
-|----------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Story Dev Cycle | - | - | - | - | X | - | - | X | X | X | - | - |
-| Spec Pipeline | - | X | X | - | - | - | X | - | X | - | - | - |
-| QA Loop | - | - | - | - | X | - | - | - | X | - | - | - |
-| Greenfield Fullstack | - | X | X | - | X | X | X | X | X | X | X | - |
-| Greenfield UI | - | X | X | - | X | X | X | X | X | X | X | - |
-| Greenfield Service | - | X | X | - | X | X | X | X | X | X | - | - |
-| Brownfield Fullstack | - | X | X | - | X | - | X | X | X | X | - | - |
-| Brownfield UI | - | X | X | - | X | - | X | X | X | X | X | - |
-| Brownfield Service | - | X | X | - | X | - | X | X | X | X | - | - |
-| Brownfield Discovery | - | X | X | X | - | - | X | - | X | - | X | - |
-| Auto-Worktree | - | - | - | - | X* | X | - | X* | - | - | - | - |
-| Design System Quality | - | - | - | - | - | - | - | - | - | - | X | - |
+| Workflow              | @aiox-master | @analyst | @architect | @data-eng | @dev | @devops | @pm | @po | @qa | @sm | @ux-expert | @squad-creator |
+| --------------------- | :----------: | :------: | :--------: | :-------: | :--: | :-----: | :-: | :-: | :-: | :-: | :--------: | :------------: |
+| Story Dev Cycle       |      -       |    -     |     -      |     -     |  X   |    -    |  -  |  X  |  X  |  X  |     -      |       -        |
+| Spec Pipeline         |      -       |    X     |     X      |     -     |  -   |    -    |  X  |  -  |  X  |  -  |     -      |       -        |
+| QA Loop               |      -       |    -     |     -      |     -     |  X   |    -    |  -  |  -  |  X  |  -  |     -      |       -        |
+| Greenfield Fullstack  |      -       |    X     |     X      |     -     |  X   |    X    |  X  |  X  |  X  |  X  |     X      |       -        |
+| Greenfield UI         |      -       |    X     |     X      |     -     |  X   |    X    |  X  |  X  |  X  |  X  |     X      |       -        |
+| Greenfield Service    |      -       |    X     |     X      |     -     |  X   |    X    |  X  |  X  |  X  |  X  |     -      |       -        |
+| Brownfield Fullstack  |      -       |    X     |     X      |     -     |  X   |    -    |  X  |  X  |  X  |  X  |     -      |       -        |
+| Brownfield UI         |      -       |    X     |     X      |     -     |  X   |    -    |  X  |  X  |  X  |  X  |     X      |       -        |
+| Brownfield Service    |      -       |    X     |     X      |     -     |  X   |    -    |  X  |  X  |  X  |  X  |     -      |       -        |
+| Brownfield Discovery  |      -       |    X     |     X      |     X     |  -   |    -    |  X  |  -  |  X  |  -  |     X      |       -        |
+| Auto-Worktree         |      -       |    -     |     -      |     -     | X\*  |    X    |  -  | X\* |  -  |  -  |     -      |       -        |
+| Design System Quality |      -       |    -     |     -      |     -     |  -   |    -    |  -  |  -  |  -  |  -  |     X      |       -        |
 
-*X\* = trigger only*
+_X\* = trigger only_
 
 ---
 
@@ -80,108 +80,108 @@ graph TD
 
 Every task file referenced across all workflows and agents:
 
-| # | Task File | Agents | Workflows Used In | Agent Command |
-|---|-----------|--------|-------------------|---------------|
-| 1 | `create-next-story.md` | @sm | SDC, GF, GU, GS, BF, BU, BS | `*draft` |
-| 2 | `sm-create-next-story.md` | @sm | GF, GU, GS | `*draft` |
-| 3 | `create-brownfield-story.md` | @sm, @pm | BF | `*draft` (SM), `*create-story` (PM) |
-| 4 | `validate-next-story.md` | @po, @dev | SDC | `*validate-story-draft` |
-| 5 | `dev-develop-story.md` | @dev | SDC, GF, GU, GS, BF, BU, BS | `*develop {story-id}` |
-| 6 | `apply-qa-fixes.md` | @dev | QAL, GF, GU, GS, BU, BS | `*apply-qa-fixes` |
-| 7 | `qa-gate.md` | @qa | SDC | `*gate {story}` |
-| 8 | `qa-review-story.md` | @qa | QAL, GF, GU, GS, BU, BS | `*review {story}` |
-| 9 | `qa-create-fix-request.md` | @qa | QAL | `*create-fix-request {story}` |
-| 10 | `create-doc.md` | @pm, @architect, @ux-expert, @analyst, @aiox-master | GF, GU, GS, BU, BS, SP | `*create-prd`, `*create-*-architecture`, etc. |
-| 11 | `shard-doc.md` | @po, @pm, @aiox-master | GF, GU, GS, BF, BU, BS | `*shard-doc` |
-| 12 | `execute-checklist.md` | @po, @architect, @data-eng, @aiox-master | GF, GU, GS, BF, BU, BS | `*execute-checklist-po`, `*execute-checklist` |
-| 13 | `document-project.md` | @architect, @analyst, @aiox-master | BD, BF, BU, BS | `*document-project` |
-| 14 | `correct-course.md` | @pm, @sm, @aiox-master | (any - course correction) | `*correct-course` |
-| 15 | `environment-bootstrap.md` | @devops | GF, GU, GS | `*environment-bootstrap` |
-| 16 | `facilitate-brainstorming-session.md` | @analyst | GF, GU, GS | `*brainstorm {topic}` |
-| 17 | `create-deep-research-prompt.md` | @analyst, @architect, @data-eng, @aiox-master | GF, GU, GS | `*research {topic}` |
-| 18 | `generate-ai-frontend-prompt.md` | @ux-expert | GF, GU | `*generate-ui-prompt` |
-| 19 | `spec-gather-requirements.md` | @pm | SP | (Phase 1) |
-| 20 | `spec-assess-complexity.md` | @architect | SP | `*assess-complexity` |
-| 21 | `spec-research-dependencies.md` | @analyst | SP | (Phase 3) |
-| 22 | `spec-write-spec.md` | @pm | SP | (Phase 4) |
-| 23 | `spec-critique.md` | @qa | SP | (Phase 5) |
-| 24 | `plan-create-implementation.md` | @architect | SP | (Phase 6) |
-| 25 | `brownfield-create-epic.md` | @pm | BF, BD | `*create-epic` |
-| 26 | `brownfield-create-story.md` | @pm | BF, BD | `*create-story` |
-| 27 | `db-schema-audit.md` | @data-eng | BD | `*db-schema-audit` (implied) |
-| 28 | `security-audit.md` | @data-eng, @devops | BD | `*security-audit` |
-| 29 | `create-worktree.md` | @devops | AW | `*create-worktree` |
-| 30 | `list-worktrees.md` | @devops | AW | `*list-worktrees` |
-| 31 | `remove-worktree.md` | @devops | AW | `*remove-worktree` |
-| 32 | `merge-worktree.md` | @devops | AW | `*merge-worktree` |
-| 33 | `build-component.md` | @ux-expert | DS | `*build {component}` |
-| 34 | `generate-documentation.md` | @ux-expert | DS | `*document` |
-| 35 | `accessibility-wcag-checklist.md` | @ux-expert | DS | `*a11y-check` |
-| 36 | `calculate-roi.md` | @ux-expert, @analyst | DS | `*calculate-roi` |
-| 37 | `github-devops-pre-push-quality-gate.md` | @devops | (push flow) | `*push` |
-| 38 | `github-devops-version-management.md` | @devops | (release flow) | `*version-check` |
-| 39 | `github-devops-repository-cleanup.md` | @devops | (maintenance) | `*cleanup` |
-| 40 | `ci-cd-configuration.md` | @devops | (CI/CD) | `*ci-cd` |
-| 41 | `release-management.md` | @devops | (release flow) | `*release` |
-| 42 | `search-mcp.md` | @devops | (MCP mgmt) | `*search-mcp` |
-| 43 | `add-mcp.md` | @devops | (MCP mgmt) | `*add-mcp` |
-| 44 | `setup-mcp-docker.md` | @devops | (MCP mgmt) | `*setup-mcp-docker` |
-| 45 | `setup-github.md` | @devops | (setup) | `*setup-github` |
-| 46 | `architect-analyze-impact.md` | @architect | (on-demand) | `*analyze-impact` |
-| 47 | `collaborative-edit.md` | @architect, @sm | (on-demand) | (internal) |
-| 48 | `qa-test-design.md` | @qa | (on-demand) | `*test-design {story}` |
-| 49 | `qa-risk-profile.md` | @qa | (on-demand) | `*risk-profile {story}` |
-| 50 | `qa-nfr-assess.md` | @qa | (on-demand) | `*nfr-assess {story}` |
-| 51 | `qa-trace-requirements.md` | @qa | (on-demand) | `*trace {story}` |
-| 52 | `qa-generate-tests.md` | @qa | (on-demand) | `*generate-tests` |
-| 53 | `qa-run-tests.md` | @qa | (on-demand) | `*run-tests` |
-| 54 | `qa-backlog-add-followup.md` | @qa | (on-demand) | `*backlog-add` |
-| 55 | `dev-improve-code-quality.md` | @dev | (on-demand) | `*improve-code-quality` |
-| 56 | `dev-optimize-performance.md` | @dev | (on-demand) | `*optimize-performance` |
-| 57 | `dev-suggest-refactoring.md` | @dev | (on-demand) | `*suggest-refactoring` |
-| 58 | `dev-backlog-debt.md` | @dev | (on-demand) | `*backlog-debt` |
-| 59 | `sync-documentation.md` | @dev | (on-demand) | `*sync-documentation` |
-| 60 | `po-manage-story-backlog.md` | @po, @qa | (backlog mgmt) | `*backlog-*` |
-| 61 | `init-project-status.md` | @sm | (init) | (internal) |
+| #   | Task File                                | Agents                                              | Workflows Used In           | Agent Command                                 |
+| --- | ---------------------------------------- | --------------------------------------------------- | --------------------------- | --------------------------------------------- |
+| 1   | `create-next-story.md`                   | @sm                                                 | SDC, GF, GU, GS, BF, BU, BS | `*draft`                                      |
+| 2   | `sm-create-next-story.md`                | @sm                                                 | GF, GU, GS                  | `*draft`                                      |
+| 3   | `create-brownfield-story.md`             | @sm, @pm                                            | BF                          | `*draft` (SM), `*create-story` (PM)           |
+| 4   | `validate-next-story.md`                 | @po, @dev                                           | SDC                         | `*validate-story-draft`                       |
+| 5   | `dev-develop-story.md`                   | @dev                                                | SDC, GF, GU, GS, BF, BU, BS | `*develop {story-id}`                         |
+| 6   | `apply-qa-fixes.md`                      | @dev                                                | QAL, GF, GU, GS, BU, BS     | `*apply-qa-fixes`                             |
+| 7   | `qa-gate.md`                             | @qa                                                 | SDC                         | `*gate {story}`                               |
+| 8   | `qa-review-story.md`                     | @qa                                                 | QAL, GF, GU, GS, BU, BS     | `*review {story}`                             |
+| 9   | `qa-create-fix-request.md`               | @qa                                                 | QAL                         | `*create-fix-request {story}`                 |
+| 10  | `create-doc.md`                          | @pm, @architect, @ux-expert, @analyst, @aiox-master | GF, GU, GS, BU, BS, SP      | `*create-prd`, `*create-*-architecture`, etc. |
+| 11  | `shard-doc.md`                           | @po, @pm, @aiox-master                              | GF, GU, GS, BF, BU, BS      | `*shard-doc`                                  |
+| 12  | `execute-checklist.md`                   | @po, @architect, @data-eng, @aiox-master            | GF, GU, GS, BF, BU, BS      | `*execute-checklist-po`, `*execute-checklist` |
+| 13  | `document-project.md`                    | @architect, @analyst, @aiox-master                  | BD, BF, BU, BS              | `*document-project`                           |
+| 14  | `correct-course.md`                      | @pm, @sm, @aiox-master                              | (any - course correction)   | `*correct-course`                             |
+| 15  | `environment-bootstrap.md`               | @devops                                             | GF, GU, GS                  | `*environment-bootstrap`                      |
+| 16  | `facilitate-brainstorming-session.md`    | @analyst                                            | GF, GU, GS                  | `*brainstorm {topic}`                         |
+| 17  | `create-deep-research-prompt.md`         | @analyst, @architect, @data-eng, @aiox-master       | GF, GU, GS                  | `*research {topic}`                           |
+| 18  | `generate-ai-frontend-prompt.md`         | @ux-expert                                          | GF, GU                      | `*generate-ui-prompt`                         |
+| 19  | `spec-gather-requirements.md`            | @pm                                                 | SP                          | (Phase 1)                                     |
+| 20  | `spec-assess-complexity.md`              | @architect                                          | SP                          | `*assess-complexity`                          |
+| 21  | `spec-research-dependencies.md`          | @analyst                                            | SP                          | (Phase 3)                                     |
+| 22  | `spec-write-spec.md`                     | @pm                                                 | SP                          | (Phase 4)                                     |
+| 23  | `spec-critique.md`                       | @qa                                                 | SP                          | (Phase 5)                                     |
+| 24  | `plan-create-implementation.md`          | @architect                                          | SP                          | (Phase 6)                                     |
+| 25  | `brownfield-create-epic.md`              | @pm                                                 | BF, BD                      | `*create-epic`                                |
+| 26  | `brownfield-create-story.md`             | @pm                                                 | BF, BD                      | `*create-story`                               |
+| 27  | `db-schema-audit.md`                     | @data-eng                                           | BD                          | `*db-schema-audit` (implied)                  |
+| 28  | `security-audit.md`                      | @data-eng, @devops                                  | BD                          | `*security-audit`                             |
+| 29  | `create-worktree.md`                     | @devops                                             | AW                          | `*create-worktree`                            |
+| 30  | `list-worktrees.md`                      | @devops                                             | AW                          | `*list-worktrees`                             |
+| 31  | `remove-worktree.md`                     | @devops                                             | AW                          | `*remove-worktree`                            |
+| 32  | `merge-worktree.md`                      | @devops                                             | AW                          | `*merge-worktree`                             |
+| 33  | `build-component.md`                     | @ux-expert                                          | DS                          | `*build {component}`                          |
+| 34  | `generate-documentation.md`              | @ux-expert                                          | DS                          | `*document`                                   |
+| 35  | `accessibility-wcag-checklist.md`        | @ux-expert                                          | DS                          | `*a11y-check`                                 |
+| 36  | `calculate-roi.md`                       | @ux-expert, @analyst                                | DS                          | `*calculate-roi`                              |
+| 37  | `github-devops-pre-push-quality-gate.md` | @devops                                             | (push flow)                 | `*push`                                       |
+| 38  | `github-devops-version-management.md`    | @devops                                             | (release flow)              | `*version-check`                              |
+| 39  | `github-devops-repository-cleanup.md`    | @devops                                             | (maintenance)               | `*cleanup`                                    |
+| 40  | `ci-cd-configuration.md`                 | @devops                                             | (CI/CD)                     | `*ci-cd`                                      |
+| 41  | `release-management.md`                  | @devops                                             | (release flow)              | `*release`                                    |
+| 42  | `search-mcp.md`                          | @devops                                             | (MCP mgmt)                  | `*search-mcp`                                 |
+| 43  | `add-mcp.md`                             | @devops                                             | (MCP mgmt)                  | `*add-mcp`                                    |
+| 44  | `setup-mcp-docker.md`                    | @devops                                             | (MCP mgmt)                  | `*setup-mcp-docker`                           |
+| 45  | `setup-github.md`                        | @devops                                             | (setup)                     | `*setup-github`                               |
+| 46  | `architect-analyze-impact.md`            | @architect                                          | (on-demand)                 | `*analyze-impact`                             |
+| 47  | `collaborative-edit.md`                  | @architect, @sm                                     | (on-demand)                 | (internal)                                    |
+| 48  | `qa-test-design.md`                      | @qa                                                 | (on-demand)                 | `*test-design {story}`                        |
+| 49  | `qa-risk-profile.md`                     | @qa                                                 | (on-demand)                 | `*risk-profile {story}`                       |
+| 50  | `qa-nfr-assess.md`                       | @qa                                                 | (on-demand)                 | `*nfr-assess {story}`                         |
+| 51  | `qa-trace-requirements.md`               | @qa                                                 | (on-demand)                 | `*trace {story}`                              |
+| 52  | `qa-generate-tests.md`                   | @qa                                                 | (on-demand)                 | `*generate-tests`                             |
+| 53  | `qa-run-tests.md`                        | @qa                                                 | (on-demand)                 | `*run-tests`                                  |
+| 54  | `qa-backlog-add-followup.md`             | @qa                                                 | (on-demand)                 | `*backlog-add`                                |
+| 55  | `dev-improve-code-quality.md`            | @dev                                                | (on-demand)                 | `*improve-code-quality`                       |
+| 56  | `dev-optimize-performance.md`            | @dev                                                | (on-demand)                 | `*optimize-performance`                       |
+| 57  | `dev-suggest-refactoring.md`             | @dev                                                | (on-demand)                 | `*suggest-refactoring`                        |
+| 58  | `dev-backlog-debt.md`                    | @dev                                                | (on-demand)                 | `*backlog-debt`                               |
+| 59  | `sync-documentation.md`                  | @dev                                                | (on-demand)                 | `*sync-documentation`                         |
+| 60  | `po-manage-story-backlog.md`             | @po, @qa                                            | (backlog mgmt)              | `*backlog-*`                                  |
+| 61  | `init-project-status.md`                 | @sm                                                 | (init)                      | (internal)                                    |
 
 ### Tasks in Agent Dependencies but NOT in Any Workflow
 
 These tasks are available as on-demand commands but are not called by any workflow:
 
-| Task | Agent | Command | Status |
-|------|-------|---------|--------|
-| `architect-analyze-impact.md` | @architect | `*analyze-impact` | On-demand only |
-| `qa-test-design.md` | @qa | `*test-design` | On-demand only |
-| `qa-risk-profile.md` | @qa | `*risk-profile` | On-demand only |
-| `qa-nfr-assess.md` | @qa | `*nfr-assess` | On-demand only |
-| `qa-trace-requirements.md` | @qa | `*trace` | On-demand only |
-| `qa-generate-tests.md` | @qa | `*generate-tests` | On-demand only |
-| `qa-run-tests.md` | @qa | `*run-tests` | On-demand only |
-| `qa-backlog-add-followup.md` | @qa | `*backlog-add` | On-demand only |
-| `dev-improve-code-quality.md` | @dev | `*improve-code-quality` | On-demand only |
-| `dev-optimize-performance.md` | @dev | `*optimize-performance` | On-demand only |
-| `dev-suggest-refactoring.md` | @dev | `*suggest-refactoring` | On-demand only |
-| `dev-backlog-debt.md` | @dev | `*backlog-debt` | On-demand only |
-| `sync-documentation.md` | @dev | `*sync-documentation` | On-demand only |
-| `po-manage-story-backlog.md` | @po | `*backlog-*` | On-demand only |
-| `db-domain-modeling.md` | @data-eng | `*model-domain` | On-demand only |
-| `setup-database.md` | @data-eng | `*setup-database` | On-demand only |
-| `db-bootstrap.md` | @data-eng | `*bootstrap` | On-demand only |
-| `db-env-check.md` | @data-eng | `*env-check` | On-demand only |
-| `db-apply-migration.md` | @data-eng | `*apply-migration` | On-demand only |
-| `db-dry-run.md` | @data-eng | `*dry-run` | On-demand only |
-| `db-seed.md` | @data-eng | `*seed` | On-demand only |
-| `db-snapshot.md` | @data-eng | `*snapshot` | On-demand only |
-| `db-rollback.md` | @data-eng | `*rollback` | On-demand only |
-| `db-smoke-test.md` | @data-eng | `*smoke-test` | On-demand only |
-| `analyze-performance.md` | @data-eng | `*analyze-performance` | On-demand only |
-| `db-policy-apply.md` | @data-eng | `*policy-apply` | On-demand only |
-| `test-as-user.md` | @data-eng | `*test-as-user` | On-demand only |
-| `db-verify-order.md` | @data-eng | `*verify-order` | On-demand only |
-| `db-load-csv.md` | @data-eng | `*load-csv` | On-demand only |
-| `db-run-sql.md` | @data-eng | `*run-sql` | On-demand only |
-| All `squad-creator-*.md` tasks | @squad-creator | `*create-squad`, etc. | On-demand only |
-| All UX Phase 2-4 tasks | @ux-expert | `*audit`, `*tokenize`, etc. | On-demand only |
+| Task                           | Agent          | Command                     | Status         |
+| ------------------------------ | -------------- | --------------------------- | -------------- |
+| `architect-analyze-impact.md`  | @architect     | `*analyze-impact`           | On-demand only |
+| `qa-test-design.md`            | @qa            | `*test-design`              | On-demand only |
+| `qa-risk-profile.md`           | @qa            | `*risk-profile`             | On-demand only |
+| `qa-nfr-assess.md`             | @qa            | `*nfr-assess`               | On-demand only |
+| `qa-trace-requirements.md`     | @qa            | `*trace`                    | On-demand only |
+| `qa-generate-tests.md`         | @qa            | `*generate-tests`           | On-demand only |
+| `qa-run-tests.md`              | @qa            | `*run-tests`                | On-demand only |
+| `qa-backlog-add-followup.md`   | @qa            | `*backlog-add`              | On-demand only |
+| `dev-improve-code-quality.md`  | @dev           | `*improve-code-quality`     | On-demand only |
+| `dev-optimize-performance.md`  | @dev           | `*optimize-performance`     | On-demand only |
+| `dev-suggest-refactoring.md`   | @dev           | `*suggest-refactoring`      | On-demand only |
+| `dev-backlog-debt.md`          | @dev           | `*backlog-debt`             | On-demand only |
+| `sync-documentation.md`        | @dev           | `*sync-documentation`       | On-demand only |
+| `po-manage-story-backlog.md`   | @po            | `*backlog-*`                | On-demand only |
+| `db-domain-modeling.md`        | @data-eng      | `*model-domain`             | On-demand only |
+| `setup-database.md`            | @data-eng      | `*setup-database`           | On-demand only |
+| `db-bootstrap.md`              | @data-eng      | `*bootstrap`                | On-demand only |
+| `db-env-check.md`              | @data-eng      | `*env-check`                | On-demand only |
+| `db-apply-migration.md`        | @data-eng      | `*apply-migration`          | On-demand only |
+| `db-dry-run.md`                | @data-eng      | `*dry-run`                  | On-demand only |
+| `db-seed.md`                   | @data-eng      | `*seed`                     | On-demand only |
+| `db-snapshot.md`               | @data-eng      | `*snapshot`                 | On-demand only |
+| `db-rollback.md`               | @data-eng      | `*rollback`                 | On-demand only |
+| `db-smoke-test.md`             | @data-eng      | `*smoke-test`               | On-demand only |
+| `analyze-performance.md`       | @data-eng      | `*analyze-performance`      | On-demand only |
+| `db-policy-apply.md`           | @data-eng      | `*policy-apply`             | On-demand only |
+| `test-as-user.md`              | @data-eng      | `*test-as-user`             | On-demand only |
+| `db-verify-order.md`           | @data-eng      | `*verify-order`             | On-demand only |
+| `db-load-csv.md`               | @data-eng      | `*load-csv`                 | On-demand only |
+| `db-run-sql.md`                | @data-eng      | `*run-sql`                  | On-demand only |
+| All `squad-creator-*.md` tasks | @squad-creator | `*create-squad`, etc.       | On-demand only |
+| All UX Phase 2-4 tasks         | @ux-expert     | `*audit`, `*tokenize`, etc. | On-demand only |
 
 > **Note:** On-demand tasks are NOT broken. They are utility commands agents can run outside formal workflows. This is by design.
 
@@ -224,6 +224,7 @@ graph LR
 ```
 
 **Sequence: Before/After `*draft`**
+
 ```
 BEFORE: @po validates artifacts + shard-doc completes → docs/prd/ and docs/architecture/ ready
 DURING: @sm *draft → reads sharded docs → creates story.md (status: Draft)
@@ -266,6 +267,7 @@ graph LR
 ```
 
 **Sequence: Before/After `*execute-checklist-po`**
+
 ```
 BEFORE: @pm creates prd.md + @architect creates architecture.md → both in docs/
 DURING: @po *execute-checklist-po → validates all artifacts against po-master-checklist
@@ -312,6 +314,7 @@ graph LR
 ```
 
 **Sequence: Before/After `*develop {story-id}`**
+
 ```
 BEFORE: Story exists with status Approved/Ready (created by @sm, validated by @po)
 DURING: @dev *develop {story-id} → reads story → implements tasks → updates File List → marks "Review"
@@ -364,6 +367,7 @@ graph LR
 ```
 
 **Sequence: Before/After `*review {story}`**
+
 ```
 BEFORE: @dev completes implementation → story status = "Review"
 DURING: @qa *review {story} → reads code + story → identifies issues → may fix minor items
@@ -997,24 +1001,24 @@ sequenceDiagram
 
 These are valid "utility" tasks, but have no formal workflow integration:
 
-| Category | Tasks | Risk |
-|----------|-------|------|
-| **QA Analysis** | `qa-test-design.md`, `qa-risk-profile.md`, `qa-nfr-assess.md`, `qa-trace-requirements.md`, `qa-generate-tests.md`, `qa-run-tests.md` | LOW - On-demand QA tools |
-| **QA Secondary** | `qa-browser-console-check.md`, `qa-evidence-requirements.md`, `qa-false-positive-detection.md`, `qa-fix-issues.md`, `qa-library-validation.md`, `qa-migration-validation.md`, `qa-review-build.md`, `qa-security-checklist.md`, `qa-review-proposal.md` | LOW - Specialized QA tools |
-| **Dev Quality** | `dev-improve-code-quality.md`, `dev-optimize-performance.md`, `dev-suggest-refactoring.md`, `dev-backlog-debt.md`, `sync-documentation.md` | LOW - On-demand dev tools |
-| **DB Operations** | All `db-*.md` tasks except `db-schema-audit.md` | LOW - DBA operations |
-| **UX Phases 2-4** | `audit-codebase.md`, `consolidate-patterns.md`, `extract-tokens.md`, `setup-design-system.md`, etc. | LOW - Design system tools |
-| **Squad Creator** | All `squad-creator-*.md`, `squad-generate-*.md` | LOW - Expansion system |
-| **DevOps Mgmt** | `search-mcp.md`, `add-mcp.md`, `setup-mcp-docker.md`, `ci-cd-configuration.md`, `release-management.md` | LOW - Infrastructure tools |
-| **Backlog** | `po-manage-story-backlog.md` | LOW - Backlog management |
+| Category          | Tasks                                                                                                                                                                                                                                                   | Risk                       |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| **QA Analysis**   | `qa-test-design.md`, `qa-risk-profile.md`, `qa-nfr-assess.md`, `qa-trace-requirements.md`, `qa-generate-tests.md`, `qa-run-tests.md`                                                                                                                    | LOW - On-demand QA tools   |
+| **QA Secondary**  | `qa-browser-console-check.md`, `qa-evidence-requirements.md`, `qa-false-positive-detection.md`, `qa-fix-issues.md`, `qa-library-validation.md`, `qa-migration-validation.md`, `qa-review-build.md`, `qa-security-checklist.md`, `qa-review-proposal.md` | LOW - Specialized QA tools |
+| **Dev Quality**   | `dev-improve-code-quality.md`, `dev-optimize-performance.md`, `dev-suggest-refactoring.md`, `dev-backlog-debt.md`, `sync-documentation.md`                                                                                                              | LOW - On-demand dev tools  |
+| **DB Operations** | All `db-*.md` tasks except `db-schema-audit.md`                                                                                                                                                                                                         | LOW - DBA operations       |
+| **UX Phases 2-4** | `audit-codebase.md`, `consolidate-patterns.md`, `extract-tokens.md`, `setup-design-system.md`, etc.                                                                                                                                                     | LOW - Design system tools  |
+| **Squad Creator** | All `squad-creator-*.md`, `squad-generate-*.md`                                                                                                                                                                                                         | LOW - Expansion system     |
+| **DevOps Mgmt**   | `search-mcp.md`, `add-mcp.md`, `setup-mcp-docker.md`, `ci-cd-configuration.md`, `release-management.md`                                                                                                                                                 | LOW - Infrastructure tools |
+| **Backlog**       | `po-manage-story-backlog.md`                                                                                                                                                                                                                            | LOW - Backlog management   |
 
 ### Agents NOT Participating in Any Formal Workflow
 
-| Agent | Status | Notes |
-|-------|--------|-------|
-| `@squad-creator` (Craft) | NO WORKFLOW | Creates and manages squads. Standalone by design. |
-| `@aiox-master` (Orion) | META-AGENT | Orchestrates other agents. Not a workflow participant but a workflow creator/executor. |
-| `@devops` (Gage) | SERVICE ROLE | Provides infrastructure (bootstrap, push, worktrees) but doesn't follow workflow sequences. |
+| Agent                    | Status       | Notes                                                                                       |
+| ------------------------ | ------------ | ------------------------------------------------------------------------------------------- |
+| `@squad-creator` (Craft) | NO WORKFLOW  | Creates and manages squads. Standalone by design.                                           |
+| `@aiox-master` (Orion)   | META-AGENT   | Orchestrates other agents. Not a workflow participant but a workflow creator/executor.      |
+| `@devops` (Gage)         | SERVICE ROLE | Provides infrastructure (bootstrap, push, worktrees) but doesn't follow workflow sequences. |
 
 ---
 
@@ -1024,18 +1028,18 @@ These are valid "utility" tasks, but have no formal workflow integration:
 
 **Verified 2026-02-05:** The `@qa` agent definition (`agents/qa.md`) references 9 task files using **non-prefixed names that DO NOT EXIST** on the filesystem. Only `qa-gate.md` is correctly referenced.
 
-| Agent Reference | Actual File on Disk | Status |
-|----------------|---------------------|--------|
-| `generate-tests.md` | `qa-generate-tests.md` | **BROKEN** |
+| Agent Reference           | Actual File on Disk                                         | Status     |
+| ------------------------- | ----------------------------------------------------------- | ---------- |
+| `generate-tests.md`       | `qa-generate-tests.md`                                      | **BROKEN** |
 | `manage-story-backlog.md` | `po-manage-story-backlog.md` / `qa-backlog-add-followup.md` | **BROKEN** |
-| `nfr-assess.md` | `qa-nfr-assess.md` | **BROKEN** |
-| `review-proposal.md` | `qa-review-proposal.md` | **BROKEN** |
-| `review-story.md` | `qa-review-story.md` | **BROKEN** |
-| `risk-profile.md` | `qa-risk-profile.md` | **BROKEN** |
-| `run-tests.md` | `qa-run-tests.md` | **BROKEN** |
-| `test-design.md` | `qa-test-design.md` | **BROKEN** |
-| `trace-requirements.md` | `qa-trace-requirements.md` | **BROKEN** |
-| `qa-gate.md` | `qa-gate.md` | OK |
+| `nfr-assess.md`           | `qa-nfr-assess.md`                                          | **BROKEN** |
+| `review-proposal.md`      | `qa-review-proposal.md`                                     | **BROKEN** |
+| `review-story.md`         | `qa-review-story.md`                                        | **BROKEN** |
+| `risk-profile.md`         | `qa-risk-profile.md`                                        | **BROKEN** |
+| `run-tests.md`            | `qa-run-tests.md`                                           | **BROKEN** |
+| `test-design.md`          | `qa-test-design.md`                                         | **BROKEN** |
+| `trace-requirements.md`   | `qa-trace-requirements.md`                                  | **BROKEN** |
+| `qa-gate.md`              | `qa-gate.md`                                                | OK         |
 
 **Impact:** If the dependency resolution does NOT apply automatic prefix fallback, @qa commands referencing these tasks will fail to find the task files.
 
@@ -1045,50 +1049,51 @@ These are valid "utility" tasks, but have no formal workflow integration:
 
 Three task pairs exist with both a generic and agent-prefixed version:
 
-| Generic (non-prefixed) | Agent-Prefixed | Used in Agent Def | Used in YAML Workflow | Recommendation |
-|------------------------|----------------|--------------------|-----------------------|----------------|
-| `create-next-story.md` (`createNextStory()` by River) | `sm-create-next-story.md` (`smCreateNextStory()` by River) | @sm → `create-next-story.md` | `story-development-cycle.yaml` → `create-next-story` | **Keep generic**, deprecate `sm-` prefix |
-| `apply-qa-fixes.md` (`applyQaFixes()` by Dex) | `dev-apply-qa-fixes.md` (`devApplyQaFixes()` by Dex) | @dev → `apply-qa-fixes.md` | `qa-loop.yaml` → `dev-apply-qa-fixes.md` | **Mismatch!** Agent def ≠ YAML. Standardize. |
-| `validate-next-story.md` (`validateNextStory()` by Quinn) | `dev-validate-next-story.md` (`devValidateNextStory()` by Dex) | @po/@dev → `validate-next-story.md` | (indirect) | Different tasks for different agents. Both valid. |
+| Generic (non-prefixed)                                    | Agent-Prefixed                                                 | Used in Agent Def                   | Used in YAML Workflow                                | Recommendation                                    |
+| --------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------- | ---------------------------------------------------- | ------------------------------------------------- |
+| `create-next-story.md` (`createNextStory()` by River)     | `sm-create-next-story.md` (`smCreateNextStory()` by River)     | @sm → `create-next-story.md`        | `story-development-cycle.yaml` → `create-next-story` | **Keep generic**, deprecate `sm-` prefix          |
+| `apply-qa-fixes.md` (`applyQaFixes()` by Dex)             | `dev-apply-qa-fixes.md` (`devApplyQaFixes()` by Dex)           | @dev → `apply-qa-fixes.md`          | `qa-loop.yaml` → `dev-apply-qa-fixes.md`             | **Mismatch!** Agent def ≠ YAML. Standardize.      |
+| `validate-next-story.md` (`validateNextStory()` by Quinn) | `dev-validate-next-story.md` (`devValidateNextStory()` by Dex) | @po/@dev → `validate-next-story.md` | (indirect)                                           | Different tasks for different agents. Both valid. |
 
 ### 6.3 Naming Inconsistencies in Documentation
 
-| Issue | Details | Severity |
-|-------|---------|----------|
-| `sm-create-next-story.md` vs `create-next-story.md` | SM agent def uses `create-next-story.md`. Some workflow DOCS reference `sm-` prefix. YAML uses generic. | MEDIUM |
-| `dev-develop-story.md` vs `develop-story` | Workflow docs sometimes omit `dev-` prefix. Actual task file is `dev-develop-story.md`. | LOW |
-| `qa-review-story.md` vs `review-story.md` | Brownfield docs reference `review-story.md` but actual file is `qa-review-story.md`. YAML uses `qa-review-story.md`. | MEDIUM |
-| `dev-apply-qa-fixes.md` vs `apply-qa-fixes.md` | QA Loop YAML uses `dev-apply-qa-fixes.md`, @dev agent uses `apply-qa-fixes.md`. Both files exist. | MEDIUM |
-| `story-dod-checklist.md` path | Referenced in `@dev` checklist dependency but checklists/ dir does not exist. | MEDIUM |
+| Issue                                               | Details                                                                                                              | Severity |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------- |
+| `sm-create-next-story.md` vs `create-next-story.md` | SM agent def uses `create-next-story.md`. Some workflow DOCS reference `sm-` prefix. YAML uses generic.              | MEDIUM   |
+| `dev-develop-story.md` vs `develop-story`           | Workflow docs sometimes omit `dev-` prefix. Actual task file is `dev-develop-story.md`.                              | LOW      |
+| `qa-review-story.md` vs `review-story.md`           | Brownfield docs reference `review-story.md` but actual file is `qa-review-story.md`. YAML uses `qa-review-story.md`. | MEDIUM   |
+| `dev-apply-qa-fixes.md` vs `apply-qa-fixes.md`      | QA Loop YAML uses `dev-apply-qa-fixes.md`, @dev agent uses `apply-qa-fixes.md`. Both files exist.                    | MEDIUM   |
+| `story-dod-checklist.md` path                       | Referenced in `@dev` checklist dependency but checklists/ dir does not exist.                                        | MEDIUM   |
 
 ### 6.4 Tasks Referenced in "Em Desenvolvimento" (Future/Planned)
 
-| Task | Referenced By | Status |
-|------|--------------|--------|
-| `story-review` | Brownfield workflows (optional step) | "Em desenvolvimento" |
-| `epic-retrospective` | All brownfield + greenfield workflows (optional) | "Em desenvolvimento" |
-| `brownfield-migration` | Design System Build Quality references | Not yet created |
+| Task                   | Referenced By                                    | Status               |
+| ---------------------- | ------------------------------------------------ | -------------------- |
+| `story-review`         | Brownfield workflows (optional step)             | "Em desenvolvimento" |
+| `epic-retrospective`   | All brownfield + greenfield workflows (optional) | "Em desenvolvimento" |
+| `brownfield-migration` | Design System Build Quality references           | Not yet created      |
 
 ### 6.5 Template Cross-Reference Issues
 
-| Template | Referenced By | Issue |
-|----------|--------------|-------|
-| `brainstorming-output-tmpl.yaml` | @analyst only | Not referenced in any workflow step output |
-| `state-persistence-tmpl.yaml` | @ux-expert only | Not referenced in any workflow |
-| `shock-report-tmpl.html` | @ux-expert only | Not referenced in any workflow |
+| Template                         | Referenced By   | Issue                                      |
+| -------------------------------- | --------------- | ------------------------------------------ |
+| `brainstorming-output-tmpl.yaml` | @analyst only   | Not referenced in any workflow step output |
+| `state-persistence-tmpl.yaml`    | @ux-expert only | Not referenced in any workflow             |
+| `shock-report-tmpl.html`         | @ux-expert only | Not referenced in any workflow             |
 
 ### 6.6 Potential Missing Connections
 
-| Gap | Description | Recommendation |
-|-----|-------------|----------------|
-| @data-engineer in Greenfield | Dara has no role in any Greenfield workflow | Consider adding DB setup step if project has database |
-| @squad-creator in workflows | Craft has no workflow integration | By design - standalone expansion system |
-| DevOps push not in workflows | `*push` is never referenced in any workflow step | Push happens outside formal workflow (by convention after QA Done) |
-| Spec Pipeline not embedded | Spec Pipeline is standalone, not embedded in Greenfield/Brownfield | Could be integrated as Phase 0.5 before Discovery |
+| Gap                          | Description                                                        | Recommendation                                                     |
+| ---------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| @data-engineer in Greenfield | Dara has no role in any Greenfield workflow                        | Consider adding DB setup step if project has database              |
+| @squad-creator in workflows  | Craft has no workflow integration                                  | By design - standalone expansion system                            |
+| DevOps push not in workflows | `*push` is never referenced in any workflow step                   | Push happens outside formal workflow (by convention after QA Done) |
+| Spec Pipeline not embedded   | Spec Pipeline is standalone, not embedded in Greenfield/Brownfield | Could be integrated as Phase 0.5 before Discovery                  |
 
 ### 6.7 Checklists Directory Missing
 
 The `checklists/` directory does NOT exist at `.aiox-core/development/checklists/`. Multiple agents reference checklists:
+
 - `@dev` → `story-dod-checklist.md`
 - `@po` → `po-master-checklist.md`, `change-checklist.md`
 
@@ -1101,76 +1106,80 @@ The `checklists/` directory does NOT exist at `.aiox-core/development/checklists
 Cross-reference of every agent's task dependencies against actual files on disk:
 
 ### @sm (River)
-| Dependency | File Exists? |
-|-----------|:---:|
-| `create-next-story.md` | ✅ |
-| `execute-checklist.md` | ✅ |
-| `correct-course.md` | ✅ |
+
+| Dependency             | File Exists? |
+| ---------------------- | :----------: |
+| `create-next-story.md` |      ✅      |
+| `execute-checklist.md` |      ✅      |
+| `correct-course.md`    |      ✅      |
 
 ### @dev (Dex)
-| Dependency | File Exists? |
-|-----------|:---:|
-| `apply-qa-fixes.md` | ✅ |
-| `dev-develop-story.md` | ✅ |
-| `execute-checklist.md` | ✅ |
-| `dev-improve-code-quality.md` | ✅ |
-| `po-manage-story-backlog.md` | ✅ |
-| `dev-optimize-performance.md` | ✅ |
-| `dev-suggest-refactoring.md` | ✅ |
-| `sync-documentation.md` | ✅ |
-| `validate-next-story.md` | ✅ |
+
+| Dependency                          |  File Exists?  |
+| ----------------------------------- | :------------: |
+| `apply-qa-fixes.md`                 |       ✅       |
+| `dev-develop-story.md`              |       ✅       |
+| `execute-checklist.md`              |       ✅       |
+| `dev-improve-code-quality.md`       |       ✅       |
+| `po-manage-story-backlog.md`        |       ✅       |
+| `dev-optimize-performance.md`       |       ✅       |
+| `dev-suggest-refactoring.md`        |       ✅       |
+| `sync-documentation.md`             |       ✅       |
+| `validate-next-story.md`            |       ✅       |
 | Checklist: `story-dod-checklist.md` | ⚠️ Dir missing |
 
 ### @qa (Quinn) - 9 BROKEN
-| Dependency | File Exists? | Correct Name |
-|-----------|:---:|-------------|
-| `generate-tests.md` | ❌ | `qa-generate-tests.md` |
-| `manage-story-backlog.md` | ❌ | `qa-backlog-add-followup.md` |
-| `nfr-assess.md` | ❌ | `qa-nfr-assess.md` |
-| `qa-gate.md` | ✅ | — |
-| `review-proposal.md` | ❌ | `qa-review-proposal.md` |
-| `review-story.md` | ❌ | `qa-review-story.md` |
-| `risk-profile.md` | ❌ | `qa-risk-profile.md` |
-| `run-tests.md` | ❌ | `qa-run-tests.md` |
-| `test-design.md` | ❌ | `qa-test-design.md` |
-| `trace-requirements.md` | ❌ | `qa-trace-requirements.md` |
+
+| Dependency                | File Exists? | Correct Name                 |
+| ------------------------- | :----------: | ---------------------------- |
+| `generate-tests.md`       |      ❌      | `qa-generate-tests.md`       |
+| `manage-story-backlog.md` |      ❌      | `qa-backlog-add-followup.md` |
+| `nfr-assess.md`           |      ❌      | `qa-nfr-assess.md`           |
+| `qa-gate.md`              |      ✅      | —                            |
+| `review-proposal.md`      |      ❌      | `qa-review-proposal.md`      |
+| `review-story.md`         |      ❌      | `qa-review-story.md`         |
+| `risk-profile.md`         |      ❌      | `qa-risk-profile.md`         |
+| `run-tests.md`            |      ❌      | `qa-run-tests.md`            |
+| `test-design.md`          |      ❌      | `qa-test-design.md`          |
+| `trace-requirements.md`   |      ❌      | `qa-trace-requirements.md`   |
 
 ### @po (Pax)
-| Dependency | File Exists? |
-|-----------|:---:|
-| `correct-course.md` | ✅ |
-| `create-brownfield-story.md` | ✅ |
-| `execute-checklist.md` | ✅ |
-| `po-manage-story-backlog.md` | ✅ |
-| `po-pull-story.md` | ✅ |
-| `shard-doc.md` | ✅ |
-| `po-sync-story.md` | ✅ |
-| `validate-next-story.md` | ✅ |
+
+| Dependency                          |  File Exists?  |
+| ----------------------------------- | :------------: |
+| `correct-course.md`                 |       ✅       |
+| `create-brownfield-story.md`        |       ✅       |
+| `execute-checklist.md`              |       ✅       |
+| `po-manage-story-backlog.md`        |       ✅       |
+| `po-pull-story.md`                  |       ✅       |
+| `shard-doc.md`                      |       ✅       |
+| `po-sync-story.md`                  |       ✅       |
+| `validate-next-story.md`            |       ✅       |
 | Checklist: `po-master-checklist.md` | ⚠️ Dir missing |
-| Checklist: `change-checklist.md` | ⚠️ Dir missing |
+| Checklist: `change-checklist.md`    | ⚠️ Dir missing |
 
 ---
 
 ## Summary Statistics
 
-| Metric | Count |
-|--------|-------|
-| Total Workflows | 12 |
-| Total Agents | 11 |
-| Total Task Files on Disk | 191 |
-| Total Unique Tasks (in workflows) | ~36 |
-| Total Unique Tasks (on-demand only) | ~155 |
-| Total Agent Commands | ~180 |
-| Tasks in "Em Desenvolvimento" | 3 |
-| Duplicate Task Pairs | 3 |
-| Naming Inconsistencies | 5 |
-| @qa Broken References | 9 |
-| Checklists Dir Missing | 1 |
-| Missing Workflow Connections | 4 (by design) |
-| Critical Issues | 1 (@qa broken refs) |
+| Metric                              | Count               |
+| ----------------------------------- | ------------------- |
+| Total Workflows                     | 12                  |
+| Total Agents                        | 11                  |
+| Total Task Files on Disk            | 191                 |
+| Total Unique Tasks (in workflows)   | ~36                 |
+| Total Unique Tasks (on-demand only) | ~155                |
+| Total Agent Commands                | ~180                |
+| Tasks in "Em Desenvolvimento"       | 3                   |
+| Duplicate Task Pairs                | 3                   |
+| Naming Inconsistencies              | 5                   |
+| @qa Broken References               | 9                   |
+| Checklists Dir Missing              | 1                   |
+| Missing Workflow Connections        | 4 (by design)       |
+| Critical Issues                     | 1 (@qa broken refs) |
 
 ---
 
-*Analysis generated by AIOX Cross-Reference Audit*
-*Updated 2026-02-05: Verified agent definitions against actual file system.*
-*1 critical issue found: @qa agent has 9 broken task references.*
+_Analysis generated by AIOX Cross-Reference Audit_
+_Updated 2026-02-05: Verified agent definitions against actual file system._
+_1 critical issue found: @qa agent has 9 broken task references._

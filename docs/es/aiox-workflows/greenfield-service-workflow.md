@@ -25,14 +25,14 @@ Workflow para crear backends/APIs desde cero, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Requisitos de API |
-| @architect | Diseno de servicio |
-| @data-engineer | Esquema de datos |
-| @dev | Implementacion |
-| @qa | Tests de API |
-| @devops | Deploy |
+| Agente         | Rol                |
+| -------------- | ------------------ |
+| @pm            | Requisitos de API  |
+| @architect     | Diseno de servicio |
+| @data-engineer | Esquema de datos   |
+| @dev           | Implementacion     |
+| @qa            | Tests de API       |
+| @devops        | Deploy             |
 
 ## Ver Mas
 
@@ -40,4 +40,4 @@ Workflow para crear backends/APIs desde cero, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

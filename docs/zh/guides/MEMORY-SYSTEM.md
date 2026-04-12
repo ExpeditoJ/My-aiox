@@ -37,10 +37,10 @@
 
 AIOX 的记忆系统在**两个独立的层**上运行，它们共存但**彼此不通信**：
 
-| 层 | 管理者 | 范围 |
-|--------|---------------|--------|
-| **第一层: Claude Code 原生** | Claude Code CLI | 自动记忆, CLAUDE.md, 会话转录 |
-| **第二层: AIOX 框架** | `.aiox-core/` 中的 JS 脚本 | Gotchas, 会话状态, 上下文快照, Timeline |
+| 层                           | 管理者                     | 范围                                    |
+| ---------------------------- | -------------------------- | --------------------------------------- |
+| **第一层: Claude Code 原生** | Claude Code CLI            | 自动记忆, CLAUDE.md, 会话转录           |
+| **第二层: AIOX 框架**        | `.aiox-core/` 中的 JS 脚本 | Gotchas, 会话状态, 上下文快照, Timeline |
 
 ### 关键原则
 
@@ -804,13 +804,13 @@ flowchart LR
 
 ### 各 CLI 的 Hooks 状态
 
-| Hook | 文件 | Gemini | Claude Code | 状态 |
-|------|---------|--------|-------------|--------|
-| `session-start` | `hooks/gemini/session-start.js` | `SessionStart` | `null` (无事件) | **仅 Gemini** |
-| `session-end` | `hooks/gemini/session-end.js` | `SessionEnd` | `Stop` (已映射但未连接) | **仅 Gemini** |
-| `before-agent` | `hooks/gemini/before-agent.js` | `BeforeAgent` | `PreToolUse` | 两者都有 |
-| `before-tool` | `hooks/gemini/before-tool.js` | `BeforeTool` | `PreToolUse` | 两者都有 |
-| `after-tool` | `hooks/gemini/after-tool.js` | `AfterTool` | `PostToolUse` | 两者都有 |
+| Hook            | 文件                            | Gemini         | Claude Code             | 状态          |
+| --------------- | ------------------------------- | -------------- | ----------------------- | ------------- |
+| `session-start` | `hooks/gemini/session-start.js` | `SessionStart` | `null` (无事件)         | **仅 Gemini** |
+| `session-end`   | `hooks/gemini/session-end.js`   | `SessionEnd`   | `Stop` (已映射但未连接) | **仅 Gemini** |
+| `before-agent`  | `hooks/gemini/before-agent.js`  | `BeforeAgent`  | `PreToolUse`            | 两者都有      |
+| `before-tool`   | `hooks/gemini/before-tool.js`   | `BeforeTool`   | `PreToolUse`            | 两者都有      |
+| `after-tool`    | `hooks/gemini/after-tool.js`    | `AfterTool`    | `PostToolUse`           | 两者都有      |
 
 ### 关键缺口: Claude Code 中的 session-start
 
@@ -832,50 +832,50 @@ flowchart TD
 
 ### 记忆系统脚本
 
-| 文件 | 模块 | Story/Epic | 功能 |
-|---------|--------|------------|--------|
-| `.aiox-core/core/memory/gotchas-memory.js` | 记忆 | Epic 9, Story 9.4 | 自动捕获重复错误, 手动 gotchas, 注入任务 |
-| `.aiox-core/core/memory/context-snapshot.js` | 记忆 | Story 12.6 | 捕获和恢复开发上下文 |
-| `.aiox-core/core/memory/file-evolution-tracker.js` | 记忆 | Gap impl | 追踪文件演化, 检测漂移 |
-| `.aiox-core/core/memory/timeline-manager.js` | 记忆 | Gap impl | 跨会话统一 timeline 门面 |
-| `.aiox-core/core/session/context-loader.js` | 会话 | Story 2.2, 6.1.2.5 | 代理间连续性, 上下文交接 |
-| `.aiox-core/core/session/context-detector.js` | 会话 | Story 2.2 | 混合会话类型检测 (new/existing/workflow) |
-| `.aiox-core/core/orchestration/session-state.js` | 编排 | Story 11.5 | Epic/story 持久状态, 崩溃恢复 |
-| `.aiox-core/core/orchestration/context-manager.js` | 编排 | Legacy | 阶段间工作流状态 (迁移到 session-state) |
-| `.aiox-core/core/elicitation/session-manager.js` | Elicitation | — | Elicitation 会话保存/加载 |
+| 文件                                               | 模块        | Story/Epic         | 功能                                     |
+| -------------------------------------------------- | ----------- | ------------------ | ---------------------------------------- |
+| `.aiox-core/core/memory/gotchas-memory.js`         | 记忆        | Epic 9, Story 9.4  | 自动捕获重复错误, 手动 gotchas, 注入任务 |
+| `.aiox-core/core/memory/context-snapshot.js`       | 记忆        | Story 12.6         | 捕获和恢复开发上下文                     |
+| `.aiox-core/core/memory/file-evolution-tracker.js` | 记忆        | Gap impl           | 追踪文件演化, 检测漂移                   |
+| `.aiox-core/core/memory/timeline-manager.js`       | 记忆        | Gap impl           | 跨会话统一 timeline 门面                 |
+| `.aiox-core/core/session/context-loader.js`        | 会话        | Story 2.2, 6.1.2.5 | 代理间连续性, 上下文交接                 |
+| `.aiox-core/core/session/context-detector.js`      | 会话        | Story 2.2          | 混合会话类型检测 (new/existing/workflow) |
+| `.aiox-core/core/orchestration/session-state.js`   | 编排        | Story 11.5         | Epic/story 持久状态, 崩溃恢复            |
+| `.aiox-core/core/orchestration/context-manager.js` | 编排        | Legacy             | 阶段间工作流状态 (迁移到 session-state)  |
+| `.aiox-core/core/elicitation/session-manager.js`   | Elicitation | —                  | Elicitation 会话保存/加载                |
 
 ### 激活脚本 (消费记忆)
 
-| 文件 | 功能 |
-|---------|--------|
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | 主编排器 — 在 Tier 3 加载会话 |
-| `.aiox-core/development/scripts/greeting-builder.js` | 构建带会话/记忆上下文的 greeting |
+| 文件                                                            | 功能                             |
+| --------------------------------------------------------------- | -------------------------------- |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | 主编排器 — 在 Tier 3 加载会话    |
+| `.aiox-core/development/scripts/greeting-builder.js`            | 构建带会话/记忆上下文的 greeting |
 
 ### Hooks (会话持久化)
 
-| 文件 | CLI | 功能 |
-|---------|-----|--------|
-| `.aiox-core/hooks/gemini/session-start.js` | Gemini | 会话开始时加载 AIOX 上下文 |
-| `.aiox-core/hooks/gemini/session-end.js` | Gemini | 将会话摘要持久化到 `.aiox/sessions/` |
-| `.aiox-core/hooks/gemini/before-agent.js` | Gemini | 代理前预处理 |
-| `.aiox-core/hooks/gemini/before-tool.js` | 两者 | 工具前预处理 |
-| `.aiox-core/hooks/gemini/after-tool.js` | 两者 | 工具后后处理 |
-| `.aiox-core/hooks/unified/hook-interface.js` | 两者 | UnifiedHook 基类 + EVENT_MAPPING |
-| `.aiox-core/hooks/unified/hook-registry.js` | 两者 | hooks 中央注册表 |
-| `.aiox-core/hooks/unified/index.js` | 两者 | 统一系统入口点 |
+| 文件                                         | CLI    | 功能                                 |
+| -------------------------------------------- | ------ | ------------------------------------ |
+| `.aiox-core/hooks/gemini/session-start.js`   | Gemini | 会话开始时加载 AIOX 上下文           |
+| `.aiox-core/hooks/gemini/session-end.js`     | Gemini | 将会话摘要持久化到 `.aiox/sessions/` |
+| `.aiox-core/hooks/gemini/before-agent.js`    | Gemini | 代理前预处理                         |
+| `.aiox-core/hooks/gemini/before-tool.js`     | 两者   | 工具前预处理                         |
+| `.aiox-core/hooks/gemini/after-tool.js`      | 两者   | 工具后后处理                         |
+| `.aiox-core/hooks/unified/hook-interface.js` | 两者   | UnifiedHook 基类 + EVENT_MAPPING     |
+| `.aiox-core/hooks/unified/hook-registry.js`  | 两者   | hooks 中央注册表                     |
+| `.aiox-core/hooks/unified/index.js`          | 两者   | 统一系统入口点                       |
 
 ### Claude Code 文件 (原生记忆)
 
-| 文件 | 功能 |
-|---------|--------|
-| `~/.claude/CLAUDE.md` | 全局指令 (始终加载) |
-| `Workspaces/.claude/CLAUDE.md` | 工作区指令 (始终加载) |
-| `aiox-core/.claude/CLAUDE.md` | 项目指令 (始终加载) |
-| `aiox-core/.claude/rules/*.md` | 5 个规则文件 (始终加载) |
-| `~/.claude/projects/.../memory/MEMORY.md` | 自动记忆 (前 200 行, 始终加载) |
+| 文件                                                   | 功能                                 |
+| ------------------------------------------------------ | ------------------------------------ |
+| `~/.claude/CLAUDE.md`                                  | 全局指令 (始终加载)                  |
+| `Workspaces/.claude/CLAUDE.md`                         | 工作区指令 (始终加载)                |
+| `aiox-core/.claude/CLAUDE.md`                          | 项目指令 (始终加载)                  |
+| `aiox-core/.claude/rules/*.md`                         | 5 个规则文件 (始终加载)              |
+| `~/.claude/projects/.../memory/MEMORY.md`              | 自动记忆 (前 200 行, 始终加载)       |
 | `~/.claude/projects/.../memory/compound-analysis/*.md` | 9 个合成分析文件 (从 MEMORY.md 引用) |
-| `.claude/agent-memory/{agent}/MEMORY.md` | 每 squad 代理记忆 (6 个代理) |
-| `~/.claude/settings.json` | 配置: language, thinking, plugins |
+| `.claude/agent-memory/{agent}/MEMORY.md`               | 每 squad 代理记忆 (6 个代理)         |
+| `~/.claude/settings.json`                              | 配置: language, thinking, plugins    |
 
 ---
 
@@ -941,6 +941,7 @@ docs/stories/
 ```
 
 当会话关闭时，上下文知识会**丢失**，除了：
+
 - Claude 在会话**期间**写入 MEMORY.md 的内容
 - `.jsonl` 中的原始转录 (未汇总)
 
@@ -982,26 +983,26 @@ Claude 自动记忆 (`MEMORY.md`) 和 AIOX 记忆 (`.aiox/`) 从不同步。AIOX
 
 ## 参考
 
-| 资源 | 路径 |
-|---------|---------|
-| 激活管道指南 | `docs/guides/agents/traces/00-shared-activation-pipeline.md` |
-| Gotchas 记忆脚本 | `.aiox-core/core/memory/gotchas-memory.js` |
-| 上下文快照脚本 | `.aiox-core/core/memory/context-snapshot.js` |
-| 文件演化追踪器 | `.aiox-core/core/memory/file-evolution-tracker.js` |
-| Timeline Manager | `.aiox-core/core/memory/timeline-manager.js` |
-| 会话上下文加载器 | `.aiox-core/core/session/context-loader.js` |
-| 上下文检测器 | `.aiox-core/core/session/context-detector.js` |
-| 会话状态 | `.aiox-core/core/orchestration/session-state.js` |
-| 统一 Hook 接口 | `.aiox-core/hooks/unified/hook-interface.js` |
-| Hook 注册表 | `.aiox-core/hooks/unified/hook-registry.js` |
-| Gemini Session Start | `.aiox-core/hooks/gemini/session-start.js` |
-| Gemini Session End | `.aiox-core/hooks/gemini/session-end.js` |
-| Core 配置 | `.aiox-core/core-config.yaml` |
-| Claude 设置 | `~/.claude/settings.json` |
-| Story 开发周期 | `docs/guides/workflows/STORY-DEVELOPMENT-CYCLE-WORKFLOW.md` |
+| 资源                 | 路径                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| 激活管道指南         | `docs/guides/agents/traces/00-shared-activation-pipeline.md` |
+| Gotchas 记忆脚本     | `.aiox-core/core/memory/gotchas-memory.js`                   |
+| 上下文快照脚本       | `.aiox-core/core/memory/context-snapshot.js`                 |
+| 文件演化追踪器       | `.aiox-core/core/memory/file-evolution-tracker.js`           |
+| Timeline Manager     | `.aiox-core/core/memory/timeline-manager.js`                 |
+| 会话上下文加载器     | `.aiox-core/core/session/context-loader.js`                  |
+| 上下文检测器         | `.aiox-core/core/session/context-detector.js`                |
+| 会话状态             | `.aiox-core/core/orchestration/session-state.js`             |
+| 统一 Hook 接口       | `.aiox-core/hooks/unified/hook-interface.js`                 |
+| Hook 注册表          | `.aiox-core/hooks/unified/hook-registry.js`                  |
+| Gemini Session Start | `.aiox-core/hooks/gemini/session-start.js`                   |
+| Gemini Session End   | `.aiox-core/hooks/gemini/session-end.js`                     |
+| Core 配置            | `.aiox-core/core-config.yaml`                                |
+| Claude 设置          | `~/.claude/settings.json`                                    |
+| Story 开发周期       | `docs/guides/workflows/STORY-DEVELOPMENT-CYCLE-WORKFLOW.md`  |
 
 ---
 
-*AIOX 记忆系统架构指南 v1.0*
-*从源代码追踪，而非文档。*
-*@architect (Aria) — 架构未来*
+_AIOX 记忆系统架构指南 v1.0_
+_从源代码追踪，而非文档。_
+_@architect (Aria) — 架构未来_

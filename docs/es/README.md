@@ -14,12 +14,12 @@
 
 ## 🌐 Seleccione el Idioma / Select Language / Selecione o Idioma / 选择语言
 
-| Idioma              | Estado         | Enlace                                                   |
-| ------------------- | -------------- | -------------------------------------------------------- |
-| **English**         | ✅ Completo    | [📖 English Documentation](../getting-started.md)        |
-| **Português**       | ✅ Completo    | [📖 Documentação em Português](../pt/getting-started.md) |
-| **Español**         | ✅ Completo    | [📖 Documentación en Español](./getting-started.md)      |
-| **中文（简体）**    | 🟡 En progreso | [📖 Documentación en Chino](../zh/getting-started.md)    |
+| Idioma           | Estado         | Enlace                                                   |
+| ---------------- | -------------- | -------------------------------------------------------- |
+| **English**      | ✅ Completo    | [📖 English Documentation](../getting-started.md)        |
+| **Português**    | ✅ Completo    | [📖 Documentação em Português](../pt/getting-started.md) |
+| **Español**      | ✅ Completo    | [📖 Documentación en Español](./getting-started.md)      |
+| **中文（简体）** | 🟡 En progreso | [📖 Documentación en Chino](../zh/getting-started.md)    |
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 task: Greet User
-responsavel: "@basic-greeter"
+responsavel: '@basic-greeter'
 responsavel_type: agent
 atomic_layer: task
 Entrada: |
@@ -9,9 +9,9 @@ Entrada: |
 Saida: |
   - greeting: The greeting message
 Checklist:
-  - "[ ] Receive name"
-  - "[ ] Apply style"
-  - "[ ] Generate greeting"
+  - '[ ] Receive name'
+  - '[ ] Apply style'
+  - '[ ] Generate greeting'
 ---
 
 # *greet / *hello
@@ -36,16 +36,19 @@ Generate a friendly greeting for the specified name.
 ## Output Examples
 
 **Casual (default):**
+
 ```
 Hey Alice! Great to see you!
 ```
 
 **Formal:**
+
 ```
 Good day, Alice. Welcome.
 ```
 
 **Enthusiastic:**
+
 ```
 ALICE! SO AWESOME to meet you!!!
 ```

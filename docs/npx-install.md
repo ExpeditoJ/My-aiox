@@ -70,6 +70,7 @@ cd /path/to/your/project
 ```
 
 Your project directory should contain:
+
 - Package management files (`package.json`, etc.)
 - Source code directories
 
@@ -82,6 +83,7 @@ npx aiox-core install
 ### Step 3: Follow Interactive Prompts
 
 The installer will ask you to:
+
 1. Confirm installation directory (should be current directory)
 2. Select components to install (Core + Squads)
 3. Configure IDE integrations
@@ -92,6 +94,7 @@ The installer will ask you to:
 ### macOS
 
 NPX temporary directories typically appear at:
+
 - `/private/var/folders/[hash]/T/npx-[random]/`
 - `/Users/[user]/.npm/_npx/[hash]/`
 
@@ -100,12 +103,14 @@ Synkra AIOX detects these patterns and prevents incorrect installation.
 ### Linux
 
 Similar temporary directory patterns:
+
 - `/tmp/npx-[random]/`
 - `~/.npm/_npx/[hash]/`
 
 ### Windows
 
 Windows users typically don't encounter this issue, but similar detection patterns apply:
+
 - `%TEMP%\npx-[random]\`
 - `%APPDATA%\npm-cache\_npx\`
 
@@ -116,6 +121,7 @@ Windows users typically don't encounter this issue, but similar detection patter
 **Cause**: You're running the installer from your home directory or another non-project location.
 
 **Solution**:
+
 1. Navigate to your actual project directory:
    ```bash
    cd /path/to/your/actual/project
@@ -128,6 +134,7 @@ Windows users typically don't encounter this issue, but similar detection patter
 ### Wrong Installation Directory
 
 If the installer asks for a directory path:
+
 - ✅ Use `.` (current directory) if you're already in your project
 - ✅ Provide absolute path to your project: `/Users/you/projects/my-app`
 - ❌ Don't use `~` or relative paths that point outside your project
@@ -135,8 +142,9 @@ If the installer asks for a directory path:
 ### IDE Not Detected
 
 If your IDE isn't detected after installation:
+
 1. Verify you ran the installer from the correct project directory
-3. Re-run the installer and manually select your IDE
+2. Re-run the installer and manually select your IDE
 
 ## Alternative: Global Installation
 
@@ -168,14 +176,15 @@ Synkra AIOX v4.31.1+ implements two-layer detection:
 
 ```javascript
 const patterns = [
-  /\/private\/var\/folders\/.*\/npx-/,  // macOS temp
-  /\/\.npm\/_npx\//                      // NPX cache
+  /\/private\/var\/folders\/.*\/npx-/, // macOS temp
+  /\/\.npm\/_npx\//, // NPX cache
 ];
 ```
 
 ## Support
 
 For additional help:
+
 - GitHub Issues: https://github.com/SynkraAIinc/aiox-core/issues
 - Documentation: https://aiox-core.dev/docs
 - Story Reference: 2.3 - NPX Installation Context Detection

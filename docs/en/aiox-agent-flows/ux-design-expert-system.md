@@ -23,4 +23,4 @@ For complete documentation including flowcharts, command mappings, integrations,
 
 ---
 
-*AIOX Agent Flows - @ux-design-expert System v1.0*
+_AIOX Agent Flows - @ux-design-expert System v1.0_

@@ -97,11 +97,11 @@ squads/legal/agents/legal-chief.md
 Default mappings for component types:
 
 | -------------- | ------ | ------ | ------ | -------- |
-| Agents         | ✅     | ✅     | ✅     | ✅       |
-| Tasks          | ✅     | -      | -      | -        |
-| Workflows      | ✅     | ✅     | -      | -        |
-| Checklists     | ✅     | -      | -      | -        |
-| Data           | ✅     | -      | -      | -        |
+| Agents | ✅ | ✅ | ✅ | ✅ |
+| Tasks | ✅ | - | - | - |
+| Workflows | ✅ | ✅ | - | - |
+| Checklists | ✅ | - | - | - |
+| Data | ✅ | - | - | - |
 
 ## Wrappers
 

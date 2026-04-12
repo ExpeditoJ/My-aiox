@@ -46,16 +46,16 @@ POST /api/squads/sync
 
 **请求体**:
 
-| 字段                    | 类型    | 必需 | 描述                                  |
-| ----------------------- | ------- | ---- | ------------------------------------- |
-| `squadData`             | object  | 是   | Squad清单数据                         |
-| `squadData.name`        | string  | 是   | Squad名称                             |
-| `squadData.version`     | string  | 是   | 语义版本                              |
-| `squadData.description` | string  | 否   | Squad描述                             |
-| `squadData.author`      | string  | 否   | 作者名称                              |
-| `squadData.components`  | object  | 否   | Squad组件                             |
-| `isPublic`              | boolean | 否   | 设为公开可见（默认：false）           |
-| `isOfficial`            | boolean | 否   | 标记为官方（仅管理员）                |
+| 字段                    | 类型    | 必需 | 描述                        |
+| ----------------------- | ------- | ---- | --------------------------- |
+| `squadData`             | object  | 是   | Squad清单数据               |
+| `squadData.name`        | string  | 是   | Squad名称                   |
+| `squadData.version`     | string  | 是   | 语义版本                    |
+| `squadData.description` | string  | 否   | Squad描述                   |
+| `squadData.author`      | string  | 否   | 作者名称                    |
+| `squadData.components`  | object  | 否   | Squad组件                   |
+| `isPublic`              | boolean | 否   | 设为公开可见（默认：false） |
+| `isOfficial`            | boolean | 否   | 标记为官方（仅管理员）      |
 
 **请求示例**:
 
@@ -119,10 +119,10 @@ POST /api/squads/sync/batch
 
 **请求体**:
 
-| 字段       | 类型    | 必需 | 描述                                  |
-| ---------- | ------- | ---- | ------------------------------------- |
-| `squads`   | array   | 是   | Squad数据对象数组                     |
-| `isPublic` | boolean | 否   | 将所有squads设为公开（默认：false）   |
+| 字段       | 类型    | 必需 | 描述                                |
+| ---------- | ------- | ---- | ----------------------------------- |
+| `squads`   | array   | 是   | Squad数据对象数组                   |
+| `isPublic` | boolean | 否   | 将所有squads设为公开（默认：false） |
 
 **请求示例**:
 
@@ -201,14 +201,14 @@ GET /api/squads
 
 **查询参数**:
 
-| 参数       | 类型    | 默认 | 描述                            |
-| ---------- | ------- | ---- | ------------------------------- |
-| `page`     | number  | 1    | 页码                            |
-| `limit`    | number  | 20   | 每页项目数（最大：100）         |
-| `tags`     | string  | -    | 逗号分隔的标签过滤              |
-| `author`   | string  | -    | 按作者过滤                      |
-| `search`   | string  | -    | 在名称/描述中搜索               |
-| `official` | boolean | -    | 仅过滤官方squads                |
+| 参数       | 类型    | 默认 | 描述                    |
+| ---------- | ------- | ---- | ----------------------- |
+| `page`     | number  | 1    | 页码                    |
+| `limit`    | number  | 20   | 每页项目数（最大：100） |
+| `tags`     | string  | -    | 逗号分隔的标签过滤      |
+| `author`   | string  | -    | 按作者过滤              |
+| `search`   | string  | -    | 在名称/描述中搜索       |
+| `official` | boolean | -    | 仅过滤官方squads        |
 
 **请求示例**:
 
@@ -264,10 +264,10 @@ GET /api/squads/mine
 
 **查询参数**:
 
-| 参数    | 类型   | 默认 | 描述            |
-| ------- | ------ | ---- | --------------- |
-| `page`  | number | 1    | 页码            |
-| `limit` | number | 20   | 每页项目数      |
+| 参数    | 类型   | 默认 | 描述       |
+| ------- | ------ | ---- | ---------- |
+| `page`  | number | 1    | 页码       |
+| `limit` | number | 20   | 每页项目数 |
 
 **请求示例**:
 
@@ -396,9 +396,9 @@ PATCH /api/squads/:id
 
 **请求体**:
 
-| 字段       | 类型    | 描述             |
-| ---------- | ------- | ---------------- |
-| `isPublic` | boolean | 设置公开可见性   |
+| 字段       | 类型    | 描述           |
+| ---------- | ------- | -------------- |
+| `isPublic` | boolean | 设置公开可见性 |
 
 **请求示例**:
 
@@ -472,9 +472,9 @@ POST /api/squads/validate
 
 **请求体**:
 
-| 字段        | 类型   | 必需 | 描述                    |
-| ----------- | ------ | ---- | ----------------------- |
-| `squadData` | object | 是   | 要验证的squad清单       |
+| 字段        | 类型   | 必需 | 描述              |
+| ----------- | ------ | ---- | ----------------- |
+| `squadData` | object | 是   | 要验证的squad清单 |
 
 **请求示例**:
 
@@ -519,14 +519,14 @@ curl -X POST https://api.synkra.ai/api/squads/validate \
 
 ## 错误代码
 
-| HTTP代码 | 含义                                  |
-| -------- | ------------------------------------- |
-| 200      | 成功                                  |
-| 400      | Bad Request - 无效输入                |
-| 401      | Unauthorized - 认证缺失或无效         |
-| 403      | Forbidden - 权限不足                  |
-| 404      | Not Found - Squad不存在               |
-| 500      | Internal Server Error                 |
+| HTTP代码 | 含义                          |
+| -------- | ----------------------------- |
+| 200      | 成功                          |
+| 400      | Bad Request - 无效输入        |
+| 401      | Unauthorized - 认证缺失或无效 |
+| 403      | Forbidden - 权限不足          |
+| 404      | Not Found - Squad不存在       |
+| 500      | Internal Server Error         |
 
 ### 错误响应格式
 
@@ -541,11 +541,11 @@ curl -X POST https://api.synkra.ai/api/squads/validate \
 
 ## 速率限制
 
-| 计划       | 请求/分钟 | 请求/天     |
-| ---------- | --------- | ----------- |
-| Free       | 60        | 1,000       |
-| Pro        | 300       | 10,000      |
-| Enterprise | 无限制    | 无限制      |
+| 计划       | 请求/分钟 | 请求/天 |
+| ---------- | --------- | ------- |
+| Free       | 60        | 1,000   |
+| Pro        | 300       | 10,000  |
+| Enterprise | 无限制    | 无限制  |
 
 速率限制头：
 

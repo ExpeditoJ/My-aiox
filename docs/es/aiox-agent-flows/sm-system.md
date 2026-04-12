@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*sprint` | Gestionar sprint |
-| `*standup` | Facilitar standup |
-| `*retro` | Conducir retrospectiva |
-| `*metrics` | Ver metricas |
+| Comando    | Descripcion            |
+| ---------- | ---------------------- |
+| `*sprint`  | Gestionar sprint       |
+| `*standup` | Facilitar standup      |
+| `*retro`   | Conducir retrospectiva |
+| `*metrics` | Ver metricas           |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/sm-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

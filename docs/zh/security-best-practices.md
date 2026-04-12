@@ -54,7 +54,7 @@ const AuthSystem = require('./security/auth');
 const auth = new AuthSystem({
   secretKey: process.env.JWT_SECRET,
   tokenExpiry: '1h',
-  refreshExpiry: '7d'
+  refreshExpiry: '7d',
 });
 
 // 使用强密码要求创建用户
@@ -62,7 +62,7 @@ await auth.createUser({
   username: 'admin',
   password: 'SecureP@ssw0rd123!',
   email: 'admin@example.com',
-  role: 'admin'
+  role: 'admin',
 });
 ```
 
@@ -163,7 +163,7 @@ const metaAgentLimiter = RateLimiters.createMetaAgentLimiter();
 const identifier = RateLimiter.createIdentifier({
   ip: req.ip,
   userId: req.user?.id,
-  operation: 'meta-agent'
+  operation: 'meta-agent',
 });
 
 const result = metaAgentLimiter.check(identifier);
@@ -174,13 +174,13 @@ if (!result.allowed) {
 
 ### 速率限制策略
 
-| 操作 | 时间窗口 | 限制 | 目的 |
-|------|---------|------|------|
-| API 调用 | 15 分钟 | 1000 | 通用 API 保护 |
-| 身份验证 | 15 分钟 | 5 | 暴力破解防护 |
-| 安装 | 1 小时 | 10 | 安装滥用防护 |
-| 元代理 | 1 分钟 | 30 | 资源保护 |
-| 文件操作 | 1 分钟 | 100 | 文件系统保护 |
+| 操作     | 时间窗口 | 限制 | 目的          |
+| -------- | -------- | ---- | ------------- |
+| API 调用 | 15 分钟  | 1000 | 通用 API 保护 |
+| 身份验证 | 15 分钟  | 5    | 暴力破解防护  |
+| 安装     | 1 小时   | 10   | 安装滥用防护  |
+| 元代理   | 1 分钟   | 30   | 资源保护      |
+| 文件操作 | 1 分钟   | 100  | 文件系统保护  |
 
 ### 配置
 
@@ -236,10 +236,7 @@ chmod 700 security/
 
 ```javascript
 // 启动时验证关键配置
-const requiredEnvVars = [
-  'JWT_SECRET',
-  'NODE_ENV'
-];
+const requiredEnvVars = ['JWT_SECRET', 'NODE_ENV'];
 
 for (const envVar of requiredEnvVars) {
   if (!process.env[envVar]) {
@@ -269,31 +266,31 @@ class DataEncryption {
   encrypt(text) {
     const iv = crypto.randomBytes(16);
     const cipher = crypto.createCipher(this.algorithm, this.key, iv);
-    
+
     let encrypted = cipher.update(text, 'utf8', 'hex');
     encrypted += cipher.final('hex');
-    
+
     const authTag = cipher.getAuthTag();
-    
+
     return {
       encrypted,
       iv: iv.toString('hex'),
-      authTag: authTag.toString('hex')
+      authTag: authTag.toString('hex'),
     };
   }
 
   decrypt(encryptedData) {
     const decipher = crypto.createDecipher(
-      this.algorithm, 
-      this.key, 
+      this.algorithm,
+      this.key,
       Buffer.from(encryptedData.iv, 'hex')
     );
-    
+
     decipher.setAuthTag(Buffer.from(encryptedData.authTag, 'hex'));
-    
+
     let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
     decrypted += decipher.final('utf8');
-    
+
     return decrypted;
   }
 }
@@ -328,19 +325,16 @@ const winston = require('winston');
 
 const securityLogger = winston.createLogger({
   level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
+  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
   transports: [
-    new winston.transports.File({ 
+    new winston.transports.File({
       filename: 'logs/security.log',
-      level: 'warn'
+      level: 'warn',
     }),
-    new winston.transports.File({ 
-      filename: 'logs/audit.log' 
-    })
-  ]
+    new winston.transports.File({
+      filename: 'logs/audit.log',
+    }),
+  ],
 });
 
 // 记录安全事件
@@ -348,7 +342,7 @@ securityLogger.warn('身份验证失败', {
   username: req.body.username,
   ip: req.ip,
   userAgent: req.get('User-Agent'),
-  timestamp: new Date().toISOString()
+  timestamp: new Date().toISOString(),
 });
 ```
 
@@ -369,7 +363,7 @@ const alertThresholds = {
   rateLimitViolations: 50, // 每小时
   suspiciousFileAccess: 5, // 每小时
   configChanges: 1, // 任何变更
-  errorRate: 0.05 // 5% 错误率
+  errorRate: 0.05, // 5% 错误率
 };
 ```
 
@@ -387,7 +381,7 @@ const options = {
   // 安全改进
   secureProtocol: 'TLSv1_2_method',
   ciphers: 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384',
-  honorCipherOrder: true
+  honorCipherOrder: true,
 };
 
 https.createServer(options, app).listen(443);
@@ -398,21 +392,23 @@ https.createServer(options, app).listen(443);
 ```javascript
 const helmet = require('helmet');
 
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "https:"]
-    }
-  },
-  hsts: {
-    maxAge: 31536000,
-    includeSubDomains: true,
-    preload: true
-  }
-}));
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", 'data:', 'https:'],
+      },
+    },
+    hsts: {
+      maxAge: 31536000,
+      includeSubDomains: true,
+      preload: true,
+    },
+  })
+);
 ```
 
 ### CORS 配置
@@ -420,12 +416,14 @@ app.use(helmet({
 ```javascript
 const cors = require('cors');
 
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://yourdomain.com',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || 'https://yourdomain.com',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 ```
 
 ## 依赖管理
@@ -465,13 +463,13 @@ npx snyk monitor
 # .github/dependabot.yml
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 5
     reviewers:
-      - "security-team"
+      - 'security-team'
 ```
 
 ## 事件响应
@@ -510,17 +508,17 @@ updates:
 const emergencyConfig = {
   securityTeam: {
     primary: 'security-lead@company.com',
-    backup: 'security-backup@company.com'
+    backup: 'security-backup@company.com',
   },
   escalation: {
     level1: 'team-lead@company.com',
     level2: 'engineering-manager@company.com',
-    level3: 'cto@company.com'
+    level3: 'cto@company.com',
   },
   externalContacts: {
     hosting: 'support@hosting-provider.com',
-    security: 'security@security-vendor.com'
-  }
+    security: 'security@security-vendor.com',
+  },
 };
 ```
 

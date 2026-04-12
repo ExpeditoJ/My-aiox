@@ -19,10 +19,10 @@ Add a new star-command definition to `.synapse/commands`, allowing users to defi
 
 ## Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `command-name` | Yes | Star-command name without `*` prefix (e.g., `review`) |
-| `rules` | Yes | One or more instruction rules for the command (at least 1) |
+| Parameter      | Required | Description                                                |
+| -------------- | -------- | ---------------------------------------------------------- |
+| `command-name` | Yes      | Star-command name without `*` prefix (e.g., `review`)      |
+| `rules`        | Yes      | One or more instruction rules for the command (at least 1) |
 
 ---
 
@@ -46,6 +46,7 @@ If it exists: `Error: Star-command "*{command-name}" already exists in .synapse/
 ### Step 3: Derive Command Key
 
 Convert the command name to uppercase for rule keys:
+
 - `review` -> `CMD_REVIEW`
 - `quick-fix` -> `CMD_QUICK_FIX`
 
@@ -96,14 +97,14 @@ and inject the associated rules into the context.
 
 ## Error Handling
 
-| Error | Message |
-|-------|---------|
-| Invalid name | `Error: Command name must be lowercase kebab-case (e.g., "review"). Got: "{name}"` |
-| Duplicate command | `Error: Star-command "*{name}" already exists in .synapse/commands.` |
-| No rules provided | `Error: At least one rule is required for a star-command.` |
-| Commands file missing | `Error: .synapse/commands not found. SYNAPSE must be initialized first (SYN-8).` |
+| Error                 | Message                                                                            |
+| --------------------- | ---------------------------------------------------------------------------------- |
+| Invalid name          | `Error: Command name must be lowercase kebab-case (e.g., "review"). Got: "{name}"` |
+| Duplicate command     | `Error: Star-command "*{name}" already exists in .synapse/commands.`               |
+| No rules provided     | `Error: At least one rule is required for a star-command.`                         |
+| Commands file missing | `Error: .synapse/commands not found. SYNAPSE must be initialized first (SYN-8).`   |
 
 ---
 
-*Create Command — SYNAPSE CRUD Command C6*
-*Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3, DESIGN-SYNAPSE-ENGINE.md section 15*
+_Create Command — SYNAPSE CRUD Command C6_
+_Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3, DESIGN-SYNAPSE-ENGINE.md section 15_

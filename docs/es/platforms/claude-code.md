@@ -42,12 +42,12 @@ Claude Code ofrece la **mejor integración** con AIOX debido a:
 
 ### Requisitos del Sistema
 
-| Requisito | Mínimo | Recomendado |
-|---|---|---|
-| **Node.js** | 18.0+ | 20.0+ |
-| **npm** | 9.0+ | 10.0+ |
-| **Git** | 2.30+ | Última versión |
-| **SO** | macOS, Linux, Windows (WSL) | macOS, Linux |
+| Requisito   | Mínimo                      | Recomendado    |
+| ----------- | --------------------------- | -------------- |
+| **Node.js** | 18.0+                       | 20.0+          |
+| **npm**     | 9.0+                        | 10.0+          |
+| **Git**     | 2.30+                       | Última versión |
+| **SO**      | macOS, Linux, Windows (WSL) | macOS, Linux   |
 
 ### Requisitos de API
 
@@ -120,6 +120,7 @@ ls -la .claude/
 ```
 
 Estructura esperada:
+
 ```
 .claude/
 ├── commands/
@@ -141,6 +142,7 @@ Estructura esperada:
 **Ubicación:** `.claude/CLAUDE.md`
 
 Este archivo contiene:
+
 - Contexto del proyecto y reglas
 - Instrucciones de activación de agentes
 - Metodología de desarrollo
@@ -241,6 +243,7 @@ Los agentes se activan usando comandos slash:
 ### Flujos de Trabajo Comunes
 
 #### Desarrollo de Características
+
 ```
 1. /pm para revisar los requisitos de la historia
 2. /architect para diseñar la solución
@@ -250,12 +253,14 @@ Los agentes se activan usando comandos slash:
 ```
 
 #### Revisión de Código
+
 ```
 1. /qa revisa este PR en busca de mejores prácticas
 2. /dev aborda los comentarios de revisión
 ```
 
 #### Investigación de Errores
+
 ```
 1. /analyst investiga el reporte de error
 2. /dev reproduce y corrige el problema
@@ -272,12 +277,12 @@ Claude Code soporta MCP (Protocolo de Contexto de Modelo) para capacidades exten
 
 #### Herramientas MCP Disponibles
 
-| Servidor MCP | Propósito |
-|---|---|
+| Servidor MCP | Propósito                           |
+| ------------ | ----------------------------------- |
 | `filesystem` | Operaciones del sistema de archivos |
-| `github` | Acceso a API de GitHub |
-| `playwright` | Automatización de navegador |
-| `postgres` | Consultas de base de datos |
+| `github`     | Acceso a API de GitHub              |
+| `playwright` | Automatización de navegador         |
+| `postgres`   | Consultas de base de datos          |
 
 #### Añadiendo Servidores MCP
 
@@ -316,7 +321,7 @@ module.exports = {
     // Ejecutar linting antes de commit
     await context.bash('npm run lint');
     await context.bash('npm test');
-  }
+  },
 };
 ```
 
@@ -326,24 +331,30 @@ Crear habilidades/comandos reutilizables:
 
 **Ubicación:** `.claude/commands/`
 
-```markdown
+````markdown
 <!-- .claude/commands/deploy.md -->
+
 # Habilidad de Despliegue
 
 ## Descripción
+
 Desplegar la aplicación a producción
 
 ## Pasos
+
 1. Ejecutar pruebas
 2. Construir la aplicación
 3. Desplegar en servidor
 
 ## Comandos
+
 ```bash
 npm test
 npm run build
 npm run deploy
 ```
+````
+
 ```
 
 ### Memoria y Contexto
@@ -351,14 +362,21 @@ npm run deploy
 Claude Code mantiene memoria de sesión:
 
 ```
+
 # Referencia a contexto anterior
+
 "Como discutimos anteriormente..."
 
 # Claude recuerda:
+
 # - Archivos en los que has trabajado
+
 # - Decisiones tomadas
+
 # - Cambios de código
+
 # - Historial de conversación
+
 ```
 
 ---
@@ -392,8 +410,10 @@ Claude Code mantiene memoria de sesión:
 
 Claude Code muestra estado en tiempo real:
 ```
+
 [Agent: dev] [Model: sonnet] [Tokens: 1234/8192] [Cost: $0.02]
-```
+
+````
 
 ---
 
@@ -406,7 +426,7 @@ flowchart LR
     Source["AIOX Core<br/>.aiox-core/development/agents"] --> Parser["Analizador de Agentes"]
     Parser --> Transform["Transformador Claude"]
     Transform --> Output[".claude/commands/AIOX/agents"]
-```
+````
 
 ### Comandos de Sincronización
 
@@ -436,12 +456,14 @@ activation: /dev
 # Agente Desarrollador
 
 ## Experiencia
+
 - TypeScript/JavaScript
 - Node.js
 - React
 - Diseño de base de datos
 
 ## Flujo de Trabajo
+
 1. Comprender requisitos
 2. Planificar implementación
 3. Escribir código limpio
@@ -462,12 +484,12 @@ Cuando ocurren conflictos:
 
 ### Limitaciones Actuales
 
-| Limitación | Solución Alternativa |
-|---|---|
-| Sin GUI | Usar terminal o integrar con IDE |
-| Sin colaboración en tiempo real | Usar git para colaboración |
-| Límites de velocidad de API | Configurar limitación de velocidad en configuración |
-| Manejo de archivos grandes | Usar streaming para archivos grandes |
+| Limitación                      | Solución Alternativa                                |
+| ------------------------------- | --------------------------------------------------- |
+| Sin GUI                         | Usar terminal o integrar con IDE                    |
+| Sin colaboración en tiempo real | Usar git para colaboración                          |
+| Límites de velocidad de API     | Configurar limitación de velocidad en configuración |
+| Manejo de archivos grandes      | Usar streaming para archivos grandes                |
 
 ### Problemas Específicos de Plataforma
 
@@ -489,10 +511,13 @@ Cuando ocurren conflictos:
 ### Problemas Comunes
 
 #### Autenticación Fallida
+
 ```
 Error: Authentication failed
 ```
+
 **Solución:**
+
 ```bash
 # Re-autenticar
 claude logout
@@ -503,10 +528,13 @@ echo $ANTHROPIC_API_KEY
 ```
 
 #### Servidor MCP No Encontrado
+
 ```
 Error: MCP server 'xyz' not found
 ```
+
 **Solución:**
+
 ```bash
 # Listar servidores MCP disponibles
 /devops
@@ -517,10 +545,13 @@ Error: MCP server 'xyz' not found
 ```
 
 #### Agente No Reconocido
+
 ```
 Error: Unknown command '/xyz'
 ```
+
 **Solución:**
+
 ```bash
 # Resincronizar agentes
 npm run sync:ide
@@ -530,11 +561,14 @@ ls .claude/commands/AIOX/agents/
 ```
 
 #### Permiso de Herramienta Denegado
+
 ```
 Error: Permission denied for tool 'Bash'
 ```
+
 **Solución:**
 Actualizar `.claude/settings.json`:
+
 ```json
 {
   "permissions": {
@@ -602,11 +636,13 @@ R: Después de actualizar AIOX o cuando los agentes se modifiquen en el núcleo.
 ### De Cursor a Claude Code
 
 1. Exporta tus reglas de Cursor:
+
    ```bash
    cp .cursor/rules.md cursor-rules-backup.md
    ```
 
 2. Inicializa AIOX con Claude Code:
+
    ```bash
    npx @anthropic/aiox init --ide claude-code
    ```
@@ -631,6 +667,7 @@ R: Después de actualizar AIOX o cuando los agentes se modifiquen en el núcleo.
 ## Recursos Adicionales
 
 ### Documentación Oficial
+
 - [Documentación de Claude Code](https://code.claude.com/docs)
 - [Guía de Configuración de Claude Code](https://code.claude.com/docs/en/setup)
 - [Referencia de API de Anthropic](https://docs.anthropic.com/api)
@@ -638,13 +675,15 @@ R: Después de actualizar AIOX o cuando los agentes se modifiquen en el núcleo.
 - [Repositorio de GitHub](https://github.com/anthropics/claude-code)
 
 ### Comunidad
+
 - [Discusiones de GitHub](https://github.com/anthropics/claude-code/discussions)
 - [Comunidad de Discord](https://discord.gg/anthropic)
 
 ### Soporte
+
 - [Problemas de GitHub](https://github.com/anthropics/claude-code/issues)
 - [Soporte de Anthropic](https://support.anthropic.com)
 
 ---
 
-*Synkra AIOX - Guía de Plataforma Claude Code v1.0*
+_Synkra AIOX - Guía de Plataforma Claude Code v1.0_

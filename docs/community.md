@@ -81,6 +81,7 @@ We value all types of contributions:
 Create and share your own Squads (modular AI agent teams)!
 
 Squads are specialized teams of AI agents that work together on specific domains:
+
 - **ETL Squad** - Data collection and transformation
 - **Creator Squad** - Content generation
 
@@ -91,6 +92,7 @@ See [docs/Squads.md](docs/Squads.md) for details on creating your own Squad.
 ### Contributors
 
 Anyone who has contributed to AIOX in any way.
+
 - Listed in our [Contributors page](https://github.com/SynkraAI/aiox-core/graphs/contributors)
 - Mentioned in release notes for significant contributions
 
@@ -103,6 +105,7 @@ Core team members who review PRs and guide the project:
 ### Becoming a Maintainer
 
 Active contributors may be invited to become maintainers. We look for:
+
 - Consistent quality contributions
 - Helpful community interactions
 - Understanding of project goals
@@ -223,5 +226,5 @@ Open a Discussion or reach out to the community!
 
 ---
 
-*This document is maintained by the AIOX community.*
-*Last updated: 2025-12-09*
+_This document is maintained by the AIOX community._
+_Last updated: 2025-12-09_

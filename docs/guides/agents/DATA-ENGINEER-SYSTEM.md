@@ -13,13 +13,13 @@ O agente **@data-engineer (Dara)** e o Database Architect & Operations Engineer 
 
 ### Caracteristicas Principais
 
-| Caracteristica | Descricao |
-|----------------|-----------|
-| **Persona** | Dara - The Sage |
-| **Arquetipo** | Sage / Gemini |
-| **Tom** | Tecnico, preciso, metodico, consciente de seguranca |
-| **Foco** | Design de schema, migracoes, RLS, performance, operacoes DBA |
-| **Fechamento** | "-- Dara, arquitetando dados" |
+| Caracteristica | Descricao                                                    |
+| -------------- | ------------------------------------------------------------ |
+| **Persona**    | Dara - The Sage                                              |
+| **Arquetipo**  | Sage / Gemini                                                |
+| **Tom**        | Tecnico, preciso, metodico, consciente de seguranca          |
+| **Foco**       | Design de schema, migracoes, RLS, performance, operacoes DBA |
+| **Fechamento** | "-- Dara, arquitetando dados"                                |
 
 ### Principios Criticos de Database
 
@@ -49,87 +49,87 @@ O agente **@data-engineer (Dara)** e o Database Architect & Operations Engineer 
 
 ### Arquivos Core de Tasks do @data-engineer
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/db-domain-modeling.md` | `*model-domain` | Sessao interativa de modelagem de dominio |
-| `.aiox-core/development/tasks/setup-database.md` | `*setup-database [type]` | Setup de projeto de database (Supabase, PostgreSQL, MongoDB, MySQL, SQLite) |
-| `.aiox-core/development/tasks/db-bootstrap.md` | `*bootstrap` | Cria estrutura padrao de projeto Supabase |
-| `.aiox-core/development/tasks/db-env-check.md` | `*env-check` | Valida variaveis de ambiente do database |
-| `.aiox-core/development/tasks/db-apply-migration.md` | `*apply-migration {path}` | Aplica migracao com snapshot e lock advisory |
-| `.aiox-core/development/tasks/db-dry-run.md` | `*dry-run {path}` | Testa migracao sem commit |
-| `.aiox-core/development/tasks/db-seed.md` | `*seed {path}` | Aplica seed data (idempotent) |
-| `.aiox-core/development/tasks/db-snapshot.md` | `*snapshot {label}` | Cria snapshot do schema |
-| `.aiox-core/development/tasks/db-rollback.md` | `*rollback {snapshot_or_file}` | Restaura snapshot ou executa rollback |
-| `.aiox-core/development/tasks/db-smoke-test.md` | `*smoke-test {version}` | Testes abrangentes de database |
-| `.aiox-core/development/tasks/security-audit.md` | `*security-audit {scope}` | Auditoria de seguranca (rls, schema, full) |
-| `.aiox-core/development/tasks/analyze-performance.md` | `*analyze-performance {type}` | Analise de performance (query, hotpaths, interactive) |
-| `.aiox-core/development/tasks/db-policy-apply.md` | `*policy-apply {table} {mode}` | Instala politica RLS (KISS ou granular) |
-| `.aiox-core/development/tasks/test-as-user.md` | `*test-as-user {user_id}` | Emula usuario para testar RLS |
-| `.aiox-core/development/tasks/db-verify-order.md` | `*verify-order {path}` | Valida ordenacao DDL para dependencias |
-| `.aiox-core/development/tasks/db-load-csv.md` | `*load-csv {table} {file}` | Carregador seguro de CSV (staging->merge) |
-| `.aiox-core/development/tasks/db-run-sql.md` | `*run-sql {file_or_inline}` | Executa SQL raw com transacao |
-| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research {topic}` | Gera prompt de pesquisa profunda |
-| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist {checklist}` | Executa checklist DBA |
-| `.aiox-core/development/tasks/create-doc.md` | `*doc-out` | Output de documento completo |
+| Arquivo                                                       | Comando                          | Proposito                                                                   |
+| ------------------------------------------------------------- | -------------------------------- | --------------------------------------------------------------------------- |
+| `.aiox-core/development/tasks/db-domain-modeling.md`          | `*model-domain`                  | Sessao interativa de modelagem de dominio                                   |
+| `.aiox-core/development/tasks/setup-database.md`              | `*setup-database [type]`         | Setup de projeto de database (Supabase, PostgreSQL, MongoDB, MySQL, SQLite) |
+| `.aiox-core/development/tasks/db-bootstrap.md`                | `*bootstrap`                     | Cria estrutura padrao de projeto Supabase                                   |
+| `.aiox-core/development/tasks/db-env-check.md`                | `*env-check`                     | Valida variaveis de ambiente do database                                    |
+| `.aiox-core/development/tasks/db-apply-migration.md`          | `*apply-migration {path}`        | Aplica migracao com snapshot e lock advisory                                |
+| `.aiox-core/development/tasks/db-dry-run.md`                  | `*dry-run {path}`                | Testa migracao sem commit                                                   |
+| `.aiox-core/development/tasks/db-seed.md`                     | `*seed {path}`                   | Aplica seed data (idempotent)                                               |
+| `.aiox-core/development/tasks/db-snapshot.md`                 | `*snapshot {label}`              | Cria snapshot do schema                                                     |
+| `.aiox-core/development/tasks/db-rollback.md`                 | `*rollback {snapshot_or_file}`   | Restaura snapshot ou executa rollback                                       |
+| `.aiox-core/development/tasks/db-smoke-test.md`               | `*smoke-test {version}`          | Testes abrangentes de database                                              |
+| `.aiox-core/development/tasks/security-audit.md`              | `*security-audit {scope}`        | Auditoria de seguranca (rls, schema, full)                                  |
+| `.aiox-core/development/tasks/analyze-performance.md`         | `*analyze-performance {type}`    | Analise de performance (query, hotpaths, interactive)                       |
+| `.aiox-core/development/tasks/db-policy-apply.md`             | `*policy-apply {table} {mode}`   | Instala politica RLS (KISS ou granular)                                     |
+| `.aiox-core/development/tasks/test-as-user.md`                | `*test-as-user {user_id}`        | Emula usuario para testar RLS                                               |
+| `.aiox-core/development/tasks/db-verify-order.md`             | `*verify-order {path}`           | Valida ordenacao DDL para dependencias                                      |
+| `.aiox-core/development/tasks/db-load-csv.md`                 | `*load-csv {table} {file}`       | Carregador seguro de CSV (staging->merge)                                   |
+| `.aiox-core/development/tasks/db-run-sql.md`                  | `*run-sql {file_or_inline}`      | Executa SQL raw com transacao                                               |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research {topic}`              | Gera prompt de pesquisa profunda                                            |
+| `.aiox-core/development/tasks/execute-checklist.md`           | `*execute-checklist {checklist}` | Executa checklist DBA                                                       |
+| `.aiox-core/development/tasks/create-doc.md`                  | `*doc-out`                       | Output de documento completo                                                |
 
 ### Tasks Depreciadas (Backward Compatibility v2.0->v3.0)
 
-| Task Antiga | Nova Task | Migracao |
-|-------------|-----------|----------|
-| `db-rls-audit.md` | `security-audit.md` | `*security-audit rls` |
-| `schema-audit.md` | `security-audit.md` | `*security-audit schema` |
-| `db-explain.md` | `analyze-performance.md` | `*analyze-performance query` |
-| `db-analyze-hotpaths.md` | `analyze-performance.md` | `*analyze-performance hotpaths` |
-| `query-optimization.md` | `analyze-performance.md` | `*analyze-performance interactive` |
-| `db-impersonate.md` | `test-as-user.md` | `*test-as-user {user_id}` |
-| `db-supabase-setup.md` | `setup-database.md` | `*setup-database supabase` |
+| Task Antiga              | Nova Task                | Migracao                           |
+| ------------------------ | ------------------------ | ---------------------------------- |
+| `db-rls-audit.md`        | `security-audit.md`      | `*security-audit rls`              |
+| `schema-audit.md`        | `security-audit.md`      | `*security-audit schema`           |
+| `db-explain.md`          | `analyze-performance.md` | `*analyze-performance query`       |
+| `db-analyze-hotpaths.md` | `analyze-performance.md` | `*analyze-performance hotpaths`    |
+| `query-optimization.md`  | `analyze-performance.md` | `*analyze-performance interactive` |
+| `db-impersonate.md`      | `test-as-user.md`        | `*test-as-user {user_id}`          |
+| `db-supabase-setup.md`   | `setup-database.md`      | `*setup-database supabase`         |
 
 ### Arquivos de Definicao do Agente
 
-| Arquivo | Proposito |
-|---------|-----------|
+| Arquivo                                          | Proposito                                                              |
+| ------------------------------------------------ | ---------------------------------------------------------------------- |
 | `.aiox-core/development/agents/data-engineer.md` | Definicao core do agente @data-engineer (persona, comandos, workflows) |
-| `.claude/commands/AIOX/agents/data-engineer.md` | Comando Claude Code para ativar @data-engineer |
+| `.claude/commands/AIOX/agents/data-engineer.md`  | Comando Claude Code para ativar @data-engineer                         |
 
 ### Arquivos de Templates SQL
 
-| Arquivo | Proposito |
-|---------|-----------|
-| `schema-design-tmpl.yaml` | Template de documentacao de schema |
-| `rls-policies-tmpl.yaml` | Template de politicas RLS |
-| `migration-plan-tmpl.yaml` | Template de plano de migracao |
-| `index-strategy-tmpl.yaml` | Template de estrategia de indices |
-| `tmpl-migration-script.sql` | Template de script de migracao |
-| `tmpl-rollback-script.sql` | Template de script de rollback |
-| `tmpl-smoke-test.sql` | Template de smoke test |
-| `tmpl-rls-kiss-policy.sql` | Template de politica RLS KISS |
+| Arquivo                          | Proposito                            |
+| -------------------------------- | ------------------------------------ |
+| `schema-design-tmpl.yaml`        | Template de documentacao de schema   |
+| `rls-policies-tmpl.yaml`         | Template de politicas RLS            |
+| `migration-plan-tmpl.yaml`       | Template de plano de migracao        |
+| `index-strategy-tmpl.yaml`       | Template de estrategia de indices    |
+| `tmpl-migration-script.sql`      | Template de script de migracao       |
+| `tmpl-rollback-script.sql`       | Template de script de rollback       |
+| `tmpl-smoke-test.sql`            | Template de smoke test               |
+| `tmpl-rls-kiss-policy.sql`       | Template de politica RLS KISS        |
 | `tmpl-rls-granular-policies.sql` | Template de politicas RLS granulares |
-| `tmpl-staging-copy-merge.sql` | Template de staging para CSV |
-| `tmpl-seed-data.sql` | Template de seed data |
-| `tmpl-comment-on-examples.sql` | Exemplos de COMMENT ON |
+| `tmpl-staging-copy-merge.sql`    | Template de staging para CSV         |
+| `tmpl-seed-data.sql`             | Template de seed data                |
+| `tmpl-comment-on-examples.sql`   | Exemplos de COMMENT ON               |
 
 ### Arquivos de Checklists
 
-| Arquivo | Proposito |
-|---------|-----------|
-| `dba-predeploy-checklist.md` | Checklist pre-deploy DBA |
-| `dba-rollback-checklist.md` | Checklist de rollback |
+| Arquivo                        | Proposito                       |
+| ------------------------------ | ------------------------------- |
+| `dba-predeploy-checklist.md`   | Checklist pre-deploy DBA        |
+| `dba-rollback-checklist.md`    | Checklist de rollback           |
 | `database-design-checklist.md` | Checklist de design de database |
 
 ### Arquivos de Data/Conhecimento
 
-| Arquivo | Proposito |
-|---------|-----------|
+| Arquivo                      | Proposito                     |
+| ---------------------------- | ----------------------------- |
 | `database-best-practices.md` | Melhores praticas de database |
-| `supabase-patterns.md` | Padroes Supabase |
-| `postgres-tuning-guide.md` | Guia de tuning PostgreSQL |
-| `rls-security-patterns.md` | Padroes de seguranca RLS |
-| `migration-safety-guide.md` | Guia de seguranca de migracao |
+| `supabase-patterns.md`       | Padroes Supabase              |
+| `postgres-tuning-guide.md`   | Guia de tuning PostgreSQL     |
+| `rls-security-patterns.md`   | Padroes de seguranca RLS      |
+| `migration-safety-guide.md`  | Guia de seguranca de migracao |
 
 ### Workflows que Usam @data-engineer
 
-| Arquivo | Proposito |
-|---------|-----------|
+| Arquivo                                                      | Proposito                                     |
+| ------------------------------------------------------------ | --------------------------------------------- |
 | `.aiox-core/development/workflows/brownfield-discovery.yaml` | Workflow de discovery brownfield (Fase 2 e 5) |
 
 ---
@@ -387,60 +387,60 @@ flowchart TB
 
 ### Comandos de Arquitetura e Design
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*create-schema` | (inline) | Design de schema de database |
-| `*create-rls-policies` | (inline) | Design de politicas RLS |
-| `*create-migration-plan` | (inline) | Cria estrategia de migracao |
-| `*design-indexes` | (inline) | Design de estrategia de indices |
-| `*model-domain` | `db-domain-modeling.md` | Sessao interativa de modelagem |
+| Comando                  | Task File               | Operacao                        |
+| ------------------------ | ----------------------- | ------------------------------- |
+| `*create-schema`         | (inline)                | Design de schema de database    |
+| `*create-rls-policies`   | (inline)                | Design de politicas RLS         |
+| `*create-migration-plan` | (inline)                | Cria estrategia de migracao     |
+| `*design-indexes`        | (inline)                | Design de estrategia de indices |
+| `*model-domain`          | `db-domain-modeling.md` | Sessao interativa de modelagem  |
 
 ### Comandos de Operacoes DBA
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*setup-database [type]` | `setup-database.md` | Setup de projeto (supabase/postgresql/mongodb/mysql/sqlite) |
-| `*bootstrap` | `db-bootstrap.md` | Scaffold de estrutura Supabase |
-| `*env-check` | `db-env-check.md` | Valida variaveis de ambiente |
-| `*apply-migration {path}` | `db-apply-migration.md` | Aplica migracao com snapshot de seguranca |
-| `*dry-run {path}` | `db-dry-run.md` | Testa migracao sem commit |
-| `*seed {path}` | `db-seed.md` | Aplica seed data idempotente |
-| `*snapshot {label}` | `db-snapshot.md` | Cria snapshot de schema |
-| `*rollback {target}` | `db-rollback.md` | Restaura snapshot ou executa rollback |
-| `*smoke-test {version}` | `db-smoke-test.md` | Testes de validacao |
+| Comando                   | Task File               | Operacao                                                    |
+| ------------------------- | ----------------------- | ----------------------------------------------------------- |
+| `*setup-database [type]`  | `setup-database.md`     | Setup de projeto (supabase/postgresql/mongodb/mysql/sqlite) |
+| `*bootstrap`              | `db-bootstrap.md`       | Scaffold de estrutura Supabase                              |
+| `*env-check`              | `db-env-check.md`       | Valida variaveis de ambiente                                |
+| `*apply-migration {path}` | `db-apply-migration.md` | Aplica migracao com snapshot de seguranca                   |
+| `*dry-run {path}`         | `db-dry-run.md`         | Testa migracao sem commit                                   |
+| `*seed {path}`            | `db-seed.md`            | Aplica seed data idempotente                                |
+| `*snapshot {label}`       | `db-snapshot.md`        | Cria snapshot de schema                                     |
+| `*rollback {target}`      | `db-rollback.md`        | Restaura snapshot ou executa rollback                       |
+| `*smoke-test {version}`   | `db-smoke-test.md`      | Testes de validacao                                         |
 
 ### Comandos de Seguranca e Performance (Consolidados - Story 6.1.2.3)
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*security-audit rls` | `security-audit.md` | Auditoria de cobertura RLS |
-| `*security-audit schema` | `security-audit.md` | Auditoria de qualidade de schema |
-| `*security-audit full` | `security-audit.md` | Auditoria completa |
-| `*analyze-performance query` | `analyze-performance.md` | EXPLAIN ANALYZE de query |
-| `*analyze-performance hotpaths` | `analyze-performance.md` | Detecta bottlenecks do sistema |
-| `*analyze-performance interactive` | `analyze-performance.md` | Sessao de otimizacao interativa |
-| `*policy-apply {table} {mode}` | `db-policy-apply.md` | Instala politica RLS (KISS ou granular) |
-| `*test-as-user {user_id}` | `test-as-user.md` | Emula usuario para testar RLS |
-| `*verify-order {path}` | `db-verify-order.md` | Valida ordenacao DDL |
+| Comando                            | Task File                | Operacao                                |
+| ---------------------------------- | ------------------------ | --------------------------------------- |
+| `*security-audit rls`              | `security-audit.md`      | Auditoria de cobertura RLS              |
+| `*security-audit schema`           | `security-audit.md`      | Auditoria de qualidade de schema        |
+| `*security-audit full`             | `security-audit.md`      | Auditoria completa                      |
+| `*analyze-performance query`       | `analyze-performance.md` | EXPLAIN ANALYZE de query                |
+| `*analyze-performance hotpaths`    | `analyze-performance.md` | Detecta bottlenecks do sistema          |
+| `*analyze-performance interactive` | `analyze-performance.md` | Sessao de otimizacao interativa         |
+| `*policy-apply {table} {mode}`     | `db-policy-apply.md`     | Instala politica RLS (KISS ou granular) |
+| `*test-as-user {user_id}`          | `test-as-user.md`        | Emula usuario para testar RLS           |
+| `*verify-order {path}`             | `db-verify-order.md`     | Valida ordenacao DDL                    |
 
 ### Comandos de Operacoes de Dados
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*load-csv {table} {file}` | `db-load-csv.md` | Carregador seguro de CSV |
-| `*run-sql {file_or_inline}` | `db-run-sql.md` | Executa SQL com transacao |
+| Comando                     | Task File        | Operacao                  |
+| --------------------------- | ---------------- | ------------------------- |
+| `*load-csv {table} {file}`  | `db-load-csv.md` | Carregador seguro de CSV  |
+| `*run-sql {file_or_inline}` | `db-run-sql.md`  | Executa SQL com transacao |
 
 ### Comandos de Contexto e Sessao
 
-| Comando | Operacao |
-|---------|----------|
-| `*help` | Mostra todos os comandos disponiveis |
-| `*guide` | Mostra guia de uso completo |
-| `*yolo` | Toggle de confirmacao (skip/require) |
-| `*exit` | Sai do modo data-engineer |
-| `*doc-out` | Output de documento completo |
-| `*execute-checklist {checklist}` | Executa checklist DBA |
-| `*research {topic}` | Gera prompt de pesquisa profunda |
+| Comando                          | Operacao                             |
+| -------------------------------- | ------------------------------------ |
+| `*help`                          | Mostra todos os comandos disponiveis |
+| `*guide`                         | Mostra guia de uso completo          |
+| `*yolo`                          | Toggle de confirmacao (skip/require) |
+| `*exit`                          | Sai do modo data-engineer            |
+| `*doc-out`                       | Output de documento completo         |
+| `*execute-checklist {checklist}` | Executa checklist DBA                |
+| `*research {topic}`              | Gera prompt de pesquisa profunda     |
 
 ---
 
@@ -480,16 +480,17 @@ flowchart TB
 
 ### Fluxo de Colaboracao
 
-| De | Para | Trigger | Acao |
-|----|------|---------|------|
-| @architect | @data-engineer | Gate 2 Decision | @data-engineer recebe requisitos de schema |
-| @data-engineer | @dev | Schema pronto | @dev implementa data layer |
-| @data-engineer | @qa | brownfield-discovery Fase 2 | @data-engineer documenta schema e debitos |
-| @qa | @data-engineer | Fase 5 validation | @qa valida e @data-engineer ajusta |
+| De             | Para           | Trigger                     | Acao                                       |
+| -------------- | -------------- | --------------------------- | ------------------------------------------ |
+| @architect     | @data-engineer | Gate 2 Decision             | @data-engineer recebe requisitos de schema |
+| @data-engineer | @dev           | Schema pronto               | @dev implementa data layer                 |
+| @data-engineer | @qa            | brownfield-discovery Fase 2 | @data-engineer documenta schema e debitos  |
+| @qa            | @data-engineer | Fase 5 validation           | @qa valida e @data-engineer ajusta         |
 
 ### Delegacao do @architect (Gate 2 Decision)
 
 O @architect delega para @data-engineer:
+
 - Database schema design
 - Query optimization
 - RLS policies design
@@ -498,12 +499,12 @@ O @architect delega para @data-engineer:
 
 ### Quando Usar Outro Agente
 
-| Tarefa | Agente | Motivo |
-|--------|--------|--------|
-| System architecture | @architect | Padroes de app-level, design de API |
-| Application code | @dev | Implementacao de repository pattern, DAL |
-| Frontend design | @ux-design-expert | Design de UI/UX |
-| Git operations | @github-devops | Push, PR, deploy |
+| Tarefa              | Agente            | Motivo                                   |
+| ------------------- | ----------------- | ---------------------------------------- |
+| System architecture | @architect        | Padroes de app-level, design de API      |
+| Application code    | @dev              | Implementacao de repository pattern, DAL |
+| Frontend design     | @ux-design-expert | Design de UI/UX                          |
+| Git operations      | @github-devops    | Push, PR, deploy                         |
 
 ---
 
@@ -516,16 +517,17 @@ O @data-engineer participa do workflow `brownfield-discovery.yaml` em duas fases
 ```yaml
 step: database_documentation
 phase: 2
-phase_name: "Coleta: Database"
+phase_name: 'Coleta: Database'
 agent: data-engineer
 action: db-schema-audit
 creates:
   - supabase/docs/SCHEMA.md
   - supabase/docs/DB-AUDIT.md
-duration_estimate: "20-40 min"
+duration_estimate: '20-40 min'
 ```
 
 **Analises realizadas:**
+
 - Schema completo (tabelas, colunas, tipos)
 - Relacionamentos e foreign keys
 - Indices existentes e faltantes
@@ -534,6 +536,7 @@ duration_estimate: "20-40 min"
 - Performance (queries lentas conhecidas)
 
 **Debitos identificados (nivel dados):**
+
 - Tabelas sem RLS
 - Indices faltantes
 - Normalizacao inadequada
@@ -546,14 +549,15 @@ duration_estimate: "20-40 min"
 ```yaml
 step: database_specialist_review
 phase: 5
-phase_name: "Validacao: Database"
+phase_name: 'Validacao: Database'
 agent: data-engineer
 action: review_and_validate
 creates: docs/reviews/db-specialist-review.md
-duration_estimate: "20-30 min"
+duration_estimate: '20-30 min'
 ```
 
 **Responsabilidades:**
+
 1. Validar debitos identificados
 2. Estimar custos (horas)
 3. Priorizar (perspectiva DB)
@@ -628,6 +632,7 @@ coderabbit_integration:
 ### Quando Usar o @data-engineer
 
 **USE @data-engineer para:**
+
 - Design de schema de database
 - Modelagem de dominio
 - Migracoes e versionamento
@@ -637,6 +642,7 @@ coderabbit_integration:
 - Auditoria de seguranca e qualidade
 
 **NAO USE @data-engineer para:**
+
 - System architecture (use @architect)
 - Codigo de aplicacao (use @dev)
 - Git operations (use @github-devops)
@@ -665,6 +671,7 @@ coderabbit_integration:
 ### Padrao de Tabela
 
 Toda tabela deve ter como baseline:
+
 - `id` (UUID PRIMARY KEY)
 - `created_at` (TIMESTAMPTZ)
 - `updated_at` (TIMESTAMPTZ)
@@ -693,6 +700,7 @@ Erro: pg_dump: error: connection failed
 ```
 
 **Solucao:**
+
 1. Verificar SUPABASE_DB_URL: `*env-check`
 2. Checar formato da connection string
 3. Verificar SSL mode
@@ -705,6 +713,7 @@ Erro: pg_dump: error: connection failed
 **Acao:** PostgreSQL ja fez rollback da transacao automaticamente
 
 **Proximos passos:**
+
 1. Fix no arquivo de migracao
 2. `*dry-run` para testar
 3. `*apply-migration` novamente
@@ -716,6 +725,7 @@ Erro: Another migration is running
 ```
 
 **Solucao:**
+
 1. Aguardar conclusao da outra migracao
 2. Verificar locks travados:
    ```sql
@@ -728,6 +738,7 @@ Erro: Another migration is running
 **Problema:** Nenhum objeto de schema ou conexao falhou
 
 **Solucao:**
+
 1. Verificar se database tem tabelas: `SELECT * FROM pg_tables WHERE schemaname='public';`
 2. Checar compatibilidade de versao do pg_dump
 3. Verificar conectividade de rede
@@ -737,6 +748,7 @@ Erro: Another migration is running
 **Sintomas:** Usuarios veem dados que nao deveriam
 
 **Solucao:**
+
 1. Verificar se RLS esta enabled: `*security-audit rls`
 2. Testar como usuario especifico: `*test-as-user {user_id}`
 3. Verificar se ha policy com USING clause correta
@@ -774,28 +786,28 @@ Erro: Another migration is running
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Total de Tasks Core** | 20 task files |
-| **Comandos Principais** | 25+ comandos (*setup-database, *apply-migration, *security-audit, etc.) |
-| **Databases Suportados** | 5 (Supabase, PostgreSQL, MongoDB, MySQL, SQLite) |
-| **Tipos de Audit** | 3 (rls, schema, full) |
-| **Tipos de Performance Analysis** | 3 (query, hotpaths, interactive) |
-| **Templates SQL** | 12 templates |
-| **Checklists DBA** | 3 checklists |
-| **Data Files** | 5 arquivos de conhecimento |
-| **Workflows Integrados** | 1 (brownfield-discovery) |
-| **Agentes Colaboradores** | 3 (@architect, @dev, @qa) |
-| **Fases no brownfield-discovery** | 2 (Fase 2: Coleta, Fase 5: Validacao) |
+| Aspecto                           | Detalhes                                                                 |
+| --------------------------------- | ------------------------------------------------------------------------ |
+| **Total de Tasks Core**           | 20 task files                                                            |
+| **Comandos Principais**           | 25+ comandos (*setup-database, *apply-migration, \*security-audit, etc.) |
+| **Databases Suportados**          | 5 (Supabase, PostgreSQL, MongoDB, MySQL, SQLite)                         |
+| **Tipos de Audit**                | 3 (rls, schema, full)                                                    |
+| **Tipos de Performance Analysis** | 3 (query, hotpaths, interactive)                                         |
+| **Templates SQL**                 | 12 templates                                                             |
+| **Checklists DBA**                | 3 checklists                                                             |
+| **Data Files**                    | 5 arquivos de conhecimento                                               |
+| **Workflows Integrados**          | 1 (brownfield-discovery)                                                 |
+| **Agentes Colaboradores**         | 3 (@architect, @dev, @qa)                                                |
+| **Fases no brownfield-discovery** | 2 (Fase 2: Coleta, Fase 5: Validacao)                                    |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descricao |
-|------|-------|-----------|
+| Data       | Autor          | Descricao                |
+| ---------- | -------------- | ------------------------ |
 | 2026-02-04 | @data-engineer | Documento inicial criado |
 
 ---
 
-*-- Dara, arquitetando dados*
+_-- Dara, arquitetando dados_

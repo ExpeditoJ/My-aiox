@@ -98,8 +98,7 @@ sudo port install gh
 1. 命令安装到 `.claude/commands/AIOX/`
 2. 使用 `/agent-name` 激活 Agent
 
-
-2. 使用 `@agent-name` 激活 Agent
+3. 使用 `@agent-name` 激活 Agent
 
 ## 故障排除
 

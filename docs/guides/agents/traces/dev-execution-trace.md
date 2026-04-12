@@ -7,18 +7,18 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/dev.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration + devLoadAlwaysFiles list |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: devLoadAlwaysFiles, devStoryLocation, dataLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `docs/framework/coding-standards.md` | AgentConfigLoader.loadFile() | Coding standards (always loaded, 25KB) |
-| 6 | `docs/framework/tech-stack.md` | AgentConfigLoader.loadFile() | Tech stack reference (always loaded, 30KB) |
-| 7 | `docs/framework/source-tree.md` | AgentConfigLoader.loadFile() | Source tree map (always loaded, 20KB) |
-| 8 | `.aiox-core/data/technical-preferences.md` | AgentConfigLoader.loadFile() | Technical preferences (always loaded, 15KB) |
-| 9 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 10 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                                             |
+| ----- | ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/dev.md`           | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                                       |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration + devLoadAlwaysFiles list                        |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: devLoadAlwaysFiles, devStoryLocation, dataLocation |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                                            |
+| 5     | `docs/framework/coding-standards.md`             | AgentConfigLoader.loadFile()            | Coding standards (always loaded, 25KB)                              |
+| 6     | `docs/framework/tech-stack.md`                   | AgentConfigLoader.loadFile()            | Tech stack reference (always loaded, 30KB)                          |
+| 7     | `docs/framework/source-tree.md`                  | AgentConfigLoader.loadFile()            | Source tree map (always loaded, 20KB)                               |
+| 8     | `.aiox-core/data/technical-preferences.md`       | AgentConfigLoader.loadFile()            | Technical preferences (always loaded, 15KB)                         |
+| 9     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history)                 |
+| 10    | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                                     |
 
 ### 1.2 Greeting Construction
 
@@ -91,60 +91,60 @@ dev:
       lazy: false
       size: 15KB
   lazy_loading:
-    framework_docs: false        # Always load
-    project_decisions: true      # Load when yolo mode or story development
+    framework_docs: false # Always load
+    project_decisions: true # Load when yolo mode or story development
   performance_target: <50ms
 ```
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `💻 Dex the Builder ready to innovate!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Dex, sempre construindo 🔨` |
-| Role | `persona.role` | Expert Senior Software Engineer & Implementation Specialist |
-| Commands shown | `filterCommandsByVisibility('full')` | 36 commands with `full` visibility |
+| Data           | Source                                            | Value                                                       |
+| -------------- | ------------------------------------------------- | ----------------------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `💻 Dex the Builder ready to innovate!`                     |
+| Signature      | `persona_profile.communication.signature_closing` | `— Dex, sempre construindo 🔨`                              |
+| Role           | `persona.role`                                    | Expert Senior Software Engineer & Implementation Specialist |
+| Commands shown | `filterCommandsByVisibility('full')`              | 36 commands with `full` visibility                          |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit | Category |
-|---------|-----------|------------|--------|----------|
-| `*help` | (built-in) | full, quick, key | No | Story Development |
-| `*develop` | dev-develop-story.md | full, quick | Yes | Story Development |
-| `*develop-yolo` | dev-develop-story.md (yolo mode) | full, quick | No | Story Development |
-| `*develop-interactive` | dev-develop-story.md (interactive mode) | full | Yes | Story Development |
-| `*develop-preflight` | dev-develop-story.md (preflight mode) | full | Yes | Story Development |
-| `*execute-subtask` | plan-execute-subtask.md | full, quick | No | Subtask Execution (ADE) |
-| `*verify-subtask` | verify-subtask.md | full, quick | No | Subtask Execution (ADE) |
-| `*track-attempt` | (script: recovery-tracker.js) | full, quick | No | Recovery System |
-| `*rollback` | (script: rollback-manager.js) | full, quick | Optional | Recovery System |
-| `*build-resume` | build-resume.md | full, quick | No | Build Recovery |
-| `*build-status` | build-status.md | full, quick | No | Build Recovery |
-| `*build-log` | (script: build-state-manager.js) | full | No | Build Recovery |
-| `*build-cleanup` | (script: build-state-manager.js) | full | No | Build Recovery |
-| `*build-autonomous` | build-autonomous.md | full, quick | No | Autonomous Build |
-| `*build` | (script: build-orchestrator.js) | full, quick | No | Build Orchestrator |
-| `*gotcha` | gotcha.md | full, quick | Yes | Gotchas Memory |
-| `*gotchas` | gotchas.md | full, quick | No | Gotchas Memory |
-| `*gotcha-context` | (script: gotchas-memory.js) | full | No | Gotchas Memory |
-| `*worktree-create` | create-worktree.md | full, quick | No | Worktree Isolation |
-| `*worktree-list` | list-worktrees.md | full, quick | No | Worktree Isolation |
-| `*worktree-cleanup` | remove-worktree.md | full | No | Worktree Isolation |
-| `*worktree-merge` | (script: worktree-manager.js) | full | No | Worktree Isolation |
-| `*create-service` | create-service.md | full, quick | Yes | Service Generation |
-| `*waves` | waves.md | full, quick | No | Workflow Intelligence |
-| `*apply-qa-fixes` | apply-qa-fixes.md | quick, key | No | Quality & Debt |
-| `*fix-qa-issues` | qa-fix-issues.md | full, quick | No | Quality & Debt |
-| `*run-tests` | (built-in) | quick, key | No | Quality & Debt |
-| `*backlog-debt` | po-manage-story-backlog.md | full | Yes | Quality & Debt |
-| `*load-full` | (built-in) | full | No | Context & Performance |
-| `*clear-cache` | (built-in) | full | No | Context & Performance |
-| `*session-info` | (built-in) | full | No | Context & Performance |
-| `*explain` | (built-in) | full | No | Learning & Utilities |
-| `*guide` | (built-in, rendered from agent .md) | full | No | Learning & Utilities |
-| `*exit` | (built-in) | full, quick, key | No | Learning & Utilities |
+| Command                | Task File                               | Visibility       | Elicit   | Category                |
+| ---------------------- | --------------------------------------- | ---------------- | -------- | ----------------------- |
+| `*help`                | (built-in)                              | full, quick, key | No       | Story Development       |
+| `*develop`             | dev-develop-story.md                    | full, quick      | Yes      | Story Development       |
+| `*develop-yolo`        | dev-develop-story.md (yolo mode)        | full, quick      | No       | Story Development       |
+| `*develop-interactive` | dev-develop-story.md (interactive mode) | full             | Yes      | Story Development       |
+| `*develop-preflight`   | dev-develop-story.md (preflight mode)   | full             | Yes      | Story Development       |
+| `*execute-subtask`     | plan-execute-subtask.md                 | full, quick      | No       | Subtask Execution (ADE) |
+| `*verify-subtask`      | verify-subtask.md                       | full, quick      | No       | Subtask Execution (ADE) |
+| `*track-attempt`       | (script: recovery-tracker.js)           | full, quick      | No       | Recovery System         |
+| `*rollback`            | (script: rollback-manager.js)           | full, quick      | Optional | Recovery System         |
+| `*build-resume`        | build-resume.md                         | full, quick      | No       | Build Recovery          |
+| `*build-status`        | build-status.md                         | full, quick      | No       | Build Recovery          |
+| `*build-log`           | (script: build-state-manager.js)        | full             | No       | Build Recovery          |
+| `*build-cleanup`       | (script: build-state-manager.js)        | full             | No       | Build Recovery          |
+| `*build-autonomous`    | build-autonomous.md                     | full, quick      | No       | Autonomous Build        |
+| `*build`               | (script: build-orchestrator.js)         | full, quick      | No       | Build Orchestrator      |
+| `*gotcha`              | gotcha.md                               | full, quick      | Yes      | Gotchas Memory          |
+| `*gotchas`             | gotchas.md                              | full, quick      | No       | Gotchas Memory          |
+| `*gotcha-context`      | (script: gotchas-memory.js)             | full             | No       | Gotchas Memory          |
+| `*worktree-create`     | create-worktree.md                      | full, quick      | No       | Worktree Isolation      |
+| `*worktree-list`       | list-worktrees.md                       | full, quick      | No       | Worktree Isolation      |
+| `*worktree-cleanup`    | remove-worktree.md                      | full             | No       | Worktree Isolation      |
+| `*worktree-merge`      | (script: worktree-manager.js)           | full             | No       | Worktree Isolation      |
+| `*create-service`      | create-service.md                       | full, quick      | Yes      | Service Generation      |
+| `*waves`               | waves.md                                | full, quick      | No       | Workflow Intelligence   |
+| `*apply-qa-fixes`      | apply-qa-fixes.md                       | quick, key       | No       | Quality & Debt          |
+| `*fix-qa-issues`       | qa-fix-issues.md                        | full, quick      | No       | Quality & Debt          |
+| `*run-tests`           | (built-in)                              | quick, key       | No       | Quality & Debt          |
+| `*backlog-debt`        | po-manage-story-backlog.md              | full             | Yes      | Quality & Debt          |
+| `*load-full`           | (built-in)                              | full             | No       | Context & Performance   |
+| `*clear-cache`         | (built-in)                              | full             | No       | Context & Performance   |
+| `*session-info`        | (built-in)                              | full             | No       | Context & Performance   |
+| `*explain`             | (built-in)                              | full             | No       | Learning & Utilities    |
+| `*guide`               | (built-in, rendered from agent .md)     | full             | No       | Learning & Utilities    |
+| `*exit`                | (built-in)                              | full, quick, key | No       | Learning & Utilities    |
 
 ---
 
@@ -442,11 +442,11 @@ flowchart TD
 
 ### `*apply-qa-fixes`, `*run-tests`, `*backlog-debt`
 
-| Command | Task File | Behavior |
-|---------|-----------|----------|
-| `*apply-qa-fixes` | apply-qa-fixes.md | Apply QA feedback from @qa review |
-| `*run-tests` | (built-in) | Execute `npm run lint` + `npm test` |
-| `*backlog-debt` | po-manage-story-backlog.md | Elicit debt details, register in backlog |
+| Command           | Task File                  | Behavior                                 |
+| ----------------- | -------------------------- | ---------------------------------------- |
+| `*apply-qa-fixes` | apply-qa-fixes.md          | Apply QA feedback from @qa review        |
+| `*run-tests`      | (built-in)                 | Execute `npm run lint` + `npm test`      |
+| `*backlog-debt`   | po-manage-story-backlog.md | Elicit debt details, register in backlog |
 
 ---
 
@@ -454,15 +454,15 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## Developer Guide` section from agent .md |
-| `*session-info` | Shows session context (agent history, commands, project status) |
-| `*load-full` | Loads a complete file from devLoadAlwaysFiles (bypasses cache/summary) |
-| `*clear-cache` | Clears dev context cache to force fresh file load |
-| `*explain` | Explains last action in teaching detail |
-| `*exit` | Exits developer mode, returns to base Claude Code |
+| Command         | Behavior                                                               |
+| --------------- | ---------------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition        |
+| `*guide`        | Renders the `## Developer Guide` section from agent .md                |
+| `*session-info` | Shows session context (agent history, commands, project status)        |
+| `*load-full`    | Loads a complete file from devLoadAlwaysFiles (bypasses cache/summary) |
+| `*clear-cache`  | Clears dev context cache to force fresh file load                      |
+| `*explain`      | Explains last action in teaching detail                                |
+| `*exit`         | Exits developer mode, returns to base Claude Code                      |
 
 ---
 
@@ -618,51 +618,56 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @sm -> @dev | Receives | Story assignment for implementation |
-| @dev -> @qa | Handoff | Story "Ready for Review" triggers QA review |
-| @qa -> @dev | Receives | QA feedback via `*apply-qa-fixes` or `QA_FIX_REQUEST.md` |
-| @dev -> @github-devops | Delegate | Git push, PR creation, remote operations |
-| @pm -> @dev | Receives | Requirements and strategic direction via stories |
+| Interaction            | Direction | Trigger                                                  |
+| ---------------------- | --------- | -------------------------------------------------------- |
+| @sm -> @dev            | Receives  | Story assignment for implementation                      |
+| @dev -> @qa            | Handoff   | Story "Ready for Review" triggers QA review              |
+| @qa -> @dev            | Receives  | QA feedback via `*apply-qa-fixes` or `QA_FIX_REQUEST.md` |
+| @dev -> @github-devops | Delegate  | Git push, PR creation, remote operations                 |
+| @pm -> @dev            | Receives  | Requirements and strategic direction via stories         |
 
 ### Delegation Rules (from agent definition)
 
 **Collaborates with @qa when:**
+
 - Code review feedback received via `*apply-qa-fixes`
 - QA fix requests arrive via `QA_FIX_REQUEST.md`
 - Quality validation during story completion
 
 **Collaborates with @sm when:**
+
 - Receiving story assignments
 - Reporting story completion
 
 **Delegates to @github-devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 - Any remote git operations
 
 **Retains:**
+
 - All local development operations
 - Local git operations (add, commit, status, diff, log, branch, checkout, merge)
 - Code implementation, testing, and validation
 - Story file updates (authorized sections only)
 
 **Git restrictions:**
+
 - ALLOWED: `git add`, `git commit`, `git status`, `git diff`, `git log`, `git branch`, `git checkout`, `git merge`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`, `gh pr merge`
 
 ### CodeRabbit Self-Healing Integration
 
-| Phase | Behavior |
-|-------|----------|
-| Trigger | `story_completion` (before "Ready for Review") |
-| Mode | Light - CRITICAL issues only |
-| Max Iterations | 2 |
-| Timeout | 15 minutes per iteration |
-| CRITICAL severity | `auto_fix` (immediately) |
-| HIGH severity | `document_only` (in story Dev Notes) |
-| MEDIUM/LOW severity | `ignore` |
+| Phase               | Behavior                                       |
+| ------------------- | ---------------------------------------------- |
+| Trigger             | `story_completion` (before "Ready for Review") |
+| Mode                | Light - CRITICAL issues only                   |
+| Max Iterations      | 2                                              |
+| Timeout             | 15 minutes per iteration                       |
+| CRITICAL severity   | `auto_fix` (immediately)                       |
+| HIGH severity       | `document_only` (in story Dev Notes)           |
+| MEDIUM/LOW severity | `ignore`                                       |
 
 ```mermaid
 flowchart TD
@@ -684,28 +689,28 @@ flowchart TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| `story-dod-checklist.md` | Checklist | `*develop` completion process | Story completion validation incomplete |
-| `recovery-tracker.js` | Script | `*track-attempt`, `*execute-subtask` | Recovery tracking non-functional |
-| `stuck-detector.js` | Script | `*execute-subtask` (ADE) | Stuck detection non-functional |
-| `approach-manager.js` | Script | Recovery System (Epic 5) | Approach management non-functional |
-| `rollback-manager.js` | Script | `*rollback` | Rollback operations non-functional |
-| `build-state-manager.js` | Script | `*build-resume`, `*build-log`, `*build-cleanup` | Build state persistence non-functional |
-| `autonomous-build-loop.js` | Script | `*build-autonomous` | Autonomous build loop non-functional |
-| `build-orchestrator.js` | Script | `*build` | Full build pipeline non-functional |
-| `gotchas-memory.js` | Script | `*gotcha`, `*gotchas`, `*gotcha-context` | Gotchas memory system non-functional |
-| `worktree-manager.js` | Script | `*worktree-merge`, `*worktree-create` | Worktree management non-functional |
+| File                       | Type      | Referenced By                                   | Impact                                 |
+| -------------------------- | --------- | ----------------------------------------------- | -------------------------------------- |
+| `story-dod-checklist.md`   | Checklist | `*develop` completion process                   | Story completion validation incomplete |
+| `recovery-tracker.js`      | Script    | `*track-attempt`, `*execute-subtask`            | Recovery tracking non-functional       |
+| `stuck-detector.js`        | Script    | `*execute-subtask` (ADE)                        | Stuck detection non-functional         |
+| `approach-manager.js`      | Script    | Recovery System (Epic 5)                        | Approach management non-functional     |
+| `rollback-manager.js`      | Script    | `*rollback`                                     | Rollback operations non-functional     |
+| `build-state-manager.js`   | Script    | `*build-resume`, `*build-log`, `*build-cleanup` | Build state persistence non-functional |
+| `autonomous-build-loop.js` | Script    | `*build-autonomous`                             | Autonomous build loop non-functional   |
+| `build-orchestrator.js`    | Script    | `*build`                                        | Full build pipeline non-functional     |
+| `gotchas-memory.js`        | Script    | `*gotcha`, `*gotchas`, `*gotcha-context`        | Gotchas memory system non-functional   |
+| `worktree-manager.js`      | Script    | `*worktree-merge`, `*worktree-create`           | Worktree management non-functional     |
 
 ### Dependency Verification Summary
 
-| Category | Total | Existing | Missing | Health |
-|----------|-------|----------|---------|--------|
-| Checklists | 2 | 1 (50%) | 1 (50%) | Partial |
-| Tasks | 22 | 22 (100%) | 0 (0%) | Complete |
-| Scripts | 10 | 1 (10%) | 9 (90%) | Critical |
-| Tools | 7 | 7 (100%) | 0 (0%) | Complete |
+| Category   | Total | Existing  | Missing | Health   |
+| ---------- | ----- | --------- | ------- | -------- |
+| Checklists | 2     | 1 (50%)   | 1 (50%) | Partial  |
+| Tasks      | 22    | 22 (100%) | 0 (0%)  | Complete |
+| Scripts    | 10    | 1 (10%)   | 9 (90%) | Critical |
+| Tools      | 7     | 7 (100%)  | 0 (0%)  | Complete |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

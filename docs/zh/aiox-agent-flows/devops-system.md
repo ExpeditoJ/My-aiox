@@ -42,7 +42,7 @@
 名称: Gage
 角色: 运维者
 专业: DevOps、基础设施、CI/CD、MCP
-理念: "自动化一切可以自动化的"
+理念: '自动化一切可以自动化的'
 ```
 
 ### 关键规则
@@ -55,32 +55,32 @@
 
 ### 代理文件
 
-| 文件 | 路径 | 描述 |
-|---------|---------|-----------|
+| 文件     | 路径                                      | 描述             |
+| -------- | ----------------------------------------- | ---------------- |
 | 代理定义 | `.aiox-core/development/agents/devops.md` | 角色、命令和行为 |
 
 ### 任务文件
 
-| 任务 | 路径 | 命令 |
-|------|---------|---------|
-| 推送前质量门禁 | `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | `*push` |
-| 版本管理 | `.aiox-core/development/tasks/github-devops-version-management.md` | `*version-check` |
-| 仓库清理 | `.aiox-core/development/tasks/github-devops-repository-cleanup.md` | `*cleanup` |
-| CI/CD 配置 | `.aiox-core/development/tasks/ci-cd-configuration.md` | `*ci-cd` |
-| 发布管理 | `.aiox-core/development/tasks/release-management.md` | `*release` |
-| 环境引导 | `.aiox-core/development/tasks/environment-bootstrap.md` | `*environment-bootstrap` |
-| 搜索 MCP | `.aiox-core/development/tasks/search-mcp.md` | `*search-mcp` |
-| 添加 MCP | `.aiox-core/development/tasks/add-mcp.md` | `*add-mcp` |
-| 设置 MCP Docker | `.aiox-core/development/tasks/setup-mcp-docker.md` | `*setup-mcp-docker` |
-| 设置 GitHub | `.aiox-core/development/tasks/setup-github.md` | `*setup-github` |
-| 安全审计 | `.aiox-core/development/tasks/security-audit.md` | `*security-audit` |
-| 安全扫描 | `.aiox-core/development/tasks/security-scan.md` | `*security-scan` |
+| 任务            | 路径                                                                  | 命令                     |
+| --------------- | --------------------------------------------------------------------- | ------------------------ |
+| 推送前质量门禁  | `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | `*push`                  |
+| 版本管理        | `.aiox-core/development/tasks/github-devops-version-management.md`    | `*version-check`         |
+| 仓库清理        | `.aiox-core/development/tasks/github-devops-repository-cleanup.md`    | `*cleanup`               |
+| CI/CD 配置      | `.aiox-core/development/tasks/ci-cd-configuration.md`                 | `*ci-cd`                 |
+| 发布管理        | `.aiox-core/development/tasks/release-management.md`                  | `*release`               |
+| 环境引导        | `.aiox-core/development/tasks/environment-bootstrap.md`               | `*environment-bootstrap` |
+| 搜索 MCP        | `.aiox-core/development/tasks/search-mcp.md`                          | `*search-mcp`            |
+| 添加 MCP        | `.aiox-core/development/tasks/add-mcp.md`                             | `*add-mcp`               |
+| 设置 MCP Docker | `.aiox-core/development/tasks/setup-mcp-docker.md`                    | `*setup-mcp-docker`      |
+| 设置 GitHub     | `.aiox-core/development/tasks/setup-github.md`                        | `*setup-github`          |
+| 安全审计        | `.aiox-core/development/tasks/security-audit.md`                      | `*security-audit`        |
+| 安全扫描        | `.aiox-core/development/tasks/security-scan.md`                       | `*security-scan`         |
 
 ### 配置和规则文件
 
-| 文件 | 路径 | 目的 |
-|---------|---------|-----------|
-| MCP 规则 | `.claude/rules/mcp-usage.md` | MCP 治理和使用 |
+| 文件     | 路径                              | 目的             |
+| -------- | --------------------------------- | ---------------- |
+| MCP 规则 | `.claude/rules/mcp-usage.md`      | MCP 治理和使用   |
 | N8N 规则 | `.claude/rules/n8n-operations.md` | N8N 基础设施操作 |
 
 ---
@@ -272,41 +272,41 @@ flowchart TD
 
 ### MCP 命令
 
-| 命令 | 任务 | 描述 | 模式 |
-|---------|------|-----------|------|
-| `*search-mcp` | search-mcp.md | 在目录中搜索 MCP | 交互式 |
-| `*add-mcp` | add-mcp.md | 安装 MCP 服务器 | 交互式 |
-| `*list-mcps` | (内联) | 列出已启用的 MCP | YOLO |
-| `*remove-mcp` | (内联) | 移除 MCP 服务器 | 交互式 |
+| 命令                | 任务                | 描述                    | 模式   |
+| ------------------- | ------------------- | ----------------------- | ------ |
+| `*search-mcp`       | search-mcp.md       | 在目录中搜索 MCP        | 交互式 |
+| `*add-mcp`          | add-mcp.md          | 安装 MCP 服务器         | 交互式 |
+| `*list-mcps`        | (内联)              | 列出已启用的 MCP        | YOLO   |
+| `*remove-mcp`       | (内联)              | 移除 MCP 服务器         | 交互式 |
 | `*setup-mcp-docker` | setup-mcp-docker.md | 配置 Docker MCP Toolkit | 交互式 |
 
 ### Git/GitHub 命令
 
-| 命令 | 任务 | 描述 | 模式 |
-|---------|------|-----------|------|
-| `*push` | github-devops-pre-push-quality-gate.md | 推送前质量门禁 | 交互式 |
-| `*setup-github` | setup-github.md | 配置 GitHub 仓库 | 交互式 |
-| `*cleanup` | github-devops-repository-cleanup.md | 清理分支和文件 | 交互式 |
+| 命令            | 任务                                   | 描述             | 模式   |
+| --------------- | -------------------------------------- | ---------------- | ------ |
+| `*push`         | github-devops-pre-push-quality-gate.md | 推送前质量门禁   | 交互式 |
+| `*setup-github` | setup-github.md                        | 配置 GitHub 仓库 | 交互式 |
+| `*cleanup`      | github-devops-repository-cleanup.md    | 清理分支和文件   | 交互式 |
 
 ### CI/CD 和发布命令
 
-| 命令 | 任务 | 描述 | 模式 |
-|---------|------|-----------|------|
-| `*ci-cd` | ci-cd-configuration.md | 配置 CI/CD 管道 | 交互式 |
-| `*release` | release-management.md | 创建带 changelog 的发布 | 交互式 |
-| `*version-check` | github-devops-version-management.md | 分析并建议版本 | YOLO |
+| 命令             | 任务                                | 描述                    | 模式   |
+| ---------------- | ----------------------------------- | ----------------------- | ------ |
+| `*ci-cd`         | ci-cd-configuration.md              | 配置 CI/CD 管道         | 交互式 |
+| `*release`       | release-management.md               | 创建带 changelog 的发布 | 交互式 |
+| `*version-check` | github-devops-version-management.md | 分析并建议版本          | YOLO   |
 
 ### 安全命令
 
-| 命令 | 任务 | 描述 | 模式 |
-|---------|------|-----------|------|
-| `*security-scan` | security-scan.md | 漏洞扫描 | 交互式 |
+| 命令              | 任务              | 描述         | 模式   |
+| ----------------- | ----------------- | ------------ | ------ |
+| `*security-scan`  | security-scan.md  | 漏洞扫描     | 交互式 |
 | `*security-audit` | security-audit.md | 完整安全审计 | 交互式 |
 
 ### 环境命令
 
-| 命令 | 任务 | 描述 | 模式 |
-|---------|------|-----------|------|
+| 命令                     | 任务                     | 描述       | 模式   |
+| ------------------------ | ------------------------ | ---------- | ------ |
 | `*environment-bootstrap` | environment-bootstrap.md | 新项目引导 | 交互式 |
 
 ---
@@ -347,14 +347,14 @@ flowchart LR
 
 ### 责任矩阵
 
-| 操作 | DevOps | Dev | QA | Architect | PM |
-|----------|--------|-----|----|-----------|----|
-| 管理 MCP | **负责人** | 消费者 | 消费者 | 消费者 | - |
-| CI/CD 配置 | **负责人** | 审查者 | - | 批准者 | - |
-| 发布 | **负责人** | - | 验证者 | - | 请求者 |
-| 安全扫描 | **负责人** | - | **共同负责人** | - | - |
-| 仓库设置 | **负责人** | - | - | 审查者 | - |
-| 环境引导 | **负责人** | 请求者 | - | - | - |
+| 操作       | DevOps     | Dev    | QA             | Architect | PM     |
+| ---------- | ---------- | ------ | -------------- | --------- | ------ |
+| 管理 MCP   | **负责人** | 消费者 | 消费者         | 消费者    | -      |
+| CI/CD 配置 | **负责人** | 审查者 | -              | 批准者    | -      |
+| 发布       | **负责人** | -      | 验证者         | -         | 请求者 |
+| 安全扫描   | **负责人** | -      | **共同负责人** | -         | -      |
+| 仓库设置   | **负责人** | -      | -              | 审查者    | -      |
+| 环境引导   | **负责人** | 请求者 | -              | -         | -      |
 
 ### 委派流程
 
@@ -457,6 +457,7 @@ MCP_DEBUG=true
 ### CI/CD
 
 1. **管道阶段**
+
    ```
    lint -> test -> build -> deploy
    ```
@@ -521,6 +522,7 @@ npx -y @package/mcp-server
 **原因：** Docker MCP Toolkit 的 secrets bug
 
 **解决方案：**
+
 1. 编辑 `~/.docker/mcp/catalogs/docker-mcp.yaml`
 2. 将模板替换为硬编码值
 3. 重启 MCP 容器
@@ -595,28 +597,28 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 ### 相关任务
 
-| 任务 | 描述 |
-|------|-----------|
+| 任务                                                                                  | 描述       |
+| ------------------------------------------------------------------------------------- | ---------- |
 | [推送前质量门禁](.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md) | 推送前验证 |
-| [版本管理](.aiox-core/development/tasks/github-devops-version-management.md) | 版本管理 |
-| [CI/CD 配置](.aiox-core/development/tasks/ci-cd-configuration.md) | 管道配置 |
-| [发布管理](.aiox-core/development/tasks/release-management.md) | 发布管理 |
-| [环境引导](.aiox-core/development/tasks/environment-bootstrap.md) | 环境引导 |
+| [版本管理](.aiox-core/development/tasks/github-devops-version-management.md)          | 版本管理   |
+| [CI/CD 配置](.aiox-core/development/tasks/ci-cd-configuration.md)                     | 管道配置   |
+| [发布管理](.aiox-core/development/tasks/release-management.md)                        | 发布管理   |
+| [环境引导](.aiox-core/development/tasks/environment-bootstrap.md)                     | 环境引导   |
 
 ---
 
 ## 摘要
 
-| 方面 | 详情 |
-|---------|----------|
-| **代理** | Gage (运维者) |
-| **激活** | `@devops` |
-| **命令总数** | 14 |
-| **任务总数** | 12 |
+| 方面         | 详情                         |
+| ------------ | ---------------------------- |
+| **代理**     | Gage (运维者)                |
+| **激活**     | `@devops`                    |
+| **命令总数** | 14                           |
+| **任务总数** | 12                           |
 | **作用领域** | MCP、CI/CD、发布、安全、仓库 |
-| **主要规则** | MCP 基础设施独家治理 |
-| **默认模式** | 交互式 |
-| **版本** | 2.0.0 |
+| **主要规则** | MCP 基础设施独家治理         |
+| **默认模式** | 交互式                       |
+| **版本**     | 2.0.0                        |
 
 ### 快速命令
 
@@ -639,5 +641,5 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 ---
 
-*文档由 AIOX 系统生成 - 2026-02-04*
-*维护者：@devops*
+_文档由 AIOX 系统生成 - 2026-02-04_
+_维护者：@devops_

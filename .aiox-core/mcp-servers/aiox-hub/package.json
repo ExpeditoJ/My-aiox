@@ -1,0 +1,8 @@
+{
+  "name": "aiox-hub-mcp",
+  "version": "1.0.0",
+  "description": "AIOX Hub MCP Server — Unified local-first AI orchestration for OpenClaude",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {}
+}

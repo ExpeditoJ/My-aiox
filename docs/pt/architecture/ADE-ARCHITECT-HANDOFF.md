@@ -53,15 +53,15 @@ O ADE é um projeto de **Prompt Engineering + Infraestrutura** para habilitar ex
 
 ## Matriz de Dependências
 
-| Epic                 | Requer   | Bloqueia   | Paralelo Com  |
-| -------------------- | -------- | ---------- | ------------- |
-| **1. Worktree**      | -        | 2, 4       | -             |
-| **2. Migration**     | 1        | 3, 4, 5, 6 | -             |
-| **3. Spec Pipeline** | 2        | 4          | -             |
-| **4. Execution**     | 3        | 5, 6       | -             |
-| **5. Recovery**      | 4        | 7          | **6**         |
-| **6. QA Evolution**  | 4        | 7          | **5**         |
-| **7. Memory**        | 5, 6     | -          | -             |
+| Epic                 | Requer | Bloqueia   | Paralelo Com |
+| -------------------- | ------ | ---------- | ------------ |
+| **1. Worktree**      | -      | 2, 4       | -            |
+| **2. Migration**     | 1      | 3, 4, 5, 6 | -            |
+| **3. Spec Pipeline** | 2      | 4          | -            |
+| **4. Execution**     | 3      | 5, 6       | -            |
+| **5. Recovery**      | 4      | 7          | **6**        |
+| **6. QA Evolution**  | 4      | 7          | **5**        |
+| **7. Memory**        | 5, 6   | -          | -            |
 
 ---
 
@@ -101,14 +101,14 @@ Embora os épicos tenham dependências de **implementação**, você pode **prep
 
 **Tipo:** 60% Código, 40% Prompt Engineering
 
-| Story | Entregável                  | Tipo                |
-| ----- | --------------------------- | ------------------- |
-| 2.1   | asset-inventory.js          | JS Script           |
-| 2.2   | path-analyzer.js            | JS Script           |
-| 2.3   | V3 Schemas (agent, task)    | JSON Schema         |
-| 2.4   | migrate-agent.js            | JS Script           |
-| 2.5   | Pilot migration (@dev, @qa) | Manual + Validação  |
-| 2.6   | Batch migration             | Orquestração        |
+| Story | Entregável                  | Tipo               |
+| ----- | --------------------------- | ------------------ |
+| 2.1   | asset-inventory.js          | JS Script          |
+| 2.2   | path-analyzer.js            | JS Script          |
+| 2.3   | V3 Schemas (agent, task)    | JSON Schema        |
+| 2.4   | migrate-agent.js            | JS Script          |
+| 2.5   | Pilot migration (@dev, @qa) | Manual + Validação |
+| 2.6   | Batch migration             | Orquestração       |
 
 **@dev necessário:** Stories 2.1, 2.2, 2.4 (scripts)
 **@architect lidera:** Stories 2.3, 2.5, 2.6 (schemas/orquestração)

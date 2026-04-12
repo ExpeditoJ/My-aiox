@@ -1,6 +1,6 @@
 ---
 task: Write Report
-responsavel: "@team-writer"
+responsavel: '@team-writer'
 responsavel_type: agent
 atomic_layer: task
 Entrada: |
@@ -11,10 +11,10 @@ Saida: |
   - report: Generated report content
   - file_path: Path to saved report (optional)
 Checklist:
-  - "[ ] Review findings"
-  - "[ ] Create outline"
-  - "[ ] Write draft"
-  - "[ ] Format output"
+  - '[ ] Review findings'
+  - '[ ] Create outline'
+  - '[ ] Write draft'
+  - '[ ] Format output'
 ---
 
 # *report / *draft
@@ -43,14 +43,18 @@ Create a report from research findings.
 # Report: AI Trends 2025
 
 ## Executive Summary
+
 ...
 
 ## Key Findings
+
 ...
 
 ## Conclusion
+
 ...
 
 ## Sources
+
 ...
 ```

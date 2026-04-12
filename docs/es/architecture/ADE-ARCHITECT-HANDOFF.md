@@ -69,12 +69,12 @@ El ADE es un proyecto de **Prompt Engineering + Infraestructura** para habilitar
 
 Aunque los epics tienen dependencias de **implementación**, puede **preparar** epics futuros mientras el actual está en desarrollo:
 
-| Mientras ejecuta | Puede preparar (sin implementar)           |
-| ---------------- | ------------------------------------------ |
-| Epic 1           | Schemas V3 del Epic 2 (diseño)             |
-| Epic 2           | Estructura de las tasks del Epic 3         |
+| Mientras ejecuta | Puede preparar (sin implementar)              |
+| ---------------- | --------------------------------------------- |
+| Epic 1           | Schemas V3 del Epic 2 (diseño)                |
+| Epic 2           | Estructura de las tasks del Epic 3            |
 | Epic 3           | Estructura del implementation.yaml del Epic 4 |
-| Epic 4           | Diseño del Epic 5 y 6 en paralelo          |
+| Epic 4           | Diseño del Epic 5 y 6 en paralelo             |
 
 ---
 
@@ -155,12 +155,12 @@ Aunque los epics tienen dependencias de **implementación**, puede **preparar** 
 
 **Tipo:** 40% Código, 60% Prompt Engineering
 
-| Story | Entregable           | Tipo           |
-| ----- | -------------------- | -------------- |
-| 5.1   | attempt-tracker.js   | JS Script      |
-| 5.2   | recovery-strategy.md | Task .md       |
-| 5.3   | Escalation triggers  | Workflow       |
-| 5.4   | Retry policies       | Config + Lógica|
+| Story | Entregable           | Tipo            |
+| ----- | -------------------- | --------------- |
+| 5.1   | attempt-tracker.js   | JS Script       |
+| 5.2   | recovery-strategy.md | Task .md        |
+| 5.3   | Escalation triggers  | Workflow        |
+| 5.4   | Retry policies       | Config + Lógica |
 
 **@dev necesario:** Story 5.1 (script)
 **@architect lidera:** Stories 5.2, 5.3, 5.4
@@ -171,13 +171,13 @@ Aunque los epics tienen dependencias de **implementación**, puede **preparar** 
 
 **Tipo:** 10% Código, 90% Prompt Engineering
 
-| Story | Entregable                | Tipo                 |
-| ----- | ------------------------- | -------------------- |
-| 6.1   | review-subtask.md         | Task .md             |
-| 6.2   | qa-gate-auto.md           | Task .md             |
-| 6.3   | CodeRabbit integration    | Config + Workflow    |
-| 6.4   | review-qa.md (Dev→QA→Dev) | Task .md             |
-| 6.5   | Quality metrics           | Schema + Agregación  |
+| Story | Entregable                | Tipo                |
+| ----- | ------------------------- | ------------------- |
+| 6.1   | review-subtask.md         | Task .md            |
+| 6.2   | qa-gate-auto.md           | Task .md            |
+| 6.3   | CodeRabbit integration    | Config + Workflow   |
+| 6.4   | review-qa.md (Dev→QA→Dev) | Task .md            |
+| 6.5   | Quality metrics           | Schema + Agregación |
 
 **@dev necesario:** Story 6.5 (script de métricas, opcional)
 **@architect lidera:** Stories 6.1, 6.2, 6.3, 6.4

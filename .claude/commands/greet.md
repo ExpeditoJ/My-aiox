@@ -7,6 +7,7 @@ Generate contextual agent greeting using GreetingBuilder infrastructure.
 ## What This Command Does
 
 When activated, this command:
+
 1. Loads the GreetingBuilder module from `.aiox-core/development/scripts/greeting-builder.js`
 2. Extracts agent definition from the calling agent (name, icon, persona_profile, commands)
 3. Analyzes conversation history to detect session type (new/existing/workflow)
@@ -35,12 +36,12 @@ const agent = {
   title: agentDefinition.title,
   persona_profile: agentDefinition.persona_profile,
   persona: agentDefinition.persona,
-  commands: agentDefinition.commands
+  commands: agentDefinition.commands,
 };
 
 // Build greeting with conversation history
 const greeting = await builder.buildGreeting(agent, {
-  conversationHistory: conversationHistory || []
+  conversationHistory: conversationHistory || [],
 });
 
 // Return greeting for display
@@ -52,6 +53,7 @@ return greeting;
 ## Fallback Behavior
 
 If greeting generation fails (timeout, error, module not found):
+
 ```
 {agent.icon} {agent.name} ready
 
@@ -87,6 +89,7 @@ activation-instructions:
 ## Architecture
 
 This follows **ADR-001: Agent Greeting Execution Pattern**:
+
 - **YAML** = Declarative configuration (agent definitions)
 - **Slash Command** = Execution layer (this file)
 - **JavaScript** = Business logic (greeting-builder.js)

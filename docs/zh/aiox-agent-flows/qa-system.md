@@ -32,30 +32,30 @@
 
 ### @qa 的核心任务文件
 
-| 文件 | 命令 | 目的 |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/qa-gate.md` | `*gate {story}` | 创建质量门决策文件 |
-| `.aiox-core/development/tasks/qa-review-story.md` | `*review {story}` | 完整故事审查和门决策 |
-| `.aiox-core/development/tasks/qa-test-design.md` | `*test-design {story}` | 创建全面的测试场景 |
-| `.aiox-core/development/tasks/qa-risk-profile.md` | `*risk-profile {story}` | 生成风险评估矩阵 |
-| `.aiox-core/development/tasks/qa-nfr-assess.md` | `*nfr-assess {story}` | 验证非功能需求 |
-| `.aiox-core/development/tasks/qa-trace-requirements.md` | `*trace {story}` | 将需求映射到测试(给定-当-然) |
-| `.aiox-core/development/tasks/qa-generate-tests.md` | `*generate-tests` | 自动生成测试套件 |
-| `.aiox-core/development/tasks/qa-run-tests.md` | `*run-tests` | 执行测试套件和质量门 |
-| `.aiox-core/development/tasks/qa-backlog-add-followup.md` | `*backlog-add` | 添加后续项到待办事项 |
-| `.aiox-core/development/tasks/qa-create-fix-request.md` | `*create-fix-request {story}` | 为 @dev 生成修复请求文档 |
+| 文件                                                      | 命令                          | 目的                         |
+| --------------------------------------------------------- | ----------------------------- | ---------------------------- |
+| `.aiox-core/development/tasks/qa-gate.md`                 | `*gate {story}`               | 创建质量门决策文件           |
+| `.aiox-core/development/tasks/qa-review-story.md`         | `*review {story}`             | 完整故事审查和门决策         |
+| `.aiox-core/development/tasks/qa-test-design.md`          | `*test-design {story}`        | 创建全面的测试场景           |
+| `.aiox-core/development/tasks/qa-risk-profile.md`         | `*risk-profile {story}`       | 生成风险评估矩阵             |
+| `.aiox-core/development/tasks/qa-nfr-assess.md`           | `*nfr-assess {story}`         | 验证非功能需求               |
+| `.aiox-core/development/tasks/qa-trace-requirements.md`   | `*trace {story}`              | 将需求映射到测试(给定-当-然) |
+| `.aiox-core/development/tasks/qa-generate-tests.md`       | `*generate-tests`             | 自动生成测试套件             |
+| `.aiox-core/development/tasks/qa-run-tests.md`            | `*run-tests`                  | 执行测试套件和质量门         |
+| `.aiox-core/development/tasks/qa-backlog-add-followup.md` | `*backlog-add`                | 添加后续项到待办事项         |
+| `.aiox-core/development/tasks/qa-create-fix-request.md`   | `*create-fix-request {story}` | 为 @dev 生成修复请求文档     |
 
 ### 代理定义文件
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/development/agents/qa.md` | QA 代理的完整定义 |
-| `.claude/commands/AIOX/agents/qa.md` | Claude Code 命令用于激活 @qa |
+| 文件                                  | 目的                         |
+| ------------------------------------- | ---------------------------- |
+| `.aiox-core/development/agents/qa.md` | QA 代理的完整定义            |
+| `.claude/commands/AIOX/agents/qa.md`  | Claude Code 命令用于激活 @qa |
 
 ### 工作流文件
 
-| 文件 | 目的 |
-|---------|-----------|
+| 文件                                            | 目的                                    |
+| ----------------------------------------------- | --------------------------------------- |
 | `.aiox-core/development/workflows/qa-loop.yaml` | QA 循环协调器(审查 -> 修复 -> 重新审查) |
 
 ---
@@ -64,44 +64,44 @@
 
 ### 分析和审查命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*code-review {scope}` | (内部) | 执行自动审查 |
-| `*review {story}` | `qa-review-story.md` | 完整故事审查 |
+| 命令                   | 任务文件             | 操作         |
+| ---------------------- | -------------------- | ------------ |
+| `*code-review {scope}` | (内部)               | 执行自动审查 |
+| `*review {story}`      | `qa-review-story.md` | 完整故事审查 |
 
 ### 质量门命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*gate {story}` | `qa-gate.md` | 创建质量门决策 |
-| `*nfr-assess {story}` | `qa-nfr-assess.md` | 验证非功能需求 |
-| `*risk-profile {story}` | `qa-risk-profile.md` | 生成风险矩阵 |
+| 命令                    | 任务文件             | 操作           |
+| ----------------------- | -------------------- | -------------- |
+| `*gate {story}`         | `qa-gate.md`         | 创建质量门决策 |
+| `*nfr-assess {story}`   | `qa-nfr-assess.md`   | 验证非功能需求 |
+| `*risk-profile {story}` | `qa-risk-profile.md` | 生成风险矩阵   |
 
 ### 测试策略命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*test-design {story}` | `qa-test-design.md` | 创建测试场景 |
-| `*trace {story}` | `qa-trace-requirements.md` | 将需求映射到测试 |
-| `*generate-tests` | `qa-generate-tests.md` | 自动生成测试 |
-| `*run-tests` | `qa-run-tests.md` | 执行测试套件 |
+| 命令                   | 任务文件                   | 操作             |
+| ---------------------- | -------------------------- | ---------------- |
+| `*test-design {story}` | `qa-test-design.md`        | 创建测试场景     |
+| `*trace {story}`       | `qa-trace-requirements.md` | 将需求映射到测试 |
+| `*generate-tests`      | `qa-generate-tests.md`     | 自动生成测试     |
+| `*run-tests`           | `qa-run-tests.md`          | 执行测试套件     |
 
 ### 待办事项命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*backlog-add` | `qa-backlog-add-followup.md` | 添加后续项到待办事项 |
-| `*backlog-update {id} {status}` | (通过 po-manage-story-backlog) | 更新项目状态 |
-| `*backlog-review` | (通过 po-manage-story-backlog) | 生成待办事项审查 |
+| 命令                            | 任务文件                       | 操作                 |
+| ------------------------------- | ------------------------------ | -------------------- |
+| `*backlog-add`                  | `qa-backlog-add-followup.md`   | 添加后续项到待办事项 |
+| `*backlog-update {id} {status}` | (通过 po-manage-story-backlog) | 更新项目状态         |
+| `*backlog-review`               | (通过 po-manage-story-backlog) | 生成待办事项审查     |
 
 ### 实用工具命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*help` | (内部) | 显示所有命令 |
-| `*session-info` | (内部) | 显示会话详情 |
-| `*guide` | (内部) | 显示完整使用指南 |
-| `*exit` | (内部) | 退出 QA 模式 |
+| 命令            | 任务文件 | 操作             |
+| --------------- | -------- | ---------------- |
+| `*help`         | (内部)   | 显示所有命令     |
+| `*session-info` | (内部)   | 显示会话详情     |
+| `*guide`        | (内部)   | 显示完整使用指南 |
+| `*exit`         | (内部)   | 退出 QA 模式     |
 
 ---
 
@@ -111,7 +111,7 @@
 
 ```yaml
 Pre-conditions:
-  - 故事状态: "审查"
+  - 故事状态: '审查'
   - 开发者完成所有任务
   - 故事中的文件列表已更新
   - 所有自动化测试通过
@@ -120,27 +120,28 @@ Pre-conditions:
 ### 审查流程
 
 审查流程包含以下步骤:
+
 1. CodeRabbit 自动扫描
 2. 手动审查(风险、NFR、测试设计、需求追踪)
 3. 门决策(PASS、CONCERNS、FAIL、WAIVED)
 
 ### 问题严重性
 
-| 严重性 | 前缀 | 操作 | 门影响 |
-|------------|---------|------|-----------------|
-| CRITICAL | `SEC-`、`DATA-` | 自动修复或阻止 | 门 = FAIL |
-| HIGH | `PERF-`、`REL-` | 自动修复或文档化 | 门 = FAIL |
-| MEDIUM | `MNT-`、`TEST-` | 技术债务问题 | 门 = CONCERNS |
-| LOW | `DOC-`、`ARCH-` | 审查备注 | 门 = PASS |
+| 严重性   | 前缀            | 操作             | 门影响        |
+| -------- | --------------- | ---------------- | ------------- |
+| CRITICAL | `SEC-`、`DATA-` | 自动修复或阻止   | 门 = FAIL     |
+| HIGH     | `PERF-`、`REL-` | 自动修复或文档化 | 门 = FAIL     |
+| MEDIUM   | `MNT-`、`TEST-` | 技术债务问题     | 门 = CONCERNS |
+| LOW      | `DOC-`、`ARCH-` | 审查备注         | 门 = PASS     |
 
 ### 门决策
 
-| 决策 | 标准 |
-|---------|----------|
-| **PASS** | 所有验收标准满足，无高严重性问题，测试覆盖达到标准 |
-| **CONCERNS** | 存在非阻止问题，应追踪和安排，可在意识前进 |
-| **FAIL** | 验收标准未满足，存在高严重性问题，建议返回进行中 |
-| **WAIVED** | 问题已明确接受，需要批准和理由，尽管已知问题继续进行 |
+| 决策         | 标准                                                 |
+| ------------ | ---------------------------------------------------- |
+| **PASS**     | 所有验收标准满足，无高严重性问题，测试覆盖达到标准   |
+| **CONCERNS** | 存在非阻止问题，应追踪和安排，可在意识前进           |
+| **FAIL**     | 验收标准未满足，存在高严重性问题，建议返回进行中     |
+| **WAIVED**   | 问题已明确接受，需要批准和理由，尽管已知问题继续进行 |
 
 ---
 
@@ -241,28 +242,28 @@ git_restrictions:
 
 ## 总结
 
-| 方面 | 详情 |
-|---------|----------|
-| **总核心任务** | 10 个主要任务文件 |
-| **总辅助任务** | 9 个支持任务文件 |
-| **主要工作流** | qa-loop.yaml(协调) |
-| **审查命令** | 2 个(`*code-review`、`*review`) |
-| **门命令** | 3 个(`*gate`、`*nfr-assess`、`*risk-profile`) |
-| **测试命令** | 4 个(`*test-design`、`*trace`、`*generate-tests`、`*run-tests`) |
-| **待办事项命令** | 3 个(`*backlog-*` 系列) |
-| **门决策** | 4 个(PASS、CONCERNS、FAIL、WAIVED) |
-| **严重性级别** | 3 个(低、中、高) |
-| **自我修复最大** | 3 个迭代 |
-| **CodeRabbit 集成** | 是(WSL 模式) |
+| 方面                | 详情                                                            |
+| ------------------- | --------------------------------------------------------------- |
+| **总核心任务**      | 10 个主要任务文件                                               |
+| **总辅助任务**      | 9 个支持任务文件                                                |
+| **主要工作流**      | qa-loop.yaml(协调)                                              |
+| **审查命令**        | 2 个(`*code-review`、`*review`)                                 |
+| **门命令**          | 3 个(`*gate`、`*nfr-assess`、`*risk-profile`)                   |
+| **测试命令**        | 4 个(`*test-design`、`*trace`、`*generate-tests`、`*run-tests`) |
+| **待办事项命令**    | 3 个(`*backlog-*` 系列)                                         |
+| **门决策**          | 4 个(PASS、CONCERNS、FAIL、WAIVED)                              |
+| **严重性级别**      | 3 个(低、中、高)                                                |
+| **自我修复最大**    | 3 个迭代                                                        |
+| **CodeRabbit 集成** | 是(WSL 模式)                                                    |
 
 ---
 
 ## 更改日志
 
-| 日期 | 作者 | 描述 |
-|------|-------|-----------|
-| 2026-02-04 | @qa | 创建初始文档，完整 Mermaid 图表 |
+| 日期       | 作者 | 描述                            |
+| ---------- | ---- | ------------------------------- |
+| 2026-02-04 | @qa  | 创建初始文档，完整 Mermaid 图表 |
 
 ---
 
-*-- Quinn，质量守护者*
+_-- Quinn，质量守护者_

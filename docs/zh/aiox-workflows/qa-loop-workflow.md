@@ -218,12 +218,12 @@ sequenceDiagram
 
 ### 步骤 1: 审查 (阶段 1)
 
-| 属性 | 值 |
-|------|-----|
-| **名称** | `review` |
-| **阶段** | 1 - QA 审查 |
-| **代理** | `@qa` (Quinn) |
-| **任务** | `qa-review-story.md` |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **名称** | `review`                 |
+| **阶段** | 1 - QA 审查              |
+| **代理** | `@qa` (Quinn)            |
+| **任务** | `qa-review-story.md`     |
 | **超时** | 30 分钟 (1,800,000 毫秒) |
 
 **描述:**
@@ -232,9 +232,9 @@ sequenceDiagram
 **输入:**
 
 ```yaml
-storyId: "{storyId}"
-iteration: "{currentIteration}"
-previousIssues: "{history[-1].issuesFound|0}"
+storyId: '{storyId}'
+iteration: '{currentIteration}'
+previousIssues: '{history[-1].issuesFound|0}'
 ```
 
 **输出:**
@@ -244,12 +244,14 @@ previousIssues: "{history[-1].issuesFound|0}"
 - `issuesFound` - 发现的问题数
 
 **成功时:**
+
 ```
 log: "审查完成: {verdict} ({issuesFound} 个问题)"
 next: check_verdict
 ```
 
 **失败时:**
+
 ```
 action: retry (最多 2 次尝试)
 on_exhausted: escalate
@@ -259,11 +261,11 @@ on_exhausted: escalate
 
 ### 步骤 2: 检查判决 (阶段 2)
 
-| 属性 | 值 |
-|------|-----|
+| 属性     | 值              |
+| -------- | --------------- |
 | **名称** | `check_verdict` |
-| **阶段** | 2 - 判决检查 |
-| **代理** | `system` |
+| **阶段** | 2 - 判决检查    |
+| **代理** | `system`        |
 
 **描述:**
 评估审查的判决并确定下一步操作。
@@ -287,11 +289,11 @@ flowchart TD
 
 ### 步骤 3: 创建修复请求 (阶段 3)
 
-| 属性 | 值 |
-|------|-----|
-| **名称** | `create_fix_request` |
-| **阶段** | 3 - 创建修复请求 |
-| **代理** | `@qa` (Quinn) |
+| 属性     | 值                         |
+| -------- | -------------------------- |
+| **名称** | `create_fix_request`       |
+| **阶段** | 3 - 创建修复请求           |
+| **代理** | `@qa` (Quinn)              |
 | **任务** | `qa-create-fix-request.md` |
 
 **描述:**
@@ -300,9 +302,9 @@ flowchart TD
 **输入:**
 
 ```yaml
-storyId: "{storyId}"
-gateFile: "{outputs.review.gate-file}"
-iteration: "{currentIteration}"
+storyId: '{storyId}'
+gateFile: '{outputs.review.gate-file}'
+iteration: '{currentIteration}'
 ```
 
 **输出:**
@@ -311,12 +313,14 @@ iteration: "{currentIteration}"
 - `prioritizedIssues` - 按优先级排序的问题列表
 
 **成功时:**
+
 ```
 log: "修复请求已创建，共 {prioritizedIssues.length} 个优先化问题"
 next: fix_issues
 ```
 
 **失败时:**
+
 ```
 action: continue
 fallback: "使用原始网关文件进行修复"
@@ -326,12 +330,12 @@ fallback: "使用原始网关文件进行修复"
 
 ### 步骤 4: 修复问题 (阶段 4)
 
-| 属性 | 值 |
-|------|-----|
-| **名称** | `fix_issues` |
-| **阶段** | 4 - 应用修复 |
-| **代理** | `@dev` (Dex) |
-| **任务** | `dev-apply-qa-fixes.md` |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **名称** | `fix_issues`             |
+| **阶段** | 4 - 应用修复             |
+| **代理** | `@dev` (Dex)             |
+| **任务** | `dev-apply-qa-fixes.md`  |
 | **超时** | 60 分钟 (3,600,000 毫秒) |
 
 **描述:**
@@ -340,9 +344,9 @@ fallback: "使用原始网关文件进行修复"
 **输入:**
 
 ```yaml
-storyId: "{storyId}"
-fixRequest: "{outputs.create_fix_request.fix-request}"
-iteration: "{currentIteration}"
+storyId: '{storyId}'
+fixRequest: '{outputs.create_fix_request.fix-request}'
+iteration: '{currentIteration}'
 ```
 
 **输出:**
@@ -351,12 +355,14 @@ iteration: "{currentIteration}"
 - `issuesFixed` - 修复的问题数
 
 **成功时:**
+
 ```
 log: "已修复 {issuesFixed} 个问题，共 {issuesFound} 个"
 next: increment_iteration
 ```
 
 **失败时:**
+
 ```
 action: retry (最多 2 次尝试)
 on_exhausted: escalate，原因 "开发代理在重试后无法应用修复"
@@ -366,11 +372,11 @@ on_exhausted: escalate，原因 "开发代理在重试后无法应用修复"
 
 ### 步骤 5: 增加迭代 (阶段 5)
 
-| 属性 | 值 |
-|------|-----|
+| 属性     | 值                    |
+| -------- | --------------------- |
 | **名称** | `increment_iteration` |
-| **阶段** | 5 - 检查迭代 |
-| **代理** | `system` |
+| **阶段** | 5 - 检查迭代          |
+| **代理** | `system`              |
 
 **描述:**
 增加迭代计数器并针对最大值进行检查。如果达到最大值，则升级给人工。
@@ -411,13 +417,13 @@ QA循环中的责任:
 
 **使用的工具:**
 
-| 工具 | 目的 |
-|------|------|
-| `github-cli` | 代码审查和 PR 管理 |
-| `browser` | 端到端测试和 UI 验证 |
-| `context7` | 研究测试框架 |
-| `supabase` | 数据库测试和数据验证 |
-| `coderabbit` | 自动化代码审查 |
+| 工具         | 目的                 |
+| ------------ | -------------------- |
+| `github-cli` | 代码审查和 PR 管理   |
+| `browser`    | 端到端测试和 UI 验证 |
+| `context7`   | 研究测试框架         |
+| `supabase`   | 数据库测试和数据验证 |
+| `coderabbit` | 自动化代码审查       |
 
 **CodeRabbit 集成:**
 
@@ -456,13 +462,13 @@ QA循环中的责任:
 
 **使用的工具:**
 
-| 工具 | 目的 |
-|------|------|
-| `git` | 本地操作: add、commit、status、diff |
-| `context7` | 查阅库文档 |
-| `supabase` | 数据库操作 |
-| `browser` | 测试 Web 应用 |
-| `coderabbit` | 提前提交代码质量审查 |
+| 工具         | 目的                                |
+| ------------ | ----------------------------------- |
+| `git`        | 本地操作: add、commit、status、diff |
+| `context7`   | 查阅库文档                          |
+| `supabase`   | 数据库操作                          |
+| `browser`    | 测试 Web 应用                       |
+| `coderabbit` | 提前提交代码质量审查                |
 
 ---
 
@@ -525,12 +531,12 @@ flowchart TD
 
 **网关标准:**
 
-| 网关 | 条件 |
-|------|------|
+| 网关     | 条件                             |
+| -------- | -------------------------------- |
 | **通过** | 所有关键需求得到满足，无阻止问题 |
-| **关切** | 发现非关键问题，团队应审查 |
-| **失败** | 关键问题应处理 |
-| **放弃** | 问题被明确接受 |
+| **关切** | 发现非关键问题，团队应审查       |
+| **失败** | 关键问题应处理                   |
+| **放弃** | 问题被明确接受                   |
 
 ---
 
@@ -575,24 +581,29 @@ flowchart LR
 # QA 修复请求: {storyId}
 
 ## @dev 的说明
+
 - 仅修复下面列出的问题
 - 不要添加功能或重构无关代码
 
 ## 摘要
-| 严重性 | 数量 | 状态 |
-|--------|------|------|
-| 关键 | N | 必须在合并前修复 |
-| 主要 | N | 应在合并前修复 |
-| 次要 | N | 可选改进 |
+
+| 严重性 | 数量 | 状态             |
+| ------ | ---- | ---------------- |
+| 关键   | N    | 必须在合并前修复 |
+| 主要   | N    | 应在合并前修复   |
+| 次要   | N    | 可选改进         |
 
 ## 要修复的问题
+
 ### 1. [关键] {标题}
+
 - 位置: `{file:line}`
 - 问题: {描述}
 - 预期: {预期}
 - 验证: [ ] {步骤}
 
 ## 约束
+
 - [ ] 仅修复列出的问题
 - [ ] 运行所有测试: `npm test`
 - [ ] 运行检查: `npm run lint`
@@ -661,12 +672,12 @@ flowchart TD
 
 ### 启动 QA 循环的条件
 
-| 条件 | 描述 |
-|------|------|
-| **故事状态** | 必须处于"审查"状态 |
-| **实现完成** | 开发人员已完成所有任务 |
-| **文件列表已更新** | 故事文件中的文件列表是最新的 |
-| **自动化测试** | 所有自动化测试都通过 |
+| 条件                  | 描述                           |
+| --------------------- | ------------------------------ |
+| **故事状态**          | 必须处于"审查"状态             |
+| **实现完成**          | 开发人员已完成所有任务         |
+| **文件列表已更新**    | 故事文件中的文件列表是最新的   |
+| **自动化测试**        | 所有自动化测试都通过           |
 | **CodeRabbit 已配置** | CLI 在 WSL 中安装 (可选但推荐) |
 
 ### 环境配置
@@ -689,31 +700,31 @@ npm run lint    # 应该通过
 
 ### 工作流输入
 
-| 字段 | 类型 | 必需 | 描述 |
-|------|------|------|------|
-| `storyId` | 字符串 | 是 | 故事标识符 (例如: "故事-42") |
-| `maxIterations` | 数字 | 否 | 最大值的覆盖 (默认: 5) |
-| `mode` | 字符串 | 否 | `yolo`、`interactive`、`preflight` |
+| 字段            | 类型   | 必需 | 描述                               |
+| --------------- | ------ | ---- | ---------------------------------- |
+| `storyId`       | 字符串 | 是   | 故事标识符 (例如: "故事-42")       |
+| `maxIterations` | 数字   | 否   | 最大值的覆盖 (默认: 5)             |
+| `mode`          | 字符串 | 否   | `yolo`、`interactive`、`preflight` |
 
 ### 工作流输出
 
-| 文件 | 位置 | 描述 |
-|------|------|------|
-| `loop-status.json` | `qa/loop-status.json` | 循环当前状态 |
-| `gate-file.yaml` | `qa/gates/{storyId}.yaml` | 质量网关决策 |
-| `QA_FIX_REQUEST.md` | `qa/QA_FIX_REQUEST.md` | 修正文档 |
-| `fixes-applied.json` | `qa/fixes-applied.json` | 已应用修正记录 |
-| `summary.md` | `qa/summary.md` | 循环最终摘要 |
+| 文件                 | 位置                      | 描述           |
+| -------------------- | ------------------------- | -------------- |
+| `loop-status.json`   | `qa/loop-status.json`     | 循环当前状态   |
+| `gate-file.yaml`     | `qa/gates/{storyId}.yaml` | 质量网关决策   |
+| `QA_FIX_REQUEST.md`  | `qa/QA_FIX_REQUEST.md`    | 修正文档       |
+| `fixes-applied.json` | `qa/fixes-applied.json`   | 已应用修正记录 |
+| `summary.md`         | `qa/summary.md`           | 循环最终摘要   |
 
 ### 状态文件的架构
 
 ```yaml
-storyId: 字符串              # 故事 ID
-currentIteration: 数字      # 当前迭代
-maxIterations: 数字         # 配置的最大值
-status: 枚举                 # pending | in_progress | completed | stopped | escalated
-startedAt: ISO-8601          # 开始时间戳
-updatedAt: ISO-8601          # 最后更新
+storyId: 字符串 # 故事 ID
+currentIteration: 数字 # 当前迭代
+maxIterations: 数字 # 配置的最大值
+status: 枚举 # pending | in_progress | completed | stopped | escalated
+startedAt: ISO-8601 # 开始时间戳
+updatedAt: ISO-8601 # 最后更新
 
 history:
   - iteration: 数字
@@ -722,7 +733,7 @@ history:
     issuesFound: 数字
     fixedAt: ISO-8601 | null
     issuesFixed: 数字 | null
-    duration: 数字             # 毫秒
+    duration: 数字 # 毫秒
 ```
 
 ---
@@ -765,12 +776,12 @@ flowchart TD
 
 ### 升级的标准
 
-| 触发器 | 原因 | 操作 |
-|--------|------|------|
-| `max_iterations_reached` | 循环达到最大值但未获批准 | 带完整上下文升级 |
-| `verdict_blocked` | QA 返回已阻止 | 立即升级 |
-| `fix_failure` | @dev 在重试后无法应用修复 | 升级并带错误日志 |
-| `manual_escalate` | 用户执行 `*escalate-qa-loop` | 按需升级 |
+| 触发器                   | 原因                         | 操作             |
+| ------------------------ | ---------------------------- | ---------------- |
+| `max_iterations_reached` | 循环达到最大值但未获批准     | 带完整上下文升级 |
+| `verdict_blocked`        | QA 返回已阻止                | 立即升级         |
+| `fix_failure`            | @dev 在重试后无法应用修复    | 升级并带错误日志 |
+| `manual_escalate`        | 用户执行 `*escalate-qa-loop` | 按需升级         |
 
 ---
 
@@ -796,12 +807,12 @@ config:
   legacyStatusPath: .aiox/status.json
 
   # 每个阶段的超时 (毫秒)
-  reviewTimeout: 1800000    # 30 分钟
-  fixTimeout: 3600000       # 60 分钟
+  reviewTimeout: 1800000 # 30 分钟
+  fixTimeout: 3600000 # 60 分钟
 
   # 重试配置
   maxRetries: 2
-  retryDelay: 5000          # 5 秒
+  retryDelay: 5000 # 5 秒
 ```
 
 ### 按项目定制
@@ -811,9 +822,9 @@ config:
 ```yaml
 autoClaude:
   qaLoop:
-    maxIterations: 3        # 针对较小项目减少
-    reviewTimeout: 900000   # 15 分钟快速审查
-    fixTimeout: 1800000     # 30 分钟简单修复
+    maxIterations: 3 # 针对较小项目减少
+    reviewTimeout: 900000 # 15 分钟快速审查
+    fixTimeout: 1800000 # 30 分钟简单修复
 ```
 
 ---
@@ -822,15 +833,15 @@ autoClaude:
 
 ### 可用命令
 
-| 命令 | 操作 | 描述 |
-|------|------|------|
-| `*qa-loop {storyId}` | `start_loop` | 启动完整循环 |
-| `*qa-loop-review` | `run_step: review` | 仅从审查步骤启动 |
-| `*qa-loop-fix` | `run_step: fix` | 仅从修复步骤启动 |
-| `*stop-qa-loop` | `stop_loop` | 停止循环并保存状态 |
-| `*resume-qa-loop` | `resume_loop` | 恢复停止/升级的循环 |
-| `*escalate-qa-loop` | `escalate` | 强制手动升级 |
-| `*qa-loop --reset` | `reset` | 删除状态并重新启动 |
+| 命令                 | 操作               | 描述                |
+| -------------------- | ------------------ | ------------------- |
+| `*qa-loop {storyId}` | `start_loop`       | 启动完整循环        |
+| `*qa-loop-review`    | `run_step: review` | 仅从审查步骤启动    |
+| `*qa-loop-fix`       | `run_step: fix`    | 仅从修复步骤启动    |
+| `*stop-qa-loop`      | `stop_loop`        | 停止循环并保存状态  |
+| `*resume-qa-loop`    | `resume_loop`      | 恢复停止/升级的循环 |
+| `*escalate-qa-loop`  | `escalate`         | 强制手动升级        |
+| `*qa-loop --reset`   | `reset`            | 删除状态并重新启动  |
 
 ### 停止/恢复流程
 
@@ -874,12 +885,12 @@ escalation:
 
 升级发生时，系统准备:
 
-| 项目 | 描述 |
-|------|------|
-| `loop-status.json` | 循环的完整状态 |
-| 网关文件 | 历史记录中所有网关文件 |
-| 修复请求 | 所有生成的修复请求 |
-| 摘要 | 所有迭代的摘要 |
+| 项目               | 描述                   |
+| ------------------ | ---------------------- |
+| `loop-status.json` | 循环的完整状态         |
+| 网关文件           | 历史记录中所有网关文件 |
+| 修复请求           | 所有生成的修复请求     |
+| 摘要               | 所有迭代的摘要         |
 
 ### 通知消息
 
@@ -935,11 +946,11 @@ project_status:
 
 ### 通知
 
-| 事件 | 消息 | 渠道 |
-|------|------|------|
-| `on_approve` | "QA 循环已批准: {storyId}" | log |
-| `on_escalate` | "QA 循环已升级: {storyId} - 需要关注" | log |
-| `on_stop` | "QA 循环已停止: {storyId}" | log |
+| 事件          | 消息                                  | 渠道 |
+| ------------- | ------------------------------------- | ---- |
+| `on_approve`  | "QA 循环已批准: {storyId}"            | log  |
+| `on_escalate` | "QA 循环已升级: {storyId} - 需要关注" | log  |
+| `on_stop`     | "QA 循环已停止: {storyId}"            | log  |
 
 ---
 
@@ -947,21 +958,21 @@ project_status:
 
 ### 常见错误和解决方案
 
-| 错误 | 原因 | 解决方案 | 操作 |
-|------|------|---------|------|
-| `missing_story_id` | 未提供故事 ID | "用法: *qa-loop 故事-42" | 提示 |
-| `review_timeout` | 审查阶段超过超时 | 检查 QA 代理状态 | 升级 |
-| `fix_timeout` | 修复阶段超过超时 | 检查开发代理状态 | 升级 |
-| `invalid_status` | 状态文件损坏 | "重置循环: *qa-loop {storyId} --reset" | 暂停 |
+| 错误               | 原因             | 解决方案                                | 操作 |
+| ------------------ | ---------------- | --------------------------------------- | ---- |
+| `missing_story_id` | 未提供故事 ID    | "用法: \*qa-loop 故事-42"               | 提示 |
+| `review_timeout`   | 审查阶段超过超时 | 检查 QA 代理状态                        | 升级 |
+| `fix_timeout`      | 修复阶段超过超时 | 检查开发代理状态                        | 升级 |
+| `invalid_status`   | 状态文件损坏     | "重置循环: \*qa-loop {storyId} --reset" | 暂停 |
 
 ### 重试策略
 
 ```yaml
 on_failure:
   action: retry
-  max_retries: 2              # 最大尝试次数
-  retryDelay: 5000            # 尝试间延迟
-  on_exhausted: escalate      # 重试耗尽时的操作
+  max_retries: 2 # 最大尝试次数
+  retryDelay: 5000 # 尝试间延迟
+  on_exhausted: escalate # 重试耗尽时的操作
 ```
 
 ---
@@ -971,10 +982,12 @@ on_failure:
 ### 问题: 循环在审查时卡住
 
 **症状:**
+
 - 审查在 30 分钟后未完成
 - 状态保持"in_progress"
 
 **诊断:**
+
 ```bash
 # 检查循环状态
 cat qa/loop-status.json | jq '.status, .currentIteration'
@@ -984,6 +997,7 @@ ls -la qa/gates/
 ```
 
 **解决方案:**
+
 1. 执行 `*stop-qa-loop`
 2. 检查 CodeRabbit 是否在响应
 3. 执行 `*resume-qa-loop` 恢复
@@ -993,10 +1007,12 @@ ls -la qa/gates/
 ### 问题: 修复未应用
 
 **症状:**
+
 - @dev 报告成功但问题仍然存在
 - 重新审查发现相同的问题
 
 **诊断:**
+
 ```bash
 # 检查修复请求
 cat qa/QA_FIX_REQUEST.md
@@ -1006,6 +1022,7 @@ cat qa/fixes-applied.json
 ```
 
 **解决方案:**
+
 1. 手动审查 QA_FIX_REQUEST.md
 2. 验证 @dev 更新了正确的文件
 3. 在重新审查前本地运行测试
@@ -1015,15 +1032,18 @@ cat qa/fixes-applied.json
 ### 问题: 达到最大迭代
 
 **症状:**
+
 - 循环在 5 次迭代后升级，不获批准
 
 **诊断:**
+
 ```bash
 # 查看完整历史
 cat qa/loop-status.json | jq '.history'
 ```
 
 **解决方案:**
+
 1. 分析重复问题的模式
 2. 检查需求是否清晰
 3. 考虑增加 maxIterations 或手动解决
@@ -1033,10 +1053,12 @@ cat qa/loop-status.json | jq '.history'
 ### 问题: CodeRabbit 不工作
 
 **症状:**
+
 - 错误 "coderabbit: command not found"
 - 自我修复阶段超时
 
 **诊断:**
+
 ```bash
 # 检查安装
 wsl bash -c 'which coderabbit'
@@ -1046,6 +1068,7 @@ wsl bash -c '~/.local/bin/coderabbit auth status'
 ```
 
 **解决方案:**
+
 1. 在 WSL 中重新安装 CodeRabbit
 2. 执行 `coderabbit auth login`
 3. 检查代理配置中的路径
@@ -1055,10 +1078,12 @@ wsl bash -c '~/.local/bin/coderabbit auth status'
 ### 问题: 状态文件损坏
 
 **症状:**
+
 - 错误 "invalid_status"
 - 循环无法启动或恢复
 
 **解决方案:**
+
 ```bash
 # 备份损坏的文件
 mv qa/loop-status.json qa/loop-status.json.bak
@@ -1073,39 +1098,39 @@ mv qa/loop-status.json qa/loop-status.json.bak
 
 ### 工作流文件
 
-| 文件 | 位置 |
-|------|------|
-| 工作流定义 | `.aiox-core/development/workflows/qa-loop.yaml` |
-| QA 审查任务 | `.aiox-core/development/tasks/qa-review-story.md` |
+| 文件             | 位置                                                    |
+| ---------------- | ------------------------------------------------------- |
+| 工作流定义       | `.aiox-core/development/workflows/qa-loop.yaml`         |
+| QA 审查任务      | `.aiox-core/development/tasks/qa-review-story.md`       |
 | 创建修复请求任务 | `.aiox-core/development/tasks/qa-create-fix-request.md` |
-| 应用 QA 修复任务 | `.aiox-core/development/tasks/dev-apply-qa-fixes.md` |
-| QA 代理 | `.aiox-core/development/agents/qa.md` |
-| 开发代理 | `.aiox-core/development/agents/dev.md` |
+| 应用 QA 修复任务 | `.aiox-core/development/tasks/dev-apply-qa-fixes.md`    |
+| QA 代理          | `.aiox-core/development/agents/qa.md`                   |
+| 开发代理         | `.aiox-core/development/agents/dev.md`                  |
 
 ### 相关文档
 
-| 文档 | 描述 |
-|------|------|
-| Epic 6 - QA 演进 | 自主开发引擎的上下文 |
-| 故事 6.5 | QA 循环的实现故事 |
-| 故事 6.3.3 | CodeRabbit 自我修复集成 |
-| ADR-XXX | 架构决策记录 (如果存在) |
+| 文档             | 描述                    |
+| ---------------- | ----------------------- |
+| Epic 6 - QA 演进 | 自主开发引擎的上下文    |
+| 故事 6.5         | QA 循环的实现故事       |
+| 故事 6.3.3       | CodeRabbit 自我修复集成 |
+| ADR-XXX          | 架构决策记录 (如果存在) |
 
 ### 模板
 
-| 模板 | 位置 | 用途 |
-|------|------|------|
+| 模板                | 位置                                | 用途         |
+| ------------------- | ----------------------------------- | ------------ |
 | `qa-gate-tmpl.yaml` | `.aiox-core/development/templates/` | 网关文件结构 |
-| `story-tmpl.yaml` | `.aiox-core/development/templates/` | 故事文件结构 |
+| `story-tmpl.yaml`   | `.aiox-core/development/templates/` | 故事文件结构 |
 
 ---
 
 ## 变更历史
 
-| 日期 | 版本 | 作者 | 更改 |
-|------|------|------|------|
-| 2026-02-04 | 1.0 | 技术文档专家 | 初始版本 |
+| 日期       | 版本 | 作者         | 更改     |
+| ---------- | ---- | ------------ | -------- |
+| 2026-02-04 | 1.0  | 技术文档专家 | 初始版本 |
 
 ---
 
-*文档自动从工作流 `qa-loop.yaml` 生成*
+_文档自动从工作流 `qa-loop.yaml` 生成_

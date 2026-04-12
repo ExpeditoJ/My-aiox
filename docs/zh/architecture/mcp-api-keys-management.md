@@ -48,12 +48,12 @@ AIOX 使用 Docker MCP Toolkit 作为主要的 MCP 基础设施:
 
 ## 支持的 MCP 服务器
 
-| MCP 服务器 | 需要密钥 | 环境变量 | 位置 |
-|-----------|---------|--------|------|
-| EXA | 是 | `EXA_API_KEY` | Docker MCP config.yaml |
-| Context7 | 否 | N/A | N/A |
-| Apify | 是 | `APIFY_API_TOKEN` | Docker MCP docker-mcp.yaml |
-| Playwright | 否 | N/A | N/A |
+| MCP 服务器 | 需要密钥 | 环境变量          | 位置                       |
+| ---------- | -------- | ----------------- | -------------------------- |
+| EXA        | 是       | `EXA_API_KEY`     | Docker MCP config.yaml     |
+| Context7   | 否       | N/A               | N/A                        |
+| Apify      | 是       | `APIFY_API_TOKEN` | Docker MCP docker-mcp.yaml |
+| Playwright | 否       | N/A               | N/A                        |
 
 ---
 
@@ -70,7 +70,7 @@ Docker MCP Toolkit 通过其配置文件管理 API 密钥。
 ```yaml
 # ~/.docker/mcp/config.yaml
 apiKeys:
-  exa: "你的-exa-api-密钥-在这里"
+  exa: '你的-exa-api-密钥-在这里'
 ```
 
 **对于需要环境变量的服务器 (Apify 等):**
@@ -82,7 +82,7 @@ apiKeys:
 apify:
   env:
     - name: APIFY_API_TOKEN
-      value: '你的-apify-token-在这里'  # 直接硬编码 (参见已知问题)
+      value: '你的-apify-token-在这里' # 直接硬编码 (参见已知问题)
 ```
 
 ### 方法 2: 环境变量
@@ -111,12 +111,12 @@ APIFY_API_TOKEN=你的-apify-token
 
 **重要:** 所有 MCP 基础设施管理由 **DevOps 代理 (@devops / Gage)** 专门处理。
 
-| 操作 | 代理 | 命令 |
-|------|------|------|
-| 搜索 MCP 目录 | DevOps | `*search-mcp` |
-| 添加 MCP 服务器 | DevOps | `*add-mcp` |
-| 列出启用的 MCP | DevOps | `*list-mcps` |
-| 移除 MCP 服务器 | DevOps | `*remove-mcp` |
+| 操作            | 代理   | 命令                |
+| --------------- | ------ | ------------------- |
+| 搜索 MCP 目录   | DevOps | `*search-mcp`       |
+| 添加 MCP 服务器 | DevOps | `*add-mcp`          |
+| 列出启用的 MCP  | DevOps | `*list-mcps`        |
+| 移除 MCP 服务器 | DevOps | `*remove-mcp`       |
 | 配置 Docker MCP | DevOps | `*setup-mcp-docker` |
 
 其他代理 (Dev、Architect 等) 是 MCP **使用者**，不是管理员。
@@ -151,6 +151,7 @@ APIFY_API_TOKEN=你的-apify-token
 **问题:** Docker MCP Toolkit 的 secrets 存储和模板插值无法正确工作。通过 `docker mcp secret set` 配置的凭据**不会**传递给容器。
 
 **症状:**
+
 - `docker mcp tools ls` 显示 "(N prompts)" 而不是 "(N tools)"
 - MCP 服务器启动但身份验证失败
 - 详细输出显示 `-e ENV_VAR` 但没有值
@@ -162,7 +163,7 @@ APIFY_API_TOKEN=你的-apify-token
 apify:
   env:
     - name: APIFY_API_TOKEN
-      value: '令牌的实际值'  # 直接硬编码
+      value: '令牌的实际值' # 直接硬编码
 ```
 
 **受影响的 MCP:** 任何需要身份验证的 MCP (Apify、Notion、Slack 等)
@@ -231,9 +232,9 @@ vim ~/.docker/mcp/catalogs/docker-mcp.yaml
 
 ## API 密钥来源
 
-| 服务 | 获取 API 密钥 | 文档 |
-|------|--------------|------|
-| EXA | [dashboard.exa.ai](https://dashboard.exa.ai) | [docs.exa.ai](https://docs.exa.ai) |
+| 服务  | 获取 API 密钥                                  | 文档                                     |
+| ----- | ---------------------------------------------- | ---------------------------------------- |
+| EXA   | [dashboard.exa.ai](https://dashboard.exa.ai)   | [docs.exa.ai](https://docs.exa.ai)       |
 | Apify | [console.apify.com](https://console.apify.com) | [docs.apify.com](https://docs.apify.com) |
 
 ---

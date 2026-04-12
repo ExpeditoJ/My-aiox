@@ -52,13 +52,13 @@ aiox-core install
 
 **Resposta:**
 
-| Componente     | Mínimo                             | Recomendado     |
-| -------------- | ---------------------------------- | --------------- |
-| **Node.js**    | 18.0.0                             | 20.x LTS        |
-| **npm**        | 9.0.0                              | 10.x            |
-| **Espaço em Disco** | 100 MB                        | 500 MB          |
-| **RAM**        | 2 GB                               | 8 GB            |
-| **SO**         | Windows 10, macOS 12, Ubuntu 20.04 | Versões mais recentes |
+| Componente          | Mínimo                             | Recomendado           |
+| ------------------- | ---------------------------------- | --------------------- |
+| **Node.js**         | 18.0.0                             | 20.x LTS              |
+| **npm**             | 9.0.0                              | 10.x                  |
+| **Espaço em Disco** | 100 MB                             | 500 MB                |
+| **RAM**             | 2 GB                               | 8 GB                  |
+| **SO**              | Windows 10, macOS 12, Ubuntu 20.04 | Versões mais recentes |
 
 **Verifique seu sistema:**
 
@@ -95,10 +95,10 @@ O instalador irá:
 
 **Resposta:**
 
-| Cenário                 | Tempo         |
-| ----------------------- | ------------- |
-| **Primeira instalação** | 2-5 minutos   |
-| **Atualizar existente** | 1-2 minutos   |
+| Cenário                 | Tempo          |
+| ----------------------- | -------------- |
+| **Primeira instalação** | 2-5 minutos    |
+| **Atualizar existente** | 1-2 minutos    |
 | **Apenas Squad**        | 30-60 segundos |
 
 Fatores que afetam o tempo de instalação:
@@ -176,11 +176,11 @@ npx aiox-core status
 
 **Resposta:** Recomendamos:
 
-| Tipo de Atualização    | Frequência  | Comando                         |
-| ---------------------- | ----------- | ------------------------------- |
-| **Patches de segurança** | Imediatamente | `npx aiox-core update` |
-| **Atualizações menores** | Mensalmente | `npx aiox-core update` |
-| **Versões maiores**    | Trimestralmente | Revisar changelog primeiro    |
+| Tipo de Atualização      | Frequência      | Comando                    |
+| ------------------------ | --------------- | -------------------------- |
+| **Patches de segurança** | Imediatamente   | `npx aiox-core update`     |
+| **Atualizações menores** | Mensalmente     | `npx aiox-core update`     |
+| **Versões maiores**      | Trimestralmente | Revisar changelog primeiro |
 
 **Verificar atualizações:**
 
@@ -284,8 +284,8 @@ tar -xzvf aiox-offline.tar.gz
 
 **Resposta:**
 
-| IDE                | Status         | Ativação de Agentes |
-| ------------------ | -------------- | ------------------- |
+| IDE                | Status           | Ativação de Agentes |
+| ------------------ | ---------------- | ------------------- |
 | **Claude Code**    | Suporte Completo | `/dev`, `/qa`, etc. |
 | **Cursor**         | Suporte Completo | `@dev`, `@qa`, etc. |
 | **Gemini CLI**     | Suporte Completo | Menção no prompt    |
@@ -310,6 +310,7 @@ tar -xzvf aiox-offline.tar.gz
 **Linha de comando:**
 
 ```bash
+
 ```
 
 Cada IDE recebe seu próprio diretório de configuração:
@@ -352,19 +353,19 @@ npx aiox-core install
 
 **Resposta:** O AIOX inclui 11+ agentes especializados:
 
-| Agente          | Papel                    | Melhor Para                           |
-| --------------- | ------------------------ | ------------------------------------- |
-| `dev`           | Desenvolvedor Full-Stack | Implementação de código, debugging    |
-| `qa`            | Engenheiro de QA         | Testes, code review                   |
-| `architect`     | Arquiteto de Sistema     | Design, decisões de arquitetura       |
-| `pm`            | Gerente de Projeto       | Planejamento, acompanhamento          |
-| `po`            | Product Owner            | Backlog, requisitos                   |
-| `sm`            | Scrum Master             | Facilitação, gestão de sprints        |
-| `analyst`       | Analista de Negócios     | Análise de requisitos                 |
-| `ux-expert`     | Designer UX              | Design de experiência do usuário      |
-| `data-engineer` | Engenheiro de Dados      | Pipelines de dados, ETL               |
-| `devops`        | Engenheiro DevOps        | CI/CD, deployment                     |
-| `db-sage`       | Arquiteto de Banco       | Design de schema, queries             |
+| Agente          | Papel                    | Melhor Para                        |
+| --------------- | ------------------------ | ---------------------------------- |
+| `dev`           | Desenvolvedor Full-Stack | Implementação de código, debugging |
+| `qa`            | Engenheiro de QA         | Testes, code review                |
+| `architect`     | Arquiteto de Sistema     | Design, decisões de arquitetura    |
+| `pm`            | Gerente de Projeto       | Planejamento, acompanhamento       |
+| `po`            | Product Owner            | Backlog, requisitos                |
+| `sm`            | Scrum Master             | Facilitação, gestão de sprints     |
+| `analyst`       | Analista de Negócios     | Análise de requisitos              |
+| `ux-expert`     | Designer UX              | Design de experiência do usuário   |
+| `data-engineer` | Engenheiro de Dados      | Pipelines de dados, ETL            |
+| `devops`        | Engenheiro DevOps        | CI/CD, deployment                  |
+| `db-sage`       | Arquiteto de Banco       | Design de schema, queries          |
 
 ---
 
@@ -438,8 +439,8 @@ npx aiox-core install
 
 **Resposta:** Squads são add-ons opcionais que estendem as capacidades do AIOX:
 
-| Pack           | Funcionalidades                                                |
-| -------------- | -------------------------------------------------------------- |
+| Pack           | Funcionalidades                                                      |
+| -------------- | -------------------------------------------------------------------- |
 | **hybrid-ops** | Integração ClickUp, automação de processos, workflows especializados |
 
 **Instalar um Squad:**
@@ -481,7 +482,7 @@ name: my-expansion
 version: 1.0.0
 description: My custom Squad
 dependencies:
-  aiox-core: ">=1.0.0"
+  aiox-core: '>=1.0.0'
 agents:
   - my-agent
 tasks:
@@ -508,7 +509,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
       - run: npx aiox-core install --full --ide claude-code
       - run: npm test
 ```
@@ -594,12 +595,12 @@ projectStatus:
 
 **Resposta:**
 
-| Recurso             | Link                                                       |
-| ------------------- | ---------------------------------------------------------- |
-| **Documentação**    | `docs/` no seu projeto                                     |
-| **Solução de Problemas** | [troubleshooting.md](./troubleshooting.md)            |
-| **Issues no GitHub** | https://github.com/SynkraAI/aiox-core/issues              |
-| **Código-fonte**    | https://github.com/SynkraAI/aiox-core                      |
+| Recurso                  | Link                                         |
+| ------------------------ | -------------------------------------------- |
+| **Documentação**         | `docs/` no seu projeto                       |
+| **Solução de Problemas** | [troubleshooting.md](./troubleshooting.md)   |
+| **Issues no GitHub**     | https://github.com/SynkraAI/aiox-core/issues |
+| **Código-fonte**         | https://github.com/SynkraAI/aiox-core        |
 
 **Antes de pedir ajuda:**
 

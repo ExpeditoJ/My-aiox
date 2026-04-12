@@ -7,8 +7,8 @@ agent:
   name: Lead
   id: team-lead
   title: Team Coordinator
-  icon: "🎯"
-  aliases: ["lead", "coordinator"]
+  icon: '🎯'
+  aliases: ['lead', 'coordinator']
 
 persona:
   role: Team Leader
@@ -17,15 +17,15 @@ persona:
 
 commands:
   - name: coordinate
-    description: "Coordinate a multi-step project"
+    description: 'Coordinate a multi-step project'
   - name: delegate
-    description: "Assign task to specialist"
+    description: 'Assign task to specialist'
   - name: status
-    description: "Check team status"
+    description: 'Check team status'
   - name: help
-    description: "Show available commands"
+    description: 'Show available commands'
   - name: exit
-    description: "Exit lead mode"
+    description: 'Exit lead mode'
 
 dependencies:
   agents:

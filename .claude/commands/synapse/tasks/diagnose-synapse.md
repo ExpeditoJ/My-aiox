@@ -19,6 +19,7 @@ Show the full markdown report output to the user.
 ### Step 3: Analyze Gaps
 
 If the report contains any FAIL or WARN items:
+
 1. List each gap with its severity
 2. Provide the recommended fix from the report
 3. Ask the user if they want to apply any fixes
@@ -133,16 +134,17 @@ Using the JSON output from Step 4, present a **Session Performance Report** with
 
 #### 5a. Session Overview
 
-| Metric | Value |
-|--------|-------|
-| Wall Clock Total | (firstEvent → lastEvent) |
-| Tool Execution Time | sum of all durationMs |
+| Metric                   | Value                                       |
+| ------------------------ | ------------------------------------------- |
+| Wall Clock Total         | (firstEvent → lastEvent)                    |
+| Tool Execution Time      | sum of all durationMs                       |
 | Thinking/Processing Time | total gaps between PostToolUse → PreToolUse |
-| Overhead Ratio | thinkingTime / wallClock as % |
+| Overhead Ratio           | thinkingTime / wallClock as %               |
 
 #### 5b. Execution Timeline
 
 Show every tool call in chronological order:
+
 ```
 HH:MM:SS.mmm  START  ToolName  — input summary
 HH:MM:SS.mmm  END    ToolName  [Xms]  (+Yms gap)
@@ -155,18 +157,19 @@ Highlight any gaps > 5 seconds with a warning marker.
 Table sorted by total time descending:
 
 | Tool | Calls | Total | Avg | Max |
-|------|-------|-------|-----|-----|
-| ... | | | | |
+| ---- | ----- | ----- | --- | --- |
+| ...  |       |       |     |     |
 
 #### 5d. Largest Thinking Gaps
 
 Show top 10 gaps (PostToolUse → PreToolUse), sorted descending:
 
-| Gap | From → To | Analysis |
-|-----|-----------|----------|
-| Xs | Tool A → Tool B | (explain likely cause) |
+| Gap | From → To       | Analysis               |
+| --- | --------------- | ---------------------- |
+| Xs  | Tool A → Tool B | (explain likely cause) |
 
 For the Analysis column, infer causes:
+
 - **> 15s gap**: Likely LLM processing large context or generating long response
 - **5-15s gap**: Normal thinking for complex decisions, reading tool output
 - **2-5s gap**: Standard inter-tool processing
@@ -175,6 +178,7 @@ For the Analysis column, infer causes:
 #### 5e. Bottleneck Diagnosis
 
 Based on the data, provide a concrete diagnosis:
+
 1. What % of total time was spent in tool execution vs thinking?
 2. Which specific tool call or gap was the single largest time consumer?
 3. Actionable recommendations to reduce total time
@@ -182,6 +186,7 @@ Based on the data, provide a concrete diagnosis:
 ### Step 6: Handle Missing Timing Data
 
 If Step 4 outputs `NO_TIMING_DATA`:
+
 1. Inform the user that the timing hooks are not yet capturing data
 2. Explain that timing data requires the `PreToolUse`/`PostToolUse` hooks in `~/.claude/settings.json`
 3. Check if hooks are registered:
@@ -204,11 +209,12 @@ Combine SYNAPSE health + Performance into a single status line:
 ## Context
 
 This diagnostic checks:
+
 1. **Hook Status** - Is the synapse-engine hook registered and functional?
 2. **Session Status** - Does the session have active_agent, prompt_count, bracket?
 3. **Manifest Integrity** - Do all manifest domains have corresponding files?
 4. **Pipeline Simulation** - For the current bracket, which layers should be active?
-5. **UAP Bridge** - Did the UAP write _active-agent.json at activation?
+5. **UAP Bridge** - Did the UAP write \_active-agent.json at activation?
 6. **Memory Bridge** - Is Pro available? Does the bracket require memory hints?
 7. **Gaps & Recommendations** - Prioritized list of issues with fixes
 8. **Session Performance** - Exact timing of every tool call, thinking gaps, bottleneck diagnosis

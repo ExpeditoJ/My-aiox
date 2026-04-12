@@ -28,15 +28,15 @@ O **Motor de Desenvolvimento Autônomo (ADE)** é a infraestrutura do AIOX para 
 
 ### Capacidades Principais
 
-| Capacidade                   | Descrição                                | Épica |
-| ---------------------------- | ---------------------------------------- | ----- |
-| **Isolamento de Story**      | Isolamento de branch baseado em worktree | Épica 1 |
-| **Status do Projeto**        | Rastreamento de status baseado em YAML  | Épica 2 |
-| **Pipeline de Especificação** | Automação de Requirements → Especificação | Épica 3 |
-| **Planejamento de Implementação** | Geração de plano e rastreamento de progresso | Épica 4 |
-| **Auto-Recuperação**        | Detecção de travamento e recuperação    | Épica 5 |
-| **Evolução de QA**          | Loops automáticos de review → correção  | Épica 6 |
-| **Camada de Memória**       | Aprendizado de padrões e documentação de gotchas | Épica 7 |
+| Capacidade                        | Descrição                                        | Épica   |
+| --------------------------------- | ------------------------------------------------ | ------- |
+| **Isolamento de Story**           | Isolamento de branch baseado em worktree         | Épica 1 |
+| **Status do Projeto**             | Rastreamento de status baseado em YAML           | Épica 2 |
+| **Pipeline de Especificação**     | Automação de Requirements → Especificação        | Épica 3 |
+| **Planejamento de Implementação** | Geração de plano e rastreamento de progresso     | Épica 4 |
+| **Auto-Recuperação**              | Detecção de travamento e recuperação             | Épica 5 |
+| **Evolução de QA**                | Loops automáticos de review → correção           | Épica 6 |
+| **Camada de Memória**             | Aprendizado de padrões e documentação de gotchas | Épica 7 |
 
 ### Diagrama de Arquitetura
 
@@ -177,13 +177,13 @@ Componentes:
 
 **Fases do Pipeline:**
 
-| Fase       | Agente     | Saída             |
-| ---------- | ---------- | ----------------- |
-| 1. Coletar | @pm        | requirements.json |
-| 2. Avaliar | @architect | complexity.json   |
-| 3. Pesquisar | @analyst | research.json     |
-| 4. Escrever | @pm        | spec.md           |
-| 5. Criticar | @qa        | critique.json     |
+| Fase         | Agente     | Saída             |
+| ------------ | ---------- | ----------------- |
+| 1. Coletar   | @pm        | requirements.json |
+| 2. Avaliar   | @architect | complexity.json   |
+| 3. Pesquisar | @analyst   | research.json     |
+| 4. Escrever  | @pm        | spec.md           |
+| 5. Criticar  | @qa        | critique.json     |
 
 **Adaptação de Complexidade:**
 
@@ -237,11 +237,11 @@ Componentes:
 
 **Sinais de Detecção de Travamento:**
 
-| Sinal          | Limite       | Ação                |
-| -------------- | ------------ | ------------------- |
-| Mesmo erro 3x  | 3 ocorrências | Sugerir alternativa |
-| Sem progresso  | 10 minutos   | Solicitar revisão   |
-| Revert repetido | 2 reverts    | Escalar             |
+| Sinal           | Limite        | Ação                |
+| --------------- | ------------- | ------------------- |
+| Mesmo erro 3x   | 3 ocorrências | Sugerir alternativa |
+| Sem progresso   | 10 minutos    | Solicitar revisão   |
+| Revert repetido | 2 reverts     | Escalar             |
 
 **Fluxo de Recuperação:**
 
@@ -327,12 +327,12 @@ Componentes:
 
 **Tipos de Memória:**
 
-| Tipo                | Descrição                          | Armazenamento                     |
-| ------------------- | ---------------------------------- | --------------------------------- |
-| Padrões de Código   | Padrões reutilizáveis da base     | .aiox/patterns/code-patterns.json |
-| Gotchas             | Problemas conhecidos e soluções   | .aiox/patterns/gotchas.json       |
-| Insights de Sessão  | Descobertas durante sessões       | .aiox/sessions/                   |
-| Mapa de Codebase    | Análise de estrutura do projeto   | .aiox/codebase-map.json           |
+| Tipo               | Descrição                       | Armazenamento                     |
+| ------------------ | ------------------------------- | --------------------------------- |
+| Padrões de Código  | Padrões reutilizáveis da base   | .aiox/patterns/code-patterns.json |
+| Gotchas            | Problemas conhecidos e soluções | .aiox/patterns/gotchas.json       |
+| Insights de Sessão | Descobertas durante sessões     | .aiox/sessions/                   |
+| Mapa de Codebase   | Análise de estrutura do projeto | .aiox/codebase-map.json           |
 
 ---
 
@@ -340,29 +340,29 @@ Componentes:
 
 ### Scripts de Infraestrutura
 
-| Script                     | Épica | Propósito                |
-| -------------------------- | ----- | ----------------------- |
-| `worktree-manager.js`      | 1     | Gerenciamento de worktree |
-| `project-status-loader.js` | 2     | Rastreamento de status YAML |
-| `spec-pipeline-runner.js`  | 3     | Automação de pipeline spec |
+| Script                     | Épica | Propósito                          |
+| -------------------------- | ----- | ---------------------------------- |
+| `worktree-manager.js`      | 1     | Gerenciamento de worktree          |
+| `project-status-loader.js` | 2     | Rastreamento de status YAML        |
+| `spec-pipeline-runner.js`  | 3     | Automação de pipeline spec         |
 | `plan-tracker.js`          | 4     | Rastreamento de progresso do plano |
-| `subtask-verifier.js`      | 4     | Verificação de subtarefa |
-| `approach-manager.js`      | 5     | Rastreamento de abordagem |
-| `stuck-detector.js`        | 5     | Detecção de estado travado |
-| `recovery-tracker.js`      | 5     | Registro de recuperação |
-| `rollback-manager.js`      | 5     | Gerenciamento de rollback |
-| `qa-report-generator.js`   | 6     | Geração de relatório QA |
-| `qa-loop-orchestrator.js`  | 6     | Automação de loop QA |
+| `subtask-verifier.js`      | 4     | Verificação de subtarefa           |
+| `approach-manager.js`      | 5     | Rastreamento de abordagem          |
+| `stuck-detector.js`        | 5     | Detecção de estado travado         |
+| `recovery-tracker.js`      | 5     | Registro de recuperação            |
+| `rollback-manager.js`      | 5     | Gerenciamento de rollback          |
+| `qa-report-generator.js`   | 6     | Geração de relatório QA            |
+| `qa-loop-orchestrator.js`  | 6     | Automação de loop QA               |
 | `codebase-mapper.js`       | 7     | Mapeamento de estrutura do projeto |
-| `pattern-extractor.js`     | 7     | Extração de padrões |
-| `gotchas-documenter.js`    | 7     | Documentação de gotchas |
+| `pattern-extractor.js`     | 7     | Extração de padrões                |
+| `gotchas-documenter.js`    | 7     | Documentação de gotchas            |
 
 ### Workflows
 
-| Workflow             | Propósito           | Fases                         |
-| -------------------- | ------------------- | ----------------------------- |
-| `spec-pipeline.yaml` | Requirements → Spec | 5-8 fases com base na complexidade |
-| `qa-loop.yaml`       | Review → Loop correção | 5 fases, máx 5 iterações   |
+| Workflow             | Propósito              | Fases                              |
+| -------------------- | ---------------------- | ---------------------------------- |
+| `spec-pipeline.yaml` | Requirements → Spec    | 5-8 fases com base na complexidade |
+| `qa-loop.yaml`       | Review → Loop correção | 5 fases, máx 5 iterações           |
 
 ### Tarefas
 
@@ -546,12 +546,12 @@ WIS integra-se com ADE através de:
 
 ### Categorias de Erro
 
-| Categoria    | Tratamento               | Exemplo         |
-| ------------ | ----------------------- | --------------- |
-| Transitório  | Retry (3x)              | Timeout de rede |
-| Recuperável  | Abordagem alternativa    | Falha de lint   |
-| Bloqueante   | Escalar                 | Problema segurança |
-| Fatal        | Parar + notificar       | Corrupção       |
+| Categoria   | Tratamento            | Exemplo            |
+| ----------- | --------------------- | ------------------ |
+| Transitório | Retry (3x)            | Timeout de rede    |
+| Recuperável | Abordagem alternativa | Falha de lint      |
+| Bloqueante  | Escalar               | Problema segurança |
+| Fatal       | Parar + notificar     | Corrupção          |
 
 ### Estratégias de Recuperação
 
@@ -578,9 +578,9 @@ estratégias:
 
 ## Histórico de Versões
 
-| Versão | Data       | Mudanças                                    | Autor              |
-| ------ | ---------- | ------------------------------------------- | ------------------ |
-| 1.0    | 2026-01-29 | Documentação inicial de arquitetura ADE     | Aria (arquiteta)   |
+| Versão | Data       | Mudanças                                | Autor            |
+| ------ | ---------- | --------------------------------------- | ---------------- |
+| 1.0    | 2026-01-29 | Documentação inicial de arquitetura ADE | Aria (arquiteta) |
 
 ---
 

@@ -29,6 +29,7 @@
 **用途:** 扫描和分析现有 squad，显示其结构、组件和改进机会。
 
 **用法:**
+
 ```bash
 @squad-creator
 
@@ -43,6 +44,7 @@
 ```
 
 **输出:**
+
 - Squad 概览（名称、版本、作者）
 - 组件清单（任务、代理等）
 - 依赖分析
@@ -54,6 +56,7 @@
 **用途:** 交互式地向现有 squad 添加新组件。
 
 **用法:**
+
 ```bash
 @squad-creator
 
@@ -74,16 +77,16 @@
 ```
 
 **支持的组件:**
-| 组件      | 标志              | 创建               |
+| 组件 | 标志 | 创建 |
 | --------- | ----------------- | ------------------ |
-| 代理      | `--add agent`     | `agents/{name}.md` |
-| 任务      | `--add task`      | `tasks/{agent}-{task}.md` |
-| 工作流    | `--add workflow`  | `workflows/{name}.md` |
-| 检查清单  | `--add checklist` | `checklists/{name}.md` |
-| 模板      | `--add template`  | `templates/{name}.md` |
-| 工具      | `--add tool`      | `tools/{name}.js` |
-| 脚本      | `--add script`    | `scripts/{name}.js` |
-| 数据      | `--add data`      | `data/{name}.yaml` |
+| 代理 | `--add agent` | `agents/{name}.md` |
+| 任务 | `--add task` | `tasks/{agent}-{task}.md` |
+| 工作流 | `--add workflow` | `workflows/{name}.md` |
+| 检查清单 | `--add checklist` | `checklists/{name}.md` |
+| 模板 | `--add template` | `templates/{name}.md` |
+| 工具 | `--add tool` | `tools/{name}.js` |
+| 脚本 | `--add script` | `scripts/{name}.js` |
+| 数据 | `--add data` | `data/{name}.yaml` |
 
 ---
 
@@ -92,6 +95,7 @@
 **推荐:** 实用服务（内部任务 + 脚本）
 
 **理由:**
+
 - 不需要外部 API 集成
 - 仅文件系统操作
 - 遵循现有 squad-creator 模式
@@ -197,26 +201,27 @@ atomic_layer: Analysis
 elicit: true
 
 inputs:
-- field: squad_name
-  type: string
-  source: User Input
-  required: true
-  validation: Squad 存在于 ./squads/
+  - field: squad_name
+    type: string
+    source: User Input
+    required: true
+    validation: Squad 存在于 ./squads/
 
-- field: output_format
-  type: string
-  source: User Input
-  required: false
-  validation: console|markdown|json
+  - field: output_format
+    type: string
+    source: User Input
+    required: false
+    validation: console|markdown|json
 
 outputs:
-- field: analysis_report
-  type: object
-  destination: 控制台或文件
-  persisted: false
+  - field: analysis_report
+    type: object
+    destination: 控制台或文件
+    persisted: false
 ```
 
 **输出示例:**
+
 ```
 === Squad 分析: my-domain-squad ===
 
@@ -261,60 +266,62 @@ atomic_layer: Modification
 elicit: true
 
 inputs:
-- field: squad_name
-  type: string
-  source: User Input
-  required: true
+  - field: squad_name
+    type: string
+    source: User Input
+    required: true
 
-- field: component_type
-  type: string
-  source: User Input
-  required: true
-  validation: agent|task|workflow|checklist|template|tool|script|data
+  - field: component_type
+    type: string
+    source: User Input
+    required: true
+    validation: agent|task|workflow|checklist|template|tool|script|data
 
-- field: component_name
-  type: string
-  source: User Input
-  required: true
-  validation: kebab-case
+  - field: component_name
+    type: string
+    source: User Input
+    required: true
+    validation: kebab-case
 
-- field: story_id
-  type: string
-  source: User Input
-  required: false
-  validation: SQS-XX 格式
+  - field: story_id
+    type: string
+    source: User Input
+    required: false
+    validation: SQS-XX 格式
 
 outputs:
-- field: created_file
-  type: string
-  destination: Squad 目录
-  persisted: true
+  - field: created_file
+    type: string
+    destination: Squad 目录
+    persisted: true
 
-- field: updated_manifest
-  type: boolean
-  destination: squad.yaml
-  persisted: true
+  - field: updated_manifest
+    type: boolean
+    destination: squad.yaml
+    persisted: true
 ```
 
 ---
 
 ## 代理分配
 
-| 角色     | 代理      | 职责           |
-| -------- | --------- | -------------- |
-| 主要     | @dev (Dex) | 实现脚本和任务 |
-| 支持     | @qa (Quinn) | 测试实现       |
-| 审查     | @architect (Aria) | 架构审查    |
+| 角色 | 代理              | 职责           |
+| ---- | ----------------- | -------------- |
+| 主要 | @dev (Dex)        | 实现脚本和任务 |
+| 支持 | @qa (Quinn)       | 测试实现       |
+| 审查 | @architect (Aria) | 架构审查       |
 
 ---
 
 ## 依赖
 
 ### 运行时依赖
+
 - Node.js 18+
 - 现有 squad 脚本 (loader, validator, generator)
 
 ### 开发依赖
+
 - Jest (测试)
 - js-yaml (YAML 解析)
 
@@ -322,13 +329,13 @@ outputs:
 
 ## 工作量估算
 
-| 阶段                | 工作量   | 依赖                |
-| ------------------- | -------- | ------------------- |
-| 阶段 1：分析任务    | 4-6h     | SQS-4 (完成)        |
-| 阶段 2：扩展任务    | 6-8h     | 阶段 1              |
-| 阶段 3：代理集成    | 2-3h     | 阶段 2              |
-| 阶段 4：文档        | 2-3h     | 阶段 3              |
-| **总计**            | **14-20h** |                   |
+| 阶段             | 工作量     | 依赖         |
+| ---------------- | ---------- | ------------ |
+| 阶段 1：分析任务 | 4-6h       | SQS-4 (完成) |
+| 阶段 2：扩展任务 | 6-8h       | 阶段 1       |
+| 阶段 3：代理集成 | 2-3h       | 阶段 2       |
+| 阶段 4：文档     | 2-3h       | 阶段 3       |
+| **总计**         | **14-20h** |              |
 
 ---
 
@@ -343,6 +350,7 @@ outputs:
 **Sprint:** Sprint 14 (或下一个可用)
 
 **验收标准:**
+
 - [ ] `*analyze-squad` 显示完整 squad 清单
 - [ ] `*extend-squad` 可以添加所有组件类型
 - [ ] 扩展时自动更新 squad.yaml
@@ -365,16 +373,19 @@ outputs:
 ## 考虑过的替代方案
 
 ### 方案 A：单一 `*improve-squad` 任务（不推荐）
+
 - 在单一任务中组合分析 + 扩展
 - 过于复杂，违反单一职责
 - 难以测试
 
 ### 方案 B：多个细粒度任务（不推荐）
+
 - `*add-agent`, `*add-task`, `*add-workflow` 等
 - 太多命令需要记忆
 - 用户体验不一致
 
 ### 方案 C：两个任务 - 分析 + 扩展（推荐 ✅）
+
 - 职责分离清晰
 - 先分析，后扩展
 - 与现有模式一致
@@ -387,4 +398,4 @@ outputs:
 
 ---
 
-*下一步: 创建 Story SQS-11 或继续实现*
+_下一步: 创建 Story SQS-11 或继续实现_

@@ -95,7 +95,6 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ### Atualizando de 2.0.x para 2.1.x
 
-
 **Atualizacao rapida:**
 
 ```bash
@@ -103,6 +102,7 @@ npx aiox-core install --force-upgrade
 ```
 
 **Principais alteracoes:**
+
 1. Diretorio renomeado: `.legacy-core/` -> `.aiox-core/`
 2. Atualizar `core-config.yaml` com novos campos
 3. Executar novamente a configuracao do IDE

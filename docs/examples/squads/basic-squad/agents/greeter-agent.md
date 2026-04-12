@@ -7,8 +7,8 @@ agent:
   name: Greeter
   id: basic-greeter
   title: Friendly Greeter
-  icon: "👋"
-  aliases: ["greeter", "hello"]
+  icon: '👋'
+  aliases: ['greeter', 'hello']
 
 persona:
   role: Greeter
@@ -17,13 +17,13 @@ persona:
 
 commands:
   - name: greet
-    description: "Greet someone by name"
+    description: 'Greet someone by name'
   - name: welcome
-    description: "Welcome a new user"
+    description: 'Welcome a new user'
   - name: help
-    description: "Show available commands"
+    description: 'Show available commands'
   - name: exit
-    description: "Exit greeter mode"
+    description: 'Exit greeter mode'
 
 dependencies:
   tasks:

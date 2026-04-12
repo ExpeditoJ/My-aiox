@@ -25,6 +25,7 @@ OUTPUT: Schema criado + RLS habilitado + Audit verde
 ### Cenário
 
 Você está em um projeto novo e precisa:
+
 1. Configurar estrutura de database (Supabase)
 2. Criar tabela `users` com campos básicos
 3. Habilitar RLS com política adequada
@@ -49,6 +50,7 @@ echo $SUPABASE_DB_URL  # deve ter valor
 ```
 
 **Output esperado:**
+
 ```
 -- Dara aqui! Database Architect & Operations Engineer.
 Pronto para modelar, migrar ou auditar.
@@ -68,12 +70,14 @@ Quick commands:
 ```
 
 **Output esperado:**
+
 - Criação de `supabase/migrations/`
 - Criação de `supabase/seeds/`
 - Criação de `supabase/rollback/`
 - Verificação de conexão
 
 **Evidência de sucesso:**
+
 ```bash
 ls supabase/
 # migrations/  seeds/  rollback/  docs/
@@ -88,6 +92,7 @@ ls supabase/
 ```
 
 **Interação:**
+
 ```
 Dara: Qual domínio você está modelando?
 Você: Sistema de usuários para SaaS
@@ -100,6 +105,7 @@ Você: Por enquanto só users, depois adiciono organizations
 ```
 
 **Output esperado:**
+
 ```sql
 -- Modelo gerado por Dara
 
@@ -131,6 +137,7 @@ CREATE TRIGGER users_updated_at
 ```
 
 **Evidência de sucesso:**
+
 - Arquivo salvo em `supabase/migrations/001_create_users.sql`
 
 ---
@@ -142,6 +149,7 @@ CREATE TRIGGER users_updated_at
 ```
 
 **Output esperado:**
+
 ```
 🔍 Dry-run: supabase/migrations/001_create_users.sql
 
@@ -169,6 +177,7 @@ No errors detected. Safe to apply.
 ```
 
 **Output esperado:**
+
 ```
 📸 Snapshot created: supabase/snapshots/20260216T120000_pre_users.sql
 
@@ -197,6 +206,7 @@ No errors detected. Safe to apply.
 ```
 
 **Output esperado:**
+
 ```
 📋 Applying KISS RLS policy to: users
 
@@ -225,6 +235,7 @@ CREATE POLICY "Users can update own data"
 ```
 
 **Output esperado:**
+
 ```
 🔍 Security Audit: full
 
@@ -257,15 +268,15 @@ CREATE POLICY "Users can update own data"
 
 ## Checklist de Validação
 
-| Step | Comando | Output Esperado | ✓ |
-|------|---------|-----------------|---|
-| 1 | `@data-engineer` | Greeting de Dara | [ ] |
-| 2 | `*setup-database supabase` | Estrutura criada | [ ] |
-| 3 | `*model-domain` | SQL gerado | [ ] |
-| 4 | `*dry-run` | "Safe to apply" | [ ] |
-| 5 | `*apply-migration` | "Migration applied" | [ ] |
-| 6 | `*policy-apply` | "RLS enabled" | [ ] |
-| 7 | `*security-audit full` | "SECURE" | [ ] |
+| Step | Comando                    | Output Esperado     | ✓   |
+| ---- | -------------------------- | ------------------- | --- |
+| 1    | `@data-engineer`           | Greeting de Dara    | [ ] |
+| 2    | `*setup-database supabase` | Estrutura criada    | [ ] |
+| 3    | `*model-domain`            | SQL gerado          | [ ] |
+| 4    | `*dry-run`                 | "Safe to apply"     | [ ] |
+| 5    | `*apply-migration`         | "Migration applied" | [ ] |
+| 6    | `*policy-apply`            | "RLS enabled"       | [ ] |
+| 7    | `*security-audit full`     | "SECURE"            | [ ] |
 
 ---
 
@@ -281,18 +292,21 @@ CREATE POLICY "Users can update own data"
 ## Variações da Trilha
 
 ### Variação A: PostgreSQL Local
+
 ```bash
 *setup-database postgresql
 # Resto do fluxo igual
 ```
 
 ### Variação B: MongoDB
+
 ```bash
 *setup-database mongodb
 # Comandos adaptados para NoSQL
 ```
 
 ### Variação C: Brownfield (projeto existente)
+
 ```bash
 *security-audit full  # Primeiro audite
 # Baseado no audit, decida próximos passos
@@ -302,15 +316,15 @@ CREATE POLICY "Users can update own data"
 
 ## Comandos Relacionados
 
-| Comando | Uso |
-|---------|-----|
-| `*snapshot {label}` | Criar backup antes de mudanças |
-| `*rollback {target}` | Restaurar estado anterior |
-| `*smoke-test` | Testar conexão e operações básicas |
-| `*analyze-performance query` | Analisar queries lentas |
-| `*test-as-user {id}` | Testar RLS como usuário específico |
+| Comando                      | Uso                                |
+| ---------------------------- | ---------------------------------- |
+| `*snapshot {label}`          | Criar backup antes de mudanças     |
+| `*rollback {target}`         | Restaurar estado anterior          |
+| `*smoke-test`                | Testar conexão e operações básicas |
+| `*analyze-performance query` | Analisar queries lentas            |
+| `*test-as-user {id}`         | Testar RLS como usuário específico |
 
 ---
 
-*Trilha criada para Story AIOX-DIFF-4.3.1*
-*-- Dara, arquitetando dados*
+_Trilha criada para Story AIOX-DIFF-4.3.1_
+_-- Dara, arquitetando dados_

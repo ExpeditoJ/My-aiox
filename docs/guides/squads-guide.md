@@ -15,7 +15,7 @@ Complete guide for creating, validating, publishing, and managing Squads in AIOX
 3. [Squad Architecture](#squad-architecture)
 4. [Creating Squads](#creating-squads)
 5. [Squad Designer](#squad-designer)
-6. [Analyzing & Extending Squads](#analyzing--extending-squads) *(NEW)*
+6. [Analyzing & Extending Squads](#analyzing--extending-squads) _(NEW)_
 7. [Validating Squads](#validating-squads)
 8. [Publishing & Distribution](#publishing--distribution)
 9. [Migration from Legacy Format](#migration-from-legacy-format)
@@ -29,14 +29,14 @@ Complete guide for creating, validating, publishing, and managing Squads in AIOX
 
 Squads are modular teams of AI agents that extend AIOX functionality. Each squad is a self-contained package containing:
 
-| Component | Purpose |
-|-----------|---------|
-| **Agents** | Domain-specific AI personas |
-| **Tasks** | Executable workflows (TASK-FORMAT-SPEC-V1) |
-| **Workflows** | Multi-step orchestrations |
-| **Config** | Coding standards, tech stack, source tree |
-| **Templates** | Document generation templates |
-| **Tools** | Custom tool integrations |
+| Component     | Purpose                                    |
+| ------------- | ------------------------------------------ |
+| **Agents**    | Domain-specific AI personas                |
+| **Tasks**     | Executable workflows (TASK-FORMAT-SPEC-V1) |
+| **Workflows** | Multi-step orchestrations                  |
+| **Config**    | Coding standards, tech stack, source tree  |
+| **Templates** | Document generation templates              |
+| **Tools**     | Custom tool integrations                   |
 
 ### Distribution Levels
 
@@ -52,10 +52,10 @@ Squads are modular teams of AI agents that extend AIOX functionality. Each squad
 
 ### Official Squads
 
-| Squad | Version | Description |
-|-------|---------|-------------|
-| [etl-squad](https://github.com/SynkraAI/aiox-squads/tree/main/etl) | 2.0.0 | Data collection and transformation |
-| [creator-squad](https://github.com/SynkraAI/aiox-squads/tree/main/creator) | 1.0.0 | Content generation utilities |
+| Squad                                                                      | Version | Description                        |
+| -------------------------------------------------------------------------- | ------- | ---------------------------------- |
+| [etl-squad](https://github.com/SynkraAI/aiox-squads/tree/main/etl)         | 2.0.0   | Data collection and transformation |
+| [creator-squad](https://github.com/SynkraAI/aiox-squads/tree/main/creator) | 1.0.0   | Content generation utilities       |
 
 ---
 
@@ -132,18 +132,18 @@ Squads are modular teams of AI agents that extend AIOX functionality. Each squad
 
 ```yaml
 # Required fields
-name: my-squad                    # kebab-case, unique identifier
-version: 1.0.0                    # Semantic versioning
+name: my-squad # kebab-case, unique identifier
+version: 1.0.0 # Semantic versioning
 description: What this squad does
 
 # Metadata
 author: Your Name <email@example.com>
 license: MIT
-slashPrefix: my                   # Command prefix for IDE
+slashPrefix: my # Command prefix for IDE
 
 # AIOX compatibility
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 # Components declaration
@@ -160,16 +160,16 @@ components:
 
 # Configuration inheritance
 config:
-  extends: extend                 # extend | override | none
+  extends: extend # extend | override | none
   coding-standards: config/coding-standards.md
   tech-stack: config/tech-stack.md
   source-tree: config/source-tree.md
 
 # Dependencies
 dependencies:
-  node: []                        # npm packages
-  python: []                      # pip packages
-  squads: []                      # Other squads
+  node: [] # npm packages
+  python: [] # pip packages
+  squads: [] # Other squads
 
 # Discovery tags
 tags:
@@ -205,30 +205,30 @@ Tasks must follow [TASK-FORMAT-SPECIFICATION-V1](../../.aiox-core/docs/standards
 
 ### Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `*create-squad {name}` | Create new squad with prompts |
+| Command                                  | Description                                   |
+| ---------------------------------------- | --------------------------------------------- |
+| `*create-squad {name}`                   | Create new squad with prompts                 |
 | `*create-squad {name} --template {type}` | Create from template (basic, etl, agent-only) |
-| `*create-squad {name} --from-design` | Create from design blueprint |
-| `*validate-squad {name}` | Validate squad structure |
-| `*list-squads` | List all local squads |
-| `*design-squad` | Design squad from documentation |
+| `*create-squad {name} --from-design`     | Create from design blueprint                  |
+| `*validate-squad {name}`                 | Validate squad structure                      |
+| `*list-squads`                           | List all local squads                         |
+| `*design-squad`                          | Design squad from documentation               |
 
 ### Templates
 
-| Template | Use Case |
-|----------|----------|
-| `basic` | Simple squad with one agent and task |
-| `etl` | Data extraction, transformation, loading |
-| `agent-only` | Squad with agents, no tasks |
+| Template     | Use Case                                 |
+| ------------ | ---------------------------------------- |
+| `basic`      | Simple squad with one agent and task     |
+| `etl`        | Data extraction, transformation, loading |
+| `agent-only` | Squad with agents, no tasks              |
 
 ### Config Inheritance Modes
 
-| Mode | Behavior |
-|------|----------|
-| `extend` | Add squad rules to core AIOX rules |
+| Mode       | Behavior                            |
+| ---------- | ----------------------------------- |
+| `extend`   | Add squad rules to core AIOX rules  |
 | `override` | Replace core rules with squad rules |
-| `none` | Standalone configuration |
+| `none`     | Standalone configuration            |
 
 ---
 
@@ -406,16 +406,16 @@ Next steps:
 
 ### Component Types
 
-| Type | Directory | Extension | Description |
-|------|-----------|-----------|-------------|
-| agent | agents/ | .md | Agent persona definition |
-| task | tasks/ | .md | Executable task workflow |
-| workflow | workflows/ | .yaml | Multi-step orchestration |
-| checklist | checklists/ | .md | Validation checklist |
-| template | templates/ | .md | Document generation template |
-| tool | tools/ | .js | Custom tool integration |
-| script | scripts/ | .js | Utility automation script |
-| data | data/ | .yaml | Static data configuration |
+| Type      | Directory   | Extension | Description                  |
+| --------- | ----------- | --------- | ---------------------------- |
+| agent     | agents/     | .md       | Agent persona definition     |
+| task      | tasks/      | .md       | Executable task workflow     |
+| workflow  | workflows/  | .yaml     | Multi-step orchestration     |
+| checklist | checklists/ | .md       | Validation checklist         |
+| template  | templates/  | .md       | Document generation template |
+| tool      | tools/      | .js       | Custom tool integration      |
+| script    | scripts/    | .js       | Utility automation script    |
+| data      | data/       | .yaml     | Static data configuration    |
 
 ### Continuous Improvement Workflow
 
@@ -484,13 +484,13 @@ Treats warnings as errors.
 
 ### Validation Checks
 
-| Check | Description |
-|-------|-------------|
-| **Manifest Schema** | squad.yaml against JSON Schema |
-| **Directory Structure** | Required folders exist |
-| **Task Format** | Tasks follow TASK-FORMAT-SPEC-V1 |
-| **Agent Definitions** | Agents have required fields |
-| **Dependencies** | Referenced files exist |
+| Check                   | Description                      |
+| ----------------------- | -------------------------------- |
+| **Manifest Schema**     | squad.yaml against JSON Schema   |
+| **Directory Structure** | Required folders exist           |
+| **Task Format**         | Tasks follow TASK-FORMAT-SPEC-V1 |
+| **Agent Definitions**   | Agents have required fields      |
+| **Dependencies**        | Referenced files exist           |
 
 ### Validation Output
 
@@ -579,6 +579,7 @@ export SYNKRA_API_TOKEN="your-token"
 ### Detecting Legacy Squads
 
 Legacy squads use `config.yaml` instead of `squad.yaml` and may be missing:
+
 - `aiox.type` field
 - `aiox.minVersion` field
 - Task-first structure
@@ -637,7 +638,7 @@ const { SquadLoader } = require('./.aiox-core/development/scripts/squad');
 
 const loader = new SquadLoader({
   squadsPath: './squads',
-  verbose: false
+  verbose: false,
 });
 
 // Resolve squad path
@@ -668,12 +669,12 @@ try {
 
 ### Error Codes
 
-| Code | Description | Solution |
-|------|-------------|----------|
-| `SQUAD_NOT_FOUND` | Squad directory not found | Create with `*create-squad` |
-| `MANIFEST_NOT_FOUND` | No manifest file | Create `squad.yaml` |
-| `YAML_PARSE_ERROR` | Invalid YAML syntax | Use YAML linter |
-| `PERMISSION_DENIED` | File permission error | Check `chmod 644` |
+| Code                 | Description               | Solution                    |
+| -------------------- | ------------------------- | --------------------------- |
+| `SQUAD_NOT_FOUND`    | Squad directory not found | Create with `*create-squad` |
+| `MANIFEST_NOT_FOUND` | No manifest file          | Create `squad.yaml`         |
+| `YAML_PARSE_ERROR`   | Invalid YAML syntax       | Use YAML linter             |
+| `PERMISSION_DENIED`  | File permission error     | Check `chmod 644`           |
 
 ---
 
@@ -714,6 +715,7 @@ npx js-yaml ./squads/my-squad/squad.yaml
 ```
 
 Common issues:
+
 - Incorrect indentation (use 2 spaces)
 - Missing quotes around special characters
 - Tabs instead of spaces
@@ -749,6 +751,7 @@ gh auth status
 ### What's the difference between a Squad and legacy AIOX squad formats?
 
 **Squads** are the standard format in AIOX 2.1+ with:
+
 - Task-first architecture
 - JSON Schema validation
 - Three-level distribution
@@ -785,7 +788,7 @@ Squads require AIOX 2.1.0+. Set in manifest:
 
 ```yaml
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
 ```
 
 ### How do I test my Squad before publishing?
@@ -822,6 +825,6 @@ npm test -- tests/squads/my-squad/
 
 ---
 
-*AIOX Squads: Equipes de AI agents trabalhando com você*
+_AIOX Squads: Equipes de AI agents trabalhando com você_
 
 **Version:** 2.1.0 | **Updated:** 2025-12-26 | **Stories:** SQS-8, SQS-11

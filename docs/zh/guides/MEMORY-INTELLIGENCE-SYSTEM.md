@@ -62,23 +62,23 @@
 
 MIS 将两层统一为一个智能的 4 层系统，遵循 **Open Core** 模型：
 
-| 层 | 功能 | 仓库 | Story |
-|--------|--------|-------------|-------|
-| **清理** | 移除死代码，准备基础 | **aiox-core** | MIS-2 |
-| **捕获** | 通过 hooks 捕获会话知识 | **aiox-pro** | MIS-3 |
-| **存储** | 使用带 YAML frontmatter 的 Markdown 存储 | **aiox-pro** | MIS-3, MIS-4 |
-| **检索** | 按相关性渐进式检索 | **aiox-pro** + **aiox-core** 扩展点 | MIS-4, MIS-6 |
-| **演化** | 自动学习和演化规则 | **aiox-pro** | MIS-5, MIS-7 |
+| 层       | 功能                                     | 仓库                                | Story        |
+| -------- | ---------------------------------------- | ----------------------------------- | ------------ |
+| **清理** | 移除死代码，准备基础                     | **aiox-core**                       | MIS-2        |
+| **捕获** | 通过 hooks 捕获会话知识                  | **aiox-pro**                        | MIS-3        |
+| **存储** | 使用带 YAML frontmatter 的 Markdown 存储 | **aiox-pro**                        | MIS-3, MIS-4 |
+| **检索** | 按相关性渐进式检索                       | **aiox-pro** + **aiox-core** 扩展点 | MIS-4, MIS-6 |
+| **演化** | 自动学习和演化规则                       | **aiox-pro**                        | MIS-5, MIS-7 |
 
 ### 关键原则 (vs 当前状态)
 
-| 方面 | 当前状态 | 使用 MIS (aiox-pro 激活) | 没有 MIS (仅 aiox-core) |
-|---------|-------------|--------------------------|--------------------------|
-| 会话结束 | 什么都不发生 | PreCompact digest 捕获学习成果 | 什么都不发生 (同当前) |
-| 记忆加载 | MEMORY.md (200 行, 全量) | 渐进式披露 (HOT/WARM/COLD) | MEMORY.md (同当前) |
-| 代理范围 | 全局记忆无过滤 | 按代理的私有 + 共享记忆 | 全局 (同当前) |
-| 学习 | 手动 (Claude 决定保存) | 自动 (修正, 模式, 陷阱) | 手动 (同当前) |
-| Token 使用 | 每会话约 10K tokens 固定 | 通过注意力路由减少 60-95% | 约 10K tokens (同当前) |
+| 方面       | 当前状态                 | 使用 MIS (aiox-pro 激活)       | 没有 MIS (仅 aiox-core) |
+| ---------- | ------------------------ | ------------------------------ | ----------------------- |
+| 会话结束   | 什么都不发生             | PreCompact digest 捕获学习成果 | 什么都不发生 (同当前)   |
+| 记忆加载   | MEMORY.md (200 行, 全量) | 渐进式披露 (HOT/WARM/COLD)     | MEMORY.md (同当前)      |
+| 代理范围   | 全局记忆无过滤           | 按代理的私有 + 共享记忆        | 全局 (同当前)           |
+| 学习       | 手动 (Claude 决定保存)   | 自动 (修正, 模式, 陷阱)        | 手动 (同当前)           |
+| Token 使用 | 每会话约 10K tokens 固定 | 通过注意力路由减少 60-95%      | 约 10K tokens (同当前)  |
 
 ---
 
@@ -144,48 +144,48 @@ if (isProAvailable()) {
 
 已在 `pro/feature-registry.yaml` 中注册的记忆功能：
 
-| Feature ID | 描述 | Story MIS |
-|-----------|-----------|-----------|
-| `pro.memory.persistence` | 跨会话持久记忆 | MIS-3 |
-| `pro.memory.extended` | AI 代理扩展上下文窗口 | MIS-4, MIS-6 |
-| `pro.memory.search` | 跨记忆存储语义搜索 | MIS-4 |
-| `pro.memory.sync` | 跨设备记忆同步 | 未来 |
+| Feature ID               | 描述                  | Story MIS    |
+| ------------------------ | --------------------- | ------------ |
+| `pro.memory.persistence` | 跨会话持久记忆        | MIS-3        |
+| `pro.memory.extended`    | AI 代理扩展上下文窗口 | MIS-4, MIS-6 |
+| `pro.memory.search`      | 跨记忆存储语义搜索    | MIS-4        |
+| `pro.memory.sync`        | 跨设备记忆同步        | 未来         |
 
 待注册的附加功能：
 
-| Feature ID (新) | 描述 | Story MIS |
-|-------------------|-----------|-----------|
-| `pro.memory.session_digest` | PreCompact 会话摘要捕获 | MIS-3 |
-| `pro.memory.self_learning` | 从修正中自学习 | MIS-5 |
-| `pro.memory.auto_evolution` | CLAUDE.md 和规则自动演化 | MIS-7 |
+| Feature ID (新)             | 描述                     | Story MIS |
+| --------------------------- | ------------------------ | --------- |
+| `pro.memory.session_digest` | PreCompact 会话摘要捕获  | MIS-3     |
+| `pro.memory.self_learning`  | 从修正中自学习           | MIS-5     |
+| `pro.memory.auto_evolution` | CLAUDE.md 和规则自动演化 | MIS-7     |
 
 ### 各仓库内容
 
 #### aiox-core (开源) — 仅扩展点
 
-| 文件 | 类型 | 描述 |
-|---------|------|-----------|
-| `bin/utils/pro-detector.js` | 已存在 | `isProAvailable()`, `loadProModule()` |
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | 修改 | 在 Tier 2 添加 `if (isProAvailable())` 用于记忆加载 |
-| `.aiox-core/development/scripts/greeting-builder.js` | 修改 | 如果 pro 可用，在 greeting 中添加记忆统计 |
-| `.aiox-core/core/memory/gotchas-memory.js` | 保留 | 路径修复 (MIS-2)，独立运行 |
-| `.aiox-core/core/session/context-loader.js` | 保留 | 路径修复 (MIS-2)，独立运行 |
-| `.claude/settings.json` | 修改 | 调用 `pro/` 脚本的 Hook 桩（如果不存在则优雅失败） |
+| 文件                                                            | 类型   | 描述                                                |
+| --------------------------------------------------------------- | ------ | --------------------------------------------------- |
+| `bin/utils/pro-detector.js`                                     | 已存在 | `isProAvailable()`, `loadProModule()`               |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | 修改   | 在 Tier 2 添加 `if (isProAvailable())` 用于记忆加载 |
+| `.aiox-core/development/scripts/greeting-builder.js`            | 修改   | 如果 pro 可用，在 greeting 中添加记忆统计           |
+| `.aiox-core/core/memory/gotchas-memory.js`                      | 保留   | 路径修复 (MIS-2)，独立运行                          |
+| `.aiox-core/core/session/context-loader.js`                     | 保留   | 路径修复 (MIS-2)，独立运行                          |
+| `.claude/settings.json`                                         | 修改   | 调用 `pro/` 脚本的 Hook 桩（如果不存在则优雅失败）  |
 
 #### aiox-pro (私有) — 所有智能
 
-| 文件 | MIS 层 | Story |
-|---------|-----------|-------|
-| `pro/memory/session-digest.js` | 捕获 | MIS-3 |
-| `pro/memory/gotcha-capture.js` | 捕获 | MIS-3 |
-| `pro/memory/memory-index.js` | 存储 | MIS-4 |
-| `pro/memory/memory-retriever.js` | 检索 | MIS-4 |
-| `pro/memory/self-learner.js` | 演化 | MIS-5 |
-| `pro/memory/memory-loader.js` | 管道 | MIS-6 |
-| `pro/memory/agent-memory-api.js` | 命令 | MIS-6 |
-| `pro/memory/rule-proposer.js` | 演化 | MIS-7 |
-| `pro/pro-config.yaml` | 配置 | MIS-3 (启用记忆标志) |
-| `pro/feature-registry.yaml` | 配置 | MIS-3 (添加新 feature ID) |
+| 文件                             | MIS 层 | Story                     |
+| -------------------------------- | ------ | ------------------------- |
+| `pro/memory/session-digest.js`   | 捕获   | MIS-3                     |
+| `pro/memory/gotcha-capture.js`   | 捕获   | MIS-3                     |
+| `pro/memory/memory-index.js`     | 存储   | MIS-4                     |
+| `pro/memory/memory-retriever.js` | 检索   | MIS-4                     |
+| `pro/memory/self-learner.js`     | 演化   | MIS-5                     |
+| `pro/memory/memory-loader.js`    | 管道   | MIS-6                     |
+| `pro/memory/agent-memory-api.js` | 命令   | MIS-6                     |
+| `pro/memory/rule-proposer.js`    | 演化   | MIS-7                     |
+| `pro/pro-config.yaml`            | 配置   | MIS-3 (启用记忆标志)      |
+| `pro/feature-registry.yaml`      | 配置   | MIS-3 (添加新 feature ID) |
 
 ### Hook 配置策略
 
@@ -251,6 +251,7 @@ if (hookHandler && typeof hookHandler.run === 'function') {
 ### 2. 渐进式披露 (claude-mem 模式)
 
 三层检索以最小化 tokens：
+
 - **索引:** 标题 + ID (~50 tokens)
 - **上下文:** 相关片段 (~200 tokens)
 - **详情:** 完整记忆 (~1000+ tokens)
@@ -258,6 +259,7 @@ if (hookHandler && typeof hookHandler.run === 'function') {
 ### 3. 分层存储 (openclaw 模式)
 
 记忆按持久性分类：
+
 - **会话:** 临时性，会话结束即消失
 - **每日:** 当天合并，自动清理
 - **持久:** 永久知识，永不过期
@@ -265,6 +267,7 @@ if (hookHandler && typeof hookHandler.run === 'function') {
 ### 4. 注意力路由 (claude-cognitive 模式)
 
 每个记忆有一个注意力分数，决定加载层级：
+
 - **HOT (>0.7):** 始终在上下文中 (~500 tokens max)
 - **WARM (0.3-0.7):** 按需加载
 - **COLD (<0.3):** 仅通过显式搜索
@@ -272,6 +275,7 @@ if (hookHandler && typeof hookHandler.run === 'function') {
 ### 5. 认知领域 (OpenMemory 模式)
 
 记忆按认知类型分类：
+
 - **情景:** "发生了什么" (会话, 事件)
 - **语义:** "我知道什么" (事实, 概念)
 - **程序:** "如何做" (模式, 工作流)
@@ -434,12 +438,12 @@ flowchart LR
 
 ### 使用的 Hook 事件
 
-| Hook 事件 | 触发时机 | Pro 脚本 | Core 回退 |
-|-----------|---------------|-----------|---------------|
-| `PreCompact` | 上下文接近限制 | `pro/memory/session-digest.js` | 无 (exit 0) |
-| `Stop` | 会话结束 | `pro/memory/session-digest.js --final` | 无 (exit 0) |
-| `PostToolUseFailure` | 工具失败 | `pro/memory/gotcha-capture.js` | `gotchas-memory.js` (core, 基础) |
-| `TaskCompleted` | 任务完成 | `pro/memory/session-digest.js --task` | 无 (exit 0) |
+| Hook 事件            | 触发时机       | Pro 脚本                               | Core 回退                        |
+| -------------------- | -------------- | -------------------------------------- | -------------------------------- |
+| `PreCompact`         | 上下文接近限制 | `pro/memory/session-digest.js`         | 无 (exit 0)                      |
+| `Stop`               | 会话结束       | `pro/memory/session-digest.js --final` | 无 (exit 0)                      |
+| `PostToolUseFailure` | 工具失败       | `pro/memory/gotcha-capture.js`         | `gotchas-memory.js` (core, 基础) |
+| `TaskCompleted`      | 任务完成       | `pro/memory/session-digest.js --task`  | 无 (exit 0)                      |
 
 ### Hooks 配置
 
@@ -613,12 +617,12 @@ flowchart TD
 
 ### Token 节省
 
-| 场景 | Tokens | 减少 |
-|---------|--------|---------|
-| 没有 pro (仅 core, 原始 MEMORY.md) | ~10,000 | 0% |
-| 有 pro + 渐进式披露 | ~2,000 | 80% |
-| 有 pro + 注意力路由 | ~1,000 | 90% |
-| 有 pro + 代理范围 | ~500 | 95% |
+| 场景                               | Tokens  | 减少 |
+| ---------------------------------- | ------- | ---- |
+| 没有 pro (仅 core, 原始 MEMORY.md) | ~10,000 | 0%   |
+| 有 pro + 渐进式披露                | ~2,000  | 80%  |
+| 有 pro + 注意力路由                | ~1,000  | 90%  |
+| 有 pro + 代理范围                  | ~500    | 95%  |
 
 ---
 
@@ -708,13 +712,13 @@ sequenceDiagram
 
 ### PreCompact 技术能力
 
-| 能力 | 状态 | 注释 |
-|-----------|--------|------|
-| 访问完整转录 | 可用 | 压缩前 |
-| 执行 shell 脚本 | 可用 | 异步即发即忘 |
-| 写入文件 | 可用 | session-digest.js 写入记忆 |
-| 可配置超时 | 10 秒 | 足够用于摘要 |
-| 异步模式 | 可用 (2026年1月) | 不阻塞压缩 |
+| 能力            | 状态             | 注释                       |
+| --------------- | ---------------- | -------------------------- |
+| 访问完整转录    | 可用             | 压缩前                     |
+| 执行 shell 脚本 | 可用             | 异步即发即忘               |
+| 写入文件        | 可用             | session-digest.js 写入记忆 |
+| 可配置超时      | 10 秒            | 足够用于摘要               |
+| 异步模式        | 可用 (2026年1月) | 不阻塞压缩                 |
 
 ---
 
@@ -745,6 +749,7 @@ sequenceDiagram
 ### 代理 → 可访问记忆映射
 
 每个代理访问：
+
 1. 自己的私有记忆 (`.aiox/memories/{agent}/`)
 2. 共享记忆 (`.aiox/memories/shared/`)
 3. **绝不** 其他代理的私有记忆
@@ -804,12 +809,12 @@ sequenceDiagram
 
 ### Token 预算
 
-| Tier | 有 Pro | 没有 Pro (仅 core) |
-|------|---------|-------------------|
-| HOT (Tier 1) | ~500 tokens | ~500 tokens (原生 MEMORY.md) |
-| WARM (Tier 2) | ~2,000 tokens | 0 (跳过) |
-| COLD (Tier 3) | ~200 tokens | 0 (跳过) |
-| **总计** | **~2,700** | **~500** (同当前) |
+| Tier          | 有 Pro        | 没有 Pro (仅 core)           |
+| ------------- | ------------- | ---------------------------- |
+| HOT (Tier 1)  | ~500 tokens   | ~500 tokens (原生 MEMORY.md) |
+| WARM (Tier 2) | ~2,000 tokens | 0 (跳过)                     |
+| COLD (Tier 3) | ~200 tokens   | 0 (跳过)                     |
+| **总计**      | **~2,700**    | **~500** (同当前)            |
 
 ---
 
@@ -820,17 +825,18 @@ sequenceDiagram
 ```markdown
 ---
 id: mem-2026-02-09-001
-type: procedural               # episodic | semantic | procedural | reflective
-tier: durable                  # session | daily | durable
-agent: shared                  # shared | dev | qa | architect | ...
+type: procedural # episodic | semantic | procedural | reflective
+tier: durable # session | daily | durable
+agent: shared # shared | dev | qa | architect | ...
 tags: [imports, typescript, pattern, coding-standard]
 confidence: 0.95
 created: 2026-02-09T14:30:00Z
 last_accessed: 2026-02-09T16:00:00Z
 access_count: 3
-source: user-correction         # user-correction | session-digest | auto-gotcha |
-                                # manual | heuristic | task-outcome
-attention_score: 0.85           # HOT (>0.7) | WARM (0.3-0.7) | COLD (<0.3)
+source:
+  user-correction # user-correction | session-digest | auto-gotcha |
+  # manual | heuristic | task-outcome
+attention_score: 0.85 # HOT (>0.7) | WARM (0.3-0.7) | COLD (<0.3)
 related_memories: [mem-2026-02-08-003]
 evidence_count: 5
 ---
@@ -838,14 +844,17 @@ evidence_count: 5
 # AIOX 中始终使用绝对导入
 
 ## 模式
+
 为所有导入使用 `@/` 前缀。绝不使用相对导入 (`../`)。
 
 ## 证据
+
 - 会话 abc123 中的用户修正 (2026-02-09)
 - 由 CLAUDE.md 规则确认 (绝对导入, 第 VI 条)
 - 应用于代码库中的 47 个文件
 
 ## 上下文
+
 不可协商的编码标准。宪法第 VI 条。
 ```
 
@@ -866,12 +875,12 @@ attention_score = base_relevance * recency_factor * access_modifier * confidence
 
 ### 层级分配
 
-| 注意力分数 | 层级 | 管道 | 行为 |
-|----------------|------|----------|--------------|
-| > 0.7 | HOT | Tier 1 | 同步到 MEMORY.md (始终在 prompt 中) |
-| 0.3 - 0.7 | WARM | Tier 2 | 在激活时注入 (如果在预算内) |
-| < 0.3 | COLD | Tier 3 | 仅通过显式 `*recall` |
-| < 0.1 (90+ 天) | ARCHIVE | — | 移动到 `.old/` |
+| 注意力分数     | 层级    | 管道   | 行为                                |
+| -------------- | ------- | ------ | ----------------------------------- |
+| > 0.7          | HOT     | Tier 1 | 同步到 MEMORY.md (始终在 prompt 中) |
+| 0.3 - 0.7      | WARM    | Tier 2 | 在激活时注入 (如果在预算内)         |
+| < 0.3          | COLD    | Tier 3 | 仅通过显式 `*recall`                |
+| < 0.1 (90+ 天) | ARCHIVE | —      | 移动到 `.old/`                      |
 
 ---
 
@@ -879,22 +888,22 @@ attention_score = base_relevance * recency_factor * access_modifier * confidence
 
 ### 4 个领域 + 代理偏好
 
-| 代理 | 优先领域 | 原因 |
-|--------|---------------------|-------|
-| `@dev` | 程序, 语义 | 如何做和哪些约定 |
-| `@qa` | 反思, 情景 | 学到了什么和发生了什么 |
+| 代理         | 优先领域   | 原因                     |
+| ------------ | ---------- | ------------------------ |
+| `@dev`       | 程序, 语义 | 如何做和哪些约定         |
+| `@qa`        | 反思, 情景 | 学到了什么和发生了什么   |
 | `@architect` | 语义, 反思 | 我们知道什么和学到了什么 |
-| `@pm` | 情景, 语义 | 发生了什么和项目事实 |
-| `@devops` | 程序, 情景 | 如何操作和发生了什么 |
+| `@pm`        | 情景, 语义 | 发生了什么和项目事实     |
+| `@devops`    | 程序, 情景 | 如何操作和发生了什么     |
 
 ### 按领域衰减
 
-| 领域 | 基础 TTL | 原因 |
-|-------|---------|-------|
-| 情景 | 7 天 * access_modifier | 旧会话失去相关性 |
-| 语义 | 365 天 | 事实保持有效 |
-| 程序 | 30 天 * last_used_modifier | 未使用的工作流衰减 |
-| 反思 | 无限 | 学习成果是永久的 |
+| 领域 | 基础 TTL                    | 原因               |
+| ---- | --------------------------- | ------------------ |
+| 情景 | 7 天 \* access_modifier     | 旧会话失去相关性   |
+| 语义 | 365 天                      | 事实保持有效       |
+| 程序 | 30 天 \* last_used_modifier | 未使用的工作流衰减 |
+| 反思 | 无限                        | 学习成果是永久的   |
 
 ---
 
@@ -905,6 +914,7 @@ attention_score = base_relevance * recency_factor * access_modifier * confidence
 ### 演化示例
 
 **修正 → 规则:**
+
 ```
 会话 1: 用户修正 "use npm not yarn" → confidence 0.3
 会话 4: 同样模式 5 次 → confidence 0.95
@@ -913,6 +923,7 @@ attention_score = base_relevance * recency_factor * access_modifier * confidence
 ```
 
 **陷阱 → 警告:**
+
 ```
 会话 7: 错误 "EACCES permission denied" 3 次 → 自动陷阱
 → 陷阱持续 5+ 会话 → 升级为警告
@@ -962,57 +973,57 @@ attention_score = base_relevance * recency_factor * access_modifier * confidence
 
 ### aiox-core (开源) — 扩展点
 
-| 文件 | 类型 | Story | 描述 |
-|---------|------|-------|-----------|
-| `bin/utils/pro-detector.js` | 已存在 (PRO-5) | — | `isProAvailable()`, `loadProModule()` |
-| `.aiox-core/hooks/pro-hook-runner.js` | **新建** | MIS-3 | 包装器: 检查 pro, 委托 hook (~20 行) |
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | **修改** | MIS-6 | 在 Tier 2 添加 `if (isProAvailable())` |
-| `.aiox-core/development/scripts/greeting-builder.js` | **修改** | MIS-6 | 如果 pro 可用，在 greeting 中显示记忆统计 |
-| `.aiox-core/core/memory/gotchas-memory.js` | **路径修复** | MIS-2 | 修正 `.aiox/error-tracking.json` |
-| `.aiox-core/core/session/context-loader.js` | **路径修复** | MIS-2 | 修正 `.aiox/session-state.json` |
-| `.claude/settings.json` | **修改** | MIS-3 | 通过 pro-hook-runner.js 的 Hook 桩 |
+| 文件                                                            | 类型           | Story | 描述                                      |
+| --------------------------------------------------------------- | -------------- | ----- | ----------------------------------------- |
+| `bin/utils/pro-detector.js`                                     | 已存在 (PRO-5) | —     | `isProAvailable()`, `loadProModule()`     |
+| `.aiox-core/hooks/pro-hook-runner.js`                           | **新建**       | MIS-3 | 包装器: 检查 pro, 委托 hook (~20 行)      |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | **修改**       | MIS-6 | 在 Tier 2 添加 `if (isProAvailable())`    |
+| `.aiox-core/development/scripts/greeting-builder.js`            | **修改**       | MIS-6 | 如果 pro 可用，在 greeting 中显示记忆统计 |
+| `.aiox-core/core/memory/gotchas-memory.js`                      | **路径修复**   | MIS-2 | 修正 `.aiox/error-tracking.json`          |
+| `.aiox-core/core/session/context-loader.js`                     | **路径修复**   | MIS-2 | 修正 `.aiox/session-state.json`           |
+| `.claude/settings.json`                                         | **修改**       | MIS-3 | 通过 pro-hook-runner.js 的 Hook 桩        |
 
 ### aiox-pro (私有) — 所有智能
 
-| 文件 | 层 | Story | 描述 |
-|---------|--------|-------|-----------|
-| `pro/memory/hooks/precompact.js` | 捕获 | MIS-3 | PreCompact 时的会话摘要 |
-| `pro/memory/hooks/stop.js` | 捕获 | MIS-3 | Stop 时的最终刷新 |
-| `pro/memory/hooks/tooltfailure.js` | 捕获 | MIS-3 | 增强的陷阱捕获 |
-| `pro/memory/memory-index.js` | 存储 | MIS-4 | 索引管理器 (构建, 搜索, 更新) |
-| `pro/memory/memory-retriever.js` | 检索 | MIS-4 | 渐进式披露检索器 |
-| `pro/memory/self-learner.js` | 演化 | MIS-5 | 修正跟踪器 + 启发式提取器 |
-| `pro/memory/memory-loader.js` | 管道 | MIS-6 | 管道集成 (Tier 2/3 加载) |
-| `pro/memory/agent-memory-api.js` | 命令 | MIS-6 | `*recall`, `*remember`, `*forget` |
-| `pro/memory/rule-proposer.js` | 演化 | MIS-7 | CLAUDE.md + rules 自动演化 |
-| `pro/pro-config.yaml` | 配置 | MIS-3 | 启用记忆标志 |
-| `pro/feature-registry.yaml` | 配置 | MIS-3 | 添加 MIS feature ID |
+| 文件                               | 层   | Story | 描述                              |
+| ---------------------------------- | ---- | ----- | --------------------------------- |
+| `pro/memory/hooks/precompact.js`   | 捕获 | MIS-3 | PreCompact 时的会话摘要           |
+| `pro/memory/hooks/stop.js`         | 捕获 | MIS-3 | Stop 时的最终刷新                 |
+| `pro/memory/hooks/tooltfailure.js` | 捕获 | MIS-3 | 增强的陷阱捕获                    |
+| `pro/memory/memory-index.js`       | 存储 | MIS-4 | 索引管理器 (构建, 搜索, 更新)     |
+| `pro/memory/memory-retriever.js`   | 检索 | MIS-4 | 渐进式披露检索器                  |
+| `pro/memory/self-learner.js`       | 演化 | MIS-5 | 修正跟踪器 + 启发式提取器         |
+| `pro/memory/memory-loader.js`      | 管道 | MIS-6 | 管道集成 (Tier 2/3 加载)          |
+| `pro/memory/agent-memory-api.js`   | 命令 | MIS-6 | `*recall`, `*remember`, `*forget` |
+| `pro/memory/rule-proposer.js`      | 演化 | MIS-7 | CLAUDE.md + rules 自动演化        |
+| `pro/pro-config.yaml`              | 配置 | MIS-3 | 启用记忆标志                      |
+| `pro/feature-registry.yaml`        | 配置 | MIS-3 | 添加 MIS feature ID               |
 
 ### 删除的文件 (MIS-2, aiox-core)
 
-| 文件 | 行数 | 原因 |
-|---------|--------|-------|
-| `.aiox-core/core/memory/timeline-manager.js` | 746 | 0 个消费者 (孤立) |
-| `.aiox-core/core/memory/file-evolution-tracker.js` | 1,003 | 0 个消费者 (孤立) |
-| `.aiox-core/core/memory/context-snapshot.js` | 648 | 0 个消费者 (孤立) |
-| `.aiox-core/elicitation/session-manager.js` | — | 死代码 |
-| `.aiox/compound-analysis/` | ~14K | 0 个读取者 (孤立数据) |
+| 文件                                               | 行数  | 原因                  |
+| -------------------------------------------------- | ----- | --------------------- |
+| `.aiox-core/core/memory/timeline-manager.js`       | 746   | 0 个消费者 (孤立)     |
+| `.aiox-core/core/memory/file-evolution-tracker.js` | 1,003 | 0 个消费者 (孤立)     |
+| `.aiox-core/core/memory/context-snapshot.js`       | 648   | 0 个消费者 (孤立)     |
+| `.aiox-core/elicitation/session-manager.js`        | —     | 死代码                |
+| `.aiox/compound-analysis/`                         | ~14K  | 0 个读取者 (孤立数据) |
 
 ---
 
 ## 差异对比: 当前状态 vs MIS
 
-| 方面 | 当前 aiox-core | aiox-core + aiox-pro (MIS) | 没有 pro 的 aiox-core |
-|---------|---------------|---------------------------|------------------|
-| **层** | 2 个断开的 | 4 个通过 pro 集成的 | 2 个断开的 (同当前) |
-| **会话结束** | 无 | PreCompact digest + Stop flush | 无 (同当前) |
-| **记忆加载** | MEMORY.md 全量 | 渐进式 HOT/WARM/COLD | MEMORY.md (同当前) |
-| **代理范围** | 单一全局 | 按代理的私有 + 共享 | 全局 (同当前) |
-| **搜索** | 无 | FTS 索引 + 元数据 | 无 (同当前) |
-| **学习** | 手动 | 自动 | 手动 (同当前) |
-| **死代码** | 2,397 行 | 已删除 | 已删除 (MIS-2) |
-| **Token 使用** | ~10K 固定 | ~2,700 (~73% 减少) | ~10K (同当前) |
-| **Hooks** | 仅 Gemini | Claude Code 原生 | Hook 桩 (no-op) |
+| 方面           | 当前 aiox-core | aiox-core + aiox-pro (MIS)     | 没有 pro 的 aiox-core |
+| -------------- | -------------- | ------------------------------ | --------------------- |
+| **层**         | 2 个断开的     | 4 个通过 pro 集成的            | 2 个断开的 (同当前)   |
+| **会话结束**   | 无             | PreCompact digest + Stop flush | 无 (同当前)           |
+| **记忆加载**   | MEMORY.md 全量 | 渐进式 HOT/WARM/COLD           | MEMORY.md (同当前)    |
+| **代理范围**   | 单一全局       | 按代理的私有 + 共享            | 全局 (同当前)         |
+| **搜索**       | 无             | FTS 索引 + 元数据              | 无 (同当前)           |
+| **学习**       | 手动           | 自动                           | 手动 (同当前)         |
+| **死代码**     | 2,397 行       | 已删除                         | 已删除 (MIS-2)        |
+| **Token 使用** | ~10K 固定      | ~2,700 (~73% 减少)             | ~10K (同当前)         |
+| **Hooks**      | 仅 Gemini      | Claude Code 原生               | Hook 桩 (no-op)       |
 
 ---
 
@@ -1037,16 +1048,16 @@ gantt
     MIS-7 自动演化                 :mis7, after mis5, 2d
 ```
 
-| Story | 标题 | 仓库 | 依赖 | 工时 |
-|-------|--------|-------------|------------|-------|
-| MIS-1 | 调研与架构设计 | docs (aiox-core) | — | 12h (完成) |
-| MIS-2 | 死代码清理与路径修复 | **aiox-core** | MIS-1 | 4h |
-| MIS-3 | 会话摘要 (PreCompact Hook) | **aiox-core** (hook runner) + **aiox-pro** (digest) | MIS-1 | 14h |
-| MIS-4 | 渐进式记忆检索 | **aiox-pro** | MIS-3 | 16h |
-| MIS-5 | 自学习引擎 | **aiox-pro** | MIS-3, MIS-4 | 14h |
-| MIS-6 | 管道集成与代理记忆 API | **aiox-core** (扩展点) + **aiox-pro** (loader) | MIS-4 | 10h |
-| MIS-7 | CLAUDE.md 与规则自动演化 | **aiox-pro** | MIS-5 | 8h |
-| **总计** | | | | **~78h** |
+| Story    | 标题                       | 仓库                                                | 依赖         | 工时       |
+| -------- | -------------------------- | --------------------------------------------------- | ------------ | ---------- |
+| MIS-1    | 调研与架构设计             | docs (aiox-core)                                    | —            | 12h (完成) |
+| MIS-2    | 死代码清理与路径修复       | **aiox-core**                                       | MIS-1        | 4h         |
+| MIS-3    | 会话摘要 (PreCompact Hook) | **aiox-core** (hook runner) + **aiox-pro** (digest) | MIS-1        | 14h        |
+| MIS-4    | 渐进式记忆检索             | **aiox-pro**                                        | MIS-3        | 16h        |
+| MIS-5    | 自学习引擎                 | **aiox-pro**                                        | MIS-3, MIS-4 | 14h        |
+| MIS-6    | 管道集成与代理记忆 API     | **aiox-core** (扩展点) + **aiox-pro** (loader)      | MIS-4        | 10h        |
+| MIS-7    | CLAUDE.md 与规则自动演化   | **aiox-pro**                                        | MIS-5        | 8h         |
+| **总计** |                            |                                                     |              | **~78h**   |
 
 ---
 
@@ -1054,30 +1065,30 @@ gantt
 
 ### Top 3 灵感仓库
 
-| 仓库 | 契合度 | 采纳的模式 |
-|------|-----------|-------------------|
-| **basic-memory** | 9/10 | 文件优先存储 (Markdown + frontmatter, git 友好) |
-| **claude-cognitive** | 9/10 | HOT/WARM/COLD 注意力层级, 多实例记忆池 |
-| **openclaw** | 9/10 | 三层模型, PreCompact 会话摘要 |
+| 仓库                 | 契合度 | 采纳的模式                                      |
+| -------------------- | ------ | ----------------------------------------------- |
+| **basic-memory**     | 9/10   | 文件优先存储 (Markdown + frontmatter, git 友好) |
+| **claude-cognitive** | 9/10   | HOT/WARM/COLD 注意力层级, 多实例记忆池          |
+| **openclaw**         | 9/10   | 三层模型, PreCompact 会话摘要                   |
 
 ### 相关文档
 
-| 资源 | 路径 |
-|---------|---------|
-| 当前状态 (v1.0) | [MEMORY-SYSTEM.md](MEMORY-SYSTEM.md) |
-| Epic MIS 索引 | [EPIC-MIS-INDEX.md](../stories/epics/epic-memory-intelligence-system/EPIC-MIS-INDEX.md) |
-| MIS-1 调研 | [story-mis-1-investigation.md](../stories/epics/epic-memory-intelligence-system/story-mis-1-investigation.md) |
-| MIS-2 死代码清理 | [story-mis-2-dead-code-cleanup.md](../stories/epics/epic-memory-intelligence-system/story-mis-2-dead-code-cleanup.md) |
-| Epic PRO 架构 | [EPIC-PRO-INDEX.md](../stories/epics/epic-pro-aiox-pro-architecture/EPIC-PRO-INDEX.md) |
-| ADR-PRO-001 仓库策略 | [adr-pro-001-repository-strategy.md](../architecture/adr/adr-pro-001-repository-strategy.md) |
-| ADR-PRO-003 Feature Gating | [adr-pro-003-feature-gating-licensing.md](../architecture/adr/adr-pro-003-feature-gating-licensing.md) |
-| Pro Detector | [bin/utils/pro-detector.js](../../bin/utils/pro-detector.js) |
-| Feature Registry | [pro/feature-registry.yaml](../../pro/feature-registry.yaml) |
+| 资源                       | 路径                                                                                                                  |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 当前状态 (v1.0)            | [MEMORY-SYSTEM.md](MEMORY-SYSTEM.md)                                                                                  |
+| Epic MIS 索引              | [EPIC-MIS-INDEX.md](../stories/epics/epic-memory-intelligence-system/EPIC-MIS-INDEX.md)                               |
+| MIS-1 调研                 | [story-mis-1-investigation.md](../stories/epics/epic-memory-intelligence-system/story-mis-1-investigation.md)         |
+| MIS-2 死代码清理           | [story-mis-2-dead-code-cleanup.md](../stories/epics/epic-memory-intelligence-system/story-mis-2-dead-code-cleanup.md) |
+| Epic PRO 架构              | [EPIC-PRO-INDEX.md](../stories/epics/epic-pro-aiox-pro-architecture/EPIC-PRO-INDEX.md)                                |
+| ADR-PRO-001 仓库策略       | [adr-pro-001-repository-strategy.md](../architecture/adr/adr-pro-001-repository-strategy.md)                          |
+| ADR-PRO-003 Feature Gating | [adr-pro-003-feature-gating-licensing.md](../architecture/adr/adr-pro-003-feature-gating-licensing.md)                |
+| Pro Detector               | [bin/utils/pro-detector.js](../../bin/utils/pro-detector.js)                                                          |
+| Feature Registry           | [pro/feature-registry.yaml](../../pro/feature-registry.yaml)                                                          |
 
 ---
 
-*AIOX 记忆智能系统 — 架构愿景 v4.0.4 (Core/Pro 分离)*
-*Epic MIS 完成后的目标状态 (7 个 stories, ~78 小时)*
-*aiox-core: 扩展点 + 死代码清理*
-*aiox-pro: 所有记忆智能 (捕获, 存储, 检索, 演化)*
-*@architect (Aria) — 架构未来*
+_AIOX 记忆智能系统 — 架构愿景 v4.0.4 (Core/Pro 分离)_
+_Epic MIS 完成后的目标状态 (7 个 stories, ~78 小时)_
+_aiox-core: 扩展点 + 死代码清理_
+_aiox-pro: 所有记忆智能 (捕获, 存储, 检索, 演化)_
+_@architect (Aria) — 架构未来_

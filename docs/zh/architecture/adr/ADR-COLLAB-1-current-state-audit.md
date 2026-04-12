@@ -86,19 +86,19 @@
 
 **来源:** `gh api repos/SynkraAI/aiox-core/actions/workflows`
 
-| 工作流 | 状态 | 路径 |
-| --- | --- | --- |
-| CI | 活跃 | .github/workflows/ci.yml |
-| Test | 活跃 | .github/workflows/test.yml |
-| PR Automation | 活跃 | .github/workflows/pr-automation.yml |
-| PR Labeling | 活跃 | .github/workflows/pr-labeling.yml |
-| Semantic Release | 活跃 | .github/workflows/semantic-release.yml |
-| Release | 活跃 | .github/workflows/release.yml |
-| NPM Publish | 活跃 | .github/workflows/npm-publish.yml |
-| Welcome New Contributors | 活跃 | .github/workflows/welcome.yml |
-| macOS Testing | 活跃 | .github/workflows/macos-testing.yml |
-| Quarterly Gap Audit | 活跃 | .github/workflows/quarterly-gap-audit.yml |
-| CodeQL | 活跃 | dynamic/github-code-scanning/codeql |
+| 工作流                   | 状态 | 路径                                      |
+| ------------------------ | ---- | ----------------------------------------- |
+| CI                       | 活跃 | .github/workflows/ci.yml                  |
+| Test                     | 活跃 | .github/workflows/test.yml                |
+| PR Automation            | 活跃 | .github/workflows/pr-automation.yml       |
+| PR Labeling              | 活跃 | .github/workflows/pr-labeling.yml         |
+| Semantic Release         | 活跃 | .github/workflows/semantic-release.yml    |
+| Release                  | 活跃 | .github/workflows/release.yml             |
+| NPM Publish              | 活跃 | .github/workflows/npm-publish.yml         |
+| Welcome New Contributors | 活跃 | .github/workflows/welcome.yml             |
+| macOS Testing            | 活跃 | .github/workflows/macos-testing.yml       |
+| Quarterly Gap Audit      | 活跃 | .github/workflows/quarterly-gap-audit.yml |
+| CodeQL                   | 活跃 | dynamic/github-code-scanning/codeql       |
 
 ### 4. CODEOWNERS 配置
 
@@ -120,38 +120,38 @@
 
 ### 严重级别 - 关键
 
-| 配置 | 当前 | 预期 | 风险 |
-| --- | --- | --- | --- |
-| `required_approving_review_count` | **0** | **1** | 未审查的代码可被合并 |
-| `require_code_owner_reviews` | **false** | **true** | 无领域专家验证 |
+| 配置                              | 当前      | 预期     | 风险                 |
+| --------------------------------- | --------- | -------- | -------------------- |
+| `required_approving_review_count` | **0**     | **1**    | 未审查的代码可被合并 |
+| `require_code_owner_reviews`      | **false** | **true** | 无领域专家验证       |
 
 **影响:** 任何具有写入权限的协作者都可以在没有批准的情况下合并 PR，绕过代码审查。
 
 ### 严重级别 - 高
 
-| 配置 | 当前 | 预期 | 风险 |
-| --- | --- | --- | --- |
-| CodeRabbit `.coderabbit.yaml` | 缺失 | 已配置 | 无自动化 AI 审查 |
-| CODEOWNERS 粒度 | 组织级别 | 按路径指定 | 无专家路由 |
+| 配置                          | 当前     | 预期       | 风险             |
+| ----------------------------- | -------- | ---------- | ---------------- |
+| CodeRabbit `.coderabbit.yaml` | 缺失     | 已配置     | 无自动化 AI 审查 |
+| CODEOWNERS 粒度               | 组织级别 | 按路径指定 | 无专家路由       |
 
 **影响:** 审查质量降低，对贡献者无自动化反馈。
 
 ### 严重级别 - 中
 
-| 配置 | 当前 | 预期 | 风险 |
-| --- | --- | --- | --- |
-| 必需检查中的 `test` | 未要求 | 必需 | 测试可被跳过 |
-| `required_conversation_resolution` | false | true | 反馈可被忽略 |
-| 必需检查中的 `story-validation` | 未要求 | 可选 | Story 一致性未强制 |
+| 配置                               | 当前   | 预期 | 风险               |
+| ---------------------------------- | ------ | ---- | ------------------ |
+| 必需检查中的 `test`                | 未要求 | 必需 | 测试可被跳过       |
+| `required_conversation_resolution` | false  | true | 反馈可被忽略       |
+| 必需检查中的 `story-validation`    | 未要求 | 可选 | Story 一致性未强制 |
 
 **影响:** PR 可能在测试失败或反馈未处理的情况下被合并。
 
 ### 严重级别 - 低
 
-| 配置 | 当前 | 预期 | 风险 |
-| --- | --- | --- | --- |
-| 必需签名 | false | 可选 | 提交真实性未验证 |
-| 必需线性历史 | false | 可选 | 复杂的合并历史 |
+| 配置         | 当前  | 预期 | 风险             |
+| ------------ | ----- | ---- | ---------------- |
+| 必需签名     | false | 可选 | 提交真实性未验证 |
+| 必需线性历史 | false | 可选 | 复杂的合并历史   |
 
 **影响:** 轻微的可追溯性问题。
 
@@ -159,14 +159,14 @@
 
 ## 摘要表
 
-| 类别 | 状态 | 需要的操作 |
-| --- | --- | --- |
-| 批准审查 | 关键 | 启用至少 1 个必需 |
-| Code owner 审查 | 关键 | 启用 |
-| CodeRabbit 配置 | 高 | 创建 |
-| CODEOWNERS 细化 | 高 | 增强 |
-| 检查中的 Test | 中 | 添加 |
-| 对话解决 | 中 | 启用 |
+| 类别            | 状态 | 需要的操作        |
+| --------------- | ---- | ----------------- |
+| 批准审查        | 关键 | 启用至少 1 个必需 |
+| Code owner 审查 | 关键 | 启用              |
+| CodeRabbit 配置 | 高   | 创建              |
+| CODEOWNERS 细化 | 高   | 增强              |
+| 检查中的 Test   | 中   | 添加              |
+| 对话解决        | 中   | 启用              |
 
 ---
 

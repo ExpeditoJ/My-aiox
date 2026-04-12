@@ -17,13 +17,13 @@ AIOX soporta 9 plataformas de desarrollo con IA. Elija la que mejor se adapte a 
 ### Tabla Comparativa Rápida
 
 | ------------------------ | :---------: | :------: | :------: | :------: | :-----: | :---------: | :--------: | :------: |
-| **Activación de Agente** |  /comando   | @mención | @mención | @mención | 4 Modos |  Workflow   |   Modo   |   Prompt   | @mención |
-| **Soporte MCP**          |   Nativo    |  Config  |  Config  | Limitado |   Sí    |   Nativo    |    No    |     No     | Limitado |
-| **Tareas de Subagente**  |     Sí      |    No    |    No    |    No    |   Sí    |     Sí      |    No    |     No     |    No    |
-| **Sync Automático**      |     Sí      |    Sí    |    Sí    |    Sí    |   Sí    |     Sí      |    Sí    |     Sí     |    Sí    |
-| **Sistema de Hooks**     |     Sí      |    No    |    No    |    No    |   No    |     No      |    No    |     No     |    No    |
-| **Skills/Comandos**      |   Nativo    |    No    |    No    |    No    |   No    |     No      |    No    |     No     |    No    |
-| **Recomendación**        |   ⭐⭐⭐    |  ⭐⭐⭐  |   ⭐⭐   |   ⭐⭐   |  ⭐⭐   |    ⭐⭐     |    ⭐    |     ⭐     |    ⭐    |
+| **Activación de Agente** | /comando | @mención | @mención | @mención | 4 Modos | Workflow | Modo | Prompt | @mención |
+| **Soporte MCP** | Nativo | Config | Config | Limitado | Sí | Nativo | No | No | Limitado |
+| **Tareas de Subagente** | Sí | No | No | No | Sí | Sí | No | No | No |
+| **Sync Automático** | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí | Sí |
+| **Sistema de Hooks** | Sí | No | No | No | No | No | No | No | No |
+| **Skills/Comandos** | Nativo | No | No | No | No | No | No | No | No |
+| **Recomendación** | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐⭐ | ⭐ | ⭐ | ⭐ |
 
 ### Guía de Decisión de Plataforma
 

@@ -19,22 +19,22 @@ All contributed squads must meet these standards:
 
 ### Required
 
-| Requirement | Description |
-|-------------|-------------|
-| **Valid manifest** | `squad.yaml` passes JSON Schema validation |
-| **Documentation** | README.md with usage instructions |
-| **License** | Open source license (MIT, Apache 2.0, etc.) |
-| **AIOX compatibility** | `aiox.minVersion: "2.1.0"` or higher |
-| **Task-first architecture** | Tasks as primary entry points |
+| Requirement                 | Description                                 |
+| --------------------------- | ------------------------------------------- |
+| **Valid manifest**          | `squad.yaml` passes JSON Schema validation  |
+| **Documentation**           | README.md with usage instructions           |
+| **License**                 | Open source license (MIT, Apache 2.0, etc.) |
+| **AIOX compatibility**      | `aiox.minVersion: "2.1.0"` or higher        |
+| **Task-first architecture** | Tasks as primary entry points               |
 
 ### Recommended
 
-| Recommendation | Description |
-|----------------|-------------|
-| **Examples** | Usage examples in README |
-| **Tests** | Unit tests for critical functionality |
-| **Changelog** | Version history documentation |
-| **Troubleshooting** | Common issues and solutions |
+| Recommendation      | Description                           |
+| ------------------- | ------------------------------------- |
+| **Examples**        | Usage examples in README              |
+| **Tests**           | Unit tests for critical functionality |
+| **Changelog**       | Version history documentation         |
+| **Troubleshooting** | Common issues and solutions           |
 
 ## Naming Conventions
 
@@ -50,7 +50,7 @@ All contributed squads must meet these standards:
 The `slashPrefix` in `squad.yaml` determines command prefixes:
 
 ```yaml
-slashPrefix: etl  # Commands become *etl-extract, *etl-transform
+slashPrefix: etl # Commands become *etl-extract, *etl-transform
 ```
 
 Choose a unique, short prefix (2-5 characters).
@@ -62,15 +62,15 @@ Choose a unique, short prefix (2-5 characters).
 ```yaml
 # These fields are REQUIRED
 name: my-squad
-version: 1.0.0              # Semantic versioning
+version: 1.0.0 # Semantic versioning
 description: Clear description of what this squad does
 
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 components:
-  agents: []                # At least one agent OR task
+  agents: [] # At least one agent OR task
   tasks: []
 ```
 
@@ -111,10 +111,10 @@ Basic usage examples.
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| *cmd1 | What it does |
-| *cmd2 | What it does |
+| Command | Description  |
+| ------- | ------------ |
+| \*cmd1  | What it does |
+| \*cmd2  | What it does |
 
 ## Configuration
 
@@ -153,6 +153,7 @@ License information.
 ```
 
 This will:
+
 1. Fork `SynkraAI/aiox-squads` (if needed)
 2. Create branch with your squad
 3. Open PR for review
@@ -186,10 +187,10 @@ export SYNKRA_API_TOKEN="your-token"
 
 ### Visibility Options
 
-| Flag | Effect |
-|------|--------|
+| Flag        | Effect                         |
+| ----------- | ------------------------------ |
 | `--private` | Only visible to your workspace |
-| `--public` | Visible to everyone |
+| `--public`  | Visible to everyone            |
 
 ## Updating Published Squads
 

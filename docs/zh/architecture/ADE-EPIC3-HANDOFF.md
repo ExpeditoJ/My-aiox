@@ -17,12 +17,12 @@ Epic 1 (Worktree) 和 Epic 2 (Migration V3) **100% 完成**并通过 QA Gate。E
 
 ## 已验证的先决条件 ✅
 
-| 依赖项          | 状态              | 证据                                          |
-| --------------- | ----------------- | --------------------------------------------- |
-| WorktreeManager | ✅ 正常工作       | `manager.list()` 执行无错误                   |
-| V3 Schemas      | ✅ 完成           | `agent-v3-schema.json`, `task-v3-schema.json` |
-| 所有 Agents V3  | ✅ 12/12 已迁移   | 所有都有 `autoClaude:` 部分                   |
-| 迁移脚本        | ✅ 就绪           | `asset-inventory.js`, `path-analyzer.js`      |
+| 依赖项          | 状态            | 证据                                          |
+| --------------- | --------------- | --------------------------------------------- |
+| WorktreeManager | ✅ 正常工作     | `manager.list()` 执行无错误                   |
+| V3 Schemas      | ✅ 完成         | `agent-v3-schema.json`, `task-v3-schema.json` |
+| 所有 Agents V3  | ✅ 12/12 已迁移 | 所有都有 `autoClaude:` 部分                   |
+| 迁移脚本        | ✅ 就绪         | `asset-inventory.js`, `path-analyzer.js`      |
 
 ---
 

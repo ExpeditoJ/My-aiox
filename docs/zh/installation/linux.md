@@ -8,16 +8,16 @@
 
 ## 支持的发行版
 
-| 发行版      | 版本          | 状态              |
-| ----------- | ------------- | ------------------- |
-| Ubuntu      | 20.04+ (LTS)  | ✅ 完全支持        |
-| Debian      | 11+ (Bullseye) | ✅ 完全支持        |
-| Fedora      | 37+           | ✅ 完全支持        |
-| Arch Linux  | Latest        | ✅ 完全支持        |
-| Linux Mint  | 21+           | ✅ 完全支持        |
-| Pop!_OS     | 22.04+        | ✅ 完全支持        |
-| openSUSE    | Leap 15.4+    | ⚠️ 社区测试        |
-| CentOS/RHEL | 9+            | ⚠️ 社区测试        |
+| 发行版      | 版本           | 状态        |
+| ----------- | -------------- | ----------- |
+| Ubuntu      | 20.04+ (LTS)   | ✅ 完全支持 |
+| Debian      | 11+ (Bullseye) | ✅ 完全支持 |
+| Fedora      | 37+            | ✅ 完全支持 |
+| Arch Linux  | Latest         | ✅ 完全支持 |
+| Linux Mint  | 21+            | ✅ 完全支持 |
+| Pop!\_OS    | 22.04+         | ✅ 完全支持 |
+| openSUSE    | Leap 15.4+     | ⚠️ 社区测试 |
+| CentOS/RHEL | 9+             | ⚠️ 社区测试 |
 
 ---
 
@@ -393,13 +393,13 @@ rm -rf ~/.aiox-core-source ~/.npm-global/lib/node_modules/@synkra
 
 ## 系统要求
 
-| 要求        | 最小   | 推荐   |
-| ----------- | ------ | ------ |
-| Kernel      | 4.15+  | 5.10+  |
-| RAM         | 2GB    | 8GB    |
-| 磁盘空间    | 500MB  | 2GB    |
-| Node.js     | 18.x   | 20.x LTS |
-| npm         | 9.x    | 10.x   |
+| 要求     | 最小  | 推荐     |
+| -------- | ----- | -------- |
+| Kernel   | 4.15+ | 5.10+    |
+| RAM      | 2GB   | 8GB      |
+| 磁盘空间 | 500MB | 2GB      |
+| Node.js  | 18.x  | 20.x LTS |
+| npm      | 9.x   | 10.x     |
 
 ---
 

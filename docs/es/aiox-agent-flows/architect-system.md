@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*design` | Disenar arquitectura |
-| `*adr` | Crear decision record |
-| `*review` | Revisar arquitectura |
-| `*patterns` | Sugerir patrones |
+| Comando     | Descripcion           |
+| ----------- | --------------------- |
+| `*design`   | Disenar arquitectura  |
+| `*adr`      | Crear decision record |
+| `*review`   | Revisar arquitectura  |
+| `*patterns` | Sugerir patrones      |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/architect-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

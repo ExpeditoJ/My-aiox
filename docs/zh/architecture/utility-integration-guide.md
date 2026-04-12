@@ -18,6 +18,7 @@
 **定义:** 工具集成是使孤立工具脚本**可发现、文档化和可用**的过程，位于 AIOX 框架内。
 
 工具被认为**完全集成**当:
+
 1. ✅ **已注册** 在 core-config.yaml 中
 2. ✅ **被引用** 至少由一个代理或任务
 3. ✅ **已文档化** 包含目的和用法
@@ -33,6 +34,7 @@
 **何时使用:** 工具提供代理直接使用的辅助函数
 
 **集成步骤:**
+
 1. 将工具添加到目标代理的 `dependencies.utils` 数组
 2. 在代理文件中记录工具的目的
 3. 在 core-config.yaml 中注册 (如果还未注册)
@@ -46,11 +48,12 @@ id: dev
 name: 开发代理
 dependencies:
   utils:
-    - batch-creator  # 创建相关任务的批次
+    - batch-creator # 创建相关任务的批次
     - code-quality-improver
 ```
 
 **修改的文件:**
+
 - `.aiox-core/agents/{agent}.yaml` (添加到 dependencies.utils)
 - `.aiox-core/core-config.yaml` (如必要则注册)
 - `.aiox-core/utils/README.md` (记录工具)
@@ -62,6 +65,7 @@ dependencies:
 **何时使用:** 工具由任务在执行期间调用
 
 **集成步骤:**
+
 1. 识别或创建使用工具的任务
 2. 在任务的 `execution.utils` 部分添加工具引用
 3. 记录任务如何使用工具
@@ -76,7 +80,7 @@ id: generate-commit-message
 name: 生成提交信息
 execution:
   utils:
-    - commit-message-generator  # 该任务的主工具
+    - commit-message-generator # 该任务的主工具
   steps:
     - 分析暂存的更改
     - 使用工具生成语义提交信息
@@ -84,6 +88,7 @@ execution:
 ```
 
 **修改的文件:**
+
 - `.aiox-core/tasks/{task}.md` (添加 execution.utils)
 - `.aiox-core/agents/{agent}.yaml` (添加任务到 executes 列表)
 - `.aiox-core/core-config.yaml` (如必要则注册)
@@ -96,6 +101,7 @@ execution:
 **何时使用:** 工具由框架本身使用，而不是由代理/任务直接使用
 
 **集成步骤:**
+
 1. 在 core-config.yaml 的适当类别中注册
 2. 在 utils/README.md 中记录为 "框架工具"
 3. 添加到框架文档
@@ -107,11 +113,12 @@ execution:
 # .aiox-core/core-config.yaml
 utils:
   framework:
-    - elicitation-engine  # 用于代理创建工作流
+    - elicitation-engine # 用于代理创建工作流
     - aiox-validator
 ```
 
 **修改的文件:**
+
 - `.aiox-core/core-config.yaml` (在框架中注册)
 - `.aiox-core/utils/README.md` (记录为框架工具)
 - 框架文档 (如适用)
@@ -123,6 +130,7 @@ utils:
 **何时使用:** 工具执行分析或文档生成
 
 **集成步骤:**
+
 1. 添加到相关代理的工具 (通常是 architect、qa 或文档代理)
 2. 创建或更新使用工具的任务
 3. 记录分析/输出格式
@@ -134,11 +142,12 @@ utils:
 # .aiox-core/agents/architect.yaml
 dependencies:
   utils:
-    - documentation-synchronizer  # 保持文档与代码同步
+    - documentation-synchronizer # 保持文档与代码同步
     - dependency-analyzer
 ```
 
 **修改的文件:**
+
 - `.aiox-core/agents/{agent}.yaml`
 - `.aiox-core/tasks/{task}.md` (如创建任务)
 - `.aiox-core/core-config.yaml`
@@ -186,26 +195,31 @@ dependencies:
 工具应进行分类以便于集成:
 
 ### 类别 1: 代码质量
+
 **目的:** 分析、改进、验证代码
 **模式:** 代理辅助工具 (代理 dev、qa)
 **示例:** aiox-validator、code-quality-improver、coverage-analyzer
 
 ### 类别 2: Git/工作流
+
 **目的:** Git 操作、工作流自动化
 **模式:** 任务执行 (代理 dev、github-devops)
 **示例:** commit-message-generator、branch-manager、conflict-resolver
 
 ### 类别 3: 组件管理
+
 **目的:** 生成、管理、搜索组件
 **模式:** 代理辅助工具 + 任务执行
 **示例:** component-generator、component-search、deprecation-manager
 
 ### 类别 4: 文档
+
 **目的:** 生成、同步、分析文档
 **模式:** 文档工具 (代理 architect、docs)
 **示例:** documentation-synchronizer、dependency-impact-analyzer
 
 ### 类别 5: 批处理/辅助
+
 **目的:** 批量操作、框架辅助
 **模式:** 变化 (代理辅助工具或框架)
 **示例:** batch-creator、clickup-helpers、elicitation-engine
@@ -217,6 +231,7 @@ dependencies:
 ### 对于每个集成的工具:
 
 **1. 加载测试**
+
 ```javascript
 // 验证工具加载无错误
 const utility = require('.aiox-core/utils/{utility-name}');
@@ -224,12 +239,14 @@ const utility = require('.aiox-core/utils/{utility-name}');
 ```
 
 **2. 引用验证**
+
 ```bash
 # 验证代理/任务引用有效
 node outputs/architecture-map/schemas/validate-tool-references.js
 ```
 
 **3. 间隙检测**
+
 ```bash
 # 验证间隙已解决
 node outputs/architecture-map/schemas/detect-gaps.js
@@ -237,6 +254,7 @@ node outputs/architecture-map/schemas/detect-gaps.js
 ```
 
 **4. 集成测试** (如适用)
+
 ```javascript
 // 验证代理加载工具依赖
 const agent = loadAgent('agent-name');
@@ -255,6 +273,7 @@ const agent = loadAgent('agent-name');
 **目的:** 工具执行功能的简要描述
 
 **由以下使用:**
+
 - agent-{name} (用于 {目的})
 - task-{name} (在 {阶段} 期间)
 
@@ -305,21 +324,25 @@ utils:
 工具集成成功时:
 
 ✅ **可发现:**
+
 - 在 core-config.yaml 中列出
 - 在 utils/README.md 中记录
 - 由代理/任务引用
 
 ✅ **功能性:**
+
 - 加载无错误
 - 代理/任务可使用它
 - 测试通过
 
 ✅ **已验证:**
+
 - 间隙检测显示 0 个间隙
 - 引用验证通过
 - 集成测试通过
 
 ✅ **已文档化:**
+
 - 目的清晰表述
 - 提供使用示例
 - 已识别集成模式
@@ -344,12 +367,12 @@ utils:
 
 ## 快速参考
 
-| 模式 | 目标 | 修改的文件 | 测试 |
-|------|------|----------|------|
-| 代理辅助工具 | Agent YAML | agent.yaml、core-config、README | 加载代理 |
-| 任务执行 | Task MD + Agent | task.md、agent.yaml、core-config、README | 执行任务 |
-| 框架 | 框架 | core-config、README、文档 | 加载工具 |
-| 文档 | Architect/Docs | agent.yaml、core-config、README | 间隙检测 |
+| 模式         | 目标            | 修改的文件                               | 测试     |
+| ------------ | --------------- | ---------------------------------------- | -------- |
+| 代理辅助工具 | Agent YAML      | agent.yaml、core-config、README          | 加载代理 |
+| 任务执行     | Task MD + Agent | task.md、agent.yaml、core-config、README | 执行任务 |
+| 框架         | 框架            | core-config、README、文档                | 加载工具 |
+| 文档         | Architect/Docs  | agent.yaml、core-config、README          | 间隙检测 |
 
 ---
 

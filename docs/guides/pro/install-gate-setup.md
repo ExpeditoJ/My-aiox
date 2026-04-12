@@ -16,9 +16,9 @@ Comprar Licenca → Instalar → Ativar → Usar Features Pro
 
 ### Pacotes npm
 
-| Pacote | Tipo | Proposito |
-|--------|------|-----------|
-| `aiox-pro` | CLI (1.8 KB) | Comandos de instalacao e gerenciamento |
+| Pacote                | Tipo         | Proposito                                                |
+| --------------------- | ------------ | -------------------------------------------------------- |
+| `aiox-pro`            | CLI (1.8 KB) | Comandos de instalacao e gerenciamento                   |
 | `@aiox-fullstack/pro` | Core (10 MB) | Features premium (squads, memory, metrics, integrations) |
 
 ---
@@ -68,6 +68,7 @@ npx aiox-pro activate --key PRO-XXXX-XXXX-XXXX-XXXX
 ```
 
 Esse comando:
+
 1. Valida a chave contra o License Server (`https://aiox-license-server.vercel.app`)
 2. Registra sua maquina (machine ID unico)
 3. Salva um cache local criptografado para uso offline
@@ -86,15 +87,15 @@ npx aiox-pro features
 
 ## Comandos Disponiveis
 
-| Comando | Descricao |
-|---------|-----------|
-| `npx aiox-pro install` | Instala `@aiox-fullstack/pro` no projeto |
-| `npx aiox-pro activate --key KEY` | Ativa uma chave de licenca |
-| `npx aiox-pro status` | Mostra status da licenca atual |
-| `npx aiox-pro features` | Lista todas as features pro e disponibilidade |
-| `npx aiox-pro validate` | Forca revalidacao online da licenca |
-| `npx aiox-pro deactivate` | Desativa a licenca nesta maquina |
-| `npx aiox-pro help` | Mostra todos os comandos |
+| Comando                           | Descricao                                     |
+| --------------------------------- | --------------------------------------------- |
+| `npx aiox-pro install`            | Instala `@aiox-fullstack/pro` no projeto      |
+| `npx aiox-pro activate --key KEY` | Ativa uma chave de licenca                    |
+| `npx aiox-pro status`             | Mostra status da licenca atual                |
+| `npx aiox-pro features`           | Lista todas as features pro e disponibilidade |
+| `npx aiox-pro validate`           | Forca revalidacao online da licenca           |
+| `npx aiox-pro deactivate`         | Desativa a licenca nesta maquina              |
+| `npx aiox-pro help`               | Mostra todos os comandos                      |
 
 ---
 
@@ -107,6 +108,7 @@ Apos a instalacao e ativacao, o AIOX Pro funciona offline:
 - Verificacao de features 100% local no dia a dia
 
 A internet so e necessaria para:
+
 1. Ativacao inicial (`npx aiox-pro activate`)
 2. Revalidacao periodica (automatica a cada 30 dias)
 3. Desativacao (`npx aiox-pro deactivate`)
@@ -118,6 +120,7 @@ A internet so e necessaria para:
 Para pipelines, instale e ative usando secrets de ambiente:
 
 **GitHub Actions:**
+
 ```yaml
 - name: Install AIOX Pro
   run: npx aiox-pro install
@@ -127,6 +130,7 @@ Para pipelines, instale e ative usando secrets de ambiente:
 ```
 
 **GitLab CI:**
+
 ```yaml
 before_script:
   - npx aiox-pro install
@@ -184,11 +188,11 @@ License activation failed: ECONNREFUSED
                         └─────────────────────────────────┘
 ```
 
-| Componente | URL | Proposito |
-|-----------|-----|-----------|
-| License Server | `https://aiox-license-server.vercel.app` | API de ativacao/validacao |
-| Admin Dashboard | `https://aiox-license-dashboard.vercel.app` | Gestao de licencas (admin) |
-| Database | Supabase PostgreSQL | Armazena licencas e ativacoes |
+| Componente      | URL                                         | Proposito                     |
+| --------------- | ------------------------------------------- | ----------------------------- |
+| License Server  | `https://aiox-license-server.vercel.app`    | API de ativacao/validacao     |
+| Admin Dashboard | `https://aiox-license-dashboard.vercel.app` | Gestao de licencas (admin)    |
+| Database        | Supabase PostgreSQL                         | Armazena licencas e ativacoes |
 
 ---
 
@@ -201,5 +205,5 @@ License activation failed: ECONNREFUSED
 
 ---
 
-*AIOX Pro Installation Guide v3.0*
-*Story PRO-6 — License Key & Feature Gating System*
+_AIOX Pro Installation Guide v3.0_
+_Story PRO-6 — License Key & Feature Gating System_

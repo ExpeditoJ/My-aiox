@@ -19,9 +19,9 @@ Help users place rules in the most appropriate domain by analyzing the rule's co
 
 ## Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `rule-text` | Yes | The rule text to analyze |
+| Parameter   | Required | Description              |
+| ----------- | -------- | ------------------------ |
+| `rule-text` | Yes      | The rule text to analyze |
 
 ---
 
@@ -30,6 +30,7 @@ Help users place rules in the most appropriate domain by analyzing the rule's co
 ### Step 1: Load Existing Domains
 
 Read `.synapse/manifest` and build a list of all domains with their:
+
 - Domain name and key
 - RECALL keywords (from `{DOMAIN_KEY}_RECALL`)
 - Current state (active/inactive)
@@ -38,6 +39,7 @@ Read `.synapse/manifest` and build a list of all domains with their:
 ### Step 2: Analyze Rule Content
 
 Examine the rule text for:
+
 - **Agent references:** mentions of `@dev`, `@qa`, `@architect`, etc. -> suggests agent-specific domain
 - **Workflow references:** mentions of "story", "sprint", "review", "deploy" -> suggests workflow domain
 - **Technical keywords:** "test", "lint", "commit", "branch" -> match against RECALL keywords
@@ -47,12 +49,12 @@ Examine the rule text for:
 
 For each existing domain, calculate a relevance score:
 
-| Factor | Weight | Points | Description |
-|--------|--------|--------|-------------|
-| RECALL keyword match | High | 3 | Rule text contains a domain's RECALL keyword |
-| Domain name word match | Medium | 2 | Rule text contains words from domain name |
-| Agent trigger match | High | 3 | Rule mentions an agent that triggers a domain |
-| Existing rule similarity | Low | 1 | Rule is similar to existing rules in domain |
+| Factor                   | Weight | Points | Description                                   |
+| ------------------------ | ------ | ------ | --------------------------------------------- |
+| RECALL keyword match     | High   | 3      | Rule text contains a domain's RECALL keyword  |
+| Domain name word match   | Medium | 2      | Rule text contains words from domain name     |
+| Agent trigger match      | High   | 3      | Rule mentions an agent that triggers a domain |
+| Existing rule similarity | Low    | 1      | Rule is similar to existing rules in domain   |
 
 Sum the points for each domain. Maximum possible score is 9 (round up to 10 if all factors match). Present as `{score}/10`.
 
@@ -104,13 +106,13 @@ If user selects 3: Exit without changes.
 
 ## Error Handling
 
-| Error | Message |
-|-------|---------|
-| No domains exist | `No domains found in manifest. Use "create" to create your first domain.` |
-| Empty rule text | `Error: Please provide the rule text to analyze.` |
-| Manifest not found | `Error: .synapse/manifest not found. SYNAPSE must be initialized first.` |
+| Error              | Message                                                                   |
+| ------------------ | ------------------------------------------------------------------------- |
+| No domains exist   | `No domains found in manifest. Use "create" to create your first domain.` |
+| Empty rule text    | `Error: Please provide the rule text to analyze.`                         |
+| Manifest not found | `Error: .synapse/manifest not found. SYNAPSE must be initialized first.`  |
 
 ---
 
-*Suggest Domain — SYNAPSE CRUD Command C7*
-*Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3*
+_Suggest Domain — SYNAPSE CRUD Command C7_
+_Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3_

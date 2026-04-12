@@ -25,11 +25,11 @@ Workflow para el pipeline de especificacion, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Creacion de PRD |
-| @architect | Especificacion tecnica |
-| @analyst | Investigacion de soporte |
+| Agente     | Rol                      |
+| ---------- | ------------------------ |
+| @pm        | Creacion de PRD          |
+| @architect | Especificacion tecnica   |
+| @analyst   | Investigacion de soporte |
 
 ## Ver Mas
 
@@ -37,4 +37,4 @@ Workflow para el pipeline de especificacion, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

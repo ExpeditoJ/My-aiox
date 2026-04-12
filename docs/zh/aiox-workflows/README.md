@@ -27,25 +27,25 @@
 
 ### 按项目类型
 
-| 类型 | 工作流 | 描述 | 文档 |
-|------|--------|------|------|
-| **绿地项目** | 全栈 | 从零开始的全栈应用 | [greenfield-fullstack-workflow.md](./greenfield-fullstack-workflow.md) |
-| **绿地项目** | 服务 | 从零开始的后端/API | [greenfield-service-workflow.md](./greenfield-service-workflow.md) |
-| **绿地项目** | UI | 从零开始的前端 | [greenfield-ui-workflow.md](./greenfield-ui-workflow.md) |
-| **棕地项目** | 发现 | 现有项目分析 | [brownfield-discovery-workflow.md](./brownfield-discovery-workflow.md) |
-| **棕地项目** | 全栈 | 现有全栈演进 | [brownfield-fullstack-workflow.md](./brownfield-fullstack-workflow.md) |
-| **棕地项目** | 服务 | 现有后端演进 | [brownfield-service-workflow.md](./brownfield-service-workflow.md) |
-| **棕地项目** | UI | 现有前端演进 | [brownfield-ui-workflow.md](./brownfield-ui-workflow.md) |
+| 类型         | 工作流 | 描述               | 文档                                                                   |
+| ------------ | ------ | ------------------ | ---------------------------------------------------------------------- |
+| **绿地项目** | 全栈   | 从零开始的全栈应用 | [greenfield-fullstack-workflow.md](./greenfield-fullstack-workflow.md) |
+| **绿地项目** | 服务   | 从零开始的后端/API | [greenfield-service-workflow.md](./greenfield-service-workflow.md)     |
+| **绿地项目** | UI     | 从零开始的前端     | [greenfield-ui-workflow.md](./greenfield-ui-workflow.md)               |
+| **棕地项目** | 发现   | 现有项目分析       | [brownfield-discovery-workflow.md](./brownfield-discovery-workflow.md) |
+| **棕地项目** | 全栈   | 现有全栈演进       | [brownfield-fullstack-workflow.md](./brownfield-fullstack-workflow.md) |
+| **棕地项目** | 服务   | 现有后端演进       | [brownfield-service-workflow.md](./brownfield-service-workflow.md)     |
+| **棕地项目** | UI     | 现有前端演进       | [brownfield-ui-workflow.md](./brownfield-ui-workflow.md)               |
 
 ### 按流程
 
-| 流程 | 工作流 | 描述 | 文档 |
-|------|--------|------|------|
-| **开发** | 故事周期 | 完整的故事周期 | [story-development-cycle-workflow.md](./story-development-cycle-workflow.md) |
-| **质量** | 质量保证循环 | 质量周期 | [qa-loop-workflow.md](./qa-loop-workflow.md) |
-| **规范** | 规范管道 | 规范管道 | [spec-pipeline-workflow.md](./spec-pipeline-workflow.md) |
-| **设计** | 设计系统 | 设计系统构建 | [design-system-build-quality-workflow.md](./design-system-build-quality-workflow.md) |
-| **Git** | 自动工作树 | 自动工作树管理 | [auto-worktree-workflow.md](./auto-worktree-workflow.md) |
+| 流程     | 工作流       | 描述           | 文档                                                                                 |
+| -------- | ------------ | -------------- | ------------------------------------------------------------------------------------ |
+| **开发** | 故事周期     | 完整的故事周期 | [story-development-cycle-workflow.md](./story-development-cycle-workflow.md)         |
+| **质量** | 质量保证循环 | 质量周期       | [qa-loop-workflow.md](./qa-loop-workflow.md)                                         |
+| **规范** | 规范管道     | 规范管道       | [spec-pipeline-workflow.md](./spec-pipeline-workflow.md)                             |
+| **设计** | 设计系统     | 设计系统构建   | [design-system-build-quality-workflow.md](./design-system-build-quality-workflow.md) |
+| **Git**  | 自动工作树   | 自动工作树管理 | [auto-worktree-workflow.md](./auto-worktree-workflow.md)                             |
 
 ---
 
@@ -189,13 +189,13 @@ flowchart TD
 
 ## 工作流之间的流程
 
-| 从 | 到 | 条件 |
-|----|-----|------|
-| `brownfield-discovery` | `brownfield-*` | 完成分析后 |
-| `greenfield-*` | `story-development-cycle` | 每个故事 |
-| `brownfield-*` | `story-development-cycle` | 每个故事 |
-| `spec-pipeline` | `story-development-cycle` | 规范批准后 |
-| `story-development-cycle` | `qa-loop` | 质量保证阶段 |
+| 从                        | 到                        | 条件         |
+| ------------------------- | ------------------------- | ------------ |
+| `brownfield-discovery`    | `brownfield-*`            | 完成分析后   |
+| `greenfield-*`            | `story-development-cycle` | 每个故事     |
+| `brownfield-*`            | `story-development-cycle` | 每个故事     |
+| `spec-pipeline`           | `story-development-cycle` | 规范批准后   |
+| `story-development-cycle` | `qa-loop`                 | 质量保证阶段 |
 
 ---
 
@@ -224,11 +224,11 @@ flowchart TD
 
 ## 与其他文档的关系
 
-| 文档 | 位置 | 用途 |
-|------|------|------|
+| 文档       | 位置                                                              | 用途     |
+| ---------- | ----------------------------------------------------------------- | -------- |
 | 工作流指南 | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | 一般指南 |
-| 代理流程 | [docs/aiox-agent-flows/](../../aiox-agent-flows/) | 代理详情 |
-| 代理参考 | [docs/agent-reference-guide.md](../../agent-reference-guide.md) | 快速参考 |
+| 代理流程   | [docs/aiox-agent-flows/](../../aiox-agent-flows/)                 | 代理详情 |
+| 代理参考   | [docs/agent-reference-guide.md](../../agent-reference-guide.md)   | 快速参考 |
 
 ---
 
@@ -244,4 +244,4 @@ flowchart TD
 
 ---
 
-*AIOX 工作流文档 v1.0 - 开发工作流的详细文档*
+_AIOX 工作流文档 v1.0 - 开发工作流的详细文档_

@@ -218,12 +218,12 @@ sequenceDiagram
 
 ### Step 1: Review (Fase 1)
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | `review` |
-| **Fase** | 1 - QA Review |
-| **Agente** | `@qa` (Quinn) |
-| **Task** | `qa-review-story.md` |
+| Atributo    | Valor                     |
+| ----------- | ------------------------- |
+| **Nome**    | `review`                  |
+| **Fase**    | 1 - QA Review             |
+| **Agente**  | `@qa` (Quinn)             |
+| **Task**    | `qa-review-story.md`      |
 | **Timeout** | 30 minutos (1.800.000 ms) |
 
 **Descrição:**
@@ -232,9 +232,9 @@ Executa revisao completa de QA da implementação da story, produzindo um verdic
 **Inputs:**
 
 ```yaml
-storyId: "{storyId}"
-iteration: "{currentIteration}"
-previousIssues: "{history[-1].issuesFound|0}"
+storyId: '{storyId}'
+iteration: '{currentIteration}'
+previousIssues: '{history[-1].issuesFound|0}'
 ```
 
 **Outputs:**
@@ -244,12 +244,14 @@ previousIssues: "{history[-1].issuesFound|0}"
 - `issuesFound` - Numero de issues encontrados
 
 **On Success:**
+
 ```
 log: "Review complete: {verdict} ({issuesFound} issues)"
 next: check_verdict
 ```
 
 **On Failure:**
+
 ```
 action: retry (max 2 tentativas)
 on_exhausted: escalate
@@ -259,11 +261,11 @@ on_exhausted: escalate
 
 ### Step 2: Check Verdict (Fase 2)
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | `check_verdict` |
-| **Fase** | 2 - Verdict Check |
-| **Agente** | `system` |
+| Atributo   | Valor             |
+| ---------- | ----------------- |
+| **Nome**   | `check_verdict`   |
+| **Fase**   | 2 - Verdict Check |
+| **Agente** | `system`          |
 
 **Descrição:**
 Avalia o verdict da revisao e determina a próxima acao.
@@ -287,12 +289,12 @@ flowchart TD
 
 ### Step 3: Create Fix Request (Fase 3)
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | `create_fix_request` |
-| **Fase** | 3 - Create Fix Request |
-| **Agente** | `@qa` (Quinn) |
-| **Task** | `qa-create-fix-request.md` |
+| Atributo   | Valor                      |
+| ---------- | -------------------------- |
+| **Nome**   | `create_fix_request`       |
+| **Fase**   | 3 - Create Fix Request     |
+| **Agente** | `@qa` (Quinn)              |
+| **Task**   | `qa-create-fix-request.md` |
 
 **Descrição:**
 Gera um documento estruturado de fix request a partir dos findings da revisao. Prioriza issues e fornece instruções acionaveis de correção.
@@ -300,9 +302,9 @@ Gera um documento estruturado de fix request a partir dos findings da revisao. P
 **Inputs:**
 
 ```yaml
-storyId: "{storyId}"
-gateFile: "{outputs.review.gate-file}"
-iteration: "{currentIteration}"
+storyId: '{storyId}'
+gateFile: '{outputs.review.gate-file}'
+iteration: '{currentIteration}'
 ```
 
 **Outputs:**
@@ -311,12 +313,14 @@ iteration: "{currentIteration}"
 - `prioritizedIssues` - Lista de issues ordenados por prioridade
 
 **On Success:**
+
 ```
 log: "Fix request created with {prioritizedIssues.length} prioritized issues"
 next: fix_issues
 ```
 
 **On Failure:**
+
 ```
 action: continue
 fallback: "Use raw gate file for fixes"
@@ -326,12 +330,12 @@ fallback: "Use raw gate file for fixes"
 
 ### Step 4: Fix Issues (Fase 4)
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | `fix_issues` |
-| **Fase** | 4 - Apply Fixes |
-| **Agente** | `@dev` (Dex) |
-| **Task** | `dev-apply-qa-fixes.md` |
+| Atributo    | Valor                     |
+| ----------- | ------------------------- |
+| **Nome**    | `fix_issues`              |
+| **Fase**    | 4 - Apply Fixes           |
+| **Agente**  | `@dev` (Dex)              |
+| **Task**    | `dev-apply-qa-fixes.md`   |
 | **Timeout** | 60 minutos (3.600.000 ms) |
 
 **Descrição:**
@@ -340,9 +344,9 @@ O agente desenvolvedor aplica as correções baseadas no fix request. Executa te
 **Inputs:**
 
 ```yaml
-storyId: "{storyId}"
-fixRequest: "{outputs.create_fix_request.fix-request}"
-iteration: "{currentIteration}"
+storyId: '{storyId}'
+fixRequest: '{outputs.create_fix_request.fix-request}'
+iteration: '{currentIteration}'
 ```
 
 **Outputs:**
@@ -351,12 +355,14 @@ iteration: "{currentIteration}"
 - `issuesFixed` - Numero de issues corrigidos
 
 **On Success:**
+
 ```
 log: "Fixed {issuesFixed} of {issuesFound} issues"
 next: increment_iteration
 ```
 
 **On Failure:**
+
 ```
 action: retry (max 2 tentativas)
 on_exhausted: escalate com razao "Dev agent unable to apply fixes after retries"
@@ -366,11 +372,11 @@ on_exhausted: escalate com razao "Dev agent unable to apply fixes after retries"
 
 ### Step 5: Increment Iteration (Fase 5)
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | `increment_iteration` |
-| **Fase** | 5 - Check Iteration |
-| **Agente** | `system` |
+| Atributo   | Valor                 |
+| ---------- | --------------------- |
+| **Nome**   | `increment_iteration` |
+| **Fase**   | 5 - Check Iteration   |
+| **Agente** | `system`              |
 
 **Descrição:**
 Incrementa o contador de iteracao e verifica contra o maximo. Se max atingido, escala para humano.
@@ -411,13 +417,13 @@ Responsabilidades no QA Loop:
 
 **Ferramentas Utilizadas:**
 
-| Ferramenta | Propósito |
-|------------|-----------|
-| `github-cli` | Code review e PR management |
-| `browser` | End-to-end testing e UI validation |
-| `context7` | Research testing frameworks |
-| `supabase` | Database testing e data validation |
-| `coderabbit` | Automated code review |
+| Ferramenta   | Propósito                          |
+| ------------ | ---------------------------------- |
+| `github-cli` | Code review e PR management        |
+| `browser`    | End-to-end testing e UI validation |
+| `context7`   | Research testing frameworks        |
+| `supabase`   | Database testing e data validation |
+| `coderabbit` | Automated code review              |
 
 **Integração CodeRabbit:**
 
@@ -456,13 +462,13 @@ Responsabilidades no QA Loop:
 
 **Ferramentas Utilizadas:**
 
-| Ferramenta | Propósito |
-|------------|-----------|
-| `git` | Local operations: add, commit, status, diff |
-| `context7` | Look up library documentation |
-| `supabase` | Database operations |
-| `browser` | Test web applications |
-| `coderabbit` | Pre-commit code quality review |
+| Ferramenta   | Propósito                                   |
+| ------------ | ------------------------------------------- |
+| `git`        | Local operations: add, commit, status, diff |
+| `context7`   | Look up library documentation               |
+| `supabase`   | Database operations                         |
+| `browser`    | Test web applications                       |
+| `coderabbit` | Pre-commit code quality review              |
 
 ---
 
@@ -525,12 +531,12 @@ flowchart TD
 
 **Critérios de Gate:**
 
-| Gate | Condição |
-|------|----------|
-| **PASS** | Todos requisitos criticos atendidos, sem issues bloqueantes |
-| **CONCERNS** | Issues nao-criticos encontrados, time deve revisar |
-| **FAIL** | Issues criticos que devem ser enderecados |
-| **WAIVED** | Issues reconhecidos mas explicitamente waived pelo time |
+| Gate         | Condição                                                    |
+| ------------ | ----------------------------------------------------------- |
+| **PASS**     | Todos requisitos criticos atendidos, sem issues bloqueantes |
+| **CONCERNS** | Issues nao-criticos encontrados, time deve revisar          |
+| **FAIL**     | Issues criticos que devem ser enderecados                   |
+| **WAIVED**   | Issues reconhecidos mas explicitamente waived pelo time     |
 
 ---
 
@@ -575,24 +581,29 @@ flowchart LR
 # QA Fix Request: {storyId}
 
 ## Instructions for @dev
+
 - Fix ONLY the issues listed below
 - Do not add features or refactor unrelated code
 
 ## Summary
-| Severity | Count | Status |
-|----------|-------|--------|
-| CRITICAL | N | Must fix before merge |
-| MAJOR | N | Should fix before merge |
-| MINOR | N | Optional improvements |
+
+| Severity | Count | Status                  |
+| -------- | ----- | ----------------------- |
+| CRITICAL | N     | Must fix before merge   |
+| MAJOR    | N     | Should fix before merge |
+| MINOR    | N     | Optional improvements   |
 
 ## Issues to Fix
+
 ### 1. [CRITICAL] {title}
+
 - Location: `{file:line}`
 - Problem: {description}
 - Expected: {expected}
 - Verification: [ ] {steps}
 
 ## Constraints
+
 - [ ] Fix ONLY listed issues
 - [ ] Run all tests: `npm test`
 - [ ] Run linting: `npm run lint`
@@ -661,12 +672,12 @@ flowchart TD
 
 ### Para Iniciar o QA Loop
 
-| Requisito | Descrição |
-|-----------|-----------|
-| **Story Status** | Deve estar em "Review" |
-| **Implementacao Completa** | Developer completou todas as tasks |
-| **File List Atualizada** | Lista de arquivos no story file esta atual |
-| **Testes Automatizados** | Todos testes automatizados passando |
+| Requisito                  | Descrição                                       |
+| -------------------------- | ----------------------------------------------- |
+| **Story Status**           | Deve estar em "Review"                          |
+| **Implementacao Completa** | Developer completou todas as tasks              |
+| **File List Atualizada**   | Lista de arquivos no story file esta atual      |
+| **Testes Automatizados**   | Todos testes automatizados passando             |
 | **CodeRabbit Configurado** | CLI instalado no WSL (opcional mas recomendado) |
 
 ### Configuração do Ambiente
@@ -689,31 +700,31 @@ npm run lint    # Deve passar
 
 ### Entradas do Workflow
 
-| Campo | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | Identificador da story (ex: "STORY-42") |
-| `maxIterations` | number | Não | Override do max (default: 5) |
-| `mode` | string | Não | `yolo`, `interactive`, `preflight` |
+| Campo           | Tipo   | Obrigatório | Descrição                               |
+| --------------- | ------ | ----------- | --------------------------------------- |
+| `storyId`       | string | Sim         | Identificador da story (ex: "STORY-42") |
+| `maxIterations` | number | Não         | Override do max (default: 5)            |
+| `mode`          | string | Não         | `yolo`, `interactive`, `preflight`      |
 
 ### Saidas do Workflow
 
-| Arquivo | Localização | Descrição |
-|---------|-------------|-----------|
-| `loop-status.json` | `qa/loop-status.json` | Status atual do loop |
-| `gate-file.yaml` | `qa/gates/{storyId}.yaml` | Decisão de quality gate |
-| `fix-request.md` | `qa/QA_FIX_REQUEST.md` | Documento de correções |
-| `fixes-applied.json` | `qa/fixes-applied.json` | Registro de correções |
-| `summary.md` | `qa/summary.md` | Sumario final do loop |
+| Arquivo              | Localização               | Descrição               |
+| -------------------- | ------------------------- | ----------------------- |
+| `loop-status.json`   | `qa/loop-status.json`     | Status atual do loop    |
+| `gate-file.yaml`     | `qa/gates/{storyId}.yaml` | Decisão de quality gate |
+| `fix-request.md`     | `qa/QA_FIX_REQUEST.md`    | Documento de correções  |
+| `fixes-applied.json` | `qa/fixes-applied.json`   | Registro de correções   |
+| `summary.md`         | `qa/summary.md`           | Sumario final do loop   |
 
 ### Schema do Status File
 
 ```yaml
-storyId: string              # ID da story
-currentIteration: number     # Iteração atual
-maxIterations: number        # Maximo configurado
-status: enum                 # pending | in_progress | completed | stopped | escalated
-startedAt: ISO-8601          # Timestamp de inicio
-updatedAt: ISO-8601          # Ultima atualizacao
+storyId: string # ID da story
+currentIteration: number # Iteração atual
+maxIterations: number # Maximo configurado
+status: enum # pending | in_progress | completed | stopped | escalated
+startedAt: ISO-8601 # Timestamp de inicio
+updatedAt: ISO-8601 # Ultima atualizacao
 
 history:
   - iteration: number
@@ -722,7 +733,7 @@ history:
     issuesFound: number
     fixedAt: ISO-8601 | null
     issuesFixed: number | null
-    duration: number         # milliseconds
+    duration: number # milliseconds
 ```
 
 ---
@@ -765,12 +776,12 @@ flowchart TD
 
 ### Critérios de Escalação
 
-| Trigger | Razao | Ação |
-|---------|-------|------|
-| `max_iterations_reached` | Loop atingiu max sem APPROVE | Escalar com contexto completo |
-| `verdict_blocked` | QA retornou BLOCKED | Escalar imediatamente |
-| `fix_failure` | @dev nao conseguiu aplicar fixes apos retries | Escalar com log de erros |
-| `manual_escalate` | Usuario executou `*escalate-qa-loop` | Escalar sob demanda |
+| Trigger                  | Razao                                         | Ação                          |
+| ------------------------ | --------------------------------------------- | ----------------------------- |
+| `max_iterations_reached` | Loop atingiu max sem APPROVE                  | Escalar com contexto completo |
+| `verdict_blocked`        | QA retornou BLOCKED                           | Escalar imediatamente         |
+| `fix_failure`            | @dev nao conseguiu aplicar fixes apos retries | Escalar com log de erros      |
+| `manual_escalate`        | Usuario executou `*escalate-qa-loop`          | Escalar sob demanda           |
 
 ---
 
@@ -796,12 +807,12 @@ config:
   legacyStatusPath: .aiox/status.json
 
   # Timeout por fase (milliseconds)
-  reviewTimeout: 1800000    # 30 minutos
-  fixTimeout: 3600000       # 60 minutos
+  reviewTimeout: 1800000 # 30 minutos
+  fixTimeout: 3600000 # 60 minutos
 
   # Configuração de retry
   maxRetries: 2
-  retryDelay: 5000          # 5 segundos
+  retryDelay: 5000 # 5 segundos
 ```
 
 ### Customizacao por Projeto
@@ -811,9 +822,9 @@ No arquivo `.aiox-core/core-config.yaml`:
 ```yaml
 autoClaude:
   qaLoop:
-    maxIterations: 3        # Reduzir para projetos menores
-    reviewTimeout: 900000   # 15 min para reviews rapidos
-    fixTimeout: 1800000     # 30 min para fixes simples
+    maxIterations: 3 # Reduzir para projetos menores
+    reviewTimeout: 900000 # 15 min para reviews rapidos
+    fixTimeout: 1800000 # 30 min para fixes simples
 ```
 
 ---
@@ -822,15 +833,15 @@ autoClaude:
 
 ### Comandos Disponiveis
 
-| Comando | Ação | Descrição |
-|---------|------|-----------|
-| `*qa-loop {storyId}` | `start_loop` | Inicia loop completo |
-| `*qa-loop-review` | `run_step: review` | Inicia apenas do step review |
-| `*qa-loop-fix` | `run_step: fix` | Inicia apenas do step fix |
-| `*stop-qa-loop` | `stop_loop` | Para loop e salva estado |
-| `*resume-qa-loop` | `resume_loop` | Retoma loop parado/escalado |
-| `*escalate-qa-loop` | `escalate` | Forca escalacao manual |
-| `*qa-loop --reset` | `reset` | Deleta status e reinicia |
+| Comando              | Ação               | Descrição                    |
+| -------------------- | ------------------ | ---------------------------- |
+| `*qa-loop {storyId}` | `start_loop`       | Inicia loop completo         |
+| `*qa-loop-review`    | `run_step: review` | Inicia apenas do step review |
+| `*qa-loop-fix`       | `run_step: fix`    | Inicia apenas do step fix    |
+| `*stop-qa-loop`      | `stop_loop`        | Para loop e salva estado     |
+| `*resume-qa-loop`    | `resume_loop`      | Retoma loop parado/escalado  |
+| `*escalate-qa-loop`  | `escalate`         | Forca escalacao manual       |
+| `*qa-loop --reset`   | `reset`            | Deleta status e reinicia     |
 
 ### Fluxo de Stop/Resume
 
@@ -874,12 +885,12 @@ escalation:
 
 Quando ocorre escalacao, o sistema prepara:
 
-| Item | Descrição |
-|------|-----------|
-| `loop-status.json` | Status completo do loop |
-| Gate files | Todos gate files do historico |
-| Fix requests | Todos fix requests gerados |
-| Summary | Resumo de todas iterações |
+| Item               | Descrição                     |
+| ------------------ | ----------------------------- |
+| `loop-status.json` | Status completo do loop       |
+| Gate files         | Todos gate files do historico |
+| Fix requests       | Todos fix requests gerados    |
+| Summary            | Resumo de todas iterações     |
 
 ### Mensagem de Notificação
 
@@ -935,11 +946,11 @@ project_status:
 
 ### Notificações
 
-| Evento | Mensagem | Canais |
-|--------|----------|--------|
-| `on_approve` | "QA Loop APPROVED: {storyId}" | log |
-| `on_escalate` | "QA Loop ESCALATED: {storyId} - needs attention" | log |
-| `on_stop` | "QA Loop STOPPED: {storyId}" | log |
+| Evento        | Mensagem                                         | Canais |
+| ------------- | ------------------------------------------------ | ------ |
+| `on_approve`  | "QA Loop APPROVED: {storyId}"                    | log    |
+| `on_escalate` | "QA Loop ESCALATED: {storyId} - needs attention" | log    |
+| `on_stop`     | "QA Loop STOPPED: {storyId}"                     | log    |
 
 ---
 
@@ -947,21 +958,21 @@ project_status:
 
 ### Erros Comuns e Resoluções
 
-| Erro | Causa | Resolução | Ação |
-|------|-------|-----------|------|
-| `missing_story_id` | Story ID nao fornecido | "Usage: *qa-loop STORY-42" | prompt |
-| `review_timeout` | Fase de review excedeu timeout | Verificar status do QA agent | escalate |
-| `fix_timeout` | Fase de fix excedeu timeout | Verificar status do Dev agent | escalate |
-| `invalid_status` | Arquivo de status corrompido | "Reset loop: *qa-loop {storyId} --reset" | halt |
+| Erro               | Causa                          | Resolução                                 | Ação     |
+| ------------------ | ------------------------------ | ----------------------------------------- | -------- |
+| `missing_story_id` | Story ID nao fornecido         | "Usage: \*qa-loop STORY-42"               | prompt   |
+| `review_timeout`   | Fase de review excedeu timeout | Verificar status do QA agent              | escalate |
+| `fix_timeout`      | Fase de fix excedeu timeout    | Verificar status do Dev agent             | escalate |
+| `invalid_status`   | Arquivo de status corrompido   | "Reset loop: \*qa-loop {storyId} --reset" | halt     |
 
 ### Estrategias de Retry
 
 ```yaml
 on_failure:
   action: retry
-  max_retries: 2              # Maximo de tentativas
-  retryDelay: 5000            # Delay entre tentativas
-  on_exhausted: escalate      # Ação quando retries esgotados
+  max_retries: 2 # Maximo de tentativas
+  retryDelay: 5000 # Delay entre tentativas
+  on_exhausted: escalate # Ação quando retries esgotados
 ```
 
 ---
@@ -971,10 +982,12 @@ on_failure:
 ### Problema: Loop Travado em Review
 
 **Sintomas:**
+
 - Review nao completa apos 30 minutos
 - Status permanece "in_progress"
 
 **Diagnóstico:**
+
 ```bash
 # Verificar status do loop
 cat qa/loop-status.json | jq '.status, .currentIteration'
@@ -984,6 +997,7 @@ ls -la qa/gates/
 ```
 
 **Solução:**
+
 1. Executar `*stop-qa-loop`
 2. Verificar se CodeRabbit esta respondendo
 3. Executar `*resume-qa-loop` para retomar
@@ -993,10 +1007,12 @@ ls -la qa/gates/
 ### Problema: Fix Não Aplicado
 
 **Sintomas:**
+
 - @dev reporta sucesso mas issues persistem
 - Re-review encontra mesmos problemas
 
 **Diagnóstico:**
+
 ```bash
 # Verificar fix request
 cat qa/QA_FIX_REQUEST.md
@@ -1006,6 +1022,7 @@ cat qa/fixes-applied.json
 ```
 
 **Solução:**
+
 1. Revisar manualmente o fix-request.md
 2. Verificar se @dev atualizou os arquivos corretos
 3. Rodar testes localmente antes de re-review
@@ -1015,15 +1032,18 @@ cat qa/fixes-applied.json
 ### Problema: Max Iterations Atingido
 
 **Sintomas:**
+
 - Loop escala apos 5 iterações sem APPROVE
 
 **Diagnóstico:**
+
 ```bash
 # Ver historico completo
 cat qa/loop-status.json | jq '.history'
 ```
 
 **Solução:**
+
 1. Analisar pattern de issues recorrentes
 2. Verificar se requisitos estao claros
 3. Considerar aumentar maxIterations ou resolver manualmente
@@ -1033,10 +1053,12 @@ cat qa/loop-status.json | jq '.history'
 ### Problema: CodeRabbit Não Funciona
 
 **Sintomas:**
+
 - Erro "coderabbit: command not found"
 - Timeout na fase de self-healing
 
 **Diagnóstico:**
+
 ```bash
 # Verificar instalacao
 wsl bash -c 'which coderabbit'
@@ -1046,6 +1068,7 @@ wsl bash -c '~/.local/bin/coderabbit auth status'
 ```
 
 **Solução:**
+
 1. Reinstalar CodeRabbit no WSL
 2. Executar `coderabbit auth login`
 3. Verificar path no agent config
@@ -1055,10 +1078,12 @@ wsl bash -c '~/.local/bin/coderabbit auth status'
 ### Problema: Status File Corrompido
 
 **Sintomas:**
+
 - Erro "invalid_status"
 - Loop nao inicia ou retoma
 
 **Solução:**
+
 ```bash
 # Backup do arquivo corrompido
 mv qa/loop-status.json qa/loop-status.json.bak
@@ -1073,39 +1098,39 @@ mv qa/loop-status.json qa/loop-status.json.bak
 
 ### Arquivos do Workflow
 
-| Arquivo | Localização |
-|---------|-------------|
-| Workflow Definition | `.aiox-core/development/workflows/qa-loop.yaml` |
-| QA Review Task | `.aiox-core/development/tasks/qa-review-story.md` |
+| Arquivo                 | Localização                                             |
+| ----------------------- | ------------------------------------------------------- |
+| Workflow Definition     | `.aiox-core/development/workflows/qa-loop.yaml`         |
+| QA Review Task          | `.aiox-core/development/tasks/qa-review-story.md`       |
 | Create Fix Request Task | `.aiox-core/development/tasks/qa-create-fix-request.md` |
-| Apply QA Fixes Task | `.aiox-core/development/tasks/dev-apply-qa-fixes.md` |
-| QA Agent | `.aiox-core/development/agents/qa.md` |
-| Dev Agent | `.aiox-core/development/agents/dev.md` |
+| Apply QA Fixes Task     | `.aiox-core/development/tasks/dev-apply-qa-fixes.md`    |
+| QA Agent                | `.aiox-core/development/agents/qa.md`                   |
+| Dev Agent               | `.aiox-core/development/agents/dev.md`                  |
 
 ### Documentação Relacionada
 
-| Documento | Descrição |
-|-----------|-----------|
+| Documento             | Descrição                                 |
+| --------------------- | ----------------------------------------- |
 | Epic 6 - QA Evolution | Contexto do Autonomous Development Engine |
-| Story 6.5 | Story de implementação do QA Loop |
-| Story 6.3.3 | CodeRabbit Self-Healing Integration |
-| ADR-XXX | Architecture Decision Record (se existir) |
+| Story 6.5             | Story de implementação do QA Loop         |
+| Story 6.3.3           | CodeRabbit Self-Healing Integration       |
+| ADR-XXX               | Architecture Decision Record (se existir) |
 
 ### Templates
 
-| Template | Localização | Uso |
-|----------|-------------|-----|
-| `qa-gate-tmpl.yaml` | `.aiox-core/development/templates/` | Gate file structure |
-| `story-tmpl.yaml` | `.aiox-core/development/templates/` | Story file structure |
+| Template            | Localização                         | Uso                  |
+| ------------------- | ----------------------------------- | -------------------- |
+| `qa-gate-tmpl.yaml` | `.aiox-core/development/templates/` | Gate file structure  |
+| `story-tmpl.yaml`   | `.aiox-core/development/templates/` | Story file structure |
 
 ---
 
 ## Historico de Alterações
 
-| Data | Versao | Autor | Mudanças |
-|------|--------|-------|----------|
-| 2026-02-04 | 1.0 | Technical Documentation Specialist | Versao inicial |
+| Data       | Versao | Autor                              | Mudanças       |
+| ---------- | ------ | ---------------------------------- | -------------- |
+| 2026-02-04 | 1.0    | Technical Documentation Specialist | Versao inicial |
 
 ---
 
-*Documentação gerada automaticamente a partir do workflow `qa-loop.yaml`*
+_Documentação gerada automaticamente a partir do workflow `qa-loop.yaml`_

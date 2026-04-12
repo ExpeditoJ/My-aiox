@@ -287,14 +287,14 @@ docs/guides/ @SynkraAI/maintainers
 
 **提议的检查:**
 
-| 检查 | 来源工作流 | 优先级 | 备注 |
-| --- | --- | --- | --- |
-| `lint` | ci.yml | 必需 | ESLint 验证 |
-| `typecheck` | ci.yml | 必需 | TypeScript 检查 |
-| `build` | ci.yml | 必需 | 构建验证 |
-| `test` | ci.yml | 必需 | Jest 测试套件 |
-| `validation-summary` | ci.yml | 必需 | alls-green 模式 |
-| `story-validation` | ci.yml | 可选 | Story checkbox 验证 |
+| 检查                 | 来源工作流 | 优先级 | 备注                |
+| -------------------- | ---------- | ------ | ------------------- |
+| `lint`               | ci.yml     | 必需   | ESLint 验证         |
+| `typecheck`          | ci.yml     | 必需   | TypeScript 检查     |
+| `build`              | ci.yml     | 必需   | 构建验证            |
+| `test`               | ci.yml     | 必需   | Jest 测试套件       |
+| `validation-summary` | ci.yml     | 必需   | alls-green 模式     |
+| `story-validation`   | ci.yml     | 可选   | Story checkbox 验证 |
 
 **注意:** ci.yml 中的 `validation-summary` job 作为 "alls-green" 模式，确保所有其他 job 都已通过。
 
@@ -400,39 +400,39 @@ _提交此 PR，即表示我确认已阅读[贡献指南](../../../../CONTRIBUTI
 
 ### 第一阶段: 关键安全（第 1 天）
 
-| 项目 | 操作 | 回滚 |
-| --- | --- | --- |
-| 必需审批 | 设置 count 为 1 | `gh api -X PUT ... required_approving_review_count:0` |
-| Code owner 审查 | 启用 | `gh api -X PUT ... require_code_owner_reviews:false` |
+| 项目            | 操作            | 回滚                                                  |
+| --------------- | --------------- | ----------------------------------------------------- |
+| 必需审批        | 设置 count 为 1 | `gh api -X PUT ... required_approving_review_count:0` |
+| Code owner 审查 | 启用            | `gh api -X PUT ... require_code_owner_reviews:false`  |
 
 **风险:** 低 - 这些是附加保护
 
 ### 第二阶段: 自动化审查（第 2-3 天）
 
-| 项目 | 操作 | 回滚 |
-| --- | --- | --- |
-| CodeRabbit 配置 | 创建 `.coderabbit.yaml` | 删除文件 |
-| 在功能 PR 上测试 | 打开测试 PR | N/A |
-| 验证集成 | 检查 CodeRabbit 评论 | N/A |
+| 项目             | 操作                    | 回滚     |
+| ---------------- | ----------------------- | -------- |
+| CodeRabbit 配置  | 创建 `.coderabbit.yaml` | 删除文件 |
+| 在功能 PR 上测试 | 打开测试 PR             | N/A      |
+| 验证集成         | 检查 CodeRabbit 评论    | N/A      |
 
 **风险:** 低 - CodeRabbit 默认不阻塞
 
 ### 第三阶段: 文档（第 3-5 天）
 
-| 项目 | 操作 | 回滚 |
-| --- | --- | --- |
+| 项目       | 操作     | 回滚         |
+| ---------- | -------- | ------------ |
 | CODEOWNERS | 更新粒度 | `git revert` |
-| PR 模板 | 创建模板 | `git revert` |
-| 外部指南 | 创建指南 | `git revert` |
+| PR 模板    | 创建模板 | `git revert` |
+| 外部指南   | 创建指南 | `git revert` |
 
 **风险:** 非常低 - 仅文档
 
 ### 第四阶段: CI 强化（第 5-7 天）
 
-| 项目 | 操作 | 回滚 |
-| --- | --- | --- |
+| 项目                 | 操作         | 回滚               |
+| -------------------- | ------------ | ------------------ |
 | 将 `test` 添加到必需 | 更新分支保护 | 从 contexts 中移除 |
-| 对话解决 | 启用 | 禁用 |
+| 对话解决             | 启用         | 禁用               |
 
 **风险:** 中 - 如果测试不稳定可能阻塞合法 PR
 
@@ -476,13 +476,13 @@ git push
 
 ## 成功标准
 
-| 指标 | 目标 | 测量方式 |
-| --- | --- | --- |
-| 所有 PR 需要批准 | 100% | 分支保护审计 |
-| CodeRabbit 审查 PR | 100% | CodeRabbit 仪表板 |
-| 无未授权合并 | 0 事件 | 安全审计 |
-| 外部贡献者成功 | 1 周内第一个 PR | GitHub insights |
-| 首次审查时间 | <24 小时 | PR 指标 |
+| 指标               | 目标            | 测量方式          |
+| ------------------ | --------------- | ----------------- |
+| 所有 PR 需要批准   | 100%            | 分支保护审计      |
+| CodeRabbit 审查 PR | 100%            | CodeRabbit 仪表板 |
+| 无未授权合并       | 0 事件          | 安全审计          |
+| 外部贡献者成功     | 1 周内第一个 PR | GitHub insights   |
+| 首次审查时间       | <24 小时        | PR 指标           |
 
 ---
 

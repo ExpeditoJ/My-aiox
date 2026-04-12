@@ -425,12 +425,12 @@ dependencies:
 
 ### Migracion desde Paquetes de Expansion
 
-| Legacy (Obsoleto)               | Actual (Squads)                 |
-| ------------------------------- | ------------------------------- |
-| Directorio `Squads/`            | Plantilla `templates/squad/`    |
+| Legacy (Obsoleto)            | Actual (Squads)                 |
+| ---------------------------- | ------------------------------- |
+| Directorio `Squads/`         | Plantilla `templates/squad/`    |
 | Config `legacyPacksLocation` | Config `squadsTemplateLocation` |
-| Manifiesto `pack.yaml`          | Manifiesto `squad.yaml`         |
-| Carga directa                   | Creacion basada en plantilla    |
+| Manifiesto `pack.yaml`       | Manifiesto `squad.yaml`         |
+| Carga directa                | Creacion basada en plantilla    |
 
 ---
 

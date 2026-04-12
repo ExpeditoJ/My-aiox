@@ -66,11 +66,13 @@ npx aiox-core update
 ### Problema: Comando NPX não encontrado
 
 **Sintomas:**
+
 ```
 bash: npx: command not found
 ```
 
 **Solução:**
+
 ```bash
 # Verificar versão do npm
 npm --version
@@ -85,6 +87,7 @@ npm exec aiox-core init my-project
 ### Problema: Instalação falha com erros de permissão
 
 **Sintomas:**
+
 ```
 Error: EACCES: permission denied
 ```
@@ -92,6 +95,7 @@ Error: EACCES: permission denied
 **Soluções:**
 
 **Opção 1: Corrigir permissões do npm (Recomendado)**
+
 ```bash
 # Criar diretório npm
 mkdir ~/.npm-global
@@ -107,6 +111,7 @@ source ~/.bashrc
 ```
 
 **Opção 2: Usar diretório diferente**
+
 ```bash
 # Instalar no diretório do usuário
 cd ~
@@ -116,11 +121,13 @@ npx aiox-core init my-project
 ### Problema: Erro de versão do Node.js
 
 **Sintomas:**
+
 ```
 Error: Node.js version 18.0.0 or higher required
 ```
 
 **Solução:**
+
 ```bash
 # Verificar versão atual
 node --version
@@ -144,6 +151,7 @@ nvm use 18
 ### Problema: Instalação trava ou expira
 
 **Sintomas:**
+
 - Instalação travada em "Installing dependencies..."
 - Erros de timeout de rede
 
@@ -170,11 +178,13 @@ npm install --verbose
 ### Problema: Erro de espaço em disco
 
 **Sintomas:**
+
 ```
 Error: ENOSPC: no space left on device
 ```
 
 **Solução:**
+
 ```bash
 # Verificar espaço disponível
 df -h
@@ -198,6 +208,7 @@ rmdir /s %TEMP%\npm-*
 ### Problema: Meta-agent não inicia
 
 **Sintomas:**
+
 ```
 Error: Failed to initialize meta-agent
 ```
@@ -205,6 +216,7 @@ Error: Failed to initialize meta-agent
 **Soluções:**
 
 1. **Verificar configuração:**
+
 ```bash
 # Verificar se config existe
 ls -la .aiox/config.json
@@ -218,6 +230,7 @@ npx aiox-core doctor --fix
 ```
 
 2. **Verificar dependências:**
+
 ```bash
 # Reinstalar dependências principais
 npm install
@@ -227,6 +240,7 @@ ls -la agents/
 ```
 
 3. **Verificar ambiente:**
+
 ```bash
 # Verificar variáveis de ambiente
 cat .env
@@ -238,6 +252,7 @@ echo "OPENAI_API_KEY=your-key" >> .env
 ### Problema: Comandos não reconhecidos
 
 **Sintomas:**
+
 ```
 Unknown command: *create-agent
 ```
@@ -245,6 +260,7 @@ Unknown command: *create-agent
 **Soluções:**
 
 1. **Verificar ativação do agente:**
+
 ```bash
 # Listar agentes ativos
 *list-agents --active
@@ -257,6 +273,7 @@ Unknown command: *create-agent
 ```
 
 2. **Verificar sintaxe do comando:**
+
 ```bash
 # Sintaxe correta usa asterisco
 *create-agent my-agent  # ✓ Correto
@@ -264,6 +281,7 @@ create-agent my-agent   # ✗ Errado
 ```
 
 3. **Recarregar agentes:**
+
 ```bash
 # Recarregar todos os agentes
 *reload-agents
@@ -276,6 +294,7 @@ npx aiox-core
 ### Problema: Criação de agente falha
 
 **Sintomas:**
+
 ```
 Error: Failed to create agent
 ```
@@ -283,6 +302,7 @@ Error: Failed to create agent
 **Soluções:**
 
 1. **Verificar permissões:**
+
 ```bash
 # Verificar permissões de escrita
 ls -la agents/
@@ -292,6 +312,7 @@ chmod 755 agents/
 ```
 
 2. **Validar nome do agente:**
+
 ```bash
 # Nomes válidos: minúsculas, hífens
 *create-agent my-agent      # ✓ Bom
@@ -301,6 +322,7 @@ chmod 755 agents/
 ```
 
 3. **Verificar duplicatas:**
+
 ```bash
 # Listar agentes existentes
 *list-agents
@@ -314,12 +336,14 @@ rm agents/duplicate-agent.yaml
 ### Problema: Busca de memória não retorna resultados
 
 **Sintomas:**
+
 - Busca semântica não encontra nada
 - Reconhecimento de padrões falha
 
 **Soluções:**
 
 1. **Reconstruir índice de memória:**
+
 ```bash
 # Limpar e reconstruir
 *memory clear-cache
@@ -331,6 +355,7 @@ rm agents/duplicate-agent.yaml
 ```
 
 2. **Verificar configuração de memória:**
+
 ```bash
 # Verificar config
 cat .aiox/memory-config.json
@@ -340,6 +365,7 @@ cat .aiox/memory-config.json
 ```
 
 3. **Verificar integridade do índice:**
+
 ```bash
 # Executar diagnóstico de memória
 *memory diagnose
@@ -351,12 +377,14 @@ cat .aiox/memory-config.json
 ### Problema: Camada de memória usando muita RAM
 
 **Sintomas:**
+
 - Alto uso de memória
 - Lentidão do sistema
 
 **Soluções:**
 
 1. **Ajustar configurações de memória:**
+
 ```javascript
 // Editar .aiox/memory-config.json
 {
@@ -368,6 +396,7 @@ cat .aiox/memory-config.json
 ```
 
 2. **Limpar dados antigos:**
+
 ```bash
 # Remover entradas antigas
 *memory prune --older-than "30 days"
@@ -377,6 +406,7 @@ cat .aiox/memory-config.json
 ```
 
 3. **Usar limites de memória:**
+
 ```bash
 # Definir limite de memória
 export NODE_OPTIONS="--max-old-space-size=1024"
@@ -388,6 +418,7 @@ npx aiox-core
 ### Problema: Erros do LlamaIndex
 
 **Sintomas:**
+
 ```
 Error: LlamaIndex initialization failed
 ```
@@ -395,6 +426,7 @@ Error: LlamaIndex initialization failed
 **Soluções:**
 
 1. **Verificar chaves de API:**
+
 ```bash
 # Verificar chave OpenAI para embeddings
 echo $OPENAI_API_KEY
@@ -405,6 +437,7 @@ curl https://api.openai.com/v1/models \
 ```
 
 2. **Usar embeddings locais:**
+
 ```javascript
 // .aiox/memory-config.json
 {
@@ -414,6 +447,7 @@ curl https://api.openai.com/v1/models \
 ```
 
 3. **Reinstalar LlamaIndex:**
+
 ```bash
 npm uninstall llamaindex
 npm install llamaindex@latest
@@ -424,12 +458,14 @@ npm install llamaindex@latest
 ### Problema: Execução lenta de comandos
 
 **Sintomas:**
+
 - Comandos levam > 5 segundos
 - Interface parece lenta
 
 **Soluções:**
 
 1. **Perfilar performance:**
+
 ```bash
 # Habilitar profiling
 *debug enable --profile
@@ -442,6 +478,7 @@ npm install llamaindex@latest
 ```
 
 2. **Otimizar configuração:**
+
 ```javascript
 // .aiox/config.json
 {
@@ -455,6 +492,7 @@ npm install llamaindex@latest
 ```
 
 3. **Limpar recursos:**
+
 ```bash
 # Limpar caches
 *cache clear --all
@@ -469,6 +507,7 @@ npm install llamaindex@latest
 ### Problema: Alto uso de CPU
 
 **Sintomas:**
+
 - Barulho de ventilador
 - Lentidão do sistema
 - Alta CPU no gerenciador de tarefas
@@ -476,6 +515,7 @@ npm install llamaindex@latest
 **Soluções:**
 
 1. **Limitar operações concorrentes:**
+
 ```bash
 # Definir limites de operação
 *config --set performance.maxConcurrent 2
@@ -483,6 +523,7 @@ npm install llamaindex@latest
 ```
 
 2. **Desabilitar recursos em tempo real:**
+
 ```bash
 # Desabilitar indexação em tempo real
 *config --set memory.realTimeIndex false
@@ -492,6 +533,7 @@ npm install llamaindex@latest
 ```
 
 3. **Verificar processos descontrolados:**
+
 ```bash
 # Listar todos os processos
 *debug processes
@@ -505,6 +547,7 @@ npm install llamaindex@latest
 ### Problema: Chave de API não funciona
 
 **Sintomas:**
+
 ```
 Error: Invalid API key
 Error: 401 Unauthorized
@@ -513,6 +556,7 @@ Error: 401 Unauthorized
 **Soluções:**
 
 1. **Verificar formato da chave de API:**
+
 ```bash
 # OpenAI
 echo $OPENAI_API_KEY
@@ -524,6 +568,7 @@ echo $ANTHROPIC_API_KEY
 ```
 
 2. **Testar API diretamente:**
+
 ```bash
 # Testar OpenAI
 curl https://api.openai.com/v1/models \
@@ -536,6 +581,7 @@ curl https://api.anthropic.com/v1/messages \
 ```
 
 3. **Verificar limites de taxa:**
+
 ```bash
 # Ver uso atual
 *api-status
@@ -547,6 +593,7 @@ curl https://api.anthropic.com/v1/messages \
 ### Problema: Erros de conexão de rede
 
 **Sintomas:**
+
 ```
 Error: ECONNREFUSED
 Error: getaddrinfo ENOTFOUND
@@ -555,6 +602,7 @@ Error: getaddrinfo ENOTFOUND
 **Soluções:**
 
 1. **Verificar configurações de proxy:**
+
 ```bash
 # Proxy corporativo
 export HTTP_PROXY=http://proxy.company.com:8080
@@ -565,6 +613,7 @@ curl -I https://api.openai.com
 ```
 
 2. **Usar modo offline:**
+
 ```bash
 # Habilitar modo offline
 *config --set offline true
@@ -574,6 +623,7 @@ curl -I https://api.openai.com
 ```
 
 3. **Configurar timeouts:**
+
 ```bash
 # Aumentar timeouts
 *config --set network.timeout 30000
@@ -585,6 +635,7 @@ curl -I https://api.openai.com
 ### Problema: Erros de permissão negada
 
 **Sintomas:**
+
 ```
 Error: EACCES: permission denied
 Error: Cannot write to file
@@ -593,6 +644,7 @@ Error: Cannot write to file
 **Soluções:**
 
 1. **Corrigir permissões de arquivo:**
+
 ```bash
 # Corrigir permissões do projeto
 chmod -R 755 .
@@ -603,6 +655,7 @@ chmod 755 agents/ tasks/ workflows/
 ```
 
 2. **Verificar propriedade de arquivo:**
+
 ```bash
 # Ver propriedade
 ls -la
@@ -612,6 +665,7 @@ sudo chown -R $(whoami) .
 ```
 
 3. **Executar com usuário correto:**
+
 ```bash
 # Não usar sudo para npm
 npm install  # ✓ Bom
@@ -621,12 +675,14 @@ sudo npm install  # ✗ Ruim
 ### Problema: Dados sensíveis expostos
 
 **Sintomas:**
+
 - Chaves de API visíveis em logs
 - Credenciais em mensagens de erro
 
 **Soluções:**
 
 1. **Proteger variáveis de ambiente:**
+
 ```bash
 # Verificar .gitignore
 cat .gitignore | grep .env
@@ -637,6 +693,7 @@ echo ".aiox/logs/" >> .gitignore
 ```
 
 2. **Habilitar modo seguro:**
+
 ```bash
 # Habilitar recursos de segurança
 *config --set security.maskSensitive true
@@ -644,6 +701,7 @@ echo ".aiox/logs/" >> .gitignore
 ```
 
 3. **Rotacionar chaves comprometidas:**
+
 ```bash
 # Gerar novas chaves dos provedores
 # Atualizar arquivo .env
@@ -656,11 +714,13 @@ rm -rf .aiox/logs/*
 ### Problemas do Windows
 
 #### Problema: Erros de caminho muito longo
+
 ```
 Error: ENAMETOOLONG
 ```
 
 **Solução:**
+
 ```powershell
 # Habilitar caminhos longos (Executar como Administrador)
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
@@ -672,11 +732,13 @@ npx aiox-core init myapp
 ```
 
 #### Problema: Scripts desabilitados
+
 ```
 Error: Scripts is disabled on this system
 ```
 
 **Solução:**
+
 ```powershell
 # Executar como Administrador
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -685,22 +747,26 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Problemas do macOS
 
 #### Problema: Command Line Tools ausentes
+
 ```
 Error: xcrun: error: invalid active developer path
 ```
 
 **Solução:**
+
 ```bash
 # Instalar Xcode Command Line Tools
 xcode-select --install
 ```
 
 #### Problema: Gatekeeper bloqueia execução
+
 ```
 Error: "aiox-core" cannot be opened
 ```
 
 **Solução:**
+
 ```bash
 # Permitir execução
 sudo spctl --master-disable
@@ -712,11 +778,13 @@ xattr -d com.apple.quarantine /usr/local/bin/aiox-core
 ### Problemas do Linux
 
 #### Problema: Dependências ausentes
+
 ```
 Error: libssl.so.1.1: cannot open shared object file
 ```
 
 **Solução:**
+
 ```bash
 # Ubuntu/Debian
 sudo apt-get update
@@ -803,6 +871,7 @@ tar -czf aiox-support.tar.gz .aiox/logs diagnostic.json
 ### Antes de Pedir Ajuda
 
 1. **Execute diagnósticos:**
+
    ```bash
    npx aiox-core doctor --verbose > diagnostic.log
    ```
@@ -834,25 +903,31 @@ Crie relatórios de bug detalhados:
 
 ```markdown
 ## Ambiente
+
 - SO: macOS 13.0
 - Node: 18.17.0
 - AIOX: 1.0.0
 
 ## Passos para Reproduzir
+
 1. Executar `npx aiox-core init test`
 2. Selecionar template "enterprise"
 3. Erro ocorre durante instalação
 
 ## Comportamento Esperado
+
 Instalação completa com sucesso
 
 ## Comportamento Real
+
 Error: Cannot find module 'inquirer'
 
 ## Logs
+
 [Anexar diagnostic.log]
 
 ## Contexto Adicional
+
 Usando proxy corporativo
 ```
 
@@ -879,6 +954,7 @@ cp .aiox.backup/memory.db .aiox/
 ---
 
 **Lembre-se**: A maioria dos problemas pode ser resolvida com:
+
 1. `npx aiox-core doctor --fix`
 2. Limpando caches
 3. Atualizando para a última versão

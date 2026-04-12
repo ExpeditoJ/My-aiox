@@ -85,13 +85,13 @@
 
 **各Agent命令:**
 
-| Agent      | 命令                | 阶段                   |
-| ---------- | ------------------- | ---------------------- |
-| @pm        | `*gather-requirements` | 收集需求     |
-| @architect | `*assess-complexity`   | 评估复杂性   |
-| @analyst   | `*research-deps`       | 研究依赖     |
-| @pm        | `*write-spec`          | 编写规范     |
-| @qa        | `*critique-spec`       | 评论和批准   |
+| Agent      | 命令                   | 阶段       |
+| ---------- | ---------------------- | ---------- |
+| @pm        | `*gather-requirements` | 收集需求   |
+| @architect | `*assess-complexity`   | 评估复杂性 |
+| @analyst   | `*research-deps`       | 研究依赖   |
+| @pm        | `*write-spec`          | 编写规范   |
+| @qa        | `*critique-spec`       | 评论和批准 |
 
 **文档:** [ADE-EPIC3-HANDOFF.md](../architecture/ADE-EPIC3-HANDOFF.md)
 

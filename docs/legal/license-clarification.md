@@ -23,4 +23,3 @@ This document clarifies the licensing boundary in Synkra AIOX.
 
 - `LICENSE` (root): MIT license for `aiox-core`
 - `docs/legal/terms.md`: terms of use for this repository
-

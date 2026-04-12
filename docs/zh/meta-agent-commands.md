@@ -49,7 +49,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 核心命令
 
-### *help
+### \*help
 
 显示所有可用命令或获取特定命令的帮助。
 
@@ -59,7 +59,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *help --category agents  # 按类别显示命令
 ```
 
-### *status
+### \*status
 
 显示当前系统状态和活动代理。
 
@@ -69,7 +69,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *status --health        # 健康检查结果
 ```
 
-### *config
+### \*config
 
 查看或修改配置。
 
@@ -80,7 +80,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *config --export        # 导出配置
 ```
 
-### *version
+### \*version
 
 显示版本信息。
 
@@ -92,7 +92,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 代理管理
 
-### *create-agent
+### \*create-agent
 
 创建新的 AI 代理。
 
@@ -111,7 +111,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *create-agent custom-bot --from-file agents/template.yaml
 ```
 
-### *list-agents
+### \*list-agents
 
 列出所有可用代理。
 
@@ -122,7 +122,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *list-agents --detailed          # 显示完整详情
 ```
 
-### *activate
+### \*activate
 
 激活代理以供使用。
 
@@ -133,7 +133,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *activate --type assistant       # 按类型激活
 ```
 
-### *deactivate
+### \*deactivate
 
 停用代理。
 
@@ -143,7 +143,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *deactivate --except agent1     # 停用除指定代理外的所有代理
 ```
 
-### *modify-agent
+### \*modify-agent
 
 修改现有代理配置。
 
@@ -163,7 +163,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *modify-agent bot --interactive
 ```
 
-### *delete-agent
+### \*delete-agent
 
 删除代理（需确认）。
 
@@ -173,7 +173,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *delete-agent --backup         # 删除前创建备份
 ```
 
-### *clone-agent
+### \*clone-agent
 
 创建现有代理的副本。
 
@@ -184,7 +184,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 任务操作
 
-### *create-task
+### \*create-task
 
 创建新的可重用任务。
 
@@ -203,7 +203,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *create-task code-metrics --template analyzer
 ```
 
-### *list-tasks
+### \*list-tasks
 
 列出可用任务。
 
@@ -214,7 +214,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *list-tasks --search <query>  # 搜索任务
 ```
 
-### *run-task
+### \*run-task
 
 执行特定任务。
 
@@ -227,7 +227,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *run-task backup-database --incremental
 ```
 
-### *schedule-task
+### \*schedule-task
 
 计划任务执行。
 
@@ -246,7 +246,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *schedule-task backup --at "03:00" --on "sunday"
 ```
 
-### *modify-task
+### \*modify-task
 
 更新任务配置。
 
@@ -262,7 +262,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 工作流命令
 
-### *create-workflow
+### \*create-workflow
 
 创建自动化工作流。
 
@@ -281,7 +281,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *create-workflow deployment --template standard-deploy
 ```
 
-### *list-workflows
+### \*list-workflows
 
 显示可用工作流。
 
@@ -292,7 +292,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *list-workflows --failed       # 失败的执行
 ```
 
-### *run-workflow
+### \*run-workflow
 
 执行工作流。
 
@@ -311,7 +311,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *run-workflow test-suite --dry-run
 ```
 
-### *stop-workflow
+### \*stop-workflow
 
 停止运行中的工作流。
 
@@ -321,7 +321,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *stop-workflow --force        # 强制停止
 ```
 
-### *workflow-status
+### \*workflow-status
 
 检查工作流执行状态。
 
@@ -333,7 +333,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 代码生成
 
-### *generate-component
+### \*generate-component
 
 使用 AI 辅助生成新组件。
 
@@ -354,7 +354,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *generate-component CustomButton --template material-ui
 ```
 
-### *generate-api
+### \*generate-api
 
 生成 API 端点。
 
@@ -375,7 +375,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *generate-api analytics --operations "read" --tests
 ```
 
-### *generate-tests
+### \*generate-tests
 
 生成测试套件。
 
@@ -395,7 +395,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *generate-tests --type e2e --framework cypress
 ```
 
-### *generate-documentation
+### \*generate-documentation
 
 生成文档。
 
@@ -417,7 +417,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 分析与改进
 
-### *analyze-framework
+### \*analyze-framework
 
 分析整个代码库。
 
@@ -437,7 +437,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *analyze-framework --save-report reports/analysis.json
 ```
 
-### *analyze-code
+### \*analyze-code
 
 分析特定代码文件。
 
@@ -457,7 +457,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *analyze-code package.json --dependencies
 ```
 
-### *improve-code-quality
+### \*improve-code-quality
 
 使用 AI 辅助改进代码质量。
 
@@ -477,7 +477,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *improve-code-quality src/api.js --fix-eslint --add-comments
 ```
 
-### *suggest-refactoring
+### \*suggest-refactoring
 
 获取重构建议。
 
@@ -497,7 +497,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *suggest-refactoring src/app.js --preview --impact-analysis
 ```
 
-### *detect-patterns
+### \*detect-patterns
 
 检测代码模式和反模式。
 
@@ -518,7 +518,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 内存层
 
-### *memory
+### \*memory
 
 内存层操作。
 
@@ -541,7 +541,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *memory optimize --aggressive
 ```
 
-### *learn
+### \*learn
 
 从代码更改和模式中学习。
 
@@ -561,7 +561,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *learn --focus "error-handling,api-calls"
 ```
 
-### *remember
+### \*remember
 
 在内存中存储重要信息。
 
@@ -580,7 +580,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *remember temp-fix "skip-test-x" --expires "1 week"
 ```
 
-### *forget
+### \*forget
 
 从内存中移除信息。
 
@@ -593,7 +593,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 自我修改
 
-### *improve-self
+### \*improve-self
 
 元代理自我改进。
 
@@ -613,7 +613,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *improve-self --aspect features --backup
 ```
 
-### *evolve
+### \*evolve
 
 基于使用情况演化能力。
 
@@ -633,7 +633,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *evolve --fitness-metric "task-success-rate" --rollback-point
 ```
 
-### *adapt
+### \*adapt
 
 适应项目特定需求。
 
@@ -652,7 +652,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *adapt --to domain --preserve "core-functions"
 ```
 
-### *optimize-performance
+### \*optimize-performance
 
 优化元代理性能。
 
@@ -674,7 +674,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 系统命令
 
-### *backup
+### \*backup
 
 创建系统备份。
 
@@ -694,7 +694,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *backup --exclude memory --encrypt
 ```
 
-### *restore
+### \*restore
 
 从备份恢复。
 
@@ -713,7 +713,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *restore latest-backup --preview
 ```
 
-### *update
+### \*update
 
 更新 Synkra AIOX。
 
@@ -733,7 +733,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *update --beta --force
 ```
 
-### *uninstall
+### \*uninstall
 
 卸载组件或整个系统。
 
@@ -752,7 +752,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *uninstall memory-layer --dry-run
 ```
 
-### *doctor
+### \*doctor
 
 系统诊断和修复。
 
@@ -774,7 +774,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 
 ## 高级命令
 
-### *export
+### \*export
 
 导出配置、代理或数据。
 
@@ -800,7 +800,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *export all --format archive --destination backup.zip
 ```
 
-### *import
+### \*import
 
 导入配置、代理或数据。
 
@@ -820,7 +820,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *import backup.zip --dry-run
 ```
 
-### *benchmark
+### \*benchmark
 
 运行性能基准测试。
 
@@ -846,7 +846,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *benchmark memory --profile --save-results
 ```
 
-### *debug
+### \*debug
 
 调试模式操作。
 
@@ -871,7 +871,7 @@ Synkra AIOX 所有元代理命令的完整参考指南。
 *debug trace create-agent --save debug-session.log
 ```
 
-### *plugin
+### \*plugin
 
 插件管理。
 

@@ -29,18 +29,18 @@ AIOX-Core 使用 GitHub Actions 进行持续集成和部署。本文档描述了
 
 ## 活跃工作流
 
-| 工作流                | 目的                                  | 触发           | 关键 |
-| --------------------- | ------------------------------------- | -------------- | ---- |
-| `ci.yml`              | 主要 CI 验证 (lint、typecheck、test) | PR、push main  | 是   |
-| `pr-automation.yml`   | 覆盖率报告和指标                      | 仅 PR          | 否   |
-| `semantic-release.yml` | 自动版本化和 changelog                | 推送到 main    | 是   |
-| `test.yml`            | 扩展测试 (安全、构建、集成)          | 仅 push main   | 否   |
-| `macos-testing.yml`   | macOS 特定测试 (Intel + ARM)         | 按 path 过滤   | 否   |
-| `release.yml`         | GitHub 发布创建                       | 标签 v\*       | 是   |
-| `npm-publish.yml`     | 发布到 NPM                            | 发布已发布     | 是   |
-| `pr-labeling.yml`     | 自动 PR 标签                          | PR 打开/同步   | 否   |
-| `quarterly-gap-audit.yml` | 计划审计                           | Cron           | 否   |
-| `welcome.yml`         | 欢迎新手贡献者                        | PR             | 否   |
+| 工作流                    | 目的                                 | 触发          | 关键 |
+| ------------------------- | ------------------------------------ | ------------- | ---- |
+| `ci.yml`                  | 主要 CI 验证 (lint、typecheck、test) | PR、push main | 是   |
+| `pr-automation.yml`       | 覆盖率报告和指标                     | 仅 PR         | 否   |
+| `semantic-release.yml`    | 自动版本化和 changelog               | 推送到 main   | 是   |
+| `test.yml`                | 扩展测试 (安全、构建、集成)          | 仅 push main  | 否   |
+| `macos-testing.yml`       | macOS 特定测试 (Intel + ARM)         | 按 path 过滤  | 否   |
+| `release.yml`             | GitHub 发布创建                      | 标签 v\*      | 是   |
+| `npm-publish.yml`         | 发布到 NPM                           | 发布已发布    | 是   |
+| `pr-labeling.yml`         | 自动 PR 标签                         | PR 打开/同步  | 否   |
+| `quarterly-gap-audit.yml` | 计划审计                             | Cron          | 否   |
+| `welcome.yml`             | 欢迎新手贡献者                       | PR            | 否   |
 
 ## 优化策略
 
@@ -98,8 +98,8 @@ cross-platform:
 
 ## 可计费分钟减少
 
-| 前        | 后         | 节省 |
-| --------- | ---------- | ---- |
+| 前           | 后          | 节省 |
+| ------------ | ----------- | ---- |
 | ~340 分钟/周 | ~85 分钟/周 | ~75% |
 
 ### 详细说明:

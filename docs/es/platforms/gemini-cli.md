@@ -28,13 +28,13 @@ Gemini CLI ofrece capacidades únicas:
 
 ### Comparación con Otras Plataformas
 
-| Característica | Gemini CLI | Claude Code | Cursor |
-|---|:---:|:---:|:---:|
-| Basado en CLI | Sí | Sí | No |
-| Multimodal | Sí | Limitado | No |
-| Activación de Agentes | Prompt | /comando | @mención |
-| Soporte MCP | No | Nativo | Configuración |
-| Modelos de Google | Sí | No | No |
+| Característica        | Gemini CLI | Claude Code |    Cursor     |
+| --------------------- | :--------: | :---------: | :-----------: |
+| Basado en CLI         |     Sí     |     Sí      |      No       |
+| Multimodal            |     Sí     |  Limitado   |      No       |
+| Activación de Agentes |   Prompt   |  /comando   |   @mención    |
+| Soporte MCP           |     No     |   Nativo    | Configuración |
+| Modelos de Google     |     Sí     |     No      |      No       |
 
 ---
 
@@ -42,11 +42,11 @@ Gemini CLI ofrece capacidades únicas:
 
 ### Requisitos del Sistema
 
-| Requisito | Mínimo | Recomendado |
-|---|---|---|
-| **SO** | macOS, Linux, Windows | macOS, Linux |
-| **Node.js** | 18.0+ | 20.0+ |
-| **Python** | 3.9+ (opcional) | 3.11+ |
+| Requisito   | Mínimo                | Recomendado  |
+| ----------- | --------------------- | ------------ |
+| **SO**      | macOS, Linux, Windows | macOS, Linux |
+| **Node.js** | 18.0+                 | 20.0+        |
+| **Python**  | 3.9+ (opcional)       | 3.11+        |
 
 ### Requisitos de Cuenta
 
@@ -97,6 +97,7 @@ ls -la .gemini/
 ```
 
 Estructura esperada:
+
 ```
 .gemini/
 ├── rules.md           # Reglas principales
@@ -119,10 +120,12 @@ Estructura esperada:
 # Reglas de Synkra AIOX para Gemini CLI
 
 ## Sistema de Agentes
+
 - Incluye contexto de agentes en tus prompts
 - Usa "Como el agente [agente]..." para activación
 
 ## Estándares de Desarrollo
+
 - Escribe código limpio y probado
 - Sigue los patrones existentes
 ```
@@ -151,15 +154,19 @@ Estructura esperada:
 # Agente de Desarrollador
 
 ## Activación
+
 Incluye "Como el agente AIOX dev" en tu prompt.
 
 ## Persona
+
 Desarrollador Full Stack Senior con experiencia en:
+
 - TypeScript/JavaScript
 - Node.js, React
 - Diseño de bases de datos
 
 ## Flujo de Trabajo
+
 1. Leer requisitos
 2. Planificar implementación
 3. Escribir código limpio
@@ -270,6 +277,7 @@ alias garch='gemini --context .gemini/agents/architect.md'
 ```
 
 Uso:
+
 ```bash
 gdev "Implementa autenticación de usuario"
 gqa "Revisa el módulo de autenticación"
@@ -340,22 +348,27 @@ Gemini CLI utiliza markdown optimizado para prompts:
 **Frase de Activación:** "Como el agente AIOX dev"
 
 ## Rol
+
 Eres un Desarrollador Full Stack Senior trabajando con Synkra AIOX.
 
 ## Experiencia
+
 - TypeScript/JavaScript
 - Node.js, React
 - Diseño de bases de datos
 - Desarrollo de APIs
 
 ## Instrucciones
+
 Cuando se activa:
+
 1. Analiza la solicitud cuidadosamente
 2. Considera patrones de código existentes
 3. Proporciona soluciones limpias y probadas
 4. Explica tu enfoque
 
 ## Formato de Respuesta
+
 - Comienza con análisis breve
 - Proporciona soluciones de código
 - Incluye explicaciones
@@ -368,21 +381,21 @@ Cuando se activa:
 
 ### Limitaciones Actuales
 
-| Limitación | Solución Alternativa |
-|---|---|
-| Sin soporte MCP | Usar herramientas externas |
-| Sin contexto persistente | Usar sesiones |
-| Activación de agentes manual | Usar alias de shell |
-| Sin GUI | Solo terminal |
+| Limitación                   | Solución Alternativa       |
+| ---------------------------- | -------------------------- |
+| Sin soporte MCP              | Usar herramientas externas |
+| Sin contexto persistente     | Usar sesiones              |
+| Activación de agentes manual | Usar alias de shell        |
+| Sin GUI                      | Solo terminal              |
 
 ### Gemini CLI vs Claude Code
 
-| Aspecto | Gemini CLI | Claude Code |
-|---|---|---|
-| Proveedor | Google | Anthropic |
-| MCP | No | Nativo |
-| Herramienta de Tarea | No | Sí |
-| Multimodal | Sí | Limitado |
+| Aspecto              | Gemini CLI | Claude Code |
+| -------------------- | ---------- | ----------- |
+| Proveedor            | Google     | Anthropic   |
+| MCP                  | No         | Nativo      |
+| Herramienta de Tarea | No         | Sí          |
+| Multimodal           | Sí         | Limitado    |
 
 ---
 
@@ -391,10 +404,13 @@ Cuando se activa:
 ### Problemas Comunes
 
 #### Falló la Autenticación
+
 ```
 Error: Unable to authenticate
 ```
+
 **Solución:**
+
 ```bash
 gemini auth logout
 gemini auth login
@@ -403,10 +419,13 @@ export GOOGLE_AI_API_KEY="clave-nueva"
 ```
 
 #### Modelo No Disponible
+
 ```
 Error: Model 'xyz' not found
 ```
+
 **Solución:**
+
 ```bash
 # Listar modelos disponibles
 gemini models list
@@ -416,10 +435,13 @@ gemini --model gemini-pro "Consulta"
 ```
 
 #### Contexto Demasiado Largo
+
 ```
 Error: Context exceeds limit
 ```
+
 **Solución:**
+
 - Dividir en fragmentos más pequeños
 - Usar referencias de archivo específicas
 - Resumir contexto
@@ -480,4 +502,4 @@ R: Usa alias de shell o incluye contexto de agentes en los prompts.
 
 ---
 
-*Synkra AIOX - Guía de Plataforma Gemini CLI v1.0*
+_Synkra AIOX - Guía de Plataforma Gemini CLI v1.0_

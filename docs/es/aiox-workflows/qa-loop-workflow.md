@@ -25,10 +25,10 @@ Workflow para el ciclo de calidad, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @qa | Lider del ciclo |
-| @dev | Correccion de bugs |
+| Agente | Rol                |
+| ------ | ------------------ |
+| @qa    | Lider del ciclo    |
+| @dev   | Correccion de bugs |
 
 ## Ver Mas
 
@@ -36,4 +36,4 @@ Workflow para el ciclo de calidad, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

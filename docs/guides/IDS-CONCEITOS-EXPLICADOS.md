@@ -48,12 +48,12 @@
 
 Imagine que você quer um quarto novo na sua casa:
 
-| Humano | IA (sem IDS) |
-|--------|--------------|
-| "Já tenho um quarto de hóspedes. Vou transformá-lo." | "Vou construir uma casa inteira nova!" |
-| Compra tinta e móveis novos | Contrata arquiteto, engenheiro, pedreiros |
-| Gasta R$ 5.000 e 1 semana | Gasta R$ 500.000 e 12 meses |
-| Resultado: quarto novo | Resultado: casa nova (mas você só queria um quarto) |
+| Humano                                               | IA (sem IDS)                                        |
+| ---------------------------------------------------- | --------------------------------------------------- |
+| "Já tenho um quarto de hóspedes. Vou transformá-lo." | "Vou construir uma casa inteira nova!"              |
+| Compra tinta e móveis novos                          | Contrata arquiteto, engenheiro, pedreiros           |
+| Gasta R$ 5.000 e 1 semana                            | Gasta R$ 500.000 e 12 meses                         |
+| Resultado: quarto novo                               | Resultado: casa nova (mas você só queria um quarto) |
 
 **O IDS ensina a IA a pensar como o humano**: primeiro olhar o que já existe, depois decidir se reforma ou constrói.
 
@@ -105,11 +105,11 @@ Esta é a **hierarquia de decisão** do IDS. Sempre nesta ordem de prioridade.
 
 ### Os Três Níveis
 
-| Decisão | Quando Usar | Score de Match | Analogia |
-|---------|-------------|----------------|----------|
-| **REUSE** | Já existe algo perfeito | ≥ 90% | Usar a mesma roupa de ontem (ainda está limpa) |
-| **ADAPT** | Existe algo similar | 60-89% | Ajustar a barra da calça (serve, mas precisa de pequeno ajuste) |
-| **CREATE** | Não existe nada útil | < 60% | Comprar roupa nova (nada no guarda-roupa serve) |
+| Decisão    | Quando Usar             | Score de Match | Analogia                                                        |
+| ---------- | ----------------------- | -------------- | --------------------------------------------------------------- |
+| **REUSE**  | Já existe algo perfeito | ≥ 90%          | Usar a mesma roupa de ontem (ainda está limpa)                  |
+| **ADAPT**  | Existe algo similar     | 60-89%         | Ajustar a barra da calça (serve, mas precisa de pequeno ajuste) |
+| **CREATE** | Não existe nada útil    | < 60%          | Comprar roupa nova (nada no guarda-roupa serve)                 |
 
 ### 🎸 Analogia: O Músico e as Músicas
 
@@ -151,6 +151,7 @@ return 'CREATE';   // Cria novo, com justificativa
 > **Roundtable Adjustment #2:** O threshold de 30% é empírico. Será calibrado após 90 dias de uso.
 
 **Analogia do Navio:**
+
 - Se você reforma menos de 30% do navio, ainda é o mesmo navio
 - Se você reforma mais de 30%, praticamente está construindo outro
 - Quando a "reforma" afeta muita coisa, melhor criar do zero
@@ -165,16 +166,16 @@ O Entity Registry é o **banco de dados central** que guarda informações sobre
 
 Assim como a Netflix tem um catálogo com metadados de cada filme (gênero, duração, atores, avaliação), o Entity Registry tem:
 
-| Campo | O que é | Analogia Netflix |
-|-------|---------|------------------|
-| `path` | Onde o arquivo está | URL do vídeo |
-| `type` | Tipo do artefato (task, template, script) | Gênero (filme, série, documentário) |
-| `purpose` | O que ele faz | Sinopse |
-| `keywords` | Palavras-chave para busca | Tags (ação, romance, comédia) |
-| `usedBy` | Quem usa este artefato | "Quem assistiu X também assistiu Y" |
-| `dependencies` | Do que ele depende | "Para assistir a Parte 2, assista a Parte 1" |
-| `adaptability` | Quão fácil é modificar (0-1) | "Disponível para download" (sim/não) |
-| `checksum` | Impressão digital do arquivo | Hash de verificação |
+| Campo          | O que é                                   | Analogia Netflix                             |
+| -------------- | ----------------------------------------- | -------------------------------------------- |
+| `path`         | Onde o arquivo está                       | URL do vídeo                                 |
+| `type`         | Tipo do artefato (task, template, script) | Gênero (filme, série, documentário)          |
+| `purpose`      | O que ele faz                             | Sinopse                                      |
+| `keywords`     | Palavras-chave para busca                 | Tags (ação, romance, comédia)                |
+| `usedBy`       | Quem usa este artefato                    | "Quem assistiu X também assistiu Y"          |
+| `dependencies` | Do que ele depende                        | "Para assistir a Parte 2, assista a Parte 1" |
+| `adaptability` | Quão fácil é modificar (0-1)              | "Disponível para download" (sim/não)         |
+| `checksum`     | Impressão digital do arquivo              | Hash de verificação                          |
 
 ### Exemplo Real do Registry
 
@@ -182,17 +183,17 @@ Assim como a Netflix tem um catálogo com metadados de cada filme (gênero, dura
 entities:
   tasks:
     create-story:
-      path: ".aiox-core/development/tasks/create-story.md"
-      type: "task"
-      purpose: "Gera stories de desenvolvimento a partir de requisitos"
-      keywords: ["story", "create", "development", "agile"]
-      usedBy: ["@sm", "@po", "workflow-story-creation"]
-      dependencies: ["template-story", "checklist-story"]
+      path: '.aiox-core/development/tasks/create-story.md'
+      type: 'task'
+      purpose: 'Gera stories de desenvolvimento a partir de requisitos'
+      keywords: ['story', 'create', 'development', 'agile']
+      usedBy: ['@sm', '@po', 'workflow-story-creation']
+      dependencies: ['template-story', 'checklist-story']
       adaptability:
-        score: 0.7  # Fácil de adaptar
-        constraints: ["Não alterar estrutura YAML"]
-        extensionPoints: ["Adicionar campos customizados"]
-      checksum: "sha256:abc123..."
+        score: 0.7 # Fácil de adaptar
+        constraints: ['Não alterar estrutura YAML']
+        extensionPoints: ['Adicionar campos customizados']
+      checksum: 'sha256:abc123...'
 ```
 
 ### 🔍 Como Funciona a Busca
@@ -294,12 +295,12 @@ Combinado:
 
 CREATE sem justificativa é como pedir novo julgamento sem explicar por quê:
 
-| Sem IDS | Com IDS |
-|---------|---------|
-| "Quero criar task nova" | "Quero criar task nova porque..." |
-| "Ok, criado!" | "Quais existentes você avaliou?" |
-| Nenhuma accountability | "task-A não serve pois X, task-B não serve pois Y" |
-| Duplicação prolifera | "Ok, justificado. Revisão em 30 dias." |
+| Sem IDS                 | Com IDS                                            |
+| ----------------------- | -------------------------------------------------- |
+| "Quero criar task nova" | "Quero criar task nova porque..."                  |
+| "Ok, criado!"           | "Quais existentes você avaliou?"                   |
+| Nenhuma accountability  | "task-A não serve pois X, task-B não serve pois Y" |
+| Duplicação prolifera    | "Ok, justificado. Revisão em 30 dias."             |
 
 ---
 
@@ -354,14 +355,14 @@ Os Gates são **pontos de verificação** ao longo do fluxo de desenvolvimento.
 
 ### Classificação dos Gates (Roundtable #3)
 
-| Gate | Agente | Tipo | Latência | Comportamento |
-|------|--------|------|----------|---------------|
-| G1 | @pm | Human-in-loop | < 24h | Advisory only |
-| G2 | @sm | Human-in-loop | < 24h | Advisory only |
-| G3 | @po | Human-in-loop | < 4h | Soft block |
-| G4 | @dev | **AUTOMÁTICO** | **< 2s** | Informational |
-| G5 | @qa | **AUTOMÁTICO** | **< 30s** | Blocks merge |
-| G6 | @devops | **AUTOMÁTICO** | **< 60s** | Blocks critical |
+| Gate | Agente  | Tipo           | Latência  | Comportamento   |
+| ---- | ------- | -------------- | --------- | --------------- |
+| G1   | @pm     | Human-in-loop  | < 24h     | Advisory only   |
+| G2   | @sm     | Human-in-loop  | < 24h     | Advisory only   |
+| G3   | @po     | Human-in-loop  | < 4h      | Soft block      |
+| G4   | @dev    | **AUTOMÁTICO** | **< 2s**  | Informational   |
+| G5   | @qa     | **AUTOMÁTICO** | **< 30s** | Blocks merge    |
+| G6   | @devops | **AUTOMÁTICO** | **< 60s** | Blocks critical |
 
 > **Roundtable #3:** Gates G4-G6 DEVEM ser automáticos. Verificação manual em runtime cria fricção inaceitável.
 
@@ -418,32 +419,32 @@ O sistema de Self-Healing **detecta e corrige problemas automaticamente**.
 
 #### A. Integridade de Dados (Física)
 
-| Problema | Severidade | Auto-Heal? | Ação |
-|----------|------------|------------|------|
-| Arquivo deletado | CRITICAL | ❌ | Avisa humano |
-| Checksum errado | HIGH | ✅ | Recalcula |
-| Referência órfã | MEDIUM | ✅ | Remove ref |
-| Schema inválido | HIGH | ❌ | Avisa humano |
+| Problema         | Severidade | Auto-Heal? | Ação         |
+| ---------------- | ---------- | ---------- | ------------ |
+| Arquivo deletado | CRITICAL   | ❌         | Avisa humano |
+| Checksum errado  | HIGH       | ✅         | Recalcula    |
+| Referência órfã  | MEDIUM     | ✅         | Remove ref   |
+| Schema inválido  | HIGH       | ❌         | Avisa humano |
 
 **Analogia:** É como verificar se todos os órgãos estão no lugar e funcionando.
 
 #### B. Integridade de Performance (Funcional)
 
-| Problema | Threshold | Auto-Heal? | Ação |
-|----------|-----------|------------|------|
-| Query lenta | > 100ms | ✅ | Rebuild index |
-| Cache baixo | < 70% hit | ✅ | Expand cache |
-| Index antigo | > 1 hora | ✅ | Rebuild TF-IDF |
+| Problema     | Threshold | Auto-Heal? | Ação           |
+| ------------ | --------- | ---------- | -------------- |
+| Query lenta  | > 100ms   | ✅         | Rebuild index  |
+| Cache baixo  | < 70% hit | ✅         | Expand cache   |
+| Index antigo | > 1 hora  | ✅         | Rebuild TF-IDF |
 
 **Analogia:** É como verificar se o coração bate no ritmo certo e os pulmões respiram bem.
 
 #### C. Integridade de Qualidade (Evolutiva)
 
-| Problema | Critério | Auto-Heal? | Ação |
-|----------|----------|------------|------|
-| Near-duplicate | > 95% similar | ❌ | Sugere merge |
-| Entity stale | 90 dias sem ref | ✅ | Flag archive |
-| False CREATE | 60 dias, 0 reuse | ❌ | Queue review |
+| Problema       | Critério         | Auto-Heal? | Ação         |
+| -------------- | ---------------- | ---------- | ------------ |
+| Near-duplicate | > 95% similar    | ❌         | Sugere merge |
+| Entity stale   | 90 dias sem ref  | ✅         | Flag archive |
+| False CREATE   | 60 dias, 0 reuse | ❌         | Queue review |
 
 **Analogia:** É como verificar se o corpo está evoluindo bem - não tem células cancerosas (duplicatas) ou partes atrofiadas (stale).
 
@@ -567,39 +568,39 @@ CREATE mínimo - só coisas realmente novas
 
 ### Conceitos Principais
 
-| Termo | Definição Simples | Analogia |
-|-------|-------------------|----------|
-| **IDS** | Sistema que ensina IA a reusar | GPS que mostra caminhos existentes antes de criar novos |
-| **Entity Registry** | Inventário de todos os artefatos | Catálogo da Netflix |
-| **Decision Engine** | Algoritmo que decide REUSE/ADAPT/CREATE | Personal shopper criterioso |
-| **TF-IDF** | Técnica de busca por relevância | Google Search do código |
-| **Verification Gate** | Ponto de checagem no fluxo | Pedágio da rodovia |
-| **Self-Healing** | Auto-correção de problemas | Sistema imunológico |
-| **CREATE Rate** | % de criações vs reuso | Termômetro de eficiência |
-| **Adaptability Score** | Quão fácil modificar (0-1) | Nota de "maleabilidade" |
-| **Checksum** | Impressão digital do arquivo | DNA do documento |
+| Termo                  | Definição Simples                       | Analogia                                                |
+| ---------------------- | --------------------------------------- | ------------------------------------------------------- |
+| **IDS**                | Sistema que ensina IA a reusar          | GPS que mostra caminhos existentes antes de criar novos |
+| **Entity Registry**    | Inventário de todos os artefatos        | Catálogo da Netflix                                     |
+| **Decision Engine**    | Algoritmo que decide REUSE/ADAPT/CREATE | Personal shopper criterioso                             |
+| **TF-IDF**             | Técnica de busca por relevância         | Google Search do código                                 |
+| **Verification Gate**  | Ponto de checagem no fluxo              | Pedágio da rodovia                                      |
+| **Self-Healing**       | Auto-correção de problemas              | Sistema imunológico                                     |
+| **CREATE Rate**        | % de criações vs reuso                  | Termômetro de eficiência                                |
+| **Adaptability Score** | Quão fácil modificar (0-1)              | Nota de "maleabilidade"                                 |
+| **Checksum**           | Impressão digital do arquivo            | DNA do documento                                        |
 
 ### Os 6 Gates
 
-| Gate | Emoji | Quem | Tipo | Analogia |
-|------|-------|------|------|----------|
-| G1 | 📋 | @pm | Advisory | Recepcionista que sugere |
-| G2 | 📝 | @sm | Advisory | Consultor que aconselha |
-| G3 | ✅ | @po | Soft Block | Gerente que pode vetar |
-| G4 | ⚡ | @dev | Info | Sensor automático |
-| G5 | 🔍 | @qa | Block | Inspetor de qualidade |
-| G6 | 🚀 | @devops | Critical | Controle final de embarque |
+| Gate | Emoji | Quem    | Tipo       | Analogia                   |
+| ---- | ----- | ------- | ---------- | -------------------------- |
+| G1   | 📋    | @pm     | Advisory   | Recepcionista que sugere   |
+| G2   | 📝    | @sm     | Advisory   | Consultor que aconselha    |
+| G3   | ✅    | @po     | Soft Block | Gerente que pode vetar     |
+| G4   | ⚡    | @dev    | Info       | Sensor automático          |
+| G5   | 🔍    | @qa     | Block      | Inspetor de qualidade      |
+| G6   | 🚀    | @devops | Critical   | Controle final de embarque |
 
 ### Thresholds Importantes
 
-| Valor | Significado | Analogia |
-|-------|-------------|----------|
-| **90%** | Limite para REUSE direto | "Praticamente igual" |
-| **60%** | Limite mínimo para ADAPT | "Dá pra adaptar" |
-| **30%** | Impacto máximo de ADAPT | "Mais que isso, melhor criar novo" |
-| **100ms** | SLA de query do registry | "Instantâneo para humanos" |
-| **2s** | SLA do Gate G4 | "Imperceptível no fluxo" |
-| **70%** | Cache hit rate mínimo | "Eficiência de memória" |
+| Valor     | Significado              | Analogia                           |
+| --------- | ------------------------ | ---------------------------------- |
+| **90%**   | Limite para REUSE direto | "Praticamente igual"               |
+| **60%**   | Limite mínimo para ADAPT | "Dá pra adaptar"                   |
+| **30%**   | Impacto máximo de ADAPT  | "Mais que isso, melhor criar novo" |
+| **100ms** | SLA de query do registry | "Instantâneo para humanos"         |
+| **2s**    | SLA do Gate G4           | "Imperceptível no fluxo"           |
+| **70%**   | Cache hit rate mínimo    | "Eficiência de memória"            |
 
 ---
 
@@ -647,10 +648,13 @@ CREATE mínimo - só coisas realmente novas
 ## Resumo Executivo
 
 ### O Problema
+
 IAs criam código novo por padrão, enquanto humanos reutilizam. Isso causa duplicação e dívida técnica.
 
 ### A Solução
+
 IDS força a hierarquia **REUSE > ADAPT > CREATE** através de:
+
 - **Registry:** Inventário centralizado de tudo
 - **Decision Engine:** Algoritmo que recomenda a melhor ação
 - **Gates:** Verificações em cada etapa
@@ -658,14 +662,14 @@ IDS força a hierarquia **REUSE > ADAPT > CREATE** através de:
 
 ### Os Ajustes do Roundtable
 
-| # | Ajuste | Impacto |
-|---|--------|---------|
-| 1 | Performance SLA < 100ms | Registry rápido como Google |
-| 2 | 30% Threshold calibrável | Flexibilidade para ajustar |
-| 3 | G4-G6 automáticos | Zero fricção no dev |
-| 4 | CREATE justification | Accountability para criações |
-| 5 | CREATE rate metric | Termômetro de saúde |
-| 6 | Self-healing expandido | Sistema imunológico completo |
+| #   | Ajuste                   | Impacto                      |
+| --- | ------------------------ | ---------------------------- |
+| 1   | Performance SLA < 100ms  | Registry rápido como Google  |
+| 2   | 30% Threshold calibrável | Flexibilidade para ajustar   |
+| 3   | G4-G6 automáticos        | Zero fricção no dev          |
+| 4   | CREATE justification     | Accountability para criações |
+| 5   | CREATE rate metric       | Termômetro de saúde          |
+| 6   | Self-healing expandido   | Sistema imunológico completo |
 
 ### A Meta Final
 
@@ -706,6 +710,6 @@ aiox ids:sync
 
 ---
 
-*Documento criado por Pedro Valério Lopez (via Mind Clone)*
-*Consolidando: Epic IDS, 6 Stories, 6 Roundtable Adjustments*
-*"Se não está documentado, não existe."*
+_Documento criado por Pedro Valério Lopez (via Mind Clone)_
+_Consolidando: Epic IDS, 6 Stories, 6 Roundtable Adjustments_
+_"Se não está documentado, não existe."_

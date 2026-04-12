@@ -185,9 +185,8 @@ The installer automatically:
 2. Commands are installed to `.claude\commands\AIOX\`
 3. Use `/agent-name` to activate agents
 
-
-2. Run the installer
-4. Use `@agent-name` to activate agents
+4. Run the installer
+5. Use `@agent-name` to activate agents
 
 ### VS Code
 

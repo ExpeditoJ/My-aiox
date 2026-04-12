@@ -7,15 +7,15 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/architect.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: architecture, dataLocation, templatesLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/data/technical-preferences.md` | AgentConfigLoader.loadFile() | Technical preferences (always loaded, 15KB) |
-| 6 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 7 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                                        |
+| ----- | ------------------------------------------------ | --------------------------------------- | -------------------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/architect.md`     | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                                  |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration                                             |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: architecture, dataLocation, templatesLocation |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                                       |
+| 5     | `.aiox-core/data/technical-preferences.md`       | AgentConfigLoader.loadFile()            | Technical preferences (always loaded, 15KB)                    |
+| 6     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history)            |
+| 7     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                                |
 
 ### 1.2 Greeting Construction
 
@@ -77,46 +77,46 @@ architect:
       lazy: false
       size: 15KB
   lazy_loading:
-    architecture_templates: true  # Load when creating architecture
+    architecture_templates: true # Load when creating architecture
   performance_target: <75ms
 ```
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `🏛️ Aria the Visionary ready to envision!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Aria, arquitetando o futuro 🏗️` |
-| Role | `persona.role` | Holistic System Architect & Full-Stack Technical Leader |
-| Commands shown | `filterCommandsByVisibility('full')` | 21 commands with `full` visibility |
+| Data           | Source                                            | Value                                                   |
+| -------------- | ------------------------------------------------- | ------------------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `🏛️ Aria the Visionary ready to envision!`              |
+| Signature      | `persona_profile.communication.signature_closing` | `— Aria, arquitetando o futuro 🏗️`                      |
+| Role           | `persona.role`                                    | Holistic System Architect & Full-Stack Technical Leader |
+| Commands shown | `filterCommandsByVisibility('full')`              | 21 commands with `full` visibility                      |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*create-full-stack-architecture` | create-doc.md + fullstack-architecture-tmpl.yaml | full, quick, key | Yes |
-| `*create-backend-architecture` | create-doc.md + architecture-tmpl.yaml | full, quick | Yes |
-| `*create-front-end-architecture` | create-doc.md + front-end-architecture-tmpl.yaml | full, quick | Yes |
-| `*create-brownfield-architecture` | create-doc.md + brownfield-architecture-tmpl.yaml | full | Yes |
-| `*document-project` | document-project.md | full, quick | Yes |
-| `*execute-checklist` | execute-checklist.md | full | Optional |
-| `*research` | create-deep-research-prompt.md | full, quick | Yes |
-| `*analyze-project-structure` | analyze-project-structure.md | full, quick, key | Yes |
-| `*validate-tech-preset` | validate-tech-preset.md | full | No |
-| `*validate-tech-preset-all` | validate-tech-preset.md (all mode) | full | No |
-| `*assess-complexity` | spec-assess-complexity.md | full | No |
-| `*create-plan` | plan-create-implementation.md | full | Yes |
-| `*create-context` | plan-create-context.md | full | No |
-| `*map-codebase` | codebase-mapper.js | full | No |
-| `*doc-out` | (built-in) | full | No |
-| `*shard-prd` | (built-in) | full | No |
-| `*session-info` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*yolo` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
+| Command                           | Task File                                         | Visibility       | Elicit   |
+| --------------------------------- | ------------------------------------------------- | ---------------- | -------- |
+| `*help`                           | (built-in)                                        | full, quick, key | No       |
+| `*create-full-stack-architecture` | create-doc.md + fullstack-architecture-tmpl.yaml  | full, quick, key | Yes      |
+| `*create-backend-architecture`    | create-doc.md + architecture-tmpl.yaml            | full, quick      | Yes      |
+| `*create-front-end-architecture`  | create-doc.md + front-end-architecture-tmpl.yaml  | full, quick      | Yes      |
+| `*create-brownfield-architecture` | create-doc.md + brownfield-architecture-tmpl.yaml | full             | Yes      |
+| `*document-project`               | document-project.md                               | full, quick      | Yes      |
+| `*execute-checklist`              | execute-checklist.md                              | full             | Optional |
+| `*research`                       | create-deep-research-prompt.md                    | full, quick      | Yes      |
+| `*analyze-project-structure`      | analyze-project-structure.md                      | full, quick, key | Yes      |
+| `*validate-tech-preset`           | validate-tech-preset.md                           | full             | No       |
+| `*validate-tech-preset-all`       | validate-tech-preset.md (all mode)                | full             | No       |
+| `*assess-complexity`              | spec-assess-complexity.md                         | full             | No       |
+| `*create-plan`                    | plan-create-implementation.md                     | full             | Yes      |
+| `*create-context`                 | plan-create-context.md                            | full             | No       |
+| `*map-codebase`                   | codebase-mapper.js                                | full             | No       |
+| `*doc-out`                        | (built-in)                                        | full             | No       |
+| `*shard-prd`                      | (built-in)                                        | full             | No       |
+| `*session-info`                   | (built-in)                                        | full             | No       |
+| `*guide`                          | (built-in, rendered from agent .md)               | full, quick      | No       |
+| `*yolo`                           | (built-in)                                        | full             | No       |
+| `*exit`                           | (built-in)                                        | full             | No       |
 
 ---
 
@@ -419,15 +419,15 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## 🏛️ Architect Guide` section from agent .md |
+| Command         | Behavior                                                        |
+| --------------- | --------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition |
+| `*guide`        | Renders the `## 🏛️ Architect Guide` section from agent .md      |
 | `*session-info` | Shows session context (agent history, commands, project status) |
-| `*doc-out` | Outputs complete document content |
-| `*shard-prd` | Breaks architecture into smaller parts |
-| `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits architect mode, returns to base Claude Code |
+| `*doc-out`      | Outputs complete document content                               |
+| `*shard-prd`    | Breaks architecture into smaller parts                          |
+| `*yolo`         | Toggles confirmation skipping mode                              |
+| `*exit`         | Exits architect mode, returns to base Claude Code               |
 
 ---
 
@@ -524,34 +524,38 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @architect -> @data-engineer | Delegate | Database schema design, query optimization |
-| @architect -> @ux-design-expert | Collaborate | Frontend architecture, user flows |
-| @pm -> @architect | Receives | Requirements and strategic direction |
-| @architect -> @devops | Delegate | Git push operations, PR creation |
-| @architect -> @dev | Handoff | Architecture documents for implementation |
-| @qa -> @architect | Validate | Architecture checklists (execute-checklist) |
+| Interaction                     | Direction   | Trigger                                     |
+| ------------------------------- | ----------- | ------------------------------------------- |
+| @architect -> @data-engineer    | Delegate    | Database schema design, query optimization  |
+| @architect -> @ux-design-expert | Collaborate | Frontend architecture, user flows           |
+| @pm -> @architect               | Receives    | Requirements and strategic direction        |
+| @architect -> @devops           | Delegate    | Git push operations, PR creation            |
+| @architect -> @dev              | Handoff     | Architecture documents for implementation   |
+| @qa -> @architect               | Validate    | Architecture checklists (execute-checklist) |
 
 ### Delegation Rules (from agent definition)
 
 **Delegates to @data-engineer when:**
+
 - Database schema design (tables, relationships, indexes)
 - Query optimization and performance tuning
 - ETL pipeline design
 - Data modeling (normalization, denormalization)
 
 **Retains:**
+
 - Database technology selection from system perspective
 - Integration of data layer with application architecture
 - Data access patterns and API design
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 - CI/CD pipeline configuration
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`
 
@@ -559,15 +563,15 @@ graph TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| `architecture-tmpl.yaml` | Template | `*create-backend-architecture` | Command non-functional |
-| `front-end-architecture-tmpl.yaml` | Template | `*create-front-end-architecture` | Command non-functional |
-| `fullstack-architecture-tmpl.yaml` | Template | `*create-full-stack-architecture` | Command non-functional |
-| `brownfield-architecture-tmpl.yaml` | Template | `*create-brownfield-architecture` | Command non-functional |
-| `architect-checklist.md` | Checklist | `*execute-checklist` | Defaults to other checklists |
-| `codebase-mapper.js` | Script | `*map-codebase` | Command non-functional |
+| File                                | Type      | Referenced By                     | Impact                       |
+| ----------------------------------- | --------- | --------------------------------- | ---------------------------- |
+| `architecture-tmpl.yaml`            | Template  | `*create-backend-architecture`    | Command non-functional       |
+| `front-end-architecture-tmpl.yaml`  | Template  | `*create-front-end-architecture`  | Command non-functional       |
+| `fullstack-architecture-tmpl.yaml`  | Template  | `*create-full-stack-architecture` | Command non-functional       |
+| `brownfield-architecture-tmpl.yaml` | Template  | `*create-brownfield-architecture` | Command non-functional       |
+| `architect-checklist.md`            | Checklist | `*execute-checklist`              | Defaults to other checklists |
+| `codebase-mapper.js`                | Script    | `*map-codebase`                   | Command non-functional       |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

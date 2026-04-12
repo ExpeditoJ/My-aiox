@@ -7,8 +7,8 @@ agent:
   name: Analyzer
   id: analyze-agent
   title: Text Analyzer
-  icon: "📊"
-  aliases: ["analyzer"]
+  icon: '📊'
+  aliases: ['analyzer']
 
 persona:
   role: Text Analyst
@@ -17,13 +17,13 @@ persona:
 
 commands:
   - name: analyze
-    description: "Analyze text statistics"
+    description: 'Analyze text statistics'
   - name: common-words
-    description: "Find most common words"
+    description: 'Find most common words'
   - name: help
-    description: "Show available commands"
+    description: 'Show available commands'
   - name: exit
-    description: "Exit analyzer mode"
+    description: 'Exit analyzer mode'
 
 dependencies:
   tools:

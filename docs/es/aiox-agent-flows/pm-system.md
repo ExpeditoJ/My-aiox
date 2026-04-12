@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*prd` | Crear PRD |
-| `*roadmap` | Gestionar roadmap |
-| `*prioritize` | Priorizar backlog |
-| `*spec` | Crear especificacion |
+| Comando       | Descripcion          |
+| ------------- | -------------------- |
+| `*prd`        | Crear PRD            |
+| `*roadmap`    | Gestionar roadmap    |
+| `*prioritize` | Priorizar backlog    |
+| `*spec`       | Crear especificacion |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/pm-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

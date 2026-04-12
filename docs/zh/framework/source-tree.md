@@ -267,30 +267,30 @@ Infrastructure Scripts:
 
 ### 框架数据文件 (docs/framework/)
 
-| 文件 | 所有者 | 填充规则 | 更新触发器 | 使用者 |
-|------|--------|----------|------------|--------|
-| `coding-standards.md` | @dev | 编码标准变更时更新 | `*update-standards` 任务或手动编辑 | @dev, @pm, @ux-design-expert, @sm |
-| `tech-stack.md` | @architect | 技术栈决策时更新 | `*create-doc architecture` 或手动编辑 | @dev, @pm, @ux-design-expert, @analyst |
-| `source-tree.md` | @architect | 结构变更时更新 | `*update-source-tree` 任务 | @dev, @analyst |
+| 文件                  | 所有者     | 填充规则           | 更新触发器                            | 使用者                                 |
+| --------------------- | ---------- | ------------------ | ------------------------------------- | -------------------------------------- |
+| `coding-standards.md` | @dev       | 编码标准变更时更新 | `*update-standards` 任务或手动编辑    | @dev, @pm, @ux-design-expert, @sm      |
+| `tech-stack.md`       | @architect | 技术栈决策时更新   | `*create-doc architecture` 或手动编辑 | @dev, @pm, @ux-design-expert, @analyst |
+| `source-tree.md`      | @architect | 结构变更时更新     | `*update-source-tree` 任务            | @dev, @analyst                         |
 
 ### 共享数据文件 (.aiox-core/data/)
 
-| 文件 | 所有者 | 填充规则 | 更新触发器 | 使用者 |
-|------|--------|----------|------------|--------|
-| `aiox-kb.md` | @aiox-master | 框架重大变更时更新 | 手动编辑 | @aiox-master (延迟) |
-| `agent-config-requirements.yaml` | @architect | 代理配置需求变更时更新 | 故事驱动 | AgentConfigLoader |
-| `technical-preferences.md` | @architect | 偏好变更时更新 | 手动编辑或 `*add-tech-doc` | @dev, @qa, @devops, @architect, @data-engineer |
-| `workflow-patterns.yaml` | @sm | 工作流变更时更新 | 手动编辑 | @sm, WorkflowNavigator |
+| 文件                             | 所有者       | 填充规则               | 更新触发器                 | 使用者                                         |
+| -------------------------------- | ------------ | ---------------------- | -------------------------- | ---------------------------------------------- |
+| `aiox-kb.md`                     | @aiox-master | 框架重大变更时更新     | 手动编辑                   | @aiox-master (延迟)                            |
+| `agent-config-requirements.yaml` | @architect   | 代理配置需求变更时更新 | 故事驱动                   | AgentConfigLoader                              |
+| `technical-preferences.md`       | @architect   | 偏好变更时更新         | 手动编辑或 `*add-tech-doc` | @dev, @qa, @devops, @architect, @data-engineer |
+| `workflow-patterns.yaml`         | @sm          | 工作流变更时更新       | 手动编辑                   | @sm, WorkflowNavigator                         |
 
 ### 产品数据文件 (.aiox-core/product/data/)
 
-| 文件 | 所有者 | 填充规则 | 更新触发器 | 使用者 |
-|------|--------|----------|------------|--------|
-| `brainstorming-techniques.md` | @analyst | 参考文档，很少更新 | 手动编辑 | @analyst |
-| `elicitation-methods.md` | @po | 参考文档，很少更新 | 手动编辑 | @po |
-| `mode-selection-best-practices.md` | @sm | 工作流变更时更新 | 手动编辑 | @sm |
-| `test-levels-framework.md` | @qa | 测试策略变更时更新 | `*update-test-strategy` 或手动编辑 | @qa |
-| `test-priorities-matrix.md` | @qa | 优先级变更时更新 | `*update-test-strategy` 或手动编辑 | @qa |
+| 文件                               | 所有者   | 填充规则           | 更新触发器                         | 使用者   |
+| ---------------------------------- | -------- | ------------------ | ---------------------------------- | -------- |
+| `brainstorming-techniques.md`      | @analyst | 参考文档，很少更新 | 手动编辑                           | @analyst |
+| `elicitation-methods.md`           | @po      | 参考文档，很少更新 | 手动编辑                           | @po      |
+| `mode-selection-best-practices.md` | @sm      | 工作流变更时更新   | 手动编辑                           | @sm      |
+| `test-levels-framework.md`         | @qa      | 测试策略变更时更新 | `*update-test-strategy` 或手动编辑 | @qa      |
+| `test-priorities-matrix.md`        | @qa      | 优先级变更时更新   | `*update-test-strategy` 或手动编辑 | @qa      |
 
 ---
 
@@ -452,12 +452,12 @@ dependencies:
 
 ### 从 Squads 迁移
 
-| 旧版（已弃用） | 当前（Squads） |
-| -------------- | -------------- |
-| `Squads/` 目录 | `templates/squad/` 模板 |
+| 旧版（已弃用）             | 当前（Squads）                |
+| -------------------------- | ----------------------------- |
+| `Squads/` 目录             | `templates/squad/` 模板       |
 | `legacyPacksLocation` 配置 | `squadsTemplateLocation` 配置 |
-| `pack.yaml` 清单 | `squad.yaml` 清单 |
-| 直接加载 | 基于模板创建 |
+| `pack.yaml` 清单           | `squad.yaml` 清单             |
+| 直接加载                   | 基于模板创建                  |
 
 ---
 
@@ -815,15 +815,15 @@ outputs/                               # 运行时输出（gitignored）
 
 ### ADE Epics 摘要
 
-| Epic | 名称 | 关键组件 |
-| ---- | ---- | -------- |
-| **Epic 1** | 故事分支隔离 | `worktree-manager.js` - Git worktree 管理 |
-| **Epic 2** | 项目状态系统 | `project-status-loader.js` - YAML 状态跟踪 |
-| **Epic 3** | 规格管道 | `spec-pipeline.yaml` + 5个规格任务 |
-| **Epic 4** | 实现规划 | `plan-tracker.js`、`subtask-verifier.js`、上下文生成器 |
-| **Epic 5** | 自愈循环 | `stuck-detector.js`、`recovery-tracker.js`、`rollback-manager.js` |
-| **Epic 6** | QA 演进 | `qa-loop-orchestrator.js`、10阶段审查、修复请求生成 |
-| **Epic 7** | 记忆层 | `codebase-mapper.js`、`pattern-extractor.js`、会话洞察 |
+| Epic       | 名称         | 关键组件                                                          |
+| ---------- | ------------ | ----------------------------------------------------------------- |
+| **Epic 1** | 故事分支隔离 | `worktree-manager.js` - Git worktree 管理                         |
+| **Epic 2** | 项目状态系统 | `project-status-loader.js` - YAML 状态跟踪                        |
+| **Epic 3** | 规格管道     | `spec-pipeline.yaml` + 5个规格任务                                |
+| **Epic 4** | 实现规划     | `plan-tracker.js`、`subtask-verifier.js`、上下文生成器            |
+| **Epic 5** | 自愈循环     | `stuck-detector.js`、`recovery-tracker.js`、`rollback-manager.js` |
+| **Epic 6** | QA 演进      | `qa-loop-orchestrator.js`、10阶段审查、修复请求生成               |
+| **Epic 7** | 记忆层       | `codebase-mapper.js`、`pattern-extractor.js`、会话洞察            |
 
 ### ADE 配置
 
@@ -877,13 +877,13 @@ ade:
 
 ## 版本历史
 
-| 版本 | 日期 | 变更 | 作者 |
-| ---- | ---- | ---- | ---- |
-| 1.0 | 2025-01-15 | 初始源代码树文档 | Aria (architect) |
-| 1.1 | 2025-12-14 | 更新组织为 SynkraAI，用 Squads 系统替换 Squads [Story 6.10] | Dex (dev) |
-| 2.0 | 2025-12-15 | 主要更新以反映模块化架构（cli/、core/、development/、infrastructure/、product/）[Story 6.13] | Pax (PO) |
-| 3.0 | 2026-01-29 | 添加 ADE（自主开发引擎）部分，记录 Epics 1-7：workflow-intelligence、ADE 脚本、工作流、任务和运行时状态 [ADE 集成] | Aria (architect) |
-| 3.1 | 2026-02-06 | 添加数据文件治理部分：记录7个缺失的数据文件及其所有者、填充规则和更新触发器。扩展 .aiox-core/data/ 和 product/data/ 树列表。[Story ACT-8] | Dex (dev) |
+| 版本 | 日期       | 变更                                                                                                                                      | 作者             |
+| ---- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| 1.0  | 2025-01-15 | 初始源代码树文档                                                                                                                          | Aria (architect) |
+| 1.1  | 2025-12-14 | 更新组织为 SynkraAI，用 Squads 系统替换 Squads [Story 6.10]                                                                               | Dex (dev)        |
+| 2.0  | 2025-12-15 | 主要更新以反映模块化架构（cli/、core/、development/、infrastructure/、product/）[Story 6.13]                                              | Pax (PO)         |
+| 3.0  | 2026-01-29 | 添加 ADE（自主开发引擎）部分，记录 Epics 1-7：workflow-intelligence、ADE 脚本、工作流、任务和运行时状态 [ADE 集成]                        | Aria (architect) |
+| 3.1  | 2026-02-06 | 添加数据文件治理部分：记录7个缺失的数据文件及其所有者、填充规则和更新触发器。扩展 .aiox-core/data/ 和 product/data/ 树列表。[Story ACT-8] | Dex (dev)        |
 
 ---
 

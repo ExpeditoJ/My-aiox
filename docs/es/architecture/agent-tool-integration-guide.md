@@ -84,15 +84,15 @@ dependencies:
 
 ### @dev (Dex - Agente Desarrollador)
 
-| Herramienta  | Tipo     | Propósito                                    |
-| ------------ | -------- | -------------------------------------------- |
-| `git`        | CLI      | Control de versiones (solo operaciones locales) |
-| `coderabbit` | Externa  | Revisión de calidad de código previo al commit |
-| `context7`   | MCP      | Búsqueda de documentación de librerías       |
-| `supabase`   | Externa  | Operaciones de base de datos y migraciones  |
-| `n8n`        | Externa  | Automatización de flujos de trabajo         |
-| `browser`    | MCP      | Pruebas de aplicaciones web                 |
-| `ffmpeg`     | CLI      | Procesamiento de archivos de medios         |
+| Herramienta  | Tipo    | Propósito                                       |
+| ------------ | ------- | ----------------------------------------------- |
+| `git`        | CLI     | Control de versiones (solo operaciones locales) |
+| `coderabbit` | Externa | Revisión de calidad de código previo al commit  |
+| `context7`   | MCP     | Búsqueda de documentación de librerías          |
+| `supabase`   | Externa | Operaciones de base de datos y migraciones      |
+| `n8n`        | Externa | Automatización de flujos de trabajo             |
+| `browser`    | MCP     | Pruebas de aplicaciones web                     |
+| `ffmpeg`     | CLI     | Procesamiento de archivos de medios             |
 
 **Restricciones de Git para @dev:**
 
@@ -102,12 +102,12 @@ dependencies:
 
 ### @devops (Gage - Agente DevOps)
 
-| Herramienta  | Tipo     | Propósito                              |
-| ------------ | -------- | -------------------------------------- |
-| `git`        | CLI      | Operaciones git completas incluyendo push |
-| `gh`         | CLI      | CLI de GitHub para operaciones de PR  |
-| `docker`     | CLI      | Operaciones de contenedores            |
-| `coderabbit` | Externa  | Automatización de revisión de código  |
+| Herramienta  | Tipo    | Propósito                                 |
+| ------------ | ------- | ----------------------------------------- |
+| `git`        | CLI     | Operaciones git completas incluyendo push |
+| `gh`         | CLI     | CLI de GitHub para operaciones de PR      |
+| `docker`     | CLI     | Operaciones de contenedores               |
+| `coderabbit` | Externa | Automatización de revisión de código      |
 
 **Capacidades Únicas:**
 
@@ -117,11 +117,11 @@ dependencies:
 
 ### @qa (Quinn - Agente QA)
 
-| Herramienta  | Tipo | Propósito                       |
-| ------------ | ---- | ------------------------------- |
-| `jest`       | CLI  | Pruebas unitarias               |
+| Herramienta  | Tipo | Propósito                                 |
+| ------------ | ---- | ----------------------------------------- |
+| `jest`       | CLI  | Pruebas unitarias                         |
 | `playwright` | MCP  | Pruebas E2E y automatización de navegador |
-| `npm test`   | CLI  | Ejecutor de pruebas             |
+| `npm test`   | CLI  | Ejecutor de pruebas                       |
 
 ### @architect (Aria - Agente Arquitecto)
 
@@ -138,7 +138,7 @@ dependencies:
 
 Los servidores MCP (Protocolo de Contexto de Modelo) proporcionan APIs estructuradas para uso de agentes.
 
-| Servidor MCP | Herramientas Proporcionadas                                    | Utilizado por    |
+| Servidor MCP | Herramientas Proporcionadas                                      | Utilizado por    |
 | ------------ | ---------------------------------------------------------------- | ---------------- |
 | EXA          | `web_search_exa`, `company_research_exa`, `get_code_context_exa` | @architect       |
 | Context7     | `resolve-library-id`, `query-docs`                               | @dev, @architect |

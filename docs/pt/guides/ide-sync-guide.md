@@ -103,11 +103,11 @@ squads/legal/agents/legal-chief.md
 Mapeamentos padrão para tipos de componentes:
 
 | ------------------ | ------ | ------ | ------ | -------- |
-| Agents             | ✅     | ✅     | ✅     | ✅       |
-| Tasks              | ✅     | -      | -      | -        |
-| Workflows          | ✅     | ✅     | -      | -        |
-| Checklists         | ✅     | -      | -      | -        |
-| Data               | ✅     | -      | -      | -        |
+| Agents | ✅ | ✅ | ✅ | ✅ |
+| Tasks | ✅ | - | - | - |
+| Workflows | ✅ | ✅ | - | - |
+| Checklists | ✅ | - | - | - |
+| Data | ✅ | - | - | - |
 
 ## Wrappers
 

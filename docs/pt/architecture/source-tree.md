@@ -427,12 +427,12 @@ dependencies:
 
 ### Migração de Squads
 
-| Legado (Descontinuado)          | Atual (Squads)                  |
-| ------------------------------- | ------------------------------- |
-| Diretório `Squads/`             | Template `templates/squad/`     |
+| Legado (Descontinuado)       | Atual (Squads)                  |
+| ---------------------------- | ------------------------------- |
+| Diretório `Squads/`          | Template `templates/squad/`     |
 | Config `legacyPacksLocation` | Config `squadsTemplateLocation` |
-| Manifesto `pack.yaml`           | Manifesto `squad.yaml`          |
-| Carregamento direto             | Criação baseada em template     |
+| Manifesto `pack.yaml`        | Manifesto `squad.yaml`          |
+| Carregamento direto          | Criação baseada em template     |
 
 ---
 

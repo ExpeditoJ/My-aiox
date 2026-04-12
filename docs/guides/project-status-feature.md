@@ -59,6 +59,7 @@ Run the initialization command via @devops agent:
 ```
 
 This will:
+
 1. Detect your git repository
 2. Enable `projectStatus` in `core-config.yaml`
 3. Create `.aiox/project-status.yaml` cache file
@@ -70,6 +71,7 @@ This will:
 If you prefer manual configuration:
 
 1. Edit `.aiox-core/core-config.yaml`:
+
    ```yaml
    projectStatus:
      enabled: true
@@ -79,6 +81,7 @@ If you prefer manual configuration:
    ```
 
 2. Create `.aiox/` directory:
+
    ```bash
    mkdir .aiox
    ```
@@ -98,42 +101,45 @@ Location: `.aiox-core/core-config.yaml`
 
 ```yaml
 projectStatus:
-  enabled: true                      # Enable/disable feature
-  autoLoadOnAgentActivation: true    # Load on agent activation
-  showInGreeting: true               # Display in greeting
-  cacheTimeSeconds: 60               # Cache TTL (seconds)
-  components:                        # Toggle individual components
-    gitBranch: true                  # Show branch name
-    gitStatus: true                  # Show modified files
-    recentWork: true                 # Show recent commits
-    currentEpic: true                # Show current epic
-    currentStory: true               # Show current story
-  statusFile: .aiox/project-status.yaml  # Cache file location
-  maxModifiedFiles: 5                # Limit modified files shown
-  maxRecentCommits: 2                # Limit commits shown
+  enabled: true # Enable/disable feature
+  autoLoadOnAgentActivation: true # Load on agent activation
+  showInGreeting: true # Display in greeting
+  cacheTimeSeconds: 60 # Cache TTL (seconds)
+  components: # Toggle individual components
+    gitBranch: true # Show branch name
+    gitStatus: true # Show modified files
+    recentWork: true # Show recent commits
+    currentEpic: true # Show current epic
+    currentStory: true # Show current story
+  statusFile: .aiox/project-status.yaml # Cache file location
+  maxModifiedFiles: 5 # Limit modified files shown
+  maxRecentCommits: 2 # Limit commits shown
 ```
 
 ### Customization Examples
 
 **Show only branch and story:**
+
 ```yaml
 projectStatus:
   enabled: true
   components:
     gitBranch: true
-    gitStatus: false      # Hide modified files
-    recentWork: false     # Hide commits
+    gitStatus: false # Hide modified files
+    recentWork: false # Hide commits
     currentEpic: false
     currentStory: true
 ```
 
 **Increase cache TTL to 5 minutes:**
+
 ```yaml
 projectStatus:
   cacheTimeSeconds: 300
 ```
 
 **Show more commits and files:**
+
 ```yaml
 projectStatus:
   maxModifiedFiles: 10
@@ -176,6 +182,7 @@ git log -2 --oneline --no-decorate
 ### Story Detection
 
 Scans `docs/stories/` for files containing:
+
 ```markdown
 **Status:** InProgress
 **Story ID:** STORY-X.Y.Z
@@ -190,12 +197,12 @@ Only shows stories with status: `InProgress` or `In Progress`.
 
 ### Benchmarks
 
-| Operation | Time | Notes |
-|-----------|------|-------|
-| **First Load** | 80-100ms | Runs git commands + file scan |
-| **Cached Load** | 5-10ms | Read YAML from cache |
-| **Cache Miss** | 80-100ms | TTL expired, regenerate |
-| **Agent Overhead** | <100ms | Added to activation time |
+| Operation          | Time     | Notes                         |
+| ------------------ | -------- | ----------------------------- |
+| **First Load**     | 80-100ms | Runs git commands + file scan |
+| **Cached Load**    | 5-10ms   | Read YAML from cache          |
+| **Cache Miss**     | 80-100ms | TTL expired, regenerate       |
+| **Agent Overhead** | <100ms   | Added to activation time      |
 
 ### Cache Strategy
 
@@ -205,6 +212,7 @@ Only shows stories with status: `InProgress` or `In Progress`.
 - **Invalidation:** Automatic after TTL expires
 
 **Why 60 seconds?**
+
 - Long enough to avoid repeated git calls during agent switching
 - Short enough to reflect recent changes
 - Optimal balance between performance and freshness
@@ -236,12 +244,14 @@ All 11 AIOX agents display project status:
 **Symptom:** Agent activates without status display
 
 **Check:**
+
 1. Is `projectStatus.enabled: true` in core-config.yaml?
 2. Is this a git repository? (`git rev-parse --is-inside-work-tree`)
 3. Does `.aiox-core/infrastructure/scripts/project-status-loader.js` exist?
 4. Any errors in agent activation output?
 
 **Solution:**
+
 ```bash
 # Re-run initialization
 /devops
@@ -255,6 +265,7 @@ All 11 AIOX agents display project status:
 **Cause:** Cache not invalidating properly
 
 **Solution:**
+
 ```bash
 # Manually clear cache
 rm .aiox/project-status.yaml
@@ -267,6 +278,7 @@ rm .aiox/project-status.yaml
 **Symptom:** Branch shows "unknown", files missing
 
 **Check:**
+
 1. Is git in PATH? (`git --version`)
 2. Is git version >= 2.0? (2.22+ recommended)
 3. Repository corrupted? (`git fsck`)
@@ -280,18 +292,20 @@ rm .aiox/project-status.yaml
 **Cause:** Large repository or slow disk I/O
 
 **Solution:**
+
 ```yaml
 # Reduce data collected
 projectStatus:
-  maxModifiedFiles: 3    # Default: 5
-  maxRecentCommits: 1     # Default: 2
+  maxModifiedFiles: 3 # Default: 5
+  maxRecentCommits: 1 # Default: 2
   components:
-    recentWork: false     # Disable commits
+    recentWork: false # Disable commits
 ```
 
 ### Non-Git Projects
 
 **Expected Behavior:**
+
 ```
 Current Project Status:
   (Not a git repository)
@@ -312,7 +326,7 @@ projectStatus:
   enabled: false
 ```
 
-*Note: Per-agent disable not yet implemented (see Future Enhancements).*
+_Note: Per-agent disable not yet implemented (see Future Enhancements)._
 
 ### Custom Status File Location
 
@@ -326,7 +340,10 @@ Don't forget to update `.gitignore`.
 ### Programmatic Access
 
 ```javascript
-const { loadProjectStatus, formatStatusDisplay } = require('./.aiox-core/infrastructure/scripts/project-status-loader.js');
+const {
+  loadProjectStatus,
+  formatStatusDisplay,
+} = require('./.aiox-core/infrastructure/scripts/project-status-loader.js');
 
 // Get raw status object
 const status = await loadProjectStatus();
@@ -348,12 +365,14 @@ await clearCache();
 ### Disable Feature
 
 1. **Edit config:**
+
    ```yaml
    projectStatus:
      enabled: false
    ```
 
 2. **Clear cache:**
+
    ```bash
    rm .aiox/project-status.yaml
    ```
@@ -391,6 +410,7 @@ git revert <commit-hash>
 ### Recommended: git >= 2.22
 
 Uses modern command:
+
 ```bash
 git branch --show-current
 ```
@@ -398,6 +418,7 @@ git branch --show-current
 ### Supported: git >= 2.0
 
 Falls back to:
+
 ```bash
 git rev-parse --abbrev-ref HEAD
 ```
@@ -407,6 +428,7 @@ git rev-parse --abbrev-ref HEAD
 Older versions may work but are untested.
 
 **Check your version:**
+
 ```bash
 git --version
 ```

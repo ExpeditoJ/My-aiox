@@ -15,13 +15,13 @@
 
 ## 项目结构
 
-| 方面         | 值                             |
-| ------------ | ------------------------------ |
-| 框架         | AIOX-FullStack                 |
-| 主要语言     | TypeScript/JavaScript          |
-| Squad 系统   | v4.2 (Task-First 架构)         |
-| 现有任务     | 8 个 squad-creator 任务        |
-| 测试框架     | Jest                           |
+| 方面       | 值                      |
+| ---------- | ----------------------- |
+| 框架       | AIOX-FullStack          |
+| 主要语言   | TypeScript/JavaScript   |
+| Squad 系统 | v4.2 (Task-First 架构)  |
+| 现有任务   | 8 个 squad-creator 任务 |
+| 测试框架   | Jest                    |
 
 ---
 
@@ -29,38 +29,38 @@
 
 ### 代理定义
 
-| 属性           | 值                                         |
-| -------------- | ------------------------------------------ |
-| **代理 ID**    | squad-creator                              |
-| **名称**       | Craft                                      |
-| **职位**       | Squad Creator                              |
-| **图标**       | 🏗️                                         |
-| **文件**       | `.aiox-core/development/agents/squad-creator.md` |
+| 属性        | 值                                               |
+| ----------- | ------------------------------------------------ |
+| **代理 ID** | squad-creator                                    |
+| **名称**    | Craft                                            |
+| **职位**    | Squad Creator                                    |
+| **图标**    | 🏗️                                               |
+| **文件**    | `.aiox-core/development/agents/squad-creator.md` |
 
 ### 现有任务
 
-| 任务               | 文件                         | 状态        | 用途             |
-| ------------------ | ---------------------------- | ----------- | ---------------- |
-| `*design-squad`    | squad-creator-design.md      | ✅ 就绪     | 从文档设计       |
-| `*create-squad`    | squad-creator-create.md      | ✅ 就绪     | 创建新 squad     |
-| `*validate-squad`  | squad-creator-validate.md    | ✅ 就绪     | 验证结构         |
-| `*list-squads`     | squad-creator-list.md        | ✅ 就绪     | 列出本地 squads  |
-| `*migrate-squad`   | squad-creator-migrate.md     | ✅ 就绪     | 迁移旧格式       |
-| `*download-squad`  | squad-creator-download.md    | ⏳ 占位符   | 从注册表下载     |
-| `*publish-squad`   | squad-creator-publish.md     | ⏳ 占位符   | 发布到 aiox-squads |
-| `*sync-squad-synkra` | squad-creator-sync-synkra.md | ⏳ 占位符  | 同步到市场       |
+| 任务                 | 文件                         | 状态      | 用途               |
+| -------------------- | ---------------------------- | --------- | ------------------ |
+| `*design-squad`      | squad-creator-design.md      | ✅ 就绪   | 从文档设计         |
+| `*create-squad`      | squad-creator-create.md      | ✅ 就绪   | 创建新 squad       |
+| `*validate-squad`    | squad-creator-validate.md    | ✅ 就绪   | 验证结构           |
+| `*list-squads`       | squad-creator-list.md        | ✅ 就绪   | 列出本地 squads    |
+| `*migrate-squad`     | squad-creator-migrate.md     | ✅ 就绪   | 迁移旧格式         |
+| `*download-squad`    | squad-creator-download.md    | ⏳ 占位符 | 从注册表下载       |
+| `*publish-squad`     | squad-creator-publish.md     | ⏳ 占位符 | 发布到 aiox-squads |
+| `*sync-squad-synkra` | squad-creator-sync-synkra.md | ⏳ 占位符 | 同步到市场         |
 
 ### 现有脚本
 
-| 脚本            | 文件                 | 用途             |
-| --------------- | -------------------- | ---------------- |
-| SquadLoader     | squad-loader.js      | 解析和加载清单   |
-| SquadValidator  | squad-validator.js   | 根据 schema 验证 |
-| SquadGenerator  | squad-generator.js   | 生成 squad 结构  |
-| SquadDesigner   | squad-designer.js    | 从文档设计       |
-| SquadMigrator   | squad-migrator.js    | 迁移旧格式       |
-| SquadDownloader | squad-downloader.js  | 从注册表下载     |
-| SquadPublisher  | squad-publisher.js   | 发布到 aiox-squads |
+| 脚本            | 文件                | 用途               |
+| --------------- | ------------------- | ------------------ |
+| SquadLoader     | squad-loader.js     | 解析和加载清单     |
+| SquadValidator  | squad-validator.js  | 根据 schema 验证   |
+| SquadGenerator  | squad-generator.js  | 生成 squad 结构    |
+| SquadDesigner   | squad-designer.js   | 从文档设计         |
+| SquadMigrator   | squad-migrator.js   | 迁移旧格式         |
+| SquadDownloader | squad-downloader.js | 从注册表下载       |
+| SquadPublisher  | squad-publisher.js  | 发布到 aiox-squads |
 
 ---
 
@@ -88,26 +88,26 @@
 
 ### 缺失的能力
 
-| 能力             | 描述                                     | 影响                         |
-| ---------------- | ---------------------------------------- | ---------------------------- |
-| **分析 Squad**   | 扫描现有 squad，列出组件，识别机会       | 无法了解 squad 包含什么      |
-| **添加组件**     | 增量添加新 agents/tasks/templates/tools  | 必须重新创建 squad 来添加组件 |
-| **修改组件**     | 编辑现有组件                             | 无指导式工作流               |
-| **移除组件**     | 移除未使用的组件                         | 需要手动清理                 |
-| **Story 集成**   | 将改进链接到官方 stories                 | 无可追溯性                   |
+| 能力           | 描述                                    | 影响                          |
+| -------------- | --------------------------------------- | ----------------------------- |
+| **分析 Squad** | 扫描现有 squad，列出组件，识别机会      | 无法了解 squad 包含什么       |
+| **添加组件**   | 增量添加新 agents/tasks/templates/tools | 必须重新创建 squad 来添加组件 |
+| **修改组件**   | 编辑现有组件                            | 无指导式工作流                |
+| **移除组件**   | 移除未使用的组件                        | 需要手动清理                  |
+| **Story 集成** | 将改进链接到官方 stories                | 无可追溯性                    |
 
 ### Squad 组件 (来自 schema)
 
-| 组件       | 目录       | 用途             | 可添加? |
-| ---------- | ---------- | ---------------- | ------- |
-| tasks      | tasks/     | 任务定义 (task-first!) | ❌ 无任务 |
-| agents     | agents/    | 代理角色         | ❌ 无任务 |
-| workflows  | workflows/ | 多步骤工作流     | ❌ 无任务 |
-| checklists | checklists/| 验证检查清单     | ❌ 无任务 |
-| templates  | templates/ | 文档模板         | ❌ 无任务 |
-| tools      | tools/     | 自定义工具 (.js) | ❌ 无任务 |
-| scripts    | scripts/   | 自动化脚本       | ❌ 无任务 |
-| data       | data/      | 静态数据文件     | ❌ 无任务 |
+| 组件       | 目录        | 用途                   | 可添加?   |
+| ---------- | ----------- | ---------------------- | --------- |
+| tasks      | tasks/      | 任务定义 (task-first!) | ❌ 无任务 |
+| agents     | agents/     | 代理角色               | ❌ 无任务 |
+| workflows  | workflows/  | 多步骤工作流           | ❌ 无任务 |
+| checklists | checklists/ | 验证检查清单           | ❌ 无任务 |
+| templates  | templates/  | 文档模板               | ❌ 无任务 |
+| tools      | tools/      | 自定义工具 (.js)       | ❌ 无任务 |
+| scripts    | scripts/    | 自动化脚本             | ❌ 无任务 |
+| data       | data/       | 静态数据文件           | ❌ 无任务 |
 
 ---
 
@@ -148,12 +148,12 @@
 
 ## 相关 Stories
 
-| Story  | 状态     | 相关性                      |
-| ------ | -------- | --------------------------- |
-| SQS-4  | ✅ 就绪  | Squad Creator Agent (基础)  |
-| SQS-9  | ✅ 就绪  | Squad Designer (design-squad) |
-| SQS-10 | ✅ 就绪  | 项目配置参考                |
-| **SQS-11** | 📋 提案 | Squad 分析和扩展任务        |
+| Story      | 状态    | 相关性                        |
+| ---------- | ------- | ----------------------------- |
+| SQS-4      | ✅ 就绪 | Squad Creator Agent (基础)    |
+| SQS-9      | ✅ 就绪 | Squad Designer (design-squad) |
+| SQS-10     | ✅ 就绪 | 项目配置参考                  |
+| **SQS-11** | 📋 提案 | Squad 分析和扩展任务          |
 
 ---
 
@@ -174,16 +174,19 @@
 ## 检测到的技术模式
 
 ### 语言分布
+
 - **TypeScript:** 主要用于脚本
 - **JavaScript:** 工具和 squad 脚本
 - **Markdown:** 代理/任务定义
 
 ### 测试
+
 - **框架:** Jest
 - **覆盖率:** 核心脚本 >80%
 - **位置:** `tests/unit/squad/`
 
 ### 配置
+
 - **Schema:** JSON Schema 验证
 - **清单:** squad.yaml (YAML)
 - **继承:** extend/override/none

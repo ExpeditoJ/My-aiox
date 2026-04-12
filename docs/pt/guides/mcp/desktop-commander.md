@@ -17,16 +17,16 @@ Desktop Commander é um servidor MCP que estende o Claude Code com capacidades a
 
 ### Quando Usar Desktop Commander
 
-| Caso de Uso                         | Claude Code Nativo | Desktop Commander |
-| ----------------------------------- | ------------------ | ----------------- |
-| Sessões persistentes (SSH, REPL)    | Não suportado      | **Recomendado**   |
-| Processos interativos               | Limitado           | **Recomendado**   |
-| Edição difusa de arquivos           | Não suportado      | **Recomendado**   |
-| Leitura de final de arquivo (offset negativo) | Não suportado | **Recomendado** |
-| Execução de código em memória       | Não suportado      | **Recomendado**   |
-| Operações simples de arquivo        | **Preferível**     | Mais lento        |
-| Operações Git                       | **Preferível**     | Desnecessário     |
-| Busca de arquivos (Glob, Grep)      | **Preferível**     | Desnecessário     |
+| Caso de Uso                                   | Claude Code Nativo | Desktop Commander |
+| --------------------------------------------- | ------------------ | ----------------- |
+| Sessões persistentes (SSH, REPL)              | Não suportado      | **Recomendado**   |
+| Processos interativos                         | Limitado           | **Recomendado**   |
+| Edição difusa de arquivos                     | Não suportado      | **Recomendado**   |
+| Leitura de final de arquivo (offset negativo) | Não suportado      | **Recomendado**   |
+| Execução de código em memória                 | Não suportado      | **Recomendado**   |
+| Operações simples de arquivo                  | **Preferível**     | Mais lento        |
+| Operações Git                                 | **Preferível**     | Desnecessário     |
+| Busca de arquivos (Glob, Grep)                | **Preferível**     | Desnecessário     |
 
 ---
 
@@ -34,23 +34,23 @@ Desktop Commander é um servidor MCP que estende o Claude Code com capacidades a
 
 ### O Que Desktop Commander Faz Que Claude Code Não Pode
 
-| Capacidade                   | Claude Code Nativo                                           | Desktop Commander                                      |
-| ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| **Sessões Persistentes**     | Estado do shell não persiste entre chamadas (apenas diretório de trabalho) | Mantém sessões ativas (SSH, databases, REPL)          |
-| **Execução de Código em Memória** | Requer Write → Bash                                    | Execução direta em REPL (Python, Node.js, R)           |
-| **Edição Difusa**            | Edit requer correspondência EXATA de old_string              | Fallback inteligente com busca difusa                  |
-| **Offset Negativo (tail)**   | Read tem apenas offset positivo                              | Leitura do final do arquivo (como Unix tail)           |
-| **Processos Interativos**    | Limitado (background sem stdin)                              | stdin/stdout bidirecional                              |
-| **Configuração Dinâmica**    | Requer reinicialização                                       | Muda shell, diretórios, comandos bloqueados dinamicamente |
-| **Trilha de Auditoria**      | Básica em .claude.json                                       | Histórico completo de ferramentas e estatísticas de uso |
+| Capacidade                        | Claude Code Nativo                                                         | Desktop Commander                                         |
+| --------------------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------- |
+| **Sessões Persistentes**          | Estado do shell não persiste entre chamadas (apenas diretório de trabalho) | Mantém sessões ativas (SSH, databases, REPL)              |
+| **Execução de Código em Memória** | Requer Write → Bash                                                        | Execução direta em REPL (Python, Node.js, R)              |
+| **Edição Difusa**                 | Edit requer correspondência EXATA de old_string                            | Fallback inteligente com busca difusa                     |
+| **Offset Negativo (tail)**        | Read tem apenas offset positivo                                            | Leitura do final do arquivo (como Unix tail)              |
+| **Processos Interativos**         | Limitado (background sem stdin)                                            | stdin/stdout bidirecional                                 |
+| **Configuração Dinâmica**         | Requer reinicialização                                                     | Muda shell, diretórios, comandos bloqueados dinamicamente |
+| **Trilha de Auditoria**           | Básica em .claude.json                                                     | Histórico completo de ferramentas e estatísticas de uso   |
 
 ### Onde Claude Code Nativo é Suficiente
 
-| Capacidade                   | Claude Code Nativo                 | Notas                             |
-| ---------------------------- | ---------------------------------- | --------------------------------- |
-| **Busca Paginada**           | Grep tem `head_limit` e `offset`   | Já possui capacidade de streaming |
-| **Gerenciamento Multi-Sessão** | Task tool + TaskOutput + /tasks | Abordagem diferente mas funcional |
-| **Análise CSV/JSON**         | Read + Bash com jq/python          | Funciona bem para a maioria dos casos |
+| Capacidade                     | Claude Code Nativo               | Notas                                 |
+| ------------------------------ | -------------------------------- | ------------------------------------- |
+| **Busca Paginada**             | Grep tem `head_limit` e `offset` | Já possui capacidade de streaming     |
+| **Gerenciamento Multi-Sessão** | Task tool + TaskOutput + /tasks  | Abordagem diferente mas funcional     |
+| **Análise CSV/JSON**           | Read + Bash com jq/python        | Funciona bem para a maioria dos casos |
 
 ---
 
@@ -104,14 +104,14 @@ Adicionar a `~/.claude.json`:
 
 ### Operações de Arquivo
 
-| Ferramenta       | Descrição                                              |
-| ---------------- | ------------------------------------------------------ |
-| `read_file`      | Ler arquivo com suporte a offset negativo (tail)       |
-| `write_file`     | Escrever conteúdo de arquivo                           |
-| `edit_block`     | Editar com fallback de correspondência difusa          |
-| `search_files`   | Buscar com streaming/paginação                         |
-| `get_file_info`  | Obter metadados de arquivo                             |
-| `list_directory` | Listar conteúdo de diretório                           |
+| Ferramenta       | Descrição                                        |
+| ---------------- | ------------------------------------------------ |
+| `read_file`      | Ler arquivo com suporte a offset negativo (tail) |
+| `write_file`     | Escrever conteúdo de arquivo                     |
+| `edit_block`     | Editar com fallback de correspondência difusa    |
+| `search_files`   | Buscar com streaming/paginação                   |
+| `get_file_info`  | Obter metadados de arquivo                       |
+| `list_directory` | Listar conteúdo de diretório                     |
 
 ### Execução de Código
 
@@ -265,13 +265,13 @@ execute_command:
 
 Conforme `.claude/rules/mcp-usage.md`:
 
-| Tarefa             | USE ISTO               | NÃO desktop-commander            |
-| ------------------ | ---------------------- | -------------------------------- |
-| Ler arquivos locais | `Read` tool           | Mais lento                       |
-| Escrever arquivos locais | `Write` / `Edit` tools | Mais lento                 |
-| Executar comandos shell | `Bash` tool        | A menos que sessão persistente seja necessária |
-| Buscar arquivos    | `Glob` tool            | Mais lento                       |
-| Buscar conteúdo    | `Grep` tool            | Mais lento                       |
+| Tarefa                   | USE ISTO               | NÃO desktop-commander                          |
+| ------------------------ | ---------------------- | ---------------------------------------------- |
+| Ler arquivos locais      | `Read` tool            | Mais lento                                     |
+| Escrever arquivos locais | `Write` / `Edit` tools | Mais lento                                     |
+| Executar comandos shell  | `Bash` tool            | A menos que sessão persistente seja necessária |
+| Buscar arquivos          | `Glob` tool            | Mais lento                                     |
+| Buscar conteúdo          | `Grep` tool            | Mais lento                                     |
 
 ### Quando Desktop Commander é Necessário
 
@@ -283,12 +283,12 @@ Conforme `.claude/rules/mcp-usage.md`:
 
 ### Responsabilidades dos Agentes
 
-| Agente             | Caso de Uso Desktop Commander                 |
-| ------------------ | --------------------------------------------- |
-| **@dev**           | Sessões REPL, debugging, codificação ao vivo  |
+| Agente             | Caso de Uso Desktop Commander                           |
+| ------------------ | ------------------------------------------------------- |
+| **@dev**           | Sessões REPL, debugging, codificação ao vivo            |
 | **@devops**        | Sessões SSH, gerenciamento de servidor, análise de logs |
-| **@data-engineer** | REPL de análise de dados, conexões de banco de dados |
-| **@qa**            | Testes interativos, monitoramento de processos |
+| **@data-engineer** | REPL de análise de dados, conexões de banco de dados    |
+| **@qa**            | Testes interativos, monitoramento de processos          |
 
 ---
 
@@ -352,14 +352,14 @@ npm install -g @anthropic/desktop-commander@latest
 
 ## Resumo
 
-| Recurso               | Claude Code Nativo | Desktop Commander     |
-| --------------------- | ------------------ | --------------------- |
+| Recurso               | Claude Code Nativo | Desktop Commander         |
+| --------------------- | ------------------ | ------------------------- |
 | Velocidade            | Rápido             | Mais lento (overhead MCP) |
-| Sessões Persistentes  | Não                | Sim                   |
-| Execução em Memória   | Não                | Sim                   |
-| Edição Difusa         | Não                | Sim                   |
-| Offset Negativo       | Não                | Sim                   |
-| Processos Interativos | Limitado           | Completo              |
+| Sessões Persistentes  | Não                | Sim                       |
+| Execução em Memória   | Não                | Sim                       |
+| Edição Difusa         | Não                | Sim                       |
+| Offset Negativo       | Não                | Sim                       |
+| Processos Interativos | Limitado           | Completo                  |
 
 **Regra Geral:** Use ferramentas nativas por padrão. Mude para Desktop Commander apenas quando você precisar de suas capacidades únicas.
 

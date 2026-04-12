@@ -32,67 +32,67 @@ O agente **@qa (Quinn)** e o Test Architect & Quality Advisor do AIOX. Seu papel
 
 ### Arquivos Core de Tasks do @qa
 
-| Arquivo | Comando | Propósito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/qa-gate.md` | `*gate {story}` | Criar arquivo de decisao de quality gate |
-| `.aiox-core/development/tasks/qa-review-story.md` | `*review {story}` | Revisao completa de story com decisao de gate |
-| `.aiox-core/development/tasks/qa-test-design.md` | `*test-design {story}` | Criar cenarios de teste abrangentes |
-| `.aiox-core/development/tasks/qa-risk-profile.md` | `*risk-profile {story}` | Gerar matriz de avaliacao de risco |
-| `.aiox-core/development/tasks/qa-nfr-assess.md` | `*nfr-assess {story}` | Validar requisitos não-funcionais |
-| `.aiox-core/development/tasks/qa-trace-requirements.md` | `*trace {story}` | Mapear requisitos para testes (Given-When-Then) |
-| `.aiox-core/development/tasks/qa-generate-tests.md` | `*generate-tests` | Gerar suites de teste automaticamente |
-| `.aiox-core/development/tasks/qa-run-tests.md` | `*run-tests` | Executar suite de testes com gate de qualidade |
-| `.aiox-core/development/tasks/qa-backlog-add-followup.md` | `*backlog-add` | Adicionar follow-ups ao backlog |
-| `.aiox-core/development/tasks/qa-create-fix-request.md` | `*create-fix-request {story}` | Gerar documento de fix request para @dev |
+| Arquivo                                                   | Comando                       | Propósito                                       |
+| --------------------------------------------------------- | ----------------------------- | ----------------------------------------------- |
+| `.aiox-core/development/tasks/qa-gate.md`                 | `*gate {story}`               | Criar arquivo de decisao de quality gate        |
+| `.aiox-core/development/tasks/qa-review-story.md`         | `*review {story}`             | Revisao completa de story com decisao de gate   |
+| `.aiox-core/development/tasks/qa-test-design.md`          | `*test-design {story}`        | Criar cenarios de teste abrangentes             |
+| `.aiox-core/development/tasks/qa-risk-profile.md`         | `*risk-profile {story}`       | Gerar matriz de avaliacao de risco              |
+| `.aiox-core/development/tasks/qa-nfr-assess.md`           | `*nfr-assess {story}`         | Validar requisitos não-funcionais               |
+| `.aiox-core/development/tasks/qa-trace-requirements.md`   | `*trace {story}`              | Mapear requisitos para testes (Given-When-Then) |
+| `.aiox-core/development/tasks/qa-generate-tests.md`       | `*generate-tests`             | Gerar suites de teste automaticamente           |
+| `.aiox-core/development/tasks/qa-run-tests.md`            | `*run-tests`                  | Executar suite de testes com gate de qualidade  |
+| `.aiox-core/development/tasks/qa-backlog-add-followup.md` | `*backlog-add`                | Adicionar follow-ups ao backlog                 |
+| `.aiox-core/development/tasks/qa-create-fix-request.md`   | `*create-fix-request {story}` | Gerar documento de fix request para @dev        |
 
 ### Arquivos de Tasks Secundarias do @qa
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/tasks/qa-browser-console-check.md` | Verificar erros no console do browser |
-| `.aiox-core/development/tasks/qa-evidence-requirements.md` | Requisitos de evidencia para QA |
-| `.aiox-core/development/tasks/qa-false-positive-detection.md` | Deteccao de falsos positivos |
-| `.aiox-core/development/tasks/qa-fix-issues.md` | Task para @dev aplicar fixes de QA |
-| `.aiox-core/development/tasks/qa-library-validation.md` | Validacao de bibliotecas |
-| `.aiox-core/development/tasks/qa-migration-validation.md` | Validacao de migracoes |
-| `.aiox-core/development/tasks/qa-review-build.md` | Revisao de builds |
-| `.aiox-core/development/tasks/qa-security-checklist.md` | Checklist de seguranca |
-| `.aiox-core/development/tasks/qa-review-proposal.md` | Revisao de propostas |
+| Arquivo                                                       | Propósito                             |
+| ------------------------------------------------------------- | ------------------------------------- |
+| `.aiox-core/development/tasks/qa-browser-console-check.md`    | Verificar erros no console do browser |
+| `.aiox-core/development/tasks/qa-evidence-requirements.md`    | Requisitos de evidencia para QA       |
+| `.aiox-core/development/tasks/qa-false-positive-detection.md` | Deteccao de falsos positivos          |
+| `.aiox-core/development/tasks/qa-fix-issues.md`               | Task para @dev aplicar fixes de QA    |
+| `.aiox-core/development/tasks/qa-library-validation.md`       | Validacao de bibliotecas              |
+| `.aiox-core/development/tasks/qa-migration-validation.md`     | Validacao de migracoes                |
+| `.aiox-core/development/tasks/qa-review-build.md`             | Revisao de builds                     |
+| `.aiox-core/development/tasks/qa-security-checklist.md`       | Checklist de seguranca                |
+| `.aiox-core/development/tasks/qa-review-proposal.md`          | Revisao de propostas                  |
 
 ### Arquivos de Definição do Agente
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/agents/qa.md` | Definição completa do agente QA |
-| `.claude/commands/AIOX/agents/qa.md` | Comando Claude Code para ativar @qa |
+| Arquivo                               | Propósito                           |
+| ------------------------------------- | ----------------------------------- |
+| `.aiox-core/development/agents/qa.md` | Definição completa do agente QA     |
+| `.claude/commands/AIOX/agents/qa.md`  | Comando Claude Code para ativar @qa |
 
 ### Arquivos de Workflow
 
-| Arquivo | Propósito |
-|---------|-----------|
+| Arquivo                                         | Propósito                                            |
+| ----------------------------------------------- | ---------------------------------------------------- |
 | `.aiox-core/development/workflows/qa-loop.yaml` | Orquestrador do loop QA (Review -> Fix -> Re-review) |
 
 ### Arquivos de Time
 
-| Arquivo | Propósito |
-|---------|-----------|
+| Arquivo                                                   | Propósito                                                     |
+| --------------------------------------------------------- | ------------------------------------------------------------- |
 | `.aiox-core/development/agent-teams/team-qa-focused.yaml` | Configuracao do time focado em QA (@dev, @qa, @github-devops) |
 
 ### Arquivos de Dados (Outputs)
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `docs/qa/gates/` | Arquivos de decisao de quality gate |
-| `docs/qa/assessments/` | Avaliacoes de risco, NFR e trace |
-| `docs/qa/coderabbit-reports/` | Relatorios de revisao do CodeRabbit |
-| `docs/qa/backlog-archive-{YYYY-MM}.md` | Arquivo de itens completados |
+| Arquivo                                | Propósito                           |
+| -------------------------------------- | ----------------------------------- |
+| `docs/qa/gates/`                       | Arquivos de decisao de quality gate |
+| `docs/qa/assessments/`                 | Avaliacoes de risco, NFR e trace    |
+| `docs/qa/coderabbit-reports/`          | Relatorios de revisao do CodeRabbit |
+| `docs/qa/backlog-archive-{YYYY-MM}.md` | Arquivo de itens completados        |
 
 ### Arquivos de Configuracao
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/core-config.yaml` | Configuracao central (qa.qaLocation, etc.) |
-| `.aiox-core/development/data/technical-preferences.md` | Preferencias tecnicas para QA |
+| Arquivo                                                | Propósito                                  |
+| ------------------------------------------------------ | ------------------------------------------ |
+| `.aiox-core/core-config.yaml`                          | Configuracao central (qa.qaLocation, etc.) |
+| `.aiox-core/development/data/technical-preferences.md` | Preferencias tecnicas para QA              |
 
 ---
 
@@ -221,44 +221,44 @@ flowchart LR
 
 ### Comandos de Analise e Review
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*code-review {scope}` | (interno) | Executar revisao automatizada |
-| `*review {story}` | `qa-review-story.md` | Revisao completa de story |
+| Comando                | Task File            | Operacao                      |
+| ---------------------- | -------------------- | ----------------------------- |
+| `*code-review {scope}` | (interno)            | Executar revisao automatizada |
+| `*review {story}`      | `qa-review-story.md` | Revisao completa de story     |
 
 ### Comandos de Quality Gates
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*gate {story}` | `qa-gate.md` | Criar decisao de quality gate |
-| `*nfr-assess {story}` | `qa-nfr-assess.md` | Validar requisitos não-funcionais |
-| `*risk-profile {story}` | `qa-risk-profile.md` | Gerar matriz de risco |
+| Comando                 | Task File            | Operacao                          |
+| ----------------------- | -------------------- | --------------------------------- |
+| `*gate {story}`         | `qa-gate.md`         | Criar decisao de quality gate     |
+| `*nfr-assess {story}`   | `qa-nfr-assess.md`   | Validar requisitos não-funcionais |
+| `*risk-profile {story}` | `qa-risk-profile.md` | Gerar matriz de risco             |
 
 ### Comandos de Estrategia de Testes
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*test-design {story}` | `qa-test-design.md` | Criar cenarios de teste |
-| `*trace {story}` | `qa-trace-requirements.md` | Mapear requisitos para testes |
-| `*generate-tests` | `qa-generate-tests.md` | Gerar testes automaticamente |
-| `*run-tests` | `qa-run-tests.md` | Executar suite de testes |
+| Comando                | Task File                  | Operacao                      |
+| ---------------------- | -------------------------- | ----------------------------- |
+| `*test-design {story}` | `qa-test-design.md`        | Criar cenarios de teste       |
+| `*trace {story}`       | `qa-trace-requirements.md` | Mapear requisitos para testes |
+| `*generate-tests`      | `qa-generate-tests.md`     | Gerar testes automaticamente  |
+| `*run-tests`           | `qa-run-tests.md`          | Executar suite de testes      |
 
 ### Comandos de Backlog
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*backlog-add` | `qa-backlog-add-followup.md` | Adicionar follow-up ao backlog |
-| `*backlog-update {id} {status}` | (via po-manage-story-backlog) | Atualizar status de item |
-| `*backlog-review` | (via po-manage-story-backlog) | Gerar revisao de backlog |
+| Comando                         | Task File                     | Operacao                       |
+| ------------------------------- | ----------------------------- | ------------------------------ |
+| `*backlog-add`                  | `qa-backlog-add-followup.md`  | Adicionar follow-up ao backlog |
+| `*backlog-update {id} {status}` | (via po-manage-story-backlog) | Atualizar status de item       |
+| `*backlog-review`               | (via po-manage-story-backlog) | Gerar revisao de backlog       |
 
 ### Comandos de Utilitarios
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*help` | (interno) | Mostrar todos os comandos |
-| `*session-info` | (interno) | Mostrar detalhes da sessao |
-| `*guide` | (interno) | Mostrar guia de uso completo |
-| `*exit` | (interno) | Sair do modo QA |
+| Comando         | Task File | Operacao                     |
+| --------------- | --------- | ---------------------------- |
+| `*help`         | (interno) | Mostrar todos os comandos    |
+| `*session-info` | (interno) | Mostrar detalhes da sessao   |
+| `*guide`        | (interno) | Mostrar guia de uso completo |
+| `*exit`         | (interno) | Sair do modo QA              |
 
 ---
 
@@ -268,7 +268,7 @@ flowchart LR
 
 ```yaml
 Pre-conditions:
-  - Story status: "Review"
+  - Story status: 'Review'
   - Developer completou todas as tasks
   - File List atualizada no story
   - Todos os testes automatizados passando
@@ -310,12 +310,12 @@ stateDiagram-v2
 
 ### 3. Severidades de Issues
 
-| Severidade | Prefixo | Acao | Impacto no Gate |
-|------------|---------|------|-----------------|
-| CRITICAL | `SEC-`, `DATA-` | Auto-fix ou bloquear | Gate = FAIL |
-| HIGH | `PERF-`, `REL-` | Auto-fix ou documentar | Gate = FAIL |
-| MEDIUM | `MNT-`, `TEST-` | Tech debt issue | Gate = CONCERNS |
-| LOW | `DOC-`, `ARCH-` | Nota no review | Gate = PASS |
+| Severidade | Prefixo         | Acao                   | Impacto no Gate |
+| ---------- | --------------- | ---------------------- | --------------- |
+| CRITICAL   | `SEC-`, `DATA-` | Auto-fix ou bloquear   | Gate = FAIL     |
+| HIGH       | `PERF-`, `REL-` | Auto-fix ou documentar | Gate = FAIL     |
+| MEDIUM     | `MNT-`, `TEST-` | Tech debt issue        | Gate = CONCERNS |
+| LOW        | `DOC-`, `ARCH-` | Nota no review         | Gate = PASS     |
 
 ### 4. Decisoes de Gate
 
@@ -365,10 +365,10 @@ coderabbit_integration:
       - HIGH
 
     behavior:
-      CRITICAL: auto_fix       # Auto-fix (3 tentativas max)
-      HIGH: auto_fix           # Auto-fix (3 tentativas max)
+      CRITICAL: auto_fix # Auto-fix (3 tentativas max)
+      HIGH: auto_fix # Auto-fix (3 tentativas max)
       MEDIUM: document_as_debt # Criar issue de tech debt
-      LOW: ignore              # Nota no review, sem acao
+      LOW: ignore # Nota no review, sem acao
 ```
 
 ### Comandos CodeRabbit
@@ -519,15 +519,15 @@ devStoryLocation: docs/stories
 ```yaml
 git_restrictions:
   allowed_operations:
-    - git status      # Verificar estado do repositorio
-    - git log         # Ver historico de commits
-    - git diff        # Revisar mudancas
-    - git branch -a   # Listar branches
+    - git status # Verificar estado do repositorio
+    - git log # Ver historico de commits
+    - git diff # Revisar mudancas
+    - git branch -a # Listar branches
 
   blocked_operations:
-    - git push        # APENAS @github-devops pode push
-    - git commit      # QA revisa, não commita
-    - gh pr create    # APENAS @github-devops cria PRs
+    - git push # APENAS @github-devops pode push
+    - git commit # QA revisa, não commita
+    - gh pr create # APENAS @github-devops cria PRs
 ```
 
 ---
@@ -627,28 +627,28 @@ wsl bash -c '~/.local/bin/coderabbit --version'
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Total de Tasks Core** | 10 task files principais |
-| **Total de Tasks Secundarias** | 9 task files de suporte |
-| **Workflow Principal** | qa-loop.yaml (orquestracao) |
-| **Comandos de Review** | 2 (`*code-review`, `*review`) |
-| **Comandos de Gate** | 3 (`*gate`, `*nfr-assess`, `*risk-profile`) |
-| **Comandos de Teste** | 4 (`*test-design`, `*trace`, `*generate-tests`, `*run-tests`) |
-| **Comandos de Backlog** | 3 (`*backlog-*` family) |
-| **Decisoes de Gate** | 4 (PASS, CONCERNS, FAIL, WAIVED) |
-| **Severidades** | 3 (low, medium, high) |
-| **Self-Healing Max** | 3 iteracoes |
-| **Integracao CodeRabbit** | Sim (WSL mode) |
+| Aspecto                        | Detalhes                                                      |
+| ------------------------------ | ------------------------------------------------------------- |
+| **Total de Tasks Core**        | 10 task files principais                                      |
+| **Total de Tasks Secundarias** | 9 task files de suporte                                       |
+| **Workflow Principal**         | qa-loop.yaml (orquestracao)                                   |
+| **Comandos de Review**         | 2 (`*code-review`, `*review`)                                 |
+| **Comandos de Gate**           | 3 (`*gate`, `*nfr-assess`, `*risk-profile`)                   |
+| **Comandos de Teste**          | 4 (`*test-design`, `*trace`, `*generate-tests`, `*run-tests`) |
+| **Comandos de Backlog**        | 3 (`*backlog-*` family)                                       |
+| **Decisoes de Gate**           | 4 (PASS, CONCERNS, FAIL, WAIVED)                              |
+| **Severidades**                | 3 (low, medium, high)                                         |
+| **Self-Healing Max**           | 3 iteracoes                                                   |
+| **Integracao CodeRabbit**      | Sim (WSL mode)                                                |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descrição |
-|------|-------|-----------|
-| 2026-02-04 | @qa | Documento inicial criado com diagramas Mermaid completos |
+| Data       | Autor | Descrição                                                |
+| ---------- | ----- | -------------------------------------------------------- |
+| 2026-02-04 | @qa   | Documento inicial criado com diagramas Mermaid completos |
 
 ---
 
-*-- Quinn, guardiao da qualidade*
+_-- Quinn, guardiao da qualidade_

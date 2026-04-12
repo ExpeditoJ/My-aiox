@@ -19,10 +19,10 @@ Docker Gateway es un servidor MCP que actúa como un **puente** entre Claude Cod
 
 Cuando los MCPs se ejecutan dentro de docker-gateway, sus definiciones de herramientas están **encapsuladas** en el contenedor. Esto significa:
 
-| Configuración            | Costo de Tokens      | Definiciones de Herramientas en Contexto |
-| ------------------------ | -------------------- | ---------------------------------------- |
+| Configuración             | Costo de Tokens      | Definiciones de Herramientas en Contexto        |
+| ------------------------- | -------------------- | ----------------------------------------------- |
 | Directo en ~/.claude.json | Cada MCP suma tokens | Sí, todos los esquemas de herramientas visibles |
-| Dentro de docker-gateway | **Sin costo extra**  | Encapsuladas en el contenedor            |
+| Dentro de docker-gateway  | **Sin costo extra**  | Encapsuladas en el contenedor                   |
 
 **¿Por qué?** Claude Code solo ve las herramientas de docker-gateway (`mcp-add`, `mcp-find`, etc.), no las herramientas individuales de cada MCP interno. Las herramientas reales se invocan a través del gateway.
 
@@ -172,15 +172,15 @@ claude mcp list
 
 ### Herramientas del Gateway Disponibles
 
-| Herramienta          | Descripción                                |
-| -------------------- | ------------------------------------------ |
-| `mcp-add`            | Agregar servidor MCP a la sesión actual    |
-| `mcp-find`           | Buscar servidores en el catálogo           |
-| `mcp-remove`         | Eliminar servidor MCP de la sesión         |
+| Herramienta          | Descripción                                 |
+| -------------------- | ------------------------------------------- |
+| `mcp-add`            | Agregar servidor MCP a la sesión actual     |
+| `mcp-find`           | Buscar servidores en el catálogo            |
+| `mcp-remove`         | Eliminar servidor MCP de la sesión          |
 | `mcp-exec`           | Ejecutar herramienta de servidor habilitado |
-| `mcp-config-set`     | Configurar ajustes del servidor MCP        |
-| `code-mode`          | Crear herramientas JavaScript combinadas   |
-| `mcp-create-profile` | Guardar estado actual del gateway          |
+| `mcp-config-set`     | Configurar ajustes del servidor MCP         |
+| `code-mode`          | Crear herramientas JavaScript combinadas    |
+| `mcp-create-profile` | Guardar estado actual del gateway           |
 
 ### Accediendo a Herramientas de Servidores Habilitados
 

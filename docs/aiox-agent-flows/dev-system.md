@@ -13,13 +13,13 @@ O agente **@dev (Dex)** e o Full Stack Developer do AIOX, responsavel pela imple
 
 ### Caracteristicas Principais
 
-| Caracteristica | Descrição |
-|----------------|-----------|
-| **Persona** | Dex - The Builder |
-| **Arquetipo** | Builder / Aquario |
-| **Tom** | Pragmatico, conciso, orientado a solucoes |
-| **Foco** | Implementacao de stories, testes, qualidade de codigo |
-| **Fechamento** | "-- Dex, sempre construindo" |
+| Caracteristica | Descrição                                             |
+| -------------- | ----------------------------------------------------- |
+| **Persona**    | Dex - The Builder                                     |
+| **Arquetipo**  | Builder / Aquario                                     |
+| **Tom**        | Pragmatico, conciso, orientado a solucoes             |
+| **Foco**       | Implementacao de stories, testes, qualidade de codigo |
+| **Fechamento** | "-- Dex, sempre construindo"                          |
 
 ### Vocabulario Caracteristico
 
@@ -37,53 +37,53 @@ O agente **@dev (Dex)** e o Full Stack Developer do AIOX, responsavel pela imple
 
 ### Arquivos Core de Tasks do @dev
 
-| Arquivo | Comando | Propósito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/dev-develop-story.md` | `*develop {story-id}` | Task principal - desenvolve story completa com modos YOLO/Interactive/Pre-flight |
-| `.aiox-core/development/tasks/dev-improve-code-quality.md` | `*improve-code-quality <path>` | Melhora qualidade do codigo (formatting, linting, modern-syntax) |
-| `.aiox-core/development/tasks/dev-optimize-performance.md` | `*optimize-performance <path>` | Analisa e otimiza performance do codigo |
-| `.aiox-core/development/tasks/dev-suggest-refactoring.md` | `*suggest-refactoring <path>` | Sugere oportunidades de refactoring automatizado |
-| `.aiox-core/development/tasks/dev-backlog-debt.md` | `*backlog-debt` | Registra divida tecnica no backlog |
-| `.aiox-core/development/tasks/apply-qa-fixes.md` | `*apply-qa-fixes` | Aplica correcoes baseadas em feedback de QA |
-| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist` | Valida documentacao usando checklists |
-| `.aiox-core/development/tasks/validate-next-story.md` | `*validate-story-draft` | Valida qualidade e completude de stories |
-| `.aiox-core/development/tasks/sync-documentation.md` | `*sync-documentation` | Sincroniza documentacao com mudancas de codigo |
-| `.aiox-core/development/tasks/po-manage-story-backlog.md` | (usado internamente) | Gerencia backlog de stories |
+| Arquivo                                                    | Comando                        | Propósito                                                                        |
+| ---------------------------------------------------------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| `.aiox-core/development/tasks/dev-develop-story.md`        | `*develop {story-id}`          | Task principal - desenvolve story completa com modos YOLO/Interactive/Pre-flight |
+| `.aiox-core/development/tasks/dev-improve-code-quality.md` | `*improve-code-quality <path>` | Melhora qualidade do codigo (formatting, linting, modern-syntax)                 |
+| `.aiox-core/development/tasks/dev-optimize-performance.md` | `*optimize-performance <path>` | Analisa e otimiza performance do codigo                                          |
+| `.aiox-core/development/tasks/dev-suggest-refactoring.md`  | `*suggest-refactoring <path>`  | Sugere oportunidades de refactoring automatizado                                 |
+| `.aiox-core/development/tasks/dev-backlog-debt.md`         | `*backlog-debt`                | Registra divida tecnica no backlog                                               |
+| `.aiox-core/development/tasks/apply-qa-fixes.md`           | `*apply-qa-fixes`              | Aplica correcoes baseadas em feedback de QA                                      |
+| `.aiox-core/development/tasks/execute-checklist.md`        | `*execute-checklist`           | Valida documentacao usando checklists                                            |
+| `.aiox-core/development/tasks/validate-next-story.md`      | `*validate-story-draft`        | Valida qualidade e completude de stories                                         |
+| `.aiox-core/development/tasks/sync-documentation.md`       | `*sync-documentation`          | Sincroniza documentacao com mudancas de codigo                                   |
+| `.aiox-core/development/tasks/po-manage-story-backlog.md`  | (usado internamente)           | Gerencia backlog de stories                                                      |
 
 ### Arquivos de Definição do Agente
 
-| Arquivo | Propósito |
-|---------|-----------|
+| Arquivo                                | Propósito                                                    |
+| -------------------------------------- | ------------------------------------------------------------ |
 | `.aiox-core/development/agents/dev.md` | Definição core do agente @dev (persona, comandos, workflows) |
-| `.claude/commands/AIOX/agents/dev.md` | Comando Claude Code para ativar @dev |
+| `.claude/commands/AIOX/agents/dev.md`  | Comando Claude Code para ativar @dev                         |
 
 ### Arquivos de Checklists Usados pelo @dev
 
-| Arquivo | Propósito |
-|---------|-----------|
+| Arquivo                                                | Propósito                       |
+| ------------------------------------------------------ | ------------------------------- |
 | `.aiox-core/product/checklists/story-dod-checklist.md` | Definition of Done para stories |
-| `.aiox-core/product/checklists/pre-push-checklist.md` | Checklist antes de push |
-| `.aiox-core/product/checklists/change-checklist.md` | Validacao de mudancas |
+| `.aiox-core/product/checklists/pre-push-checklist.md`  | Checklist antes de push         |
+| `.aiox-core/product/checklists/change-checklist.md`    | Validacao de mudancas           |
 
 ### Arquivos Relacionados de Outros Agentes
 
-| Arquivo | Agente | Propósito |
-|---------|--------|-----------|
-| `.aiox-core/development/tasks/qa-backlog-add-followup.md` | @qa | QA adiciona follow-ups ao backlog |
-| `.aiox-core/development/tasks/qa-review-story.md` | @qa | QA revisa implementacao do @dev |
-| `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | @github-devops | Quality gate antes de push |
-| `.aiox-core/development/tasks/sm-create-next-story.md` | @sm | Scrum Master cria stories para @dev |
+| Arquivo                                                               | Agente         | Propósito                           |
+| --------------------------------------------------------------------- | -------------- | ----------------------------------- |
+| `.aiox-core/development/tasks/qa-backlog-add-followup.md`             | @qa            | QA adiciona follow-ups ao backlog   |
+| `.aiox-core/development/tasks/qa-review-story.md`                     | @qa            | QA revisa implementacao do @dev     |
+| `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | @github-devops | Quality gate antes de push          |
+| `.aiox-core/development/tasks/sm-create-next-story.md`                | @sm            | Scrum Master cria stories para @dev |
 
 ### Arquivos de Workflows que Usam @dev
 
-| Arquivo | Propósito |
-|---------|-----------|
+| Arquivo                                                      | Propósito                      |
+| ------------------------------------------------------------ | ------------------------------ |
 | `.aiox-core/development/workflows/brownfield-fullstack.yaml` | Workflow full-stack brownfield |
-| `.aiox-core/development/workflows/brownfield-service.yaml` | Workflow de servico brownfield |
-| `.aiox-core/development/workflows/brownfield-ui.yaml` | Workflow UI brownfield |
+| `.aiox-core/development/workflows/brownfield-service.yaml`   | Workflow de servico brownfield |
+| `.aiox-core/development/workflows/brownfield-ui.yaml`        | Workflow UI brownfield         |
 | `.aiox-core/development/workflows/greenfield-fullstack.yaml` | Workflow full-stack greenfield |
-| `.aiox-core/development/workflows/greenfield-service.yaml` | Workflow de servico greenfield |
-| `.aiox-core/development/workflows/greenfield-ui.yaml` | Workflow UI greenfield |
+| `.aiox-core/development/workflows/greenfield-service.yaml`   | Workflow de servico greenfield |
+| `.aiox-core/development/workflows/greenfield-ui.yaml`        | Workflow UI greenfield         |
 
 ---
 
@@ -258,42 +258,42 @@ flowchart TB
 
 ### Comandos de Desenvolvimento
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*develop {story-id}` | `dev-develop-story.md` | Implementa story completa |
-| `*develop {story-id} yolo` | `dev-develop-story.md` | Modo autonomo (0-1 prompts) |
+| Comando                           | Task File              | Operacao                       |
+| --------------------------------- | ---------------------- | ------------------------------ |
+| `*develop {story-id}`             | `dev-develop-story.md` | Implementa story completa      |
+| `*develop {story-id} yolo`        | `dev-develop-story.md` | Modo autonomo (0-1 prompts)    |
 | `*develop {story-id} interactive` | `dev-develop-story.md` | Modo interativo (5-10 prompts) |
-| `*develop {story-id} preflight` | `dev-develop-story.md` | Planejamento upfront |
-| `*run-tests` | (inline) | Executa linting e testes |
+| `*develop {story-id} preflight`   | `dev-develop-story.md` | Planejamento upfront           |
+| `*run-tests`                      | (inline)               | Executa linting e testes       |
 
 ### Comandos de Qualidade
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*apply-qa-fixes` | `apply-qa-fixes.md` | Aplica correcoes de QA |
+| Comando                        | Task File                     | Operacao                    |
+| ------------------------------ | ----------------------------- | --------------------------- |
+| `*apply-qa-fixes`              | `apply-qa-fixes.md`           | Aplica correcoes de QA      |
 | `*improve-code-quality <path>` | `dev-improve-code-quality.md` | Melhora qualidade de codigo |
-| `*optimize-performance <path>` | `dev-optimize-performance.md` | Otimiza performance |
-| `*suggest-refactoring <path>` | `dev-suggest-refactoring.md` | Sugere refactoring |
+| `*optimize-performance <path>` | `dev-optimize-performance.md` | Otimiza performance         |
+| `*suggest-refactoring <path>`  | `dev-suggest-refactoring.md`  | Sugere refactoring          |
 
 ### Comandos de Backlog e Documentação
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*backlog-debt` | `dev-backlog-debt.md` | Registra divida tecnica |
-| `*sync-documentation` | `sync-documentation.md` | Sincroniza documentacao |
-| `*validate-story-draft` | `validate-next-story.md` | Valida draft de story |
+| Comando                 | Task File                | Operacao                |
+| ----------------------- | ------------------------ | ----------------------- |
+| `*backlog-debt`         | `dev-backlog-debt.md`    | Registra divida tecnica |
+| `*sync-documentation`   | `sync-documentation.md`  | Sincroniza documentacao |
+| `*validate-story-draft` | `validate-next-story.md` | Valida draft de story   |
 
 ### Comandos de Contexto e Sessao
 
-| Comando | Operacao |
-|---------|----------|
-| `*help` | Mostra todos os comandos disponiveis |
-| `*explain` | Explica o que acabou de fazer |
-| `*guide` | Mostra guia de uso completo |
+| Comando             | Operacao                                  |
+| ------------------- | ----------------------------------------- |
+| `*help`             | Mostra todos os comandos disponiveis      |
+| `*explain`          | Explica o que acabou de fazer             |
+| `*guide`            | Mostra guia de uso completo               |
 | `*load-full {file}` | Carrega arquivo completo (bypass summary) |
-| `*clear-cache` | Limpa cache de contexto |
-| `*session-info` | Mostra detalhes da sessao |
-| `*exit` | Sai do modo developer |
+| `*clear-cache`      | Limpa cache de contexto                   |
+| `*session-info`     | Mostra detalhes da sessao                 |
+| `*exit`             | Sai do modo developer                     |
 
 ---
 
@@ -338,19 +338,20 @@ flowchart TB
 
 ### Fluxo de Colaboracao
 
-| De | Para | Trigger | Acao |
-|----|------|---------|------|
-| @sm | @dev | Story criada | @dev implementa story |
-| @po | @dev | Story validada | @dev pode comecar implementacao |
-| @dev | @qa | Story "Ready for Review" | @qa revisa implementacao |
-| @qa | @dev | Feedback com issues | @dev aplica correcoes (*apply-qa-fixes) |
-| @dev | @github-devops | Codigo completo | @github-devops faz push/PR |
+| De   | Para           | Trigger                  | Acao                                     |
+| ---- | -------------- | ------------------------ | ---------------------------------------- |
+| @sm  | @dev           | Story criada             | @dev implementa story                    |
+| @po  | @dev           | Story validada           | @dev pode comecar implementacao          |
+| @dev | @qa            | Story "Ready for Review" | @qa revisa implementacao                 |
+| @qa  | @dev           | Feedback com issues      | @dev aplica correcoes (\*apply-qa-fixes) |
+| @dev | @github-devops | Codigo completo          | @github-devops faz push/PR               |
 
 ### Restricoes de Git
 
 O @dev tem operacoes Git limitadas:
 
 **Operacoes PERMITIDAS:**
+
 - `git add` - Stage files
 - `git commit` - Commit local
 - `git status` - Check estado
@@ -361,6 +362,7 @@ O @dev tem operacoes Git limitadas:
 - `git merge` - Merge local
 
 **Operacoes BLOQUEADAS (somente @github-devops):**
+
 - `git push`
 - `git push --force`
 - `gh pr create`
@@ -372,15 +374,16 @@ O @dev tem operacoes Git limitadas:
 
 ### Arquivos de Configuracao Relevantes
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/core-config.yaml` | Configuracao central (devStoryLocation, coderabbit, etc.) |
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | Pipeline canonico de ativacao e greeting |
-| `.aiox-core/scripts/decision-recorder.js` | Logging de decisoes (YOLO mode) |
+| Arquivo                                                         | Propósito                                                 |
+| --------------------------------------------------------------- | --------------------------------------------------------- |
+| `.aiox-core/core-config.yaml`                                   | Configuracao central (devStoryLocation, coderabbit, etc.) |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | Pipeline canonico de ativacao e greeting                  |
+| `.aiox-core/scripts/decision-recorder.js`                       | Logging de decisoes (YOLO mode)                           |
 
 ### devLoadAlwaysFiles
 
 Arquivos carregados automaticamente na ativacao do @dev (definidos em core-config.yaml):
+
 - Padroes de codigo do projeto
 - Estrutura de diretorios
 - Convencoes de nomenclatura
@@ -411,7 +414,7 @@ coderabbit_integration:
 ```yaml
 decision_logging:
   enabled: true
-  log_location: ".ai/decision-log-{story-id}.md"
+  log_location: '.ai/decision-log-{story-id}.md'
   tracked_information:
     - Autonomous decisions made
     - Files created/modified/deleted
@@ -427,6 +430,7 @@ decision_logging:
 ### Quando Usar o @dev
 
 **USE @dev para:**
+
 - Implementar stories aprovadas
 - Aplicar correcoes de QA
 - Refatorar codigo existente
@@ -435,6 +439,7 @@ decision_logging:
 - Executar e validar testes
 
 **NAO USE @dev para:**
+
 - Criar stories (use @sm)
 - Push para remote (use @github-devops)
 - Validar arquitetura (use @architect)
@@ -442,15 +447,16 @@ decision_logging:
 
 ### Modos de Execucao
 
-| Modo | Quando Usar | Prompts |
-|------|-------------|---------|
-| **YOLO** | Tasks simples, deterministicas | 0-1 |
-| **Interactive** | Aprendizado, decisoes complexas | 5-10 |
-| **Pre-flight** | Requisitos ambiguos, trabalho critico | Todos upfront |
+| Modo            | Quando Usar                           | Prompts       |
+| --------------- | ------------------------------------- | ------------- |
+| **YOLO**        | Tasks simples, deterministicas        | 0-1           |
+| **Interactive** | Aprendizado, decisoes complexas       | 5-10          |
+| **Pre-flight**  | Requisitos ambiguos, trabalho critico | Todos upfront |
 
 ### Atualizacao de Story Files
 
 **SOMENTE estas secoes podem ser editadas pelo @dev:**
+
 - Task/Subtask checkboxes
 - Dev Agent Record section
 - Agent Model Used
@@ -461,6 +467,7 @@ decision_logging:
 - Status
 
 **NUNCA editar:**
+
 - Story description
 - Acceptance Criteria
 - Dev Notes (somente adicionar, não modificar)
@@ -488,6 +495,7 @@ Erro: Story file not found at docs/stories/{story-id}.md
 ```
 
 **Solucao:**
+
 1. Verificar se story-id esta correto
 2. Checar se story existe em `docs/stories/`
 3. Usar caminho completo se necessario
@@ -499,6 +507,7 @@ Erro: coderabbit: command not found
 ```
 
 **Solucao:**
+
 1. Verificar instalacao WSL: `wsl bash -c '~/.local/bin/coderabbit --version'`
 2. Verificar path em `wsl_config.installation_path`
 3. Re-instalar CodeRabbit se necessario
@@ -510,6 +519,7 @@ Erro: Tests failed - cannot mark task as complete
 ```
 
 **Solucao:**
+
 1. Analisar output de erros
 2. Corrigir issues identificados
 3. Re-executar testes
@@ -518,6 +528,7 @@ Erro: Tests failed - cannot mark task as complete
 ### Blocking conditions
 
 O @dev deve **HALT** e perguntar ao usuario quando:
+
 - Dependencias não aprovadas sao necessarias
 - Requisitos ambiguos apos checar story
 - 3 falhas consecutivas tentando implementar/corrigir
@@ -529,6 +540,7 @@ O @dev deve **HALT** e perguntar ao usuario quando:
 ## Referencias
 
 ### Tasks do @dev
+
 - [dev-develop-story.md](.aiox-core/development/tasks/dev-develop-story.md)
 - [dev-improve-code-quality.md](.aiox-core/development/tasks/dev-improve-code-quality.md)
 - [dev-optimize-performance.md](.aiox-core/development/tasks/dev-optimize-performance.md)
@@ -537,43 +549,47 @@ O @dev deve **HALT** e perguntar ao usuario quando:
 - [apply-qa-fixes.md](.aiox-core/development/tasks/apply-qa-fixes.md)
 
 ### Checklists
+
 - [story-dod-checklist.md](.aiox-core/product/checklists/story-dod-checklist.md)
 - [pre-push-checklist.md](.aiox-core/product/checklists/pre-push-checklist.md)
 
 ### Agente
+
 - [dev.md](.aiox-core/development/agents/dev.md)
 
 ### Workflows
+
 - [brownfield-fullstack.yaml](.aiox-core/development/workflows/brownfield-fullstack.yaml)
 - [greenfield-fullstack.yaml](.aiox-core/development/workflows/greenfield-fullstack.yaml)
 
 ### Relacionados
+
 - [BACKLOG-MANAGEMENT-SYSTEM.md](../BACKLOG-MANAGEMENT-SYSTEM.md)
 
 ---
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Total de Arquivos Core** | 10 task files + 1 agent definition |
-| **Comandos Principais** | 15 comandos (*develop, *run-tests, *apply-qa-fixes, etc.) |
-| **Modos de Execucao** | 3 (YOLO, Interactive, Pre-flight) |
-| **Checklists Usados** | 3 (story-dod, pre-push, change) |
-| **Workflows Integrados** | 6 (brownfield + greenfield variants) |
-| **Agentes Colaboradores** | 4 (@sm, @po, @qa, @github-devops) |
+| Aspecto                      | Detalhes                                                    |
+| ---------------------------- | ----------------------------------------------------------- |
+| **Total de Arquivos Core**   | 10 task files + 1 agent definition                          |
+| **Comandos Principais**      | 15 comandos (*develop, *run-tests, \*apply-qa-fixes, etc.)  |
+| **Modos de Execucao**        | 3 (YOLO, Interactive, Pre-flight)                           |
+| **Checklists Usados**        | 3 (story-dod, pre-push, change)                             |
+| **Workflows Integrados**     | 6 (brownfield + greenfield variants)                        |
+| **Agentes Colaboradores**    | 4 (@sm, @po, @qa, @github-devops)                           |
 | **Operacoes Git Permitidas** | 8 (add, commit, status, diff, log, branch, checkout, merge) |
-| **Operacoes Git Bloqueadas** | 4 (push, push --force, gh pr create, gh pr merge) |
-| **CodeRabbit Self-Healing** | Light mode (max 2 iteracoes, CRITICAL only) |
+| **Operacoes Git Bloqueadas** | 4 (push, push --force, gh pr create, gh pr merge)           |
+| **CodeRabbit Self-Healing**  | Light mode (max 2 iteracoes, CRITICAL only)                 |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descrição |
-|------|-------|-----------|
-| 2026-02-04 | @dev | Documento inicial criado |
+| Data       | Autor | Descrição                |
+| ---------- | ----- | ------------------------ |
+| 2026-02-04 | @dev  | Documento inicial criado |
 
 ---
 
-*-- Dex, sempre construindo*
+_-- Dex, sempre construindo_

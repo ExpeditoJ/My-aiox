@@ -10,22 +10,22 @@ The manifest is the central registry of all SYNAPSE domains. Each domain has ent
 
 ### Domain Entry Suffixes
 
-| Suffix | Required | Values | Description |
-|--------|----------|--------|-------------|
-| `_STATE` | Yes | `active`, `inactive` | Whether domain rules are loaded |
-| `_RECALL` | No | comma-separated keywords | Keywords that trigger domain loading via L6 |
-| `_EXCLUDE` | No | comma-separated keywords | Keywords that suppress domain loading |
-| `_ALWAYS_ON` | No | `true`, `false` | Domain loads on every prompt (L0, L1) |
-| `_NON_NEGOTIABLE` | No | `true`, `false` | Rules cannot be overridden (L0 only) |
-| `_AGENT_TRIGGER` | No | agent_id | Domain loads when agent is active (L2) |
-| `_WORKFLOW_TRIGGER` | No | workflow_id | Domain loads when workflow is active (L3) |
+| Suffix              | Required | Values                   | Description                                 |
+| ------------------- | -------- | ------------------------ | ------------------------------------------- |
+| `_STATE`            | Yes      | `active`, `inactive`     | Whether domain rules are loaded             |
+| `_RECALL`           | No       | comma-separated keywords | Keywords that trigger domain loading via L6 |
+| `_EXCLUDE`          | No       | comma-separated keywords | Keywords that suppress domain loading       |
+| `_ALWAYS_ON`        | No       | `true`, `false`          | Domain loads on every prompt (L0, L1)       |
+| `_NON_NEGOTIABLE`   | No       | `true`, `false`          | Rules cannot be overridden (L0 only)        |
+| `_AGENT_TRIGGER`    | No       | agent_id                 | Domain loads when agent is active (L2)      |
+| `_WORKFLOW_TRIGGER` | No       | workflow_id              | Domain loads when workflow is active (L3)   |
 
 ### Global Keys
 
-| Key | Values | Description |
-|-----|--------|-------------|
-| `DEVMODE` | `true`, `false` | Enable debug/development output |
-| `GLOBAL_EXCLUDE` | comma-separated | Global exclusion keywords |
+| Key              | Values          | Description                     |
+| ---------------- | --------------- | ------------------------------- |
+| `DEVMODE`        | `true`, `false` | Enable debug/development output |
+| `GLOBAL_EXCLUDE` | comma-separated | Global exclusion keywords       |
 
 ### Example Manifest
 
@@ -108,12 +108,12 @@ Write tests for every feature
 
 ## Naming Conventions
 
-| Context | Format | Example |
-|---------|--------|---------|
-| Manifest keys | UPPERCASE_SNAKE_CASE | `AGENT_DEV_STATE` |
-| Domain file names | lowercase-kebab-case | `agent-dev` |
+| Context               | Format                     | Example                                     |
+| --------------------- | -------------------------- | ------------------------------------------- |
+| Manifest keys         | UPPERCASE_SNAKE_CASE       | `AGENT_DEV_STATE`                           |
+| Domain file names     | lowercase-kebab-case       | `agent-dev`                                 |
 | Domain key derivation | Remove suffix, keep prefix | `AGENT_DEV_STATE` -> domain key `AGENT_DEV` |
-| File name derivation | Key to kebab-case | `AGENT_DEV` -> file `agent-dev` |
+| File name derivation  | Key to kebab-case          | `AGENT_DEV` -> file `agent-dev`             |
 
 ---
 
@@ -131,4 +131,4 @@ COMMANDS_CMD_COMMAND_NAME_1=Second instruction
 
 ---
 
-*Reference for SYN-9 CRUD commands. Source: SYN-1 domain-loader.js parser.*
+_Reference for SYN-9 CRUD commands. Source: SYN-1 domain-loader.js parser._

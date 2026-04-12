@@ -427,12 +427,12 @@ dependencies:
 
 ### Squad 迁移
 
-| 旧版本 (已弃用)          | 当前版本 (Squad)                |
-| ---------------------- | ------------------------------ |
-| 目录 `Squads/`         | 模板 `templates/squad/`        |
-| 配置 `legacyPacksLocation` | 配置 `squadsTemplateLocation`  |
-| 清单 `pack.yaml`        | 清单 `squad.yaml`              |
-| 直接加载              | 基于模板创建               |
+| 旧版本 (已弃用)            | 当前版本 (Squad)              |
+| -------------------------- | ----------------------------- |
+| 目录 `Squads/`             | 模板 `templates/squad/`       |
+| 配置 `legacyPacksLocation` | 配置 `squadsTemplateLocation` |
+| 清单 `pack.yaml`           | 清单 `squad.yaml`             |
+| 直接加载                   | 基于模板创建                  |
 
 ---
 
@@ -702,10 +702,10 @@ outputs/                               # 运行时输出 (gitignored)
 
 ## 版本历史
 
-| 版本 | 日期       | 变更                                                            | 作者            |
-| ---- | ---------- | -------------------------------------------------------------- | --------------- |
-| 1.0  | 2025-01-15 | 代码树初始文档化                                               | Aria (architect)|
-| 1.1  | 2025-12-14 | 更新 org 为 SynkraAI，用 Squad 系统替换 Squads [Story 6.10]    | Dex (dev)       |
+| 版本 | 日期       | 变更                                                        | 作者             |
+| ---- | ---------- | ----------------------------------------------------------- | ---------------- |
+| 1.0  | 2025-01-15 | 代码树初始文档化                                            | Aria (architect) |
+| 1.1  | 2025-12-14 | 更新 org 为 SynkraAI，用 Squad 系统替换 Squads [Story 6.10] | Dex (dev)        |
 
 ---
 

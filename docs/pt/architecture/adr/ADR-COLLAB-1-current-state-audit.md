@@ -86,19 +86,19 @@ Auditar o estado atual de:
 
 **Fonte:** `gh api repos/SynkraAI/aiox-core/actions/workflows`
 
-| Workflow                   | Estado | Caminho                                   |
-| -------------------------- | ------ | ----------------------------------------- |
-| CI                         | ativo  | .github/workflows/ci.yml                  |
-| Test                       | ativo  | .github/workflows/test.yml                |
-| PR Automation              | ativo  | .github/workflows/pr-automation.yml       |
-| PR Labeling                | ativo  | .github/workflows/pr-labeling.yml         |
-| Semantic Release           | ativo  | .github/workflows/semantic-release.yml    |
-| Release                    | ativo  | .github/workflows/release.yml             |
-| NPM Publish                | ativo  | .github/workflows/npm-publish.yml         |
-| Welcome New Contributors   | ativo  | .github/workflows/welcome.yml             |
-| macOS Testing              | ativo  | .github/workflows/macos-testing.yml       |
-| Quarterly Gap Audit        | ativo  | .github/workflows/quarterly-gap-audit.yml |
-| CodeQL                     | ativo  | dynamic/github-code-scanning/codeql       |
+| Workflow                 | Estado | Caminho                                   |
+| ------------------------ | ------ | ----------------------------------------- |
+| CI                       | ativo  | .github/workflows/ci.yml                  |
+| Test                     | ativo  | .github/workflows/test.yml                |
+| PR Automation            | ativo  | .github/workflows/pr-automation.yml       |
+| PR Labeling              | ativo  | .github/workflows/pr-labeling.yml         |
+| Semantic Release         | ativo  | .github/workflows/semantic-release.yml    |
+| Release                  | ativo  | .github/workflows/release.yml             |
+| NPM Publish              | ativo  | .github/workflows/npm-publish.yml         |
+| Welcome New Contributors | ativo  | .github/workflows/welcome.yml             |
+| macOS Testing            | ativo  | .github/workflows/macos-testing.yml       |
+| Quarterly Gap Audit      | ativo  | .github/workflows/quarterly-gap-audit.yml |
+| CodeQL                   | ativo  | dynamic/github-code-scanning/codeql       |
 
 ### 4. Configuração CODEOWNERS
 
@@ -120,38 +120,38 @@ Auditar o estado atual de:
 
 ### Severidade CRÍTICA
 
-| Configuração                          | Atual     | Esperado | Risco                                    |
-| ------------------------------------- | --------- | -------- | ---------------------------------------- |
-| `required_approving_review_count`     | **0**     | **1**    | Código não revisado pode ser mergeado    |
-| `require_code_owner_reviews`          | **false** | **true** | Sem validação de especialista do domínio |
+| Configuração                      | Atual     | Esperado | Risco                                    |
+| --------------------------------- | --------- | -------- | ---------------------------------------- |
+| `required_approving_review_count` | **0**     | **1**    | Código não revisado pode ser mergeado    |
+| `require_code_owner_reviews`      | **false** | **true** | Sem validação de especialista do domínio |
 
 **Impacto:** Qualquer colaborador com acesso de escrita pode mergear PRs sem aprovação, ignorando revisão de código.
 
 ### Severidade ALTA
 
-| Configuração                    | Atual      | Esperado      | Risco                          |
-| ------------------------------- | ---------- | ------------- | ------------------------------ |
-| CodeRabbit `.coderabbit.yaml`   | Ausente    | Configurado   | Sem revisão automatizada de IA |
-| Granularidade CODEOWNERS        | Nível org  | Específico por caminho | Sem roteamento de especialistas |
+| Configuração                  | Atual     | Esperado               | Risco                           |
+| ----------------------------- | --------- | ---------------------- | ------------------------------- |
+| CodeRabbit `.coderabbit.yaml` | Ausente   | Configurado            | Sem revisão automatizada de IA  |
+| Granularidade CODEOWNERS      | Nível org | Específico por caminho | Sem roteamento de especialistas |
 
 **Impacto:** Qualidade de revisão reduzida e sem feedback automatizado para contribuidores.
 
 ### Severidade MÉDIA
 
-| Configuração                                | Atual        | Esperado   | Risco                              |
-| ------------------------------------------- | ------------ | ---------- | ---------------------------------- |
-| `test` nos checks obrigatórios              | Não exigido  | Exigido    | Testes podem ser pulados           |
-| `required_conversation_resolution`          | false        | true       | Feedback pode ser ignorado         |
-| `story-validation` nos checks obrigatórios  | Não exigido  | Opcional   | Consistência de story não exigida  |
+| Configuração                               | Atual       | Esperado | Risco                             |
+| ------------------------------------------ | ----------- | -------- | --------------------------------- |
+| `test` nos checks obrigatórios             | Não exigido | Exigido  | Testes podem ser pulados          |
+| `required_conversation_resolution`         | false       | true     | Feedback pode ser ignorado        |
+| `story-validation` nos checks obrigatórios | Não exigido | Opcional | Consistência de story não exigida |
 
 **Impacto:** PRs podem ser mergeados com testes falhando ou feedback não endereçado.
 
 ### Severidade BAIXA
 
-| Configuração              | Atual | Esperado | Risco                                |
-| ------------------------- | ----- | -------- | ------------------------------------ |
-| Assinaturas obrigatórias  | false | Opcional | Autenticidade de commit não verificada |
-| Histórico linear exigido  | false | Opcional | Histórico de merge complexo          |
+| Configuração             | Atual | Esperado | Risco                                  |
+| ------------------------ | ----- | -------- | -------------------------------------- |
+| Assinaturas obrigatórias | false | Opcional | Autenticidade de commit não verificada |
+| Histórico linear exigido | false | Opcional | Histórico de merge complexo            |
 
 **Impacto:** Preocupações menores de rastreabilidade.
 
@@ -159,14 +159,14 @@ Auditar o estado atual de:
 
 ## Tabela Resumo
 
-| Categoria                 | Status   | Ação Necessária        |
-| ------------------------- | -------- | ---------------------- |
-| Revisões de aprovação     | CRÍTICO  | Habilitar 1 obrigatória |
-| Revisões de code owner    | CRÍTICO  | Habilitar              |
-| Config CodeRabbit         | ALTA     | Criar                  |
-| Detalhamento CODEOWNERS   | ALTA     | Aprimorar              |
-| Test nos checks           | MÉDIA    | Adicionar              |
-| Resolução de conversas    | MÉDIA    | Habilitar              |
+| Categoria               | Status  | Ação Necessária         |
+| ----------------------- | ------- | ----------------------- |
+| Revisões de aprovação   | CRÍTICO | Habilitar 1 obrigatória |
+| Revisões de code owner  | CRÍTICO | Habilitar               |
+| Config CodeRabbit       | ALTA    | Criar                   |
+| Detalhamento CODEOWNERS | ALTA    | Aprimorar               |
+| Test nos checks         | MÉDIA   | Adicionar               |
+| Resolução de conversas  | MÉDIA   | Habilitar               |
 
 ---
 

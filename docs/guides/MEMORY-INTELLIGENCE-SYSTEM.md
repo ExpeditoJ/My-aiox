@@ -56,23 +56,23 @@ O sistema de memoria atual opera em **duas camadas desconectadas** (Claude Code 
 
 O MIS unifica as duas camadas em um sistema inteligente de 4 camadas, seguindo o modelo **Open Core**:
 
-| Camada | Funcao | Repositorio | Story |
-|--------|--------|-------------|-------|
-| **Cleanup** | Remover dead code, preparar base | **aiox-core** | MIS-2 |
-| **Capture** | Captura conhecimento de sessao via hooks | **aiox-pro** | MIS-3 |
-| **Storage** | Armazena em Markdown com frontmatter YAML | **aiox-pro** | MIS-3, MIS-4 |
+| Camada        | Funcao                                             | Repositorio                                      | Story        |
+| ------------- | -------------------------------------------------- | ------------------------------------------------ | ------------ |
+| **Cleanup**   | Remover dead code, preparar base                   | **aiox-core**                                    | MIS-2        |
+| **Capture**   | Captura conhecimento de sessao via hooks           | **aiox-pro**                                     | MIS-3        |
+| **Storage**   | Armazena em Markdown com frontmatter YAML          | **aiox-pro**                                     | MIS-3, MIS-4 |
 | **Retrieval** | Recupera por relevancia com progressive disclosure | **aiox-pro** + extension points em **aiox-core** | MIS-4, MIS-6 |
-| **Evolution** | Aprende e evolui regras automaticamente | **aiox-pro** | MIS-5, MIS-7 |
+| **Evolution** | Aprende e evolui regras automaticamente            | **aiox-pro**                                     | MIS-5, MIS-7 |
 
 ### Principios Chave (vs Estado Atual)
 
-| Aspecto | Estado Atual | Com MIS (aiox-pro ativo) | Sem MIS (aiox-core only) |
-|---------|-------------|--------------------------|--------------------------|
-| Session end | Nada acontece | PreCompact digest captura aprendizados | Nada acontece (como hoje) |
-| Memory load | MEMORY.md (200 linhas, tudo-ou-nada) | Progressive disclosure (HOT/WARM/COLD) | MEMORY.md (como hoje) |
-| Agent scope | Memorias globais sem filtragem | Memorias privadas + compartilhadas por agente | Globais (como hoje) |
-| Learning | Manual (Claude decide salvar) | Automatico (correcoes, patterns, gotchas) | Manual (como hoje) |
-| Token usage | ~10K tokens fixos por sessao | 60-95% reducao via attention routing | ~10K tokens (como hoje) |
+| Aspecto     | Estado Atual                         | Com MIS (aiox-pro ativo)                      | Sem MIS (aiox-core only)  |
+| ----------- | ------------------------------------ | --------------------------------------------- | ------------------------- |
+| Session end | Nada acontece                        | PreCompact digest captura aprendizados        | Nada acontece (como hoje) |
+| Memory load | MEMORY.md (200 linhas, tudo-ou-nada) | Progressive disclosure (HOT/WARM/COLD)        | MEMORY.md (como hoje)     |
+| Agent scope | Memorias globais sem filtragem       | Memorias privadas + compartilhadas por agente | Globais (como hoje)       |
+| Learning    | Manual (Claude decide salvar)        | Automatico (correcoes, patterns, gotchas)     | Manual (como hoje)        |
+| Token usage | ~10K tokens fixos por sessao         | 60-95% reducao via attention routing          | ~10K tokens (como hoje)   |
 
 ---
 
@@ -138,48 +138,48 @@ if (isProAvailable()) {
 
 Features de memoria ja registradas em `pro/feature-registry.yaml`:
 
-| Feature ID | Descricao | Story MIS |
-|-----------|-----------|-----------|
-| `pro.memory.persistence` | Persistent memory across sessions | MIS-3 |
-| `pro.memory.extended` | Extended context window for AI agents | MIS-4, MIS-6 |
-| `pro.memory.search` | Semantic search across memory stores | MIS-4 |
-| `pro.memory.sync` | Cross-device memory synchronization | Futuro |
+| Feature ID               | Descricao                             | Story MIS    |
+| ------------------------ | ------------------------------------- | ------------ |
+| `pro.memory.persistence` | Persistent memory across sessions     | MIS-3        |
+| `pro.memory.extended`    | Extended context window for AI agents | MIS-4, MIS-6 |
+| `pro.memory.search`      | Semantic search across memory stores  | MIS-4        |
+| `pro.memory.sync`        | Cross-device memory synchronization   | Futuro       |
 
 Features adicionais a registrar:
 
-| Feature ID (novo) | Descricao | Story MIS |
-|-------------------|-----------|-----------|
-| `pro.memory.session_digest` | PreCompact session digest capture | MIS-3 |
-| `pro.memory.self_learning` | Self-learning from corrections | MIS-5 |
-| `pro.memory.auto_evolution` | CLAUDE.md & rules auto-evolution | MIS-7 |
+| Feature ID (novo)           | Descricao                         | Story MIS |
+| --------------------------- | --------------------------------- | --------- |
+| `pro.memory.session_digest` | PreCompact session digest capture | MIS-3     |
+| `pro.memory.self_learning`  | Self-learning from corrections    | MIS-5     |
+| `pro.memory.auto_evolution` | CLAUDE.md & rules auto-evolution  | MIS-7     |
 
 ### O Que Vai em Cada Repositorio
 
 #### aiox-core (open source) — Extension Points Only
 
-| Arquivo | Tipo | Descricao |
-|---------|------|-----------|
-| `bin/utils/pro-detector.js` | Existente | `isProAvailable()`, `loadProModule()` |
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | Modificacao | Adiciona `if (isProAvailable())` no Tier 2 para memory loading |
-| `.aiox-core/development/scripts/greeting-builder.js` | Modificacao | Adiciona memory stats no greeting se pro disponivel |
-| `.aiox-core/core/memory/gotchas-memory.js` | Mantido | Path fix (MIS-2), funciona standalone |
-| `.aiox-core/core/session/context-loader.js` | Mantido | Path fix (MIS-2), funciona standalone |
-| `.claude/settings.json` | Modificacao | Hook stubs que chamam scripts em `pro/` (graceful fail se ausente) |
+| Arquivo                                                         | Tipo        | Descricao                                                          |
+| --------------------------------------------------------------- | ----------- | ------------------------------------------------------------------ |
+| `bin/utils/pro-detector.js`                                     | Existente   | `isProAvailable()`, `loadProModule()`                              |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | Modificacao | Adiciona `if (isProAvailable())` no Tier 2 para memory loading     |
+| `.aiox-core/development/scripts/greeting-builder.js`            | Modificacao | Adiciona memory stats no greeting se pro disponivel                |
+| `.aiox-core/core/memory/gotchas-memory.js`                      | Mantido     | Path fix (MIS-2), funciona standalone                              |
+| `.aiox-core/core/session/context-loader.js`                     | Mantido     | Path fix (MIS-2), funciona standalone                              |
+| `.claude/settings.json`                                         | Modificacao | Hook stubs que chamam scripts em `pro/` (graceful fail se ausente) |
 
 #### aiox-pro (privado) — Toda a Inteligencia
 
-| Arquivo | Camada MIS | Story |
-|---------|-----------|-------|
-| `pro/memory/session-digest.js` | Capture | MIS-3 |
-| `pro/memory/gotcha-capture.js` | Capture | MIS-3 |
-| `pro/memory/memory-index.js` | Storage | MIS-4 |
-| `pro/memory/memory-retriever.js` | Retrieval | MIS-4 |
-| `pro/memory/self-learner.js` | Evolution | MIS-5 |
-| `pro/memory/memory-loader.js` | Pipeline | MIS-6 |
-| `pro/memory/agent-memory-api.js` | Commands | MIS-6 |
-| `pro/memory/rule-proposer.js` | Evolution | MIS-7 |
-| `pro/pro-config.yaml` | Config | MIS-3 (enable memory flags) |
-| `pro/feature-registry.yaml` | Config | MIS-3 (add new feature IDs) |
+| Arquivo                          | Camada MIS | Story                       |
+| -------------------------------- | ---------- | --------------------------- |
+| `pro/memory/session-digest.js`   | Capture    | MIS-3                       |
+| `pro/memory/gotcha-capture.js`   | Capture    | MIS-3                       |
+| `pro/memory/memory-index.js`     | Storage    | MIS-4                       |
+| `pro/memory/memory-retriever.js` | Retrieval  | MIS-4                       |
+| `pro/memory/self-learner.js`     | Evolution  | MIS-5                       |
+| `pro/memory/memory-loader.js`    | Pipeline   | MIS-6                       |
+| `pro/memory/agent-memory-api.js` | Commands   | MIS-6                       |
+| `pro/memory/rule-proposer.js`    | Evolution  | MIS-7                       |
+| `pro/pro-config.yaml`            | Config     | MIS-3 (enable memory flags) |
+| `pro/feature-registry.yaml`      | Config     | MIS-3 (add new feature IDs) |
 
 ### Hook Configuration Strategy
 
@@ -245,6 +245,7 @@ Memorias sao arquivos Markdown com frontmatter YAML. Git-friendly, human-readabl
 ### 2. Progressive Disclosure (claude-mem pattern)
 
 Retrieval em 3 camadas para minimizar tokens:
+
 - **Index:** Titulos + IDs (~50 tokens)
 - **Context:** Chunks relevantes (~200 tokens)
 - **Detail:** Memoria completa (~1000+ tokens)
@@ -252,6 +253,7 @@ Retrieval em 3 camadas para minimizar tokens:
 ### 3. Tiered Storage (openclaw pattern)
 
 Memorias classificadas por durabilidade:
+
 - **Session:** Efemera, morre ao final da sessao
 - **Daily:** Consolidacao do dia, auto-flush
 - **Durable:** Conhecimento permanente, nunca expira
@@ -259,6 +261,7 @@ Memorias classificadas por durabilidade:
 ### 4. Attention Routing (claude-cognitive pattern)
 
 Cada memoria tem um attention score que determina tier de loading:
+
 - **HOT (>0.7):** Sempre no contexto (~500 tokens max)
 - **WARM (0.3-0.7):** Carregado sob demanda
 - **COLD (<0.3):** Apenas via busca explicita
@@ -266,6 +269,7 @@ Cada memoria tem um attention score que determina tier de loading:
 ### 5. Cognitive Sectors (OpenMemory pattern)
 
 Memorias classificadas por tipo cognitivo:
+
 - **Episodic:** "O que aconteceu" (sessoes, eventos)
 - **Semantic:** "O que eu sei" (fatos, conceitos)
 - **Procedural:** "Como fazer" (patterns, workflows)
@@ -428,12 +432,12 @@ A Capture Layer intercepta eventos de sessao via hooks do Claude Code e extrai c
 
 ### Hook Events Utilizados
 
-| Hook Event | Quando Dispara | Script Pro | Fallback Core |
-|-----------|---------------|-----------|---------------|
-| `PreCompact` | Contexto proximo do limite | `pro/memory/session-digest.js` | Nada (exit 0) |
-| `Stop` | Sessao encerra | `pro/memory/session-digest.js --final` | Nada (exit 0) |
-| `PostToolUseFailure` | Tool falhou | `pro/memory/gotcha-capture.js` | `gotchas-memory.js` (core, basico) |
-| `TaskCompleted` | Task finalizada | `pro/memory/session-digest.js --task` | Nada (exit 0) |
+| Hook Event           | Quando Dispara             | Script Pro                             | Fallback Core                      |
+| -------------------- | -------------------------- | -------------------------------------- | ---------------------------------- |
+| `PreCompact`         | Contexto proximo do limite | `pro/memory/session-digest.js`         | Nada (exit 0)                      |
+| `Stop`               | Sessao encerra             | `pro/memory/session-digest.js --final` | Nada (exit 0)                      |
+| `PostToolUseFailure` | Tool falhou                | `pro/memory/gotcha-capture.js`         | `gotchas-memory.js` (core, basico) |
+| `TaskCompleted`      | Task finalizada            | `pro/memory/session-digest.js --task`  | Nada (exit 0)                      |
 
 ### Configuracao de Hooks
 
@@ -607,12 +611,12 @@ flowchart TD
 
 ### Token Savings
 
-| Cenario | Tokens | Reducao |
-|---------|--------|---------|
-| Sem pro (core only, MEMORY.md bruto) | ~10,000 | 0% |
-| Com pro + Progressive Disclosure | ~2,000 | 80% |
-| Com pro + Attention Routing | ~1,000 | 90% |
-| Com pro + Agent Scoping | ~500 | 95% |
+| Cenario                              | Tokens  | Reducao |
+| ------------------------------------ | ------- | ------- |
+| Sem pro (core only, MEMORY.md bruto) | ~10,000 | 0%      |
+| Com pro + Progressive Disclosure     | ~2,000  | 80%     |
+| Com pro + Attention Routing          | ~1,000  | 90%     |
+| Com pro + Agent Scoping              | ~500    | 95%     |
 
 ---
 
@@ -702,13 +706,13 @@ sequenceDiagram
 
 ### Capacidades Tecnicas do PreCompact
 
-| Capacidade | Status | Nota |
-|-----------|--------|------|
-| Acesso ao transcript completo | Disponivel | Antes da compressao |
-| Execucao de scripts shell | Disponivel | Fire-and-forget com async |
-| Escrita de arquivos | Disponivel | session-digest.js escreve memories |
-| Timeout configuravel | 10 segundos | Suficiente para digest |
-| Modo async | Disponivel (Jan 2026) | Nao bloqueia compactacao |
+| Capacidade                    | Status                | Nota                               |
+| ----------------------------- | --------------------- | ---------------------------------- |
+| Acesso ao transcript completo | Disponivel            | Antes da compressao                |
+| Execucao de scripts shell     | Disponivel            | Fire-and-forget com async          |
+| Escrita de arquivos           | Disponivel            | session-digest.js escreve memories |
+| Timeout configuravel          | 10 segundos           | Suficiente para digest             |
+| Modo async                    | Disponivel (Jan 2026) | Nao bloqueia compactacao           |
 
 ---
 
@@ -739,6 +743,7 @@ sequenceDiagram
 ### Mapeamento Agente → Memorias Acessiveis
 
 Cada agente acessa:
+
 1. Suas proprias memorias privadas (`.aiox/memories/{agent}/`)
 2. Memorias compartilhadas (`.aiox/memories/shared/`)
 3. **Nunca** memorias privadas de outros agentes
@@ -798,12 +803,12 @@ sequenceDiagram
 
 ### Budget de Tokens
 
-| Tier | Com Pro | Sem Pro (core only) |
-|------|---------|-------------------|
-| HOT (Tier 1) | ~500 tokens | ~500 tokens (MEMORY.md nativo) |
-| WARM (Tier 2) | ~2,000 tokens | 0 (skip) |
-| COLD (Tier 3) | ~200 tokens | 0 (skip) |
-| **Total** | **~2,700** | **~500** (como hoje) |
+| Tier          | Com Pro       | Sem Pro (core only)            |
+| ------------- | ------------- | ------------------------------ |
+| HOT (Tier 1)  | ~500 tokens   | ~500 tokens (MEMORY.md nativo) |
+| WARM (Tier 2) | ~2,000 tokens | 0 (skip)                       |
+| COLD (Tier 3) | ~200 tokens   | 0 (skip)                       |
+| **Total**     | **~2,700**    | **~500** (como hoje)           |
 
 ---
 
@@ -814,17 +819,18 @@ sequenceDiagram
 ```markdown
 ---
 id: mem-2026-02-09-001
-type: procedural               # episodic | semantic | procedural | reflective
-tier: durable                  # session | daily | durable
-agent: shared                  # shared | dev | qa | architect | ...
+type: procedural # episodic | semantic | procedural | reflective
+tier: durable # session | daily | durable
+agent: shared # shared | dev | qa | architect | ...
 tags: [imports, typescript, pattern, coding-standard]
 confidence: 0.95
 created: 2026-02-09T14:30:00Z
 last_accessed: 2026-02-09T16:00:00Z
 access_count: 3
-source: user-correction         # user-correction | session-digest | auto-gotcha |
-                                # manual | heuristic | task-outcome
-attention_score: 0.85           # HOT (>0.7) | WARM (0.3-0.7) | COLD (<0.3)
+source:
+  user-correction # user-correction | session-digest | auto-gotcha |
+  # manual | heuristic | task-outcome
+attention_score: 0.85 # HOT (>0.7) | WARM (0.3-0.7) | COLD (<0.3)
 related_memories: [mem-2026-02-08-003]
 evidence_count: 5
 ---
@@ -832,14 +838,17 @@ evidence_count: 5
 # Always Use Absolute Imports in AIOX
 
 ## Pattern
+
 Use `@/` prefix for all imports. Never use relative imports (`../`).
 
 ## Evidence
+
 - User correction in session abc123 (2026-02-09)
 - Confirmed by CLAUDE.md rule (Absolute Imports, Artigo VI)
 - Applied in 47 files across codebase
 
 ## Context
+
 Non-negotiable coding standard. Constitution Article VI.
 ```
 
@@ -860,12 +869,12 @@ Decay rates por tier:
 
 ### Tier Assignment
 
-| Attention Score | Tier | Pipeline | Comportamento |
-|----------------|------|----------|--------------|
-| > 0.7 | HOT | Tier 1 | Sync para MEMORY.md (sempre no prompt) |
-| 0.3 - 0.7 | WARM | Tier 2 | Injetado na ativacao (se dentro do budget) |
-| < 0.3 | COLD | Tier 3 | Apenas via `*recall` explicito |
-| < 0.1 (90+ dias) | ARCHIVE | — | Movido para `.old/` |
+| Attention Score  | Tier    | Pipeline | Comportamento                              |
+| ---------------- | ------- | -------- | ------------------------------------------ |
+| > 0.7            | HOT     | Tier 1   | Sync para MEMORY.md (sempre no prompt)     |
+| 0.3 - 0.7        | WARM    | Tier 2   | Injetado na ativacao (se dentro do budget) |
+| < 0.3            | COLD    | Tier 3   | Apenas via `*recall` explicito             |
+| < 0.1 (90+ dias) | ARCHIVE | —        | Movido para `.old/`                        |
 
 ---
 
@@ -873,22 +882,22 @@ Decay rates por tier:
 
 ### 4 Setores + Preferencia por Agente
 
-| Agente | Setores Prioritarios | Razao |
-|--------|---------------------|-------|
-| `@dev` | Procedural, Semantic | COMO fazer e QUAIS convencoes |
-| `@qa` | Reflective, Episodic | O QUE APRENDEMOS e O QUE ACONTECEU |
-| `@architect` | Semantic, Reflective | O QUE SABEMOS e O QUE APRENDEMOS |
-| `@pm` | Episodic, Semantic | O QUE ACONTECEU e FATOS do projeto |
-| `@devops` | Procedural, Episodic | COMO OPERAR e O QUE ACONTECEU |
+| Agente       | Setores Prioritarios | Razao                              |
+| ------------ | -------------------- | ---------------------------------- |
+| `@dev`       | Procedural, Semantic | COMO fazer e QUAIS convencoes      |
+| `@qa`        | Reflective, Episodic | O QUE APRENDEMOS e O QUE ACONTECEU |
+| `@architect` | Semantic, Reflective | O QUE SABEMOS e O QUE APRENDEMOS   |
+| `@pm`        | Episodic, Semantic   | O QUE ACONTECEU e FATOS do projeto |
+| `@devops`    | Procedural, Episodic | COMO OPERAR e O QUE ACONTECEU      |
 
 ### Decay por Setor
 
-| Setor | TTL Base | Razao |
-|-------|---------|-------|
-| Episodic | 7 dias * access_modifier | Sessoes antigas perdem relevancia |
-| Semantic | 365 dias | Fatos permanecem validos |
-| Procedural | 30 dias * last_used_modifier | Workflows nao usados decaem |
-| Reflective | Infinito | Aprendizados sao permanentes |
+| Setor      | TTL Base                      | Razao                             |
+| ---------- | ----------------------------- | --------------------------------- |
+| Episodic   | 7 dias \* access_modifier     | Sessoes antigas perdem relevancia |
+| Semantic   | 365 dias                      | Fatos permanecem validos          |
+| Procedural | 30 dias \* last_used_modifier | Workflows nao usados decaem       |
+| Reflective | Infinito                      | Aprendizados sao permanentes      |
 
 ---
 
@@ -899,6 +908,7 @@ Decay rates por tier:
 ### Exemplos de Evolucao
 
 **Correcao → Regra:**
+
 ```
 Sessao 1: Usuario corrige "use npm not yarn" → confidence 0.3
 Sessao 4: Mesmo pattern 5x → confidence 0.95
@@ -907,6 +917,7 @@ Sessao 4: Mesmo pattern 5x → confidence 0.95
 ```
 
 **Gotcha → Warning:**
+
 ```
 Sessao 7: Erro "EACCES permission denied" 3x → auto-gotcha
 → Gotcha persiste por 5+ sessoes → promoted to Warning
@@ -956,57 +967,57 @@ Sessao 7: Erro "EACCES permission denied" 3x → auto-gotcha
 
 ### aiox-core (Open Source) — Extension Points
 
-| Arquivo | Tipo | Story | Descricao |
-|---------|------|-------|-----------|
-| `bin/utils/pro-detector.js` | Existente (PRO-5) | — | `isProAvailable()`, `loadProModule()` |
-| `.aiox-core/hooks/pro-hook-runner.js` | **Novo** | MIS-3 | Wrapper: verifica pro, delega hook (~20 linhas) |
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | **Modificacao** | MIS-6 | Adiciona `if (isProAvailable())` no Tier 2 |
-| `.aiox-core/development/scripts/greeting-builder.js` | **Modificacao** | MIS-6 | Memory stats no greeting se pro disponivel |
-| `.aiox-core/core/memory/gotchas-memory.js` | **Path fix** | MIS-2 | Corrige `.aiox/error-tracking.json` |
-| `.aiox-core/core/session/context-loader.js` | **Path fix** | MIS-2 | Corrige `.aiox/session-state.json` |
-| `.claude/settings.json` | **Modificacao** | MIS-3 | Hook stubs via pro-hook-runner.js |
+| Arquivo                                                         | Tipo              | Story | Descricao                                       |
+| --------------------------------------------------------------- | ----------------- | ----- | ----------------------------------------------- |
+| `bin/utils/pro-detector.js`                                     | Existente (PRO-5) | —     | `isProAvailable()`, `loadProModule()`           |
+| `.aiox-core/hooks/pro-hook-runner.js`                           | **Novo**          | MIS-3 | Wrapper: verifica pro, delega hook (~20 linhas) |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | **Modificacao**   | MIS-6 | Adiciona `if (isProAvailable())` no Tier 2      |
+| `.aiox-core/development/scripts/greeting-builder.js`            | **Modificacao**   | MIS-6 | Memory stats no greeting se pro disponivel      |
+| `.aiox-core/core/memory/gotchas-memory.js`                      | **Path fix**      | MIS-2 | Corrige `.aiox/error-tracking.json`             |
+| `.aiox-core/core/session/context-loader.js`                     | **Path fix**      | MIS-2 | Corrige `.aiox/session-state.json`              |
+| `.claude/settings.json`                                         | **Modificacao**   | MIS-3 | Hook stubs via pro-hook-runner.js               |
 
 ### aiox-pro (Privado) — Toda a Inteligencia
 
-| Arquivo | Camada | Story | Descricao |
-|---------|--------|-------|-----------|
-| `pro/memory/hooks/precompact.js` | Capture | MIS-3 | Session digest no PreCompact |
-| `pro/memory/hooks/stop.js` | Capture | MIS-3 | Final flush no Stop |
-| `pro/memory/hooks/tooltfailure.js` | Capture | MIS-3 | Enhanced gotcha capture |
-| `pro/memory/memory-index.js` | Storage | MIS-4 | Index manager (build, search, update) |
-| `pro/memory/memory-retriever.js` | Retrieval | MIS-4 | Progressive disclosure retriever |
-| `pro/memory/self-learner.js` | Evolution | MIS-5 | Correction tracker + heuristic extractor |
-| `pro/memory/memory-loader.js` | Pipeline | MIS-6 | Pipeline integration (Tier 2/3 loading) |
-| `pro/memory/agent-memory-api.js` | Commands | MIS-6 | `*recall`, `*remember`, `*forget` |
-| `pro/memory/rule-proposer.js` | Evolution | MIS-7 | CLAUDE.md + rules auto-evolution |
-| `pro/pro-config.yaml` | Config | MIS-3 | Enable memory flags |
-| `pro/feature-registry.yaml` | Config | MIS-3 | Add MIS feature IDs |
+| Arquivo                            | Camada    | Story | Descricao                                |
+| ---------------------------------- | --------- | ----- | ---------------------------------------- |
+| `pro/memory/hooks/precompact.js`   | Capture   | MIS-3 | Session digest no PreCompact             |
+| `pro/memory/hooks/stop.js`         | Capture   | MIS-3 | Final flush no Stop                      |
+| `pro/memory/hooks/tooltfailure.js` | Capture   | MIS-3 | Enhanced gotcha capture                  |
+| `pro/memory/memory-index.js`       | Storage   | MIS-4 | Index manager (build, search, update)    |
+| `pro/memory/memory-retriever.js`   | Retrieval | MIS-4 | Progressive disclosure retriever         |
+| `pro/memory/self-learner.js`       | Evolution | MIS-5 | Correction tracker + heuristic extractor |
+| `pro/memory/memory-loader.js`      | Pipeline  | MIS-6 | Pipeline integration (Tier 2/3 loading)  |
+| `pro/memory/agent-memory-api.js`   | Commands  | MIS-6 | `*recall`, `*remember`, `*forget`        |
+| `pro/memory/rule-proposer.js`      | Evolution | MIS-7 | CLAUDE.md + rules auto-evolution         |
+| `pro/pro-config.yaml`              | Config    | MIS-3 | Enable memory flags                      |
+| `pro/feature-registry.yaml`        | Config    | MIS-3 | Add MIS feature IDs                      |
 
 ### Arquivos Removidos (MIS-2, aiox-core)
 
-| Arquivo | Linhas | Razao |
-|---------|--------|-------|
-| `.aiox-core/core/memory/timeline-manager.js` | 746 | 0 consumers (orphan) |
-| `.aiox-core/core/memory/file-evolution-tracker.js` | 1,003 | 0 consumers (orphan) |
-| `.aiox-core/core/memory/context-snapshot.js` | 648 | 0 consumers (orphan) |
-| `.aiox-core/elicitation/session-manager.js` | — | Dead code |
-| `.aiox/compound-analysis/` | ~14K | 0 readers (orphan data) |
+| Arquivo                                            | Linhas | Razao                   |
+| -------------------------------------------------- | ------ | ----------------------- |
+| `.aiox-core/core/memory/timeline-manager.js`       | 746    | 0 consumers (orphan)    |
+| `.aiox-core/core/memory/file-evolution-tracker.js` | 1,003  | 0 consumers (orphan)    |
+| `.aiox-core/core/memory/context-snapshot.js`       | 648    | 0 consumers (orphan)    |
+| `.aiox-core/elicitation/session-manager.js`        | —      | Dead code               |
+| `.aiox/compound-analysis/`                         | ~14K   | 0 readers (orphan data) |
 
 ---
 
 ## Diferencas: Estado Atual vs MIS
 
-| Aspecto | aiox-core hoje | aiox-core + aiox-pro (MIS) | aiox-core sem pro |
-|---------|---------------|---------------------------|------------------|
-| **Camadas** | 2 desconectadas | 4 integradas via pro | 2 desconectadas (como hoje) |
-| **Session end** | Nada | PreCompact digest + Stop flush | Nada (como hoje) |
-| **Memory load** | MEMORY.md tudo-ou-nada | Progressive HOT/WARM/COLD | MEMORY.md (como hoje) |
-| **Agent scope** | Global unico | Private + Shared por agente | Global (como hoje) |
-| **Search** | Nenhuma | FTS index + metadata | Nenhuma (como hoje) |
-| **Learning** | Manual | Automatico | Manual (como hoje) |
-| **Dead code** | 2,397 linhas | Removido | Removido (MIS-2) |
-| **Token usage** | ~10K fixo | ~2,700 (~73% reducao) | ~10K (como hoje) |
-| **Hooks** | Gemini-only | Claude Code native | Hook stubs (no-op) |
+| Aspecto         | aiox-core hoje         | aiox-core + aiox-pro (MIS)     | aiox-core sem pro           |
+| --------------- | ---------------------- | ------------------------------ | --------------------------- |
+| **Camadas**     | 2 desconectadas        | 4 integradas via pro           | 2 desconectadas (como hoje) |
+| **Session end** | Nada                   | PreCompact digest + Stop flush | Nada (como hoje)            |
+| **Memory load** | MEMORY.md tudo-ou-nada | Progressive HOT/WARM/COLD      | MEMORY.md (como hoje)       |
+| **Agent scope** | Global unico           | Private + Shared por agente    | Global (como hoje)          |
+| **Search**      | Nenhuma                | FTS index + metadata           | Nenhuma (como hoje)         |
+| **Learning**    | Manual                 | Automatico                     | Manual (como hoje)          |
+| **Dead code**   | 2,397 linhas           | Removido                       | Removido (MIS-2)            |
+| **Token usage** | ~10K fixo              | ~2,700 (~73% reducao)          | ~10K (como hoje)            |
+| **Hooks**       | Gemini-only            | Claude Code native             | Hook stubs (no-op)          |
 
 ---
 
@@ -1031,16 +1042,16 @@ gantt
     MIS-7 Auto-Evolution                 :mis7, after mis5, 2d
 ```
 
-| Story | Titulo | Repositorio | Depende De | Horas |
-|-------|--------|-------------|------------|-------|
-| MIS-1 | Investigation & Architecture Design | docs (aiox-core) | — | 12h (Done) |
-| MIS-2 | Dead Code Cleanup & Path Repair | **aiox-core** | MIS-1 | 4h |
-| MIS-3 | Session Digest (PreCompact Hook) | **aiox-core** (hook runner) + **aiox-pro** (digest) | MIS-1 | 14h |
-| MIS-4 | Progressive Memory Retrieval | **aiox-pro** | MIS-3 | 16h |
-| MIS-5 | Self-Learning Engine | **aiox-pro** | MIS-3, MIS-4 | 14h |
-| MIS-6 | Pipeline Integration & Agent Memory API | **aiox-core** (ext points) + **aiox-pro** (loader) | MIS-4 | 10h |
-| MIS-7 | CLAUDE.md & Rules Auto-Evolution | **aiox-pro** | MIS-5 | 8h |
-| **Total** | | | | **~78h** |
+| Story     | Titulo                                  | Repositorio                                         | Depende De   | Horas      |
+| --------- | --------------------------------------- | --------------------------------------------------- | ------------ | ---------- |
+| MIS-1     | Investigation & Architecture Design     | docs (aiox-core)                                    | —            | 12h (Done) |
+| MIS-2     | Dead Code Cleanup & Path Repair         | **aiox-core**                                       | MIS-1        | 4h         |
+| MIS-3     | Session Digest (PreCompact Hook)        | **aiox-core** (hook runner) + **aiox-pro** (digest) | MIS-1        | 14h        |
+| MIS-4     | Progressive Memory Retrieval            | **aiox-pro**                                        | MIS-3        | 16h        |
+| MIS-5     | Self-Learning Engine                    | **aiox-pro**                                        | MIS-3, MIS-4 | 14h        |
+| MIS-6     | Pipeline Integration & Agent Memory API | **aiox-core** (ext points) + **aiox-pro** (loader)  | MIS-4        | 10h        |
+| MIS-7     | CLAUDE.md & Rules Auto-Evolution        | **aiox-pro**                                        | MIS-5        | 8h         |
+| **Total** |                                         |                                                     |              | **~78h**   |
 
 ---
 
@@ -1048,30 +1059,30 @@ gantt
 
 ### Top 3 Repositorios de Inspiracao
 
-| Repo | Fit Score | Pattern Incorporado |
-|------|-----------|-------------------|
-| **basic-memory** | 9/10 | File-first storage (Markdown + frontmatter, git-friendly) |
-| **claude-cognitive** | 9/10 | HOT/WARM/COLD attention tiers, multi-instance memory pool |
-| **openclaw** | 9/10 | Three-tier model, PreCompact session digest |
+| Repo                 | Fit Score | Pattern Incorporado                                       |
+| -------------------- | --------- | --------------------------------------------------------- |
+| **basic-memory**     | 9/10      | File-first storage (Markdown + frontmatter, git-friendly) |
+| **claude-cognitive** | 9/10      | HOT/WARM/COLD attention tiers, multi-instance memory pool |
+| **openclaw**         | 9/10      | Three-tier model, PreCompact session digest               |
 
 ### Documentacao Relacionada
 
-| Recurso | Caminho |
-|---------|---------|
-| Estado Atual (v1.0) | [MEMORY-SYSTEM.md](MEMORY-SYSTEM.md) |
-| Epic MIS Index | [EPIC-MIS-INDEX.md](../stories/epics/epic-memory-intelligence-system/EPIC-MIS-INDEX.md) |
-| MIS-1 Investigation | [story-mis-1-investigation.md](../stories/epics/epic-memory-intelligence-system/story-mis-1-investigation.md) |
-| MIS-2 Dead Code Cleanup | [story-mis-2-dead-code-cleanup.md](../stories/epics/epic-memory-intelligence-system/story-mis-2-dead-code-cleanup.md) |
-| Epic PRO Architecture | [EPIC-PRO-INDEX.md](../stories/epics/epic-pro-aiox-pro-architecture/EPIC-PRO-INDEX.md) |
-| ADR-PRO-001 Repository Strategy | [adr-pro-001-repository-strategy.md](../architecture/adr/adr-pro-001-repository-strategy.md) |
-| ADR-PRO-003 Feature Gating | [adr-pro-003-feature-gating-licensing.md](../architecture/adr/adr-pro-003-feature-gating-licensing.md) |
-| Pro Detector | [bin/utils/pro-detector.js](../../bin/utils/pro-detector.js) |
-| Feature Registry | [pro/feature-registry.yaml](../../pro/feature-registry.yaml) |
+| Recurso                         | Caminho                                                                                                               |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Estado Atual (v1.0)             | [MEMORY-SYSTEM.md](MEMORY-SYSTEM.md)                                                                                  |
+| Epic MIS Index                  | [EPIC-MIS-INDEX.md](../stories/epics/epic-memory-intelligence-system/EPIC-MIS-INDEX.md)                               |
+| MIS-1 Investigation             | [story-mis-1-investigation.md](../stories/epics/epic-memory-intelligence-system/story-mis-1-investigation.md)         |
+| MIS-2 Dead Code Cleanup         | [story-mis-2-dead-code-cleanup.md](../stories/epics/epic-memory-intelligence-system/story-mis-2-dead-code-cleanup.md) |
+| Epic PRO Architecture           | [EPIC-PRO-INDEX.md](../stories/epics/epic-pro-aiox-pro-architecture/EPIC-PRO-INDEX.md)                                |
+| ADR-PRO-001 Repository Strategy | [adr-pro-001-repository-strategy.md](../architecture/adr/adr-pro-001-repository-strategy.md)                          |
+| ADR-PRO-003 Feature Gating      | [adr-pro-003-feature-gating-licensing.md](../architecture/adr/adr-pro-003-feature-gating-licensing.md)                |
+| Pro Detector                    | [bin/utils/pro-detector.js](../../bin/utils/pro-detector.js)                                                          |
+| Feature Registry                | [pro/feature-registry.yaml](../../pro/feature-registry.yaml)                                                          |
 
 ---
 
-*AIOX Memory Intelligence System — Architecture Vision v4.0.4 (Core/Pro Split)*
-*Target state apos Epic MIS completo (7 stories, ~78 horas)*
-*aiox-core: extension points + dead code cleanup*
-*aiox-pro: toda a inteligencia de memoria (Capture, Storage, Retrieval, Evolution)*
-*@architect (Aria) — arquitetando o futuro*
+_AIOX Memory Intelligence System — Architecture Vision v4.0.4 (Core/Pro Split)_
+_Target state apos Epic MIS completo (7 stories, ~78 horas)_
+_aiox-core: extension points + dead code cleanup_
+_aiox-pro: toda a inteligencia de memoria (Capture, Storage, Retrieval, Evolution)_
+_@architect (Aria) — arquitetando o futuro_

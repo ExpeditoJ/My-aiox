@@ -41,49 +41,49 @@ O agente **@architect** (Aria) e o **Holistic System Architect & Full-Stack Tech
 
 ### Arquivos Core de Tasks do @architect
 
-| Arquivo | Comando | Propósito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/architect-analyze-impact.md` | `*analyze-impact` | Analisa impacto de modificacoes em componentes do framework |
-| `.aiox-core/development/tasks/document-project.md` | `*document-project` | Gera documentacao brownfield de projeto existente |
-| `.aiox-core/development/tasks/create-doc.md` | `*create-doc` | Cria documentos a partir de templates YAML |
-| `.aiox-core/development/tasks/collaborative-edit.md` | `*collaborative-edit` | Gerencia sessoes de edicao colaborativa |
-| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research` | Gera prompts de pesquisa profunda |
-| `.aiox-core/development/tasks/execute-checklist.md` | `*execute-checklist` | Executa checklists de validação |
-| `.aiox-core/development/tasks/spec-assess-complexity.md` | `*assess-complexity` | Avalia complexidade de stories (Spec Pipeline) |
+| Arquivo                                                       | Comando               | Propósito                                                   |
+| ------------------------------------------------------------- | --------------------- | ----------------------------------------------------------- |
+| `.aiox-core/development/tasks/architect-analyze-impact.md`    | `*analyze-impact`     | Analisa impacto de modificacoes em componentes do framework |
+| `.aiox-core/development/tasks/document-project.md`            | `*document-project`   | Gera documentacao brownfield de projeto existente           |
+| `.aiox-core/development/tasks/create-doc.md`                  | `*create-doc`         | Cria documentos a partir de templates YAML                  |
+| `.aiox-core/development/tasks/collaborative-edit.md`          | `*collaborative-edit` | Gerencia sessoes de edicao colaborativa                     |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research`           | Gera prompts de pesquisa profunda                           |
+| `.aiox-core/development/tasks/execute-checklist.md`           | `*execute-checklist`  | Executa checklists de validação                             |
+| `.aiox-core/development/tasks/spec-assess-complexity.md`      | `*assess-complexity`  | Avalia complexidade de stories (Spec Pipeline)              |
 
 ### Arquivos de Definição do Agente
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/agents/architect.md` | Definição core do agente Architect |
-| `.claude/commands/AIOX/agents/architect.md` | Comando Claude Code para ativar @architect |
+| Arquivo                                      | Propósito                                  |
+| -------------------------------------------- | ------------------------------------------ |
+| `.aiox-core/development/agents/architect.md` | Definição core do agente Architect         |
+| `.claude/commands/AIOX/agents/architect.md`  | Comando Claude Code para ativar @architect |
 
 ### Arquivos de Templates do @architect
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/product/templates/architecture-tmpl.yaml` | Template para arquitetura backend |
-| `.aiox-core/product/templates/front-end-architecture-tmpl.yaml` | Template para arquitetura frontend |
-| `.aiox-core/product/templates/fullstack-architecture-tmpl.yaml` | Template para arquitetura fullstack |
-| `.aiox-core/product/templates/brownfield-architecture-tmpl.yaml` | Template para projetos brownfield |
+| Arquivo                                                          | Propósito                           |
+| ---------------------------------------------------------------- | ----------------------------------- |
+| `.aiox-core/product/templates/architecture-tmpl.yaml`            | Template para arquitetura backend   |
+| `.aiox-core/product/templates/front-end-architecture-tmpl.yaml`  | Template para arquitetura frontend  |
+| `.aiox-core/product/templates/fullstack-architecture-tmpl.yaml`  | Template para arquitetura fullstack |
+| `.aiox-core/product/templates/brownfield-architecture-tmpl.yaml` | Template para projetos brownfield   |
 
 ### Arquivos de Dados de Suporte
 
-| Arquivo | Propósito |
-|---------|-----------|
+| Arquivo                                                | Propósito                            |
+| ------------------------------------------------------ | ------------------------------------ |
 | `.aiox-core/development/data/technical-preferences.md` | Preferencias tecnicas padrao do AIOX |
 
 ### Arquivos Relacionados de Outros Agentes
 
-| Arquivo | Agente | Propósito |
-|---------|--------|-----------|
-| `.aiox-core/development/tasks/spec-gather-requirements.md` | @pm | Coleta requisitos que alimentam arquitetura |
-| `.aiox-core/development/tasks/spec-research-dependencies.md` | @analyst | Pesquisa dependencias para arquitetura |
-| `.aiox-core/development/tasks/spec-critique.md` | @qa | Valida specs que impactam arquitetura |
-| `.aiox-core/development/tasks/plan-create-implementation.md` | @architect | Cria plano de implementacao pos-spec |
-| `.aiox-core/development/agents/db-sage.md` | @db-sage | Colabora em arquitetura de dados |
-| `.aiox-core/development/agents/ux-design-expert.md` | @ux-design-expert | Colabora em arquitetura frontend |
-| `.aiox-core/development/agents/devops.md` | @devops | Colabora em infraestrutura |
+| Arquivo                                                      | Agente            | Propósito                                   |
+| ------------------------------------------------------------ | ----------------- | ------------------------------------------- |
+| `.aiox-core/development/tasks/spec-gather-requirements.md`   | @pm               | Coleta requisitos que alimentam arquitetura |
+| `.aiox-core/development/tasks/spec-research-dependencies.md` | @analyst          | Pesquisa dependencias para arquitetura      |
+| `.aiox-core/development/tasks/spec-critique.md`              | @qa               | Valida specs que impactam arquitetura       |
+| `.aiox-core/development/tasks/plan-create-implementation.md` | @architect        | Cria plano de implementacao pos-spec        |
+| `.aiox-core/development/agents/db-sage.md`                   | @db-sage          | Colabora em arquitetura de dados            |
+| `.aiox-core/development/agents/ux-design-expert.md`          | @ux-design-expert | Colabora em arquitetura frontend            |
+| `.aiox-core/development/agents/devops.md`                    | @devops           | Colabora em infraestrutura                  |
 
 ---
 
@@ -214,39 +214,39 @@ sequenceDiagram
 
 ### Comandos de Design de Arquitetura
 
-| Comando | Task File / Template | Operacao |
-|---------|---------------------|----------|
-| `*create-full-stack-architecture` | `create-doc.md` + `fullstack-architecture-tmpl.yaml` | Cria arquitetura fullstack completa |
-| `*create-backend-architecture` | `create-doc.md` + `architecture-tmpl.yaml` | Cria arquitetura backend |
-| `*create-front-end-architecture` | `create-doc.md` + `front-end-architecture-tmpl.yaml` | Cria arquitetura frontend |
+| Comando                           | Task File / Template                                  | Operacao                             |
+| --------------------------------- | ----------------------------------------------------- | ------------------------------------ |
+| `*create-full-stack-architecture` | `create-doc.md` + `fullstack-architecture-tmpl.yaml`  | Cria arquitetura fullstack completa  |
+| `*create-backend-architecture`    | `create-doc.md` + `architecture-tmpl.yaml`            | Cria arquitetura backend             |
+| `*create-front-end-architecture`  | `create-doc.md` + `front-end-architecture-tmpl.yaml`  | Cria arquitetura frontend            |
 | `*create-brownfield-architecture` | `create-doc.md` + `brownfield-architecture-tmpl.yaml` | Arquitetura para projetos existentes |
 
 ### Comandos de Analise
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*analyze-impact` | `architect-analyze-impact.md` | Analisa impacto de modificacoes |
-| `*assess-complexity` | `spec-assess-complexity.md` | Avalia complexidade (5 dimensoes) |
-| `*research` | `create-deep-research-prompt.md` | Gera prompt de pesquisa |
+| Comando              | Task File                        | Operacao                          |
+| -------------------- | -------------------------------- | --------------------------------- |
+| `*analyze-impact`    | `architect-analyze-impact.md`    | Analisa impacto de modificacoes   |
+| `*assess-complexity` | `spec-assess-complexity.md`      | Avalia complexidade (5 dimensoes) |
+| `*research`          | `create-deep-research-prompt.md` | Gera prompt de pesquisa           |
 
 ### Comandos de Documentação
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*document-project` | `document-project.md` | Documenta projeto existente |
+| Comando              | Task File              | Operacao                         |
+| -------------------- | ---------------------- | -------------------------------- |
+| `*document-project`  | `document-project.md`  | Documenta projeto existente      |
 | `*execute-checklist` | `execute-checklist.md` | Executa checklist de arquitetura |
-| `*doc-out` | N/A (built-in) | Outputa documento completo |
-| `*shard-prd` | N/A (built-in) | Fragmenta PRD em partes |
+| `*doc-out`           | N/A (built-in)         | Outputa documento completo       |
+| `*shard-prd`         | N/A (built-in)         | Fragmenta PRD em partes          |
 
 ### Comandos Utilitarios
 
-| Comando | Operacao |
-|---------|----------|
-| `*help` | Mostra todos os comandos disponiveis |
-| `*session-info` | Mostra detalhes da sessao atual |
-| `*guide` | Mostra guia de uso do agente |
-| `*yolo` | Toggle para pular confirmacoes |
-| `*exit` | Sai do modo architect |
+| Comando         | Operacao                             |
+| --------------- | ------------------------------------ |
+| `*help`         | Mostra todos os comandos disponiveis |
+| `*session-info` | Mostra detalhes da sessao atual      |
+| `*guide`        | Mostra guia de uso do agente         |
+| `*yolo`         | Toggle para pular confirmacoes       |
+| `*exit`         | Sai do modo architect                |
 
 ---
 
@@ -270,6 +270,7 @@ flowchart LR
 ```
 
 **Papel do @architect:**
+
 - Recebe PRD e front-end-spec
 - Cria fullstack-architecture.md
 - Pode sugerir mudancas no PRD
@@ -295,6 +296,7 @@ flowchart LR
 ```
 
 **Papel do @architect:**
+
 - Analisa projeto existente com `*document-project`
 - Cria brownfield-architecture.md se necessario
 - Identifica technical debt e constraints
@@ -316,6 +318,7 @@ flowchart LR
 ```
 
 **Papel do @architect:**
+
 - **Phase 2 (Assess):** Avalia complexidade usando 5 dimensoes
 - **Phase 6 (Plan):** Cria plano de implementacao pos-aprovacao
 
@@ -324,6 +327,7 @@ flowchart LR
 **Arquivo:** `.aiox-core/development/workflows/qa-loop.yaml`
 
 **Papel do @architect:**
+
 - Recebe escalacoes de specs BLOCKED pelo QA
 - Resolve issues arquiteturais criticos
 
@@ -373,38 +377,38 @@ flowchart TB
 
 ### Boundaries de Responsabilidade
 
-| Responsabilidade | @architect FAZ | @architect DELEGA |
-|------------------|----------------|-------------------|
-| **Database** | Selecao de tecnologia, integracao | Schema design, query optimization -> @db-sage |
-| **Git Operations** | `git status`, `git log`, `git diff` | `git push`, `gh pr create` -> @devops |
-| **Frontend** | Arquitetura de estado, routing | UX/UI design -> @ux-design-expert |
-| **Code** | Patterns, estrutura | Implementacao -> @dev |
-| **Research** | Decisoes tecnologicas | Market research -> @analyst |
+| Responsabilidade   | @architect FAZ                      | @architect DELEGA                             |
+| ------------------ | ----------------------------------- | --------------------------------------------- |
+| **Database**       | Selecao de tecnologia, integracao   | Schema design, query optimization -> @db-sage |
+| **Git Operations** | `git status`, `git log`, `git diff` | `git push`, `gh pr create` -> @devops         |
+| **Frontend**       | Arquitetura de estado, routing      | UX/UI design -> @ux-design-expert             |
+| **Code**           | Patterns, estrutura                 | Implementacao -> @dev                         |
+| **Research**       | Decisoes tecnologicas               | Market research -> @analyst                   |
 
 ### Padrao de Colaboracao com @db-sage
 
 ```yaml
 collaboration_pattern:
-  - question: "Qual banco de dados usar?"
-    answer_by: "@architect"
-    perspective: "Sistema como um todo"
+  - question: 'Qual banco de dados usar?'
+    answer_by: '@architect'
+    perspective: 'Sistema como um todo'
 
-  - question: "Como projetar o schema?"
-    answer_by: "@db-sage"
+  - question: 'Como projetar o schema?'
+    answer_by: '@db-sage'
     handoff: true
 
-  - question: "Como otimizar queries?"
-    answer_by: "@db-sage"
+  - question: 'Como otimizar queries?'
+    answer_by: '@db-sage'
     handoff: true
 
-  - question: "Como integrar data layer?"
-    answer_by: "@architect designs"
-    provides: "@db-sage provides schema"
+  - question: 'Como integrar data layer?'
+    answer_by: '@architect designs'
+    provides: '@db-sage provides schema'
 ```
 
 ---
 
-## Analise de Impacto (*analyze-impact)
+## Analise de Impacto (\*analyze-impact)
 
 ### Fluxo de Analise
 
@@ -461,16 +465,16 @@ flowchart TB
 
 ### Niveis de Risco
 
-| Nivel | Cor | Acao | Exemplos |
-|-------|-----|------|----------|
-| **LOW** | Verde | Note para refatoracao futura | Estilo, otimizacoes menores |
-| **MEDIUM** | Amarelo | Documentar como tech debt | API inconsistente, missing error handling |
-| **HIGH** | Vermelho | Discussao arquitetural imediata | N+1 queries, memory leaks |
-| **CRITICAL** | Vermelho Bold | Bloquear aprovacao | Hardcoded credentials, SQL injection |
+| Nivel        | Cor           | Acao                            | Exemplos                                  |
+| ------------ | ------------- | ------------------------------- | ----------------------------------------- |
+| **LOW**      | Verde         | Note para refatoracao futura    | Estilo, otimizacoes menores               |
+| **MEDIUM**   | Amarelo       | Documentar como tech debt       | API inconsistente, missing error handling |
+| **HIGH**     | Vermelho      | Discussao arquitetural imediata | N+1 queries, memory leaks                 |
+| **CRITICAL** | Vermelho Bold | Bloquear aprovacao              | Hardcoded credentials, SQL injection      |
 
 ---
 
-## Avaliacao de Complexidade (*assess-complexity)
+## Avaliacao de Complexidade (\*assess-complexity)
 
 ### As 5 Dimensoes
 
@@ -525,22 +529,22 @@ graph TD
 
 ### Arquivos de Configuracao Relevantes
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/core-config.yaml` | Configuracao central do framework |
-| `.aiox/project-registry.yaml` | Registro de projetos |
-| `technical-preferences.md` | Preferencias tecnicas (stack, patterns) |
+| Arquivo                       | Propósito                               |
+| ----------------------------- | --------------------------------------- |
+| `.aiox-core/core-config.yaml` | Configuracao central do framework       |
+| `.aiox/project-registry.yaml` | Registro de projetos                    |
+| `technical-preferences.md`    | Preferencias tecnicas (stack, patterns) |
 
 ### Tools Disponiveis para @architect
 
-| Tool | Propósito | Restricoes |
-|------|-----------|------------|
-| `exa` | Pesquisa de tecnologias e best practices | - |
-| `context7` | Documentação de bibliotecas | - |
-| `git` | Read-only: status, log, diff | **NO PUSH** |
-| `supabase-cli` | Arquitetura de database high-level | Schema design -> @db-sage |
-| `railway-cli` | Planejamento de infraestrutura | - |
-| `coderabbit` | Code review para patterns e seguranca | - |
+| Tool           | Propósito                                | Restricoes                |
+| -------------- | ---------------------------------------- | ------------------------- |
+| `exa`          | Pesquisa de tecnologias e best practices | -                         |
+| `context7`     | Documentação de bibliotecas              | -                         |
+| `git`          | Read-only: status, log, diff             | **NO PUSH**               |
+| `supabase-cli` | Arquitetura de database high-level       | Schema design -> @db-sage |
+| `railway-cli`  | Planejamento de infraestrutura           | -                         |
+| `coderabbit`   | Code review para patterns e seguranca    | -                         |
 
 ### Restricoes de Git
 
@@ -553,11 +557,11 @@ git_restrictions:
     - git branch -a
 
   blocked_operations:
-    - git push        # ONLY @github-devops
+    - git push # ONLY @github-devops
     - git push --force
     - gh pr create
 
-  redirect_message: "Para operacoes git push, ative @github-devops"
+  redirect_message: 'Para operacoes git push, ative @github-devops'
 ```
 
 ---
@@ -575,12 +579,12 @@ git_restrictions:
 
 ### Severity Handling
 
-| Severity | Acao | Foco |
-|----------|------|------|
-| **CRITICAL** | Bloquear aprovacao | Vulnerabilidades de seguranca, riscos de integridade |
-| **HIGH** | Flag para discussao | Bottlenecks de performance, anti-patterns |
-| **MEDIUM** | Documentar como tech debt | Maintainability, design patterns |
-| **LOW** | Nota para refatoracao | Consistencia de estilo |
+| Severity     | Acao                      | Foco                                                 |
+| ------------ | ------------------------- | ---------------------------------------------------- |
+| **CRITICAL** | Bloquear aprovacao        | Vulnerabilidades de seguranca, riscos de integridade |
+| **HIGH**     | Flag para discussao       | Bottlenecks de performance, anti-patterns            |
+| **MEDIUM**   | Documentar como tech debt | Maintainability, design patterns                     |
+| **LOW**      | Nota para refatoracao     | Consistencia de estilo                               |
 
 ### Comando de Execucao
 
@@ -627,6 +631,7 @@ wsl bash -c 'cd /mnt/c/... && ~/.local/bin/coderabbit --prompt-only --base main'
 **Causa:** Depth `deep` em codebase grande
 
 **Solucao:**
+
 - Use `--depth shallow` para quick checks
 - Use `--exclude-external` para focar em codigo interno
 - Quebre analise por modulo
@@ -636,6 +641,7 @@ wsl bash -c 'cd /mnt/c/... && ~/.local/bin/coderabbit --prompt-only --base main'
 **Causa:** Template não existe no path especificado
 
 **Solucao:**
+
 1. Verificar `.aiox-core/product/templates/`
 2. Usar `*create-doc` sem template e escolher da lista
 3. Criar template customizado se necessario
@@ -645,6 +651,7 @@ wsl bash -c 'cd /mnt/c/... && ~/.local/bin/coderabbit --prompt-only --base main'
 **Causa:** Duvida sobre quem faz o que
 
 **Solucao:**
+
 ```
 - "Qual database?" -> @architect
 - "Como modelar schema?" -> @db-sage
@@ -656,6 +663,7 @@ wsl bash -c 'cd /mnt/c/... && ~/.local/bin/coderabbit --prompt-only --base main'
 **Causa:** Review demora 7-30 minutos
 
 **Solucao:**
+
 - Use timeout de 15 minutos (900000ms)
 - Se timeout persistir, review ainda esta processando
 - Verifique status com `coderabbit auth status` em WSL
@@ -665,6 +673,7 @@ wsl bash -c 'cd /mnt/c/... && ~/.local/bin/coderabbit --prompt-only --base main'
 **Causa:** @architect e read-only para git push
 
 **Solucao:**
+
 ```
 Ative @github-devops para operacoes de push:
 1. *exit (sair do @architect)
@@ -708,28 +717,28 @@ Ative @github-devops para operacoes de push:
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Nome do Agente** | Aria (Visionary) |
-| **ID** | @architect |
-| **Total de Tasks Core** | 7 task files |
-| **Templates de Arquitetura** | 4 (fullstack, backend, frontend, brownfield) |
-| **Comandos de Design** | 4 (`*create-*-architecture`) |
-| **Comandos de Analise** | 3 (`*analyze-impact`, `*assess-complexity`, `*research`) |
-| **Comandos de Docs** | 3 (`*document-project`, `*execute-checklist`, `*create-doc`) |
-| **Workflows Envolvidos** | 4 (greenfield-fullstack, brownfield-fullstack, spec-pipeline, qa-loop) |
-| **Agentes que Colaboram** | 5 (@pm, @ux-design-expert, @db-sage, @devops, @analyst) |
-| **Restricoes de Git** | Read-only (push -> @devops) |
-| **Tools Externos** | 6 (exa, context7, git, supabase-cli, railway-cli, coderabbit) |
+| Aspecto                      | Detalhes                                                               |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| **Nome do Agente**           | Aria (Visionary)                                                       |
+| **ID**                       | @architect                                                             |
+| **Total de Tasks Core**      | 7 task files                                                           |
+| **Templates de Arquitetura** | 4 (fullstack, backend, frontend, brownfield)                           |
+| **Comandos de Design**       | 4 (`*create-*-architecture`)                                           |
+| **Comandos de Analise**      | 3 (`*analyze-impact`, `*assess-complexity`, `*research`)               |
+| **Comandos de Docs**         | 3 (`*document-project`, `*execute-checklist`, `*create-doc`)           |
+| **Workflows Envolvidos**     | 4 (greenfield-fullstack, brownfield-fullstack, spec-pipeline, qa-loop) |
+| **Agentes que Colaboram**    | 5 (@pm, @ux-design-expert, @db-sage, @devops, @analyst)                |
+| **Restricoes de Git**        | Read-only (push -> @devops)                                            |
+| **Tools Externos**           | 6 (exa, context7, git, supabase-cli, railway-cli, coderabbit)          |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descrição |
-|------|-------|-----------|
+| Data       | Autor      | Descrição                |
+| ---------- | ---------- | ------------------------ |
 | 2026-02-04 | @architect | Documento inicial criado |
 
 ---
 
-*-- Aria, arquitetando o futuro*
+_-- Aria, arquitetando o futuro_

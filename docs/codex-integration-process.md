@@ -18,13 +18,14 @@ Em termos praticos: Codex esta no mesmo trilho arquitetural das integracoes prin
 
 ## Status de Compatibilidade (AIOX 4.2)
 
-| O que você quer fazer | Funciona no Codex? | Como fazer |
-| --- | --- | --- |
-| Ativar agentes AIOX | Works | `/skills` depois escolha `aiox-<agent-id>` |
-| Sincronizar e validar arquivos AIOX | Works | `npm run sync:ide:codex` e `npm run validate:codex-sync` |
-| Checagens automáticas antes/depois de ações | Limited | Rode `npm run validate:parity` manualmente; parte da automação depende de disciplina no fluxo |
+| O que você quer fazer                       | Funciona no Codex? | Como fazer                                                                                    |
+| ------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------- |
+| Ativar agentes AIOX                         | Works              | `/skills` depois escolha `aiox-<agent-id>`                                                    |
+| Sincronizar e validar arquivos AIOX         | Works              | `npm run sync:ide:codex` e `npm run validate:codex-sync`                                      |
+| Checagens automáticas antes/depois de ações | Limited            | Rode `npm run validate:parity` manualmente; parte da automação depende de disciplina no fluxo |
 
 Regra prática para iniciantes:
+
 - Se você quer o máximo de automação (checagens automáticas sem precisar rodar comandos), prefira Claude Code ou Gemini CLI.
 - Se você usa Codex, siga o fluxo local-first: ative agentes via `/skills` e rode os validadores após cada mudança.
 
@@ -74,6 +75,7 @@ Isso evita menu duplicado no `/skills` e reduz drift entre equipe/CI.
 ## Guardrails e Anti-Regressao
 
 Comando consolidado de paridade:
+
 - `npm run validate:parity` (Claude + Codex + Gemini + guardrails de paths/skills)
 
 ### Validadores
@@ -130,27 +132,33 @@ Mitigacao operacional no AIOX:
 ### Skills duplicadas no `/skills`
 
 Causa tipica:
+
 - artefatos duplicados entre `.codex/skills` e `~/.codex/skills`
 
 Correcao:
+
 - manter local-first neste repo
 - evitar sync global durante desenvolvimento local
 
 ### Greeting diferente entre Codex e outros alvos
 
 Causa tipica:
+
 - pular pipeline canonico de greeting
 
 Correcao:
+
 - sempre gerar greeting via `generate-greeting.js` (runtime unificado)
 - garantir skill apontando para agente canonico em `.aiox-core/development/agents/`
 
 ### Drift entre agente canonico e skill
 
 Causa tipica:
+
 - editar skill manualmente sem resync
 
 Correcao:
+
 - rodar `npm run sync:skills:codex`
 - validar com `npm run validate:codex-skills`
 

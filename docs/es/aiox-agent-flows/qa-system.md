@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*test` | Ejecutar tests |
-| `*review` | Revisar codigo |
-| `*validate` | Validar criteria |
-| `*report` | Generar reporte QA |
+| Comando     | Descripcion        |
+| ----------- | ------------------ |
+| `*test`     | Ejecutar tests     |
+| `*review`   | Revisar codigo     |
+| `*validate` | Validar criteria   |
+| `*report`   | Generar reporte QA |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/qa-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

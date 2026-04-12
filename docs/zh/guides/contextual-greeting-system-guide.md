@@ -46,6 +46,7 @@
 ### 待完成 (未来故事 - 6.1.4 或 6.1.6)
 
 **与激活流程的集成:**
+
 - 拦截代理激活 (当您输入 `@dev`、`@po` 等时)
 - 自动调用 GreetingBuilder
 - 在默认问候位置注入上下文问候
@@ -57,12 +58,14 @@
 **何时:** 首次交互或 1 小时不活动后
 
 **特点:**
+
 - 完整介绍 (archetypal 问候)
 - 代理角色描述
 - 项目状态 (如果配置了 git)
 - 完整命令 (visibility=full 的最多 12 个命令)
 
 **示例:**
+
 ```
 💻 Dex (Builder) 准备就绪。让我们构建一些很棒的东西!
 
@@ -87,12 +90,14 @@
 **何时:** 在同一会话中继续工作
 
 **特点:**
+
 - 简短介绍 (named 问候)
 - 项目状态
 - 当前上下文 (上次操作)
 - 快速命令 (visibility=quick 的 6-8 个命令)
 
 **示例:**
+
 ```
 💻 Dex (Builder) 准备就绪。
 
@@ -116,6 +121,7 @@
 **何时:** 在活动工作流中 (例如: 验证故事后)
 
 **特点:**
+
 - 最小介绍 (minimal 问候)
 - 压缩的项目状态
 - 工作流上下文 (正在处理 X)
@@ -123,6 +129,7 @@
 - 关键命令 (visibility=key 的 3-5 个命令)
 
 **示例:**
+
 ```
 ⚖️ Pax 准备就绪。
 
@@ -151,39 +158,42 @@
 ```yaml
 commands:
   - name: help
-    visibility: [full, quick, key]  # 始终可见
-    description: "显示所有可用命令"
+    visibility: [full, quick, key] # 始终可见
+    description: '显示所有可用命令'
 
   - name: develop
-    visibility: [full, quick, key]  # 主要命令
-    description: "实现故事任务"
+    visibility: [full, quick, key] # 主要命令
+    description: '实现故事任务'
 
   - name: review-code
-    visibility: [full, quick]  # 经常使用，但非关键
-    description: "审查代码更改"
+    visibility: [full, quick] # 经常使用，但非关键
+    description: '审查代码更改'
 
   - name: build
-    visibility: [full]  # 不常用，仅在新会话中
-    description: "为生产构建"
+    visibility: [full] # 不常用，仅在新会话中
+    description: '为生产构建'
 
   - name: qa-gate
-    visibility: [key]  # 在工作流中关键，但不总是需要
-    description: "运行质量门禁"
+    visibility: [key] # 在工作流中关键，但不总是需要
+    description: '运行质量门禁'
 ```
 
 ### 分类指南
 
 **`full` (12 个命令)** - 新会话
+
 - 所有可用命令
 - 展示代理的完整能力
 - 适合发现
 
 **`quick` (6-8 个命令)** - 现有会话
+
 - 经常使用的命令
 - 专注于生产力
 - 移除不常用的命令
 
 **`key` (3-5 个命令)** - 工作流会话
+
 - 当前工作流的关键命令
 - 最小干扰
 - 最大效率
@@ -208,6 +218,7 @@ commands:
 ### 状态转换
 
 每个工作流定义状态之间的转换:
+
 - **Trigger:** 成功完成的命令
 - **Greeting Message:** 上下文消息
 - **Next Steps:** 带预填充参数的下一个命令建议
@@ -218,18 +229,18 @@ commands:
 story_development:
   transitions:
     validated:
-      trigger: "validate-story-draft 成功完成"
-      greeting_message: "故事已验证! 准备实现。"
+      trigger: 'validate-story-draft 成功完成'
+      greeting_message: '故事已验证! 准备实现。'
       next_steps:
         - command: develop-yolo
-          args_template: "${story_path}"
-          description: "自主 YOLO 模式 (无中断)"
+          args_template: '${story_path}'
+          description: '自主 YOLO 模式 (无中断)'
         - command: develop-interactive
-          args_template: "${story_path}"
-          description: "交互模式带检查点 (默认)"
+          args_template: '${story_path}'
+          description: '交互模式带检查点 (默认)'
         - command: develop-preflight
-          args_template: "${story_path}"
-          description: "先全部计划，然后执行"
+          args_template: '${story_path}'
+          description: '先全部计划，然后执行'
 ```
 
 ## 如何测试
@@ -241,6 +252,7 @@ node .aiox-core/development/scripts/test-greeting-system.js
 ```
 
 此脚本测试 4 种场景:
+
 1. 新会话问候 (Dev)
 2. 现有会话问候 (Dev)
 3. 工作流会话问候 (PO)
@@ -258,18 +270,17 @@ const mockAgent = {
   icon: '💻',
   persona_profile: {
     greeting_levels: {
-      named: '💻 Dex (Builder) 准备就绪!'
-    }
+      named: '💻 Dex (Builder) 准备就绪!',
+    },
   },
   persona: { role: '开发者' },
-  commands: [
-    { name: 'help', visibility: ['full', 'quick', 'key'] }
-  ]
+  commands: [{ name: 'help', visibility: ['full', 'quick', 'key'] }],
 };
 
 // 测试新会话
-builder.buildGreeting(mockAgent, { conversationHistory: [] })
-  .then(greeting => console.log(greeting));
+builder
+  .buildGreeting(mockAgent, { conversationHistory: [] })
+  .then((greeting) => console.log(greeting));
 ```
 
 ### 选项 3: 等待完整集成
@@ -285,6 +296,7 @@ builder.buildGreeting(mockAgent, { conversationHistory: [] })
 ## 相关文件
 
 ### 核心脚本
+
 - `.aiox-core/core/session/context-detector.js` - 会话类型检测
 - `.aiox-core/infrastructure/scripts/git-config-detector.js` - Git 配置检测
 - `.aiox-core/development/scripts/greeting-builder.js` - 问候构建
@@ -292,18 +304,22 @@ builder.buildGreeting(mockAgent, { conversationHistory: [] })
 - `.aiox-core/development/scripts/agent-exit-hooks.js` - 退出钩子 (用于持久化)
 
 ### 数据文件
+
 - `.aiox-core/data/workflow-patterns.yaml` - 工作流定义
 
 ### 测试
+
 - `tests/unit/context-detector.test.js` - 23 个测试
 - `tests/unit/git-config-detector.test.js` - 19 个测试
 - `tests/unit/greeting-builder.test.js` - 23 个测试
 - `tests/integration/performance.test.js` - 性能验证
 
 ### 配置
+
 - `.aiox-core/core-config.yaml` - 全局配置 (git + agentIdentity 部分)
 
 ### 代理 (已更新)
+
 - `.aiox-core/agents/dev.md` - ✅ 命令可见性元数据
 - `.aiox-core/agents/po.md` - ✅ 命令可见性元数据
 - `.aiox-core/agents/*.md` - ⏳ 剩余 9 个代理 (待更新)
@@ -311,16 +327,19 @@ builder.buildGreeting(mockAgent, { conversationHistory: [] })
 ## 下一步
 
 ### 立即 (修复测试问题)
+
 1. 修复测试配置问题 (1-2 小时)
 2. 运行完整测试套件
 3. 执行性能测试
 
 ### 短期 (Story 6.1.4 或 6.1.6)
+
 1. 实现与代理激活流程的集成
 2. 更新剩余 9 个代理的命令可见性元数据
 3. 使用真实代理激活进行测试
 
 ### 长期 (Story 6.1.2.6)
+
 1. 实现动态工作流模式学习
 2. 添加基于使用的命令优先级
 3. 实现代理协作提示
@@ -328,11 +347,13 @@ builder.buildGreeting(mockAgent, { conversationHistory: [] })
 ## 性能指标
 
 **目标 (来自 Story 6.1.2.5):**
+
 - P50 延迟: <100ms
 - P95 延迟: <130ms
 - P99 延迟: <150ms (硬限制)
 
 **预期 (基于代码审查):**
+
 - Git 配置 (缓存命中): <5ms ✅
 - Git 配置 (缓存未命中): <50ms ✅
 - 上下文检测: <50ms ✅
@@ -341,6 +362,7 @@ builder.buildGreeting(mockAgent, { conversationHistory: [] })
 - **总计 P99:** ~100-120ms ✅ (远低于限制)
 
 **优化:**
+
 - 并行执行 (Promise.all)
 - 基于 TTL 的缓存
 - 超时保护
@@ -349,6 +371,7 @@ builder.buildGreeting(mockAgent, { conversationHistory: [] })
 ## 向后兼容性
 
 **100% 向后兼容:**
+
 - 没有可见性元数据的代理显示所有命令 (最多 12)
 - 任何错误时优雅回退到简单问候
 - 激活流程零破坏性更改

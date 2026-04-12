@@ -9,6 +9,7 @@
 ## 概述
 
 AIOX 2.1引入了新的Squad格式，具有以下特性：
+
 - 任务优先的架构
 - JSON Schema验证
 - 三层级分发
@@ -20,12 +21,12 @@ AIOX 2.1引入了新的Squad格式，具有以下特性：
 
 ### 旧格式的迹象
 
-| 指示器 | 旧版 | 当前 (2.1+) |
-|--------|------|-------------|
-| 清单文件 | `config.yaml` | `squad.yaml` |
-| AIOX类型字段 | 缺失 | `aiox.type: squad` |
-| 最低版本 | 缺失 | `aiox.minVersion: "2.1.0"` |
-| 结构 | Agent优先 | Task优先 |
+| 指示器       | 旧版          | 当前 (2.1+)                |
+| ------------ | ------------- | -------------------------- |
+| 清单文件     | `config.yaml` | `squad.yaml`               |
+| AIOX类型字段 | 缺失          | `aiox.type: squad`         |
+| 最低版本     | 缺失          | `aiox.minVersion: "2.1.0"` |
+| 结构         | Agent优先     | Task优先                   |
 
 ### 检查命令
 
@@ -79,7 +80,7 @@ config.yaml → squad.yaml
 ```yaml
 # 如果缺失，将添加这些字段
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 ```
 
@@ -113,14 +114,15 @@ role: Helper
 
 ```markdown
 # 迁移后: agents/my-agent.md
+
 # my-agent
 
 ACTIVATION-NOTICE: ...
 
 \`\`\`yaml
 agent:
-  name: my-agent
-  ...
+name: my-agent
+...
 \`\`\`
 ```
 
@@ -129,6 +131,7 @@ agent:
 ### 场景1：简单Squad（仅config.yaml）
 
 **迁移前：**
+
 ```
 my-squad/
 ├── config.yaml
@@ -136,11 +139,13 @@ my-squad/
 ```
 
 **命令：**
+
 ```bash
 *migrate-squad ./squads/my-squad
 ```
 
 **迁移后：**
+
 ```
 my-squad/
 ├── squad.yaml         # 已重命名 + 更新
@@ -152,6 +157,7 @@ my-squad/
 ### 场景2：带YAML Agent的Squad
 
 **迁移前：**
+
 ```
 my-squad/
 ├── config.yaml
@@ -160,11 +166,13 @@ my-squad/
 ```
 
 **命令：**
+
 ```bash
 *migrate-squad ./squads/my-squad
 ```
 
 **迁移后：**
+
 ```
 my-squad/
 ├── squad.yaml
@@ -178,6 +186,7 @@ my-squad/
 ### 场景3：部分迁移（已有部分2.1特性）
 
 **迁移前：**
+
 ```
 my-squad/
 ├── squad.yaml         # 已重命名
@@ -187,11 +196,13 @@ my-squad/
 ```
 
 **命令：**
+
 ```bash
 *migrate-squad ./squads/my-squad
 ```
 
 **结果：**
+
 - 将缺失的 `aiox` 字段添加到清单
 - 转换保留的YAML文件
 - 跳过已迁移的文件
@@ -246,7 +257,7 @@ version: 1.0.0
 description: 我的Squad
 
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 components:
@@ -261,6 +272,7 @@ components:
 ```
 
 **解决方案：**
+
 1. 使用linter检查YAML语法
 2. 常见问题：制表符（使用空格）、缺少引号
 3. 修复错误，然后重试迁移
@@ -272,6 +284,7 @@ components:
 ```
 
 **解决方案：**
+
 1. 检查写权限: `chmod 755 ./squads/my-squad`
 2. 检查磁盘空间
 3. 尝试使用sudo（如果适当）
@@ -283,6 +296,7 @@ components:
 ```
 
 **解决方案：**
+
 1. 使用 `--verbose` 查看哪些文件失败
 2. 手动修复有问题的文件
 3. 重新运行迁移
@@ -308,7 +322,7 @@ const { SquadMigrator } = require('./.aiox-core/development/scripts/squad');
 const migrator = new SquadMigrator({
   verbose: true,
   dryRun: false,
-  backupDir: '.backup'
+  backupDir: '.backup',
 });
 
 // 检查是否需要迁移

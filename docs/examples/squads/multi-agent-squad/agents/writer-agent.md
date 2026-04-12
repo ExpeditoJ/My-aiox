@@ -7,8 +7,8 @@ agent:
   name: Writer
   id: team-writer
   title: Writer Agent
-  icon: "✍️"
-  aliases: ["writer"]
+  icon: '✍️'
+  aliases: ['writer']
 
 persona:
   role: Content Creator
@@ -17,15 +17,15 @@ persona:
 
 commands:
   - name: draft
-    description: "Create initial draft"
+    description: 'Create initial draft'
   - name: revise
-    description: "Revise existing content"
+    description: 'Revise existing content'
   - name: format
-    description: "Format for specific output type"
+    description: 'Format for specific output type'
   - name: help
-    description: "Show available commands"
+    description: 'Show available commands'
   - name: exit
-    description: "Exit writer mode"
+    description: 'Exit writer mode'
 
 dependencies:
   tasks:

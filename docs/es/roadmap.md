@@ -86,6 +86,7 @@ Para lo que ya se ha lanzado, consulta [CHANGELOG.md](CHANGELOG.md).
 Esta hoja de ruta es revisada y actualizada mensualmente por los mantenedores del proyecto.
 
 **Proceso:**
+
 1. Revisar progreso de los elementos actuales
 2. Actualizar estado de elementos completados/en progreso
 3. Agregar características recién aprobadas de las discusiones comunitarias
@@ -98,13 +99,14 @@ Esta hoja de ruta es revisada y actualizada mensualmente por los mantenedores de
 
 Esta hoja de ruta pública está sincronizada con nuestra planificación interna de sprints:
 
-| Hoja de Ruta Pública | Seguimiento Interno |
-|----------------|-------------------|
-| [Proyecto de GitHub](https://github.com/orgs/SynkraAI/projects/1) | `docs/stories/backlog.md` |
-| Características de alto nivel | Stories detalladas por sprint |
-| Cronograma trimestral | Ejecución basada en sprints |
+| Hoja de Ruta Pública                                              | Seguimiento Interno           |
+| ----------------------------------------------------------------- | ----------------------------- |
+| [Proyecto de GitHub](https://github.com/orgs/SynkraAI/projects/1) | `docs/stories/backlog.md`     |
+| Características de alto nivel                                     | Stories detalladas por sprint |
+| Cronograma trimestral                                             | Ejecución basada en sprints   |
 
 **Checklist de Sincronización (Mensual):**
+
 - [ ] Revisar sprints completados en `docs/stories/v4.0.4/`
 - [ ] Actualizar estado de elementos del Proyecto de GitHub (Done/In Progress)
 - [ ] Agregar nuevas características aprobadas del backlog al Proyecto
@@ -116,4 +118,4 @@ Esta hoja de ruta representa nuestros planes actuales y está sujeta a cambios b
 
 ---
 
-*Última actualización: 2025-12-10*
+_Última actualización: 2025-12-10_

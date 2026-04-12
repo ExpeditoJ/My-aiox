@@ -28,15 +28,15 @@
 
 ### 核心能力
 
-| 能力                 | 描述                         | Epic  |
-| -------------------- | ---------------------------- | ----- |
-| **Story 隔离**       | 基于 worktree 的分支隔离     | Epic 1 |
-| **项目状态**         | 基于 YAML 的状态跟踪         | Epic 2 |
-| **规格管道**         | 需求 → 规格自动化            | Epic 3 |
-| **实施规划**         | 计划生成和进度跟踪           | Epic 4 |
-| **自愈**             | 卡住检测和恢复               | Epic 5 |
-| **QA 演进**          | 自动审查 → 修复循环          | Epic 6 |
-| **记忆层**           | 模式学习和陷阱文档           | Epic 7 |
+| 能力           | 描述                     | Epic   |
+| -------------- | ------------------------ | ------ |
+| **Story 隔离** | 基于 worktree 的分支隔离 | Epic 1 |
+| **项目状态**   | 基于 YAML 的状态跟踪     | Epic 2 |
+| **规格管道**   | 需求 → 规格自动化        | Epic 3 |
+| **实施规划**   | 计划生成和进度跟踪       | Epic 4 |
+| **自愈**       | 卡住检测和恢复           | Epic 5 |
+| **QA 演进**    | 自动审查 → 修复循环      | Epic 6 |
+| **记忆层**     | 模式学习和陷阱文档       | Epic 7 |
 
 ### 架构图
 
@@ -177,13 +177,13 @@ stories:
 
 **管道阶段:**
 
-| 阶段     | 代理       | 输出              |
-| -------- | ---------- | ----------------- |
-| 1. 收集  | @pm        | requirements.json |
-| 2. 评估  | @architect | complexity.json   |
-| 3. 研究  | @analyst   | research.json     |
-| 4. 编写  | @pm        | spec.md           |
-| 5. 评审  | @qa        | critique.json     |
+| 阶段    | 代理       | 输出              |
+| ------- | ---------- | ----------------- |
+| 1. 收集 | @pm        | requirements.json |
+| 2. 评估 | @architect | complexity.json   |
+| 3. 研究 | @analyst   | research.json     |
+| 4. 编写 | @pm        | spec.md           |
+| 5. 评审 | @qa        | critique.json     |
 
 **复杂性适配:**
 
@@ -237,11 +237,11 @@ stories:
 
 **卡住检测信号:**
 
-| 信号           | 阈值       | 动作           |
-| -------------- | ---------- | -------------- |
-| 相同错误 3 次  | 3 次发生   | 建议替代方案   |
-| 无进展         | 10 分钟    | 请求审查       |
-| 重复回滚       | 2 次回滚   | 升级           |
+| 信号          | 阈值     | 动作         |
+| ------------- | -------- | ------------ |
+| 相同错误 3 次 | 3 次发生 | 建议替代方案 |
+| 无进展        | 10 分钟  | 请求审查     |
+| 重复回滚      | 2 次回滚 | 升级         |
 
 **恢复流程:**
 
@@ -327,12 +327,12 @@ stories:
 
 **记忆类型:**
 
-| 类型         | 描述                    | 存储                              |
-| ------------ | ----------------------- | --------------------------------- |
-| 代码模式     | 来自代码库的可重用模式  | .aiox/patterns/code-patterns.json |
-| 陷阱         | 已知问题和解决方案      | .aiox/patterns/gotchas.json       |
-| 会话洞察     | 会话期间的发现          | .aiox/sessions/                   |
-| 代码库地图   | 项目结构分析            | .aiox/codebase-map.json           |
+| 类型       | 描述                   | 存储                              |
+| ---------- | ---------------------- | --------------------------------- |
+| 代码模式   | 来自代码库的可重用模式 | .aiox/patterns/code-patterns.json |
+| 陷阱       | 已知问题和解决方案     | .aiox/patterns/gotchas.json       |
+| 会话洞察   | 会话期间的发现         | .aiox/sessions/                   |
+| 代码库地图 | 项目结构分析           | .aiox/codebase-map.json           |
 
 ---
 
@@ -340,22 +340,22 @@ stories:
 
 ### 基础设施脚本
 
-| 脚本                       | Epic  | 用途               |
-| -------------------------- | ----- | ------------------ |
-| `worktree-manager.js`      | 1     | Worktree 管理      |
-| `project-status-loader.js` | 2     | YAML 状态跟踪      |
-| `spec-pipeline-runner.js`  | 3     | 规格管道自动化     |
-| `plan-tracker.js`          | 4     | 计划进度跟踪       |
-| `subtask-verifier.js`      | 4     | 子任务验证         |
-| `approach-manager.js`      | 5     | 方法跟踪           |
-| `stuck-detector.js`        | 5     | 卡住状态检测       |
-| `recovery-tracker.js`      | 5     | 恢复日志           |
-| `rollback-manager.js`      | 5     | 回滚管理           |
-| `qa-report-generator.js`   | 6     | QA 报告生成        |
-| `qa-loop-orchestrator.js`  | 6     | QA 循环自动化      |
-| `codebase-mapper.js`       | 7     | 项目结构映射       |
-| `pattern-extractor.js`     | 7     | 模式提取           |
-| `gotchas-documenter.js`    | 7     | 陷阱文档           |
+| 脚本                       | Epic | 用途           |
+| -------------------------- | ---- | -------------- |
+| `worktree-manager.js`      | 1    | Worktree 管理  |
+| `project-status-loader.js` | 2    | YAML 状态跟踪  |
+| `spec-pipeline-runner.js`  | 3    | 规格管道自动化 |
+| `plan-tracker.js`          | 4    | 计划进度跟踪   |
+| `subtask-verifier.js`      | 4    | 子任务验证     |
+| `approach-manager.js`      | 5    | 方法跟踪       |
+| `stuck-detector.js`        | 5    | 卡住状态检测   |
+| `recovery-tracker.js`      | 5    | 恢复日志       |
+| `rollback-manager.js`      | 5    | 回滚管理       |
+| `qa-report-generator.js`   | 6    | QA 报告生成    |
+| `qa-loop-orchestrator.js`  | 6    | QA 循环自动化  |
+| `codebase-mapper.js`       | 7    | 项目结构映射   |
+| `pattern-extractor.js`     | 7    | 模式提取       |
+| `gotchas-documenter.js`    | 7    | 陷阱文档       |
 
 ---
 
@@ -433,12 +433,12 @@ WIS 通过以下方式与 ADE 集成:
 
 ### 错误类别
 
-| 类别     | 处理方式       | 示例         |
-| -------- | -------------- | ------------ |
-| 瞬态     | 重试 (3x)      | 网络超时     |
-| 可恢复   | 替代方法       | Lint 失败    |
-| 阻塞     | 升级           | 安全问题     |
-| 致命     | 停止 + 通知    | 损坏         |
+| 类别   | 处理方式    | 示例      |
+| ------ | ----------- | --------- |
+| 瞬态   | 重试 (3x)   | 网络超时  |
+| 可恢复 | 替代方法    | Lint 失败 |
+| 阻塞   | 升级        | 安全问题  |
+| 致命   | 停止 + 通知 | 损坏      |
 
 ### 恢复策略
 
@@ -465,9 +465,9 @@ strategies:
 
 ## 版本历史
 
-| 版本 | 日期       | 变更                          | 作者              |
-| ---- | ---------- | ----------------------------- | ----------------- |
-| 1.0  | 2026-01-29 | 初始 ADE 架构文档             | Aria (architect)  |
+| 版本 | 日期       | 变更              | 作者             |
+| ---- | ---------- | ----------------- | ---------------- |
+| 1.0  | 2026-01-29 | 初始 ADE 架构文档 | Aria (architect) |
 
 ---
 

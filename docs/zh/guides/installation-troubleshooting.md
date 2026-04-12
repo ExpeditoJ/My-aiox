@@ -14,12 +14,12 @@ npx aiox-core@latest
 
 ## 系统要求
 
-| 要求        | 最低版本     | 检查命令           |
-| ----------- | ------------ | ------------------ |
-| **Node.js** | v18.0.0+     | `node --version`   |
-| **npm**     | v9.0.0+      | `npm --version`    |
-| **npx**     | (npm 5.2+ 包含) | `npx --version` |
-| **Git**     | 任何最近版本 (可选) | `git --version` |
+| 要求        | 最低版本            | 检查命令         |
+| ----------- | ------------------- | ---------------- |
+| **Node.js** | v18.0.0+            | `node --version` |
+| **npm**     | v9.0.0+             | `npm --version`  |
+| **npx**     | (npm 5.2+ 包含)     | `npx --version`  |
+| **Git**     | 任何最近版本 (可选) | `git --version`  |
 
 ### 下载链接
 
@@ -66,16 +66,19 @@ aiox-core
 如果您遇到安装问题，运行我们的诊断工具:
 
 ### Windows (CMD)
+
 ```cmd
 curl -o diagnose.cmd https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/quick-diagnose.cmd && diagnose.cmd
 ```
 
 ### Windows (PowerShell)
+
 ```powershell
 irm https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/quick-diagnose.ps1 | iex
 ```
 
 ### macOS/Linux
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/diagnose-installation.js | node
 ```
@@ -87,12 +90,14 @@ curl -fsSL https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/diagn
 ### 问题 1: "Node.js 版本太旧"
 
 **错误:**
+
 ```
 error engine Unsupported engine
 error notsup Required: {"node":">=18.0.0"}
 ```
 
 **解决方案:**
+
 1. 从 https://nodejs.org/ 下载 Node.js LTS
 2. 安装并重启终端
 3. 验证: `node --version` (应显示 v18+ 或 v20+)
@@ -102,11 +107,13 @@ error notsup Required: {"node":">=18.0.0"}
 ### 问题 2: "npm 版本太旧"
 
 **错误:**
+
 ```
 npm ERR! Required: {"npm":">=9.0.0"}
 ```
 
 **解决方案:**
+
 ```bash
 # 全局更新 npm
 npm install -g npm@latest
@@ -122,6 +129,7 @@ npm --version
 **原因:** npm bin 文件夹不在系统 PATH 中
 
 **解决方案 (Windows):**
+
 1. 查找 npm 前缀: `npm config get prefix`
 2. 添加到 PATH:
    - 按 Win+X → 系统 → 高级系统设置 → 环境变量
@@ -130,6 +138,7 @@ npm --version
 3. 重启终端
 
 **解决方案 (macOS/Linux):**
+
 ```bash
 # 添加到 ~/.bashrc 或 ~/.zshrc
 export PATH="$PATH:$(npm config get prefix)/bin"
@@ -146,6 +155,7 @@ source ~/.bashrc
 以管理员身份运行终端
 
 **解决方案 (macOS/Linux):**
+
 ```bash
 # 修复 npm 权限 (推荐)
 mkdir -p ~/.npm-global
@@ -165,22 +175,26 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 **解决方案:**
 
 1. **检查 npm 注册表:**
+
    ```bash
    npm config get registry
    # 应该是: https://registry.npmjs.org/
    ```
 
 2. **重置注册表:**
+
    ```bash
    npm config set registry https://registry.npmjs.org/
    ```
 
 3. **测试连接:**
+
    ```bash
    npm ping
    ```
 
 4. **在企业代理后面:**
+
    ```bash
    npm config set proxy http://proxy.company.com:8080
    npm config set https-proxy http://proxy.company.com:8080
@@ -196,11 +210,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ### 问题 6: "PowerShell 执行策略" (Windows)
 
 **错误:**
+
 ```
 File cannot be loaded because running scripts is disabled on this system
 ```
 
 **解决方案:**
+
 ```powershell
 # 以管理员身份运行
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -211,6 +227,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### 问题 7: "找不到模块" 或 "缺少依赖"
 
 **解决方案:**
+
 ```bash
 # 清除 npm 缓存
 npm cache clean --force
@@ -227,6 +244,7 @@ npx aiox-core@latest
 ### 问题 8: "SSL/证书错误"
 
 **解决方案:**
+
 ```bash
 # 临时禁用严格 SSL (不推荐用于生产)
 npm config set strict-ssl false
@@ -242,6 +260,7 @@ npm config set cafile /path/to/certificate.pem
 **原因:** npm 缓存提供旧版本
 
 **解决方案:**
+
 ```bash
 # 清除 npx 缓存
 npx clear-npx-cache
@@ -277,6 +296,7 @@ npx aiox-core@latest --version
 ```
 
 **预期输出:**
+
 ```
 v22.x.x (或 v18+/v20+)
 11.x.x (或 v9+)
@@ -296,6 +316,7 @@ v22.x.x (或 v18+/v20+)
 3. **检查系统信息**: `npx aiox-core@latest info`
 
 报告问题时，请包含:
+
 - 操作系统和版本
 - Node.js 版本 (`node --version`)
 - npm 版本 (`npm --version`)
@@ -306,16 +327,16 @@ v22.x.x (或 v18+/v20+)
 
 ## 快速参考
 
-| 命令                             | 描述                    |
-| -------------------------------- | ----------------------- |
-| `npx aiox-core@latest`           | 安装/运行向导            |
-| `npx aiox-core@latest --version` | 显示版本                 |
-| `npx aiox-core@latest --help`    | 显示帮助                 |
-| `npx aiox-core@latest install`   | 在当前目录安装           |
-| `npx aiox-core@latest init <名称>` | 创建新项目             |
-| `npx aiox-core@latest doctor`    | 运行诊断                 |
-| `npx aiox-core@latest info`      | 显示系统信息             |
+| 命令                               | 描述           |
+| ---------------------------------- | -------------- |
+| `npx aiox-core@latest`             | 安装/运行向导  |
+| `npx aiox-core@latest --version`   | 显示版本       |
+| `npx aiox-core@latest --help`      | 显示帮助       |
+| `npx aiox-core@latest install`     | 在当前目录安装 |
+| `npx aiox-core@latest init <名称>` | 创建新项目     |
+| `npx aiox-core@latest doctor`      | 运行诊断       |
+| `npx aiox-core@latest info`        | 显示系统信息   |
 
 ---
 
-*最后更新: 2025年12月 | AIOX-Core v2.2.0*
+_最后更新: 2025年12月 | AIOX-Core v2.2.0_

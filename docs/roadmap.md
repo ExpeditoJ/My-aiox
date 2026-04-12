@@ -44,10 +44,12 @@ Primary objective for AIOX 4.0.x execution:
 - runtime-guided next action (state-driven, not command-list driven)
 
 Tracking reference:
+
 - `docs/strategy/AIOX-LEARNING-CURVE-FOCUS-4.0.4.md`
 - `docs/strategy/AIOX-DIFFERENTIATION-PLAN-4.0.4.md`
 
 Execution gates:
+
 - P0 gate: onboarding metric + clear IDE matrix + first-value flow + smoke tests
 - P1 gate: compatibility contract enforced in CI + risk profiles + handoffs + confidence score
 - P2 gate: vertical tracks reproducible + brownfield pipeline + taxonomy lint
@@ -104,6 +106,7 @@ For what's already shipped, see [CHANGELOG.md](CHANGELOG.md).
 This roadmap is reviewed and updated monthly by the project maintainers.
 
 **Process:**
+
 1. Review progress on current items
 2. Update status of completed/in-progress items
 3. Add newly approved features from community discussions
@@ -116,13 +119,14 @@ This roadmap is reviewed and updated monthly by the project maintainers.
 
 This public roadmap is synchronized with our internal sprint planning:
 
-| Public Roadmap | Internal Tracking |
-|----------------|-------------------|
+| Public Roadmap                                                | Internal Tracking                                  |
+| ------------------------------------------------------------- | -------------------------------------------------- |
 | [GitHub Project](https://github.com/orgs/SynkraAI/projects/1) | `docs/strategy/AIOX-DIFFERENTIATION-PLAN-4.0.4.md` |
-| High-level features | Detailed stories per sprint |
-| Quarterly timeline | Sprint-based execution |
+| High-level features                                           | Detailed stories per sprint                        |
+| Quarterly timeline                                            | Sprint-based execution                             |
 
 **Sync Checklist (Monthly):**
+
 - [ ] Review completed sprints against strategy docs in `docs/strategy/`
 - [ ] Update GitHub Project items status (Done/In Progress)
 - [ ] Add new approved features from backlog to Project
@@ -134,4 +138,4 @@ This roadmap represents our current plans and is subject to change based on comm
 
 ---
 
-*Last updated: 2026-02-16*
+_Last updated: 2026-02-16_

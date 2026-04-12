@@ -54,11 +54,11 @@ O AIOX segue uma estratégia abrangente de testes que garante qualidade de códi
                     └─────────────┘
 ```
 
-| Camada      | Quantidade | Velocidade | Meta de Cobertura    |
-| ----------- | ---------- | ---------- | -------------------- |
-| Unitários   | 100+       | < 30s      | 80%+ de linhas       |
-| Integração  | 30-50      | 1-5m       | Caminhos críticos    |
-| E2E         | 10-20      | 5-15m      | Fluxos de usuário    |
+| Camada     | Quantidade | Velocidade | Meta de Cobertura |
+| ---------- | ---------- | ---------- | ----------------- |
+| Unitários  | 100+       | < 30s      | 80%+ de linhas    |
+| Integração | 30-50      | 1-5m       | Caminhos críticos |
+| E2E        | 10-20      | 5-15m      | Fluxos de usuário |
 
 ---
 
@@ -96,12 +96,12 @@ tests/
 
 ### Convenção de Nomenclatura de Testes
 
-| Tipo        | Padrão                        | Exemplo                              |
-| ----------- | ----------------------------- | ------------------------------------ |
-| Unitário    | `*.test.js` ou `*.spec.js`    | `greeting-builder.test.js`           |
-| Integração  | `*.test.js` em `integration/` | `contextual-greeting.test.js`        |
-| E2E         | `*.test.js` em `e2e/`         | `story-creation-clickup.test.js`     |
-| Benchmark   | `*-benchmark.test.js`         | `decision-logging-benchmark.test.js` |
+| Tipo       | Padrão                        | Exemplo                              |
+| ---------- | ----------------------------- | ------------------------------------ |
+| Unitário   | `*.test.js` ou `*.spec.js`    | `greeting-builder.test.js`           |
+| Integração | `*.test.js` em `integration/` | `contextual-greeting.test.js`        |
+| E2E        | `*.test.js` em `e2e/`         | `story-creation-clickup.test.js`     |
+| Benchmark  | `*-benchmark.test.js`         | `decision-logging-benchmark.test.js` |
 
 ---
 
@@ -376,13 +376,13 @@ describe('Story Creation E2E', () => {
 
 ### Melhores Práticas de Testes E2E
 
-| Prática                    | Descrição                                         |
-| -------------------------- | ------------------------------------------------- |
-| **Ambiente Isolado**       | Cada teste E2E deve ter seus próprios dados       |
-| **Limpeza Explícita**      | Sempre limpar recursos criados                    |
-| **Timeouts Estendidos**    | Testes E2E precisam de timeouts maiores (30-60s)  |
-| **Serviços Reais**         | Usar serviços reais, não mocks                    |
-| **Idempotente**            | Testes devem ser repetíveis                       |
+| Prática                 | Descrição                                        |
+| ----------------------- | ------------------------------------------------ |
+| **Ambiente Isolado**    | Cada teste E2E deve ter seus próprios dados      |
+| **Limpeza Explícita**   | Sempre limpar recursos criados                   |
+| **Timeouts Estendidos** | Testes E2E precisam de timeouts maiores (30-60s) |
+| **Serviços Reais**      | Usar serviços reais, não mocks                   |
+| **Idempotente**         | Testes devem ser repetíveis                      |
 
 ---
 
@@ -392,12 +392,12 @@ Testar agentes de IA requer considerações especiais para comportamento de pers
 
 ### Categorias de Testes de Agentes
 
-| Categoria         | Testa                   | Propósito                              |
-| ----------------- | ----------------------- | -------------------------------------- |
-| **Persona**       | Estilo de resposta, tom | Verificar se agente mantém personagem  |
-| **Comandos**      | Execução de tarefas     | Verificar se comandos funcionam        |
-| **Fallback**      | Tratamento de erros     | Verificar degradação graciosa          |
-| **Compatibilidade** | Suporte legado        | Verificar se agentes antigos funcionam |
+| Categoria           | Testa                   | Propósito                              |
+| ------------------- | ----------------------- | -------------------------------------- |
+| **Persona**         | Estilo de resposta, tom | Verificar se agente mantém personagem  |
+| **Comandos**        | Execução de tarefas     | Verificar se comandos funcionam        |
+| **Fallback**        | Tratamento de erros     | Verificar degradação graciosa          |
+| **Compatibilidade** | Suporte legado          | Verificar se agentes antigos funcionam |
 
 ### Testes de Compatibilidade de Agentes
 
@@ -639,12 +639,12 @@ module.exports = {
 
 ### Metas de Cobertura
 
-| Módulo            | Meta   | Atual | Notas               |
-| ----------------- | ------ | ----- | ------------------- |
-| **Global**        | 30%    | ~31%  | Baseline mínimo     |
-| **Core**          | 45%    | ~47%  | Lógica de negócios  |
-| **Quality Gates** | 80%    | TBD   | Caminho crítico     |
-| **Squad System**  | 70%    | TBD   | Voltado ao usuário  |
+| Módulo            | Meta | Atual | Notas              |
+| ----------------- | ---- | ----- | ------------------ |
+| **Global**        | 30%  | ~31%  | Baseline mínimo    |
+| **Core**          | 45%  | ~47%  | Lógica de negócios |
+| **Quality Gates** | 80%  | TBD   | Caminho crítico    |
+| **Squad System**  | 70%  | TBD   | Voltado ao usuário |
 
 ### Visualizando Relatórios de Cobertura
 
@@ -780,11 +780,11 @@ npm test -- --passWithNoTests --testPathIgnorePatterns=integration,e2e
 
 O Sistema de Quality Gate do AIOX (veja [Guia de Quality Gates](./quality-gates.md)) integra testes em múltiplas camadas:
 
-| Camada      | Tipo de Teste                 | Quando          |
-| ----------- | ----------------------------- | --------------- |
-| **Layer 1** | Unitário + Lint + TypeCheck   | Pre-commit      |
-| **Layer 2** | Integração + Revisão de IA    | Criação de PR   |
-| **Layer 3** | E2E + Revisão Humana          | Antes do merge  |
+| Camada      | Tipo de Teste               | Quando         |
+| ----------- | --------------------------- | -------------- |
+| **Layer 1** | Unitário + Lint + TypeCheck | Pre-commit     |
+| **Layer 2** | Integração + Revisão de IA  | Criação de PR  |
+| **Layer 3** | E2E + Revisão Humana        | Antes do merge |
 
 ---
 
@@ -810,11 +810,11 @@ test('deve calcular preço total com desconto', () => {
 
 ### Diretrizes de Nomenclatura de Testes
 
-| Ruim              | Bom                                                        |
-| ----------------- | ---------------------------------------------------------- |
-| `test('test1')`   | `test('deve retornar null para entrada vazia')`            |
-| `test('works')`   | `test('deve calcular imposto corretamente')`               |
-| `test('error')`   | `test('deve lançar ValidationError para email inválido')`  |
+| Ruim            | Bom                                                       |
+| --------------- | --------------------------------------------------------- |
+| `test('test1')` | `test('deve retornar null para entrada vazia')`           |
+| `test('works')` | `test('deve calcular imposto corretamente')`              |
+| `test('error')` | `test('deve lançar ValidationError para email inválido')` |
 
 ### Casos Extremos a Testar
 
@@ -1057,10 +1057,10 @@ describe('GreetingBuilder', () => {
 
 ### Comandos Básicos
 
-| Comando                 | Descrição                              |
-| ----------------------- | -------------------------------------- |
-| `npm test`              | Executar todos os testes               |
-| `npm run test:watch`    | Executar testes em modo watch          |
+| Comando                 | Descrição                                  |
+| ----------------------- | ------------------------------------------ |
+| `npm test`              | Executar todos os testes                   |
+| `npm run test:watch`    | Executar testes em modo watch              |
 | `npm run test:coverage` | Executar testes com relatório de cobertura |
 
 ### Comandos de Testes Filtrados
@@ -1140,13 +1140,13 @@ npm test -- --changedSince=main
 
 ### Problemas Comuns
 
-| Problema             | Solução                                                    |
-| -------------------- | ---------------------------------------------------------- |
-| Testes com timeout   | Aumentar `testTimeout` na config ou no teste específico    |
-| Testes async travando | Garantir que todas as promises são awaited ou retornadas  |
-| Mock não funcionando | Verificar se mock está antes do `require()`                |
-| Cobertura baixa      | Adicionar padrões `--collectCoverageFrom`                  |
-| Testes flaky         | Verificar estado compartilhado, usar limpeza em `beforeEach` |
+| Problema              | Solução                                                      |
+| --------------------- | ------------------------------------------------------------ |
+| Testes com timeout    | Aumentar `testTimeout` na config ou no teste específico      |
+| Testes async travando | Garantir que todas as promises são awaited ou retornadas     |
+| Mock não funcionando  | Verificar se mock está antes do `require()`                  |
+| Cobertura baixa       | Adicionar padrões `--collectCoverageFrom`                    |
+| Testes flaky          | Verificar estado compartilhado, usar limpeza em `beforeEach` |
 
 ### Debugando Testes Travados
 

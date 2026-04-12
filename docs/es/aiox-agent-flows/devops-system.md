@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*push` | Push para remote |
-| `*deploy` | Deploy aplicacion |
-| `*pipeline` | Gestionar CI/CD |
-| `*add-mcp` | Agregar MCP server |
+| Comando     | Descripcion        |
+| ----------- | ------------------ |
+| `*push`     | Push para remote   |
+| `*deploy`   | Deploy aplicacion  |
+| `*pipeline` | Gestionar CI/CD    |
+| `*add-mcp`  | Agregar MCP server |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/devops-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

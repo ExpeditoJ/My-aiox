@@ -416,12 +416,12 @@ dependencies:
 
 ### Migración desde Squads
 
-| Legacy (Deprecado)              | Actual (Squads)                 |
-| ------------------------------- | ------------------------------- |
-| Directorio `Squads/`            | Template `templates/squad/`     |
+| Legacy (Deprecado)           | Actual (Squads)                 |
+| ---------------------------- | ------------------------------- |
+| Directorio `Squads/`         | Template `templates/squad/`     |
 | Config `legacyPacksLocation` | Config `squadsTemplateLocation` |
-| Manifiesto `pack.yaml`          | Manifiesto `squad.yaml`         |
-| Carga directa                   | Creación basada en template     |
+| Manifiesto `pack.yaml`       | Manifiesto `squad.yaml`         |
+| Carga directa                | Creación basada en template     |
 
 ---
 

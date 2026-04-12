@@ -25,13 +25,13 @@ Workflow para evolucionar frontends existentes, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Requisitos de UI |
+| Agente            | Rol               |
+| ----------------- | ----------------- |
+| @pm               | Requisitos de UI  |
 | @ux-design-expert | Diseno de cambios |
-| @dev | Implementacion |
-| @qa | Tests de UI |
-| @devops | Deploy |
+| @dev              | Implementacion    |
+| @qa               | Tests de UI       |
+| @devops           | Deploy            |
 
 ## Ver Mas
 
@@ -39,4 +39,4 @@ Workflow para evolucionar frontends existentes, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

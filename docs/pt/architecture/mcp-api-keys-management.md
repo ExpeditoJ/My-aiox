@@ -46,12 +46,12 @@ AIOX utiliza Docker MCP Toolkit como a infraestrutura principal de MCP:
 
 ## Servidores MCP Suportados
 
-| Servidor MCP | Chave Necessária | Variável de Ambiente | Localização |
-|--------------|------------------|---------------------|-------------|
-| EXA | Sim | `EXA_API_KEY` | Docker MCP config.yaml |
-| Context7 | Não | N/A | N/A |
-| Apify | Sim | `APIFY_API_TOKEN` | Docker MCP docker-mcp.yaml |
-| Playwright | Não | N/A | N/A |
+| Servidor MCP | Chave Necessária | Variável de Ambiente | Localização                |
+| ------------ | ---------------- | -------------------- | -------------------------- |
+| EXA          | Sim              | `EXA_API_KEY`        | Docker MCP config.yaml     |
+| Context7     | Não              | N/A                  | N/A                        |
+| Apify        | Sim              | `APIFY_API_TOKEN`    | Docker MCP docker-mcp.yaml |
+| Playwright   | Não              | N/A                  | N/A                        |
 
 ---
 
@@ -68,7 +68,7 @@ Localização: `~/.docker/mcp/config.yaml`
 ```yaml
 # ~/.docker/mcp/config.yaml
 apiKeys:
-  exa: "sua-chave-api-exa-aqui"
+  exa: 'sua-chave-api-exa-aqui'
 ```
 
 **Para servidores que requerem variáveis de ambiente (Apify, etc.):**
@@ -80,7 +80,7 @@ Localização: `~/.docker/mcp/catalogs/docker-mcp.yaml`
 apify:
   env:
     - name: APIFY_API_TOKEN
-      value: 'seu-token-apify-aqui'  # Hardcode diretamente (ver Problemas Conhecidos)
+      value: 'seu-token-apify-aqui' # Hardcode diretamente (ver Problemas Conhecidos)
 ```
 
 ### Método 2: Variáveis de Ambiente
@@ -109,13 +109,13 @@ APIFY_API_TOKEN=seu-token-apify
 
 **IMPORTANTE:** Todo o gerenciamento de infraestrutura MCP é tratado EXCLUSIVAMENTE pelo **Agente DevOps (@devops / Gage)**.
 
-| Operação | Agente | Comando |
-|----------|--------|---------|
-| Buscar catálogo MCP | DevOps | `*search-mcp` |
-| Adicionar servidor MCP | DevOps | `*add-mcp` |
-| Listar MCPs habilitados | DevOps | `*list-mcps` |
-| Remover servidor MCP | DevOps | `*remove-mcp` |
-| Configurar Docker MCP | DevOps | `*setup-mcp-docker` |
+| Operação                | Agente | Comando             |
+| ----------------------- | ------ | ------------------- |
+| Buscar catálogo MCP     | DevOps | `*search-mcp`       |
+| Adicionar servidor MCP  | DevOps | `*add-mcp`          |
+| Listar MCPs habilitados | DevOps | `*list-mcps`        |
+| Remover servidor MCP    | DevOps | `*remove-mcp`       |
+| Configurar Docker MCP   | DevOps | `*setup-mcp-docker` |
 
 Outros agentes (Dev, Architect, etc.) são **consumidores** de MCP, não administradores.
 
@@ -149,6 +149,7 @@ Outros agentes (Dev, Architect, etc.) são **consumidores** de MCP, não adminis
 **Problema:** O armazenamento de secrets do Docker MCP Toolkit e a interpolação de templates não funcionam corretamente. Credenciais configuradas via `docker mcp secret set` NÃO são passadas para os containers.
 
 **Sintomas:**
+
 - `docker mcp tools ls` mostra "(N prompts)" em vez de "(N tools)"
 - Servidor MCP inicia mas falha na autenticação
 - Saída verbose mostra `-e ENV_VAR` sem valores
@@ -160,7 +161,7 @@ Outros agentes (Dev, Architect, etc.) são **consumidores** de MCP, não adminis
 apify:
   env:
     - name: APIFY_API_TOKEN
-      value: 'valor-real-do-token'  # Hardcode diretamente
+      value: 'valor-real-do-token' # Hardcode diretamente
 ```
 
 **MCPs Afetados:** Qualquer MCP que requer autenticação (Apify, Notion, Slack, etc.)
@@ -229,10 +230,10 @@ Isso indica o bug de secrets. Use a solução hardcodeada no docker-mcp.yaml.
 
 ## Fontes de Chaves de API
 
-| Serviço | Obter Chave de API | Documentação |
-|---------|-------------------|--------------|
-| EXA | [dashboard.exa.ai](https://dashboard.exa.ai) | [docs.exa.ai](https://docs.exa.ai) |
-| Apify | [console.apify.com](https://console.apify.com) | [docs.apify.com](https://docs.apify.com) |
+| Serviço | Obter Chave de API                             | Documentação                             |
+| ------- | ---------------------------------------------- | ---------------------------------------- |
+| EXA     | [dashboard.exa.ai](https://dashboard.exa.ai)   | [docs.exa.ai](https://docs.exa.ai)       |
+| Apify   | [console.apify.com](https://console.apify.com) | [docs.apify.com](https://docs.apify.com) |
 
 ---
 

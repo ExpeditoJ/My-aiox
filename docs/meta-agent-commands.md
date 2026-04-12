@@ -43,7 +43,7 @@ All meta-agent commands follow this pattern:
 
 ## Core Commands
 
-### *help
+### \*help
 
 Display all available commands or get help for specific command.
 
@@ -53,7 +53,7 @@ Display all available commands or get help for specific command.
 *help --category agents  # Commands by category
 ```
 
-### *status
+### \*status
 
 Show current system status and active agents.
 
@@ -63,7 +63,7 @@ Show current system status and active agents.
 *status --health        # Health check results
 ```
 
-### *config
+### \*config
 
 View or modify configuration.
 
@@ -74,7 +74,7 @@ View or modify configuration.
 *config --export        # Export configuration
 ```
 
-### *version
+### \*version
 
 Display version information.
 
@@ -86,7 +86,7 @@ Display version information.
 
 ## Agent Management
 
-### *create-agent
+### \*create-agent
 
 Create a new AI agent.
 
@@ -105,7 +105,7 @@ Examples:
 *create-agent custom-bot --from-file agents/template.yaml
 ```
 
-### *list-agents
+### \*list-agents
 
 List all available agents.
 
@@ -116,7 +116,7 @@ List all available agents.
 *list-agents --detailed          # Show full details
 ```
 
-### *activate
+### \*activate
 
 Activate an agent for use.
 
@@ -127,7 +127,7 @@ Activate an agent for use.
 *activate --type assistant       # Activate by type
 ```
 
-### *deactivate
+### \*deactivate
 
 Deactivate an agent.
 
@@ -137,7 +137,7 @@ Deactivate an agent.
 *deactivate --except agent1     # Deactivate all except specified
 ```
 
-### *modify-agent
+### \*modify-agent
 
 Modify existing agent configuration.
 
@@ -157,7 +157,7 @@ Examples:
 *modify-agent bot --interactive
 ```
 
-### *delete-agent
+### \*delete-agent
 
 Remove an agent (with confirmation).
 
@@ -167,7 +167,7 @@ Remove an agent (with confirmation).
 *delete-agent --backup         # Create backup before deletion
 ```
 
-### *clone-agent
+### \*clone-agent
 
 Create a copy of existing agent.
 
@@ -178,7 +178,7 @@ Create a copy of existing agent.
 
 ## Task Operations
 
-### *create-task
+### \*create-task
 
 Create a new reusable task.
 
@@ -197,7 +197,7 @@ Examples:
 *create-task code-metrics --template analyzer
 ```
 
-### *list-tasks
+### \*list-tasks
 
 List available tasks.
 
@@ -208,7 +208,7 @@ List available tasks.
 *list-tasks --search <query>  # Search tasks
 ```
 
-### *run-task
+### \*run-task
 
 Execute a specific task.
 
@@ -221,7 +221,7 @@ Examples:
 *run-task backup-database --incremental
 ```
 
-### *schedule-task
+### \*schedule-task
 
 Schedule task execution.
 
@@ -240,7 +240,7 @@ Examples:
 *schedule-task backup --at "03:00" --on "sunday"
 ```
 
-### *modify-task
+### \*modify-task
 
 Update task configuration.
 
@@ -256,7 +256,7 @@ Options:
 
 ## Workflow Commands
 
-### *create-workflow
+### \*create-workflow
 
 Create automated workflow.
 
@@ -275,7 +275,7 @@ Examples:
 *create-workflow deployment --template standard-deploy
 ```
 
-### *list-workflows
+### \*list-workflows
 
 Display available workflows.
 
@@ -286,7 +286,7 @@ Display available workflows.
 *list-workflows --failed       # Failed executions
 ```
 
-### *run-workflow
+### \*run-workflow
 
 Execute a workflow.
 
@@ -305,7 +305,7 @@ Examples:
 *run-workflow test-suite --dry-run
 ```
 
-### *stop-workflow
+### \*stop-workflow
 
 Stop running workflow.
 
@@ -315,7 +315,7 @@ Stop running workflow.
 *stop-workflow --force        # Force stop
 ```
 
-### *workflow-status
+### \*workflow-status
 
 Check workflow execution status.
 
@@ -327,7 +327,7 @@ Check workflow execution status.
 
 ## Code Generation
 
-### *generate-component
+### \*generate-component
 
 Generate new components with AI assistance.
 
@@ -348,7 +348,7 @@ Examples:
 *generate-component CustomButton --template material-ui
 ```
 
-### *generate-api
+### \*generate-api
 
 Generate API endpoints.
 
@@ -369,7 +369,7 @@ Examples:
 *generate-api analytics --operations "read" --tests
 ```
 
-### *generate-tests
+### \*generate-tests
 
 Generate test suites.
 
@@ -389,7 +389,7 @@ Examples:
 *generate-tests --type e2e --framework cypress
 ```
 
-### *generate-documentation
+### \*generate-documentation
 
 Generate documentation.
 
@@ -411,7 +411,7 @@ Examples:
 
 ## Analysis & Improvement
 
-### *analyze-framework
+### \*analyze-framework
 
 Analyze entire codebase.
 
@@ -431,7 +431,7 @@ Examples:
 *analyze-framework --save-report reports/analysis.json
 ```
 
-### *analyze-code
+### \*analyze-code
 
 Analyze specific code files.
 
@@ -451,7 +451,7 @@ Examples:
 *analyze-code package.json --dependencies
 ```
 
-### *improve-code-quality
+### \*improve-code-quality
 
 Improve code quality with AI assistance.
 
@@ -471,7 +471,7 @@ Examples:
 *improve-code-quality src/api.js --fix-eslint --add-comments
 ```
 
-### *suggest-refactoring
+### \*suggest-refactoring
 
 Get refactoring suggestions.
 
@@ -491,7 +491,7 @@ Examples:
 *suggest-refactoring src/app.js --preview --impact-analysis
 ```
 
-### *detect-patterns
+### \*detect-patterns
 
 Detect code patterns and anti-patterns.
 
@@ -512,7 +512,7 @@ Examples:
 
 ## Memory Layer
 
-### *memory
+### \*memory
 
 Memory layer operations.
 
@@ -535,7 +535,7 @@ Examples:
 *memory optimize --aggressive
 ```
 
-### *learn
+### \*learn
 
 Learn from code changes and patterns.
 
@@ -555,7 +555,7 @@ Examples:
 *learn --focus "error-handling,api-calls"
 ```
 
-### *remember
+### \*remember
 
 Store important information in memory.
 
@@ -574,7 +574,7 @@ Examples:
 *remember temp-fix "skip-test-x" --expires "1 week"
 ```
 
-### *forget
+### \*forget
 
 Remove information from memory.
 
@@ -587,7 +587,7 @@ Remove information from memory.
 
 ## Self-Modification
 
-### *improve-self
+### \*improve-self
 
 Meta-agent self-improvement.
 
@@ -607,7 +607,7 @@ Examples:
 *improve-self --aspect features --backup
 ```
 
-### *evolve
+### \*evolve
 
 Evolve capabilities based on usage.
 
@@ -627,7 +627,7 @@ Examples:
 *evolve --fitness-metric "task-success-rate" --rollback-point
 ```
 
-### *adapt
+### \*adapt
 
 Adapt to project-specific needs.
 
@@ -646,7 +646,7 @@ Examples:
 *adapt --to domain --preserve "core-functions"
 ```
 
-### *optimize-performance
+### \*optimize-performance
 
 Optimize meta-agent performance.
 
@@ -668,7 +668,7 @@ Examples:
 
 ## System Commands
 
-### *backup
+### \*backup
 
 Create system backup.
 
@@ -688,7 +688,7 @@ Examples:
 *backup --exclude memory --encrypt
 ```
 
-### *restore
+### \*restore
 
 Restore from backup.
 
@@ -707,7 +707,7 @@ Examples:
 *restore latest-backup --preview
 ```
 
-### *update
+### \*update
 
 Update Synkra AIOX.
 
@@ -727,7 +727,7 @@ Examples:
 *update --beta --force
 ```
 
-### *uninstall
+### \*uninstall
 
 Uninstall components or entire system.
 
@@ -746,7 +746,7 @@ Examples:
 *uninstall memory-layer --dry-run
 ```
 
-### *doctor
+### \*doctor
 
 System diagnostics and repair.
 
@@ -768,7 +768,7 @@ Examples:
 
 ## Advanced Commands
 
-### *export
+### \*export
 
 Export configurations, agents, or data.
 
@@ -794,7 +794,7 @@ Examples:
 *export all --format archive --destination backup.zip
 ```
 
-### *import
+### \*import
 
 Import configurations, agents, or data.
 
@@ -814,7 +814,7 @@ Examples:
 *import backup.zip --dry-run
 ```
 
-### *benchmark
+### \*benchmark
 
 Run performance benchmarks.
 
@@ -840,7 +840,7 @@ Examples:
 *benchmark memory --profile --save-results
 ```
 
-### *debug
+### \*debug
 
 Debug mode operations.
 
@@ -865,7 +865,7 @@ Examples:
 *debug trace create-agent --save debug-session.log
 ```
 
-### *plugin
+### \*plugin
 
 Plugin management.
 
@@ -888,7 +888,7 @@ Options:
 Examples:
 *plugin install code-formatter --enable
 *plugin create my-custom-plugin --dev
-*plugin search "testing" 
+*plugin search "testing"
 *plugin list --detailed
 ```
 

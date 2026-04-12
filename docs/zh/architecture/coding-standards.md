@@ -149,7 +149,7 @@ const agentName = 'developer';
 const message = `Agent ${agentName} activated`;
 
 // ❌ 不好: 双引号 (JSON 除外)
-const agentName = "developer";
+const agentName = 'developer';
 ```
 
 ### 现代 JavaScript 模式
@@ -881,10 +881,10 @@ jobs:
 
 ## 版本历史
 
-| 版本 | 日期       | 变更                                                        | 作者            |
-| ---- | ---------- | ----------------------------------------------------------- | --------------- |
-| 1.0  | 2025-01-15 | 编码标准初始文档                                           | Aria (architect)|
-| 1.1  | 2025-12-14 | 更新迁移通知为 SynkraAI/aiox-core [Story 6.10]  | Dex (dev)       |
+| 版本 | 日期       | 变更                                           | 作者             |
+| ---- | ---------- | ---------------------------------------------- | ---------------- |
+| 1.0  | 2025-01-15 | 编码标准初始文档                               | Aria (architect) |
+| 1.1  | 2025-12-14 | 更新迁移通知为 SynkraAI/aiox-core [Story 6.10] | Dex (dev)        |
 
 ---
 

@@ -27,15 +27,15 @@ El **Motor de Desarrollo Autónomo (ADE)** es la infraestructura de AIOX para fl
 
 ### Capacidades Clave
 
-| Capacidad                      | Descripción                                      | Epic   |
-| ------------------------------ | ------------------------------------------------ | ------ |
-| **Aislamiento de Historias**   | Aislamiento de rama basado en git worktree      | Epic 1 |
-| **Estado del Proyecto**         | Seguimiento del estado del proyecto basado en YAML | Epic 2 |
-| **Pipeline de Especificaciones** | Automatización de Requisitos → Especificación    | Epic 3 |
-| **Planificación de Implementación** | Generación de planes y seguimiento de progreso | Epic 4 |
-| **Autorreparación**             | Detección de estancamiento y recuperación        | Epic 5 |
-| **Evolución de QA**             | Bucles de revisión automatizada → corrección     | Epic 6 |
-| **Capa de Memoria**             | Aprendizaje de patrones y documentación de gotchas | Epic 7 |
+| Capacidad                           | Descripción                                        | Epic   |
+| ----------------------------------- | -------------------------------------------------- | ------ |
+| **Aislamiento de Historias**        | Aislamiento de rama basado en git worktree         | Epic 1 |
+| **Estado del Proyecto**             | Seguimiento del estado del proyecto basado en YAML | Epic 2 |
+| **Pipeline de Especificaciones**    | Automatización de Requisitos → Especificación      | Epic 3 |
+| **Planificación de Implementación** | Generación de planes y seguimiento de progreso     | Epic 4 |
+| **Autorreparación**                 | Detección de estancamiento y recuperación          | Epic 5 |
+| **Evolución de QA**                 | Bucles de revisión automatizada → corrección       | Epic 6 |
+| **Capa de Memoria**                 | Aprendizaje de patrones y documentación de gotchas | Epic 7 |
 
 ### Diagrama de Arquitectura
 
@@ -176,13 +176,13 @@ Componentes:
 
 **Fases del Pipeline:**
 
-| Fase         | Agente      | Salida            |
-| ------------ | ----------- | ----------------- |
-| 1. Recopilar | @pm         | requirements.json |
-| 2. Evaluar   | @architect  | complexity.json   |
-| 3. Investigar | @analyst    | research.json     |
-| 4. Escribir  | @pm         | spec.md           |
-| 5. Crítica   | @qa         | critique.json     |
+| Fase          | Agente     | Salida            |
+| ------------- | ---------- | ----------------- |
+| 1. Recopilar  | @pm        | requirements.json |
+| 2. Evaluar    | @architect | complexity.json   |
+| 3. Investigar | @analyst   | research.json     |
+| 4. Escribir   | @pm        | spec.md           |
+| 5. Crítica    | @qa        | critique.json     |
 
 **Adaptación de Complejidad:**
 
@@ -236,11 +236,11 @@ Componentes:
 
 **Señales de Detección de Estancamiento:**
 
-| Señal                | Umbral        | Acción              |
-| -------------------- | ------------- | ------------------- |
-| Mismo error 3x       | 3 ocurrencias | Sugerir alternativa  |
-| Sin progreso         | 10 minutos    | Solicitar revisión   |
-| Reversión repetida   | 2 reversiones | Escalar              |
+| Señal              | Umbral        | Acción              |
+| ------------------ | ------------- | ------------------- |
+| Mismo error 3x     | 3 ocurrencias | Sugerir alternativa |
+| Sin progreso       | 10 minutos    | Solicitar revisión  |
+| Reversión repetida | 2 reversiones | Escalar             |
 
 **Flujo de Recuperación:**
 
@@ -326,12 +326,12 @@ Componentes:
 
 **Tipos de Memoria:**
 
-| Tipo              | Descripción                     | Almacenamiento                    |
-| ----------------- | ------------------------------- | --------------------------------- |
-| Patrones de Código | Patrones reutilizables de la base de código | .aiox/patterns/code-patterns.json |
-| Gotchas           | Trampas conocidas y soluciones  | .aiox/patterns/gotchas.json       |
-| Insights de Sesión | Descubrimientos durante sesiones | .aiox/sessions/                   |
-| Mapa de Base de Código | Análisis de estructura del proyecto | .aiox/codebase-map.json           |
+| Tipo                   | Descripción                                 | Almacenamiento                    |
+| ---------------------- | ------------------------------------------- | --------------------------------- |
+| Patrones de Código     | Patrones reutilizables de la base de código | .aiox/patterns/code-patterns.json |
+| Gotchas                | Trampas conocidas y soluciones              | .aiox/patterns/gotchas.json       |
+| Insights de Sesión     | Descubrimientos durante sesiones            | .aiox/sessions/                   |
+| Mapa de Base de Código | Análisis de estructura del proyecto         | .aiox/codebase-map.json           |
 
 ---
 
@@ -339,29 +339,29 @@ Componentes:
 
 ### Scripts de Infraestructura
 
-| Script                     | Epic | Propósito                      |
-| -------------------------- | ---- | ------------------------------ |
-| `worktree-manager.js`      | 1    | Gestión de worktree de Git     |
-| `project-status-loader.js` | 2    | Seguimiento de estado YAML     |
-| `spec-pipeline-runner.js`  | 3    | Automatización de pipeline spec |
+| Script                     | Epic | Propósito                         |
+| -------------------------- | ---- | --------------------------------- |
+| `worktree-manager.js`      | 1    | Gestión de worktree de Git        |
+| `project-status-loader.js` | 2    | Seguimiento de estado YAML        |
+| `spec-pipeline-runner.js`  | 3    | Automatización de pipeline spec   |
 | `plan-tracker.js`          | 4    | Seguimiento del progreso del plan |
-| `subtask-verifier.js`      | 4    | Verificación de subtareas      |
-| `approach-manager.js`      | 5    | Seguimiento de enfoque         |
-| `stuck-detector.js`        | 5    | Detección de estado atascado   |
-| `recovery-tracker.js`      | 5    | Registro de recuperación       |
-| `rollback-manager.js`      | 5    | Gestión de reversión           |
-| `qa-report-generator.js`   | 6    | Generación de reporte QA       |
-| `qa-loop-orchestrator.js`  | 6    | Automatización del bucle QA    |
-| `codebase-mapper.js`       | 7    | Mapeo de estructura del proyecto |
-| `pattern-extractor.js`     | 7    | Extracción de patrones         |
-| `gotchas-documenter.js`    | 7    | Documentación de gotchas       |
+| `subtask-verifier.js`      | 4    | Verificación de subtareas         |
+| `approach-manager.js`      | 5    | Seguimiento de enfoque            |
+| `stuck-detector.js`        | 5    | Detección de estado atascado      |
+| `recovery-tracker.js`      | 5    | Registro de recuperación          |
+| `rollback-manager.js`      | 5    | Gestión de reversión              |
+| `qa-report-generator.js`   | 6    | Generación de reporte QA          |
+| `qa-loop-orchestrator.js`  | 6    | Automatización del bucle QA       |
+| `codebase-mapper.js`       | 7    | Mapeo de estructura del proyecto  |
+| `pattern-extractor.js`     | 7    | Extracción de patrones            |
+| `gotchas-documenter.js`    | 7    | Documentación de gotchas          |
 
 ### Flujos de Trabajo
 
-| Flujo                | Propósito          | Fases                                    |
-| -------------------- | ------------------ | ---------------------------------------- |
-| `spec-pipeline.yaml` | Requisitos → Spec  | 5-8 fases según complejidad              |
-| `qa-loop.yaml`       | Revisar → Bucle de corrección | 5 fases, máx 5 iteraciones     |
+| Flujo                | Propósito                     | Fases                       |
+| -------------------- | ----------------------------- | --------------------------- |
+| `spec-pipeline.yaml` | Requisitos → Spec             | 5-8 fases según complejidad |
+| `qa-loop.yaml`       | Revisar → Bucle de corrección | 5 fases, máx 5 iteraciones  |
 
 ### Tareas
 
@@ -545,12 +545,12 @@ WIS se integra con ADE a través de:
 
 ### Categorías de Error
 
-| Categoría  | Manejo               | Ejemplo             |
-| ---------- | -------------------- | ------------------- |
-| Transitorio | Reintentar (3x)      | Tiempo de espera de red |
-| Recuperable | Enfoque alternativo  | Fallo de lint       |
-| Bloqueante  | Escalar              | Problema de seguridad |
-| Fatal      | Detener + notificar  | Corrupción          |
+| Categoría   | Manejo              | Ejemplo                 |
+| ----------- | ------------------- | ----------------------- |
+| Transitorio | Reintentar (3x)     | Tiempo de espera de red |
+| Recuperable | Enfoque alternativo | Fallo de lint           |
+| Bloqueante  | Escalar             | Problema de seguridad   |
+| Fatal       | Detener + notificar | Corrupción              |
 
 ### Estrategias de Recuperación
 
@@ -577,9 +577,9 @@ estrategias:
 
 ## Historial de Versiones
 
-| Versión | Fecha      | Cambios                                    | Autor            |
-| ------- | ---------- | ------------------------------------------ | ---------------- |
-| 1.0     | 2026-01-29 | Documentación inicial de arquitectura ADE  | Aria (architect) |
+| Versión | Fecha      | Cambios                                   | Autor            |
+| ------- | ---------- | ----------------------------------------- | ---------------- |
+| 1.0     | 2026-01-29 | Documentación inicial de arquitectura ADE | Aria (architect) |
 
 ---
 

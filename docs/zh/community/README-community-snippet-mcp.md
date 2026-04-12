@@ -12,22 +12,22 @@
 
 👉 **[AIOX 社区讨论](https://github.com/SynkraAI/aiox-core/discussions)**
 
-| 需要                         | 前往位置                                                                                                    |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 🔧 **MCP 问题?**        | 使用 ["MCP 生态" 类别](https://github.com/SynkraAI/aiox-core/discussions/categories/mcp-ecosystem) |
-| 💡 **功能创意?**        | 在 ["创意" 中启动讨论](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas)            |
-| 🐛 **发现错误?**          | [在此仓库中打开 issue](https://github.com/SynkraAI/mcp-ecosystem/issues/new/choose)            |
-| 🙏 **需要帮助?**            | 在 ["问答" 中提问](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a)                               |
-| 🙌 **创建了什么酷的东西?** | 在 ["展示和讲述" 中分享](https://github.com/SynkraAI/aiox-core/discussions/categories/show-and-tell)         |
+| 需要                       | 前往位置                                                                                             |
+| -------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 🔧 **MCP 问题?**           | 使用 ["MCP 生态" 类别](https://github.com/SynkraAI/aiox-core/discussions/categories/mcp-ecosystem)   |
+| 💡 **功能创意?**           | 在 ["创意" 中启动讨论](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas)           |
+| 🐛 **发现错误?**           | [在此仓库中打开 issue](https://github.com/SynkraAI/mcp-ecosystem/issues/new/choose)                  |
+| 🙏 **需要帮助?**           | 在 ["问答" 中提问](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a)                 |
+| 🙌 **创建了什么酷的东西?** | 在 ["展示和讲述" 中分享](https://github.com/SynkraAI/aiox-core/discussions/categories/show-and-tell) |
 
 ### 此仓库中的内容
 
-| 组件                 | 描述                                                          |
-| ------------------------- | -------------------------------------------------------------------- |
-| 🐳 **Docker MCP 工具包** | 在 Docker 容器中运行的预配置 MCP 服务器              |
-| ⚙️ **MCP 预设**        | 为不同工作流策划的配置（开发、研究等）       |
-| 🖥️ **IDE 配置**        | VS Code、Cursor、Claude Code 的集成配置                 |
-| 🌐 **网关服务**    | 用于可靠 MCP 连接的 HTTP/SSE 网关                        |
+| 组件                     | 描述                                    |
+| ------------------------ | --------------------------------------- |
+| 🐳 **Docker MCP 工具包** | 在 Docker 容器中运行的预配置 MCP 服务器 |
+| ⚙️ **MCP 预设**          | 为不同工作流策划的配置（开发、研究等）  |
+| 🖥️ **IDE 配置**          | VS Code、Cursor、Claude Code 的集成配置 |
+| 🌐 **网关服务**          | 用于可靠 MCP 连接的 HTTP/SSE 网关       |
 
 ### 快速链接
 

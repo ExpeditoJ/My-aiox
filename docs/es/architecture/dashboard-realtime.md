@@ -48,24 +48,24 @@ Usuario ejecuta comandos en CLI → Dashboard muestra TODO en tiempo real
 
 ### Qué muestra el Dashboard HOY
 
-| Evento en CLI     | Dashboard Actual           | Nota            |
-| ----------------- | ------------------------- | --------------- |
-| `@agent` activa   | ✅ StatusBar muestra       | Funciona        |
-| `*exit` agent     | ✅ Agent va a standby     | Funciona        |
-| Story status cambia | ⚠️ Kanban actualiza        | Sin notificación |
+| Evento en CLI       | Dashboard Actual      | Nota             |
+| ------------------- | --------------------- | ---------------- |
+| `@agent` activa     | ✅ StatusBar muestra  | Funciona         |
+| `*exit` agent       | ✅ Agent va a standby | Funciona         |
+| Story status cambia | ⚠️ Kanban actualiza   | Sin notificación |
 
 ### Qué NO muestra el Dashboard
 
 | Evento en CLI                | Dashboard Actual |
-| ---------------------------- | --------------- |
-| Comando `*xxx` ejecutando    | ❌ Nada         |
-| Claude "pensando"            | ❌ Nada         |
-| Tool calls (Read/Write/Bash) | ❌ Nada         |
-| Progreso de la tarea          | ❌ Nada         |
-| Output de Claude             | ❌ Nada         |
-| git commit/push              | ❌ Nada         |
-| Errores                        | ❌ Nada         |
-| Tarea completa              | ❌ Nada         |
+| ---------------------------- | ---------------- |
+| Comando `*xxx` ejecutando    | ❌ Nada          |
+| Claude "pensando"            | ❌ Nada          |
+| Tool calls (Read/Write/Bash) | ❌ Nada          |
+| Progreso de la tarea         | ❌ Nada          |
+| Output de Claude             | ❌ Nada          |
+| git commit/push              | ❌ Nada          |
+| Errores                      | ❌ Nada          |
+| Tarea completa               | ❌ Nada          |
 
 ### Brecha Visual
 
@@ -461,12 +461,12 @@ Cuando `events.jsonl` excede 10MB:
 
 ### Actual vs Mejorado
 
-| Aspecto         | `/api/events` Actual | Mejorado                       |
-| -------------- | --------------------- | ------------------------------ |
-| Fuente         | `status.json` solamente | `status.json` + `events.jsonl` |
-| Activador de actualización | Intervalo de polling | File watch + polling           |
-| Tipos de eventos | `status:update` solamente | Todos los tipos de eventos |
-| Historial        | Ninguno              | Últimos N eventos |
+| Aspecto                    | `/api/events` Actual      | Mejorado                       |
+| -------------------------- | ------------------------- | ------------------------------ |
+| Fuente                     | `status.json` solamente   | `status.json` + `events.jsonl` |
+| Activador de actualización | Intervalo de polling      | File watch + polling           |
+| Tipos de eventos           | `status:update` solamente | Todos los tipos de eventos     |
+| Historial                  | Ninguno                   | Últimos N eventos              |
 
 ### Implementación
 
@@ -827,12 +827,12 @@ export const selectSessionInfo = (state: EventsState) => ({
 
 ### Componentes Necesarios (Sólo Alto Nivel)
 
-| Componente          | Responsabilidad              | Prioridad |
-| ------------------- | ----------------------------- | ---------- |
-| `CommandPanel`      | Muestra comando actual y estado | P0         |
-| `ActivityFeed`      | Timeline de eventos recientes  | P0         |
-| `SessionIndicator`  | Estado de la sesión activa     | P1         |
-| `RetentionSettings` | Config de retención de eventos | P2         |
+| Componente          | Responsabilidad                 | Prioridad |
+| ------------------- | ------------------------------- | --------- |
+| `CommandPanel`      | Muestra comando actual y estado | P0        |
+| `ActivityFeed`      | Timeline de eventos recientes   | P0        |
+| `SessionIndicator`  | Estado de la sesión activa      | P1        |
+| `RetentionSettings` | Config de retención de eventos  | P2        |
 
 ### CommandPanel
 
@@ -1163,33 +1163,33 @@ export function SessionIndicator() {
 
 ### Fase 1: Fundación (P0)
 
-| Elemento                          | Descripción                    | Esfuerzo |
-| ----------------------------- | ------------------------------ | ------- |
-| Integración de Hooks de Claude Code | Conectar a hooks nativos | 2h      |
-| events.jsonl                  | Formato de alto nivel          | 1h      |
-| SSE Mejorado                  | Watch events.jsonl             | 2h      |
-| events-store                  | Almacén simplificado           | 1h      |
+| Elemento                            | Descripción              | Esfuerzo |
+| ----------------------------------- | ------------------------ | -------- |
+| Integración de Hooks de Claude Code | Conectar a hooks nativos | 2h       |
+| events.jsonl                        | Formato de alto nivel    | 1h       |
+| SSE Mejorado                        | Watch events.jsonl       | 2h       |
+| events-store                        | Almacén simplificado     | 1h       |
 
 **Entregable:** Los eventos de alto nivel fluyen de la CLI al Dashboard
 
 ### Fase 2: UI Core (P1)
 
-| Elemento                  | Descripción                   | Esfuerzo |
-| --------------------- | ------------------------------ | ------- |
-| CommandPanel          | Comando actual + estado        | 1h      |
-| ActivityFeed          | Timeline simplificada          | 1h      |
-| SessionIndicator      | Estado de la sesión            | 30min   |
-| StatusBar integration | Integrar nuevos indicadores    | 1h      |
+| Elemento              | Descripción                 | Esfuerzo |
+| --------------------- | --------------------------- | -------- |
+| CommandPanel          | Comando actual + estado     | 1h       |
+| ActivityFeed          | Timeline simplificada       | 1h       |
+| SessionIndicator      | Estado de la sesión         | 30min    |
+| StatusBar integration | Integrar nuevos indicadores | 1h       |
 
 **Entregable:** El Dashboard muestra actividad de alto nivel en tiempo real
 
 ### Fase 3: Configuración (P2)
 
-| Elemento                   | Descripción                         | Esfuerzo |
-| ---------------------- | -------------------------------------- | ------- |
-| RetentionSettings UI   | Toggle session/hours/persistent    | 1h      |
-| Settings integration   | Persistencia de preferencias         | 1h      |
-| localStorage/IndexedDB | Implementar modos de retención      | 2h      |
+| Elemento               | Descripción                     | Esfuerzo |
+| ---------------------- | ------------------------------- | -------- |
+| RetentionSettings UI   | Toggle session/hours/persistent | 1h       |
+| Settings integration   | Persistencia de preferencias    | 1h       |
+| localStorage/IndexedDB | Implementar modos de retención  | 2h       |
 
 **Entregable:** Retención de eventos configurable por el usuario
 
@@ -1201,11 +1201,11 @@ export function SessionIndicator() {
 
 **Decisión:** Hooks de Claude Code
 
-| Aspecto       | Detalle                                    |
-| ------------- | ------------------------------------------ |
-| Implementación | Usar hooks nativos de Claude Code         |
-| Ventaja      | Automático, completo, sin wrapper adicional |
-| Dependencia   | API de hooks de Claude Code               |
+| Aspecto        | Detalle                                     |
+| -------------- | ------------------------------------------- |
+| Implementación | Usar hooks nativos de Claude Code           |
+| Ventaja        | Automático, completo, sin wrapper adicional |
+| Dependencia    | API de hooks de Claude Code                 |
 
 ### 2. Nivel de Detalle ✅
 
@@ -1241,7 +1241,7 @@ const DEFAULT_RETENTION: EventRetentionSettings = {
 ```
 
 | Modo         | Comportamiento             | Almacenamiento |
-| ------------ | ------------------------- | -------------- |
+| ------------ | -------------------------- | -------------- |
 | `session`    | Limpia al cerrar dashboard | Memoria        |
 | `hours`      | Mantiene últimas N horas   | localStorage   |
 | `persistent` | Mantiene hasta límite      | IndexedDB      |

@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*help` | Mostrar comandos disponibles |
-| `*status` | Status del sistema |
-| `*delegate` | Delegar a agente especifico |
-| `*workflow` | Ejecutar workflow |
+| Comando     | Descripcion                  |
+| ----------- | ---------------------------- |
+| `*help`     | Mostrar comandos disponibles |
+| `*status`   | Status del sistema           |
+| `*delegate` | Delegar a agente especifico  |
+| `*workflow` | Ejecutar workflow            |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/aiox-master-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

@@ -60,7 +60,7 @@ const AuthSystem = require('./security/auth');
 const auth = new AuthSystem({
   secretKey: process.env.JWT_SECRET,
   tokenExpiry: '1h',
-  refreshExpiry: '7d'
+  refreshExpiry: '7d',
 });
 
 // Criar usuário com requisitos de senha forte
@@ -68,7 +68,7 @@ await auth.createUser({
   username: 'admin',
   password: 'SecureP@ssw0rd123!',
   email: 'admin@example.com',
-  role: 'admin'
+  role: 'admin',
 });
 ```
 
@@ -169,7 +169,7 @@ const metaAgentLimiter = RateLimiters.createMetaAgentLimiter();
 const identifier = RateLimiter.createIdentifier({
   ip: req.ip,
   userId: req.user?.id,
-  operation: 'meta-agent'
+  operation: 'meta-agent',
 });
 
 const result = metaAgentLimiter.check(identifier);
@@ -180,13 +180,13 @@ if (!result.allowed) {
 
 ### Estratégia de Rate Limiting
 
-| Operação | Janela | Limite | Propósito |
-|----------|--------|--------|-----------|
-| API Calls | 15 min | 1000 | Proteção geral da API |
-| Autenticação | 15 min | 5 | Prevenção de força bruta |
-| Instalação | 1 hora | 10 | Prevenção de abuso de instalação |
-| Meta-Agent | 1 min | 30 | Proteção de recursos |
-| Operações de Arquivo | 1 min | 100 | Proteção do filesystem |
+| Operação             | Janela | Limite | Propósito                        |
+| -------------------- | ------ | ------ | -------------------------------- |
+| API Calls            | 15 min | 1000   | Proteção geral da API            |
+| Autenticação         | 15 min | 5      | Prevenção de força bruta         |
+| Instalação           | 1 hora | 10     | Prevenção de abuso de instalação |
+| Meta-Agent           | 1 min  | 30     | Proteção de recursos             |
+| Operações de Arquivo | 1 min  | 100    | Proteção do filesystem           |
 
 ### Configuração
 
@@ -242,10 +242,7 @@ chmod 700 security/
 
 ```javascript
 // Validar configuração crítica na inicialização
-const requiredEnvVars = [
-  'JWT_SECRET',
-  'NODE_ENV'
-];
+const requiredEnvVars = ['JWT_SECRET', 'NODE_ENV'];
 
 for (const envVar of requiredEnvVars) {
   if (!process.env[envVar]) {
@@ -284,7 +281,7 @@ class DataEncryption {
     return {
       encrypted,
       iv: iv.toString('hex'),
-      authTag: authTag.toString('hex')
+      authTag: authTag.toString('hex'),
     };
   }
 
@@ -334,19 +331,16 @@ const winston = require('winston');
 
 const securityLogger = winston.createLogger({
   level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
+  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
   transports: [
     new winston.transports.File({
       filename: 'logs/security.log',
-      level: 'warn'
+      level: 'warn',
     }),
     new winston.transports.File({
-      filename: 'logs/audit.log'
-    })
-  ]
+      filename: 'logs/audit.log',
+    }),
+  ],
 });
 
 // Registrar eventos de segurança
@@ -354,7 +348,7 @@ securityLogger.warn('Falha de autenticação', {
   username: req.body.username,
   ip: req.ip,
   userAgent: req.get('User-Agent'),
-  timestamp: new Date().toISOString()
+  timestamp: new Date().toISOString(),
 });
 ```
 
@@ -375,7 +369,7 @@ const alertThresholds = {
   rateLimitViolations: 50, // por hora
   suspiciousFileAccess: 5, // por hora
   configChanges: 1, // qualquer mudança
-  errorRate: 0.05 // taxa de erro de 5%
+  errorRate: 0.05, // taxa de erro de 5%
 };
 ```
 
@@ -393,7 +387,7 @@ const options = {
   // Melhorias de segurança
   secureProtocol: 'TLSv1_2_method',
   ciphers: 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384',
-  honorCipherOrder: true
+  honorCipherOrder: true,
 };
 
 https.createServer(options, app).listen(443);
@@ -404,21 +398,23 @@ https.createServer(options, app).listen(443);
 ```javascript
 const helmet = require('helmet');
 
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "data:", "https:"]
-    }
-  },
-  hsts: {
-    maxAge: 31536000,
-    includeSubDomains: true,
-    preload: true
-  }
-}));
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", 'data:', 'https:'],
+      },
+    },
+    hsts: {
+      maxAge: 31536000,
+      includeSubDomains: true,
+      preload: true,
+    },
+  })
+);
 ```
 
 ### Configuração CORS
@@ -426,12 +422,14 @@ app.use(helmet({
 ```javascript
 const cors = require('cors');
 
-app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'https://yourdomain.com',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || 'https://yourdomain.com',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 ```
 
 ## Gerenciamento de Dependências
@@ -471,13 +469,13 @@ npx snyk monitor
 # .github/dependabot.yml
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     open-pull-requests-limit: 5
     reviewers:
-      - "security-team"
+      - 'security-team'
 ```
 
 ## Resposta a Incidentes
@@ -516,17 +514,17 @@ updates:
 const emergencyConfig = {
   securityTeam: {
     primary: 'security-lead@company.com',
-    backup: 'security-backup@company.com'
+    backup: 'security-backup@company.com',
   },
   escalation: {
     level1: 'team-lead@company.com',
     level2: 'engineering-manager@company.com',
-    level3: 'cto@company.com'
+    level3: 'cto@company.com',
   },
   externalContacts: {
     hosting: 'support@hosting-provider.com',
-    security: 'security@security-vendor.com'
-  }
+    security: 'security@security-vendor.com',
+  },
 };
 ```
 
@@ -590,17 +588,20 @@ const emergencyConfig = {
 ## Suporte e Recursos
 
 ### Documentação
+
 - [Guia de Segurança OWASP](https://owasp.org/www-project-top-ten/)
 - [Melhores Práticas de Segurança Node.js](https://nodejs.org/en/docs/guides/security/)
 - [Guia de Segurança Express](https://expressjs.com/en/advanced/best-practice-security.html)
 
 ### Ferramentas
+
 - [npm audit](https://docs.npmjs.com/cli/v6/commands/npm-audit)
 - [Snyk](https://snyk.io/)
 - [ESLint Security Plugin](https://github.com/nodesecurity/eslint-plugin-security)
 - [Helmet.js](https://helmetjs.github.io/)
 
 ### Treinamento
+
 - Treinamento de Segurança OWASP
 - Certificação de Segurança Node.js
 - Melhores Práticas de Segurança em Cloud

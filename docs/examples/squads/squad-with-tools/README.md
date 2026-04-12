@@ -33,11 +33,11 @@ module.exports = {
   name: 'tool-name',
   version: '1.0.0',
   description: 'What the tool does',
-  
+
   async execute(input) {
     // Tool logic
     return result;
-  }
+  },
 };
 ```
 

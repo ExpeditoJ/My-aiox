@@ -21,6 +21,7 @@
 ## Resumo Executivo
 
 Este documento estabelece nomenclatura clara para o AIOX diferenciando entre:
+
 - **Task Workflow**: Passos de execução internos dentro de uma única task
 - **Workflow**: Orquestração multi-task entre agents com capacidades Fork/Join
 
@@ -35,6 +36,7 @@ Esta especificação incorpora insights do paradigma AsyncThink da Microsoft Res
 **Definição:** A sequência de passos e ações **dentro de uma única task** que define como essa task executa.
 
 **Características:**
+
 - **Escopo:** Interno a um único arquivo de task (`.aiox-core/tasks/*.md`)
 - **Execução:** Passos sequenciais ou paralelos dentro dos limites da task
 - **Localização:** Definido na seção `Step-by-Step Execution` do arquivo de task
@@ -42,22 +44,27 @@ Esta especificação incorpora insights do paradigma AsyncThink da Microsoft Res
 - **Exemplo:** `security-scan.md` tem 5 passos: Setup → Scan → Analyze → Detect → Report
 
 **Convenção de Nomenclatura:**
+
 - Use `task-workflow` ou `task_workflow` na documentação
 - Referenciado como "passos de execução de task" ou "task workflow" em contexto
 - **NÃO** chame apenas de "workflow" (para evitar confusão)
 
 **Exemplo de Estrutura:**
+
 ```markdown
 ## Step-by-Step Execution
 
 ### Step 1: Setup Security Tools
+
 **Purpose:** Garantir que todas as ferramentas de escaneamento de segurança necessárias estejam instaladas
 **Actions:**
+
 1. Verificar disponibilidade do npm audit
 2. Instalar plugins de segurança do ESLint se ausentes
-...
+   ...
 
 ### Step 2: Dependency Vulnerability Scan
+
 ...
 ```
 
@@ -68,6 +75,7 @@ Esta especificação incorpora insights do paradigma AsyncThink da Microsoft Res
 **Definição:** Uma sequência de **múltiplas tasks** executadas por **um ou mais agents**, onde saídas de tasks conectam a entradas de tasks sequencialmente ou em paralelo, suportando operações Fork e Join.
 
 **Características:**
+
 - **Escopo:** Orquestração cross-task entre múltiplos agents
 - **Execução:** Pode ser sequencial, paralela (Fork), ou convergente (Join)
 - **Localização:** Definido em `.aiox-core/workflows/*.yaml` ou seções de workflow de stories
@@ -75,11 +83,13 @@ Esta especificação incorpora insights do paradigma AsyncThink da Microsoft Res
 - **Exemplo:** Workflow de Desenvolvimento de Story: `po-create-story` → `dev-develop-story` → `qa-gate`
 
 **Convenção de Nomenclatura:**
+
 - Use `workflow` para orquestração multi-task
 - Pode ser nomeado descritivamente: `story-development-workflow`, `pm-tool-integration-workflow`
 - Suporta padrões AsyncThink: Organizer-Worker, Fork/Join
 
 **Exemplo de Estrutura:**
+
 ```yaml
 workflow:
   id: story-development-workflow
@@ -99,7 +109,7 @@ workflow:
       agent: dev
       task: dev-develop-story
       inputs:
-        - story_file  # Conectado do estágio anterior
+        - story_file # Conectado do estágio anterior
       outputs:
         - code_changes
         - test_results
@@ -108,8 +118,8 @@ workflow:
       agent: qa
       task: qa-gate
       inputs:
-        - story_file      # De create-story
-        - code_changes   # De develop-story
+        - story_file # De create-story
+        - code_changes # De develop-story
       outputs:
         - qa_report
 ```
@@ -137,6 +147,7 @@ workflow:
    - Podem ser agents especializados (dev, qa, po, etc.)
 
 **Exemplo de Workflow com Fork/Join:**
+
 ```yaml
 workflow:
   id: parallel-validation-workflow
@@ -145,7 +156,7 @@ workflow:
   stages:
     - id: fork-validation
       type: fork
-      organizer_decision: "Dividir validação em tasks paralelas"
+      organizer_decision: 'Dividir validação em tasks paralelas'
       workers:
         - agent: dev
           task: security-scan
@@ -206,6 +217,7 @@ workflow:
    - Estratégias de tratamento de erros
 
 **Exemplo de Integração:**
+
 ```yaml
 # .aiox-core/core-config.yaml
 agent_lightning:
@@ -222,7 +234,7 @@ agent_lightning:
         - test_coverage
 
     - target: workflow-orchestration
-      algorithm: APO  # Automatic Prompt Optimization
+      algorithm: APO # Automatic Prompt Optimization
       metrics:
         - workflow_success_rate
         - parallelization_efficiency
@@ -235,18 +247,21 @@ agent_lightning:
 ### Regra 1: Task Workflow vs Workflow
 
 **Quando usar "Task Workflow" (ou "task-workflow"):**
+
 - Referindo-se a passos dentro de um único arquivo de task
 - Documentando fluxo de execução de task
 - Descrevendo lógica interna de task
 - Em seções `Step-by-Step Execution` de arquivos de task
 
 **Quando usar "Workflow":**
+
 - Referindo-se a orquestração multi-task
 - Descrevendo coordenação de agents
 - Documentando padrões Fork/Join
 - Em arquivos de definição de workflow (`.yaml`)
 
 **NUNCA:**
+
 - Use "workflow" para se referir a passos de task
 - Use "task workflow" para se referir a orquestração multi-task
 - Misture terminologia sem contexto
@@ -256,16 +271,19 @@ agent_lightning:
 ### Regra 2: Convenções de Nomenclatura de Arquivos
 
 **Arquivos de Task:**
+
 - Localização: `.aiox-core/tasks/{task-name}.md`
 - Contém: Task workflow (Step-by-Step Execution)
 - Exemplo: `.aiox-core/tasks/security-scan.md`
 
 **Arquivos de Workflow:**
+
 - Localização: `.aiox-core/workflows/{workflow-name}.yaml`
 - Contém: Definição de orquestração multi-task
 - Exemplo: `.aiox-core/workflows/story-development-workflow.yaml`
 
 **Documentação:**
+
 - Docs de task workflow: `docs/tasks/{task-name}-workflow.md` (se necessário)
 - Docs de workflow: `docs/workflows/{workflow-name}.md`
 
@@ -274,6 +292,7 @@ agent_lightning:
 ### Regra 3: Referências em Código
 
 **Em Arquivos de Task:**
+
 ```markdown
 ## Step-by-Step Execution
 
@@ -282,6 +301,7 @@ Cada passo representa uma ação sequencial dentro desta task.
 ```
 
 **Em Arquivos de Workflow:**
+
 ```yaml
 workflow:
   name: Story Development Workflow
@@ -291,10 +311,12 @@ workflow:
 ```
 
 **Em Arquivos de Story:**
+
 ```markdown
 ## Workflow Execution
 
 **Workflow:** Story Development Flow
+
 - Task 1: `po-create-story` (task workflow: 3 passos)
 - Task 2: `dev-develop-story` (task workflow: 8 passos)
 - Task 3: `qa-gate` (task workflow: 5 passos)
@@ -309,10 +331,11 @@ workflow:
 **Definição:** Divide execução de workflow em caminhos paralelos, onde múltiplas tasks executam simultaneamente.
 
 **Sintaxe:**
+
 ```yaml
 fork:
   id: parallel-validation
-  condition: "validation_needed"
+  condition: 'validation_needed'
   parallel_tasks:
     - agent: dev
       task: security-scan
@@ -331,6 +354,7 @@ fork:
 ```
 
 **Características:**
+
 - Múltiplos agents executam tasks em paralelo
 - Cada task tem seu próprio task workflow
 - Tasks podem ter tempos de execução diferentes
@@ -343,6 +367,7 @@ fork:
 **Definição:** Mescla resultados de tasks paralelas de volta para execução sequencial do workflow.
 
 **Sintaxe:**
+
 ```yaml
 join:
   id: merge-validation-results
@@ -350,12 +375,13 @@ join:
     - security-scan
     - qa-run-tests
     - sync-documentation
-  merge_strategy: "all_success"  # ou "any_success", "majority"
+  merge_strategy: 'all_success' # ou "any_success", "majority"
   outputs:
     - validation_complete
 ```
 
 **Características:**
+
 - Aguarda todas as tasks paralelas completarem
 - Mescla resultados de acordo com estratégia
 - Pode ter timeout/tratamento de erros
@@ -370,6 +396,7 @@ join:
 **Descrição:** Tasks executam uma após a outra, com conexões output → input.
 
 **Exemplo:**
+
 ```yaml
 workflow:
   id: sequential-story-development
@@ -380,7 +407,7 @@ workflow:
 
     - task: develop-story
       agent: dev
-      inputs: [story_file]  # Da task anterior
+      inputs: [story_file] # Da task anterior
       outputs: [code_changes]
 
     - task: qa-gate
@@ -396,6 +423,7 @@ workflow:
 **Descrição:** Divide em tasks paralelas, depois mescla resultados.
 
 **Exemplo:**
+
 ```yaml
 workflow:
   id: parallel-validation-workflow
@@ -434,6 +462,7 @@ workflow:
 **Descrição:** Workflow ramifica baseado em condições.
 
 **Exemplo:**
+
 ```yaml
 workflow:
   id: conditional-deployment
@@ -545,17 +574,21 @@ Workflow: Story Development
 ## Step-by-Step Execution
 
 ### Step 1: Setup Security Tools
+
 **Purpose:** Garantir que todas as ferramentas de escaneamento de segurança necessárias estejam instaladas
 **Actions:**
+
 1. Verificar disponibilidade do npm audit
 2. Instalar plugins de segurança do ESLint se ausentes
-...
+   ...
 
 ### Step 2: Dependency Vulnerability Scan
+
 **Purpose:** Escanear dependências npm por vulnerabilidades conhecidas
 **Actions:**
+
 1. Executar `npm audit --audit-level=moderate --json`
-...
+   ...
 ```
 
 **Nota:** Este é um **task workflow** - passos internos dentro da task security-scan.

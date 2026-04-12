@@ -1,6 +1,6 @@
 ---
 task: Research Topic
-responsavel: "@team-researcher"
+responsavel: '@team-researcher'
 responsavel_type: agent
 atomic_layer: task
 Entrada: |
@@ -10,10 +10,10 @@ Saida: |
   - findings: Research findings summary
   - sources: List of sources consulted
 Checklist:
-  - "[ ] Understand topic scope"
-  - "[ ] Gather information"
-  - "[ ] Compile findings"
-  - "[ ] List sources"
+  - '[ ] Understand topic scope'
+  - '[ ] Gather information'
+  - '[ ] Compile findings'
+  - '[ ] List sources'
 ---
 
 # *research / *find

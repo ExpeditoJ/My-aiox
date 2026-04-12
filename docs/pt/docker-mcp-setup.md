@@ -84,18 +84,18 @@ AIOX usa Docker MCP Toolkit como a infraestrutura MCP principal:
 
 ### Direto no Claude Code (global ~/.claude.json)
 
-| MCP                   | Propósito                                            |
-| --------------------- | ---------------------------------------------------- |
-| **playwright**        | Automação de navegador, screenshots, testes web      |
-| **desktop-commander** | Operações de container Docker via docker-gateway    |
+| MCP                   | Propósito                                        |
+| --------------------- | ------------------------------------------------ |
+| **playwright**        | Automação de navegador, screenshots, testes web  |
+| **desktop-commander** | Operações de container Docker via docker-gateway |
 
 ### Dentro do Docker Desktop (via docker-gateway)
 
-| MCP          | Propósito                                               |
-| ------------ | ------------------------------------------------------- |
-| **EXA**      | Busca web, pesquisa, análise de empresas/concorrentes  |
-| **Context7** | Consulta de documentação de bibliotecas                 |
-| **Apify**    | Web scraping, Actors, extração de dados de redes sociais|
+| MCP          | Propósito                                                |
+| ------------ | -------------------------------------------------------- |
+| **EXA**      | Busca web, pesquisa, análise de empresas/concorrentes    |
+| **Context7** | Consulta de documentação de bibliotecas                  |
+| **Apify**    | Web scraping, Actors, extração de dados de redes sociais |
 
 ### Arquivos de Configuração
 
@@ -314,13 +314,13 @@ aiox mcp credential list
 
 ### Problemas Comuns
 
-| Problema                             | Solução                                                     |
-| ------------------------------------ | ----------------------------------------------------------- |
-| Permissão negada                     | Execute o terminal como Administrador (Windows) ou use sudo |
-| Servidor não iniciando               | Verifique comando e args, verifique se o pacote está instalado |
-| Variável de ambiente não encontrada  | Defina a variável ou use armazenamento de credenciais      |
-| Erros de timeout                     | Aumente o timeout na configuração                           |
-| Conexão recusada                     | Verifique a URL e acesso à rede                             |
+| Problema                            | Solução                                                        |
+| ----------------------------------- | -------------------------------------------------------------- |
+| Permissão negada                    | Execute o terminal como Administrador (Windows) ou use sudo    |
+| Servidor não iniciando              | Verifique comando e args, verifique se o pacote está instalado |
+| Variável de ambiente não encontrada | Defina a variável ou use armazenamento de credenciais          |
+| Erros de timeout                    | Aumente o timeout na configuração                              |
+| Conexão recusada                    | Verifique a URL e acesso à rede                                |
 
 ### Bug de Secrets do Docker MCP (Dez 2025)
 
@@ -376,13 +376,13 @@ npx -y @modelcontextprotocol/server-github
 
 **Importante:** Todo gerenciamento de infraestrutura MCP é tratado exclusivamente pelo **Agente DevOps (@devops / Felix)**.
 
-| Operação                  | Agente | Comando             |
-| ------------------------- | ------ | ------------------- |
-| Buscar catálogo MCP       | DevOps | `*search-mcp`       |
-| Adicionar servidor MCP    | DevOps | `*add-mcp`          |
-| Listar MCPs habilitados   | DevOps | `*list-mcps`        |
-| Remover servidor MCP      | DevOps | `*remove-mcp`       |
-| Configurar Docker MCP     | DevOps | `*setup-mcp-docker` |
+| Operação                | Agente | Comando             |
+| ----------------------- | ------ | ------------------- |
+| Buscar catálogo MCP     | DevOps | `*search-mcp`       |
+| Adicionar servidor MCP  | DevOps | `*add-mcp`          |
+| Listar MCPs habilitados | DevOps | `*list-mcps`        |
+| Remover servidor MCP    | DevOps | `*remove-mcp`       |
+| Configurar Docker MCP   | DevOps | `*setup-mcp-docker` |
 
 Outros agentes (Dev, Architect, etc.) são **consumidores** de MCP, não administradores. Se for necessário gerenciamento de MCP, delegue para @devops.
 
@@ -392,14 +392,14 @@ Outros agentes (Dev, Architect, etc.) são **consumidores** de MCP, não adminis
 
 Sempre prefira ferramentas nativas do Claude Code sobre servidores MCP:
 
-| Tarefa              | USE ISSO               | NÃO ISSO       |
-| ------------------- | ---------------------- | -------------- |
-| Ler arquivos        | `Read` tool            | docker-gateway |
-| Escrever arquivos   | `Write` / `Edit` tools | docker-gateway |
-| Executar comandos   | `Bash` tool            | docker-gateway |
-| Buscar arquivos     | `Glob` tool            | docker-gateway |
-| Buscar conteúdo     | `Grep` tool            | docker-gateway |
-| Listar diretórios   | `Bash(ls)` ou `Glob`   | docker-gateway |
+| Tarefa            | USE ISSO               | NÃO ISSO       |
+| ----------------- | ---------------------- | -------------- |
+| Ler arquivos      | `Read` tool            | docker-gateway |
+| Escrever arquivos | `Write` / `Edit` tools | docker-gateway |
+| Executar comandos | `Bash` tool            | docker-gateway |
+| Buscar arquivos   | `Glob` tool            | docker-gateway |
+| Buscar conteúdo   | `Grep` tool            | docker-gateway |
+| Listar diretórios | `Bash(ls)` ou `Glob`   | docker-gateway |
 
 ### Quando Usar docker-gateway
 

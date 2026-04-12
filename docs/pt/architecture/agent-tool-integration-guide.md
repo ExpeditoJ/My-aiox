@@ -50,11 +50,11 @@ Agentes declaram suas dependências no bloco YAML dentro de seu arquivo de defin
 
 ### Tipos de Dependências
 
-| Tipo           | Descrição                           | Localização                        |
-| -------------- | ----------------------------------- | ---------------------------------- |
-| `tools`        | Ferramentas CLI e serviços externos | PATH do sistema ou MCP             |
-| `tasks`        | Arquivos de workflow de tarefas     | `.aiox-core/development/tasks/`    |
-| `checklists`   | Checklists de validação             | `.aiox-core/product/checklists/`   |
+| Tipo         | Descrição                           | Localização                      |
+| ------------ | ----------------------------------- | -------------------------------- |
+| `tools`      | Ferramentas CLI e serviços externos | PATH do sistema ou MCP           |
+| `tasks`      | Arquivos de workflow de tarefas     | `.aiox-core/development/tasks/`  |
+| `checklists` | Checklists de validação             | `.aiox-core/product/checklists/` |
 
 ### Exemplo de Declaração
 
@@ -84,15 +84,15 @@ dependencies:
 
 ### @dev (Dex - Agente Desenvolvedor)
 
-| Ferramenta   | Tipo     | Propósito                                    |
-| ------------ | -------- | -------------------------------------------- |
-| `git`        | CLI      | Controle de versão (apenas operações locais) |
-| `coderabbit` | Externa  | Revisão de qualidade de código pré-commit    |
-| `context7`   | MCP      | Lookup de documentação de bibliotecas        |
-| `supabase`   | Externa  | Operações de banco de dados e migrações      |
-| `n8n`        | Externa  | Automação de workflows                       |
-| `browser`    | MCP      | Testes de aplicações web                     |
-| `ffmpeg`     | CLI      | Processamento de arquivos de mídia           |
+| Ferramenta   | Tipo    | Propósito                                    |
+| ------------ | ------- | -------------------------------------------- |
+| `git`        | CLI     | Controle de versão (apenas operações locais) |
+| `coderabbit` | Externa | Revisão de qualidade de código pré-commit    |
+| `context7`   | MCP     | Lookup de documentação de bibliotecas        |
+| `supabase`   | Externa | Operações de banco de dados e migrações      |
+| `n8n`        | Externa | Automação de workflows                       |
+| `browser`    | MCP     | Testes de aplicações web                     |
+| `ffmpeg`     | CLI     | Processamento de arquivos de mídia           |
 
 **Restrições de Git para @dev:**
 
@@ -102,12 +102,12 @@ dependencies:
 
 ### @devops (Gage - Agente DevOps)
 
-| Ferramenta   | Tipo     | Propósito                           |
-| ------------ | -------- | ----------------------------------- |
-| `git`        | CLI      | Operações git completas incluindo push |
-| `gh`         | CLI      | GitHub CLI para operações de PR     |
-| `docker`     | CLI      | Operações de containers             |
-| `coderabbit` | Externa  | Automação de revisão de código      |
+| Ferramenta   | Tipo    | Propósito                              |
+| ------------ | ------- | -------------------------------------- |
+| `git`        | CLI     | Operações git completas incluindo push |
+| `gh`         | CLI     | GitHub CLI para operações de PR        |
+| `docker`     | CLI     | Operações de containers                |
+| `coderabbit` | Externa | Automação de revisão de código         |
 
 **Capacidades Únicas:**
 
@@ -117,18 +117,18 @@ dependencies:
 
 ### @qa (Quinn - Agente QA)
 
-| Ferramenta   | Tipo | Propósito                          |
-| ------------ | ---- | ---------------------------------- |
-| `jest`       | CLI  | Testes unitários                   |
-| `playwright` | MCP  | Testes E2E e automação de browser  |
-| `npm test`   | CLI  | Executor de testes                 |
+| Ferramenta   | Tipo | Propósito                         |
+| ------------ | ---- | --------------------------------- |
+| `jest`       | CLI  | Testes unitários                  |
+| `playwright` | MCP  | Testes E2E e automação de browser |
+| `npm test`   | CLI  | Executor de testes                |
 
 ### @architect (Aria - Agente Arquiteto)
 
-| Ferramenta | Tipo | Propósito                   |
-| ---------- | ---- | --------------------------- |
-| `exa`      | MCP  | Pesquisa e análise          |
-| `context7` | MCP  | Referência de documentação  |
+| Ferramenta | Tipo | Propósito                  |
+| ---------- | ---- | -------------------------- |
+| `exa`      | MCP  | Pesquisa e análise         |
+| `context7` | MCP  | Referência de documentação |
 
 ---
 
@@ -138,12 +138,12 @@ dependencies:
 
 Servidores MCP (Model Context Protocol) fornecem APIs estruturadas para uso de agentes.
 
-| Servidor MCP | Ferramentas Fornecidas                                               | Usado Por        |
-| ------------ | -------------------------------------------------------------------- | ---------------- |
-| EXA          | `web_search_exa`, `company_research_exa`, `get_code_context_exa`    | @architect       |
-| Context7     | `resolve-library-id`, `query-docs`                                  | @dev, @architect |
-| Playwright   | `browser_navigate`, `browser_screenshot`, `browser_click`           | @qa              |
-| Apify        | `search-actors`, `call-actor`, `get-actor-output`                   | @devops          |
+| Servidor MCP | Ferramentas Fornecidas                                           | Usado Por        |
+| ------------ | ---------------------------------------------------------------- | ---------------- |
+| EXA          | `web_search_exa`, `company_research_exa`, `get_code_context_exa` | @architect       |
+| Context7     | `resolve-library-id`, `query-docs`                               | @dev, @architect |
+| Playwright   | `browser_navigate`, `browser_screenshot`, `browser_click`        | @qa              |
+| Apify        | `search-actors`, `call-actor`, `get-actor-output`                | @devops          |
 
 ### Configuração de MCP
 

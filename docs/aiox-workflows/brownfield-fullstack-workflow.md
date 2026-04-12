@@ -167,11 +167,11 @@ flowchart LR
 
 ### Step 1: Classificação do Enhancement
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @analyst (Atlas) |
-| **Ação** | Classificar escopo do enhancement |
-| **Input** | Descrição do enhancement pelo usuario |
+| Atributo   | Valor                                                           |
+| ---------- | --------------------------------------------------------------- |
+| **Agente** | @analyst (Atlas)                                                |
+| **Ação**   | Classificar escopo do enhancement                               |
+| **Input**  | Descrição do enhancement pelo usuario                           |
 | **Output** | Classificação: single_story / small_feature / major_enhancement |
 
 **Processo:**
@@ -190,23 +190,23 @@ O analista determina a complexidade do enhancement para rotear ao caminho apropr
 
 ### Step 2: Roteamento por Decisão
 
-| Rota | Agente | Task | Proxima Ação |
-|------|--------|------|--------------|
-| `single_story` | @pm | `brownfield-create-story` | Sair do workflow apos criacao da story |
-| `small_feature` | @pm | `brownfield-create-epic` | Sair do workflow apos criacao do epic |
-| `major_enhancement` | - | - | Continuar para o proximo step |
+| Rota                | Agente | Task                      | Proxima Ação                           |
+| ------------------- | ------ | ------------------------- | -------------------------------------- |
+| `single_story`      | @pm    | `brownfield-create-story` | Sair do workflow apos criacao da story |
+| `small_feature`     | @pm    | `brownfield-create-epic`  | Sair do workflow apos criacao do epic  |
+| `major_enhancement` | -      | -                         | Continuar para o proximo step          |
 
 ---
 
 ### Step 3: Verificação de Documentação
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @analyst (Atlas) |
-| **Ação** | Verificar documentação existente |
-| **Condição** | Apenas para `major_enhancement` |
-| **Input** | Codebase e documentação existente |
-| **Output** | Avaliacao: documentação_adequada / documentação_inadequada |
+| Atributo     | Valor                                                      |
+| ------------ | ---------------------------------------------------------- |
+| **Agente**   | @analyst (Atlas)                                           |
+| **Ação**     | Verificar documentação existente                           |
+| **Condição** | Apenas para `major_enhancement`                            |
+| **Input**    | Codebase e documentação existente                          |
+| **Output**   | Avaliacao: documentação_adequada / documentação_inadequada |
 
 **Checklist de Verificação:**
 
@@ -224,13 +224,13 @@ O analista determina a complexidade do enhancement para rotear ao caminho apropr
 
 ### Step 4: Análise do Projeto (Condicional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @architect (Aria) |
-| **Task** | `document-project` |
-| **Condição** | Executar se documentação for inadequada |
-| **Input** | Codebase existente |
-| **Output** | `brownfield-architecture.md` (ou múltiplos documentos) |
+| Atributo     | Valor                                                  |
+| ------------ | ------------------------------------------------------ |
+| **Agente**   | @architect (Aria)                                      |
+| **Task**     | `document-project`                                     |
+| **Condição** | Executar se documentação for inadequada                |
+| **Input**    | Codebase existente                                     |
+| **Output**   | `brownfield-architecture.md` (ou múltiplos documentos) |
 
 **Propósito:**
 
@@ -242,12 +242,12 @@ Capturar o estado atual do sistema, divida técnica e restrições. Os achados s
 
 ### Step 5: Criação do PRD Brownfield
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @pm (Morgan) |
-| **Template** | `brownfield-prd-tmpl` |
+| Atributo      | Valor                                       |
+| ------------- | ------------------------------------------- |
+| **Agente**    | @pm (Morgan)                                |
+| **Template**  | `brownfield-prd-tmpl`                       |
 | **Requisito** | Documentação existente ou análise do Step 4 |
-| **Output** | `docs/prd.md` |
+| **Output**    | `docs/prd.md`                               |
 
 **Instruções:**
 
@@ -259,11 +259,11 @@ Capturar o estado atual do sistema, divida técnica e restrições. Os achados s
 
 ### Step 6: Decisão de Arquitetura
 
-| Atributo | Valor |
-|----------|-------|
-| **Agentes** | @pm (Morgan) / @architect (Aria) |
-| **Ação** | Determinar se documento de arquitetura e necessario |
-| **Condição** | Apos criacao do PRD |
+| Atributo     | Valor                                               |
+| ------------ | --------------------------------------------------- |
+| **Agentes**  | @pm (Morgan) / @architect (Aria)                    |
+| **Ação**     | Determinar se documento de arquitetura e necessario |
+| **Condição** | Apos criacao do PRD                                 |
 
 **Critérios para criar documento de arquitetura:**
 
@@ -276,13 +276,13 @@ Capturar o estado atual do sistema, divida técnica e restrições. Os achados s
 
 ### Step 7: Criação de Arquitetura (Condicional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @architect (Aria) |
-| **Template** | `brownfield-architecture-tmpl` |
-| **Requisito** | `prd.md` |
-| **Condição** | Mudancas arquiteturais necessarias |
-| **Output** | `docs/architecture.md` |
+| Atributo      | Valor                              |
+| ------------- | ---------------------------------- |
+| **Agente**    | @architect (Aria)                  |
+| **Template**  | `brownfield-architecture-tmpl`     |
+| **Requisito** | `prd.md`                           |
+| **Condição**  | Mudancas arquiteturais necessarias |
+| **Output**    | `docs/architecture.md`             |
 
 **Instruções:**
 
@@ -294,18 +294,19 @@ Crie documento de arquitetura APENAS para mudanças arquiteturais significativas
 
 ### Step 8: Validação pelo PO
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @po (Pax) |
-| **Checklist** | `po-master-checklist` |
-| **Input** | Todos os artefatos criados |
-| **Output** | Validação ou lista de issues |
+| Atributo      | Valor                        |
+| ------------- | ---------------------------- |
+| **Agente**    | @po (Pax)                    |
+| **Checklist** | `po-master-checklist`        |
+| **Input**     | Todos os artefatos criados   |
+| **Output**    | Validação ou lista de issues |
 
 **Arquivo de Checklist:** `.aiox-core/product/checklists/po-master-checklist.md`
 
 **Processo:**
 
 Valida todos os documentos quanto a:
+
 - Seguranca de integração
 - Completude
 - Alinhamento com requisitos
@@ -315,11 +316,11 @@ Valida todos os documentos quanto a:
 
 ### Step 9: Correção de Issues (Condicional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | Variável (depende do issue) |
-| **Condição** | PO encontrou problemas |
-| **Ação** | Corrigir e re-exportar documentos atualizados |
+| Atributo     | Valor                                         |
+| ------------ | --------------------------------------------- |
+| **Agente**   | Variável (depende do issue)                   |
+| **Condição** | PO encontrou problemas                        |
+| **Ação**     | Corrigir e re-exportar documentos atualizados |
 
 **Fluxo:**
 
@@ -332,11 +333,11 @@ Valida todos os documentos quanto a:
 
 ### Step 10: Sharding de Documentos
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @po (Pax) |
-| **Task** | `shard-doc` |
-| **Input** | Documentos validados no projeto |
+| Atributo   | Valor                                                       |
+| ---------- | ----------------------------------------------------------- |
+| **Agente** | @po (Pax)                                                   |
+| **Task**   | `shard-doc`                                                 |
+| **Input**  | Documentos validados no projeto                             |
 | **Output** | `docs/prd/` e `docs/architecture/` com conteúdo fragmentado |
 
 **Opções de Execução:**
@@ -350,21 +351,22 @@ Valida todos os documentos quanto a:
 
 ### Step 11: Criação de Story
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @sm (River) |
-| **Repete** | Para cada epic ou enhancement |
-| **Input** | Documentos fragmentados ou docs brownfield |
-| **Output** | `story.md` em status "Draft" |
+| Atributo   | Valor                                      |
+| ---------- | ------------------------------------------ |
+| **Agente** | @sm (River)                                |
+| **Repete** | Para cada epic ou enhancement              |
+| **Input**  | Documentos fragmentados ou docs brownfield |
+| **Output** | `story.md` em status "Draft"               |
 
 **Decisão de Task:**
 
-| Tipo de Documentação | Task |
-|---------------------|------|
-| PRD Sharded | `create-next-story` |
-| Brownfield Docs | `create-brownfield-story` |
+| Tipo de Documentação | Task                      |
+| -------------------- | ------------------------- |
+| PRD Sharded          | `create-next-story`       |
+| Brownfield Docs      | `create-brownfield-story` |
 
 **Arquivos de Task:**
+
 - `.aiox-core/development/tasks/create-next-story.md`
 - `.aiox-core/development/tasks/create-brownfield-story.md`
 
@@ -372,12 +374,12 @@ Valida todos os documentos quanto a:
 
 ### Step 12: Revisão de Draft (Opcional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agentes** | @analyst / @pm |
-| **Condição** | Usuario deseja revisao da story |
-| **Input** | `story.md` em Draft |
-| **Output** | Story atualizada: Draft -> Approved |
+| Atributo     | Valor                               |
+| ------------ | ----------------------------------- |
+| **Agentes**  | @analyst / @pm                      |
+| **Condição** | Usuario deseja revisao da story     |
+| **Input**    | `story.md` em Draft                 |
+| **Output**   | Story atualizada: Draft -> Approved |
 
 **Nota:** Task `story-review` em desenvolvimento.
 
@@ -385,11 +387,11 @@ Valida todos os documentos quanto a:
 
 ### Step 13: Implementação
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @dev (Dex) |
-| **Requisito** | Story aprovada |
-| **Output** | Arquivos de implementacao |
+| Atributo      | Valor                     |
+| ------------- | ------------------------- |
+| **Agente**    | @dev (Dex)                |
+| **Requisito** | Story aprovada            |
+| **Output**    | Arquivos de implementacao |
 
 **Instruções:**
 
@@ -402,12 +404,12 @@ Valida todos os documentos quanto a:
 
 ### Step 14: Review de QA (Opcional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @qa (Quinn) |
-| **Task** | `review-story` |
+| Atributo      | Valor                  |
+| ------------- | ---------------------- |
+| **Agente**    | @qa (Quinn)            |
+| **Task**      | `review-story`         |
 | **Requisito** | Arquivos implementados |
-| **Output** | Implementação revisada |
+| **Output**    | Implementação revisada |
 
 **Processo:**
 
@@ -421,11 +423,11 @@ Valida todos os documentos quanto a:
 
 ### Step 15: Correção de Feedback do QA (Condicional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @dev (Dex) |
+| Atributo     | Valor                           |
+| ------------ | ------------------------------- |
+| **Agente**   | @dev (Dex)                      |
 | **Condição** | QA deixou itens não verificados |
-| **Ação** | Endereca itens restantes |
+| **Ação**     | Endereca itens restantes        |
 
 **Fluxo:**
 
@@ -444,11 +446,11 @@ Continua ate que todas as stories no PRD estejam completas.
 
 ### Step 17: Retrospectiva do Epic (Opcional)
 
-| Atributo | Valor |
-|----------|-------|
-| **Agente** | @po (Pax) |
-| **Condição** | Epic completo |
-| **Output** | `epic-retrospective.md` |
+| Atributo     | Valor                   |
+| ------------ | ----------------------- |
+| **Agente**   | @po (Pax)               |
+| **Condição** | Epic completo           |
+| **Output**   | `epic-retrospective.md` |
 
 **Processo:**
 
@@ -469,32 +471,32 @@ Continua ate que todas as stories no PRD estejam completas.
 
 ## Agentes Participantes
 
-| Agente | Nome | Papel no Workflow | Steps |
-|--------|------|-------------------|-------|
-| @analyst | Atlas | Classificação de escopo, verificacao de documentação | 1, 3 |
-| @architect | Aria | Documentação de projeto, design de arquitetura | 4, 6, 7 |
-| @pm | Morgan | Criação de PRD, epics e stories simples | 2, 5, 6 |
-| @po | Pax | Validação de artefatos, sharding, retrospectiva | 8, 10, 17 |
-| @sm | River | Criação detalhada de stories | 11 |
-| @dev | Dex | Implementação de stories | 13, 15 |
-| @qa | Quinn | Review de implementacao | 14 |
+| Agente     | Nome   | Papel no Workflow                                    | Steps     |
+| ---------- | ------ | ---------------------------------------------------- | --------- |
+| @analyst   | Atlas  | Classificação de escopo, verificacao de documentação | 1, 3      |
+| @architect | Aria   | Documentação de projeto, design de arquitetura       | 4, 6, 7   |
+| @pm        | Morgan | Criação de PRD, epics e stories simples              | 2, 5, 6   |
+| @po        | Pax    | Validação de artefatos, sharding, retrospectiva      | 8, 10, 17 |
+| @sm        | River  | Criação detalhada de stories                         | 11        |
+| @dev       | Dex    | Implementação de stories                             | 13, 15    |
+| @qa        | Quinn  | Review de implementacao                              | 14        |
 
 ---
 
 ## Tasks Executadas
 
-| Task | Step | Agente | Propósito |
-|------|------|--------|-----------|
-| `brownfield-create-story` | 2 | @pm | Criar story única para enhancements simples |
-| `brownfield-create-epic` | 2 | @pm | Criar epic focado com 1-3 stories |
-| `document-project` | 4 | @architect | Documentar estado atual do sistema brownfield |
-| `brownfield-prd-tmpl` | 5 | @pm | Template para PRD de projeto brownfield |
-| `brownfield-architecture-tmpl` | 7 | @architect | Template para arquitetura brownfield |
-| `po-master-checklist` | 8 | @po | Validação abrangente de artefatos |
-| `shard-doc` | 10 | @po | Fragmentar documentos em arquivos menores |
-| `create-next-story` | 11 | @sm | Criar story de PRD sharded |
-| `create-brownfield-story` | 11 | @sm | Criar story de docs brownfield |
-| `review-story` | 14 | @qa | Review de implementacao |
+| Task                           | Step | Agente     | Propósito                                     |
+| ------------------------------ | ---- | ---------- | --------------------------------------------- |
+| `brownfield-create-story`      | 2    | @pm        | Criar story única para enhancements simples   |
+| `brownfield-create-epic`       | 2    | @pm        | Criar epic focado com 1-3 stories             |
+| `document-project`             | 4    | @architect | Documentar estado atual do sistema brownfield |
+| `brownfield-prd-tmpl`          | 5    | @pm        | Template para PRD de projeto brownfield       |
+| `brownfield-architecture-tmpl` | 7    | @architect | Template para arquitetura brownfield          |
+| `po-master-checklist`          | 8    | @po        | Validação abrangente de artefatos             |
+| `shard-doc`                    | 10   | @po        | Fragmentar documentos em arquivos menores     |
+| `create-next-story`            | 11   | @sm        | Criar story de PRD sharded                    |
+| `create-brownfield-story`      | 11   | @sm        | Criar story de docs brownfield                |
+| `review-story`                 | 14   | @qa        | Review de implementacao                       |
 
 ---
 
@@ -526,23 +528,23 @@ Antes de iniciar este workflow, certifique-se de:
 
 ### Entradas do Workflow
 
-| Entrada | Origem | Formato | Obrigatório |
-|---------|--------|---------|-------------|
-| Enhancement Request | Usuario | Descrição textual | Sim |
-| Codebase Existente | Repositorio | Codigo fonte | Sim |
-| Documentação Existente | `docs/` | Markdown | Nao |
-| Requisitos de Stakeholders | Usuario/PM tool | Texto/Tickets | Nao |
+| Entrada                    | Origem          | Formato           | Obrigatório |
+| -------------------------- | --------------- | ----------------- | ----------- |
+| Enhancement Request        | Usuario         | Descrição textual | Sim         |
+| Codebase Existente         | Repositorio     | Codigo fonte      | Sim         |
+| Documentação Existente     | `docs/`         | Markdown          | Nao         |
+| Requisitos de Stakeholders | Usuario/PM tool | Texto/Tickets     | Nao         |
 
 ### Saídas do Workflow
 
-| Saida | Destino | Formato | Condição |
-|-------|---------|---------|----------|
-| `brownfield-architecture.md` | `docs/` | Markdown | Se doc inadequada |
-| `prd.md` | `docs/` | Markdown | Major enhancement |
-| `architecture.md` | `docs/` | Markdown | Se mudanças arquiteturais |
-| Stories fragmentados | `docs/stories/` | Markdown | Sempre |
-| Codigo implementado | `src/` | Vários | Sempre |
-| `epic-retrospective.md` | `docs/` | Markdown | Opcional |
+| Saida                        | Destino         | Formato  | Condição                  |
+| ---------------------------- | --------------- | -------- | ------------------------- |
+| `brownfield-architecture.md` | `docs/`         | Markdown | Se doc inadequada         |
+| `prd.md`                     | `docs/`         | Markdown | Major enhancement         |
+| `architecture.md`            | `docs/`         | Markdown | Se mudanças arquiteturais |
+| Stories fragmentados         | `docs/stories/` | Markdown | Sempre                    |
+| Codigo implementado          | `src/`          | Vários   | Sempre                    |
+| `epic-retrospective.md`      | `docs/`         | Markdown | Opcional                  |
 
 ---
 
@@ -690,6 +692,7 @@ Stories serao criadas baseadas no formato de documentação disponivel.
 **Sintoma:** Workflow simples usado para enhancement complexo ou vice-versa
 
 **Solucao:**
+
 1. Pause o workflow atual
 2. Re-execute classificacao com @analyst
 3. Fornecer mais contexto sobre integração e complexidade
@@ -699,6 +702,7 @@ Stories serao criadas baseadas no formato de documentação disponivel.
 **Sintoma:** PRD criado sem contexto suficiente do sistema
 
 **Solucao:**
+
 1. Execute `document-project` manualmente com @architect
 2. Atualize PRD com novos achados
 3. Re-valide com @po
@@ -708,6 +712,7 @@ Stories serao criadas baseadas no formato de documentação disponivel.
 **Sintoma:** Issues continuam aparecendo apos correções
 
 **Solucao:**
+
 1. Agendar reuniao de sincronizacao com stakeholders
 2. Documentar criterios de aceitação mais claros
 3. Considerar reduzir escopo do enhancement
@@ -717,6 +722,7 @@ Stories serao criadas baseadas no formato de documentação disponivel.
 **Sintoma:** Story não pode ser completada em uma sessão
 
 **Solucao:**
+
 1. Divida story em multiplas sub-stories
 2. Re-avalie classificacao do enhancement
 3. Considere usar `brownfield-create-epic` em vez de story única
@@ -726,6 +732,7 @@ Stories serao criadas baseadas no formato de documentação disponivel.
 **Sintoma:** Testes de regressão falhando
 
 **Solucao:**
+
 1. Revise análise de impacto no PRD
 2. Adicione mais testes de integração
 3. Considere feature flags para rollout gradual
@@ -735,6 +742,7 @@ Stories serao criadas baseadas no formato de documentação disponivel.
 **Sintoma:** Issues indo e voltando entre dev e QA
 
 **Solucao:**
+
 1. Documente criterios de aceitação mais claros
 2. Agende pair-programming para issues complexos
 3. Considere adicionar testes automatizados
@@ -780,13 +788,13 @@ stateDiagram-v2
 
 ## Métricas de Sucesso
 
-| Métrica | Descrição | Alvo |
-|---------|-----------|------|
-| Precisão de Classificação | % de enhancements corretamente classificados | > 90% |
-| Tempo ate PRD | Dias desde request ate PRD aprovado | < 3 dias |
-| Issues por Validação | Numero medio de issues encontrados por PO | < 3 |
-| Ciclos de QA | Numero medio de ida-e-volta dev/QA | < 2 |
-| Regressão Zero | % de releases sem bugs de regressão | 100% |
+| Métrica                   | Descrição                                    | Alvo     |
+| ------------------------- | -------------------------------------------- | -------- |
+| Precisão de Classificação | % de enhancements corretamente classificados | > 90%    |
+| Tempo ate PRD             | Dias desde request ate PRD aprovado          | < 3 dias |
+| Issues por Validação      | Numero medio de issues encontrados por PO    | < 3      |
+| Ciclos de QA              | Numero medio de ida-e-volta dev/QA           | < 2      |
+| Regressão Zero            | % de releases sem bugs de regressão          | 100%     |
 
 ---
 
@@ -794,45 +802,45 @@ stateDiagram-v2
 
 ### Arquivos Core do Workflow
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/workflows/brownfield-fullstack.yaml` | Definição do workflow |
-| `.aiox-core/development/tasks/brownfield-create-story.md` | Task para criar story simples |
-| `.aiox-core/development/tasks/brownfield-create-epic.md` | Task para criar epic |
-| `.aiox-core/development/tasks/document-project.md` | Task para documentar projeto existente |
-| `.aiox-core/development/tasks/shard-doc.md` | Task para fragmentar documentos |
-| `.aiox-core/development/tasks/create-brownfield-story.md` | Task para criar story brownfield |
-| `.aiox-core/development/tasks/create-next-story.md` | Task para criar story de PRD |
-| `.aiox-core/product/checklists/po-master-checklist.md` | Checklist de validação PO |
+| Arquivo                                                      | Propósito                              |
+| ------------------------------------------------------------ | -------------------------------------- |
+| `.aiox-core/development/workflows/brownfield-fullstack.yaml` | Definição do workflow                  |
+| `.aiox-core/development/tasks/brownfield-create-story.md`    | Task para criar story simples          |
+| `.aiox-core/development/tasks/brownfield-create-epic.md`     | Task para criar epic                   |
+| `.aiox-core/development/tasks/document-project.md`           | Task para documentar projeto existente |
+| `.aiox-core/development/tasks/shard-doc.md`                  | Task para fragmentar documentos        |
+| `.aiox-core/development/tasks/create-brownfield-story.md`    | Task para criar story brownfield       |
+| `.aiox-core/development/tasks/create-next-story.md`          | Task para criar story de PRD           |
+| `.aiox-core/product/checklists/po-master-checklist.md`       | Checklist de validação PO              |
 
 ### Arquivos de Agentes
 
-| Arquivo | Agente |
-|---------|--------|
-| `.aiox-core/development/agents/analyst.md` | @analyst (Atlas) |
+| Arquivo                                      | Agente            |
+| -------------------------------------------- | ----------------- |
+| `.aiox-core/development/agents/analyst.md`   | @analyst (Atlas)  |
 | `.aiox-core/development/agents/architect.md` | @architect (Aria) |
-| `.aiox-core/development/agents/pm.md` | @pm (Morgan) |
-| `.aiox-core/development/agents/po.md` | @po (Pax) |
-| `.aiox-core/development/agents/sm.md` | @sm (River) |
-| `.aiox-core/development/agents/dev.md` | @dev (Dex) |
-| `.aiox-core/development/agents/qa.md` | @qa (Quinn) |
+| `.aiox-core/development/agents/pm.md`        | @pm (Morgan)      |
+| `.aiox-core/development/agents/po.md`        | @po (Pax)         |
+| `.aiox-core/development/agents/sm.md`        | @sm (River)       |
+| `.aiox-core/development/agents/dev.md`       | @dev (Dex)        |
+| `.aiox-core/development/agents/qa.md`        | @qa (Quinn)       |
 
 ### Documentação Relacionada
 
-| Documento | Propósito |
-|-----------|-----------|
-| `docs/guides/BACKLOG-MANAGEMENT-SYSTEM.md` | Sistema de gestão de backlog |
+| Documento                                              | Propósito                         |
+| ------------------------------------------------------ | --------------------------------- |
+| `docs/guides/BACKLOG-MANAGEMENT-SYSTEM.md`             | Sistema de gestão de backlog      |
 | `docs/guides/workflows/GREENFIELD-SERVICE-WORKFLOW.md` | Workflow para projetos greenfield |
-| `.aiox-core/working-in-the-brownfield.md` | Guia de trabalho brownfield |
+| `.aiox-core/working-in-the-brownfield.md`              | Guia de trabalho brownfield       |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descrição |
-|------|-------|-----------|
+| Data       | Autor    | Descrição                |
+| ---------- | -------- | ------------------------ |
 | 2026-02-04 | @analyst | Documento inicial criado |
 
 ---
 
-*-- Atlas, decodificando complexidade em clareza*
+_-- Atlas, decodificando complexidade em clareza_

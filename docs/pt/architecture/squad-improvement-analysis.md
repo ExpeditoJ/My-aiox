@@ -15,13 +15,13 @@
 
 ## Estrutura do Projeto
 
-| Aspecto | Valor |
-|---------|-------|
-| Framework | AIOX-FullStack |
-| Linguagem Principal | TypeScript/JavaScript |
-| Sistema de Squads | v4.2 (Arquitetura Task-First) |
-| Tasks Existentes | 8 tasks do squad-creator |
-| Framework de Testes | Jest |
+| Aspecto             | Valor                         |
+| ------------------- | ----------------------------- |
+| Framework           | AIOX-FullStack                |
+| Linguagem Principal | TypeScript/JavaScript         |
+| Sistema de Squads   | v4.2 (Arquitetura Task-First) |
+| Tasks Existentes    | 8 tasks do squad-creator      |
+| Framework de Testes | Jest                          |
 
 ---
 
@@ -29,38 +29,38 @@
 
 ### Definição do Agente
 
-| Propriedade | Valor |
-|-------------|-------|
-| **ID do Agente** | squad-creator |
-| **Nome** | Craft |
-| **Título** | Squad Creator |
-| **Ícone** | 🏗️ |
-| **Arquivo** | `.aiox-core/development/agents/squad-creator.md` |
+| Propriedade      | Valor                                            |
+| ---------------- | ------------------------------------------------ |
+| **ID do Agente** | squad-creator                                    |
+| **Nome**         | Craft                                            |
+| **Título**       | Squad Creator                                    |
+| **Ícone**        | 🏗️                                               |
+| **Arquivo**      | `.aiox-core/development/agents/squad-creator.md` |
 
 ### Tasks Existentes
 
-| Task | Arquivo | Status | Propósito |
-|------|---------|--------|-----------|
-| `*design-squad` | squad-creator-design.md | ✅ Pronto | Projetar a partir de documentação |
-| `*create-squad` | squad-creator-create.md | ✅ Pronto | Criar novo squad |
-| `*validate-squad` | squad-creator-validate.md | ✅ Pronto | Validar estrutura |
-| `*list-squads` | squad-creator-list.md | ✅ Pronto | Listar squads locais |
-| `*migrate-squad` | squad-creator-migrate.md | ✅ Pronto | Migrar formato legado |
-| `*download-squad` | squad-creator-download.md | ⏳ Placeholder | Baixar do registro |
-| `*publish-squad` | squad-creator-publish.md | ⏳ Placeholder | Publicar no aiox-squads |
-| `*sync-squad-synkra` | squad-creator-sync-synkra.md | ⏳ Placeholder | Sincronizar com marketplace |
+| Task                 | Arquivo                      | Status         | Propósito                         |
+| -------------------- | ---------------------------- | -------------- | --------------------------------- |
+| `*design-squad`      | squad-creator-design.md      | ✅ Pronto      | Projetar a partir de documentação |
+| `*create-squad`      | squad-creator-create.md      | ✅ Pronto      | Criar novo squad                  |
+| `*validate-squad`    | squad-creator-validate.md    | ✅ Pronto      | Validar estrutura                 |
+| `*list-squads`       | squad-creator-list.md        | ✅ Pronto      | Listar squads locais              |
+| `*migrate-squad`     | squad-creator-migrate.md     | ✅ Pronto      | Migrar formato legado             |
+| `*download-squad`    | squad-creator-download.md    | ⏳ Placeholder | Baixar do registro                |
+| `*publish-squad`     | squad-creator-publish.md     | ⏳ Placeholder | Publicar no aiox-squads           |
+| `*sync-squad-synkra` | squad-creator-sync-synkra.md | ⏳ Placeholder | Sincronizar com marketplace       |
 
 ### Scripts Existentes
 
-| Script | Arquivo | Propósito |
-|--------|---------|-----------|
-| SquadLoader | squad-loader.js | Resolver e carregar manifestos |
-| SquadValidator | squad-validator.js | Validar contra schema |
-| SquadGenerator | squad-generator.js | Gerar estrutura de squad |
-| SquadDesigner | squad-designer.js | Projetar a partir de docs |
-| SquadMigrator | squad-migrator.js | Migrar formato legado |
-| SquadDownloader | squad-downloader.js | Baixar do registro |
-| SquadPublisher | squad-publisher.js | Publicar no aiox-squads |
+| Script          | Arquivo             | Propósito                      |
+| --------------- | ------------------- | ------------------------------ |
+| SquadLoader     | squad-loader.js     | Resolver e carregar manifestos |
+| SquadValidator  | squad-validator.js  | Validar contra schema          |
+| SquadGenerator  | squad-generator.js  | Gerar estrutura de squad       |
+| SquadDesigner   | squad-designer.js   | Projetar a partir de docs      |
+| SquadMigrator   | squad-migrator.js   | Migrar formato legado          |
+| SquadDownloader | squad-downloader.js | Baixar do registro             |
+| SquadPublisher  | squad-publisher.js  | Publicar no aiox-squads        |
 
 ---
 
@@ -88,26 +88,26 @@
 
 ### Capacidades Ausentes
 
-| Capacidade | Descrição | Impacto |
-|------------|-----------|---------|
-| **Analisar Squad** | Escanear squad existente, listar componentes, identificar oportunidades | Não consegue entender o que um squad contém |
-| **Adicionar Componentes** | Adicionar novos agents/tasks/templates/tools incrementalmente | Deve recriar squad para adicionar componentes |
-| **Modificar Componentes** | Editar componentes existentes | Sem workflow guiado |
-| **Remover Componentes** | Remover componentes não utilizados | Limpeza manual necessária |
-| **Integração com Story** | Vincular melhorias a stories oficiais | Sem rastreabilidade |
+| Capacidade                | Descrição                                                               | Impacto                                       |
+| ------------------------- | ----------------------------------------------------------------------- | --------------------------------------------- |
+| **Analisar Squad**        | Escanear squad existente, listar componentes, identificar oportunidades | Não consegue entender o que um squad contém   |
+| **Adicionar Componentes** | Adicionar novos agents/tasks/templates/tools incrementalmente           | Deve recriar squad para adicionar componentes |
+| **Modificar Componentes** | Editar componentes existentes                                           | Sem workflow guiado                           |
+| **Remover Componentes**   | Remover componentes não utilizados                                      | Limpeza manual necessária                     |
+| **Integração com Story**  | Vincular melhorias a stories oficiais                                   | Sem rastreabilidade                           |
 
 ### Componentes de Squad (do schema)
 
-| Componente | Diretório | Propósito | Pode Ser Adicionado? |
-|------------|-----------|-----------|----------------------|
-| tasks | tasks/ | Definições de task (task-first!) | ❌ Sem task |
-| agents | agents/ | Personas de agentes | ❌ Sem task |
-| workflows | workflows/ | Workflows multi-etapa | ❌ Sem task |
-| checklists | checklists/ | Checklists de validação | ❌ Sem task |
-| templates | templates/ | Templates de documento | ❌ Sem task |
-| tools | tools/ | Ferramentas customizadas (.js) | ❌ Sem task |
-| scripts | scripts/ | Scripts de automação | ❌ Sem task |
-| data | data/ | Arquivos de dados estáticos | ❌ Sem task |
+| Componente | Diretório   | Propósito                        | Pode Ser Adicionado? |
+| ---------- | ----------- | -------------------------------- | -------------------- |
+| tasks      | tasks/      | Definições de task (task-first!) | ❌ Sem task          |
+| agents     | agents/     | Personas de agentes              | ❌ Sem task          |
+| workflows  | workflows/  | Workflows multi-etapa            | ❌ Sem task          |
+| checklists | checklists/ | Checklists de validação          | ❌ Sem task          |
+| templates  | templates/  | Templates de documento           | ❌ Sem task          |
+| tools      | tools/      | Ferramentas customizadas (.js)   | ❌ Sem task          |
+| scripts    | scripts/    | Scripts de automação             | ❌ Sem task          |
+| data       | data/       | Arquivos de dados estáticos      | ❌ Sem task          |
 
 ---
 
@@ -148,11 +148,11 @@ Usuário: "Quero adicionar um novo agente ao meu squad existente"
 
 ## Stories Relacionadas
 
-| Story | Status | Relevância |
-|-------|--------|------------|
-| SQS-4 | ✅ Pronto | Squad Creator Agent (base) |
-| SQS-9 | ✅ Pronto | Squad Designer (design-squad) |
-| SQS-10 | ✅ Pronto | Referência de Config do Projeto |
+| Story      | Status      | Relevância                           |
+| ---------- | ----------- | ------------------------------------ |
+| SQS-4      | ✅ Pronto   | Squad Creator Agent (base)           |
+| SQS-9      | ✅ Pronto   | Squad Designer (design-squad)        |
+| SQS-10     | ✅ Pronto   | Referência de Config do Projeto      |
 | **SQS-11** | 📋 Proposta | Tasks de Análise e Extensão de Squad |
 
 ---
@@ -174,16 +174,19 @@ Este padrão pode ser adaptado para análise de squad.
 ## Padrões Técnicos Detectados
 
 ### Distribuição de Linguagens
+
 - **TypeScript:** Principal para scripts
 - **JavaScript:** Ferramentas e scripts de squad
 - **Markdown:** Definições de agent/task
 
 ### Testes
+
 - **Framework:** Jest
 - **Cobertura:** >80% em scripts core
 - **Localização:** `tests/unit/squad/`
 
 ### Configuração
+
 - **Schema:** Validação JSON Schema
 - **Manifesto:** squad.yaml (YAML)
 - **Herança:** extend/override/none

@@ -21,12 +21,12 @@
 
 ### 1.2 基本原则
 
-| 原则 | 描述 |
-|------|------|
-| **无发明** | 无信息发明 - 仅从输入衍生 |
-| **可追溯性** | 每个声明必须追溯到需求或研究 |
-| **自适应阶段** | 按复杂性自动调整阶段 |
-| **质量网关** | 晋级前强制验证 |
+| 原则           | 描述                         |
+| -------------- | ---------------------------- |
+| **无发明**     | 无信息发明 - 仅从输入衍生    |
+| **可追溯性**   | 每个声明必须追溯到需求或研究 |
+| **自适应阶段** | 按复杂性自动调整阶段         |
+| **质量网关**   | 晋级前强制验证               |
 
 ---
 
@@ -219,26 +219,26 @@ sequenceDiagram
 
 ### 3.1 阶段 1: 收集需求
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `gather` |
-| **阶段号** | 1 |
-| **代理** | @pm (Morgan) |
-| **任务** | `spec-gather-requirements.md` |
-| **需要交互** | 是 - 需要用户交互 |
+| 属性         | 值                            |
+| ------------ | ----------------------------- |
+| **步骤 ID**  | `gather`                      |
+| **阶段号**   | 1                             |
+| **代理**     | @pm (Morgan)                  |
+| **任务**     | `spec-gather-requirements.md` |
+| **需要交互** | 是 - 需要用户交互             |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 被指定的故事 ID |
-| `source` | 枚举 | 否 | 来源: `prd`, `user`, `existing` |
-| `prdPath` | 字符串 | 否 | PRD 路径 (如果 source=prd) |
+| 输入      | 类型   | 必需 | 描述                            |
+| --------- | ------ | ---- | ------------------------------- |
+| `storyId` | 字符串 | 是   | 被指定的故事 ID                 |
+| `source`  | 枚举   | 否   | 来源: `prd`, `user`, `existing` |
+| `prdPath` | 字符串 | 否   | PRD 路径 (如果 source=prd)      |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出                | 位置                                            |
+| ------------------- | ----------------------------------------------- |
 | `requirements.json` | `docs/stories/{storyId}/spec/requirements.json` |
 
 #### 询问过程 (9 个类别)
@@ -308,26 +308,26 @@ mindmap
 
 ### 3.2 阶段 2: 评估复杂性
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `assess` |
-| **阶段号** | 2 |
-| **代理** | @architect (Aria) |
-| **任务** | `spec-assess-complexity.md` |
+| 属性         | 值                                                         |
+| ------------ | ---------------------------------------------------------- |
+| **步骤 ID**  | `assess`                                                   |
+| **阶段号**   | 2                                                          |
+| **代理**     | @architect (Aria)                                          |
+| **任务**     | `spec-assess-complexity.md`                                |
 | **跳过条件** | `source === 'simple'` 或 `overrideComplexity === 'SIMPLE'` |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 故事 ID |
-| `requirements` | 文件 | 是 | requirements.json |
-| `overrideComplexity` | 枚举 | 否 | 手动覆盖: 简单、标准、复杂 |
+| 输入                 | 类型   | 必需 | 描述                       |
+| -------------------- | ------ | ---- | -------------------------- |
+| `storyId`            | 字符串 | 是   | 故事 ID                    |
+| `requirements`       | 文件   | 是   | requirements.json          |
+| `overrideComplexity` | 枚举   | 否   | 手动覆盖: 简单、标准、复杂 |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出              | 位置                                          |
+| ----------------- | --------------------------------------------- |
 | `complexity.json` | `docs/stories/{storyId}/spec/complexity.json` |
 
 #### 5 个复杂性维度
@@ -342,47 +342,47 @@ radar
     "风险" : 3
 ```
 
-| 维度 | 评分 1 | 评分 3 | 评分 5 |
-|------|---------|---------|---------|
-| **范围** | 1-2 个文件 | 6-10 个文件 | 20+ 个文件 |
-| **集成** | 无外部 | 1-2 个外部 API | 多个编排 |
-| **基础设施** | 无变化 | 新依赖 | 新基础设施 |
-| **知识** | 现有模式 | 新库 | 未知领域 |
-| **风险** | 低、隔离 | 中、重要 | 关键、核心 |
+| 维度         | 评分 1     | 评分 3         | 评分 5     |
+| ------------ | ---------- | -------------- | ---------- |
+| **范围**     | 1-2 个文件 | 6-10 个文件    | 20+ 个文件 |
+| **集成**     | 无外部     | 1-2 个外部 API | 多个编排   |
+| **基础设施** | 无变化     | 新依赖         | 新基础设施 |
+| **知识**     | 现有模式   | 新库           | 未知领域   |
+| **风险**     | 低、隔离   | 中、重要       | 关键、核心 |
 
 #### 分类阈值
 
-| 分类 | 总分 | 已激活阶段 | 估计时间 |
-|-------|---------|-----------|---------|
-| **简单** | <= 8 | 收集、规范、批评 | 30-60 分钟 |
-| **标准** | 9-15 | 收集、评估、研究、规范、批评、计划 | 2-4 小时 |
-| **复杂** | >= 16 | + 修订、批评_2 | 4-8 小时 |
+| 分类     | 总分  | 已激活阶段                         | 估计时间   |
+| -------- | ----- | ---------------------------------- | ---------- |
+| **简单** | <= 8  | 收集、规范、批评                   | 30-60 分钟 |
+| **标准** | 9-15  | 收集、评估、研究、规范、批评、计划 | 2-4 小时   |
+| **复杂** | >= 16 | + 修订、批评\_2                    | 4-8 小时   |
 
 ---
 
 ### 3.3 阶段 3: 研究依赖
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `research` |
-| **阶段号** | 3 |
-| **代理** | @analyst (Atlas) |
-| **任务** | `spec-research-dependencies.md` |
+| 属性         | 值                               |
+| ------------ | -------------------------------- |
+| **步骤 ID**  | `research`                       |
+| **阶段号**   | 3                                |
+| **代理**     | @analyst (Atlas)                 |
+| **任务**     | `spec-research-dependencies.md`  |
 | **跳过条件** | `complexity.result === 'SIMPLE'` |
-| **工具** | Context7, EXA |
+| **工具**     | Context7, EXA                    |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 故事 ID |
-| `requirements` | 文件 | 是 | requirements.json |
-| `complexity` | 文件 | 是 | complexity.json |
+| 输入           | 类型   | 必需 | 描述              |
+| -------------- | ------ | ---- | ----------------- |
+| `storyId`      | 字符串 | 是   | 故事 ID           |
+| `requirements` | 文件   | 是   | requirements.json |
+| `complexity`   | 文件   | 是   | complexity.json   |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出            | 位置                                        |
+| --------------- | ------------------------------------------- |
 | `research.json` | `docs/stories/{storyId}/spec/research.json` |
 
 #### 研究流程
@@ -420,37 +420,37 @@ flowchart LR
 
 #### 工具优先级
 
-| 工具 | 优先级 | 超时 | 用途 |
-|------|--------|------|-----|
-| **Context7** | 1 (主要) | 30 秒 | 库文档 |
-| **EXA** | 2 (备用) | - | 常规网络搜索 |
-| **代码库** | - | - | 检查现有实现 |
+| 工具         | 优先级   | 超时  | 用途         |
+| ------------ | -------- | ----- | ------------ |
+| **Context7** | 1 (主要) | 30 秒 | 库文档       |
+| **EXA**      | 2 (备用) | -     | 常规网络搜索 |
+| **代码库**   | -        | -     | 检查现有实现 |
 
 ---
 
 ### 3.4 阶段 4: 编写规范
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `spec` |
-| **阶段号** | 4 |
-| **代理** | @pm (Morgan) |
-| **任务** | `spec-write-spec.md` |
-| **宪法网关** | 第四条 - 无发明 |
+| 属性         | 值                   |
+| ------------ | -------------------- |
+| **步骤 ID**  | `spec`               |
+| **阶段号**   | 4                    |
+| **代理**     | @pm (Morgan)         |
+| **任务**     | `spec-write-spec.md` |
+| **宪法网关** | 第四条 - 无发明      |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 故事 ID |
-| `requirements` | 文件 | 是 | requirements.json |
-| `complexity` | 文件 | 否 | complexity.json |
-| `research` | 文件 | 否 | research.json |
+| 输入           | 类型   | 必需 | 描述              |
+| -------------- | ------ | ---- | ----------------- |
+| `storyId`      | 字符串 | 是   | 故事 ID           |
+| `requirements` | 文件   | 是   | requirements.json |
+| `complexity`   | 文件   | 否   | complexity.json   |
+| `research`     | 文件   | 否   | research.json     |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出      | 位置                                  |
+| --------- | ------------------------------------- |
 | `spec.md` | `docs/stories/{storyId}/spec/spec.md` |
 
 #### 宪法网关: 无发明
@@ -520,28 +520,28 @@ flowchart TB
 
 ### 3.5 阶段 5: 批评规范
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `critique` |
-| **阶段号** | 5 |
-| **代理** | @qa (Quinn) |
-| **任务** | `spec-critique.md` |
-| **网关** | 阻止 (已批准/需要修订/阻止) |
+| 属性        | 值                          |
+| ----------- | --------------------------- |
+| **步骤 ID** | `critique`                  |
+| **阶段号**  | 5                           |
+| **代理**    | @qa (Quinn)                 |
+| **任务**    | `spec-critique.md`          |
+| **网关**    | 阻止 (已批准/需要修订/阻止) |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 故事 ID |
-| `spec` | 文件 | 是 | spec.md |
-| `requirements` | 文件 | 是 | requirements.json |
-| `complexity` | 文件 | 否 | complexity.json |
-| `research` | 文件 | 否 | research.json |
+| 输入           | 类型   | 必需 | 描述              |
+| -------------- | ------ | ---- | ----------------- |
+| `storyId`      | 字符串 | 是   | 故事 ID           |
+| `spec`         | 文件   | 是   | spec.md           |
+| `requirements` | 文件   | 是   | requirements.json |
+| `complexity`   | 文件   | 否   | complexity.json   |
+| `research`     | 文件   | 否   | research.json     |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出            | 位置                                        |
+| --------------- | ------------------------------------------- |
 | `critique.json` | `docs/stories/{storyId}/spec/critique.json` |
 
 #### 5 个质量维度
@@ -556,13 +556,13 @@ pie showData
     "对齐" : 15
 ```
 
-| 维度 | 权重 | 检查 |
-|------|------|------|
-| **准确性** | 25% | 规范是否正确反映需求? |
-| **完整性** | 25% | 所有部分都填充? 测试覆盖 FR? |
-| **一致性** | 20% | ID 有效? 无矛盾? |
-| **可行性** | 15% | 技术上可行? 依赖存在? |
-| **对齐** | 15% | 与堆栈和项目模式对齐? |
+| 维度       | 权重 | 检查                         |
+| ---------- | ---- | ---------------------------- |
+| **准确性** | 25%  | 规范是否正确反映需求?        |
+| **完整性** | 25%  | 所有部分都填充? 测试覆盖 FR? |
+| **一致性** | 20%  | ID 有效? 无矛盾?             |
+| **可行性** | 15%  | 技术上可行? 依赖存在?        |
+| **对齐**   | 15%  | 与堆栈和项目模式对齐?        |
 
 #### 判决逻辑
 
@@ -591,48 +591,48 @@ flowchart TB
     style BLOCKED fill:#ffcdd2
 ```
 
-| 判决 | 条件 | 下一步 |
-|------|------|--------|
-| **已批准** | 无高问题，平均 >= 4.0，所有 >= 3 | 转到计划 |
-| **需要修订** | 中问题或平均 3.0-3.9 | 返回规范编写 |
-| **已阻止** | 高问题或平均 < 3.0 或任何 <= 1 | 上报给 @architect |
+| 判决         | 条件                             | 下一步            |
+| ------------ | -------------------------------- | ----------------- |
+| **已批准**   | 无高问题，平均 >= 4.0，所有 >= 3 | 转到计划          |
+| **需要修订** | 中问题或平均 3.0-3.9             | 返回规范编写      |
+| **已阻止**   | 高问题或平均 < 3.0 或任何 <= 1   | 上报给 @architect |
 
 ---
 
 ### 3.6 阶段 5b: 修订规范
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `revise` |
-| **阶段号** | 5b |
-| **代理** | @pm (Morgan) |
-| **条件** | `complexity.result === 'COMPLEX'` 或 `critique.verdict === 'NEEDS_REVISION'` |
+| 属性        | 值                                                                           |
+| ----------- | ---------------------------------------------------------------------------- |
+| **步骤 ID** | `revise`                                                                     |
+| **阶段号**  | 5b                                                                           |
+| **代理**    | @pm (Morgan)                                                                 |
+| **条件**    | `complexity.result === 'COMPLEX'` 或 `critique.verdict === 'NEEDS_REVISION'` |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 故事 ID |
-| `spec` | 文件 | 是 | 当前 spec.md |
-| `critique` | 文件 | 是 | 带反馈的 critique.json |
+| 输入       | 类型   | 必需 | 描述                   |
+| ---------- | ------ | ---- | ---------------------- |
+| `storyId`  | 字符串 | 是   | 故事 ID                |
+| `spec`     | 文件   | 是   | 当前 spec.md           |
+| `critique` | 文件   | 是   | 带反馈的 critique.json |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出               | 位置                                  |
+| ------------------ | ------------------------------------- |
 | `spec.md` (已更新) | `docs/stories/{storyId}/spec/spec.md` |
 
 ---
 
 ### 3.7 阶段 5c: 第二次批评
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `critique_2` |
-| **阶段号** | 5c |
-| **代理** | @qa (Quinn) |
-| **任务** | `spec-critique.md` |
-| **条件** | `complexity.result === 'COMPLEX'` |
+| 属性        | 值                                |
+| ----------- | --------------------------------- |
+| **步骤 ID** | `critique_2`                      |
+| **阶段号**  | 5c                                |
+| **代理**    | @qa (Quinn)                       |
+| **任务**    | `spec-critique.md`                |
+| **条件**    | `complexity.result === 'COMPLEX'` |
 
 > **注:** 如果有改进演示，第二次批评对中问题更宽松。
 
@@ -640,36 +640,36 @@ flowchart TB
 
 ### 3.8 阶段 6: 创建实现计划
 
-| 属性 | 值 |
-|------|-----|
-| **步骤 ID** | `plan` |
-| **阶段号** | 6 |
-| **代理** | @architect (Aria) |
-| **任务** | `plan-create-implementation.md` |
-| **条件** | `critique.verdict === 'APPROVED'` |
+| 属性        | 值                                |
+| ----------- | --------------------------------- |
+| **步骤 ID** | `plan`                            |
+| **阶段号**  | 6                                 |
+| **代理**    | @architect (Aria)                 |
+| **任务**    | `plan-create-implementation.md`   |
+| **条件**    | `critique.verdict === 'APPROVED'` |
 
 #### 输入
 
-| 输入 | 类型 | 必需 | 描述 |
-|-----|------|------|------|
-| `storyId` | 字符串 | 是 | 故事 ID |
-| `spec` | 文件 | 是 | 已批准的 spec.md |
-| `complexity` | 文件 | 否 | complexity.json |
+| 输入         | 类型   | 必需 | 描述             |
+| ------------ | ------ | ---- | ---------------- |
+| `storyId`    | 字符串 | 是   | 故事 ID          |
+| `spec`       | 文件   | 是   | 已批准的 spec.md |
+| `complexity` | 文件   | 否   | complexity.json  |
 
 #### 输出
 
-| 输出 | 位置 |
-|-----|------|
+| 输出                  | 位置                                              |
+| --------------------- | ------------------------------------------------- |
 | `implementation.yaml` | `docs/stories/{storyId}/plan/implementation.yaml` |
 
 #### 子任务规则
 
-| 规则 | 描述 |
-|------|------|
+| 规则         | 描述                                               |
+| ------------ | -------------------------------------------------- |
 | **单一服务** | 每个子任务 1 个服务 (前端、后端、数据库、基础设施) |
-| **文件限制** | 每个子任务最多 3 个文件 |
-| **需要验证** | 每个子任务必须定义验证 |
-| **依赖顺序** | 数据库 > 后端 > 前端 > 集成 |
+| **文件限制** | 每个子任务最多 3 个文件                            |
+| **需要验证** | 每个子任务必须定义验证                             |
+| **依赖顺序** | 数据库 > 后端 > 前端 > 集成                        |
 
 ---
 
@@ -695,12 +695,12 @@ graph LR
     style QA fill:#fff8e1
 ```
 
-| 代理 | ID | 名字 | 流水线中的角色 | 阶段 |
-|------|-----|------|-----------------|------|
-| @pm | pm | Morgan | 产品经理 | 1 (收集), 4 (规范), 5b (修订) |
-| @architect | architect | Aria | 系统架构师 | 2 (评估), 6 (计划) |
-| @analyst | analyst | Atlas | 业务分析师 | 3 (研究) |
-| @qa | qa | Quinn | 测试架构师 | 5 (批评), 5c (批评 2) |
+| 代理       | ID        | 名字   | 流水线中的角色 | 阶段                          |
+| ---------- | --------- | ------ | -------------- | ----------------------------- |
+| @pm        | pm        | Morgan | 产品经理       | 1 (收集), 4 (规范), 5b (修订) |
+| @architect | architect | Aria   | 系统架构师     | 2 (评估), 6 (计划)            |
+| @analyst   | analyst   | Atlas  | 业务分析师     | 3 (研究)                      |
+| @qa        | qa        | Quinn  | 测试架构师     | 5 (批评), 5c (批评 2)         |
 
 ### 4.1 档案: @pm (Morgan)
 
@@ -734,14 +734,14 @@ graph LR
 
 ## 5. 执行的任务
 
-| 任务 | 阶段 | 代理 | 文件 |
-|------|------|------|------|
-| 收集需求 | 1 | @pm | `.aiox-core/development/tasks/spec-gather-requirements.md` |
-| 评估复杂性 | 2 | @architect | `.aiox-core/development/tasks/spec-assess-complexity.md` |
-| 研究依赖 | 3 | @analyst | `.aiox-core/development/tasks/spec-research-dependencies.md` |
-| 编写规范 | 4 | @pm | `.aiox-core/development/tasks/spec-write-spec.md` |
-| 批评规范 | 5, 5c | @qa | `.aiox-core/development/tasks/spec-critique.md` |
-| 创建实现计划 | 6 | @architect | `.aiox-core/development/tasks/plan-create-implementation.md` |
+| 任务         | 阶段  | 代理       | 文件                                                         |
+| ------------ | ----- | ---------- | ------------------------------------------------------------ |
+| 收集需求     | 1     | @pm        | `.aiox-core/development/tasks/spec-gather-requirements.md`   |
+| 评估复杂性   | 2     | @architect | `.aiox-core/development/tasks/spec-assess-complexity.md`     |
+| 研究依赖     | 3     | @analyst   | `.aiox-core/development/tasks/spec-research-dependencies.md` |
+| 编写规范     | 4     | @pm        | `.aiox-core/development/tasks/spec-write-spec.md`            |
+| 批评规范     | 5, 5c | @qa        | `.aiox-core/development/tasks/spec-critique.md`              |
+| 创建实现计划 | 6     | @architect | `.aiox-core/development/tasks/plan-create-implementation.md` |
 
 ---
 
@@ -749,23 +749,23 @@ graph LR
 
 ### 6.1 飞行前检查
 
-| 检查 | 描述 | 阻止 |
-|------|------|------|
-| `story_exists` | 故事目录存在或可创建 | 是 |
+| 检查               | 描述                    | 阻止      |
+| ------------------ | ----------------------- | --------- |
+| `story_exists`     | 故事目录存在或可创建    | 是        |
 | `no_existing_spec` | 检查现有规范 (避免覆盖) | 否 (警告) |
-| `agents_available` | 流水线代理已配置 | 是 |
+| `agents_available` | 流水线代理已配置        | 是        |
 
 ### 6.2 必需的配置
 
 ```yaml
 config:
   autoSpec:
-    enabled: false        # 创建故事时启用自动规范
-  showProgress: true      # 显示进度
-  verbose: true           # 详细日志
-  maxRetries: 2           # 失败时的重试次数
-  retryDelay: 1000        # 重试之间的延迟 (毫秒)
-  strictGate: true        # 已阻止暂停流水线
+    enabled: false # 创建故事时启用自动规范
+  showProgress: true # 显示进度
+  verbose: true # 详细日志
+  maxRetries: 2 # 失败时的重试次数
+  retryDelay: 1000 # 重试之间的延迟 (毫秒)
+  strictGate: true # 已阻止暂停流水线
   outputDir: docs/stories/{storyId}/spec/
 ```
 
@@ -775,12 +775,12 @@ config:
 
 ### 7.1 流水线输入
 
-| 输入 | 类型 | 描述 | 由谁提供 |
-|-----|------|------|---------|
-| `storyId` | 字符串 | 故事的唯一 ID | 用户 |
-| `source` | 枚举 | `prd`、`user`、`existing` | 用户 (可选) |
-| `prdPath` | 字符串 | 现有 PRD 的路径 | 用户 (可选) |
-| `overrideComplexity` | 枚举 | 复杂性的手动覆盖 | 用户 (可选) |
+| 输入                 | 类型   | 描述                      | 由谁提供    |
+| -------------------- | ------ | ------------------------- | ----------- |
+| `storyId`            | 字符串 | 故事的唯一 ID             | 用户        |
+| `source`             | 枚举   | `prd`、`user`、`existing` | 用户 (可选) |
+| `prdPath`            | 字符串 | 现有 PRD 的路径           | 用户 (可选) |
+| `overrideComplexity` | 枚举   | 复杂性的手动覆盖          | 用户 (可选) |
 
 ### 7.2 流水线输出
 
@@ -809,14 +809,14 @@ flowchart LR
     O6 --> LP
 ```
 
-| 工件 | 阶段 | 描述 |
-|------|------|------|
-| `requirements.json` | 1 | 结构化需求 (9 个类别) |
-| `complexity.json` | 2 | 复杂性评估 (5 个维度) |
-| `research.json` | 3 | 已研究和验证的依赖 |
-| `spec.md` | 4 | 完整的可执行规范 |
-| `critique.json` | 5 | 质量评估的结果 |
-| `plan.json` | 6 | 带子任务的实现计划 |
+| 工件                | 阶段 | 描述                  |
+| ------------------- | ---- | --------------------- |
+| `requirements.json` | 1    | 结构化需求 (9 个类别) |
+| `complexity.json`   | 2    | 复杂性评估 (5 个维度) |
+| `research.json`     | 3    | 已研究和验证的依赖    |
+| `spec.md`           | 4    | 完整的可执行规范      |
+| `critique.json`     | 5    | 质量评估的结果        |
+| `plan.json`         | 6    | 带子任务的实现计划    |
 
 ---
 
@@ -879,15 +879,15 @@ flowchart TB
 
 ### 9.1 常见错误
 
-| 错误 | 原因 | 解决方案 |
-|------|------|---------|
-| `missing_story_id` | 未提供故事 ID | `*create-spec 故事-42` |
-| `phase_failed` | 阶段执行期间失败 | 检查日志，使用 `--resume` |
-| `max_iterations_reached` | 达到修订限制 | 上报给 @architect |
-| `critique_blocked` | 规范被 QA 网关阻止 | 审查 critique.json，修复高问题 |
-| `missing-requirements` | 未找到 requirements.json | 先执行收集阶段 |
-| `empty-functional` | 无函数式需求 | 重新执行询问 |
-| `context7-unavailable` | Context7 MCP 无响应 | 使用 EXA 作为备用 |
+| 错误                     | 原因                     | 解决方案                       |
+| ------------------------ | ------------------------ | ------------------------------ |
+| `missing_story_id`       | 未提供故事 ID            | `*create-spec 故事-42`         |
+| `phase_failed`           | 阶段执行期间失败         | 检查日志，使用 `--resume`      |
+| `max_iterations_reached` | 达到修订限制             | 上报给 @architect              |
+| `critique_blocked`       | 规范被 QA 网关阻止       | 审查 critique.json，修复高问题 |
+| `missing-requirements`   | 未找到 requirements.json | 先执行收集阶段                 |
+| `empty-functional`       | 无函数式需求             | 重新执行询问                   |
+| `context7-unavailable`   | Context7 MCP 无响应      | 使用 EXA 作为备用              |
 
 ### 9.2 如何恢复执行
 
@@ -907,6 +907,7 @@ resume:
 ```
 
 **恢复命令:**
+
 ```bash
 *create-spec 故事-42 --resume
 ```
@@ -944,24 +945,24 @@ flowchart TB
 
 ### 10.1 工作流文件
 
-| 文件 | 位置 |
-|------|------|
-| 工作流定义 | `.aiox-core/development/workflows/spec-pipeline.yaml` |
-| 任务: 收集 | `.aiox-core/development/tasks/spec-gather-requirements.md` |
-| 任务: 评估 | `.aiox-core/development/tasks/spec-assess-complexity.md` |
-| 任务: 研究 | `.aiox-core/development/tasks/spec-research-dependencies.md` |
-| 任务: 编写规范 | `.aiox-core/development/tasks/spec-write-spec.md` |
-| 任务: 批评 | `.aiox-core/development/tasks/spec-critique.md` |
+| 文件           | 位置                                                         |
+| -------------- | ------------------------------------------------------------ |
+| 工作流定义     | `.aiox-core/development/workflows/spec-pipeline.yaml`        |
+| 任务: 收集     | `.aiox-core/development/tasks/spec-gather-requirements.md`   |
+| 任务: 评估     | `.aiox-core/development/tasks/spec-assess-complexity.md`     |
+| 任务: 研究     | `.aiox-core/development/tasks/spec-research-dependencies.md` |
+| 任务: 编写规范 | `.aiox-core/development/tasks/spec-write-spec.md`            |
+| 任务: 批评     | `.aiox-core/development/tasks/spec-critique.md`              |
 | 任务: 创建计划 | `.aiox-core/development/tasks/plan-create-implementation.md` |
 
 ### 10.2 相关代理
 
-| 代理 | 位置 |
-|------|------|
-| @pm (Morgan) | `.aiox-core/development/agents/pm.md` |
+| 代理              | 位置                                         |
+| ----------------- | -------------------------------------------- |
+| @pm (Morgan)      | `.aiox-core/development/agents/pm.md`        |
 | @architect (Aria) | `.aiox-core/development/agents/architect.md` |
-| @analyst (Atlas) | `.aiox-core/development/agents/analyst.md` |
-| @qa (Quinn) | `.aiox-core/development/agents/qa.md` |
+| @analyst (Atlas)  | `.aiox-core/development/agents/analyst.md`   |
+| @qa (Quinn)       | `.aiox-core/development/agents/qa.md`        |
 
 ### 10.3 相关文档
 
@@ -971,14 +972,14 @@ flowchart TB
 
 ### 10.4 快速命令
 
-| 命令 | 描述 | 代理 |
-|------|------|------|
-| `*create-spec 故事-ID` | 执行完整流水线 | - |
-| `*gather-requirements 故事-ID` | 仅收集阶段 | @pm |
-| `*assess-complexity 故事-ID` | 仅评估阶段 | @architect |
-| `*research-deps 故事-ID` | 仅研究阶段 | @analyst |
-| `*write-spec 故事-ID` | 仅编写阶段 | @pm |
-| `*critique-spec 故事-ID` | 仅批评阶段 | @qa |
+| 命令                           | 描述           | 代理       |
+| ------------------------------ | -------------- | ---------- |
+| `*create-spec 故事-ID`         | 执行完整流水线 | -          |
+| `*gather-requirements 故事-ID` | 仅收集阶段     | @pm        |
+| `*assess-complexity 故事-ID`   | 仅评估阶段     | @architect |
+| `*research-deps 故事-ID`       | 仅研究阶段     | @analyst   |
+| `*write-spec 故事-ID`          | 仅编写阶段     | @pm        |
+| `*critique-spec 故事-ID`       | 仅批评阶段     | @qa        |
 
 ---
 

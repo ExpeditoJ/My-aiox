@@ -36,7 +36,7 @@ O agente `@devops` (Gage) e o especialista em infraestrutura e operacoes do fram
 Nome: Gage
 Papel: Operator
 Especializacao: DevOps, Infraestrutura, CI/CD, MCP
-Filosofia: "Automatize tudo que pode ser automatizado"
+Filosofia: 'Automatize tudo que pode ser automatizado'
 ```
 
 ### Regra Critica
@@ -49,32 +49,32 @@ Filosofia: "Automatize tudo que pode ser automatizado"
 
 ### Arquivo do Agente
 
-| Arquivo | Caminho | Descricao |
-|---------|---------|-----------|
+| Arquivo             | Caminho                                   | Descricao                          |
+| ------------------- | ----------------------------------------- | ---------------------------------- |
 | Definicao do Agente | `.aiox-core/development/agents/devops.md` | Persona, comandos e comportamentos |
 
 ### Arquivos de Tasks
 
-| Task | Caminho | Comando |
-|------|---------|---------|
-| Pre-Push Quality Gate | `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | `*push` |
-| Version Management | `.aiox-core/development/tasks/github-devops-version-management.md` | `*version-check` |
-| Repository Cleanup | `.aiox-core/development/tasks/github-devops-repository-cleanup.md` | `*cleanup` |
-| CI/CD Configuration | `.aiox-core/development/tasks/ci-cd-configuration.md` | `*ci-cd` |
-| Release Management | `.aiox-core/development/tasks/release-management.md` | `*release` |
-| Environment Bootstrap | `.aiox-core/development/tasks/environment-bootstrap.md` | `*environment-bootstrap` |
-| Search MCP | `.aiox-core/development/tasks/search-mcp.md` | `*search-mcp` |
-| Add MCP | `.aiox-core/development/tasks/add-mcp.md` | `*add-mcp` |
-| Setup MCP Docker | `.aiox-core/development/tasks/setup-mcp-docker.md` | `*setup-mcp-docker` |
-| Setup GitHub | `.aiox-core/development/tasks/setup-github.md` | `*setup-github` |
-| Security Audit | `.aiox-core/development/tasks/security-audit.md` | `*security-audit` |
-| Security Scan | `.aiox-core/development/tasks/security-scan.md` | `*security-scan` |
+| Task                  | Caminho                                                               | Comando                  |
+| --------------------- | --------------------------------------------------------------------- | ------------------------ |
+| Pre-Push Quality Gate | `.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md` | `*push`                  |
+| Version Management    | `.aiox-core/development/tasks/github-devops-version-management.md`    | `*version-check`         |
+| Repository Cleanup    | `.aiox-core/development/tasks/github-devops-repository-cleanup.md`    | `*cleanup`               |
+| CI/CD Configuration   | `.aiox-core/development/tasks/ci-cd-configuration.md`                 | `*ci-cd`                 |
+| Release Management    | `.aiox-core/development/tasks/release-management.md`                  | `*release`               |
+| Environment Bootstrap | `.aiox-core/development/tasks/environment-bootstrap.md`               | `*environment-bootstrap` |
+| Search MCP            | `.aiox-core/development/tasks/search-mcp.md`                          | `*search-mcp`            |
+| Add MCP               | `.aiox-core/development/tasks/add-mcp.md`                             | `*add-mcp`               |
+| Setup MCP Docker      | `.aiox-core/development/tasks/setup-mcp-docker.md`                    | `*setup-mcp-docker`      |
+| Setup GitHub          | `.aiox-core/development/tasks/setup-github.md`                        | `*setup-github`          |
+| Security Audit        | `.aiox-core/development/tasks/security-audit.md`                      | `*security-audit`        |
+| Security Scan         | `.aiox-core/development/tasks/security-scan.md`                       | `*security-scan`         |
 
 ### Arquivos de Configuracao e Regras
 
-| Arquivo | Caminho | Proposito |
-|---------|---------|-----------|
-| Regras MCP | `.claude/rules/mcp-usage.md` | Governanca e uso de MCPs |
+| Arquivo    | Caminho                           | Proposito                       |
+| ---------- | --------------------------------- | ------------------------------- |
+| Regras MCP | `.claude/rules/mcp-usage.md`      | Governanca e uso de MCPs        |
 | Regras N8N | `.claude/rules/n8n-operations.md` | Operacoes em infraestrutura N8N |
 
 ---
@@ -266,41 +266,41 @@ flowchart TD
 
 ### Comandos MCP
 
-| Comando | Task | Descricao | Modo |
-|---------|------|-----------|------|
-| `*search-mcp` | search-mcp.md | Buscar MCPs no catalogo | Interactive |
-| `*add-mcp` | add-mcp.md | Instalar servidor MCP | Interactive |
-| `*list-mcps` | (inline) | Listar MCPs habilitados | YOLO |
-| `*remove-mcp` | (inline) | Remover servidor MCP | Interactive |
+| Comando             | Task                | Descricao                     | Modo        |
+| ------------------- | ------------------- | ----------------------------- | ----------- |
+| `*search-mcp`       | search-mcp.md       | Buscar MCPs no catalogo       | Interactive |
+| `*add-mcp`          | add-mcp.md          | Instalar servidor MCP         | Interactive |
+| `*list-mcps`        | (inline)            | Listar MCPs habilitados       | YOLO        |
+| `*remove-mcp`       | (inline)            | Remover servidor MCP          | Interactive |
 | `*setup-mcp-docker` | setup-mcp-docker.md | Configurar Docker MCP Toolkit | Interactive |
 
 ### Comandos Git/GitHub
 
-| Comando | Task | Descricao | Modo |
-|---------|------|-----------|------|
-| `*push` | github-devops-pre-push-quality-gate.md | Quality gate antes do push | Interactive |
-| `*setup-github` | setup-github.md | Configurar repositorio GitHub | Interactive |
-| `*cleanup` | github-devops-repository-cleanup.md | Limpar branches e arquivos | Interactive |
+| Comando         | Task                                   | Descricao                     | Modo        |
+| --------------- | -------------------------------------- | ----------------------------- | ----------- |
+| `*push`         | github-devops-pre-push-quality-gate.md | Quality gate antes do push    | Interactive |
+| `*setup-github` | setup-github.md                        | Configurar repositorio GitHub | Interactive |
+| `*cleanup`      | github-devops-repository-cleanup.md    | Limpar branches e arquivos    | Interactive |
 
 ### Comandos CI/CD e Releases
 
-| Comando | Task | Descricao | Modo |
-|---------|------|-----------|------|
-| `*ci-cd` | ci-cd-configuration.md | Configurar pipeline CI/CD | Interactive |
-| `*release` | release-management.md | Criar release com changelog | Interactive |
-| `*version-check` | github-devops-version-management.md | Analisar e sugerir versao | YOLO |
+| Comando          | Task                                | Descricao                   | Modo        |
+| ---------------- | ----------------------------------- | --------------------------- | ----------- |
+| `*ci-cd`         | ci-cd-configuration.md              | Configurar pipeline CI/CD   | Interactive |
+| `*release`       | release-management.md               | Criar release com changelog | Interactive |
+| `*version-check` | github-devops-version-management.md | Analisar e sugerir versao   | YOLO        |
 
 ### Comandos de Seguranca
 
-| Comando | Task | Descricao | Modo |
-|---------|------|-----------|------|
-| `*security-scan` | security-scan.md | Varredura de vulnerabilidades | Interactive |
+| Comando           | Task              | Descricao                       | Modo        |
+| ----------------- | ----------------- | ------------------------------- | ----------- |
+| `*security-scan`  | security-scan.md  | Varredura de vulnerabilidades   | Interactive |
 | `*security-audit` | security-audit.md | Auditoria completa de seguranca | Interactive |
 
 ### Comandos de Ambiente
 
-| Comando | Task | Descricao | Modo |
-|---------|------|-----------|------|
+| Comando                  | Task                     | Descricao                 | Modo        |
+| ------------------------ | ------------------------ | ------------------------- | ----------- |
 | `*environment-bootstrap` | environment-bootstrap.md | Bootstrap de novo projeto | Interactive |
 
 ---
@@ -341,14 +341,14 @@ flowchart LR
 
 ### Matriz de Responsabilidades
 
-| Operacao | DevOps | Dev | QA | Architect | PM |
-|----------|--------|-----|----|-----------|----|
-| Gerenciar MCPs | **Owner** | Consumer | Consumer | Consumer | - |
-| CI/CD Config | **Owner** | Reviewer | - | Approver | - |
-| Releases | **Owner** | - | Validator | - | Requester |
-| Security Scan | **Owner** | - | **Co-Owner** | - | - |
-| Repository Setup | **Owner** | - | - | Reviewer | - |
-| Environment Bootstrap | **Owner** | Requester | - | - | - |
+| Operacao              | DevOps    | Dev       | QA           | Architect | PM        |
+| --------------------- | --------- | --------- | ------------ | --------- | --------- |
+| Gerenciar MCPs        | **Owner** | Consumer  | Consumer     | Consumer  | -         |
+| CI/CD Config          | **Owner** | Reviewer  | -            | Approver  | -         |
+| Releases              | **Owner** | -         | Validator    | -         | Requester |
+| Security Scan         | **Owner** | -         | **Co-Owner** | -         | -         |
+| Repository Setup      | **Owner** | -         | -            | Reviewer  | -         |
+| Environment Bootstrap | **Owner** | Requester | -            | -         | -         |
 
 ### Fluxo de Delegacao
 
@@ -451,6 +451,7 @@ MCP_DEBUG=true
 ### CI/CD
 
 1. **Pipeline Stages**
+
    ```
    lint -> test -> build -> deploy
    ```
@@ -515,6 +516,7 @@ npx -y @package/mcp-server
 **Causa:** Bug no Docker MCP Toolkit com secrets
 
 **Solucao:**
+
 1. Edite `~/.docker/mcp/catalogs/docker-mcp.yaml`
 2. Substitua template por valores hardcoded
 3. Reinicie o container MCP
@@ -589,28 +591,28 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 ### Tasks Relacionadas
 
-| Task | Descricao |
-|------|-----------|
-| [Pre-Push Quality Gate](.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md) | Validacao antes do push |
-| [Version Management](.aiox-core/development/tasks/github-devops-version-management.md) | Gerenciamento de versoes |
-| [CI/CD Configuration](.aiox-core/development/tasks/ci-cd-configuration.md) | Configuracao de pipelines |
-| [Release Management](.aiox-core/development/tasks/release-management.md) | Gerenciamento de releases |
-| [Environment Bootstrap](.aiox-core/development/tasks/environment-bootstrap.md) | Bootstrap de ambientes |
+| Task                                                                                         | Descricao                 |
+| -------------------------------------------------------------------------------------------- | ------------------------- |
+| [Pre-Push Quality Gate](.aiox-core/development/tasks/github-devops-pre-push-quality-gate.md) | Validacao antes do push   |
+| [Version Management](.aiox-core/development/tasks/github-devops-version-management.md)       | Gerenciamento de versoes  |
+| [CI/CD Configuration](.aiox-core/development/tasks/ci-cd-configuration.md)                   | Configuracao de pipelines |
+| [Release Management](.aiox-core/development/tasks/release-management.md)                     | Gerenciamento de releases |
+| [Environment Bootstrap](.aiox-core/development/tasks/environment-bootstrap.md)               | Bootstrap de ambientes    |
 
 ---
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Agente** | Gage (Operator) |
-| **Ativacao** | `@devops` |
-| **Total de Comandos** | 14 |
-| **Total de Tasks** | 12 |
-| **Areas de Atuacao** | MCP, CI/CD, Releases, Security, Repositories |
-| **Regra Principal** | Governanca exclusiva de infraestrutura MCP |
-| **Modo Padrao** | Interactive |
-| **Versao** | 2.0.0 |
+| Aspecto               | Detalhes                                     |
+| --------------------- | -------------------------------------------- |
+| **Agente**            | Gage (Operator)                              |
+| **Ativacao**          | `@devops`                                    |
+| **Total de Comandos** | 14                                           |
+| **Total de Tasks**    | 12                                           |
+| **Areas de Atuacao**  | MCP, CI/CD, Releases, Security, Repositories |
+| **Regra Principal**   | Governanca exclusiva de infraestrutura MCP   |
+| **Modo Padrao**       | Interactive                                  |
+| **Versao**            | 2.0.0                                        |
 
 ### Comandos Rapidos
 
@@ -633,5 +635,5 @@ npm audit --ignore-advisories=ADVISORY_ID
 
 ---
 
-*Documento gerado pelo Sistema AIOX - 2026-02-04*
-*Mantido por: @devops*
+_Documento gerado pelo Sistema AIOX - 2026-02-04_
+_Mantido por: @devops_

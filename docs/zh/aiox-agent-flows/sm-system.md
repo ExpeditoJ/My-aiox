@@ -18,6 +18,7 @@
 **@sm (River)** 代理是 AIOX 的技术 Scrum Master，专门负责故事准备和敏捷流程促进。其主要角色是创建详细、可操作的故事，使开发代理能够以最少的额外研究进行实现。
 
 **主要职责：**
+
 - 用户故事的创建和细化
 - 史诗管理和需求分解
 - 冲刺规划促进
@@ -35,62 +36,62 @@
 
 ### @sm 核心任务文件
 
-| 文件 | 命令 | 目的 |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/sm-create-next-story.md` | `*draft` | 创建待办列表中下一个故事的主要任务 |
-| `.aiox-core/development/tasks/create-next-story.md` | `*draft` | 故事创建任务的完整版本 |
-| `.aiox-core/development/tasks/execute-checklist.md` | `*story-checklist` | 执行故事草稿验证检查清单 |
-| `.aiox-core/development/tasks/correct-course.md` | `*correct-course` | 分析并纠正流程偏差 |
-| `.aiox-core/development/tasks/collaborative-edit.md` | - | 文档协作编辑 |
-| `.aiox-core/development/tasks/init-project-status.md` | - | 项目状态初始化 |
+| 文件                                                   | 命令               | 目的                               |
+| ------------------------------------------------------ | ------------------ | ---------------------------------- |
+| `.aiox-core/development/tasks/sm-create-next-story.md` | `*draft`           | 创建待办列表中下一个故事的主要任务 |
+| `.aiox-core/development/tasks/create-next-story.md`    | `*draft`           | 故事创建任务的完整版本             |
+| `.aiox-core/development/tasks/execute-checklist.md`    | `*story-checklist` | 执行故事草稿验证检查清单           |
+| `.aiox-core/development/tasks/correct-course.md`       | `*correct-course`  | 分析并纠正流程偏差                 |
+| `.aiox-core/development/tasks/collaborative-edit.md`   | -                  | 文档协作编辑                       |
+| `.aiox-core/development/tasks/init-project-status.md`  | -                  | 项目状态初始化                     |
 
 ### 代理定义文件
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/development/agents/sm.md` | SM 代理核心定义 |
-| `.claude/commands/AIOX/agents/sm.md` | 用于激活 @sm 的 Claude Code 命令 |
-| `.cursor/rules/sm.md` | Cursor IDE 规则 |
-| `.cursor/rules/sm.mdc` | Cursor 编译规则 |
+| 文件                                  | 目的                             |
+| ------------------------------------- | -------------------------------- |
+| `.aiox-core/development/agents/sm.md` | SM 代理核心定义                  |
+| `.claude/commands/AIOX/agents/sm.md`  | 用于激活 @sm 的 Claude Code 命令 |
+| `.cursor/rules/sm.md`                 | Cursor IDE 规则                  |
+| `.cursor/rules/sm.mdc`                | Cursor 编译规则                  |
 
 ### 使用的检查清单文件
 
-| 文件 | 目的 |
-|---------|-----------|
+| 文件                                                     | 目的                       |
+| -------------------------------------------------------- | -------------------------- |
 | `.aiox-core/product/checklists/story-draft-checklist.md` | 验证故事草稿的质量和完整性 |
-| `.aiox-core/product/checklists/story-dod-checklist.md` | 故事完成定义 |
-| `.aiox-core/product/checklists/change-checklist.md` | 变更和课程纠正导航 |
-| `.aiox-core/product/checklists/po-master-checklist.md` | 验证中使用的主检查清单 |
+| `.aiox-core/product/checklists/story-dod-checklist.md`   | 故事完成定义               |
+| `.aiox-core/product/checklists/change-checklist.md`      | 变更和课程纠正导航         |
+| `.aiox-core/product/checklists/po-master-checklist.md`   | 验证中使用的主检查清单     |
 
 ### 其他代理的相关文件
 
-| 文件 | 代理 | 目的 |
-|---------|--------|-----------|
-| `.aiox-core/development/agents/po.md` | @po | 与 @sm 在待办和冲刺规划上协调 |
-| `.aiox-core/development/agents/dev.md` | @dev | 从 @sm 接收故事进行实现 |
-| `.aiox-core/development/agents/pm.md` | @pm | 创建 @sm 分解为故事的史诗 |
-| `.aiox-core/development/agents/devops.md` | @github-devops | 接收已完成故事进行 push/PR |
-| `.aiox-core/development/agents/qa.md` | @qa | 在风险分析上协调 |
+| 文件                                      | 代理           | 目的                          |
+| ----------------------------------------- | -------------- | ----------------------------- |
+| `.aiox-core/development/agents/po.md`     | @po            | 与 @sm 在待办和冲刺规划上协调 |
+| `.aiox-core/development/agents/dev.md`    | @dev           | 从 @sm 接收故事进行实现       |
+| `.aiox-core/development/agents/pm.md`     | @pm            | 创建 @sm 分解为故事的史诗     |
+| `.aiox-core/development/agents/devops.md` | @github-devops | 接收已完成故事进行 push/PR    |
+| `.aiox-core/development/agents/qa.md`     | @qa            | 在风险分析上协调              |
 
 ### 使用 @sm 的工作流文件
 
-| 文件 | 目的 |
-|---------|-----------|
+| 文件                                                            | 目的               |
+| --------------------------------------------------------------- | ------------------ |
 | `.aiox-core/development/workflows/story-development-cycle.yaml` | 完整的故事开发周期 |
-| `.aiox-core/development/workflows/greenfield-fullstack.yaml` | 绿地全栈工作流 |
-| `.aiox-core/development/workflows/greenfield-service.yaml` | 绿地服务工作流 |
-| `.aiox-core/development/workflows/greenfield-ui.yaml` | 绿地 UI 工作流 |
-| `.aiox-core/development/workflows/brownfield-fullstack.yaml` | 棕地全栈工作流 |
-| `.aiox-core/development/workflows/brownfield-service.yaml` | 棕地服务工作流 |
-| `.aiox-core/development/workflows/brownfield-ui.yaml` | 棕地 UI 工作流 |
+| `.aiox-core/development/workflows/greenfield-fullstack.yaml`    | 绿地全栈工作流     |
+| `.aiox-core/development/workflows/greenfield-service.yaml`      | 绿地服务工作流     |
+| `.aiox-core/development/workflows/greenfield-ui.yaml`           | 绿地 UI 工作流     |
+| `.aiox-core/development/workflows/brownfield-fullstack.yaml`    | 棕地全栈工作流     |
+| `.aiox-core/development/workflows/brownfield-service.yaml`      | 棕地服务工作流     |
+| `.aiox-core/development/workflows/brownfield-ui.yaml`           | 棕地 UI 工作流     |
 
 ### 配置文件
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/core-config.yaml` | 中央配置（devStoryLocation 等） |
-| `.aiox-core/development/scripts/unified-activation-pipeline.js` | 智能问候管道 |
-| `.aiox-core/development/scripts/agent-assignment-resolver.js` | 代理分配解析 |
+| 文件                                                            | 目的                            |
+| --------------------------------------------------------------- | ------------------------------- |
+| `.aiox-core/core-config.yaml`                                   | 中央配置（devStoryLocation 等） |
+| `.aiox-core/development/scripts/unified-activation-pipeline.js` | 智能问候管道                    |
+| `.aiox-core/development/scripts/agent-assignment-resolver.js`   | 代理分配解析                    |
 
 ---
 
@@ -229,15 +230,15 @@ flowchart LR
 
 ## 命令到任务的映射
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*draft` | `sm-create-next-story.md` / `create-next-story.md` | 创建待办中下一个故事 |
-| `*story-checklist` | `execute-checklist.md` | 执行 `story-draft-checklist.md` |
-| `*correct-course` | `correct-course.md` | 分析并纠正流程偏差 |
-| `*help` | (内置) | 显示可用命令 |
-| `*guide` | (内置) | 显示代理使用指南 |
-| `*session-info` | (内置) | 显示当前会话详情 |
-| `*exit` | (内置) | 退出 Scrum Master 模式 |
+| 命令               | 任务文件                                           | 操作                            |
+| ------------------ | -------------------------------------------------- | ------------------------------- |
+| `*draft`           | `sm-create-next-story.md` / `create-next-story.md` | 创建待办中下一个故事            |
+| `*story-checklist` | `execute-checklist.md`                             | 执行 `story-draft-checklist.md` |
+| `*correct-course`  | `correct-course.md`                                | 分析并纠正流程偏差              |
+| `*help`            | (内置)                                             | 显示可用命令                    |
+| `*guide`           | (内置)                                             | 显示代理使用指南                |
+| `*session-info`    | (内置)                                             | 显示当前会话详情                |
+| `*exit`            | (内置)                                             | 退出 Scrum Master 模式          |
 
 ---
 
@@ -283,20 +284,21 @@ flowchart TB
 
 ### 协作矩阵
 
-| 代理 | 关系 | 操作 |
-|--------|----------------|------|
-| **@pm (Morgan)** | 接收自 | 史诗结构、已分片 PRD |
-| **@po (Pax)** | 协调 | 待办优先排序、冲刺规划 |
-| **@dev (Dex)** | 交付给 | 准备实现的故事 |
-| **@qa (Quinn)** | 请求 | 故事的风险分析 |
-| **@github-devops (Gage)** | 委派给 | 推送分支、创建 PR |
-| **@analyst (Sage)** | 咨询 | 研究和技术见解 |
+| 代理                      | 关系   | 操作                   |
+| ------------------------- | ------ | ---------------------- |
+| **@pm (Morgan)**          | 接收自 | 史诗结构、已分片 PRD   |
+| **@po (Pax)**             | 协调   | 待办优先排序、冲刺规划 |
+| **@dev (Dex)**            | 交付给 | 准备实现的故事         |
+| **@qa (Quinn)**           | 请求   | 故事的风险分析         |
+| **@github-devops (Gage)** | 委派给 | 推送分支、创建 PR      |
+| **@analyst (Sage)**       | 咨询   | 研究和技术见解         |
 
 ### 委派给 @github-devops
 
 @sm 只管理本地 Git 操作。远程操作**始终**委派给 @github-devops：
 
 **@sm 允许的操作：**
+
 - `git checkout -b feature/X.Y-story-name` - 创建本地分支
 - `git branch` - 列出分支
 - `git branch -d branch-name` - 删除本地分支
@@ -304,6 +306,7 @@ flowchart TB
 - `git merge branch-name` - 本地合并
 
 **禁止的操作（使用 @github-devops）：**
+
 - `git push` - 发送到远程
 - `git push origin --delete` - 删除远程分支
 - `gh pr create` - 创建 Pull Request
@@ -332,7 +335,7 @@ qaLocation: docs/qa
 
 # CodeRabbit 集成
 coderabbit_integration:
-  enabled: true  # 控制 @sm 是否在故事中填充 CodeRabbit 部分
+  enabled: true # 控制 @sm 是否在故事中填充 CodeRabbit 部分
 ```
 
 ### 代理依赖
@@ -348,9 +351,9 @@ dependencies:
   checklists:
     - story-draft-checklist.md
   tools:
-    - git               # 仅本地分支操作
-    - clickup           # 跟踪冲刺进度
-    - context7          # 研究技术需求
+    - git # 仅本地分支操作
+    - clickup # 跟踪冲刺进度
+    - context7 # 研究技术需求
 ```
 
 ---
@@ -395,6 +398,7 @@ dependencies:
 **症状：** 步骤 5.1 的史诗验证失败
 
 **解决方案：**
+
 1. 验证史诗是否存在于 ClickUp 待办列表中
 2. 确认标签：`epic`、`epic-{epicNum}`
 3. 状态应为"规划中"或"进行中"
@@ -411,6 +415,7 @@ dependencies:
 **症状：** 任务停止并显示文件未找到消息
 
 **解决方案：**
+
 1. 从 `GITHUB aiox-core/core-config.yaml` 复制
 2. 或执行 AIOX 安装器：`npm run aiox:install`
 3. 配置 `devStoryLocation`、`prdSharded` 等
@@ -420,6 +425,7 @@ dependencies:
 **症状：** 故事草稿有多个验证问题
 
 **解决方案：**
+
 1. 审查引用的架构文件
 2. 验证 PRD/史诗是否完整
 3. 使用文件回退策略查找替代文件
@@ -430,6 +436,7 @@ dependencies:
 **症状：** 尝试集成时合并冲突
 
 **解决方案：**
+
 1. 执行 `git fetch origin` 更新引用
 2. 本地合并基础分支：`git merge main`
 3. 在请求 @github-devops push 之前解决冲突
@@ -441,6 +448,7 @@ dependencies:
 **原因：** core-config.yaml 中 `coderabbit_integration.enabled: false`
 
 **解决方案：**
+
 1. 检查 `core-config.yaml`
 2. 如果有意，故事将有跳过通知
 3. 要启用，设置 `coderabbit_integration.enabled: true`
@@ -450,52 +458,57 @@ dependencies:
 ## 参考
 
 ### 代理文件
+
 - [代理：sm.md](.aiox-core/development/agents/sm.md)
 - [任务：create-next-story.md](.aiox-core/development/tasks/create-next-story.md)
 - [任务：execute-checklist.md](.aiox-core/development/tasks/execute-checklist.md)
 - [任务：correct-course.md](.aiox-core/development/tasks/correct-course.md)
 
 ### 检查清单
+
 - [检查清单：story-draft-checklist.md](.aiox-core/product/checklists/story-draft-checklist.md)
 - [检查清单：story-dod-checklist.md](.aiox-core/product/checklists/story-dod-checklist.md)
 - [检查清单：change-checklist.md](.aiox-core/product/checklists/change-checklist.md)
 
 ### 工作流
+
 - [工作流：story-development-cycle.yaml](.aiox-core/development/workflows/story-development-cycle.yaml)
 - [工作流：greenfield-fullstack.yaml](.aiox-core/development/workflows/greenfield-fullstack.yaml)
 - [工作流：brownfield-fullstack.yaml](.aiox-core/development/workflows/brownfield-fullstack.yaml)
 
 ### 配置
+
 - [核心配置](../.aiox-core/core-config.yaml)
 
 ### 相关文档
+
 - [待办管理系统](../BACKLOG-MANAGEMENT-SYSTEM.md)
 
 ---
 
 ## 摘要
 
-| 方面 | 详情 |
-|---------|----------|
-| **代理** | @sm (River) - Scrum Master |
-| **原型** | 协调者（双鱼座） |
-| **任务文件总数** | 6 个核心任务 |
-| **可用命令** | 7 个（`*draft`、`*story-checklist`、`*correct-course`、`*help`、`*guide`、`*session-info`、`*exit`） |
-| **使用的检查清单** | 4 个检查清单 |
-| **使用 @sm 的工作流** | 7 个工作流 |
-| **工具** | git（本地）、clickup、context7 |
-| **协作** | @pm、@po、@dev、@qa、@github-devops、@analyst |
-| **委派给** | @github-devops（远程操作） |
-| **主要职责** | 创建详细、可操作的故事 |
+| 方面                  | 详情                                                                                                 |
+| --------------------- | ---------------------------------------------------------------------------------------------------- |
+| **代理**              | @sm (River) - Scrum Master                                                                           |
+| **原型**              | 协调者（双鱼座）                                                                                     |
+| **任务文件总数**      | 6 个核心任务                                                                                         |
+| **可用命令**          | 7 个（`*draft`、`*story-checklist`、`*correct-course`、`*help`、`*guide`、`*session-info`、`*exit`） |
+| **使用的检查清单**    | 4 个检查清单                                                                                         |
+| **使用 @sm 的工作流** | 7 个工作流                                                                                           |
+| **工具**              | git（本地）、clickup、context7                                                                       |
+| **协作**              | @pm、@po、@dev、@qa、@github-devops、@analyst                                                        |
+| **委派给**            | @github-devops（远程操作）                                                                           |
+| **主要职责**          | 创建详细、可操作的故事                                                                               |
 
 ---
 
 ## 变更日志
 
-| 日期 | 作者 | 描述 |
-|------|-------|-----------|
+| 日期       | 作者 | 描述         |
+| ---------- | ---- | ------------ |
 | 2026-02-04 | @dev | 创建初始文档 |
 
 ---
 
-*-- River，移除障碍*
+_-- River，移除障碍_

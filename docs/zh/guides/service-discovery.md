@@ -17,12 +17,12 @@
 
 ### 关键概念
 
-| 概念              | 描述                                                                |
-| -------------------- | -------------------------------------------------------------------------- |
-| **工作者**           | 任何可执行单元：任务、模板、脚本、工作流                      |
-| **服务注册表** | 所有工作者及其元数据的中央目录                       |
-| **类别**         | 工作者类型：`task`、`template`、`script`、`checklist`、`workflow`、`data` |
-| **标签**              | 用于分组工作者的可搜索标签                                      |
+| 概念           | 描述                                                                      |
+| -------------- | ------------------------------------------------------------------------- |
+| **工作者**     | 任何可执行单元：任务、模板、脚本、工作流                                  |
+| **服务注册表** | 所有工作者及其元数据的中央目录                                            |
+| **类别**       | 工作者类型：`task`、`template`、`script`、`checklist`、`workflow`、`data` |
+| **标签**       | 用于分组工作者的可搜索标签                                                |
 
 ---
 
@@ -270,13 +270,13 @@ steps:
 
 用于生成的文档和代码模板。
 
-| 模板                   | 用途                   |
-| -------------------------- | ------------------------- |
-| `story-tmpl.yaml`          | 故事文档模板   |
-| `prd-tmpl.yaml`            | PRD模板              |
-| `architecture-tmpl.yaml`   | 架构文档模板 |
-| `component-react-tmpl.tsx` | React组件模板  |
-| `ide-rules/*.md`           | IDE特定规则        |
+| 模板                       | 用途          |
+| -------------------------- | ------------- |
+| `story-tmpl.yaml`          | 故事文档模板  |
+| `prd-tmpl.yaml`            | PRD模板       |
+| `architecture-tmpl.yaml`   | 架构文档模板  |
+| `component-react-tmpl.tsx` | React组件模板 |
+| `ide-rules/*.md`           | IDE特定规则   |
 
 **位置:** `.aiox-core/product/templates/`
 
@@ -284,12 +284,12 @@ steps:
 
 用于自动化的JavaScript实用程序。
 
-| 脚本                | 用途                   |
-| --------------------- | ------------------------- |
+| 脚本                  | 用途          |
+| --------------------- | ------------- |
 | `backup-manager.js`   | 备份/恢复操作 |
-| `template-engine.js`  | 模板处理       |
-| `git-wrapper.js`      | Git操作            |
-| `security-checker.js` | 安全验证       |
+| `template-engine.js`  | 模板处理      |
+| `git-wrapper.js`      | Git操作       |
+| `security-checker.js` | 安全验证      |
 
 **位置:** `.aiox-core/infrastructure/scripts/`
 
@@ -297,11 +297,11 @@ steps:
 
 多步开发流程。
 
-| 工作流                    | 用例                      |
-| --------------------------- | ----------------------------- |
-| `greenfield-fullstack.yaml` | 新全栈项目        |
-| `brownfield-fullstack.yaml` | 现有项目增强  |
-| `greenfield-service.yaml`   | 新后端服务           |
+| 工作流                      | 用例         |
+| --------------------------- | ------------ |
+| `greenfield-fullstack.yaml` | 新全栈项目   |
+| `brownfield-fullstack.yaml` | 现有项目增强 |
+| `greenfield-service.yaml`   | 新后端服务   |
 | `brownfield-ui.yaml`        | 现有前端增强 |
 
 **位置:** `.aiox-core/development/workflows/`
@@ -310,12 +310,12 @@ steps:
 
 质量验证检查清单。
 
-| 检查清单                | 用途                  |
-| ------------------------ | ------------------------ |
+| 检查清单                 | 用途         |
+| ------------------------ | ------------ |
 | `story-dod-checklist.md` | 故事完成定义 |
-| `pre-push-checklist.md`  | 推送前验证      |
-| `architect-checklist.md` | 架构审查      |
-| `release-checklist.md`   | 发布验证       |
+| `pre-push-checklist.md`  | 推送前验证   |
+| `architect-checklist.md` | 架构审查     |
+| `release-checklist.md`   | 发布验证     |
 
 **位置:** `.aiox-core/product/checklists/`
 
@@ -375,12 +375,12 @@ node .aiox-core/core/registry/build-registry.js
 
 注册表加载器实现了智能缓存:
 
-| 功能             | 描述                             |
-| ------------------- | --------------------------------------- |
-| **TTL缓存**       | 5分钟默认过期            |
-| **索引查找** | 按ID、类别、标签O(1)               |
-| **延迟加载**    | 首次查询时加载注册表          |
-| **手动刷新**  | 使用 `registry.load(true)` 强制重新加载 |
+| 功能         | 描述                                    |
+| ------------ | --------------------------------------- |
+| **TTL缓存**  | 5分钟默认过期                           |
+| **索引查找** | 按ID、类别、标签O(1)                    |
+| **延迟加载** | 首次查询时加载注册表                    |
+| **手动刷新** | 使用 `registry.load(true)` 强制重新加载 |
 
 ### 缓存操作
 

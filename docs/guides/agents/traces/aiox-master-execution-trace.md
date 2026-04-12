@@ -7,19 +7,19 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/aiox-master.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, registry |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 6 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                             |
+| ----- | ------------------------------------------------ | --------------------------------------- | --------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/aiox-master.md`   | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                       |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration                                  |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: dataLocation, registry             |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                            |
+| 5     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history) |
+| 6     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                     |
 
 **NOT loaded on activation:**
 
-| File | Condition | Size |
-|------|-----------|------|
+| File                         | Condition                  | Size |
+| ---------------------------- | -------------------------- | ---- |
 | `.aiox-core/data/aiox-kb.md` | ONLY when user types `*kb` | 35KB |
 
 ### 1.2 Greeting Construction
@@ -82,59 +82,59 @@ aiox-master:
       condition: kb_command
       size: 35KB
   lazy_loading:
-    registry: false      # Always load (15KB, frequently used)
-    aiox-kb: true        # Load only on *kb command
+    registry: false # Always load (15KB, frequently used)
+    aiox-kb: true # Load only on *kb command
   performance_target: <30ms
 ```
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `👑 Orion the Orchestrator ready to lead!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Orion, orquestrando o sistema 🎯` |
-| Role | `persona.role` | Master Orchestrator, Framework Developer & AIOX Method Expert |
-| Commands shown | `filterCommandsByVisibility('full')` | 33 commands with `full` visibility |
+| Data           | Source                                            | Value                                                         |
+| -------------- | ------------------------------------------------- | ------------------------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `👑 Orion the Orchestrator ready to lead!`                    |
+| Signature      | `persona_profile.communication.signature_closing` | `— Orion, orquestrando o sistema 🎯`                          |
+| Role           | `persona.role`                                    | Master Orchestrator, Framework Developer & AIOX Method Expert |
+| Commands shown | `filterCommandsByVisibility('full')`              | 33 commands with `full` visibility                            |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*kb` | kb-mode-interaction.md | full | No |
-| `*status` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*yolo` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
-| `*create` | create-agent.md / create-task.md / create-workflow.md | full, quick | Yes |
-| `*modify` | modify-agent.md / modify-task.md / modify-workflow.md | full | Yes |
-| `*update-manifest` | update-manifest.md | full | Yes |
-| `*validate-component` | (built-in, uses security-checker.js) | full | No |
-| `*deprecate-component` | deprecate-component.md | full | Yes |
-| `*propose-modification` | propose-modification.md | full | Yes |
-| `*undo-last` | undo-last.md | full | No |
-| `*validate-workflow` | validate-workflow.md | full | No |
-| `*run-workflow` | run-workflow.md / run-workflow-engine.md | full | Optional |
-| `*analyze-framework` | analyze-framework.md | full | No |
-| `*list-components` | (built-in, scans .aiox-core/) | full | No |
-| `*test-memory` | (built-in) | full | No |
-| `*task` | (dynamic - loads any task from tasks/) | full | Varies |
-| `*execute-checklist` | execute-checklist.md | full | Optional |
-| `*workflow` | run-workflow.md | full | Optional |
-| `*plan` | (built-in planning subsystem) | full | Yes |
-| `*create-doc` | create-doc.md + template | full | Yes |
-| `*doc-out` | (built-in) | full | No |
-| `*shard-doc` | shard-doc.md | full | Yes |
-| `*document-project` | document-project.md | full, quick | Yes |
-| `*add-tech-doc` | add-tech-doc.md (MISSING) | full | Yes |
-| `*create-next-story` | create-next-story.md | full, quick | Yes |
-| `*advanced-elicitation` | advanced-elicitation.md | full | Yes |
-| `*chat-mode` | (built-in) | full | No |
-| `*agent` | (built-in, reads agent .md files) | full | No |
-| `*correct-course` | correct-course.md | full | No |
-| `*index-docs` | index-docs.md | full | No |
+| Command                 | Task File                                             | Visibility       | Elicit   |
+| ----------------------- | ----------------------------------------------------- | ---------------- | -------- |
+| `*help`                 | (built-in)                                            | full, quick, key | No       |
+| `*kb`                   | kb-mode-interaction.md                                | full             | No       |
+| `*status`               | (built-in)                                            | full             | No       |
+| `*guide`                | (built-in, rendered from agent .md)                   | full, quick      | No       |
+| `*yolo`                 | (built-in)                                            | full             | No       |
+| `*exit`                 | (built-in)                                            | full             | No       |
+| `*create`               | create-agent.md / create-task.md / create-workflow.md | full, quick      | Yes      |
+| `*modify`               | modify-agent.md / modify-task.md / modify-workflow.md | full             | Yes      |
+| `*update-manifest`      | update-manifest.md                                    | full             | Yes      |
+| `*validate-component`   | (built-in, uses security-checker.js)                  | full             | No       |
+| `*deprecate-component`  | deprecate-component.md                                | full             | Yes      |
+| `*propose-modification` | propose-modification.md                               | full             | Yes      |
+| `*undo-last`            | undo-last.md                                          | full             | No       |
+| `*validate-workflow`    | validate-workflow.md                                  | full             | No       |
+| `*run-workflow`         | run-workflow.md / run-workflow-engine.md              | full             | Optional |
+| `*analyze-framework`    | analyze-framework.md                                  | full             | No       |
+| `*list-components`      | (built-in, scans .aiox-core/)                         | full             | No       |
+| `*test-memory`          | (built-in)                                            | full             | No       |
+| `*task`                 | (dynamic - loads any task from tasks/)                | full             | Varies   |
+| `*execute-checklist`    | execute-checklist.md                                  | full             | Optional |
+| `*workflow`             | run-workflow.md                                       | full             | Optional |
+| `*plan`                 | (built-in planning subsystem)                         | full             | Yes      |
+| `*create-doc`           | create-doc.md + template                              | full             | Yes      |
+| `*doc-out`              | (built-in)                                            | full             | No       |
+| `*shard-doc`            | shard-doc.md                                          | full             | Yes      |
+| `*document-project`     | document-project.md                                   | full, quick      | Yes      |
+| `*add-tech-doc`         | add-tech-doc.md (MISSING)                             | full             | Yes      |
+| `*create-next-story`    | create-next-story.md                                  | full, quick      | Yes      |
+| `*advanced-elicitation` | advanced-elicitation.md                               | full             | Yes      |
+| `*chat-mode`            | (built-in)                                            | full             | No       |
+| `*agent`                | (built-in, reads agent .md files)                     | full             | No       |
+| `*correct-course`       | correct-course.md                                     | full             | No       |
+| `*index-docs`           | index-docs.md                                         | full             | No       |
 
 ---
 
@@ -502,6 +502,7 @@ flowchart TD
 ```
 
 **Available checklists (6):**
+
 1. `architect-checklist.md`
 2. `change-checklist.md`
 3. `pm-checklist.md`
@@ -711,18 +712,18 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition (33 commands) |
-| `*status` | Shows current context: active story, branch, modified files, session info |
-| `*guide` | Renders the `## AIOX Master Guide` section from agent .md |
-| `*chat-mode` | Starts conversational assistance mode (freeform interaction) |
-| `*doc-out` | Outputs complete document content |
-| `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits aiox-master mode, returns to base Claude Code |
-| `*agent {name}` | Reads and displays info about a specialized agent (use `@` to transform into it) |
+| Command            | Behavior                                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------ |
+| `*help`            | Renders full command list from `commands[]` in agent definition (33 commands)                          |
+| `*status`          | Shows current context: active story, branch, modified files, session info                              |
+| `*guide`           | Renders the `## AIOX Master Guide` section from agent .md                                              |
+| `*chat-mode`       | Starts conversational assistance mode (freeform interaction)                                           |
+| `*doc-out`         | Outputs complete document content                                                                      |
+| `*yolo`            | Toggles confirmation skipping mode                                                                     |
+| `*exit`            | Exits aiox-master mode, returns to base Claude Code                                                    |
+| `*agent {name}`    | Reads and displays info about a specialized agent (use `@` to transform into it)                       |
 | `*list-components` | Scans .aiox-core/ and lists all framework components (agents, tasks, workflows, templates, checklists) |
-| `*test-memory` | Tests memory layer connection and reports status |
+| `*test-memory`     | Tests memory layer connection and reports status                                                       |
 
 ---
 
@@ -920,98 +921,104 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @aiox-master -> @pm | Delegate | Epic/story creation (brownfield-create-epic, brownfield-create-story) |
-| @aiox-master -> @analyst | Delegate | Brainstorming sessions (*brainstorm) |
-| @aiox-master -> @qa | Delegate | Test suite creation (*create-suite) |
-| @aiox-master -> @architect | Delegate | AI prompt generation (*generate-ai-prompt) |
-| @aiox-master -> @dev | Handoff | Story implementation after story creation |
-| @aiox-master -> @devops | Delegate | Git push operations, PR creation |
-| @aiox-master -> any agent | Execute | Can execute any task from any agent directly |
-| Any agent -> @aiox-master | Escalate | Cross-agent coordination, framework operations |
+| Interaction                | Direction | Trigger                                                               |
+| -------------------------- | --------- | --------------------------------------------------------------------- |
+| @aiox-master -> @pm        | Delegate  | Epic/story creation (brownfield-create-epic, brownfield-create-story) |
+| @aiox-master -> @analyst   | Delegate  | Brainstorming sessions (\*brainstorm)                                 |
+| @aiox-master -> @qa        | Delegate  | Test suite creation (\*create-suite)                                  |
+| @aiox-master -> @architect | Delegate  | AI prompt generation (\*generate-ai-prompt)                           |
+| @aiox-master -> @dev       | Handoff   | Story implementation after story creation                             |
+| @aiox-master -> @devops    | Delegate  | Git push operations, PR creation                                      |
+| @aiox-master -> any agent  | Execute   | Can execute any task from any agent directly                          |
+| Any agent -> @aiox-master  | Escalate  | Cross-agent coordination, framework operations                        |
 
 ### Delegation Rules (from agent definition)
 
 **Delegates to @pm when:**
+
 - Epic creation is needed (brownfield-create-epic)
 - Story creation within an epic (brownfield-create-story)
 - PRD management and backlog prioritization
 
 **Delegates to @analyst when:**
+
 - Brainstorming sessions are requested
 - Research and analysis tasks
 
 **Delegates to @qa when:**
-- Test suite creation (*create-suite)
+
+- Test suite creation (\*create-suite)
 - Quality gate execution
 
 **Delegates to @architect when:**
-- AI prompt generation (*generate-ai-prompt)
+
+- AI prompt generation (\*generate-ai-prompt)
 - Architecture decision records
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 - CI/CD pipeline configuration
 
 **Retains (does NOT delegate):**
+
 - Framework component creation/modification (*create, *modify)
 - Workflow orchestration (*run-workflow, *validate-workflow)
-- KB mode management (*kb)
-- Manifest updates (*update-manifest)
-- Component validation (*validate-component)
-- Component deprecation (*deprecate-component)
-- Course correction (*correct-course)
-- Framework analysis (*analyze-framework)
+- KB mode management (\*kb)
+- Manifest updates (\*update-manifest)
+- Component validation (\*validate-component)
+- Component deprecation (\*deprecate-component)
+- Course correction (\*correct-course)
+- Framework analysis (\*analyze-framework)
 
 ### Specialization Guidance (from agent definition)
 
-| Task Type | Recommended Agent |
-|-----------|-------------------|
-| Story implementation | @dev |
-| Code review | @qa |
-| PRD creation | @pm |
-| Story creation | @sm (or @pm for epics) |
-| Architecture | @architect |
-| Database | @data-engineer |
-| UX/UI | @ux-design-expert |
-| Research | @analyst |
-| Git operations | @devops |
+| Task Type            | Recommended Agent      |
+| -------------------- | ---------------------- |
+| Story implementation | @dev                   |
+| Code review          | @qa                    |
+| PRD creation         | @pm                    |
+| Story creation       | @sm (or @pm for epics) |
+| Architecture         | @architect             |
+| Database             | @data-engineer         |
+| UX/UI                | @ux-design-expert      |
+| Research             | @analyst               |
+| Git operations       | @devops                |
 
 ---
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
+| File              | Type | Referenced By           | Impact                 |
+| ----------------- | ---- | ----------------------- | ---------------------- |
 | `add-tech-doc.md` | Task | `*add-tech-doc` command | Command non-functional |
 
 ### Dependency Health Summary
 
-| Category | Total | Existing | Missing | Health |
-|----------|-------|----------|---------|--------|
-| Tasks | 26 | 25 | 1 | 96% |
-| Templates | 15 | 15 | 0 | 100% |
-| Data | 4 | 4 | 0 | 100% |
-| Utils | 3 | 3 | 0 | 100% |
-| Workflows | 9 | 9 | 0 | 100% |
-| Checklists | 6 | 6 | 0 | 100% |
-| **TOTAL** | **63** | **62** | **1** | **98%** |
+| Category   | Total  | Existing | Missing | Health  |
+| ---------- | ------ | -------- | ------- | ------- |
+| Tasks      | 26     | 25       | 1       | 96%     |
+| Templates  | 15     | 15       | 0       | 100%    |
+| Data       | 4      | 4        | 0       | 100%    |
+| Utils      | 3      | 3        | 0       | 100%    |
+| Workflows  | 9      | 9        | 0       | 100%    |
+| Checklists | 6      | 6        | 0       | 100%    |
+| **TOTAL**  | **63** | **62**   | **1**   | **98%** |
 
 ### Notes on File Locations
 
 Some dependencies resolve to non-standard paths:
 
-| Dependency | Expected Path | Actual Path |
-|------------|---------------|-------------|
-| `security-checker.js` | `.aiox-core/development/utils/` | `.aiox-core/infrastructure/scripts/security-checker.js` |
-| `yaml-validator.js` | `.aiox-core/development/utils/` | `.aiox-core/infrastructure/scripts/yaml-validator.js` |
-| `workflow-management.md` | `.aiox-core/development/utils/` | `.aiox-core/scripts/workflow-management.md` |
-| `subagent-step-prompt.md` | `.aiox-core/product/templates/` | `.aiox-core/development/templates/subagent-step-prompt.md` |
-| `elicitation-methods.md` | `.aiox-core/data/` | `.aiox-core/product/data/elicitation-methods.md` |
-| `brainstorming-techniques.md` | `.aiox-core/data/` | `.aiox-core/product/data/brainstorming-techniques.md` |
+| Dependency                    | Expected Path                   | Actual Path                                                |
+| ----------------------------- | ------------------------------- | ---------------------------------------------------------- |
+| `security-checker.js`         | `.aiox-core/development/utils/` | `.aiox-core/infrastructure/scripts/security-checker.js`    |
+| `yaml-validator.js`           | `.aiox-core/development/utils/` | `.aiox-core/infrastructure/scripts/yaml-validator.js`      |
+| `workflow-management.md`      | `.aiox-core/development/utils/` | `.aiox-core/scripts/workflow-management.md`                |
+| `subagent-step-prompt.md`     | `.aiox-core/product/templates/` | `.aiox-core/development/templates/subagent-step-prompt.md` |
+| `elicitation-methods.md`      | `.aiox-core/data/`              | `.aiox-core/product/data/elicitation-methods.md`           |
+| `brainstorming-techniques.md` | `.aiox-core/data/`              | `.aiox-core/product/data/brainstorming-techniques.md`      |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

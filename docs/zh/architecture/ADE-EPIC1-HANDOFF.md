@@ -17,15 +17,15 @@ Epic 1 (Worktree Manager) **100% 完成**并通过 QA Gate。通过 Git worktree
 
 ## 交付物
 
-| 工件                     | 路径                                                          | 类型      | 状态 |
-| ------------------------ | ------------------------------------------------------------- | --------- | ---- |
-| worktree-manager.js      | `.aiox-core/infrastructure/scripts/worktree-manager.js`       | JS 脚本   | ✅   |
-| story-worktree-hooks.js  | `.aiox-core/infrastructure/scripts/story-worktree-hooks.js`   | JS 脚本   | ✅   |
-| project-status-loader.js | `.aiox-core/infrastructure/scripts/project-status-loader.js`  | JS 脚本   | ✅   |
-| auto-worktree.yaml       | `.aiox-core/development/workflows/auto-worktree.yaml`         | 工作流    | ✅   |
-| worktree-create.md       | `.aiox-core/development/tasks/worktree-create.md`             | 任务      | ✅   |
-| worktree-list.md         | `.aiox-core/development/tasks/worktree-list.md`               | 任务      | ✅   |
-| worktree-merge.md        | `.aiox-core/development/tasks/worktree-merge.md`              | 任务      | ✅   |
+| 工件                     | 路径                                                         | 类型    | 状态 |
+| ------------------------ | ------------------------------------------------------------ | ------- | ---- |
+| worktree-manager.js      | `.aiox-core/infrastructure/scripts/worktree-manager.js`      | JS 脚本 | ✅   |
+| story-worktree-hooks.js  | `.aiox-core/infrastructure/scripts/story-worktree-hooks.js`  | JS 脚本 | ✅   |
+| project-status-loader.js | `.aiox-core/infrastructure/scripts/project-status-loader.js` | JS 脚本 | ✅   |
+| auto-worktree.yaml       | `.aiox-core/development/workflows/auto-worktree.yaml`        | 工作流  | ✅   |
+| worktree-create.md       | `.aiox-core/development/tasks/worktree-create.md`            | 任务    | ✅   |
+| worktree-list.md         | `.aiox-core/development/tasks/worktree-list.md`              | 任务    | ✅   |
+| worktree-merge.md        | `.aiox-core/development/tasks/worktree-merge.md`             | 任务    | ✅   |
 
 ---
 

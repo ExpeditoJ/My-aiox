@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*create-squad` | Crear nuevo squad |
-| `*add-agent` | Agregar agente al squad |
-| `*template` | Generar template |
-| `*configure` | Configurar squad |
+| Comando         | Descripcion             |
+| --------------- | ----------------------- |
+| `*create-squad` | Crear nuevo squad       |
+| `*add-agent`    | Agregar agente al squad |
+| `*template`     | Generar template        |
+| `*configure`    | Configurar squad        |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/squad-creator-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

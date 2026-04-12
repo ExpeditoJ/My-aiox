@@ -25,15 +25,15 @@ Este documento consolida as descobertas de pesquisa sobre melhores práticas par
 
 Baseado em pesquisa da [GitHub Docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule), [DEV Community](https://dev.to/n3wt0n/best-practices-for-branch-protection-2pe3), e [Legit Security](https://www.legitsecurity.com/blog/github-security-best-practices-your-team-should-be-following):
 
-| Regra de Proteção                   | Recomendação              | Justificativa                                  |
-| ----------------------------------- | ------------------------- | ---------------------------------------------- |
-| **Reviews de pull request obrigatórios** | Habilitar com 1-2 revisores | Previne código não revisado de ser mergeado   |
-| **Exigir reviews de code owner**    | Habilitar                 | Garante que especialistas de domínio revisem mudanças relevantes |
-| **Descartar reviews obsoletas**     | Habilitar                 | Força re-review após novas mudanças            |
-| **Status checks obrigatórios**      | CI deve passar            | Captura falhas de build/teste antes do merge   |
-| **Exigir resolução de conversas**   | Habilitar                 | Garante que todo feedback seja endereçado      |
-| **Restringir force pushes**         | Desabilitar force push    | Previne reescrita de histórico                 |
-| **Exigir histórico linear**         | Opcional                  | Histórico git mais limpo (considerar para monorepos) |
+| Regra de Proteção                        | Recomendação                | Justificativa                                                    |
+| ---------------------------------------- | --------------------------- | ---------------------------------------------------------------- |
+| **Reviews de pull request obrigatórios** | Habilitar com 1-2 revisores | Previne código não revisado de ser mergeado                      |
+| **Exigir reviews de code owner**         | Habilitar                   | Garante que especialistas de domínio revisem mudanças relevantes |
+| **Descartar reviews obsoletas**          | Habilitar                   | Força re-review após novas mudanças                              |
+| **Status checks obrigatórios**           | CI deve passar              | Captura falhas de build/teste antes do merge                     |
+| **Exigir resolução de conversas**        | Habilitar                   | Garante que todo feedback seja endereçado                        |
+| **Restringir force pushes**              | Desabilitar force push      | Previne reescrita de histórico                                   |
+| **Exigir histórico linear**              | Opcional                    | Histórico git mais limpo (considerar para monorepos)             |
 
 ### 1.2 Insights Principais
 
@@ -78,12 +78,12 @@ Da [CodeRabbit Docs](https://docs.coderabbit.ai/getting-started/yaml-configurati
 
 **Elementos Principais de Configuração:**
 
-| Elemento                    | Propósito                      | Recomendação                           |
-| --------------------------- | ------------------------------ | -------------------------------------- |
-| `language`                  | Idioma de resposta             | Corresponder ao idioma do projeto (pt-BR ou en-US) |
-| `reviews.auto_review`       | Reviews automáticos de PR      | Habilitar para OSS                     |
-| `reviews.path_instructions` | Regras de review customizadas por caminho | Essencial para validação de agent/task |
-| `chat.auto_reply`           | Responder a comentários        | Habilitar para melhor experiência do contribuidor |
+| Elemento                    | Propósito                                 | Recomendação                                       |
+| --------------------------- | ----------------------------------------- | -------------------------------------------------- |
+| `language`                  | Idioma de resposta                        | Corresponder ao idioma do projeto (pt-BR ou en-US) |
+| `reviews.auto_review`       | Reviews automáticos de PR                 | Habilitar para OSS                                 |
+| `reviews.path_instructions` | Regras de review customizadas por caminho | Essencial para validação de agent/task             |
+| `chat.auto_reply`           | Responder a comentários                   | Habilitar para melhor experiência do contribuidor  |
 
 ### 2.2 Exemplos do Mundo Real
 
@@ -145,12 +145,12 @@ Da [Harness Blog](https://www.harness.io/blog/mastering-codeowners), [Satellytes
 
 **Princípios Principais:**
 
-| Princípio            | Descrição                                  |
-| -------------------- | ------------------------------------------ |
-| **Último match vence** | Padrões posteriores sobrescrevem anteriores |
-| **Usar wildcards**   | Consolidar entradas com `*` e `**`         |
-| **Teams sobre usuários** | Mais fácil de manter quando pessoas mudam |
-| **Granularidade**    | Balancear entre muito amplo e muito específico |
+| Princípio                | Descrição                                      |
+| ------------------------ | ---------------------------------------------- |
+| **Último match vence**   | Padrões posteriores sobrescrevem anteriores    |
+| **Usar wildcards**       | Consolidar entradas com `*` e `**`             |
+| **Teams sobre usuários** | Mais fácil de manter quando pessoas mudam      |
+| **Granularidade**        | Balancear entre muito amplo e muito específico |
 
 ### 3.2 Padrões de Monorepo
 
@@ -233,15 +233,15 @@ jobs:
 
 ### 4.2 Verificações Obrigatórias Recomendadas
 
-| Verificação           | Tipo       | Prioridade         |
-| --------------------- | ---------- | ------------------ |
-| `lint`                | Obrigatório| ALTA               |
-| `typecheck`           | Obrigatório| ALTA               |
-| `build`               | Obrigatório| ALTA               |
-| `test`                | Obrigatório| ALTA               |
-| `story-validation`    | Opcional   | MÉDIA              |
-| `ide-sync-validation` | Opcional   | BAIXA              |
-| `alls-green`          | Obrigatório| ALTA (job resumo)  |
+| Verificação           | Tipo        | Prioridade        |
+| --------------------- | ----------- | ----------------- |
+| `lint`                | Obrigatório | ALTA              |
+| `typecheck`           | Obrigatório | ALTA              |
+| `build`               | Obrigatório | ALTA              |
+| `test`                | Obrigatório | ALTA              |
+| `story-validation`    | Opcional    | MÉDIA             |
+| `ide-sync-validation` | Opcional    | BAIXA             |
+| `alls-green`          | Obrigatório | ALTA (job resumo) |
 
 ---
 
@@ -279,14 +279,14 @@ Do [Prisma CONTRIBUTING.md](https://github.com/prisma/prisma/blob/main/CONTRIBUT
 
 ### 5.3 Padrões Comuns
 
-| Padrão               | Adoção                  | Recomendação       |
-| -------------------- | ----------------------- | ------------------ |
-| Workflow de fork     | Muito comum             | Adotar             |
-| Assinatura de CLA    | Comum em OSS corporativo| Opcional por agora |
-| Conventional commits | Muito comum             | Já adotado         |
-| Aprovações obrigatórias | Universal            | Adotar (1 aprovação)|
-| CODEOWNERS           | Comum                   | Adotar (granular)  |
-| CodeRabbit/AI review | Crescendo               | Adotar             |
+| Padrão                  | Adoção                   | Recomendação         |
+| ----------------------- | ------------------------ | -------------------- |
+| Workflow de fork        | Muito comum              | Adotar               |
+| Assinatura de CLA       | Comum em OSS corporativo | Opcional por agora   |
+| Conventional commits    | Muito comum              | Já adotado           |
+| Aprovações obrigatórias | Universal                | Adotar (1 aprovação) |
+| CODEOWNERS              | Comum                    | Adotar (granular)    |
+| CodeRabbit/AI review    | Crescendo                | Adotar               |
 
 ---
 
@@ -294,13 +294,13 @@ Do [Prisma CONTRIBUTING.md](https://github.com/prisma/prisma/blob/main/CONTRIBUT
 
 ### 6.1 Workflow de Fork vs Branch Direta
 
-| Aspecto                | Workflow de Fork     | Branch Direta       |
-| ---------------------- | -------------------- | ------------------- |
-| **Segurança**          | Maior (isolado)      | Menor (repo compartilhado) |
-| **Acesso do contribuidor** | Não precisa escrita | Acesso de escrita necessário |
-| **CI/CD**              | Roda no contexto do fork | Roda no repo principal |
-| **Secrets**            | Protegidos           | Acessíveis          |
-| **Complexidade**       | Ligeiramente maior   | Menor               |
+| Aspecto                    | Workflow de Fork         | Branch Direta                |
+| -------------------------- | ------------------------ | ---------------------------- |
+| **Segurança**              | Maior (isolado)          | Menor (repo compartilhado)   |
+| **Acesso do contribuidor** | Não precisa escrita      | Acesso de escrita necessário |
+| **CI/CD**                  | Roda no contexto do fork | Roda no repo principal       |
+| **Secrets**                | Protegidos               | Acessíveis                   |
+| **Complexidade**           | Ligeiramente maior       | Menor                        |
 
 **Recomendação:** Workflow de fork para contribuidores externos (já documentado em CONTRIBUTING.md)
 

@@ -570,12 +570,12 @@ phases:
 
 ### Supported IDEs
 
-| IDE         | Directory    | Format            | Support Level |
-| ----------- | ------------ | ----------------- | ------------- |
-| Claude Code | `.claude/`   | Markdown          | Full          |
-| Cursor      | `.cursor/`   | MDC (frontmatter) | Full          |
-| VS Code     | `.vscode/`   | JSON              | Partial       |
-| Gemini      | `.gemini/`   | Markdown          | Basic         |
+| IDE         | Directory  | Format            | Support Level |
+| ----------- | ---------- | ----------------- | ------------- |
+| Claude Code | `.claude/` | Markdown          | Full          |
+| Cursor      | `.cursor/` | MDC (frontmatter) | Full          |
+| VS Code     | `.vscode/` | JSON              | Partial       |
+| Gemini      | `.gemini/` | Markdown          | Basic         |
 
 ### IDE Configuration
 
@@ -665,7 +665,6 @@ alwaysApply: false
 ---
 # Agent content...
 ```
-
 
 ```
 └── agents/

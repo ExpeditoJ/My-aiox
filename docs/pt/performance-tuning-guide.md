@@ -17,6 +17,7 @@ Este guia abrangente fornece estratégias, ferramentas e melhores práticas para
 ## Metas de Performance
 
 ### Metas de Produção
+
 - **Tempo de resposta do meta-agent**: < 500ms (p95)
 - **Consultas da camada de memória**: < 200ms (p95)
 - **Geração de componentes**: < 2 segundos
@@ -25,6 +26,7 @@ Este guia abrangente fornece estratégias, ferramentas e melhores práticas para
 - **Uso de CPU**: < 60% carga sustentada
 
 ### Metas de Desenvolvimento
+
 - **Inicialização do desenvolvimento local**: < 30 segundos
 - **Hot reload**: < 3 segundos
 - **Execução da suite de testes**: < 2 minutos
@@ -32,12 +34,13 @@ Este guia abrangente fornece estratégias, ferramentas e melhores práticas para
 ## Kit de Ferramentas para Otimização de Performance
 
 ### 1. Performance Profiler
+
 ```javascript
 const { PerformanceProfiler } = require('./performance/profiler');
 
 const profiler = new PerformanceProfiler({
   enabled: true,
-  reportPath: '.aiox/reports/performance.json'
+  reportPath: '.aiox/reports/performance.json',
 });
 
 // Perfila qualquer operação
@@ -52,6 +55,7 @@ const result = await profiler.profileFunction(
 ```
 
 ### 2. Cache Manager
+
 ```javascript
 const { getGlobalCacheManager } = require('./performance/cache-manager');
 
@@ -68,6 +72,7 @@ const result = await cache.cacheFunction(
 ```
 
 ### 3. Memory Query Optimizer
+
 ```javascript
 const { getGlobalMemoryOptimizer } = require('./performance/memory-query-optimizer');
 
@@ -83,6 +88,7 @@ const results = await optimizer.optimizeQuery(
 ```
 
 ### 4. Performance Monitor
+
 ```javascript
 const { getGlobalPerformanceMonitor } = require('./performance/performance-monitor');
 
@@ -100,6 +106,7 @@ monitor.endOperation(operationId, true, { result: 'success' });
 ### 1. Operações do Meta-Agent
 
 #### Criação de Componentes
+
 ```javascript
 // ❌ Não otimizado
 async function createComponent(template, context) {
@@ -114,17 +121,14 @@ async function createComponent(template, context) {
   const cache = getGlobalCacheManager();
 
   // Armazena renderização de template em cache
-  const rendered = await cache.cacheComponentTemplate(
-    template.name,
-    context,
-    () => renderTemplate(template, context)
+  const rendered = await cache.cacheComponentTemplate(template.name, context, () =>
+    renderTemplate(template, context)
   );
 
   // Validação e escrita de arquivos em paralelo
   const [validated, _] = await Promise.all([
     validateComponent(rendered),
-    cache.cacheFileOperation('template-stats', template.path,
-      () => analyzeTemplate(template))
+    cache.cacheFileOperation('template-stats', template.path, () => analyzeTemplate(template)),
   ]);
 
   return await writeFiles(validated);
@@ -132,6 +136,7 @@ async function createComponent(template, context) {
 ```
 
 #### Execução de Tasks
+
 ```javascript
 // ✅ Execução de task otimizada com monitoramento
 async function executeTask(task) {
@@ -140,19 +145,17 @@ async function executeTask(task) {
 
   monitor.startOperation(operationId, 'task-execution', {
     taskType: task.type,
-    complexity: task.complexity
+    complexity: task.complexity,
   });
 
   try {
-    const result = await profiler.profileFunction(
-      `task.${task.type}`,
-      () => processTask(task),
-      { taskId: task.id }
-    );
+    const result = await profiler.profileFunction(`task.${task.type}`, () => processTask(task), {
+      taskId: task.id,
+    });
 
     monitor.endOperation(operationId, true, {
       steps: result.steps,
-      outputSize: result.output?.length
+      outputSize: result.output?.length,
     });
 
     return result;
@@ -166,6 +169,7 @@ async function executeTask(task) {
 ### 2. Otimizações da Camada de Memória
 
 #### Otimização de Consultas Vetoriais
+
 ```javascript
 // ✅ Consultas vetoriais otimizadas
 async function optimizedVectorQuery(query, options = {}) {
@@ -176,8 +180,8 @@ async function optimizedVectorQuery(query, options = {}) {
     query,
     {
       topK: Math.min(options.topK || 10, 100), // Limita resultados
-      threshold: options.threshold || 0.7,     // Filtra baixa similaridade
-      ...options
+      threshold: options.threshold || 0.7, // Filtra baixa similaridade
+      ...options,
     },
     async (query, params) => {
       // Pré-filtra se possível
@@ -193,6 +197,7 @@ async function optimizedVectorQuery(query, options = {}) {
 ```
 
 #### Gerenciamento de Índices
+
 ```javascript
 // ✅ Construção inteligente de índices
 class OptimizedMemoryIndex {
@@ -239,6 +244,7 @@ class OptimizedMemoryIndex {
 ### 3. Operações de Sistema de Arquivos
 
 #### Operações em Massa de Arquivos
+
 ```javascript
 // ✅ Operações de arquivo otimizadas
 const fs = require('fs-extra');
@@ -252,10 +258,8 @@ async function optimizedFileCopy(sourceDir, targetDir, options = {}) {
     'file.bulk-copy',
     async () => {
       // Obtém lista de arquivos com cache
-      const files = await cache.cacheFileOperation(
-        'directory-scan',
-        sourceDir,
-        () => getAllFiles(sourceDir)
+      const files = await cache.cacheFileOperation('directory-scan', sourceDir, () =>
+        getAllFiles(sourceDir)
       );
 
       // Processa em lotes
@@ -290,6 +294,7 @@ async function optimizedFileCopy(sourceDir, targetDir, options = {}) {
 ### 4. Processo de Instalação
 
 #### Instalação de Dependências
+
 ```javascript
 // ✅ Instalação de dependências otimizada
 async function optimizedDependencyInstall(packages) {
@@ -303,9 +308,7 @@ async function optimizedDependencyInstall(packages) {
     'dependencies'
   );
 
-  const packagesToInstall = packages.filter(pkg =>
-    !installedPackages.includes(pkg)
-  );
+  const packagesToInstall = packages.filter((pkg) => !installedPackages.includes(pkg));
 
   if (packagesToInstall.length === 0) {
     return { skipped: packages.length, installed: 0 };
@@ -317,84 +320,81 @@ async function optimizedDependencyInstall(packages) {
 
   for (const batch of batches) {
     await Promise.all(
-      batch.map(pkg =>
-        cache.cacheDependencyInstall(pkg, () => installPackage(pkg))
-      )
+      batch.map((pkg) => cache.cacheDependencyInstall(pkg, () => installPackage(pkg)))
     );
   }
 
-  return { skipped: packages.length - packagesToInstall.length,
-           installed: packagesToInstall.length };
+  return {
+    skipped: packages.length - packagesToInstall.length,
+    installed: packagesToInstall.length,
+  };
 }
 ```
 
 ## Estratégias de Cache
 
 ### 1. Cache da Camada de Memória
+
 ```javascript
 // Armazena resultados de consulta por tipo
 const cacheStrategies = {
   'vector-queries': {
-    ttl: 30 * 60 * 1000,  // 30 minutos
-    maxSize: 100,         // 100 entradas
-    priority: 'high'
+    ttl: 30 * 60 * 1000, // 30 minutos
+    maxSize: 100, // 100 entradas
+    priority: 'high',
   },
   'semantic-search': {
-    ttl: 15 * 60 * 1000,  // 15 minutos
+    ttl: 15 * 60 * 1000, // 15 minutos
     maxSize: 200,
-    priority: 'medium'
+    priority: 'medium',
   },
   'document-retrieval': {
-    ttl: 60 * 60 * 1000,  // 1 hora
+    ttl: 60 * 60 * 1000, // 1 hora
     maxSize: 50,
-    priority: 'high'
-  }
+    priority: 'high',
+  },
 };
 ```
 
 ### 2. Cache de Templates
+
 ```javascript
 // Armazena templates renderizados em cache
 async function getCachedTemplate(templateName, context) {
   const cache = getGlobalCacheManager();
   const contextHash = hashObject(context);
 
-  return await cache.get(
-    `template:${templateName}:${contextHash}`,
-    'component-templates'
-  );
+  return await cache.get(`template:${templateName}:${contextHash}`, 'component-templates');
 }
 ```
 
 ### 3. Cache de Operações de Arquivo
+
 ```javascript
 // Armazena metadados e resultados de arquivos em cache
 async function getCachedFileStats(filePath) {
   const cache = getGlobalCacheManager();
   const stats = await fs.stat(filePath);
 
-  return await cache.cacheFileOperation(
-    'file-stats',
-    filePath,
-    () => analyzeFile(filePath)
-  );
+  return await cache.cacheFileOperation('file-stats', filePath, () => analyzeFile(filePath));
 }
 ```
 
 ## Monitoramento e Alertas
 
 ### 1. Métricas de Performance
+
 ```javascript
 // Configura monitoramento com limites personalizados
 const monitor = new PerformanceMonitor({
   enabled: true,
   monitoringInterval: 5000, // 5 segundos
   thresholds: {
-    cpuUsage: 70,           // 70% CPU
-    memoryUsage: 80,        // 80% memória
-    responseTime: 500,      // 500ms resposta
-    errorRate: 2            // 2% taxa de erro
-  }
+    cpuUsage: 70, // 70% CPU
+    memoryUsage: 80, // 80% memória
+    responseTime: 500, // 500ms resposta
+    errorRate: 2, // 2% taxa de erro
+  },
 });
 
 // Escuta alertas
@@ -406,6 +406,7 @@ monitor.on('alert', (alert) => {
 ```
 
 ### 2. Métricas Personalizadas
+
 ```javascript
 // Registra métricas de performance personalizadas
 monitor.recordMetric('component.generation.time', duration);
@@ -414,6 +415,7 @@ monitor.recordMetric('cache.hit.rate', hitRate);
 ```
 
 ### 3. Relatórios de Performance
+
 ```javascript
 // Gera e salva relatórios de performance
 async function generatePerformanceReport() {
@@ -424,7 +426,7 @@ async function generatePerformanceReport() {
   const recommendations = report.recommendations;
   if (recommendations.length > 0) {
     console.log('Recomendações de Performance:');
-    recommendations.forEach(rec => {
+    recommendations.forEach((rec) => {
       console.log(`- [${rec.priority}] ${rec.recommendation}`);
     });
   }
@@ -434,23 +436,22 @@ async function generatePerformanceReport() {
 ## Depurando Problemas de Performance
 
 ### 1. Perfilando Operações
+
 ```javascript
 // Perfila operações lentas
 const profiler = new PerformanceProfiler({ verbose: true });
 
-const results = await profiler.profileFunction(
-  'slow-operation',
-  async () => {
-    // Sua operação lenta aqui
-    return await slowOperation();
-  }
-);
+const results = await profiler.profileFunction('slow-operation', async () => {
+  // Sua operação lenta aqui
+  return await slowOperation();
+});
 
 console.log(`Operação levou ${results.duration}ms`);
 console.log(`Delta de memória: ${results.memoryDelta.heapUsed} bytes`);
 ```
 
 ### 2. Análise de Memória
+
 ```javascript
 // Analisa padrões de uso de memória
 const memStats = process.memoryUsage();
@@ -461,6 +462,7 @@ console.log(`Heap Total: ${(memStats.heapTotal / 1024 / 1024).toFixed(2)} MB`);
 ```
 
 ### 3. Perfilamento de CPU
+
 ```javascript
 // Perfila operações intensivas de CPU
 const { performance } = require('perf_hooks');
@@ -476,47 +478,52 @@ console.log(`Tempo de CPU: ${end - start}ms`);
 ## Ajuste de Configuração
 
 ### 1. Limites de Memória
+
 ```javascript
 // Otimiza limites de memória baseado no sistema
 const totalMemory = os.totalmem();
 const recommendedLimits = {
   cacheSize: Math.min(totalMemory * 0.1, 100 * 1024 * 1024), // 10% ou 100MB
   maxOperations: Math.floor(totalMemory / (50 * 1024 * 1024)), // 50MB por operação
-  indexSize: Math.min(totalMemory * 0.05, 50 * 1024 * 1024)   // 5% ou 50MB
+  indexSize: Math.min(totalMemory * 0.05, 50 * 1024 * 1024), // 5% ou 50MB
 };
 ```
 
 ### 2. Limites de Concorrência
+
 ```javascript
 // Define concorrência ideal baseada em núcleos de CPU
 const cpuCount = os.cpus().length;
 const optimalConcurrency = {
   fileOperations: Math.max(2, cpuCount / 2),
   networkRequests: Math.max(4, cpuCount),
-  backgroundTasks: Math.max(1, cpuCount / 4)
+  backgroundTasks: Math.max(1, cpuCount / 4),
 };
 ```
 
 ### 3. Configuração de Cache
+
 ```javascript
 // Configura cache baseado em padrões de uso
 const cacheConfig = {
   memory: {
-    maxSize: process.env.NODE_ENV === 'production'
-      ? 100 * 1024 * 1024   // 100MB em produção
-      : 50 * 1024 * 1024,   // 50MB em desenvolvimento
-    ttl: 30 * 60 * 1000     // 30 minutos
+    maxSize:
+      process.env.NODE_ENV === 'production'
+        ? 100 * 1024 * 1024 // 100MB em produção
+        : 50 * 1024 * 1024, // 50MB em desenvolvimento
+    ttl: 30 * 60 * 1000, // 30 minutos
   },
   disk: {
     maxSize: 500 * 1024 * 1024, // 500MB
-    ttl: 24 * 60 * 60 * 1000    // 24 horas
-  }
+    ttl: 24 * 60 * 60 * 1000, // 24 horas
+  },
 };
 ```
 
 ## Checklist de Performance
 
 ### Pré-deploy
+
 - [ ] Executar análise de caminho crítico
 - [ ] Executar benchmarks de performance
 - [ ] Verificar uso de memória sob carga
@@ -525,6 +532,7 @@ const cacheConfig = {
 - [ ] Validar taxas de erro < 1%
 
 ### Pós-deploy
+
 - [ ] Monitorar tempos de resposta
 - [ ] Acompanhar crescimento de memória
 - [ ] Observar efetividade do cache
@@ -533,6 +541,7 @@ const cacheConfig = {
 - [ ] Gerar relatórios semanais
 
 ### Prioridades de Otimização
+
 1. **Alto Impacto, Baixo Esforço**
    - Habilitar cache para operações frequentes
    - Otimizar consultas de banco de dados
@@ -573,9 +582,7 @@ setInterval(() => {
 
 ```javascript
 // FAÇA: Processamento paralelo com limites
-const results = await Promise.all(
-  files.map(file => processFile(file))
-);
+const results = await Promise.all(files.map((file) => processFile(file)));
 
 // FAÇA: Cache para operações custosas
 const cache = getGlobalCacheManager();
@@ -602,6 +609,7 @@ process.on('exit', () => {
 ## Testes de Performance
 
 ### 1. Teste de Carga
+
 ```javascript
 // Teste de carga simples
 async function loadTest(operation, concurrency = 10, duration = 60000) {
@@ -609,9 +617,9 @@ async function loadTest(operation, concurrency = 10, duration = 60000) {
   const results = [];
 
   while (Date.now() - startTime < duration) {
-    const batch = Array(concurrency).fill().map(() =>
-      measureOperation(operation)
-    );
+    const batch = Array(concurrency)
+      .fill()
+      .map(() => measureOperation(operation));
 
     const batchResults = await Promise.all(batch);
     results.push(...batchResults);
@@ -622,6 +630,7 @@ async function loadTest(operation, concurrency = 10, duration = 60000) {
 ```
 
 ### 2. Comparações de Benchmark
+
 ```javascript
 // Compara impacto de otimização
 async function benchmarkOptimization(originalFn, optimizedFn, iterations = 100) {
@@ -636,7 +645,7 @@ async function benchmarkOptimization(originalFn, optimizedFn, iterations = 100) 
   return {
     original: analyzeResults(originalResults),
     optimized: analyzeResults(optimizedResults),
-    improvement: calculateImprovement(originalResults, optimizedResults)
+    improvement: calculateImprovement(originalResults, optimizedResults),
   };
 }
 ```
@@ -644,6 +653,7 @@ async function benchmarkOptimization(originalFn, optimizedFn, iterations = 100) 
 ## Ferramentas e Scripts
 
 ### Script de Análise de Performance
+
 ```bash
 #!/bin/bash
 # performance-check.sh
@@ -670,6 +680,7 @@ echo "Análise de performance concluída!"
 ```
 
 ### Script de Análise de Cache
+
 ```javascript
 // analyze-cache.js
 const { getGlobalCacheManager } = require('./performance/cache-manager');

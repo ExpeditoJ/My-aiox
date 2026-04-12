@@ -52,11 +52,13 @@ TWITTER_API_KEY=your_twitter_api_key
 ### 创建 `.env` 文件
 
 1. 复制示例文件（如果可用）：
+
    ```bash
    cp .env.example .env
    ```
 
 2. 或在项目根目录创建新的 `.env` 文件：
+
    ```bash
    touch .env
    ```
@@ -101,6 +103,7 @@ env:
 ### 其他 CI/CD 平台
 
 请查看您的平台文档获取 secrets 管理：
+
 - **GitLab CI：** 使用 GitLab CI/CD 变量
 - **CircleCI：** 使用 CircleCI 环境变量
 - **Jenkins：** 使用 Jenkins 凭证
@@ -117,6 +120,7 @@ env:
 ### 缺少环境变量
 
 如果您看到有关缺少环境变量的错误：
+
 1. 查看本文档了解必需的变量
 2. 查看 Squad 文档
 3. 检查 `.env` 文件是否包含所有必需的变量
@@ -125,6 +129,7 @@ env:
 ## 贡献
 
 添加新的环境变量时：
+
 1. 在本文档中记录它们
 2. 将它们添加到 `.env.example`（如果创建）
 3. 更新相关文档

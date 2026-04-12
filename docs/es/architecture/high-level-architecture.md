@@ -188,13 +188,13 @@
 
 ### Alcance de Paquetes npm
 
-| Paquete               | Registry    | Licencia       |
-| --------------------- | ----------- | -------------- |
-| `@aiox/core`          | npm público | MIT            |
-| `@aiox/squad-etl`     | npm público | MIT            |
-| `@aiox/squad-creator` | npm público | MIT            |
-| `@aiox/squad-mmos`    | npm público | MIT            |
-| `@aiox/mcp-presets`   | npm público | Apache 2.0     |
+| Paquete               | Registry    | Licencia   |
+| --------------------- | ----------- | ---------- |
+| `@aiox/core`          | npm público | MIT        |
+| `@aiox/squad-etl`     | npm público | MIT        |
+| `@aiox/squad-creator` | npm público | MIT        |
+| `@aiox/squad-mmos`    | npm público | MIT        |
+| `@aiox/mcp-presets`   | npm público | Apache 2.0 |
 
 ---
 

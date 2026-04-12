@@ -12,13 +12,13 @@ Los Workflows de AIOX son secuencias orquestadas de actividades de agents que au
 
 ### Conceptos Clave
 
-| Concepto | Descripcion |
-|----------|-------------|
-| **Workflow** | Una definicion YAML que orquesta multiples agents a traves de una secuencia de steps |
-| **Phase** | Una agrupacion logica de steps relacionados dentro de un workflow |
-| **Step** | Una accion unica realizada por un agent dentro de un workflow |
-| **Transition** | Movimiento de un step al siguiente, opcionalmente con condiciones |
-| **State** | Seguimiento persistente del progreso del workflow entre sesiones |
+| Concepto       | Descripcion                                                                          |
+| -------------- | ------------------------------------------------------------------------------------ |
+| **Workflow**   | Una definicion YAML que orquesta multiples agents a traves de una secuencia de steps |
+| **Phase**      | Una agrupacion logica de steps relacionados dentro de un workflow                    |
+| **Step**       | Una accion unica realizada por un agent dentro de un workflow                        |
+| **Transition** | Movimiento de un step al siguiente, opcionalmente con condiciones                    |
+| **State**      | Seguimiento persistente del progreso del workflow entre sesiones                     |
 
 ---
 
@@ -26,20 +26,20 @@ Los Workflows de AIOX son secuencias orquestadas de actividades de agents que au
 
 ### Por Tipo de Proyecto
 
-| Tipo | Descripcion | Caso de Uso |
-|------|-------------|-------------|
-| **Greenfield** | Proyectos nuevos desde cero | Iniciar una nueva aplicacion |
-| **Brownfield** | Proyectos existentes | Mejorar o auditar codigo existente |
-| **Generic** | Cualquier tipo de proyecto | Procesos transversales como desarrollo de stories |
+| Tipo           | Descripcion                 | Caso de Uso                                       |
+| -------------- | --------------------------- | ------------------------------------------------- |
+| **Greenfield** | Proyectos nuevos desde cero | Iniciar una nueva aplicacion                      |
+| **Brownfield** | Proyectos existentes        | Mejorar o auditar codigo existente                |
+| **Generic**    | Cualquier tipo de proyecto  | Procesos transversales como desarrollo de stories |
 
 ### Por Alcance
 
-| Alcance | Descripcion | Ejemplos |
-|---------|-------------|----------|
-| **Fullstack** | Aplicacion completa | `greenfield-fullstack`, `brownfield-fullstack` |
-| **UI** | Solo frontend | `greenfield-ui`, `brownfield-ui` |
-| **Service** | Solo backend | `greenfield-service`, `brownfield-service` |
-| **Discovery** | Analisis y auditoria | `brownfield-discovery` |
+| Alcance       | Descripcion          | Ejemplos                                       |
+| ------------- | -------------------- | ---------------------------------------------- |
+| **Fullstack** | Aplicacion completa  | `greenfield-fullstack`, `brownfield-fullstack` |
+| **UI**        | Solo frontend        | `greenfield-ui`, `brownfield-ui`               |
+| **Service**   | Solo backend         | `greenfield-service`, `brownfield-service`     |
+| **Discovery** | Analisis y auditoria | `brownfield-discovery`                         |
 
 ---
 
@@ -48,6 +48,7 @@ Los Workflows de AIOX son secuencias orquestadas de actividades de agents que au
 ### Workflows de Desarrollo Principal
 
 #### 1. Ciclo de Desarrollo de Story
+
 **ID:** `story-development-cycle`
 **Tipo:** Generic
 **Agents:** SM → PO → Dev → QA
@@ -66,12 +67,14 @@ El workflow mas comun para desarrollo iterativo:
 ```
 
 **Phases:**
+
 1. **Creacion de Story** - SM crea la siguiente story del backlog
 2. **Validacion de Story** - PO valida con checklist de 10 puntos
 3. **Implementacion** - Dev implementa con tests
 4. **Revision QA** - QA ejecuta el quality gate
 
 **Cuando usar:**
+
 - Cualquier desarrollo de story (greenfield o brownfield)
 - Ciclo completo con validacion y quality gate
 - Cuando necesitas trazabilidad del proceso
@@ -79,6 +82,7 @@ El workflow mas comun para desarrollo iterativo:
 ---
 
 #### 2. Greenfield Fullstack
+
 **ID:** `greenfield-fullstack`
 **Tipo:** Greenfield
 **Agents:** DevOps → Analyst → PM → UX → Architect → PO → SM → Dev → QA
@@ -86,12 +90,14 @@ El workflow mas comun para desarrollo iterativo:
 Workflow completo para nuevas aplicaciones full-stack:
 
 **Phases:**
+
 1. **Bootstrap de Entorno** - DevOps configura la infraestructura del proyecto
 2. **Descubrimiento y Planificacion** - Crear brief del proyecto, PRD, especificaciones, arquitectura
 3. **Fragmentacion de Documentos** - Dividir documentos para desarrollo
 4. **Ciclo de Desarrollo** - Implementacion iterativa de stories
 
 **Cuando usar:**
+
 - Construir aplicaciones listas para produccion
 - Multiples miembros del equipo involucrados
 - Requisitos de funcionalidades complejas
@@ -100,6 +106,7 @@ Workflow completo para nuevas aplicaciones full-stack:
 ---
 
 #### 3. Brownfield Discovery
+
 **ID:** `brownfield-discovery`
 **Tipo:** Brownfield
 **Agents:** Architect → Data Engineer → UX → QA → Analyst → PM
@@ -107,6 +114,7 @@ Workflow completo para nuevas aplicaciones full-stack:
 Evaluacion completa de deuda tecnica para proyectos existentes:
 
 **Phases:**
+
 1. **Recoleccion de Datos** - Documentacion del sistema, base de datos, frontend
 2. **Consolidacion Inicial** - Borrador de evaluacion
 3. **Validacion de Especialistas** - Revisiones de DB, UX, QA
@@ -114,6 +122,7 @@ Evaluacion completa de deuda tecnica para proyectos existentes:
 5. **Planificacion** - Creacion de epic y stories
 
 **Cuando usar:**
+
 - Migrando desde Lovable/v0.dev
 - Auditoria completa del codebase
 - Evaluacion de deuda tecnica antes de invertir
@@ -122,16 +131,16 @@ Evaluacion completa de deuda tecnica para proyectos existentes:
 
 ### Otros Workflows
 
-| Workflow | ID | Descripcion |
-|----------|-------|-------------|
-| Greenfield UI | `greenfield-ui` | Proyectos nuevos solo de frontend |
-| Greenfield Service | `greenfield-service` | Proyectos nuevos solo de backend |
-| Brownfield Fullstack | `brownfield-fullstack` | Mejora de aplicaciones fullstack existentes |
-| Brownfield UI | `brownfield-ui` | Mejora de frontends existentes |
-| Brownfield Service | `brownfield-service` | Mejora de backends existentes |
-| QA Loop | `qa-loop` | Ciclo de aseguramiento de calidad |
-| Spec Pipeline | `spec-pipeline` | Refinamiento de especificaciones |
-| Design System Build | `design-system-build-quality` | Creacion de sistema de diseno |
+| Workflow             | ID                            | Descripcion                                 |
+| -------------------- | ----------------------------- | ------------------------------------------- |
+| Greenfield UI        | `greenfield-ui`               | Proyectos nuevos solo de frontend           |
+| Greenfield Service   | `greenfield-service`          | Proyectos nuevos solo de backend            |
+| Brownfield Fullstack | `brownfield-fullstack`        | Mejora de aplicaciones fullstack existentes |
+| Brownfield UI        | `brownfield-ui`               | Mejora de frontends existentes              |
+| Brownfield Service   | `brownfield-service`          | Mejora de backends existentes               |
+| QA Loop              | `qa-loop`                     | Ciclo de aseguramiento de calidad           |
+| Spec Pipeline        | `spec-pipeline`               | Refinamiento de especificaciones            |
+| Design System Build  | `design-system-build-quality` | Creacion de sistema de diseno               |
 
 ---
 
@@ -140,6 +149,7 @@ Evaluacion completa de deuda tecnica para proyectos existentes:
 ### Step 1: Planifica tu Workflow
 
 Define:
+
 - **Proposito**: Que problema resuelve este workflow?
 - **Agents**: Que agents participan?
 - **Secuencia**: Cual es el orden de los steps?
@@ -170,12 +180,12 @@ La task preguntara:
 
 El workflow generado sigue esta estructura:
 
-```yaml
+````yaml
 workflow:
   id: my-workflow
   name: My Custom Workflow
-  version: "1.0"
-  description: "Description of what this workflow does"
+  version: '1.0'
+  description: 'Description of what this workflow does'
   type: greenfield | brownfield | generic
   project_types:
     - web-app
@@ -217,12 +227,13 @@ workflow:
       - Anti-pattern 1
 
   handoff_prompts:
-    step1_complete: "Step 1 done. Next: @agent for step 2"
-```
+    step1_complete: 'Step 1 done. Next: @agent for step 2'
+````
 
 ### Step 5: Ubicacion de Salida
 
 Los workflows se guardan segun el contexto:
+
 - **Core**: `.aiox-core/development/workflows/{name}.yaml`
 - **Squad**: `squads/{squad}/workflows/{name}.yaml`
 - **Hybrid**: `squads/{squad}/workflows/{name}.yaml`
@@ -262,15 +273,15 @@ Los workflows se guardan segun el contexto:
 El state se persiste en `.aiox/{instance-id}-state.yaml`:
 
 ```yaml
-instance_id: "wf-abc123"
-workflow_name: "story-development-cycle"
-status: "active"
+instance_id: 'wf-abc123'
+workflow_name: 'story-development-cycle'
+status: 'active'
 current_step: 2
 total_steps: 4
 steps:
   - id: create
     status: completed
-    completed_at: "2026-02-02T10:00:00Z"
+    completed_at: '2026-02-02T10:00:00Z'
   - id: validate
     status: in_progress
   - id: implement
@@ -298,17 +309,18 @@ AIOX detecta patrones comunes de workflow basados en el historial de comandos:
 
 ### Patrones Detectados
 
-| Patron | Comandos Disparadores | Secuencia de Agents |
-|--------|----------------------|---------------------|
-| Desarrollo de Story | `validate-story-draft`, `develop`, `review-qa` | PO → Dev → QA → DevOps |
-| Creacion de Epic | `create-epic`, `create-story`, `validate-story-draft` | PO → SM → Architect |
-| Revision de Arquitectura | `analyze-impact`, `create-doc`, `review-proposal` | Architect → QA → Dev |
-| Git Workflow | `pre-push-quality-gate`, `github-pr-automation` | Dev → DevOps |
-| Database Workflow | `db-domain-modeling`, `db-schema-audit` | Data Engineer → Dev → QA |
+| Patron                   | Comandos Disparadores                                 | Secuencia de Agents      |
+| ------------------------ | ----------------------------------------------------- | ------------------------ |
+| Desarrollo de Story      | `validate-story-draft`, `develop`, `review-qa`        | PO → Dev → QA → DevOps   |
+| Creacion de Epic         | `create-epic`, `create-story`, `validate-story-draft` | PO → SM → Architect      |
+| Revision de Arquitectura | `analyze-impact`, `create-doc`, `review-proposal`     | Architect → QA → Dev     |
+| Git Workflow             | `pre-push-quality-gate`, `github-pr-automation`       | Dev → DevOps             |
+| Database Workflow        | `db-domain-modeling`, `db-schema-audit`               | Data Engineer → Dev → QA |
 
 ### Deteccion de Patrones
 
 El sistema usa `workflow-patterns.yaml` para:
+
 - Detectar en que workflow estas basado en los comandos usados
 - Sugerir siguientes steps con puntuaciones de confianza
 - Proporcionar mensajes de handoff contextuales
@@ -342,12 +354,12 @@ El sistema usa `workflow-patterns.yaml` para:
 
 ## Workflow vs Task
 
-| Aspecto | Workflow | Task |
-|---------|----------|------|
-| **Alcance** | Multiples steps, multiples agents | Un solo step, un solo agent |
-| **State** | Persistido entre sesiones | Sin estado |
-| **Caso de Uso** | Procesos complejos | Operaciones atomicas |
-| **Ubicacion** | `.aiox-core/development/workflows/` | `.aiox-core/development/tasks/` |
+| Aspecto         | Workflow                            | Task                            |
+| --------------- | ----------------------------------- | ------------------------------- |
+| **Alcance**     | Multiples steps, multiples agents   | Un solo step, un solo agent     |
+| **State**       | Persistido entre sesiones           | Sin estado                      |
+| **Caso de Uso** | Procesos complejos                  | Operaciones atomicas            |
+| **Ubicacion**   | `.aiox-core/development/workflows/` | `.aiox-core/development/tasks/` |
 
 ---
 
@@ -356,22 +368,28 @@ El sistema usa `workflow-patterns.yaml` para:
 ### Problemas Comunes
 
 **Workflow no encontrado:**
+
 ```
 Error: Workflow '{name}' not found
 ```
+
 - Verifica que el nombre del workflow coincida con el ID del archivo
 - Verifica el contexto destino (core/squad)
 
 **Sin instancia activa:**
+
 ```
 Error: No active workflow instance found
 ```
+
 - Inicia el workflow primero con `*run-workflow {name} start`
 
 **Step no es opcional:**
+
 ```
 Error: Cannot skip non-optional step
 ```
+
 - Completa el step o aborta el workflow
 
 ### Obtener Ayuda
@@ -397,4 +415,4 @@ cat .aiox-core/development/workflows/{name}.yaml
 
 ---
 
-*Guia de Workflows de AIOX v1.0 - Orquestando la Colaboracion IA-Humano*
+_Guia de Workflows de AIOX v1.0 - Orquestando la Colaboracion IA-Humano_

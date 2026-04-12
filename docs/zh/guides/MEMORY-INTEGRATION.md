@@ -17,6 +17,7 @@
 本指南说明记忆智能系统如何与 UnifiedActivationPipeline 集成，以便为代理提供对机构知识的自动访问。
 
 **关键概念:**
+
 - **渐进式披露:** 记忆按层加载 (HOT → WARM → COLD)，基于 token 预算
 - **代理范围:** 每个代理仅访问自己的 + 共享记忆 (强制隐私)
 - **优雅降级:** 系统在所有级别都能工作 (无 pro, 无摘要, 有摘要)
@@ -29,6 +30,7 @@
 ### 扩展点模式
 
 集成遵循 AIOX Open Core 模型:
+
 - **aiox-core:** UnifiedActivationPipeline 中的扩展点 (本指南)
 - **aiox-pro:** 记忆智能实现 (检索, 评分, 学习)
 
@@ -45,11 +47,13 @@ UnifiedActivationPipeline (Tier 2 Enrich)
 ### 数据流
 
 1. **代理激活:**
+
    ```javascript
    @dev  // 用户激活 dev 代理
    ```
 
 2. **管道 Tier 2 (Enrich):**
+
    ```javascript
    // UnifiedActivationPipeline 检查 pro 可用性
    if (isProAvailable()) {
@@ -63,13 +67,14 @@ UnifiedActivationPipeline (Tier 2 Enrich)
    ```
 
 3. **渐进式披露:**
+
    ```javascript
    // 首先 HOT 层级 (高注意力记忆)
-   hotMemories = retrieve({ tier: 'hot', layer: 1 }) // ~600 tokens
+   hotMemories = retrieve({ tier: 'hot', layer: 1 }); // ~600 tokens
 
    // 如果预算允许，添加 WARM 层级
    if (tokensUsed < budget * 0.7) {
-     warmMemories = retrieve({ tier: 'warm', layer: 2 }) // ~800 tokens
+     warmMemories = retrieve({ tier: 'warm', layer: 2 }); // ~800 tokens
    }
 
    // 总计: 13 个记忆, 使用 1400 tokens
@@ -88,12 +93,12 @@ UnifiedActivationPipeline (Tier 2 Enrich)
          sector: 'procedural',
          tier: 'hot',
          attention_score: 0.85,
-         agent: 'dev'
+         agent: 'dev',
        },
        // ... 另外 12 个记忆
      ],
      // ... 其他上下文字段
-   }
+   };
    ```
 
 ---
@@ -131,6 +136,7 @@ const result = await loader.loadForAgent('dev', {
 ```
 
 **渐进式披露逻辑:**
+
 - 从 HOT 层级开始 (第 1 层 - 仅索引)
 - 如果 `tokensUsed < budget * 0.7`，添加 WARM 层级 (第 2 层 - 上下文片段)
 - 永远不超过配置的预算
@@ -142,12 +148,12 @@ const result = await loader.loadForAgent('dev', {
 ```javascript
 const memories = await loader.queryMemories('dev', {
   tokenBudget: 2000,
-  attentionMin: 0.3,              // 默认 WARM+
-  sectors: ['procedural', 'semantic'],  // 覆盖代理偏好
+  attentionMin: 0.3, // 默认 WARM+
+  sectors: ['procedural', 'semantic'], // 覆盖代理偏好
   tags: ['performance', 'testing'],
-  tier: 'hot',                    // 按层级过滤
-  layer: 1,                       // 强制特定层
-  limit: 10                       // 最大返回记忆数
+  tier: 'hot', // 按层级过滤
+  layer: 1, // 强制特定层
+  limit: 10, // 最大返回记忆数
 });
 ```
 
@@ -158,7 +164,7 @@ const memories = await loader.queryMemories('dev', {
 ```javascript
 const hotMemories = await loader.getHotMemories('dev', {
   limit: 5,
-  tokenBudget: 1000
+  tokenBudget: 1000,
 });
 ```
 
@@ -169,7 +175,7 @@ const hotMemories = await loader.getHotMemories('dev', {
 ```javascript
 const warmMemories = await loader.getWarmMemories('dev', {
   limit: 10,
-  tokenBudget: 1500
+  tokenBudget: 1500,
 });
 ```
 
@@ -179,7 +185,7 @@ const warmMemories = await loader.getWarmMemories('dev', {
 
 ```javascript
 const memories = await loader.searchByTags('dev', ['mcp', 'docker'], {
-  limit: 5
+  limit: 5,
 });
 ```
 
@@ -189,7 +195,7 @@ const memories = await loader.searchByTags('dev', ['mcp', 'docker'], {
 
 ```javascript
 const recentMemories = await loader.getRecentMemories('dev', 7, {
-  limit: 10
+  limit: 10,
 });
 ```
 
@@ -199,16 +205,17 @@ const recentMemories = await loader.getRecentMemories('dev', 7, {
 
 每个代理根据其角色有偏好的认知领域:
 
-| 代理 | 领域 | 理由 |
-|-------|---------|-----------|
-| **dev** | 程序, 语义 | 如何 (模式, 陷阱) + 什么 (事实, API) |
-| **qa** | 反思, 情景 | 学到 (错误) + 发生 (测试结果) |
-| **architect** | 语义, 反思 | 什么 (架构) + 学到 (设计决策) |
-| **pm** | 情景, 语义 | 发生 (决策) + 事实 (需求) |
-| **po** | 情景, 语义 | 发生 (反馈) + 事实 (stories) |
-| **sm** | 程序, 情景 | 如何 (流程) + 发生 (sprint 事件) |
+| 代理          | 领域       | 理由                                 |
+| ------------- | ---------- | ------------------------------------ |
+| **dev**       | 程序, 语义 | 如何 (模式, 陷阱) + 什么 (事实, API) |
+| **qa**        | 反思, 情景 | 学到 (错误) + 发生 (测试结果)        |
+| **architect** | 语义, 反思 | 什么 (架构) + 学到 (设计决策)        |
+| **pm**        | 情景, 语义 | 发生 (决策) + 事实 (需求)            |
+| **po**        | 情景, 语义 | 发生 (反馈) + 事实 (stories)         |
+| **sm**        | 程序, 情景 | 如何 (流程) + 发生 (sprint 事件)     |
 
 **4 个认知领域:**
+
 1. **情景:** 发生了什么 (事件, 结果, 里程碑)
 2. **语义:** 什么是真的 (事实, 定义, 架构)
 3. **程序:** 如何做事 (模式, 陷阱, 程序)
@@ -234,7 +241,7 @@ const defaultBudget = 2000;
 agent:
   id: dev
   config:
-    memoryBudget: 3000  # dev 代理的自定义预算
+    memoryBudget: 3000 # dev 代理的自定义预算
 ```
 
 ### 渐进式披露策略
@@ -260,10 +267,11 @@ agent:
 ### 级别 1: 无 Pro 可用
 
 ```javascript
-isProAvailable() === false
+isProAvailable() === false;
 ```
 
 **行为:**
+
 - `enrichedContext.memories = []`
 - 不抛出错误
 - 管道正常继续
@@ -272,11 +280,12 @@ isProAvailable() === false
 ### 级别 2: Pro 可用, 无摘要
 
 ```javascript
-isProAvailable() === true
+isProAvailable() === true;
 // 但 .aiox/session-digests/ 为空
 ```
 
 **行为:**
+
 - `MemoryLoader` 返回 `{ memories: [], metadata: { count: 0 } }`
 - 不抛出错误
 - 管道正常继续
@@ -284,11 +293,12 @@ isProAvailable() === true
 ### 级别 3: Pro 可用, 有摘要
 
 ```javascript
-isProAvailable() === true
+isProAvailable() === true;
 // 且 .aiox/session-digests/ 包含记忆摘要
 ```
 
 **行为:**
+
 - 完整记忆智能激活
 - 记忆加载并注入 `enrichedContext`
 - 代理自动接收机构知识
@@ -318,11 +328,11 @@ if (featureGate.isAvailable('pro.memory.pipeline-integration')) {
 
 ### 许可证层级
 
-| 层级 | 包含的 Features |
-|------|------------------|
-| **Individual** | `pro.memory.extended` |
-| **Team** | `pro.memory.*` (所有记忆功能) |
-| **Enterprise** | `pro.*` (所有 pro 功能) |
+| 层级           | 包含的 Features               |
+| -------------- | ----------------------------- |
+| **Individual** | `pro.memory.extended`         |
+| **Team**       | `pro.memory.*` (所有记忆功能) |
+| **Enterprise** | `pro.*` (所有 pro 功能)       |
 
 ---
 
@@ -340,11 +350,11 @@ if (featureGate.isAvailable('pro.memory.pipeline-integration')) {
 
 ```javascript
 result.metrics.loaders.memories = {
-  status: 'ok',          // 'ok' | 'timeout' | 'error'
-  duration: 45,          // 毫秒
+  status: 'ok', // 'ok' | 'timeout' | 'error'
+  duration: 45, // 毫秒
   startTime: 1234567890,
-  endTime: 1234567935
-}
+  endTime: 1234567935,
+};
 ```
 
 ---
@@ -354,10 +364,12 @@ result.metrics.loaders.memories = {
 ### 范围规则
 
 每个代理仅访问:
+
 1. **自己的记忆:** `agent === agentId`
 2. **共享记忆:** `agent === 'shared'`
 
 **绝不:**
+
 - 其他代理的私有记忆
 
 ### 示例
@@ -367,18 +379,19 @@ result.metrics.loaders.memories = {
 const devResult = await pipeline.activate('dev');
 
 // Dev 看到:
-devResult.context.memories.map(m => m.agent)
+devResult.context.memories.map((m) => m.agent);
 // → ['dev', 'dev', 'shared', 'dev', 'shared', ...]
 
 // QA 代理激活
 const qaResult = await pipeline.activate('qa');
 
 // QA 看到:
-qaResult.context.memories.map(m => m.agent)
+qaResult.context.memories.map((m) => m.agent);
 // → ['qa', 'shared', 'qa', 'qa', 'shared', ...]
 ```
 
 **隐私强制:**
+
 - 在检索层实现 (`memory-retriever.js`)
 - 6 个专用隐私测试 (来自 MIS-4)
 - 未检测到跨代理泄漏
@@ -390,6 +403,7 @@ qaResult.context.memories.map(m => m.agent)
 ### 问题: 记忆未出现
 
 **诊断:**
+
 ```javascript
 // 检查 pro 可用性
 const { isProAvailable } = require('bin/utils/pro-detector');
@@ -406,6 +420,7 @@ console.log('摘要:', digests.length);
 ```
 
 **解决方案:**
+
 1. **Pro 不可用:** 初始化 `pro/` 子模块: `git submodule update --init --recursive`
 2. **Feature gate 禁用:** 检查许可证密钥: `cat pro/license-cache.json`
 3. **无摘要:** 捕获第一个会话: `@dev` (激活任何代理, 然后压缩上下文)
@@ -413,12 +428,14 @@ console.log('摘要:', digests.length);
 ### 问题: 记忆加载超时
 
 **诊断:**
+
 ```javascript
-result.metrics.loaders.memories.status === 'timeout'
-result.metrics.loaders.memories.duration > 500
+result.metrics.loaders.memories.status === 'timeout';
+result.metrics.loaders.memories.duration > 500;
 ```
 
 **解决方案:**
+
 1. 减少摘要数量 (将旧摘要归档到 `.aiox/session-digests/archive/`)
 2. 增加超时 (在 `unified-activation-pipeline.js` 中): `memoryTimeout = 1000`
 3. 重建记忆索引: `node pro/memory/rebuild-index.js`
@@ -426,6 +443,7 @@ result.metrics.loaders.memories.duration > 500
 ### 问题: 代理的记忆不正确
 
 **诊断:**
+
 ```javascript
 // 验证代理领域偏好
 const { AGENT_SECTOR_PREFERENCES } = require('pro/memory/memory-loader');
@@ -433,6 +451,7 @@ console.log('Dev 领域:', AGENT_SECTOR_PREFERENCES['dev']);
 ```
 
 **解决方案:**
+
 1. 更新 `pro/memory/memory-loader.js` 中的领域偏好
 2. 在查询中覆盖领域: `loader.loadForAgent('dev', { sectors: ['custom'] })`
 3. 重新训练注意力评分 (MIS-5 - 自学习引擎, 未来 story)
@@ -481,17 +500,19 @@ npm test -- tests/integration/pipeline-memory-integration.test.js --coverage
 ## 未来增强
 
 **MIS-5: 自学习引擎** (待定)
+
 - 自动注意力评分调优
 - 从用户修正中识别模式
 - 从结果中提取启发式
 
 **MIS-7: CLAUDE.md 自动演化** (待定)
+
 - 基于学习成果的规则更新
 - 代理配置自动优化
 - 陷阱自动文档化
 
 ---
 
-*记忆智能系统 - 集成指南*
-*最后更新: 2026-02-09*
-*Epic MIS - Story MIS-6*
+_记忆智能系统 - 集成指南_
+_最后更新: 2026-02-09_
+_Epic MIS - Story MIS-6_

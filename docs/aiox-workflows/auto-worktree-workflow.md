@@ -13,12 +13,12 @@ O **Auto-Worktree** é um workflow de automação que cria e gerencia worktrees 
 
 ### Principais Beneficios
 
-| Benefício | Descrição |
-|-----------|-----------|
-| **Isolamento** | Cada story trabalha em um diretório e branch separados |
-| **Paralelismo** | Multiplas stories podem ser desenvolvidas simultaneamente |
-| **Automação** | Worktrees são criadas automaticamente ao iniciar uma story |
-| **Limpeza** | Worktrees obsoletas podem ser removidas automaticamente |
+| Benefício       | Descrição                                                  |
+| --------------- | ---------------------------------------------------------- |
+| **Isolamento**  | Cada story trabalha em um diretório e branch separados     |
+| **Paralelismo** | Multiplas stories podem ser desenvolvidas simultaneamente  |
+| **Automação**   | Worktrees são criadas automaticamente ao iniciar uma story |
+| **Limpeza**     | Worktrees obsoletas podem ser removidas automaticamente    |
 
 ### Quando o Workflow é Acionado
 
@@ -181,12 +181,12 @@ graph TB
 
 ### Step 1: Extract Story Context
 
-| Propriedade | Valor |
-|-------------|-------|
-| **Phase** | 1 - Extract Context |
-| **Action** | `extract_story_info` |
-| **Agente** | Sistema (automático) |
-| **Blocking** | Sim |
+| Propriedade  | Valor                |
+| ------------ | -------------------- |
+| **Phase**    | 1 - Extract Context  |
+| **Action**   | `extract_story_info` |
+| **Agente**   | Sistema (automático) |
+| **Blocking** | Sim                  |
 
 **Descrição:**
 Extrai o ID da story do contexto do trigger. Busca em várias fontes:
@@ -197,6 +197,7 @@ Extrai o ID da story do contexto do trigger. Busca em várias fontes:
 4. Nome da branch atual (convenção `story-X.Y`)
 
 **Input:**
+
 ```typescript
 interface TriggerContext {
   storyId?: string;
@@ -206,11 +207,15 @@ interface TriggerContext {
 ```
 
 **Output:**
+
 ```typescript
-{ storyId: string }
+{
+  storyId: string;
+}
 ```
 
 **Erro se falhar:**
+
 ```
 Could not determine story ID. Please provide explicitly.
 ```
@@ -219,17 +224,18 @@ Could not determine story ID. Please provide explicitly.
 
 ### Step 2: Check Existing
 
-| Propriedade | Valor |
-|-------------|-------|
-| **Phase** | 2 - Check Existing |
-| **Action** | `check_worktree_exists` |
-| **Agente** | Sistema (automático) |
+| Propriedade  | Valor                        |
+| ------------ | ---------------------------- |
+| **Phase**    | 2 - Check Existing           |
+| **Action**   | `check_worktree_exists`      |
+| **Agente**   | Sistema (automático)         |
 | **Blocking** | Não (pode pular para switch) |
 
 **Descrição:**
 Verifica se já existe uma worktree para a story. Se existir, pula para o Step 5 (Switch Context).
 
 **Lógica:**
+
 ```javascript
 const manager = new WorktreeManager();
 const exists = await manager.exists(storyId);
@@ -241,6 +247,7 @@ return { exists: false, action: 'create' };
 ```
 
 **Output:**
+
 ```typescript
 interface CheckResult {
   exists: boolean;
@@ -253,20 +260,22 @@ interface CheckResult {
 
 ### Step 3: Auto Cleanup
 
-| Propriedade | Valor |
-|-------------|-------|
-| **Phase** | 3 - Auto Cleanup |
-| **Action** | `cleanup_stale_worktrees` |
-| **Agente** | @devops (Gage) |
+| Propriedade     | Valor                         |
+| --------------- | ----------------------------- |
+| **Phase**       | 3 - Auto Cleanup              |
+| **Action**      | `cleanup_stale_worktrees`     |
+| **Agente**      | @devops (Gage)                |
 | **Condicional** | `config.autoCleanup === true` |
 
 **Descrição:**
 Remove automaticamente worktrees obsoletas (mais de 30 dias sem uso) antes de criar uma nova. Este step só executa se `autoCleanup` estiver habilitado na configuração.
 
 **Critério de Obsolescência:**
+
 - Worktree criada há mais de `staleDays` (default: 30 dias)
 
 **Output:**
+
 ```typescript
 interface CleanupResult {
   cleaned: number;
@@ -275,6 +284,7 @@ interface CleanupResult {
 ```
 
 **Log:**
+
 ```
 Cleaned up {cleaned} stale worktrees
 ```
@@ -283,29 +293,34 @@ Cleaned up {cleaned} stale worktrees
 
 ### Step 4: Create Worktree
 
-| Propriedade | Valor |
-|-------------|-------|
-| **Phase** | 4 - Create Worktree |
-| **Action** | `create_isolated_worktree` |
-| **Agente** | @devops (Gage) |
-| **Task** | `create-worktree.md` |
-| **Blocking** | Sim |
+| Propriedade  | Valor                      |
+| ------------ | -------------------------- |
+| **Phase**    | 4 - Create Worktree        |
+| **Action**   | `create_isolated_worktree` |
+| **Agente**   | @devops (Gage)             |
+| **Task**     | `create-worktree.md`       |
+| **Blocking** | Sim                        |
 
 **Descrição:**
 Cria uma nova worktree isolada para a story usando o WorktreeManager.
 
 **Estrutura Criada:**
+
 ```
 .aiox/worktrees/{storyId}/     # Diretório de trabalho
 Branch: auto-claude/{storyId}   # Branch Git
 ```
 
 **Input:**
+
 ```typescript
-{ story_id: string }
+{
+  story_id: string;
+}
 ```
 
 **Output:**
+
 ```typescript
 interface CreateResult {
   success: boolean;
@@ -317,6 +332,7 @@ interface CreateResult {
 ```
 
 **Comandos Git Executados:**
+
 ```bash
 git worktree add .aiox/worktrees/{storyId} -b auto-claude/{storyId}
 ```
@@ -325,27 +341,29 @@ git worktree add .aiox/worktrees/{storyId} -b auto-claude/{storyId}
 
 ### Step 5: Switch Context
 
-| Propriedade | Valor |
-|-------------|-------|
-| **Phase** | 5 - Switch Context |
-| **Action** | `switch_to_worktree` |
-| **Agente** | Sistema (automático) |
+| Propriedade     | Valor                        |
+| --------------- | ---------------------------- |
+| **Phase**       | 5 - Switch Context           |
+| **Action**      | `switch_to_worktree`         |
+| **Agente**      | Sistema (automático)         |
 | **Condicional** | `config.autoSwitch === true` |
 
 **Descrição:**
 Configura variáveis de ambiente e exibe instruções para navegar até a worktree.
 
 **Variáveis de Ambiente:**
+
 ```bash
 AIOX_WORKTREE=/path/to/.aiox/worktrees/{storyId}
 AIOX_STORY={storyId}
 ```
 
 **Output:**
+
 ```typescript
 interface SwitchResult {
   worktreePath: string;
-  instructions: string;  // "cd /path/to/worktree"
+  instructions: string; // "cd /path/to/worktree"
 }
 ```
 
@@ -353,17 +371,18 @@ interface SwitchResult {
 
 ### Step 6: Display Summary
 
-| Propriedade | Valor |
-|-------------|-------|
-| **Phase** | 6 - Summary |
-| **Action** | `show_summary` |
-| **Agente** | Sistema (automático) |
+| Propriedade     | Valor                     |
+| --------------- | ------------------------- |
+| **Phase**       | 6 - Summary               |
+| **Action**      | `show_summary`            |
+| **Agente**      | Sistema (automático)      |
 | **Condicional** | `config.verbose === true` |
 
 **Descrição:**
 Exibe um resumo completo da operação com informações da worktree e próximos passos.
 
 **Template de Saída:**
+
 ```
 +------------------------------------------------------------------+
 |  Auto-Worktree Complete                                          |
@@ -393,14 +412,15 @@ Alterações aqui não afetam a branch principal até o merge.
 
 ### @devops (Gage)
 
-| Responsabilidade | Descrição |
-|------------------|-----------|
+| Responsabilidade        | Descrição                           |
+| ----------------------- | ----------------------------------- |
 | **Criação de Worktree** | Executa a task `create-worktree.md` |
 | **Remoção de Worktree** | Executa a task `remove-worktree.md` |
-| **Limpeza Automática** | Remove worktrees obsoletas |
-| **Merge de Worktree** | Executa a task `merge-worktree.md` |
+| **Limpeza Automática**  | Remove worktrees obsoletas          |
+| **Merge de Worktree**   | Executa a task `merge-worktree.md`  |
 
 **Comandos do Agente:**
+
 - `*create-worktree {storyId}` - Criar worktree isolada
 - `*list-worktrees` - Listar worktrees ativas
 - `*remove-worktree {storyId}` - Remover worktree
@@ -409,15 +429,15 @@ Alterações aqui não afetam a branch principal até o merge.
 
 ### @dev (Desenvolvedor)
 
-| Responsabilidade | Descrição |
-|------------------|-----------|
+| Responsabilidade     | Descrição                              |
+| -------------------- | -------------------------------------- |
 | **Trigger Primário** | Inicia o workflow ao começar uma story |
-| **Desenvolvimento** | Trabalha dentro da worktree isolada |
+| **Desenvolvimento**  | Trabalha dentro da worktree isolada    |
 
 ### @po (Product Owner)
 
-| Responsabilidade | Descrição |
-|------------------|-----------|
+| Responsabilidade       | Descrição                               |
+| ---------------------- | --------------------------------------- |
 | **Trigger Secundário** | Pode disparar criação ao atribuir story |
 
 ---
@@ -426,26 +446,28 @@ Alterações aqui não afetam a branch principal até o merge.
 
 ### create-worktree.md
 
-| Propriedade | Valor |
-|-------------|-------|
+| Propriedade     | Valor                                             |
+| --------------- | ------------------------------------------------- |
 | **Localização** | `.aiox-core/development/tasks/create-worktree.md` |
-| **Agente** | @devops (Gage) |
-| **Versão** | 1.0 |
-| **Story** | 1.3 |
+| **Agente**      | @devops (Gage)                                    |
+| **Versão**      | 1.0                                               |
+| **Story**       | 1.3                                               |
 
 **Modos de Execução:**
 
-| Modo | Prompts | Uso Recomendado |
-|------|---------|-----------------|
-| **YOLO** (default) | 0-1 | Setup rápido de story |
-| **Interactive** | 2-3 | Usuarios iniciantes |
+| Modo               | Prompts | Uso Recomendado       |
+| ------------------ | ------- | --------------------- |
+| **YOLO** (default) | 0-1     | Setup rápido de story |
+| **Interactive**    | 2-3     | Usuarios iniciantes   |
 
 **Pré-Condições:**
+
 - [x] Diretório atual é repositório git
 - [x] WorktreeManager disponível
 - [x] Limite de worktrees não atingido
 
 **Pós-Condições:**
+
 - [x] Diretório da worktree existe
 - [x] Branch `auto-claude/{storyId}` existe
 
@@ -455,18 +477,18 @@ Alterações aqui não afetam a branch principal até o merge.
 
 ### Requisitos de Sistema
 
-| Requisito | Versão Mínima | Verificação |
-|-----------|---------------|-------------|
-| **Git** | >= 2.5 | `git --version` |
-| **Node.js** | >= 18 | `node --version` |
-| **AIOX Core** | Instalado | Verificar `.aiox-core/` |
+| Requisito     | Versão Mínima | Verificação             |
+| ------------- | ------------- | ----------------------- |
+| **Git**       | >= 2.5        | `git --version`         |
+| **Node.js**   | >= 18         | `node --version`        |
+| **AIOX Core** | Instalado     | Verificar `.aiox-core/` |
 
 ### Dependências NPM
 
-| Pacote | Uso |
-|--------|-----|
+| Pacote    | Uso                      |
+| --------- | ------------------------ |
 | **execa** | Execução de comandos git |
-| **chalk** | Cores no terminal |
+| **chalk** | Cores no terminal        |
 
 ### Arquivos Necessários
 
@@ -491,31 +513,31 @@ Alterações aqui não afetam a branch principal até o merge.
 
 ### Entradas do Workflow
 
-| Entrada | Tipo | Obrigatório | Origem | Descrição |
-|---------|------|-------------|--------|-----------|
-| `storyId` | string | Sim* | Contexto ou usuário | ID da story (ex: STORY-42, 1.3) |
-| `storyFile` | string | Não | Contexto | Caminho do arquivo da story |
-| `currentTask` | object | Não | Contexto | Task atual em execução |
+| Entrada       | Tipo   | Obrigatório | Origem              | Descrição                       |
+| ------------- | ------ | ----------- | ------------------- | ------------------------------- |
+| `storyId`     | string | Sim\*       | Contexto ou usuário | ID da story (ex: STORY-42, 1.3) |
+| `storyFile`   | string | Não         | Contexto            | Caminho do arquivo da story     |
+| `currentTask` | object | Não         | Contexto            | Task atual em execução          |
 
-*Obrigatório, mas pode ser extraído automaticamente do contexto.
+\*Obrigatório, mas pode ser extraído automaticamente do contexto.
 
 ### Saídas do Workflow
 
-| Saída | Tipo | Descrição |
-|-------|------|-----------|
-| `storyId` | string | ID da story processada |
-| `worktree` | WorktreeInfo | Objeto com informações da worktree |
-| `path` | string | Caminho absoluto da worktree |
-| `branch` | string | Nome da branch (`auto-claude/{storyId}`) |
+| Saída      | Tipo         | Descrição                                |
+| ---------- | ------------ | ---------------------------------------- |
+| `storyId`  | string       | ID da story processada                   |
+| `worktree` | WorktreeInfo | Objeto com informações da worktree       |
+| `path`     | string       | Caminho absoluto da worktree             |
+| `branch`   | string       | Nome da branch (`auto-claude/{storyId}`) |
 
 ### Interface WorktreeInfo
 
 ```typescript
 interface WorktreeInfo {
-  storyId: string;           // 'STORY-42'
-  path: string;              // '/abs/path/.aiox/worktrees/STORY-42'
-  branch: string;            // 'auto-claude/STORY-42'
-  createdAt: Date;           // Data de criação
+  storyId: string; // 'STORY-42'
+  path: string; // '/abs/path/.aiox/worktrees/STORY-42'
+  branch: string; // 'auto-claude/STORY-42'
+  createdAt: Date; // Data de criação
   uncommittedChanges: number; // Número de alterações não commitadas
   status: 'active' | 'stale'; // Status baseado em idade
 }
@@ -571,15 +593,15 @@ flowchart TD
 
 ### Configurações que Afetam Decisões
 
-| Configuração | Default | Impacto |
-|--------------|---------|---------|
-| `enabled` | true | Habilita/desabilita o workflow |
-| `createOnAssign` | false | Cria worktree quando @po atribui story |
-| `autoSwitch` | true | Muda automaticamente para a worktree |
-| `verbose` | true | Exibe resumo ao final |
-| `autoCleanup` | false | Limpa worktrees obsoletas automaticamente |
-| `maxWorktrees` | 10 | Limite de worktrees simultâneas |
-| `staleDays` | 30 | Dias para considerar worktree obsoleta |
+| Configuração     | Default | Impacto                                   |
+| ---------------- | ------- | ----------------------------------------- |
+| `enabled`        | true    | Habilita/desabilita o workflow            |
+| `createOnAssign` | false   | Cria worktree quando @po atribui story    |
+| `autoSwitch`     | true    | Muda automaticamente para a worktree      |
+| `verbose`        | true    | Exibe resumo ao final                     |
+| `autoCleanup`    | false   | Limpa worktrees obsoletas automaticamente |
+| `maxWorktrees`   | 10      | Limite de worktrees simultâneas           |
+| `staleDays`      | 30      | Dias para considerar worktree obsoleta    |
 
 ---
 
@@ -587,21 +609,21 @@ flowchart TD
 
 ### Erros Bloqueantes
 
-| Erro | Causa | Resolução |
-|------|-------|-----------|
-| `Not a git repository` | Diretório não é repo git | Executar `git init` |
-| `Git worktree not supported` | Git < 2.5 | Atualizar Git |
-| `WorktreeManager not found` | AIOX incompleto | Reinstalar AIOX |
-| `Maximum worktrees limit reached` | >= 10 worktrees | Executar `*cleanup-worktrees` |
-| `Could not determine story ID` | ID não encontrado | Fornecer ID explicitamente |
-| `Worktree creation failed` | Erro no git worktree | Verificar git status |
+| Erro                              | Causa                    | Resolução                     |
+| --------------------------------- | ------------------------ | ----------------------------- |
+| `Not a git repository`            | Diretório não é repo git | Executar `git init`           |
+| `Git worktree not supported`      | Git < 2.5                | Atualizar Git                 |
+| `WorktreeManager not found`       | AIOX incompleto          | Reinstalar AIOX               |
+| `Maximum worktrees limit reached` | >= 10 worktrees          | Executar `*cleanup-worktrees` |
+| `Could not determine story ID`    | ID não encontrado        | Fornecer ID explicitamente    |
+| `Worktree creation failed`        | Erro no git worktree     | Verificar git status          |
 
 ### Erros Não-Bloqueantes (Warnings)
 
-| Warning | Causa | Ação |
-|---------|-------|------|
-| `Approaching worktree limit` | Próximo do limite | Considerar cleanup |
-| `Could not delete branch` | Branch protegida ou em uso | Remover manualmente |
+| Warning                      | Causa                      | Ação                |
+| ---------------------------- | -------------------------- | ------------------- |
+| `Approaching worktree limit` | Próximo do limite          | Considerar cleanup  |
+| `Could not delete branch`    | Branch protegida ou em uso | Remover manualmente |
 
 ### Fluxo de Recuperação de Erro
 
@@ -631,10 +653,12 @@ flowchart TD
 ### Problema: Worktree não é criada
 
 **Sintomas:**
+
 - Comando `*create-worktree` falha
 - Mensagem "Failed to create worktree"
 
 **Diagnóstico:**
+
 ```bash
 # Verificar se é repositório git
 git rev-parse --is-inside-work-tree
@@ -650,6 +674,7 @@ ls .aiox-core/infrastructure/scripts/worktree-manager.js
 ```
 
 **Soluções:**
+
 1. Inicializar repositório: `git init`
 2. Atualizar Git para >= 2.5
 3. Limpar worktrees: `*cleanup-worktrees`
@@ -660,9 +685,11 @@ ls .aiox-core/infrastructure/scripts/worktree-manager.js
 ### Problema: Limite de worktrees atingido
 
 **Sintomas:**
+
 - Mensagem "Maximum worktrees limit (10) reached"
 
 **Diagnóstico:**
+
 ```bash
 # Listar todas worktrees
 *list-worktrees
@@ -672,6 +699,7 @@ git worktree list | wc -l
 ```
 
 **Soluções:**
+
 1. Limpar worktrees obsoletas: `*cleanup-worktrees`
 2. Remover worktrees não utilizadas: `*remove-worktree {storyId}`
 3. Aumentar limite (se necessário) em `.aiox/config.yaml`
@@ -681,10 +709,12 @@ git worktree list | wc -l
 ### Problema: Conflitos ao fazer merge
 
 **Sintomas:**
+
 - `*merge-worktree` falha
 - Mensagem com lista de arquivos em conflito
 
 **Diagnóstico:**
+
 ```bash
 # Verificar arquivos em conflito
 git diff --name-only --diff-filter=U
@@ -694,6 +724,7 @@ git diff HEAD...auto-claude/{storyId}
 ```
 
 **Soluções:**
+
 1. Resolver conflitos manualmente na worktree
 2. Fazer rebase da worktree: `git rebase main` (dentro da worktree)
 3. Usar merge staged: `*merge-worktree {storyId} --staged`
@@ -703,10 +734,12 @@ git diff HEAD...auto-claude/{storyId}
 ### Problema: Worktree corrompida
 
 **Sintomas:**
+
 - Comandos git falham na worktree
 - Worktree aparece como "locked"
 
 **Diagnóstico:**
+
 ```bash
 # Verificar status da worktree
 git worktree list
@@ -716,6 +749,7 @@ ls .git/worktrees/{storyId}/locked
 ```
 
 **Soluções:**
+
 1. Remover lock: `rm .git/worktrees/{storyId}/locked`
 2. Remover worktree com force: `*remove-worktree {storyId} --force`
 3. Remocao manual:
@@ -729,9 +763,11 @@ ls .git/worktrees/{storyId}/locked
 ### Problema: Story ID não detectado
 
 **Sintomas:**
+
 - Mensagem "Could not determine story ID"
 
 **Soluções:**
+
 1. Fornecer ID explicitamente: `*auto-worktree STORY-42`
 2. Verificar se o arquivo da story existe
 3. Verificar convenção de nome da branch atual
@@ -740,13 +776,13 @@ ls .git/worktrees/{storyId}/locked
 
 ## Comandos Relacionados
 
-| Comando | Descrição | Exemplo |
-|---------|-----------|---------|
-| `*create-worktree` | Criar worktree manualmente | `*create-worktree STORY-42` |
-| `*list-worktrees` | Listar todas worktrees | `*list-worktrees` |
-| `*remove-worktree` | Remover worktree | `*remove-worktree STORY-42` |
-| `*merge-worktree` | Fazer merge da worktree | `*merge-worktree STORY-42` |
-| `*cleanup-worktrees` | Limpar worktrees obsoletas | `*cleanup-worktrees` |
+| Comando              | Descrição                  | Exemplo                     |
+| -------------------- | -------------------------- | --------------------------- |
+| `*create-worktree`   | Criar worktree manualmente | `*create-worktree STORY-42` |
+| `*list-worktrees`    | Listar todas worktrees     | `*list-worktrees`           |
+| `*remove-worktree`   | Remover worktree           | `*remove-worktree STORY-42` |
+| `*merge-worktree`    | Fazer merge da worktree    | `*merge-worktree STORY-42`  |
+| `*cleanup-worktrees` | Limpar worktrees obsoletas | `*cleanup-worktrees`        |
 
 ---
 
@@ -754,11 +790,11 @@ ls .git/worktrees/{storyId}/locked
 
 ### Arquivos do Framework
 
-| Arquivo | Caminho |
-|---------|---------|
-| **Workflow Definition** | `.aiox-core/development/workflows/auto-worktree.yaml` |
-| **Task Create** | `.aiox-core/development/tasks/create-worktree.md` |
-| **WorktreeManager** | `.aiox-core/infrastructure/scripts/worktree-manager.js` |
+| Arquivo                 | Caminho                                                 |
+| ----------------------- | ------------------------------------------------------- |
+| **Workflow Definition** | `.aiox-core/development/workflows/auto-worktree.yaml`   |
+| **Task Create**         | `.aiox-core/development/tasks/create-worktree.md`       |
+| **WorktreeManager**     | `.aiox-core/infrastructure/scripts/worktree-manager.js` |
 
 ### Documentação Relacionada
 
@@ -768,22 +804,22 @@ ls .git/worktrees/{storyId}/locked
 
 ### Stories Relacionadas
 
-| Story | Título |
-|-------|--------|
-| 1.1 | WorktreeManager Core Class |
-| 1.2 | Merge Functionality |
-| 1.3 | CLI Commands for Worktree Management |
-| 1.4 | Auto-Worktree Workflow Integration |
-| 1.5 | Worktree Status in Project Context |
+| Story | Título                               |
+| ----- | ------------------------------------ |
+| 1.1   | WorktreeManager Core Class           |
+| 1.2   | Merge Functionality                  |
+| 1.3   | CLI Commands for Worktree Management |
+| 1.4   | Auto-Worktree Workflow Integration   |
+| 1.5   | Worktree Status in Project Context   |
 
 ---
 
 ## Histórico de Versões
 
-| Versão | Data | Autor | Alterações |
-|--------|------|-------|------------|
-| 1.0 | 2026-01-28 | @architect (Aria) | Versão inicial |
+| Versão | Data       | Autor             | Alterações     |
+| ------ | ---------- | ----------------- | -------------- |
+| 1.0    | 2026-01-28 | @architect (Aria) | Versão inicial |
 
 ---
 
-*Documentação gerada automaticamente pelo AIOX-FULLSTACK*
+_Documentação gerada automaticamente pelo AIOX-FULLSTACK_

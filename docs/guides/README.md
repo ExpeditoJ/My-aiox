@@ -52,7 +52,7 @@ Use the DevOps agent: `@devops` then `*setup-mcp-docker`
 | ------------------------------------------------------------------ | ------------------------------------- | ------ | ---------------------- |
 | **[Module System Architecture](../architecture/module-system.md)** | v4.2 modular architecture (4 modules) | 15 min | Architects, Developers |
 | **[Service Discovery Guide](./service-discovery.md)**              | Worker discovery and registry API     | 10 min | Developers             |
-| **[Migration Guide v2.0→v4.2](../migration/migration-guide.md)**      | Step-by-step migration instructions   | 20 min | All users upgrading    |
+| **[Migration Guide v2.0→v4.2](../migration/migration-guide.md)**   | Step-by-step migration instructions   | 20 min | All users upgrading    |
 
 ### System Configuration
 

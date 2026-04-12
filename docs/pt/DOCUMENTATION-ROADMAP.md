@@ -47,8 +47,8 @@ Após análise, eles são categorizados em:
 
 ### 1.2 Onboarding de Usuários
 
-| Documento             | Localização             | Complexidade | Descrição                                 |
-| --------------------- | ----------------------- | ------------ | ----------------------------------------- |
+| Documento           | Localização             | Complexidade | Descrição                                 |
+| ------------------- | ----------------------- | ------------ | ----------------------------------------- |
 | `v4-quick-start.md` | `docs/en/installation/` | Simples      | Guia de início rápido para novos usuários |
 
 **Esboço do conteúdo:**
@@ -103,8 +103,8 @@ Estes documentos devem ser **mesclados na documentação existente**:
 
 | Documento Faltante                                | Mesclar Em                                   | Ação                                |
 | ------------------------------------------------- | -------------------------------------------- | ----------------------------------- |
-| `installation/migration-migration-guide.md`          | `migration-guide.md`                         | Adicionar seção v2.0→v4.0.4           |
-| `migration-migration-guide.md`                       | `migration-guide.md`                         | Mesmo que acima                     |
+| `installation/migration-migration-guide.md`       | `migration-guide.md`                         | Adicionar seção v2.0→v4.0.4         |
+| `migration-migration-guide.md`                    | `migration-guide.md`                         | Mesmo que acima                     |
 | `coderabbit-integration-decisions.md`             | `architecture/adr/`                          | Criar novo ADR                      |
 | `technical-review-greeting-system-unification.md` | `guides/contextual-greeting-system-guide.md` | Adicionar seção técnica             |
 | `hybrid-ops-pv-mind-integration.md`               | `architecture/high-level-architecture.md`    | Adicionar seção de integração       |

@@ -59,6 +59,7 @@
 ```
 
 这将：
+
 1. 检测你的git仓库
 2. 在 `core-config.yaml` 中启用 `projectStatus`
 3. 创建 `.aiox/project-status.yaml` 缓存文件
@@ -70,6 +71,7 @@
 如果你更喜欢手动配置：
 
 1. 编辑 `.aiox-core/core-config.yaml`：
+
    ```yaml
    projectStatus:
      enabled: true
@@ -79,6 +81,7 @@
    ```
 
 2. 创建 `.aiox/` 目录：
+
    ```bash
    mkdir .aiox
    ```
@@ -98,42 +101,45 @@
 
 ```yaml
 projectStatus:
-  enabled: true                      # 启用/禁用功能
-  autoLoadOnAgentActivation: true    # 在Agent激活时加载
-  showInGreeting: true               # 在问候中显示
-  cacheTimeSeconds: 60               # 缓存TTL（秒）
-  components:                        # 切换各个组件
-    gitBranch: true                  # 显示分支名称
-    gitStatus: true                  # 显示修改的文件
-    recentWork: true                 # 显示最近提交
-    currentEpic: true                # 显示当前epic
-    currentStory: true               # 显示当前story
-  statusFile: .aiox/project-status.yaml  # 缓存文件位置
-  maxModifiedFiles: 5                # 限制显示的修改文件数
-  maxRecentCommits: 2                # 限制显示的提交数
+  enabled: true # 启用/禁用功能
+  autoLoadOnAgentActivation: true # 在Agent激活时加载
+  showInGreeting: true # 在问候中显示
+  cacheTimeSeconds: 60 # 缓存TTL（秒）
+  components: # 切换各个组件
+    gitBranch: true # 显示分支名称
+    gitStatus: true # 显示修改的文件
+    recentWork: true # 显示最近提交
+    currentEpic: true # 显示当前epic
+    currentStory: true # 显示当前story
+  statusFile: .aiox/project-status.yaml # 缓存文件位置
+  maxModifiedFiles: 5 # 限制显示的修改文件数
+  maxRecentCommits: 2 # 限制显示的提交数
 ```
 
 ### 定制示例
 
 **仅显示分支和故事:**
+
 ```yaml
 projectStatus:
   enabled: true
   components:
     gitBranch: true
-    gitStatus: false      # 隐藏修改文件
-    recentWork: false     # 隐藏提交
+    gitStatus: false # 隐藏修改文件
+    recentWork: false # 隐藏提交
     currentEpic: false
     currentStory: true
 ```
 
 **将缓存TTL增加到5分钟:**
+
 ```yaml
 projectStatus:
   cacheTimeSeconds: 300
 ```
 
 **显示更多提交和文件:**
+
 ```yaml
 projectStatus:
   maxModifiedFiles: 10
@@ -176,6 +182,7 @@ git log -2 --oneline --no-decorate
 ### 故事检测
 
 扫描 `docs/stories/` 以查找包含以下内容的文件：
+
 ```markdown
 **Status:** InProgress
 **Story ID:** STORY-X.Y.Z
@@ -190,12 +197,12 @@ git log -2 --oneline --no-decorate
 
 ### 基准
 
-| 操作 | 时间 | 说明 |
-|------|------|------|
-| **首次加载** | 80-100ms | 运行git命令 + 文件扫描 |
-| **缓存加载** | 5-10ms | 从缓存读取YAML |
-| **缓存未命中** | 80-100ms | TTL过期，重新生成 |
-| **Agent开销** | <100ms | 添加到激活时间 |
+| 操作           | 时间     | 说明                   |
+| -------------- | -------- | ---------------------- |
+| **首次加载**   | 80-100ms | 运行git命令 + 文件扫描 |
+| **缓存加载**   | 5-10ms   | 从缓存读取YAML         |
+| **缓存未命中** | 80-100ms | TTL过期，重新生成      |
+| **Agent开销**  | <100ms   | 添加到激活时间         |
 
 ### 缓存策略
 
@@ -205,6 +212,7 @@ git log -2 --oneline --no-decorate
 - **失效:** TTL过期后自动
 
 **为什么是60秒?**
+
 - 足够长以避免Agent切换时重复git调用
 - 足够短以反映最近的更改
 - 性能和新鲜性的最优平衡
@@ -236,12 +244,14 @@ git log -2 --oneline --no-decorate
 **症状:** Agent激活时没有状态显示
 
 **检查:**
+
 1. `projectStatus.enabled: true` 在 core-config.yaml 中？
 2. 这是git仓库吗？ (`git rev-parse --is-inside-work-tree`)
 3. `.aiox-core/infrastructure/scripts/project-status-loader.js` 存在吗？
 4. Agent激活输出中有错误吗？
 
 **解决方案:**
+
 ```bash
 # 重新运行初始化
 /devops
@@ -255,6 +265,7 @@ git log -2 --oneline --no-decorate
 **原因:** 缓存未正确失效
 
 **解决方案:**
+
 ```bash
 # 手动清除缓存
 rm .aiox/project-status.yaml
@@ -267,6 +278,7 @@ rm .aiox/project-status.yaml
 **症状:** 分支显示"unknown"，文件缺失
 
 **检查:**
+
 1. git在PATH中吗？ (`git --version`)
 2. git版本 >= 2.0? (推荐 >= 2.22)
 3. 仓库损坏？ (`git fsck`)
@@ -280,18 +292,20 @@ rm .aiox/project-status.yaml
 **原因:** 大型仓库或缓慢的磁盘I/O
 
 **解决方案:**
+
 ```yaml
 # 减少收集数据
 projectStatus:
-  maxModifiedFiles: 3    # 默认值: 5
-  maxRecentCommits: 1     # 默认值: 2
+  maxModifiedFiles: 3 # 默认值: 5
+  maxRecentCommits: 1 # 默认值: 2
   components:
-    recentWork: false     # 禁用提交
+    recentWork: false # 禁用提交
 ```
 
 ### 非Git项目
 
 **预期行为:**
+
 ```
 当前项目状态：
   (不是git仓库)
@@ -312,7 +326,7 @@ projectStatus:
   enabled: false
 ```
 
-*注意: 按Agent禁用尚未实现（见未来增强）。*
+_注意: 按Agent禁用尚未实现（见未来增强）。_
 
 ### 自定义状态文件位置
 
@@ -326,7 +340,10 @@ projectStatus:
 ### 编程式访问
 
 ```javascript
-const { loadProjectStatus, formatStatusDisplay } = require('./.aiox-core/infrastructure/scripts/project-status-loader.js');
+const {
+  loadProjectStatus,
+  formatStatusDisplay,
+} = require('./.aiox-core/infrastructure/scripts/project-status-loader.js');
 
 // 获取原始状态对象
 const status = await loadProjectStatus();
@@ -348,12 +365,14 @@ await clearCache();
 ### 禁用功能
 
 1. **编辑配置:**
+
    ```yaml
    projectStatus:
      enabled: false
    ```
 
 2. **清除缓存:**
+
    ```bash
    rm .aiox/project-status.yaml
    ```
@@ -391,6 +410,7 @@ git revert <commit-hash>
 ### 推荐: git >= 2.22
 
 使用现代命令：
+
 ```bash
 git branch --show-current
 ```
@@ -398,6 +418,7 @@ git branch --show-current
 ### 支持: git >= 2.0
 
 回退到：
+
 ```bash
 git rev-parse --abbrev-ref HEAD
 ```
@@ -407,6 +428,7 @@ git rev-parse --abbrev-ref HEAD
 较旧版本可能工作但未经测试。
 
 **检查你的版本:**
+
 ```bash
 git --version
 ```

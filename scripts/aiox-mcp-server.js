@@ -69,6 +69,26 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {},
         },
       },
+      {
+        name: "obsidian_neural_link",
+        description: "Interact with the local Obsidian Neural Database (Python-Rewrite Architecture), allowing the AI to scan and assemble any of the 100 Agents and 500 Skills currently synced.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            action: { type: "string", description: "Action to perform: 'scan_network', 'fetch_skill', 'link_agent'" },
+            target: { type: "string", description: "The ID or name of the Agent/Skill." }
+          },
+          required: ["action", "target"],
+        },
+      },
+      {
+        name: "jarvis_system_monitor",
+        description: "Executes a system check to monitor RAM/CPU usage of specific apps (Discord, Brave) and checks system uptime. Useful for Jarvis to do PC analytics.",
+        inputSchema: {
+          type: "object",
+          properties: {},
+        },
+      },
     ],
   };
 });
@@ -117,6 +137,52 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     } catch(e) {
       // Typically taskkill exits with non-zero if no process found
       return { content: [{ type: "text", text: "No background LLM local engine process was found running."}] };
+    }
+  }
+
+  if (request.params.name === "obsidian_neural_link") {
+    const action = request.params.arguments.action;
+    const target = request.params.arguments.target;
+    const obsPath = "C:\\Users\\expea\\OneDrive\\Documentos\\DIto\\AIOX-Neural-Node";
+    
+    if (action === 'scan_network') {
+      const skills = fs.readdirSync(path.join(obsPath, 'Skills')).length;
+      const agents = fs.readdirSync(path.join(obsPath, 'Agents')).length;
+      return { content: [{ type: "text", text: `[Python Engine Bridge] Neural Database Synchronized.\nActive Nodes: ${agents} Agents, ${skills} Skills stored locally.`}] };
+    }
+    if (action === 'fetch_skill' || action === 'link_agent') {
+      const folder = action === 'fetch_skill' ? 'Skills' : 'Agents';
+      const file = target.endsWith('.md') ? target : `${target}.md`;
+      const fullPath = path.join(obsPath, folder, file);
+      if (fs.existsSync(fullPath)) {
+        return { content: [{ type: "text", text: fs.readFileSync(fullPath, 'utf8') }] };
+      }
+      return { content: [{ type: "text", text: `Node ${target} not found in the Neural Graph.`}], isError: true };
+    }
+  }
+
+  if (request.params.name === "jarvis_system_monitor") {
+    try {
+      if (process.platform === 'win32') {
+        const script = `
+          $brave = Get-Process brave -ErrorAction SilentlyContinue | Measure-Object WorkingSet -Sum | Select-Object -ExpandProperty Sum
+          $discord = Get-Process Discord -ErrorAction SilentlyContinue | Measure-Object WorkingSet -Sum | Select-Object -ExpandProperty Sum
+          $uptime = (Get-CimInstance Win32_OperatingSystem).LastBootUpTime
+          $now = Get-Date
+          $upStr = ($now - $uptime).ToString("d' days 'h' hours 'm' minutes'")
+          @{
+            BraveBrowserMB = [math]::Round($brave / 1MB, 2)
+            DiscordMB = [math]::Round($discord / 1MB, 2)
+            SystemUptime = $upStr
+            RequiresUpdate = ($now - $uptime).TotalDays -gt 30
+          } | ConvertTo-Json
+        `;
+        const result = execSync(`powershell -Command "${script}"`).toString();
+        return { content: [{ type: "text", text: result }] };
+      }
+      return { content: [{ type: "text", text: "Currently only supported on Windows."}] };
+    } catch(e) {
+      return { content: [{ type: "text", text: "Failed to gather System Metrics: " + e.message }] };
     }
   }
 

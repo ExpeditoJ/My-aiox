@@ -23,4 +23,4 @@ For complete documentation including flowcharts, command mappings, integrations,
 
 ---
 
-*AIOX Agent Flows - @squad-creator System v1.0*
+_AIOX Agent Flows - @squad-creator System v1.0_

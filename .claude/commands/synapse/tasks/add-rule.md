@@ -19,10 +19,10 @@ Append a new rule to a domain file in `.synapse/`, auto-incrementing the rule in
 
 ## Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `domain-name` | Yes | Existing domain name (kebab-case) |
-| `rule-text` | Yes | The rule text to add |
+| Parameter     | Required | Description                       |
+| ------------- | -------- | --------------------------------- |
+| `domain-name` | Yes      | Existing domain name (kebab-case) |
+| `rule-text`   | Yes      | The rule text to add              |
 
 ---
 
@@ -61,6 +61,7 @@ Ensure there is a newline before the new rule if the file does not end with one.
 ### Step 4: Confirm
 
 Display confirmation:
+
 ```
 Added rule to {domain-name}:
   {DOMAIN_KEY}_RULE_{NEXT_INDEX}={rule-text}
@@ -81,14 +82,14 @@ Domain now has {TOTAL} rules.
 
 ## Error Handling
 
-| Error | Message |
-|-------|---------|
+| Error                  | Message                                                                          |
+| ---------------------- | -------------------------------------------------------------------------------- |
 | Domain not in manifest | `Error: Domain "{name}" not found in manifest. Use "create" to create it first.` |
-| Domain file missing | `Error: Domain file ".synapse/{name}" not found on disk.` |
-| Empty rule text | `Error: Rule text cannot be empty.` |
-| Manifest not found | `Error: .synapse/manifest not found. SYNAPSE must be initialized first.` |
+| Domain file missing    | `Error: Domain file ".synapse/{name}" not found on disk.`                        |
+| Empty rule text        | `Error: Rule text cannot be empty.`                                              |
+| Manifest not found     | `Error: .synapse/manifest not found. SYNAPSE must be initialized first.`         |
 
 ---
 
-*Add Rule — SYNAPSE CRUD Command C3*
-*Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3*
+_Add Rule — SYNAPSE CRUD Command C3_
+_Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3_

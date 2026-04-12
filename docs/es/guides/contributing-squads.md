@@ -25,22 +25,22 @@ Todos los squads contribuidos deben cumplir estos estandares:
 
 ### Requeridos
 
-| Requisito | Descripcion |
-|-------------|-------------|
-| **Manifiesto valido** | `squad.yaml` pasa la validacion de JSON Schema |
-| **Documentacion** | README.md con instrucciones de uso |
-| **Licencia** | Licencia de codigo abierto (MIT, Apache 2.0, etc.) |
-| **Compatibilidad AIOX** | `aiox.minVersion: "2.1.0"` o superior |
-| **Arquitectura task-first** | Tareas como puntos de entrada principales |
+| Requisito                   | Descripcion                                        |
+| --------------------------- | -------------------------------------------------- |
+| **Manifiesto valido**       | `squad.yaml` pasa la validacion de JSON Schema     |
+| **Documentacion**           | README.md con instrucciones de uso                 |
+| **Licencia**                | Licencia de codigo abierto (MIT, Apache 2.0, etc.) |
+| **Compatibilidad AIOX**     | `aiox.minVersion: "2.1.0"` o superior              |
+| **Arquitectura task-first** | Tareas como puntos de entrada principales          |
 
 ### Recomendados
 
-| Recomendacion | Descripcion |
-|----------------|-------------|
-| **Ejemplos** | Ejemplos de uso en README |
-| **Pruebas** | Pruebas unitarias para funcionalidad critica |
-| **Changelog** | Documentacion de historial de versiones |
-| **Solucion de problemas** | Problemas comunes y soluciones |
+| Recomendacion             | Descripcion                                  |
+| ------------------------- | -------------------------------------------- |
+| **Ejemplos**              | Ejemplos de uso en README                    |
+| **Pruebas**               | Pruebas unitarias para funcionalidad critica |
+| **Changelog**             | Documentacion de historial de versiones      |
+| **Solucion de problemas** | Problemas comunes y soluciones               |
 
 ## Convenciones de Nomenclatura
 
@@ -56,7 +56,7 @@ Todos los squads contribuidos deben cumplir estos estandares:
 El `slashPrefix` en `squad.yaml` determina los prefijos de comandos:
 
 ```yaml
-slashPrefix: etl  # Los comandos se convierten en *etl-extract, *etl-transform
+slashPrefix: etl # Los comandos se convierten en *etl-extract, *etl-transform
 ```
 
 Elige un prefijo unico y corto (2-5 caracteres).
@@ -68,15 +68,15 @@ Elige un prefijo unico y corto (2-5 caracteres).
 ```yaml
 # Estos campos son REQUERIDOS
 name: my-squad
-version: 1.0.0              # Versionado semantico
+version: 1.0.0 # Versionado semantico
 description: Descripcion clara de lo que hace este squad
 
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 components:
-  agents: []                # Al menos un agente O tarea
+  agents: [] # Al menos un agente O tarea
   tasks: []
 ```
 
@@ -118,9 +118,9 @@ Ejemplos de uso basico.
 ## Comandos
 
 | Comando | Descripcion |
-|---------|-------------|
-| *cmd1 | Que hace |
-| *cmd2 | Que hace |
+| ------- | ----------- |
+| \*cmd1  | Que hace    |
+| \*cmd2  | Que hace    |
 
 ## Configuracion
 
@@ -159,6 +159,7 @@ Informacion de licencia.
 ```
 
 Esto:
+
 1. Hara fork de `SynkraAI/aiox-squads` (si es necesario)
 2. Creara branch con tu squad
 3. Abrira PR para revision
@@ -192,10 +193,10 @@ export SYNKRA_API_TOKEN="your-token"
 
 ### Opciones de Visibilidad
 
-| Bandera | Efecto |
-|------|--------|
+| Bandera     | Efecto                         |
+| ----------- | ------------------------------ |
 | `--private` | Solo visible para tu workspace |
-| `--public` | Visible para todos |
+| `--public`  | Visible para todos             |
 
 ## Actualizando Squads Publicados
 

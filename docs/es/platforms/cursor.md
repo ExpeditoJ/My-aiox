@@ -30,12 +30,12 @@ Cursor es uno de los **IDEs de IA más populares** con excelente integración de
 ### Comparación con Otras Plataformas
 
 | --------------------- | :----: | :-------------------: | :------: |
-| Interfaz GUI          |   Sí   |          No           |    Sí    |
-| Activación @mention   |   Sí   |       /comando        |    Sí    |
-| Composer              |   Sí   | Herramienta de Tareas | Cascade  |
-| Extensiones VS Code   |   Sí   |          No           | Limitado |
-| Soporte MCP           | Config |        Nativo         |  Config  |
-| Edición Multi-archivo |   Sí   |          Sí           |    Sí    |
+| Interfaz GUI | Sí | No | Sí |
+| Activación @mention | Sí | /comando | Sí |
+| Composer | Sí | Herramienta de Tareas | Cascade |
+| Extensiones VS Code | Sí | No | Limitado |
+| Soporte MCP | Config | Nativo | Config |
+| Edición Multi-archivo | Sí | Sí | Sí |
 
 ---
 
@@ -598,17 +598,15 @@ R: Ejecutar `npm run sync:ide` después de actualizaciones de AIOX.
 
 3. Los agentes se sincronizan automáticamente al nuevo formato
 
-
-1. Exportar configuración:
+4. Exportar configuración:
 
    ```bash
    cp .cursor/rules.md cursor-rules-backup.md
    ```
 
-
    ```bash
-   ```
 
+   ```
 
 ---
 

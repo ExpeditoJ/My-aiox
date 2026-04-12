@@ -20,12 +20,12 @@ Este comando baixa e executa a versão mais recente do instalador do AIOX-Core.
 
 ## Requisitos do Sistema
 
-| Requisito | Versão Mínima | Comando de Verificação |
-|-----------|---------------|------------------------|
-| **Node.js** | v18.0.0+ | `node --version` |
-| **npm** | v9.0.0+ | `npm --version` |
-| **npx** | (incluído com npm 5.2+) | `npx --version` |
-| **Git** | Qualquer versão recente (opcional) | `git --version` |
+| Requisito   | Versão Mínima                      | Comando de Verificação |
+| ----------- | ---------------------------------- | ---------------------- |
+| **Node.js** | v18.0.0+                           | `node --version`       |
+| **npm**     | v9.0.0+                            | `npm --version`        |
+| **npx**     | (incluído com npm 5.2+)            | `npx --version`        |
+| **Git**     | Qualquer versão recente (opcional) | `git --version`        |
 
 ### Links para Download
 
@@ -72,16 +72,19 @@ aiox-core
 Se você está tendo problemas de instalação, execute nossa ferramenta de diagnóstico:
 
 ### Windows (CMD)
+
 ```cmd
 curl -o diagnose.cmd https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/quick-diagnose.cmd && diagnose.cmd
 ```
 
 ### Windows (PowerShell)
+
 ```powershell
 irm https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/quick-diagnose.ps1 | iex
 ```
 
 ### macOS/Linux
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/diagnose-installation.js | node
 ```
@@ -93,12 +96,14 @@ curl -fsSL https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/diagn
 ### Problema 1: "Node.js version too old"
 
 **Erro:**
+
 ```
 error engine Unsupported engine
 error notsup Required: {"node":">=18.0.0"}
 ```
 
 **Solução:**
+
 1. Baixe o Node.js LTS de https://nodejs.org/
 2. Instale e reinicie seu terminal
 3. Verifique: `node --version` (deve mostrar v18+ ou v20+)
@@ -108,11 +113,13 @@ error notsup Required: {"node":">=18.0.0"}
 ### Problema 2: "npm version too old"
 
 **Erro:**
+
 ```
 npm ERR! Required: {"npm":">=9.0.0"}
 ```
 
 **Solução:**
+
 ```bash
 # Update npm globally
 npm install -g npm@latest
@@ -128,6 +135,7 @@ npm --version
 **Causa:** Pasta bin do npm não está no PATH do sistema
 
 **Solução (Windows):**
+
 1. Encontre o prefixo do npm: `npm config get prefix`
 2. Adicione ao PATH:
    - Pressione Win+X → Sistema → Configurações avançadas do sistema → Variáveis de Ambiente
@@ -136,6 +144,7 @@ npm --version
 3. Reinicie o terminal
 
 **Solução (macOS/Linux):**
+
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
 export PATH="$PATH:$(npm config get prefix)/bin"
@@ -152,6 +161,7 @@ source ~/.bashrc
 Execute o terminal como Administrador
 
 **Solução (macOS/Linux):**
+
 ```bash
 # Fix npm permissions (recommended)
 mkdir -p ~/.npm-global
@@ -171,22 +181,26 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 **Soluções:**
 
 1. **Verifique o registro do npm:**
+
    ```bash
    npm config get registry
    # Should be: https://registry.npmjs.org/
    ```
 
 2. **Redefina o registro:**
+
    ```bash
    npm config set registry https://registry.npmjs.org/
    ```
 
 3. **Teste a conectividade:**
+
    ```bash
    npm ping
    ```
 
 4. **Atrás de proxy corporativo:**
+
    ```bash
    npm config set proxy http://proxy.company.com:8080
    npm config set https-proxy http://proxy.company.com:8080
@@ -202,11 +216,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ### Problema 6: "PowerShell execution policy" (Windows)
 
 **Erro:**
+
 ```
 File cannot be loaded because running scripts is disabled on this system
 ```
 
 **Solução:**
+
 ```powershell
 # Run as Administrator
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -217,6 +233,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Problema 7: "Cannot find module" ou "Missing dependencies"
 
 **Solução:**
+
 ```bash
 # Clear npm cache
 npm cache clean --force
@@ -233,6 +250,7 @@ npx aiox-core@latest
 ### Problema 8: "SSL/Certificate errors"
 
 **Solução:**
+
 ```bash
 # Temporarily disable strict SSL (not recommended for production)
 npm config set strict-ssl false
@@ -248,6 +266,7 @@ npm config set cafile /path/to/certificate.pem
 **Causa:** Cache do npm servindo versão antiga
 
 **Solução:**
+
 ```bash
 # Clear npx cache
 npx clear-npx-cache
@@ -283,6 +302,7 @@ npx aiox-core@latest --version
 ```
 
 **Saída esperada:**
+
 ```
 v22.x.x (or v18+/v20+)
 11.x.x (or v9+)
@@ -302,6 +322,7 @@ Se você ainda está tendo problemas:
 3. **Verifique informações do sistema**: `npx aiox-core@latest info`
 
 Ao reportar problemas, por favor inclua:
+
 - Sistema operacional e versão
 - Versão do Node.js (`node --version`)
 - Versão do npm (`npm --version`)
@@ -312,16 +333,16 @@ Ao reportar problemas, por favor inclua:
 
 ## Referência Rápida
 
-| Comando | Descrição |
-|---------|-----------|
-| `npx aiox-core@latest` | Instalar/executar assistente |
-| `npx aiox-core@latest --version` | Mostrar versão |
-| `npx aiox-core@latest --help` | Mostrar ajuda |
-| `npx aiox-core@latest install` | Instalar no diretório atual |
-| `npx aiox-core@latest init <name>` | Criar novo projeto |
-| `npx aiox-core@latest doctor` | Executar diagnósticos |
-| `npx aiox-core@latest info` | Mostrar informações do sistema |
+| Comando                            | Descrição                      |
+| ---------------------------------- | ------------------------------ |
+| `npx aiox-core@latest`             | Instalar/executar assistente   |
+| `npx aiox-core@latest --version`   | Mostrar versão                 |
+| `npx aiox-core@latest --help`      | Mostrar ajuda                  |
+| `npx aiox-core@latest install`     | Instalar no diretório atual    |
+| `npx aiox-core@latest init <name>` | Criar novo projeto             |
+| `npx aiox-core@latest doctor`      | Executar diagnósticos          |
+| `npx aiox-core@latest info`        | Mostrar informações do sistema |
 
 ---
 
-*Última atualização: Dezembro 2025 | AIOX-Core v2.2.0*
+_Última atualização: Dezembro 2025 | AIOX-Core v2.2.0_

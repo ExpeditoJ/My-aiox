@@ -86,6 +86,7 @@ Para o que já foi entregue, veja [CHANGELOG.md](CHANGELOG.md).
 Este roadmap é revisado e atualizado mensalmente pelos mantenedores do projeto.
 
 **Processo:**
+
 1. Revisar progresso nos itens atuais
 2. Atualizar status de itens concluídos/em progresso
 3. Adicionar features recém-aprovadas das discussões da comunidade
@@ -98,13 +99,14 @@ Este roadmap é revisado e atualizado mensalmente pelos mantenedores do projeto.
 
 Este roadmap público é sincronizado com nosso planejamento interno de sprints:
 
-| Roadmap Público | Rastreamento Interno |
-|-----------------|---------------------|
-| [Projeto GitHub](https://github.com/orgs/SynkraAI/projects/1) | `docs/stories/backlog.md` |
-| Features de alto nível | Stories detalhadas por sprint |
-| Timeline trimestral | Execução baseada em sprints |
+| Roadmap Público                                               | Rastreamento Interno          |
+| ------------------------------------------------------------- | ----------------------------- |
+| [Projeto GitHub](https://github.com/orgs/SynkraAI/projects/1) | `docs/stories/backlog.md`     |
+| Features de alto nível                                        | Stories detalhadas por sprint |
+| Timeline trimestral                                           | Execução baseada em sprints   |
 
 **Checklist de Sincronização (Mensal):**
+
 - [ ] Revisar sprints concluídos em `docs/stories/v4.0.4/`
 - [ ] Atualizar status dos itens do Projeto GitHub (Done/In Progress)
 - [ ] Adicionar novas features aprovadas do backlog ao Projeto
@@ -116,4 +118,4 @@ Este roadmap representa nossos planos atuais e está sujeito a mudanças baseada
 
 ---
 
-*Última atualização: 2025-12-15*
+_Última atualização: 2025-12-15_

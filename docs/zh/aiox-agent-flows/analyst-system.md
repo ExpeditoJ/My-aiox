@@ -18,6 +18,7 @@
 本文档描述 **@analyst (Atlas)** 代理的完整系统，包括所有涉及的文件、工作流程、可用命令、模板和代理之间的集成。
 
 分析师代理设计用于：
+
 - 进行市场研究和竞争分析
 - 促进结构化的头脑风暴会话
 - 创建项目简介和深度研究提示
@@ -29,15 +30,15 @@
 
 ## 代理资料
 
-| 属性 | 值 |
-|----------|-------|
-| **名称** | Atlas |
-| **ID** | analyst |
-| **标题** | 业务分析师 |
-| **图标** | :mag: |
-| **原型** | 解码者 |
-| **星座** | :scorpius: 天蝎座 |
-| **语气** | 分析性、好奇、创意 |
+| 属性     | 值                               |
+| -------- | -------------------------------- |
+| **名称** | Atlas                            |
+| **ID**   | analyst                          |
+| **标题** | 业务分析师                       |
+| **图标** | :mag:                            |
+| **原型** | 解码者                           |
+| **星座** | :scorpius: 天蝎座                |
+| **语气** | 分析性、好奇、创意               |
 | **签名** | "-- Atlas，探究真相 :mag_right:" |
 
 ### 核心原则
@@ -59,55 +60,55 @@
 
 ### 代理核心文件
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/development/agents/analyst.md` | 分析师代理核心定义 |
-| `.claude/commands/AIOX/agents/analyst.md` | 用于激活 @analyst 的 Claude Code 命令 |
+| 文件                                       | 目的                                  |
+| ------------------------------------------ | ------------------------------------- |
+| `.aiox-core/development/agents/analyst.md` | 分析师代理核心定义                    |
+| `.claude/commands/AIOX/agents/analyst.md`  | 用于激活 @analyst 的 Claude Code 命令 |
 
 ### 分析师任务
 
-| 文件 | 命令 | 目的 |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/facilitate-brainstorming-session.md` | `*brainstorm {topic}` | 主要任务 - 促进结构化头脑风暴会话 |
-| `.aiox-core/development/tasks/analyst-facilitate-brainstorming.md` | `*brainstorm {topic}` | 头脑风暴任务的交互变体 |
-| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research-prompt {topic}` | 生成深度研究调查提示 |
-| `.aiox-core/development/tasks/advanced-elicitation.md` | `*elicit` | 高级需求获取会话 |
-| `.aiox-core/development/tasks/create-doc.md` | `*doc-out` | 从 YAML 模板创建文档 |
-| `.aiox-core/development/tasks/document-project.md` | `*create-project-brief` | 现有项目文档 |
-| `.aiox-core/development/tasks/calculate-roi.md` | (相关) | ROI 和成本节约计算 |
+| 文件                                                               | 命令                       | 目的                              |
+| ------------------------------------------------------------------ | -------------------------- | --------------------------------- |
+| `.aiox-core/development/tasks/facilitate-brainstorming-session.md` | `*brainstorm {topic}`      | 主要任务 - 促进结构化头脑风暴会话 |
+| `.aiox-core/development/tasks/analyst-facilitate-brainstorming.md` | `*brainstorm {topic}`      | 头脑风暴任务的交互变体            |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md`      | `*research-prompt {topic}` | 生成深度研究调查提示              |
+| `.aiox-core/development/tasks/advanced-elicitation.md`             | `*elicit`                  | 高级需求获取会话                  |
+| `.aiox-core/development/tasks/create-doc.md`                       | `*doc-out`                 | 从 YAML 模板创建文档              |
+| `.aiox-core/development/tasks/document-project.md`                 | `*create-project-brief`    | 现有项目文档                      |
+| `.aiox-core/development/tasks/calculate-roi.md`                    | (相关)                     | ROI 和成本节约计算                |
 
 ### 相关分析任务
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/development/tasks/analyze-brownfield.md` | 棕地项目分析 |
-| `.aiox-core/development/tasks/analyze-framework.md` | 现有框架分析 |
-| `.aiox-core/development/tasks/analyze-performance.md` | 性能分析 |
+| 文件                                                        | 目的         |
+| ----------------------------------------------------------- | ------------ |
+| `.aiox-core/development/tasks/analyze-brownfield.md`        | 棕地项目分析 |
+| `.aiox-core/development/tasks/analyze-framework.md`         | 现有框架分析 |
+| `.aiox-core/development/tasks/analyze-performance.md`       | 性能分析     |
 | `.aiox-core/development/tasks/analyze-project-structure.md` | 项目结构分析 |
-| `.aiox-core/development/tasks/analyze-cross-artifact.md` | 跨工件分析 |
+| `.aiox-core/development/tasks/analyze-cross-artifact.md`    | 跨工件分析   |
 
 ### 分析师模板
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/product/templates/project-brief-tmpl.yaml` | 项目简介模板 |
-| `.aiox-core/product/templates/market-research-tmpl.yaml` | 市场研究模板 |
-| `.aiox-core/product/templates/competitor-analysis-tmpl.yaml` | 竞争分析模板 |
+| 文件                                                          | 目的                 |
+| ------------------------------------------------------------- | -------------------- |
+| `.aiox-core/product/templates/project-brief-tmpl.yaml`        | 项目简介模板         |
+| `.aiox-core/product/templates/market-research-tmpl.yaml`      | 市场研究模板         |
+| `.aiox-core/product/templates/competitor-analysis-tmpl.yaml`  | 竞争分析模板         |
 | `.aiox-core/product/templates/brainstorming-output-tmpl.yaml` | 头脑风暴会话输出模板 |
 
 ### 数据文件
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/development/data/aiox-kb.md` | AIOX 知识库 |
+| 文件                                                      | 目的               |
+| --------------------------------------------------------- | ------------------ |
+| `.aiox-core/development/data/aiox-kb.md`                  | AIOX 知识库        |
 | `.aiox-core/development/data/brainstorming-techniques.md` | 可用的头脑风暴技术 |
 
 ### 使用分析师的工作流
 
-| 文件 | 阶段 | 目的 |
-|---------|------|-----------|
+| 文件                                                         | 阶段   | 目的                               |
+| ------------------------------------------------------------ | ------ | ---------------------------------- |
 | `.aiox-core/development/workflows/greenfield-fullstack.yaml` | 阶段 1 | 发现与规划 - 创建 project-brief.md |
-| `.aiox-core/development/workflows/brownfield-discovery.yaml` | 阶段 9 | 高管意识报告 |
+| `.aiox-core/development/workflows/brownfield-discovery.yaml` | 阶段 9 | 高管意识报告                       |
 
 ---
 
@@ -330,30 +331,30 @@ flowchart LR
 
 ### 研究与分析命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*perform-market-research` | `create-doc.md` + 模板 | 创建市场研究报告 |
-| `*create-competitor-analysis` | `create-doc.md` + 模板 | 创建详细竞争分析 |
-| `*research-prompt {topic}` | `create-deep-research-prompt.md` | 生成深度研究提示 |
+| 命令                          | 任务文件                         | 操作             |
+| ----------------------------- | -------------------------------- | ---------------- |
+| `*perform-market-research`    | `create-doc.md` + 模板           | 创建市场研究报告 |
+| `*create-competitor-analysis` | `create-doc.md` + 模板           | 创建详细竞争分析 |
+| `*research-prompt {topic}`    | `create-deep-research-prompt.md` | 生成深度研究提示 |
 
 ### 构思与发现命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*brainstorm {topic}` | `facilitate-brainstorming-session.md` | 促进结构化头脑风暴会话 |
-| `*create-project-brief` | `document-project.md` | 创建项目简介 |
-| `*elicit` | `advanced-elicitation.md` | 高级获取会话 |
+| 命令                    | 任务文件                              | 操作                   |
+| ----------------------- | ------------------------------------- | ---------------------- |
+| `*brainstorm {topic}`   | `facilitate-brainstorming-session.md` | 促进结构化头脑风暴会话 |
+| `*create-project-brief` | `document-project.md`                 | 创建项目简介           |
+| `*elicit`               | `advanced-elicitation.md`             | 高级获取会话           |
 
 ### 工具命令
 
-| 命令 | 操作 |
-|---------|----------|
-| `*help` | 显示所有可用命令 |
-| `*doc-out` | 输出完整文档 |
+| 命令            | 操作             |
+| --------------- | ---------------- |
+| `*help`         | 显示所有可用命令 |
+| `*doc-out`      | 输出完整文档     |
 | `*session-info` | 显示当前会话详情 |
-| `*guide` | 代理使用指南 |
-| `*yolo` | 切换跳过确认 |
-| `*exit` | 退出分析师模式 |
+| `*guide`        | 代理使用指南     |
+| `*yolo`         | 切换跳过确认     |
+| `*exit`         | 退出分析师模式   |
 
 ---
 
@@ -372,6 +373,7 @@ template:
 ```
 
 **主要部分：**
+
 - 执行摘要
 - 问题陈述
 - 建议解决方案
@@ -396,6 +398,7 @@ template:
 ```
 
 **主要部分：**
+
 - 执行摘要
 - 研究目标与方法
 - 市场概览（TAM/SAM/SOM、趋势）
@@ -418,6 +421,7 @@ template:
 ```
 
 **主要部分：**
+
 - 执行摘要
 - 分析范围与方法
 - 竞争格局概览
@@ -440,6 +444,7 @@ template:
 ```
 
 **主要部分：**
+
 - 执行摘要（主题、技术、想法数量）
 - 技术会话（每个使用的技术）
 - 想法分类
@@ -470,34 +475,45 @@ template:
 
 ```markdown
 ## 研究目标
+
 [明确的目标陈述]
 
 ## 背景上下文
+
 [来自输入的相关信息]
 
 ## 研究问题
+
 ### 主要问题（必须回答）
+
 1. [具体、可操作的问题]
-...
+   ...
 
 ### 次要问题（可选）
+
 1. [支持性问题]
-...
+   ...
 
 ## 研究方法
+
 ### 信息来源
+
 - [来源类型和优先级]
 
 ### 分析框架
+
 - [具体框架]
 
 ## 预期交付物
+
 ### 执行摘要
+
 - 关键发现和见解
 - 关键影响
 - 建议的行动
 
 ## 成功标准
+
 [如何评估研究是否达到目标]
 ```
 
@@ -507,37 +523,40 @@ template:
 
 ### 可用工具
 
-| 工具 | 目的 |
-|------------|-----------|
-| **exa** | 高级网络搜索市场和技术 |
-| **context7** | 库文档查找 |
+| 工具                 | 目的                            |
+| -------------------- | ------------------------------- |
+| **exa**              | 高级网络搜索市场和技术          |
+| **context7**         | 库文档查找                      |
 | **google-workspace** | 研究文档（Drive、Docs、Sheets） |
-| **clickup** | 捕获和组织想法 |
+| **clickup**          | 捕获和组织想法                  |
 
 ### 与其他代理的集成
 
-| 代理 | 协作类型 |
-|--------|---------------------|
-| **@pm (Morgan)** | 分析师为 PRD 创建提供研究和分析 |
-| **@po (Pax)** | 分析师提供市场见解和竞争分析 |
-| **@architect** | 分析师可提供技术研究 |
-| **@ux-design-expert** | 分析师提供用户研究支持 UX 决策 |
+| 代理                  | 协作类型                        |
+| --------------------- | ------------------------------- |
+| **@pm (Morgan)**      | 分析师为 PRD 创建提供研究和分析 |
+| **@po (Pax)**         | 分析师提供市场见解和竞争分析    |
+| **@architect**        | 分析师可提供技术研究            |
+| **@ux-design-expert** | 分析师提供用户研究支持 UX 决策  |
 
 ---
 
 ## 执行模式
 
 ### 1. YOLO 模式 - 快速自主（0-1 提示）
+
 - 带日志的自主决策
 - 与用户最小交互
 - **最适合：** 简单、确定性的任务
 
 ### 2. 交互模式 - 平衡教育（5-10 提示）[默认]
+
 - 明确的决策检查点
 - 教育性解释
 - **最适合：** 学习、复杂决策
 
 ### 3. 预检规划 - 全面规划
+
 - 任务分析阶段（识别歧义）
 - 零歧义执行
 - **最适合：** 模糊需求、关键工作
@@ -588,6 +607,7 @@ template:
 **症状：** 用户停止生成想法，回应简短
 
 **解决方案：**
+
 1. 检查精力水平："您对这个方向感觉如何？"
 2. 提供换技术："想尝试不同的方法吗？"
 3. 使用更具体的提示
@@ -598,6 +618,7 @@ template:
 **症状：** EXA 返回少量结果，小众市场
 
 **解决方案：**
+
 1. 扩大搜索范围（相关术语）
 2. 使用相邻市场的类比
 3. 结合一手研究（访谈）
@@ -608,6 +629,7 @@ template:
 **症状：** 部分模糊，缺乏具体性
 
 **解决方案：**
+
 1. 使用高级获取深入
 2. 要求具体例子
 3. 用场景挑战假设
@@ -618,6 +640,7 @@ template:
 **症状：** 只有竞争对手列表没有见解
 
 **解决方案：**
+
 1. 应用结构化框架（波特、SWOT）
 2. 聚焦差异化和漏洞
 3. 包括定位分析
@@ -655,25 +678,25 @@ template:
 
 ## 摘要
 
-| 方面 | 详情 |
-|---------|----------|
-| **核心任务总数** | 6 个任务文件 |
-| **模板总数** | 4 个 YAML 模板 |
-| **研究命令** | 3 个（`*perform-market-research`、`*create-competitor-analysis`、`*research-prompt`） |
-| **构思命令** | 3 个（`*brainstorm`、`*create-project-brief`、`*elicit`） |
-| **使用的工作流** | 2 个（greenfield-fullstack、brownfield-discovery） |
-| **消费代理** | @pm、@po、@architect、@ux-design-expert |
-| **集成工具** | exa、context7、google-workspace、clickup |
-| **执行模式** | 3 种（YOLO、交互式、预检） |
+| 方面             | 详情                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| **核心任务总数** | 6 个任务文件                                                                          |
+| **模板总数**     | 4 个 YAML 模板                                                                        |
+| **研究命令**     | 3 个（`*perform-market-research`、`*create-competitor-analysis`、`*research-prompt`） |
+| **构思命令**     | 3 个（`*brainstorm`、`*create-project-brief`、`*elicit`）                             |
+| **使用的工作流** | 2 个（greenfield-fullstack、brownfield-discovery）                                    |
+| **消费代理**     | @pm、@po、@architect、@ux-design-expert                                               |
+| **集成工具**     | exa、context7、google-workspace、clickup                                              |
+| **执行模式**     | 3 种（YOLO、交互式、预检）                                                            |
 
 ---
 
 ## 变更日志
 
-| 日期 | 作者 | 描述 |
-|------|-------|-----------|
+| 日期       | 作者     | 描述                               |
+| ---------- | -------- | ---------------------------------- |
 | 2026-02-04 | @analyst | 创建包含流程图和完整映射的初始文档 |
 
 ---
 
-*-- Atlas，探究真相 :mag_right:*
+_-- Atlas，探究真相 :mag_right:_

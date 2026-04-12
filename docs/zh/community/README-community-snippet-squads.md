@@ -12,19 +12,19 @@
 
 👉 **[AIOX 社区讨论](https://github.com/SynkraAI/aiox-core/discussions)**
 
-| 需要 | 前往位置 |
-|------|-------------|
-| 📦 **Squad 问题?** | 使用 ["Squad" 类别](https://github.com/SynkraAI/aiox-core/discussions/categories/squads) |
-| 💡 **功能创意?** | 在 ["创意" 中启动讨论](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas) |
-| 🐛 **发现错误?** | [在此仓库中打开 issue](https://github.com/SynkraAI/aiox-squads/issues/new/choose) |
-| 🙏 **需要帮助?** | 在 ["问答" 中提问](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a) |
+| 需要                       | 前往位置                                                                                             |
+| -------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 📦 **Squad 问题?**         | 使用 ["Squad" 类别](https://github.com/SynkraAI/aiox-core/discussions/categories/squads)             |
+| 💡 **功能创意?**           | 在 ["创意" 中启动讨论](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas)           |
+| 🐛 **发现错误?**           | [在此仓库中打开 issue](https://github.com/SynkraAI/aiox-squads/issues/new/choose)                    |
+| 🙏 **需要帮助?**           | 在 ["问答" 中提问](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a)                 |
 | 🙌 **创建了什么酷的东西?** | 在 ["展示和讲述" 中分享](https://github.com/SynkraAI/aiox-core/discussions/categories/show-and-tell) |
 
 ### 可用的 Squad
 
-| Squad | 描述 | 状态 |
-|-------|-------------|--------|
-| 🔄 **ETL Squad** | 数据收集、转换和管道自动化 | 活跃 |
+| Squad                | 描述                         | 状态 |
+| -------------------- | ---------------------------- | ---- |
+| 🔄 **ETL Squad**     | 数据收集、转换和管道自动化   | 活跃 |
 | ✍️ **Creator Squad** | 内容生成、博客文章、课程创建 | 活跃 |
 
 ### 提议新的 Squad
@@ -37,4 +37,4 @@
 
 ---
 
-**标语:** *AIOX Squads：与你一起工作的 AI 代理团队* 🤖
+**标语:** _AIOX Squads：与你一起工作的 AI 代理团队_ 🤖

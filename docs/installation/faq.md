@@ -87,10 +87,10 @@ The installer will:
 
 **Answer:**
 
-| Scenario                | Time          |
-| ----------------------- | ------------- |
-| **First-time install**  | 2-5 minutes   |
-| **Update existing**     | 1-2 minutes   |
+| Scenario               | Time          |
+| ---------------------- | ------------- |
+| **First-time install** | 2-5 minutes   |
+| **Update existing**    | 1-2 minutes   |
 | **Starter squad only** | 30-60 seconds |
 
 Factors affecting installation time:
@@ -168,11 +168,11 @@ npx aiox-core status
 
 **Answer:** We recommend:
 
-| Update Type          | Frequency   | Command                     |
-| -------------------- | ----------- | --------------------------- |
+| Update Type          | Frequency   | Command                |
+| -------------------- | ----------- | ---------------------- |
 | **Security patches** | Immediately | `npx aiox-core update` |
 | **Minor updates**    | Monthly     | `npx aiox-core update` |
-| **Major versions**   | Quarterly   | Review changelog first      |
+| **Major versions**   | Quarterly   | Review changelog first |
 
 **Check for updates:**
 
@@ -302,6 +302,7 @@ tar -xzvf aiox-offline.tar.gz
 **Command line:**
 
 ```bash
+
 ```
 
 Each IDE gets its own configuration directory:
@@ -473,7 +474,7 @@ name: my-expansion
 version: 1.0.0
 description: My custom Squad
 dependencies:
-  aiox-core: ">=1.0.0"
+  aiox-core: '>=1.0.0'
 agents:
   - my-agent
 tasks:
@@ -500,7 +501,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
       - run: npx aiox-core install --full --ide claude-code
       - run: npm test
 ```
@@ -586,10 +587,10 @@ projectStatus:
 
 **Answer:**
 
-| Resource            | Link                                                       |
-| ------------------- | ---------------------------------------------------------- |
-| **Documentation**   | `docs/` in your project                                    |
-| **Troubleshooting** | [troubleshooting.md](./troubleshooting.md)                 |
+| Resource            | Link                                         |
+| ------------------- | -------------------------------------------- |
+| **Documentation**   | `docs/` in your project                      |
+| **Troubleshooting** | [troubleshooting.md](./troubleshooting.md)   |
 | **GitHub Issues**   | https://github.com/SynkraAI/aiox-core/issues |
 | **Source Code**     | https://github.com/SynkraAI/aiox-core        |
 

@@ -11,6 +11,7 @@
 ### 1. 简单代理 (`simple-agent.yaml`)
 
 一个专注于文档任务的最小代理示例。非常适合：
+
 - 理解代理结构
 - 学习命令定义
 - 基本系统提示模式
@@ -18,6 +19,7 @@
 ### 2. 数据处理 Squad (`data-processor-squad.yaml`)
 
 一个完整的 squad 清单，展示：
+
 - 多个代理协作
 - 具有依赖关系的任务定义
 - 工作流编排
@@ -39,6 +41,7 @@ code my-squad/agents/my-agent.yaml
 ### 通过阅读学习
 
 每个示例都包含注释，解释：
+
 - 为什么使用某些模式
 - 正在演示的最佳实践
 - 常见定制点
@@ -60,4 +63,4 @@ code my-squad/agents/my-agent.yaml
 
 ---
 
-*AIOX Squads：与你一起工作的 AI 代理团队*
+_AIOX Squads：与你一起工作的 AI 代理团队_

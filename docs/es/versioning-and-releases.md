@@ -102,12 +102,12 @@ Si su merge a `main` no disparó una publicación:
 
 Problemas comunes y soluciones:
 
-| Error | Solución |
-|-------|----------|
-| `ENOGHTOKEN` | Falta o expiró el secret GITHUB_TOKEN |
-| `ENOPKGAUTH` | Falta o es inválido el secret NPM_TOKEN |
-| `ENOTINHISTORY` | La rama no tiene historial apropiado (use `fetch-depth: 0`) |
-| `EINVALIDNPMTOKEN` | Regenere el token de NPM con permisos de publicación |
+| Error              | Solución                                                    |
+| ------------------ | ----------------------------------------------------------- |
+| `ENOGHTOKEN`       | Falta o expiró el secret GITHUB_TOKEN                       |
+| `ENOPKGAUTH`       | Falta o es inválido el secret NPM_TOKEN                     |
+| `ENOTINHISTORY`    | La rama no tiene historial apropiado (use `fetch-depth: 0`) |
+| `EINVALIDNPMTOKEN` | Regenere el token de NPM con permisos de publicación        |
 
 ### Omitir una Publicación
 
@@ -135,12 +135,12 @@ npm publish
 
 ## Archivos de Configuración
 
-| Archivo | Propósito |
-|---------|-----------|
-| `.releaserc.json` | Configuración de semantic release |
-| `.github/workflows/semantic-release.yml` | Workflow de GitHub Actions |
-| `package.json` | Fuente de versión, scripts de npm |
+| Archivo                                  | Propósito                         |
+| ---------------------------------------- | --------------------------------- |
+| `.releaserc.json`                        | Configuración de semantic release |
+| `.github/workflows/semantic-release.yml` | Workflow de GitHub Actions        |
+| `package.json`                           | Fuente de versión, scripts de npm |
 
 ---
 
-*Última actualización: Story 6.17 - Automatización de Semantic Release*
+_Última actualización: Story 6.17 - Automatización de Semantic Release_

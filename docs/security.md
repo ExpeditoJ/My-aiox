@@ -116,9 +116,9 @@ Security updates are announced through:
 
 We thank the following researchers for responsibly disclosing security issues:
 
-*No reports yet - be the first!*
+_No reports yet - be the first!_
 
 ---
 
-*This security policy is effective as of December 2024.*
-*Last updated: 2025-12-11*
+_This security policy is effective as of December 2024._
+_Last updated: 2025-12-11_

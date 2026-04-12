@@ -31,20 +31,20 @@
 
 开始前，请确保已安装以下软件：
 
-| 工具           | 最低版本 | 检查命令     | 目的         |
-| -------------- | -------- | ------------ | ------------ |
+| 工具           | 最低版本 | 检查命令         | 目的              |
+| -------------- | -------- | ---------------- | ----------------- |
 | **Node.js**    | 18.0.0   | `node --version` | JavaScript 运行时 |
-| **npm**        | 9.0.0    | `npm --version`  | 包管理器     |
-| **Git**        | 2.30+    | `git --version`  | 版本控制     |
-| **GitHub CLI** | 2.0+     | `gh --version`   | GitHub 操作  |
+| **npm**        | 9.0.0    | `npm --version`  | 包管理器          |
+| **Git**        | 2.30+    | `git --version`  | 版本控制          |
+| **GitHub CLI** | 2.0+     | `gh --version`   | GitHub 操作       |
 
 ### 推荐工具
 
-| 工具                 | 目的                                 |
-| -------------------- | ------------------------------------ |
-| **Claude Code**      | 与 AIOX 代理进行 AI 驱动的开发       |
-| **VS Code / Cursor** | 带 AIOX 集成的 IDE                   |
-| **Docker Desktop**   | MCP 服务器和容器化工具               |
+| 工具                 | 目的                           |
+| -------------------- | ------------------------------ |
+| **Claude Code**      | 与 AIOX 代理进行 AI 驱动的开发 |
+| **VS Code / Cursor** | 带 AIOX 集成的 IDE             |
+| **Docker Desktop**   | MCP 服务器和容器化工具         |
 
 ### 安装先决条件
 
@@ -219,14 +219,14 @@ npm run format
 
 ### 命名约定
 
-| 类型       | 约定           | 示例                  |
-| ---------- | -------------- | --------------------- |
-| **文件**   | kebab-case     | `my-component.js`     |
-| **类**     | PascalCase     | `MyComponent`         |
-| **函数**   | camelCase      | `myFunction`          |
-| **常量**   | UPPER_SNAKE    | `MAX_RETRIES`         |
-| **代理**   | kebab-case     | `dev`、`qa`、`architect` |
-| **任务**   | kebab-case     | `create-story`、`dev-build` |
+| 类型     | 约定        | 示例                        |
+| -------- | ----------- | --------------------------- |
+| **文件** | kebab-case  | `my-component.js`           |
+| **类**   | PascalCase  | `MyComponent`               |
+| **函数** | camelCase   | `myFunction`                |
+| **常量** | UPPER_SNAKE | `MAX_RETRIES`               |
+| **代理** | kebab-case  | `dev`、`qa`、`architect`    |
+| **任务** | kebab-case  | `create-story`、`dev-build` |
 
 ### Commit 约定
 

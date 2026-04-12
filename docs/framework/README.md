@@ -18,11 +18,11 @@ This directory contains **official AIOX framework documentation** that defines s
 
 ## 📚 Documentation Inventory
 
-| Document | Purpose | Audience |
-|----------|---------|----------|
-| [**coding-standards.md**](coding-standards.md) | JavaScript/TypeScript standards, naming conventions, code quality rules | All developers |
-| [**tech-stack.md**](tech-stack.md) | Technology choices, frameworks, libraries, and tooling standards | Architects, developers |
-| [**source-tree.md**](source-tree.md) | Directory structure, file organization, and project layout patterns | All team members |
+| Document                                       | Purpose                                                                 | Audience               |
+| ---------------------------------------------- | ----------------------------------------------------------------------- | ---------------------- |
+| [**coding-standards.md**](coding-standards.md) | JavaScript/TypeScript standards, naming conventions, code quality rules | All developers         |
+| [**tech-stack.md**](tech-stack.md)             | Technology choices, frameworks, libraries, and tooling standards        | Architects, developers |
+| [**source-tree.md**](source-tree.md)           | Directory structure, file organization, and project layout patterns     | All team members       |
 
 ---
 
@@ -39,6 +39,7 @@ This directory contains **official AIOX framework documentation** that defines s
 ### Backward Compatibility
 
 For backward compatibility, framework docs remain accessible at **both** locations until Q3 2026:
+
 - **New location** (preferred): `docs/framework/{doc-name}.md`
 - **Old location** (deprecated): `docs/architecture/{doc-name}.md`
 
@@ -49,12 +50,14 @@ For backward compatibility, framework docs remain accessible at **both** locatio
 ## 🏗️ Framework vs. Project Documentation
 
 ### Framework Documentation (`docs/framework/`)
+
 - **Scope**: Portable across all AIOX projects
 - **Examples**: Coding standards, tech stack, source tree structure
 - **Lifecycle**: Lives in `SynkraAI/aiox-core` repository
 - **Changes**: Require framework-level approval
 
 ### Project Documentation (`docs/architecture/project-decisions/`)
+
 - **Scope**: Specific to brownfield implementation
 - **Examples**: Decision analysis, architectural reviews, integration decisions
 - **Lifecycle**: Lives in project repository permanently
@@ -65,16 +68,19 @@ For backward compatibility, framework docs remain accessible at **both** locatio
 ## 📖 Usage Guidelines
 
 ### For Developers
+
 1. **Read framework docs during onboarding** - Understand AIOX standards
 2. **Reference during development** - Ensure compliance with framework patterns
 3. **Propose changes via PRs** - Framework standards evolve with community input
 
 ### For Architects
+
 1. **Maintain framework docs** - Keep standards current and practical
 2. **Review PRs for compliance** - Ensure code follows documented standards
 3. **Plan migration** - Prepare for Q2 2026 repository split
 
 ### For AIOX Framework Maintainers
+
 1. **Version control** - Track changes to framework standards
 2. **Migration readiness** - Ensure docs are ready for repository separation
 3. **Cross-project consistency** - Apply standards uniformly
@@ -86,8 +92,8 @@ For backward compatibility, framework docs remain accessible at **both** locatio
 - **Architecture Overview**: [`docs/architecture/`](../architecture/)
 - **Installation Guide**: [`docs/installation/`](../installation/)
 - **Platform Guides**: [`docs/platforms/`](../platforms/)
-- **Architecture Decisions**: `docs/decisions/` *(coming soon)*
-- **Epic Planning**: `docs/epics/` *(coming soon)*
+- **Architecture Decisions**: `docs/decisions/` _(coming soon)_
+- **Epic Planning**: `docs/epics/` _(coming soon)_
 
 ---
 

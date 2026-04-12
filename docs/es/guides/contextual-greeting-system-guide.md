@@ -52,6 +52,7 @@ El Sistema de Saludo Contextual es una mejora de UX que hace que los saludos de 
 ### Pendiente (Story Futura - 6.1.4 o 6.1.6)
 
 **Integración con Proceso de Activación:**
+
 - Interceptar activación del agente (cuando escribes `@dev`, `@po`, etc.)
 - Llamar GreetingBuilder automáticamente
 - Inyectar saludo contextual en lugar del saludo estándar
@@ -63,12 +64,14 @@ El Sistema de Saludo Contextual es una mejora de UX que hace que los saludos de 
 **Cuándo:** Primera interacción o después de 1 hora de inactividad
 
 **Características:**
+
 - Presentación completa (greeting archetypal)
 - Descripción del rol del agente
 - Estado del proyecto (si git está configurado)
 - Comandos completos (hasta 12 comandos con visibility=full)
 
 **Ejemplo:**
+
 ```
 💻 Dex (Builder) ready. Let's build something solid!
 
@@ -93,12 +96,14 @@ El Sistema de Saludo Contextual es una mejora de UX que hace que los saludos de 
 **Cuándo:** Continuando trabajo en la misma sesión
 
 **Características:**
+
 - Presentación resumida (greeting named)
 - Estado del proyecto
 - Contexto actual (última acción)
 - Comandos rápidos (6-8 comandos con visibility=quick)
 
 **Ejemplo:**
+
 ```
 💻 Dex (Builder) ready.
 
@@ -122,6 +127,7 @@ El Sistema de Saludo Contextual es una mejora de UX que hace que los saludos de 
 **Cuándo:** En medio de un workflow activo (ej: después de validar story)
 
 **Características:**
+
 - Presentación mínima (greeting minimal)
 - Estado condensado del proyecto
 - Contexto del workflow (working on X)
@@ -129,6 +135,7 @@ El Sistema de Saludo Contextual es una mejora de UX que hace que los saludos de 
 - Comandos clave (3-5 comandos con visibility=key)
 
 **Ejemplo:**
+
 ```
 ⚖️ Pax ready.
 
@@ -157,39 +164,42 @@ Cada comando ahora tiene un atributo `visibility` que controla cuándo aparece:
 ```yaml
 commands:
   - name: help
-    visibility: [full, quick, key]  # Siempre visible
-    description: "Show all available commands"
+    visibility: [full, quick, key] # Siempre visible
+    description: 'Show all available commands'
 
   - name: develop
-    visibility: [full, quick, key]  # Comando principal
-    description: "Implement story tasks"
+    visibility: [full, quick, key] # Comando principal
+    description: 'Implement story tasks'
 
   - name: review-code
-    visibility: [full, quick]  # Usado frecuentemente, pero no crítico
-    description: "Review code changes"
+    visibility: [full, quick] # Usado frecuentemente, pero no crítico
+    description: 'Review code changes'
 
   - name: build
-    visibility: [full]  # Menos usado, solo en new session
-    description: "Build for production"
+    visibility: [full] # Menos usado, solo en new session
+    description: 'Build for production'
 
   - name: qa-gate
-    visibility: [key]  # Crítico en workflows, pero no siempre necesario
-    description: "Run quality gate"
+    visibility: [key] # Crítico en workflows, pero no siempre necesario
+    description: 'Run quality gate'
 ```
 
 ### Guías de Categorización
 
 **`full` (12 comandos)** - New Session
+
 - Todos los comandos disponibles
 - Muestra capacidades completas del agente
 - Ideal para descubrimiento
 
 **`quick` (6-8 comandos)** - Existing Session
+
 - Comandos usados frecuentemente
 - Enfocado en productividad
 - Elimina comandos raramente usados
 
 **`key` (3-5 comandos)** - Workflow Session
+
 - Comandos críticos para el workflow actual
 - Mínima distracción
 - Máxima eficiencia
@@ -214,6 +224,7 @@ commands:
 ### Transiciones de Estado
 
 Cada workflow define transiciones entre estados con:
+
 - **Trigger:** Comando que se completa exitosamente
 - **Greeting Message:** Mensaje contextual
 - **Next Steps:** Sugerencias de próximos comandos con args pre-populados
@@ -224,18 +235,18 @@ Cada workflow define transiciones entre estados con:
 story_development:
   transitions:
     validated:
-      trigger: "validate-story-draft completed successfully"
-      greeting_message: "Story validated! Ready to implement."
+      trigger: 'validate-story-draft completed successfully'
+      greeting_message: 'Story validated! Ready to implement.'
       next_steps:
         - command: develop-yolo
-          args_template: "${story_path}"
-          description: "Autonomous YOLO mode (no interruptions)"
+          args_template: '${story_path}'
+          description: 'Autonomous YOLO mode (no interruptions)'
         - command: develop-interactive
-          args_template: "${story_path}"
-          description: "Interactive mode with checkpoints (default)"
+          args_template: '${story_path}'
+          description: 'Interactive mode with checkpoints (default)'
         - command: develop-preflight
-          args_template: "${story_path}"
-          description: "Plan everything upfront, then execute"
+          args_template: '${story_path}'
+          description: 'Plan everything upfront, then execute'
 ```
 
 ## Cómo Probar Ahora
@@ -247,6 +258,7 @@ node .aiox-core/development/scripts/test-greeting-system.js
 ```
 
 Este script prueba los 4 escenarios:
+
 1. New session greeting (Dev)
 2. Existing session greeting (Dev)
 3. Workflow session greeting (PO)
@@ -264,18 +276,17 @@ const mockAgent = {
   icon: '💻',
   persona_profile: {
     greeting_levels: {
-      named: '💻 Dex (Builder) ready!'
-    }
+      named: '💻 Dex (Builder) ready!',
+    },
   },
   persona: { role: 'Developer' },
-  commands: [
-    { name: 'help', visibility: ['full', 'quick', 'key'] }
-  ]
+  commands: [{ name: 'help', visibility: ['full', 'quick', 'key'] }],
 };
 
 // Test new session
-builder.buildGreeting(mockAgent, { conversationHistory: [] })
-  .then(greeting => console.log(greeting));
+builder
+  .buildGreeting(mockAgent, { conversationHistory: [] })
+  .then((greeting) => console.log(greeting));
 ```
 
 ### Opción 3: Esperar Integración Completa
@@ -291,6 +302,7 @@ Cuando la integración con el proceso de activación esté implementada (Story 6
 ## Archivos Relacionados
 
 ### Scripts Core
+
 - `.aiox-core/core/session/context-detector.js` - Detección de tipo de sesión
 - `.aiox-core/infrastructure/scripts/git-config-detector.js` - Detección de git config
 - `.aiox-core/development/scripts/greeting-builder.js` - Construcción del saludo
@@ -298,18 +310,22 @@ Cuando la integración con el proceso de activación esté implementada (Story 6
 - `.aiox-core/development/scripts/agent-exit-hooks.js` - Hooks de salida (para persistencia)
 
 ### Archivos de Datos
+
 - `.aiox-core/data/workflow-patterns.yaml` - Definiciones de workflows
 
 ### Tests
+
 - `tests/unit/context-detector.test.js` - 23 tests
 - `tests/unit/git-config-detector.test.js` - 19 tests
 - `tests/unit/greeting-builder.test.js` - 23 tests
 - `tests/integration/performance.test.js` - Validación de rendimiento
 
 ### Configuración
+
 - `.aiox-core/core-config.yaml` - Configuración global (secciones git + agentIdentity)
 
 ### Agentes (Actualizados)
+
 - `.aiox-core/agents/dev.md` - Metadatos de visibilidad de comandos
 - `.aiox-core/agents/po.md` - Metadatos de visibilidad de comandos
 - `.aiox-core/agents/*.md` - 9 agentes restantes (actualización pendiente)
@@ -317,16 +333,19 @@ Cuando la integración con el proceso de activación esté implementada (Story 6
 ## Próximos Pasos
 
 ### Inmediato (Arreglar Problemas de Tests)
+
 1. Arreglar problemas de configuración de tests (1-2 horas)
 2. Ejecutar suite completa de tests
 3. Ejecutar tests de rendimiento
 
 ### Corto Plazo (Story 6.1.4 o 6.1.6)
+
 1. Implementar integración con proceso de activación de agentes
 2. Actualizar los 9 agentes restantes con metadatos de visibilidad de comandos
 3. Probar con activaciones reales de agentes
 
 ### Largo Plazo (Story 6.1.2.6)
+
 1. Implementar aprendizaje dinámico de patrones de workflow
 2. Agregar priorización de comandos basada en uso
 3. Implementar hints de colaboración entre agentes
@@ -334,11 +353,13 @@ Cuando la integración con el proceso de activación esté implementada (Story 6
 ## Métricas de Rendimiento
 
 **Objetivo (de Story 6.1.2.5):**
+
 - Latencia P50: <100ms
 - Latencia P95: <130ms
 - Latencia P99: <150ms (límite duro)
 
 **Esperado (basado en revisión de código):**
+
 - Git config (cache hit): <5ms
 - Git config (cache miss): <50ms
 - Detección de contexto: <50ms
@@ -347,6 +368,7 @@ Cuando la integración con el proceso de activación esté implementada (Story 6
 - **Total P99:** ~100-120ms (bien por debajo del límite)
 
 **Optimizaciones:**
+
 - Ejecución paralela (Promise.all)
 - Caching basado en TTL
 - Protección de timeout
@@ -355,6 +377,7 @@ Cuando la integración con el proceso de activación esté implementada (Story 6
 ## Compatibilidad Hacia Atrás
 
 **100% Compatible Hacia Atrás:**
+
 - Agentes sin metadatos de visibilidad muestran todos los comandos (máximo 12)
 - Fallback elegante a saludo simple en cualquier error
 - Cero cambios breaking en el proceso de activación

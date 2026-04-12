@@ -13,6 +13,7 @@ By using Synkra AIOX ("the Software"), you agree to be bound by these Terms of U
 Synkra AIOX is released under the **MIT License**. See the [LICENSE](LICENSE) file for the full license text.
 
 For licensing scope between open-source core and private modules, see:
+
 - [License Clarification (Core vs Pro)](./license-clarification.md)
 
 ### Summary of MIT License Rights

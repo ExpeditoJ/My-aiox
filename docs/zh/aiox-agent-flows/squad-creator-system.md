@@ -42,69 +42,69 @@
 
 ### 代理定义核心文件
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/development/agents/squad-creator.md` | 小队创建者代理核心定义 |
-| `.claude/commands/AIOX/agents/squad-creator.md` | 用于激活 @squad-creator 的 Claude Code 命令 |
+| 文件                                             | 目的                                        |
+| ------------------------------------------------ | ------------------------------------------- |
+| `.aiox-core/development/agents/squad-creator.md` | 小队创建者代理核心定义                      |
+| `.claude/commands/AIOX/agents/squad-creator.md`  | 用于激活 @squad-creator 的 Claude Code 命令 |
 
 ### @squad-creator 任务文件
 
-| 文件 | 命令 | 目的 | 状态 |
-|---------|---------|-----------|--------|
-| `.aiox-core/development/tasks/squad-creator-create.md` | `*create-squad` | 创建带完整结构的新小队 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-design.md` | `*design-squad` | 分析文档并生成蓝图 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-validate.md` | `*validate-squad` | 验证小队针对 schema 和模式 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-list.md` | `*list-squads` | 列出本地小队 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-analyze.md` | `*analyze-squad` | 分析结构并建议改进 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-extend.md` | `*extend-squad` | 使用新组件扩展小队 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-migrate.md` | `*migrate-to-v2` | 迁移小队到 v2 格式 | 活跃 |
-| `.aiox-core/development/tasks/squad-generate-skills.md` | `*generate-skills` | 生成小队知识技能 | 活跃 |
-| `.aiox-core/development/tasks/squad-generate-workflow.md` | `*generate-workflow` | 生成 YAML 编排工作流 | 活跃 |
-| `.aiox-core/development/tasks/squad-creator-download.md` | `*download-squad` | 从公共仓库下载小队 | 占位符（Sprint 8） |
-| `.aiox-core/development/tasks/squad-creator-publish.md` | `*publish-squad` | 发布小队到 aiox-squads | 占位符（Sprint 8） |
-| `.aiox-core/development/tasks/squad-creator-sync-synkra.md` | `*sync-squad-synkra` | 同步小队到 Synkra API | 占位符（Sprint 8） |
+| 文件                                                        | 命令                 | 目的                       | 状态               |
+| ----------------------------------------------------------- | -------------------- | -------------------------- | ------------------ |
+| `.aiox-core/development/tasks/squad-creator-create.md`      | `*create-squad`      | 创建带完整结构的新小队     | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-design.md`      | `*design-squad`      | 分析文档并生成蓝图         | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-validate.md`    | `*validate-squad`    | 验证小队针对 schema 和模式 | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-list.md`        | `*list-squads`       | 列出本地小队               | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-analyze.md`     | `*analyze-squad`     | 分析结构并建议改进         | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-extend.md`      | `*extend-squad`      | 使用新组件扩展小队         | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-migrate.md`     | `*migrate-to-v2`     | 迁移小队到 v2 格式         | 活跃               |
+| `.aiox-core/development/tasks/squad-generate-skills.md`     | `*generate-skills`   | 生成小队知识技能           | 活跃               |
+| `.aiox-core/development/tasks/squad-generate-workflow.md`   | `*generate-workflow` | 生成 YAML 编排工作流       | 活跃               |
+| `.aiox-core/development/tasks/squad-creator-download.md`    | `*download-squad`    | 从公共仓库下载小队         | 占位符（Sprint 8） |
+| `.aiox-core/development/tasks/squad-creator-publish.md`     | `*publish-squad`     | 发布小队到 aiox-squads     | 占位符（Sprint 8） |
+| `.aiox-core/development/tasks/squad-creator-sync-synkra.md` | `*sync-squad-synkra` | 同步小队到 Synkra API      | 占位符（Sprint 8） |
 
 ### 相关任务文件
 
-| 文件 | 命令 | 目的 |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/create-agent.md` | `*create-agent` | 创建单个代理定义 |
-| `.aiox-core/development/tasks/create-task.md` | `*create-task` | 创建单个任务文件 |
-| `.aiox-core/development/tasks/create-workflow.md` | `*create-workflow` | 创建编排工作流 |
+| 文件                                              | 命令               | 目的             |
+| ------------------------------------------------- | ------------------ | ---------------- |
+| `.aiox-core/development/tasks/create-agent.md`    | `*create-agent`    | 创建单个代理定义 |
+| `.aiox-core/development/tasks/create-task.md`     | `*create-task`     | 创建单个任务文件 |
+| `.aiox-core/development/tasks/create-workflow.md` | `*create-workflow` | 创建编排工作流   |
 
 ### 支持脚本
 
-| 文件 | 类/函数 | 目的 |
-|---------|---------------|-----------|
-| `.aiox-core/development/scripts/squad/squad-generator.js` | `SquadGenerator` | 生成完整小队结构 |
-| `.aiox-core/development/scripts/squad/squad-validator.js` | `SquadValidator` | 验证小队针对 schema 和模式 |
-| `.aiox-core/development/scripts/squad/squad-loader.js` | `SquadLoader` | 加载和解析小队 |
-| `.aiox-core/development/scripts/squad/squad-designer.js` | `SquadDesigner` | 分析文档并生成蓝图 |
-| `.aiox-core/development/scripts/squad/squad-analyzer.js` | `SquadAnalyzer` | 分析小队结构 |
-| `.aiox-core/development/scripts/squad/squad-extender.js` | `SquadExtender` | 扩展现有小队 |
-| `.aiox-core/development/scripts/squad/squad-migrator.js` | `SquadMigrator` | 迁移小队到 v2 |
-| `.aiox-core/development/scripts/squad/squad-downloader.js` | `SquadDownloader` | 从仓库下载小队 |
-| `.aiox-core/development/scripts/squad/squad-publisher.js` | `SquadPublisher` | 发布小队 |
+| 文件                                                       | 类/函数           | 目的                       |
+| ---------------------------------------------------------- | ----------------- | -------------------------- |
+| `.aiox-core/development/scripts/squad/squad-generator.js`  | `SquadGenerator`  | 生成完整小队结构           |
+| `.aiox-core/development/scripts/squad/squad-validator.js`  | `SquadValidator`  | 验证小队针对 schema 和模式 |
+| `.aiox-core/development/scripts/squad/squad-loader.js`     | `SquadLoader`     | 加载和解析小队             |
+| `.aiox-core/development/scripts/squad/squad-designer.js`   | `SquadDesigner`   | 分析文档并生成蓝图         |
+| `.aiox-core/development/scripts/squad/squad-analyzer.js`   | `SquadAnalyzer`   | 分析小队结构               |
+| `.aiox-core/development/scripts/squad/squad-extender.js`   | `SquadExtender`   | 扩展现有小队               |
+| `.aiox-core/development/scripts/squad/squad-migrator.js`   | `SquadMigrator`   | 迁移小队到 v2              |
+| `.aiox-core/development/scripts/squad/squad-downloader.js` | `SquadDownloader` | 从仓库下载小队             |
+| `.aiox-core/development/scripts/squad/squad-publisher.js`  | `SquadPublisher`  | 发布小队                   |
 
 ### JSON Schema
 
-| 文件 | 目的 |
-|---------|-----------|
-| `.aiox-core/schemas/squad-schema.json` | squad.yaml 验证 schema |
-| `.aiox-core/schemas/squad-design-schema.json` | 蓝图验证 schema |
+| 文件                                          | 目的                   |
+| --------------------------------------------- | ---------------------- |
+| `.aiox-core/schemas/squad-schema.json`        | squad.yaml 验证 schema |
+| `.aiox-core/schemas/squad-design-schema.json` | 蓝图验证 schema        |
 
 ### 输出文件（生成的小队）
 
-| 目录 | 目的 |
-|-----------|-----------|
-| `./squads/{squad-name}/` | 小队根目录 |
-| `./squads/{squad-name}/squad.yaml` | 小队清单（必需） |
-| `./squads/{squad-name}/README.md` | 小队文档 |
-| `./squads/{squad-name}/agents/` | 代理定义 |
-| `./squads/{squad-name}/tasks/` | 任务定义 |
-| `./squads/{squad-name}/workflows/` | 编排工作流 |
-| `./squads/{squad-name}/config/` | 配置文件 |
-| `./squads/.designs/` | *design-squad 生成的蓝图 |
+| 目录                               | 目的                      |
+| ---------------------------------- | ------------------------- |
+| `./squads/{squad-name}/`           | 小队根目录                |
+| `./squads/{squad-name}/squad.yaml` | 小队清单（必需）          |
+| `./squads/{squad-name}/README.md`  | 小队文档                  |
+| `./squads/{squad-name}/agents/`    | 代理定义                  |
+| `./squads/{squad-name}/tasks/`     | 任务定义                  |
+| `./squads/{squad-name}/workflows/` | 编排工作流                |
+| `./squads/{squad-name}/config/`    | 配置文件                  |
+| `./squads/.designs/`               | \*design-squad 生成的蓝图 |
 
 ---
 
@@ -332,38 +332,38 @@ flowchart TB
 
 ### 小队管理命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*create-squad` | `squad-creator-create.md` | 创建带完整结构的小队 |
-| `*create-squad --from-design` | `squad-creator-create.md` | 从蓝图创建小队 |
-| `*design-squad` | `squad-creator-design.md` | 通过文档分析设计小队 |
-| `*validate-squad` | `squad-creator-validate.md` | 验证小队针对 schema |
-| `*list-squads` | `squad-creator-list.md` | 列出本地小队 |
-| `*analyze-squad` | `squad-creator-analyze.md` | 分析结构并建议改进 |
-| `*extend-squad` | `squad-creator-extend.md` | 用新组件扩展小队 |
+| 命令                          | 任务文件                    | 操作                 |
+| ----------------------------- | --------------------------- | -------------------- |
+| `*create-squad`               | `squad-creator-create.md`   | 创建带完整结构的小队 |
+| `*create-squad --from-design` | `squad-creator-create.md`   | 从蓝图创建小队       |
+| `*design-squad`               | `squad-creator-design.md`   | 通过文档分析设计小队 |
+| `*validate-squad`             | `squad-creator-validate.md` | 验证小队针对 schema  |
+| `*list-squads`                | `squad-creator-list.md`     | 列出本地小队         |
+| `*analyze-squad`              | `squad-creator-analyze.md`  | 分析结构并建议改进   |
+| `*extend-squad`               | `squad-creator-extend.md`   | 用新组件扩展小队     |
 
 ### 编排和技能命令（v2）
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*generate-skills` | `squad-generate-skills.md` | 生成小队知识技能 |
+| 命令                 | 任务文件                     | 操作                 |
+| -------------------- | ---------------------------- | -------------------- |
+| `*generate-skills`   | `squad-generate-skills.md`   | 生成小队知识技能     |
 | `*generate-workflow` | `squad-generate-workflow.md` | 生成 YAML 编排工作流 |
-| `*migrate-to-v2` | `squad-creator-migrate.md` | 迁移小队到 v2 格式 |
+| `*migrate-to-v2`     | `squad-creator-migrate.md`   | 迁移小队到 v2 格式   |
 
 ### 分发命令（Sprint 8 - 占位符）
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*download-squad` | `squad-creator-download.md` | 从 aiox-squads 下载小队 |
-| `*publish-squad` | `squad-creator-publish.md` | 发布小队到 aiox-squads |
-| `*sync-squad-synkra` | `squad-creator-sync-synkra.md` | 同步小队到 Synkra API |
+| 命令                 | 任务文件                       | 操作                    |
+| -------------------- | ------------------------------ | ----------------------- |
+| `*download-squad`    | `squad-creator-download.md`    | 从 aiox-squads 下载小队 |
+| `*publish-squad`     | `squad-creator-publish.md`     | 发布小队到 aiox-squads  |
+| `*sync-squad-synkra` | `squad-creator-sync-synkra.md` | 同步小队到 Synkra API   |
 
 ### 单个组件命令
 
-| 命令 | 任务文件 | 操作 |
-|---------|-----------|----------|
-| `*create-agent` | `create-agent.md` | 创建代理定义 |
-| `*create-task` | `create-task.md` | 创建任务文件 |
+| 命令               | 任务文件             | 操作           |
+| ------------------ | -------------------- | -------------- |
+| `*create-agent`    | `create-agent.md`    | 创建代理定义   |
+| `*create-task`     | `create-task.md`     | 创建任务文件   |
 | `*create-workflow` | `create-workflow.md` | 创建编排工作流 |
 
 ---
@@ -480,19 +480,19 @@ flowchart LR
 
 ## 可用模板
 
-| 模板 | 描述 | 组件 |
-|----------|-----------|-------------|
-| `basic` | 最小结构 | 1 个代理、1 个任务 |
-| `etl` | 数据处理 | 2 个代理（extractor、transformer）、3 个任务、scripts |
-| `agent-only` | 仅代理 | 2 个代理（primary、helper）、无任务 |
-| `custom` | 通过蓝图 | 由设计定义 |
+| 模板         | 描述     | 组件                                                  |
+| ------------ | -------- | ----------------------------------------------------- |
+| `basic`      | 最小结构 | 1 个代理、1 个任务                                    |
+| `etl`        | 数据处理 | 2 个代理（extractor、transformer）、3 个任务、scripts |
+| `agent-only` | 仅代理   | 2 个代理（primary、helper）、无任务                   |
+| `custom`     | 通过蓝图 | 由设计定义                                            |
 
 ## 模板版本
 
-| 版本 | 描述 | 功能 |
-|--------|-----------|----------|
+| 版本 | 描述                | 功能                                                  |
+| ---- | ------------------- | ----------------------------------------------------- |
 | `v2` | **默认** - 完整编排 | squad.yaml v2、workflow.yaml、代理中的 skill_dispatch |
-| `v1` | 遗留结构 | 基本 squad.yaml、无编排/技能 |
+| `v1` | 遗留结构            | 基本 squad.yaml、无编排/技能                          |
 
 ---
 
@@ -501,27 +501,27 @@ flowchart LR
 ### 必需字段
 
 ```yaml
-name: string          # kebab-case，2-50 字符
-version: string       # semver（1.0.0）
+name: string # kebab-case，2-50 字符
+version: string # semver（1.0.0）
 ```
 
 ### 可选字段
 
 ```yaml
-short-title: string   # 最多 100 字符
-description: string   # 最多 500 字符
+short-title: string # 最多 100 字符
+description: string # 最多 500 字符
 author: string
 license: MIT | Apache-2.0 | ISC | GPL-3.0 | UNLICENSED
-slashPrefix: string   # 命令前缀
-tags: string[]        # 发现关键词
+slashPrefix: string # 命令前缀
+tags: string[] # 发现关键词
 
 aiox:
-  minVersion: string  # AIOX 最低版本
+  minVersion: string # AIOX 最低版本
   type: squad
 
 components:
-  tasks: string[]     # 任务文件
-  agents: string[]    # 代理文件
+  tasks: string[] # 任务文件
+  agents: string[] # 代理文件
   workflows: string[]
   checklists: string[]
   templates: string[]
@@ -544,18 +544,18 @@ dependencies:
 
 ## 验证错误代码
 
-| 代码 | 严重性 | 描述 |
-|--------|------------|-----------|
-| `MANIFEST_NOT_FOUND` | 错误 | squad.yaml 或 config.yaml 未找到 |
-| `YAML_PARSE_ERROR` | 错误 | YAML 语法无效 |
-| `SCHEMA_ERROR` | 错误 | 清单不符合 JSON Schema |
-| `FILE_NOT_FOUND` | 错误 | 引用的文件不存在 |
-| `DEPRECATED_MANIFEST` | 警告 | 使用 config.yaml 而非 squad.yaml |
-| `MISSING_DIRECTORY` | 警告 | 预期目录未找到 |
-| `NO_TASKS` | 警告 | tasks/ 中无任务文件 |
-| `TASK_MISSING_FIELD` | 警告 | 任务缺少推荐字段 |
-| `AGENT_INVALID_FORMAT` | 警告 | 代理文件可能不符合格式 |
-| `INVALID_NAMING` | 警告 | 文件名不是 kebab-case |
+| 代码                   | 严重性 | 描述                             |
+| ---------------------- | ------ | -------------------------------- |
+| `MANIFEST_NOT_FOUND`   | 错误   | squad.yaml 或 config.yaml 未找到 |
+| `YAML_PARSE_ERROR`     | 错误   | YAML 语法无效                    |
+| `SCHEMA_ERROR`         | 错误   | 清单不符合 JSON Schema           |
+| `FILE_NOT_FOUND`       | 错误   | 引用的文件不存在                 |
+| `DEPRECATED_MANIFEST`  | 警告   | 使用 config.yaml 而非 squad.yaml |
+| `MISSING_DIRECTORY`    | 警告   | 预期目录未找到                   |
+| `NO_TASKS`             | 警告   | tasks/ 中无任务文件              |
+| `TASK_MISSING_FIELD`   | 警告   | 任务缺少推荐字段                 |
+| `AGENT_INVALID_FORMAT` | 警告   | 代理文件可能不符合格式           |
+| `INVALID_NAMING`       | 警告   | 文件名不是 kebab-case            |
 
 ---
 
@@ -626,7 +626,7 @@ flowchart LR
 
 ## 故障排除
 
-### 小队未出现在 *list-squads
+### 小队未出现在 \*list-squads
 
 - 验证目录在 `./squads/` 中存在
 - 检查 `squad.yaml` 或 `config.yaml` 存在
@@ -657,7 +657,7 @@ flowchart LR
 - 使用 `--verbose` 查看分析
 - 使用 `--domain` 提供上下文
 
-### *create-squad --from-design 失败
+### \*create-squad --from-design 失败
 
 - 验证蓝图在指定路径存在
 - 验证蓝图的 YAML 语法
@@ -680,25 +680,25 @@ flowchart LR
 
 ## 摘要
 
-| 方面 | 详情 |
-|---------|----------|
-| **核心任务总数** | 12 个任务文件 |
-| **活跃任务** | 9 个（create、design、validate、list、analyze、extend、migrate、generate-skills、generate-workflow） |
-| **占位符任务** | 3 个（download、publish、sync-synkra） |
-| **支持脚本** | 9 个脚本在 squad/ |
-| **Schemas** | 2 个（squad-schema、squad-design-schema） |
-| **模板** | 3 个（basic、etl、agent-only） |
-| **模板版本** | 2 个（v1 遗留、v2 编排） |
-| **分发级别** | 3 个（本地、aiox-squads、Synkra API） |
+| 方面             | 详情                                                                                                 |
+| ---------------- | ---------------------------------------------------------------------------------------------------- |
+| **核心任务总数** | 12 个任务文件                                                                                        |
+| **活跃任务**     | 9 个（create、design、validate、list、analyze、extend、migrate、generate-skills、generate-workflow） |
+| **占位符任务**   | 3 个（download、publish、sync-synkra）                                                               |
+| **支持脚本**     | 9 个脚本在 squad/                                                                                    |
+| **Schemas**      | 2 个（squad-schema、squad-design-schema）                                                            |
+| **模板**         | 3 个（basic、etl、agent-only）                                                                       |
+| **模板版本**     | 2 个（v1 遗留、v2 编排）                                                                             |
+| **分发级别**     | 3 个（本地、aiox-squads、Synkra API）                                                                |
 
 ---
 
 ## 变更日志
 
-| 日期 | 作者 | 描述 |
-|------|-------|-----------|
+| 日期       | 作者           | 描述                               |
+| ---------- | -------------- | ---------------------------------- |
 | 2026-02-04 | @squad-creator | 创建包含 7 个 Mermaid 图的初始文档 |
 
 ---
 
-*-- Craft，始终结构化*
+_-- Craft，始终结构化_

@@ -28,16 +28,17 @@ AIOX supports multiple AI-powered development platforms. Choose the one that bes
 
 ### Quick Status Matrix (AIOX 4.2.11)
 
-| IDE/CLI | Overall Status | How to Activate an Agent | Auto-Checks Before/After Actions | Workaround if Limited |
-| --- | --- | --- | --- | --- |
-| Claude Code | Works | `/agent-name` commands | Works (full) | -- |
-| Gemini CLI | Works | `/aiox-menu` then `/aiox-<agent>` | Works (minor differences in event handling) | -- |
-| Codex CLI | Limited | `/skills` then `aiox-<agent-id>` | Limited (some checks need manual sync) | Run `npm run sync:ide:codex` and follow `/skills` flow |
-| Cursor | Limited | `@agent` + synced rules | Not available | Follow synced rules and run validators manually (`npm run validate:parity`) |
-| GitHub Copilot | Limited | chat modes + repo instructions | Not available | Use repo instructions and VS Code MCP config for context |
-| AntiGravity | Limited | workflow-driven activation | Not available | Use generated workflows and run validators manually |
+| IDE/CLI        | Overall Status | How to Activate an Agent          | Auto-Checks Before/After Actions            | Workaround if Limited                                                       |
+| -------------- | -------------- | --------------------------------- | ------------------------------------------- | --------------------------------------------------------------------------- |
+| Claude Code    | Works          | `/agent-name` commands            | Works (full)                                | --                                                                          |
+| Gemini CLI     | Works          | `/aiox-menu` then `/aiox-<agent>` | Works (minor differences in event handling) | --                                                                          |
+| Codex CLI      | Limited        | `/skills` then `aiox-<agent-id>`  | Limited (some checks need manual sync)      | Run `npm run sync:ide:codex` and follow `/skills` flow                      |
+| Cursor         | Limited        | `@agent` + synced rules           | Not available                               | Follow synced rules and run validators manually (`npm run validate:parity`) |
+| GitHub Copilot | Limited        | chat modes + repo instructions    | Not available                               | Use repo instructions and VS Code MCP config for context                    |
+| AntiGravity    | Limited        | workflow-driven activation        | Not available                               | Use generated workflows and run validators manually                         |
 
 Legend:
+
 - `Works`: fully recommended for new users in AIOX 4.2.11.
 - `Limited`: usable with the documented workaround.
 - `Not available`: this IDE does not offer this capability; use the workaround instead.
@@ -46,14 +47,14 @@ Legend:
 
 Some IDEs run automatic checks before and after each action (e.g., validating context, enforcing rules). Where this is not available, you compensate manually:
 
-| IDE | Auto-Check Level | What Is Reduced | How to Compensate |
-| --- | --- | --- | --- |
-| Claude Code | Full | Nothing | Built-in checks handle everything |
-| Gemini CLI | High | Minor timing differences in checks | Gemini native checks cover most scenarios |
-| Codex CLI | Partial | Less automatic session tracking; some pre/post-action checks need manual trigger | Use `AGENTS.md` + `/skills` + sync/validation scripts |
-| Cursor | None | No automatic pre/post-action checks; no automatic audit trail | Follow synced rules, use MCP for context, run validators |
-| GitHub Copilot | None | Same as Cursor, plus more reliance on manual workflow | Use repo instructions, chat modes, VS Code MCP |
-| AntiGravity | None | No automatic check equivalents | Use generated workflows and run validators |
+| IDE            | Auto-Check Level | What Is Reduced                                                                  | How to Compensate                                        |
+| -------------- | ---------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Claude Code    | Full             | Nothing                                                                          | Built-in checks handle everything                        |
+| Gemini CLI     | High             | Minor timing differences in checks                                               | Gemini native checks cover most scenarios                |
+| Codex CLI      | Partial          | Less automatic session tracking; some pre/post-action checks need manual trigger | Use `AGENTS.md` + `/skills` + sync/validation scripts    |
+| Cursor         | None             | No automatic pre/post-action checks; no automatic audit trail                    | Follow synced rules, use MCP for context, run validators |
+| GitHub Copilot | None             | Same as Cursor, plus more reliance on manual workflow                            | Use repo instructions, chat modes, VS Code MCP           |
+| AntiGravity    | None             | No automatic check equivalents                                                   | Use generated workflows and run validators               |
 
 ### Beginner Decision Guide
 

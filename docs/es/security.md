@@ -116,9 +116,9 @@ Las actualizaciones de seguridad se anuncian a través de:
 
 Agradecemos a los siguientes investigadores por divulgar de manera responsable problemas de seguridad:
 
-*Aún no hay reportes - ¡sé el primero!*
+_Aún no hay reportes - ¡sé el primero!_
 
 ---
 
-*Esta política de seguridad es efectiva desde diciembre de 2024.*
-*Última actualización: 2025-12-11*
+_Esta política de seguridad es efectiva desde diciembre de 2024._
+_Última actualización: 2025-12-11_

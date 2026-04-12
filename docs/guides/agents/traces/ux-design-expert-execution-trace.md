@@ -7,14 +7,14 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/ux-design-expert.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | generate-greeting.js (fs.readFile + yaml.load) | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, uxLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox/session-state.json` | SessionContextLoader.loadContext() | Session type detection (sessionType, previousAgent, lastCommands) |
-| 6 | `.aiox/project-status.yaml` | loadProjectStatus() | Cached project status (60s TTL) |
+| Order | File                                                | Loader                                         | Purpose                                                           |
+| ----- | --------------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/ux-design-expert.md` | AgentConfigLoader.loadAgentDefinition()        | Agent definition (YAML block)                                     |
+| 2     | `.aiox-core/core-config.yaml`                       | generate-greeting.js (fs.readFile + yaml.load) | Core configuration                                                |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml`    | AgentConfigLoader.loadRequirements()           | Config sections: dataLocation, uxLocation                         |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`            | WorkflowNavigator.\_loadPatterns()             | Workflow state detection                                          |
+| 5     | `.aiox/session-state.json`                          | SessionContextLoader.loadContext()             | Session type detection (sessionType, previousAgent, lastCommands) |
+| 6     | `.aiox/project-status.yaml`                         | loadProjectStatus()                            | Cached project status (60s TTL)                                   |
 
 ### 1.2 Greeting Construction
 
@@ -87,10 +87,10 @@ ux-design-expert:
     - dataLocation
     - uxLocation
   files_loaded:
-    - path: docs/framework/tech-stack.md          # Added in Story ACT-8
+    - path: docs/framework/tech-stack.md # Added in Story ACT-8
       lazy: false
       size: 30KB
-    - path: docs/framework/coding-standards.md    # Added in Story ACT-8
+    - path: docs/framework/coding-standards.md # Added in Story ACT-8
       lazy: false
       size: 25KB
   lazy_loading: {}
@@ -101,45 +101,45 @@ ux-design-expert:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `🎨 Uma the Empathizer ready to empathize!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Uma, desenhando com empatia 💝` |
-| Role | `persona.role` | UX/UI Designer & Design System Architect |
-| Commands shown | `filterCommandsByVisibility('full')` | 25 commands with `full` visibility |
+| Data           | Source                                            | Value                                       |
+| -------------- | ------------------------------------------------- | ------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `🎨 Uma the Empathizer ready to empathize!` |
+| Signature      | `persona_profile.communication.signature_closing` | `— Uma, desenhando com empatia 💝`          |
+| Role           | `persona.role`                                    | UX/UI Designer & Design System Architect    |
+| Commands shown | `filterCommandsByVisibility('full')`              | 25 commands with `full` visibility          |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Phase | Elicit |
-|---------|-----------|-------|--------|
-| `*help` | (built-in) | Universal | No |
-| `*status` | (built-in) | Universal | No |
-| `*guide` | (built-in, rendered from agent .md) | Universal | No |
-| `*exit` | (built-in) | Universal | No |
-| `*research` | ux-user-research.md | Phase 1: UX Research | Yes |
-| `*wireframe {fidelity}` | ux-create-wireframe.md | Phase 1: UX Research | Yes |
-| `*generate-ui-prompt` | generate-ai-frontend-prompt.md | Phase 1: UX Research | Yes |
-| `*create-front-end-spec` | create-doc.md + front-end-spec-tmpl.yaml | Phase 1: UX Research | Yes |
-| `*audit {path}` | audit-codebase.md | Phase 2: Audit | Yes |
-| `*consolidate` | consolidate-patterns.md | Phase 2: Audit | Yes |
-| `*shock-report` | generate-shock-report.md | Phase 2: Audit | No |
-| `*tokenize` | extract-tokens.md | Phase 3: Tokens | Yes |
-| `*setup` | setup-design-system.md | Phase 3: Tokens | Yes |
-| `*migrate` | generate-migration-strategy.md | Phase 3: Tokens | Yes |
-| `*upgrade-tailwind` | tailwind-upgrade.md | Phase 3: Tokens | Yes |
-| `*audit-tailwind-config` | audit-tailwind-config.md | Phase 3: Tokens | No |
-| `*export-dtcg` | export-design-tokens-dtcg.md | Phase 3: Tokens | No |
-| `*bootstrap-shadcn` | bootstrap-shadcn-library.md | Phase 3: Tokens | Yes |
-| `*build {component}` | build-component.md | Phase 4: Build | Yes |
-| `*compose {molecule}` | compose-molecule.md | Phase 4: Build | Yes |
-| `*extend {component}` | extend-pattern.md | Phase 4: Build | Yes |
-| `*document` | generate-documentation.md | Phase 5: Quality | Yes |
-| `*a11y-check` | accessibility-wcag-checklist.md (checklist) | Phase 5: Quality | Optional |
-| `*calculate-roi` | calculate-roi.md | Phase 5: Quality | No |
-| `*scan {path\|url}` | ux-ds-scan-artifact.md | Universal | Yes |
-| `*integrate {squad}` | integrate-Squad.md (MISSING - see Section 6) | Universal | Yes |
+| Command                  | Task File                                    | Phase                | Elicit   |
+| ------------------------ | -------------------------------------------- | -------------------- | -------- |
+| `*help`                  | (built-in)                                   | Universal            | No       |
+| `*status`                | (built-in)                                   | Universal            | No       |
+| `*guide`                 | (built-in, rendered from agent .md)          | Universal            | No       |
+| `*exit`                  | (built-in)                                   | Universal            | No       |
+| `*research`              | ux-user-research.md                          | Phase 1: UX Research | Yes      |
+| `*wireframe {fidelity}`  | ux-create-wireframe.md                       | Phase 1: UX Research | Yes      |
+| `*generate-ui-prompt`    | generate-ai-frontend-prompt.md               | Phase 1: UX Research | Yes      |
+| `*create-front-end-spec` | create-doc.md + front-end-spec-tmpl.yaml     | Phase 1: UX Research | Yes      |
+| `*audit {path}`          | audit-codebase.md                            | Phase 2: Audit       | Yes      |
+| `*consolidate`           | consolidate-patterns.md                      | Phase 2: Audit       | Yes      |
+| `*shock-report`          | generate-shock-report.md                     | Phase 2: Audit       | No       |
+| `*tokenize`              | extract-tokens.md                            | Phase 3: Tokens      | Yes      |
+| `*setup`                 | setup-design-system.md                       | Phase 3: Tokens      | Yes      |
+| `*migrate`               | generate-migration-strategy.md               | Phase 3: Tokens      | Yes      |
+| `*upgrade-tailwind`      | tailwind-upgrade.md                          | Phase 3: Tokens      | Yes      |
+| `*audit-tailwind-config` | audit-tailwind-config.md                     | Phase 3: Tokens      | No       |
+| `*export-dtcg`           | export-design-tokens-dtcg.md                 | Phase 3: Tokens      | No       |
+| `*bootstrap-shadcn`      | bootstrap-shadcn-library.md                  | Phase 3: Tokens      | Yes      |
+| `*build {component}`     | build-component.md                           | Phase 4: Build       | Yes      |
+| `*compose {molecule}`    | compose-molecule.md                          | Phase 4: Build       | Yes      |
+| `*extend {component}`    | extend-pattern.md                            | Phase 4: Build       | Yes      |
+| `*document`              | generate-documentation.md                    | Phase 5: Quality     | Yes      |
+| `*a11y-check`            | accessibility-wcag-checklist.md (checklist)  | Phase 5: Quality     | Optional |
+| `*calculate-roi`         | calculate-roi.md                             | Phase 5: Quality     | No       |
+| `*scan {path\|url}`      | ux-ds-scan-artifact.md                       | Universal            | Yes      |
+| `*integrate {squad}`     | integrate-Squad.md (MISSING - see Section 6) | Universal            | Yes      |
 
 ---
 
@@ -704,12 +704,12 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list organized by 5 phases from `commands[]` in agent definition |
+| Command   | Behavior                                                                                |
+| --------- | --------------------------------------------------------------------------------------- |
+| `*help`   | Renders full command list organized by 5 phases from `commands[]` in agent definition   |
 | `*status` | Shows current workflow phase from `.state.yaml` (research/audit/tokenize/build/quality) |
-| `*guide` | Renders the `## 🎨 UX Design Expert Guide` section from agent .md |
-| `*exit` | Exits UX-Design Expert mode, returns to base Claude Code |
+| `*guide`  | Renders the `## 🎨 UX Design Expert Guide` section from agent .md                       |
+| `*exit`   | Exits UX-Design Expert mode, returns to base Claude Code                                |
 
 ---
 
@@ -890,32 +890,36 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
+| Interaction                     | Direction   | Trigger                                                |
+| ------------------------------- | ----------- | ------------------------------------------------------ |
 | @architect -> @ux-design-expert | Collaborate | Frontend architecture, user flows, component hierarchy |
-| @ux-design-expert -> @dev | Handoff | Design specs, component blueprints for implementation |
-| @ux-design-expert -> @analyst | Collaborate | User research planning, data analysis |
-| @ux-design-expert -> @devops | Delegate | Git push operations, PR creation |
-| @po -> @ux-design-expert | Receives | Design stories, UX requirements |
-| @qa -> @ux-design-expert | Validate | Component quality checklists, accessibility audits |
+| @ux-design-expert -> @dev       | Handoff     | Design specs, component blueprints for implementation  |
+| @ux-design-expert -> @analyst   | Collaborate | User research planning, data analysis                  |
+| @ux-design-expert -> @devops    | Delegate    | Git push operations, PR creation                       |
+| @po -> @ux-design-expert        | Receives    | Design stories, UX requirements                        |
+| @qa -> @ux-design-expert        | Validate    | Component quality checklists, accessibility audits     |
 
 ### Collaboration Rules (from agent definition)
 
 **Receives from @architect (Aria):**
+
 - Frontend architecture and system design guidance
 - Component hierarchy and integration patterns
 - Technology stack decisions affecting UX
 
 **Hands off to @dev (Dex):**
+
 - Design specifications and component blueprints
 - Token definitions and design system configurations
 - Component implementations with TypeScript + tests
 
 **Collaborates with @analyst (Alex):**
+
 - User research planning and execution
 - Data analysis for design decisions
 
 **Git restrictions (same as all non-devops agents):**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`
 
@@ -923,20 +927,20 @@ graph TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
+| File                 | Type | Referenced By        | Impact                                                                     |
+| -------------------- | ---- | -------------------- | -------------------------------------------------------------------------- |
 | `integrate-Squad.md` | Task | `*integrate {squad}` | Command non-functional; `integrate-squad.md` exists as possible substitute |
 
 ### Notes on Dependency Locations
 
 The agent definition references dependencies using short names (e.g., `aiox-core/tasks/...`). The actual resolution paths are:
 
-| Dependency Type | Agent Definition Path | Actual Disk Location |
-|-----------------|----------------------|---------------------|
-| Tasks | `aiox-core/tasks/{name}` | `.aiox-core/development/tasks/{name}` |
-| Templates | `aiox-core/templates/{name}` | `.aiox-core/product/templates/{name}` |
-| Checklists | `aiox-core/checklists/{name}` | `.aiox-core/product/checklists/{name}` |
-| Data | `aiox-core/data/{name}` | `.aiox-core/data/{name}` or `.aiox-core/product/data/{name}` |
+| Dependency Type | Agent Definition Path         | Actual Disk Location                                         |
+| --------------- | ----------------------------- | ------------------------------------------------------------ |
+| Tasks           | `aiox-core/tasks/{name}`      | `.aiox-core/development/tasks/{name}`                        |
+| Templates       | `aiox-core/templates/{name}`  | `.aiox-core/product/templates/{name}`                        |
+| Checklists      | `aiox-core/checklists/{name}` | `.aiox-core/product/checklists/{name}`                       |
+| Data            | `aiox-core/data/{name}`       | `.aiox-core/data/{name}` or `.aiox-core/product/data/{name}` |
 
 All 9 templates, all 4 checklists, and all 7 data files resolve correctly to files in `product/` directories. The `development/data/` directory does not exist; data files live under `.aiox-core/data/` and `.aiox-core/product/data/`.
 
@@ -963,7 +967,7 @@ atomic_levels:
   molecules: []
   organisms: []
 accessibility_score: number
-wcag_level: 'AA'    # or 'AAA'
+wcag_level: 'AA' # or 'AAA'
 roi_calculated: {}
 current_phase: research | audit | tokenize | build | quality
 workflow_type: greenfield | brownfield | complete
@@ -975,22 +979,22 @@ workflow_type: greenfield | brownfield | complete
 
 ## 8. Workflow Paths
 
-| Workflow | Description | Command Sequence |
-|----------|-------------|-----------------|
-| **complete_ux_to_build** | Full 5-phase pipeline | `*research` -> `*wireframe` -> `*audit` -> `*consolidate` -> `*tokenize` -> `*setup` -> `*build` -> `*document` -> `*a11y-check` |
-| **greenfield_only** | New design system from scratch | `*research` -> `*wireframe` -> `*setup` -> `*build` -> `*compose` -> `*document` |
-| **brownfield_only** | Improve existing system | `*audit` -> `*consolidate` -> `*tokenize` -> `*migrate` -> `*build` -> `*document` |
+| Workflow                 | Description                    | Command Sequence                                                                                                                 |
+| ------------------------ | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| **complete_ux_to_build** | Full 5-phase pipeline          | `*research` -> `*wireframe` -> `*audit` -> `*consolidate` -> `*tokenize` -> `*setup` -> `*build` -> `*document` -> `*a11y-check` |
+| **greenfield_only**      | New design system from scratch | `*research` -> `*wireframe` -> `*setup` -> `*build` -> `*compose` -> `*document`                                                 |
+| **brownfield_only**      | Improve existing system        | `*audit` -> `*consolidate` -> `*tokenize` -> `*migrate` -> `*build` -> `*document`                                               |
 
 ### Personality Adaptation by Phase
 
-| Phase | Personality | Style |
-|-------|-------------|-------|
-| Phase 1 (UX Research) | More Sally | Empathetic, exploratory, user-focused |
-| Phase 2 (Audit) | More Brad | Metric-driven, direct, data-focused |
-| Phase 3 (Tokens) | More Brad | Metric-driven, direct, data-focused |
-| Phase 4 (Build) | Balanced | User needs + system thinking |
-| Phase 5 (Quality) | Balanced | User needs + system thinking |
+| Phase                 | Personality | Style                                 |
+| --------------------- | ----------- | ------------------------------------- |
+| Phase 1 (UX Research) | More Sally  | Empathetic, exploratory, user-focused |
+| Phase 2 (Audit)       | More Brad   | Metric-driven, direct, data-focused   |
+| Phase 3 (Tokens)      | More Brad   | Metric-driven, direct, data-focused   |
+| Phase 4 (Build)       | Balanced    | User needs + system thinking          |
+| Phase 5 (Quality)     | Balanced    | User needs + system thinking          |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

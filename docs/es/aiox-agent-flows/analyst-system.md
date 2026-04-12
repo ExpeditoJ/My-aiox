@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*research` | Investigar topico |
-| `*analyze` | Analizar datos/requisitos |
-| `*report` | Generar informe |
-| `*compare` | Comparar alternativas |
+| Comando     | Descripcion               |
+| ----------- | ------------------------- |
+| `*research` | Investigar topico         |
+| `*analyze`  | Analizar datos/requisitos |
+| `*report`   | Generar informe           |
+| `*compare`  | Comparar alternativas     |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/analyst-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

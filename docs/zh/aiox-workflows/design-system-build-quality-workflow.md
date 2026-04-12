@@ -22,13 +22,13 @@
 
 ### 何时使用
 
-| 场景 | 建议 |
-|------|------|
-| 设计系统迁移后 | 强烈推荐 |
-| 发布新版本模式库 | 必需 |
-| 定期质量审计 | 推荐 (季度) |
-| 组件生产前验证 | 必需 |
-| 为利益相关者生成指标 | 根据需要 |
+| 场景                 | 建议        |
+| -------------------- | ----------- |
+| 设计系统迁移后       | 强烈推荐    |
+| 发布新版本模式库     | 必需        |
+| 定期质量审计         | 推荐 (季度) |
+| 组件生产前验证       | 必需        |
+| 为利益相关者生成指标 | 根据需要    |
 
 ### 支持的项目类型
 
@@ -214,13 +214,13 @@ graph TD
 
 ### 步骤 1: 构建原子组件
 
-| 属性 | 值 |
-|------|-----|
-| **ID** | `build` |
-| **阶段** | 1 - 构建和编译 |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **ID**   | `build`                  |
+| **阶段** | 1 - 构建和编译           |
 | **代理** | `ux-design-expert` (Uma) |
-| **操作** | 原子组件构建 |
-| **依赖** | 无 (初始步骤) |
+| **操作** | 原子组件构建             |
+| **依赖** | 无 (初始步骤)            |
 
 #### 描述
 
@@ -241,23 +241,23 @@ graph TD
 
 #### 输出
 
-| 工件 | 描述 |
-|------|------|
-| `build_report` | 构建过程报告 |
-| `compiled_tokens` | 已编译的设计令牌 (CSS/JS) |
-| `component_bundle` | 已准备的组件 bundle |
+| 工件               | 描述                      |
+| ------------------ | ------------------------- |
+| `build_report`     | 构建过程报告              |
+| `compiled_tokens`  | 已编译的设计令牌 (CSS/JS) |
+| `component_bundle` | 已准备的组件 bundle       |
 
 ---
 
 ### 步骤 2: 生成文档
 
-| 属性 | 值 |
-|------|-----|
-| **ID** | `document` |
-| **阶段** | 2 - 文档 |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **ID**   | `document`               |
+| **阶段** | 2 - 文档                 |
 | **代理** | `ux-design-expert` (Uma) |
-| **操作** | 生成模式库文档 |
-| **依赖** | `build` (步骤 1) |
+| **操作** | 生成模式库文档           |
+| **依赖** | `build` (步骤 1)         |
 
 #### 描述
 
@@ -278,23 +278,23 @@ graph TD
 
 #### 输出
 
-| 工件 | 描述 |
-|------|------|
-| `pattern_library_docs` | 模式库的完整文档 |
-| `component_api_reference` | 组件 API 参考 |
-| `style_guide` | 可视样式指南 |
+| 工件                      | 描述             |
+| ------------------------- | ---------------- |
+| `pattern_library_docs`    | 模式库的完整文档 |
+| `component_api_reference` | 组件 API 参考    |
+| `style_guide`             | 可视样式指南     |
 
 ---
 
 ### 步骤 3: 可访问性审计
 
-| 属性 | 值 |
-|------|-----|
-| **ID** | `a11y-check` |
-| **阶段** | 3 - 质量保证 |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **ID**   | `a11y-check`             |
+| **阶段** | 3 - 质量保证             |
 | **代理** | `ux-design-expert` (Uma) |
-| **操作** | 可访问性审计 (WCAG AA) |
-| **依赖** | `document` (步骤 2) |
+| **操作** | 可访问性审计 (WCAG AA)   |
+| **依赖** | `document` (步骤 2)      |
 
 #### 描述
 
@@ -317,23 +317,23 @@ graph TD
 
 #### 输出
 
-| 工件 | 描述 |
-|------|------|
+| 工件                | 描述           |
+| ------------------- | -------------- |
 | `a11y_audit_report` | 完整的审计报告 |
-| `violations_list` | 发现的违规列表 |
-| `remediation_plan` | 违规修正计划 |
+| `violations_list`   | 发现的违规列表 |
+| `remediation_plan`  | 违规修正计划   |
 
 ---
 
 ### 步骤 4: 计算 ROI
 
-| 属性 | 值 |
-|------|-----|
-| **ID** | `calculate-roi` |
-| **阶段** | 4 - ROI 分析 |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **ID**   | `calculate-roi`          |
+| **阶段** | 4 - ROI 分析             |
 | **代理** | `ux-design-expert` (Uma) |
-| **操作** | ROI 和节省的计算 |
-| **依赖** | `a11y-check` (步骤 3) |
+| **操作** | ROI 和节省的计算         |
+| **依赖** | `a11y-check` (步骤 3)    |
 
 #### 描述
 
@@ -356,10 +356,10 @@ graph TD
 
 #### 输出
 
-| 工件 | 描述 |
-|------|------|
-| `roi_report` | 完整的 ROI 报告 |
-| `savings_metrics` | 详细的节省指标 |
+| 工件                 | 描述                   |
+| -------------------- | ---------------------- |
+| `roi_report`         | 完整的 ROI 报告        |
+| `savings_metrics`    | 详细的节省指标         |
 | `adoption_dashboard` | 设计系统采用情况仪表板 |
 
 ---
@@ -368,24 +368,26 @@ graph TD
 
 ### ux-design-expert (Uma)
 
-| 属性 | 值 |
-|------|-----|
-| **名字** | Uma |
+| 属性     | 值                           |
+| -------- | ---------------------------- |
+| **名字** | Uma                          |
 | **角色** | UX/UI 设计师和设计系统架构师 |
-| **图标** | 🎨 |
-| **原型** | 共鸣者 |
+| **图标** | 🎨                           |
+| **原型** | 共鸣者                       |
 
 #### 混合哲学
 
 Uma 结合了两种互补的方法:
 
 **Sally 的 UX 原则 (研究阶段):**
+
 - 以用户为中心: 基于真实需求的决策
 - 同理心发现: 深度用户研究
 - 迭代简单: 从简单开始，通过反馈优化
 - 细节的喜悦: 微交互创造难忘体验
 
 **Brad Frost 的系统原则 (构建和扩展阶段):**
+
 - 指标驱动: 数据而非观点
 - 视觉冲击疗法: 用真实数据显示混乱
 - 智能整合: 模式的算法聚类
@@ -396,12 +398,12 @@ Uma 结合了两种互补的方法:
 
 #### 此工作流的相关命令
 
-| 命令 | 描述 | 阶段 |
-|------|------|------|
-| `*build {component}` | 原子组件构建 | 4 |
-| `*document` | 生成模式库文档 | 5 |
-| `*a11y-check` | WCAG AA/AAA 审计 | 5 |
-| `*calculate-roi` | 计算 ROI 和经济 | 5 |
+| 命令                 | 描述             | 阶段 |
+| -------------------- | ---------------- | ---- |
+| `*build {component}` | 原子组件构建     | 4    |
+| `*document`          | 生成模式库文档   | 5    |
+| `*a11y-check`        | WCAG AA/AAA 审计 | 5    |
+| `*calculate-roi`     | 计算 ROI 和经济  | 5    |
 
 ---
 
@@ -409,12 +411,12 @@ Uma 结合了两种互补的方法:
 
 ### 按步骤的任务映射
 
-| 步骤 | 任务文件 | 描述 |
-|------|---------|------|
-| 构建 | `build-component.md` | 原子组件构建 |
-| 文档 | `generate-documentation.md` | 模式库生成 |
+| 步骤      | 任务文件                          | 描述                 |
+| --------- | --------------------------------- | -------------------- |
+| 构建      | `build-component.md`              | 原子组件构建         |
+| 文档      | `generate-documentation.md`       | 模式库生成           |
 | A11y 审计 | `accessibility-wcag-checklist.md` | WCAG 2.1 AA 检查清单 |
-| ROI | `calculate-roi.md` | ROI 和指标计算 |
+| ROI       | `calculate-roi.md`                | ROI 和指标计算       |
 
 ### 任务依赖图
 
@@ -445,12 +447,12 @@ graph TD
 
 ### 技术要求
 
-| 要求 | 描述 |
-|------|------|
-| 现有设计系统 | 组件已迁移/创建 |
-| 令牌结构 | `tokens.yaml` 或等价的已配置 |
-| 构建环境 | Node.js 18+、npm/yarn/pnpm |
-| 测试工具 | Jest、Testing Library (推荐) |
+| 要求         | 描述                         |
+| ------------ | ---------------------------- |
+| 现有设计系统 | 组件已迁移/创建              |
+| 令牌结构     | `tokens.yaml` 或等价的已配置 |
+| 构建环境     | Node.js 18+、npm/yarn/pnpm   |
+| 测试工具     | Jest、Testing Library (推荐) |
 
 ### 项目要求
 
@@ -471,11 +473,11 @@ graph TD
 
 ### 流水线输入
 
-| 输入 | 类型 | 描述 |
-|------|------|------|
-| 设计令牌来源 | `tokens.yaml` | 颜色、排版、间距定义 |
-| 组件源文件 | `*.tsx`、`*.css` | 组件源代码 |
-| 现有文档 | `*.md` | 现有文档 (如有) |
+| 输入         | 类型             | 描述                 |
+| ------------ | ---------------- | -------------------- |
+| 设计令牌来源 | `tokens.yaml`    | 颜色、排版、间距定义 |
+| 组件源文件   | `*.tsx`、`*.css` | 组件源代码           |
+| 现有文档     | `*.md`           | 现有文档 (如有)      |
 
 ### 流水线输出
 
@@ -545,11 +547,13 @@ graph TD
 ```
 
 **通过标准:**
+
 - 无编译错误
 - 所有令牌有效
 - 导出有效
 
 **失败操作:**
+
 1. 审查构建日志
 2. 修正语法/导入错误
 3. 验证令牌结构
@@ -568,11 +572,13 @@ graph TD
 ```
 
 **通过标准:**
+
 - 100% 的组件已记录
 - 代码示例有效
 - 样式指南已更新
 
 **失败操作:**
+
 1. 识别无文档的组件
 2. 添加缺失的 props 和示例
 3. 更新更新日志
@@ -591,11 +597,13 @@ graph TD
 ```
 
 **通过标准:**
+
 - 无关键违规 (等级 A)
 - 无严重违规 (等级 AA)
 - 100% 键盘导航功能
 
 **失败操作:**
+
 1. 审查 `violations_list`
 2. 遵循 `remediation_plan`
 3. 修正对比问题
@@ -610,10 +618,10 @@ graph TD
 
 ### 模式 YOLO (自主)
 
-| 属性 | 值 |
-|------|-----|
-| **提示** | 0-1 |
-| **交互** | 最少 |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **提示** | 0-1                      |
+| **交互** | 最少                     |
 | **用途** | CI/CD 流水线、自动化执行 |
 
 ```bash
@@ -623,10 +631,10 @@ graph TD
 
 ### 模式 Interactive (默认)
 
-| 属性 | 值 |
-|------|-----|
-| **提示** | 5-10 |
-| **交互** | 决策检查点 |
+| 属性     | 值                 |
+| -------- | ------------------ |
+| **提示** | 5-10               |
+| **交互** | 决策检查点         |
 | **用途** | 正常开发、教育反馈 |
 
 ```bash
@@ -636,10 +644,10 @@ graph TD
 
 ### 模式 Preflight (规划)
 
-| 属性 | 值 |
-|------|-----|
-| **提示** | 10-15 |
-| **交互** | 执行前的完整规划 |
+| 属性     | 值                 |
+| -------- | ------------------ |
+| **提示** | 10-15              |
+| **交互** | 执行前的完整规划   |
 | **用途** | 首次执行、影响分析 |
 
 ```bash
@@ -654,10 +662,12 @@ graph TD
 ### 问题: 构建因令牌错误而失败
 
 **症状:**
+
 - 错误 "Token not found"
 - 颜色或间距未编译
 
 **解决方案:**
+
 ```bash
 # 1. 检查令牌结构
 cat tokens.yaml
@@ -674,10 +684,12 @@ grep -r "var(--" src/
 ### 问题: 文档不完整
 
 **症状:**
+
 - 组件无示例
 - Props 未记录
 
 **解决方案:**
+
 ```bash
 # 1. 列出无文档的组件
 *audit --check-docs
@@ -694,10 +706,12 @@ grep -r "var(--" src/
 ### 问题: 可访问性违规
 
 **症状:**
+
 - 对比失败
 - ARIA 标签缺失
 
 **解决方案:**
+
 ```bash
 # 1. 审查详细报告
 cat outputs/design-system/a11y/violations.json
@@ -717,10 +731,12 @@ cat outputs/design-system/a11y/violations.json
 ### 问题: ROI 计算不正确
 
 **症状:**
+
 - 指标为零
 - 历史数据缺失
 
 **解决方案:**
+
 ```bash
 # 1. 检查输入数据
 cat .state.yaml
@@ -785,38 +801,38 @@ WCAG AA 可访问性审计已完成。
 
 ### 内部文档
 
-| 文档 | 路径 |
-|------|------|
-| 工作流定义 | `.aiox-core/development/workflows/design-system-build-quality.yaml` |
-| UX 设计专家代理 | `.aiox-core/development/agents/ux-design-expert.md` |
-| 任务: 构建组件 | `.aiox-core/development/tasks/build-component.md` |
-| 任务: 生成文档 | `.aiox-core/development/tasks/generate-documentation.md` |
+| 文档                | 路径                                                                |
+| ------------------- | ------------------------------------------------------------------- |
+| 工作流定义          | `.aiox-core/development/workflows/design-system-build-quality.yaml` |
+| UX 设计专家代理     | `.aiox-core/development/agents/ux-design-expert.md`                 |
+| 任务: 构建组件      | `.aiox-core/development/tasks/build-component.md`                   |
+| 任务: 生成文档      | `.aiox-core/development/tasks/generate-documentation.md`            |
 | 检查清单: WCAG A11y | `.aiox-core/development/checklists/accessibility-wcag-checklist.md` |
-| 任务: 计算 ROI | `.aiox-core/development/tasks/calculate-roi.md` |
+| 任务: 计算 ROI      | `.aiox-core/development/tasks/calculate-roi.md`                     |
 
 ### 外部参考
 
-| 资源 | 链接 |
-|------|------|
-| 原子设计 (Brad Frost) | https://atomicdesign.bradfrost.com/ |
-| WCAG 2.1 指南 | https://www.w3.org/WAI/WCAG21/quickref/ |
-| 设计令牌 W3C | https://design-tokens.github.io/community-group/format/ |
-| WebAIM 对比检查器 | https://webaim.org/resources/contrastchecker/ |
+| 资源                  | 链接                                                    |
+| --------------------- | ------------------------------------------------------- |
+| 原子设计 (Brad Frost) | https://atomicdesign.bradfrost.com/                     |
+| WCAG 2.1 指南         | https://www.w3.org/WAI/WCAG21/quickref/                 |
+| 设计令牌 W3C          | https://design-tokens.github.io/community-group/format/ |
+| WebAIM 对比检查器     | https://webaim.org/resources/contrastchecker/           |
 
 ### 相关工作流
 
-| 工作流 | 描述 |
-|------|------|
-| `brownfield-migration` | 现有设计系统迁移 |
+| 工作流                     | 描述             |
+| -------------------------- | ---------------- |
+| `brownfield-migration`     | 现有设计系统迁移 |
 | `greenfield-design-system` | 从零创建设计系统 |
-| `component-library-setup` | 组件库的初始设置 |
+| `component-library-setup`  | 组件库的初始设置 |
 
 ---
 
 ## 版本历史
 
-| 版本 | 日期 | 作者 | 更改 |
-|------|------|------|------|
+| 版本  | 日期       | 作者              | 更改           |
+| ----- | ---------- | ----------------- | -------------- |
 | 1.0.0 | 2025-01-30 | Orion (AIOX 主机) | 工作流初始版本 |
 
 ---
@@ -841,5 +857,5 @@ tags:
 
 ---
 
-*由技术文档专家生成的文档*
-*AIOX-FULLSTACK 框架 v2.2*
+_由技术文档专家生成的文档_
+_AIOX-FULLSTACK 框架 v2.2_

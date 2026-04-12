@@ -7,17 +7,17 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/qa.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: qaLocation, dataLocation, storyBacklog |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/data/technical-preferences.md` | AgentConfigLoader.loadFile() | Technical preferences (always loaded, 15KB) |
-| 6 | `.aiox-core/product/data/test-levels-framework.md` | AgentConfigLoader.loadFile() | Test levels framework (always loaded, 8KB) |
-| 7 | `.aiox-core/product/data/test-priorities-matrix.md` | AgentConfigLoader.loadFile() | Test priorities matrix (always loaded, 6KB) |
-| 8 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 9 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                                | Loader                                  | Purpose                                                 |
+| ----- | --------------------------------------------------- | --------------------------------------- | ------------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/qa.md`               | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                           |
+| 2     | `.aiox-core/core-config.yaml`                       | GreetingBuilder.\_loadConfig()          | Core configuration                                      |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml`    | AgentConfigLoader.loadRequirements()    | Config sections: qaLocation, dataLocation, storyBacklog |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`            | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                                |
+| 5     | `.aiox-core/data/technical-preferences.md`          | AgentConfigLoader.loadFile()            | Technical preferences (always loaded, 15KB)             |
+| 6     | `.aiox-core/product/data/test-levels-framework.md`  | AgentConfigLoader.loadFile()            | Test levels framework (always loaded, 8KB)              |
+| 7     | `.aiox-core/product/data/test-priorities-matrix.md` | AgentConfigLoader.loadFile()            | Test priorities matrix (always loaded, 6KB)             |
+| 8     | `.aiox/session-state.json`                          | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history)     |
+| 9     | `.aiox/project-status.yaml`                         | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                         |
 
 ### 1.2 Greeting Construction
 
@@ -85,49 +85,49 @@ qa:
       lazy: false
       size: 6KB
   lazy_loading:
-    test_frameworks: false    # Always load
+    test_frameworks: false # Always load
   performance_target: <50ms
 ```
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `✅ Quinn the Guardian ready to perfect!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Quinn, guardiao da qualidade 🛡️` |
-| Role | `persona.role` | Test Architect with Quality Advisory Authority |
-| Commands shown | `filterCommandsByVisibility('full')` | 27 commands with `full` visibility |
+| Data           | Source                                            | Value                                          |
+| -------------- | ------------------------------------------------- | ---------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `✅ Quinn the Guardian ready to perfect!`      |
+| Signature      | `persona_profile.communication.signature_closing` | `— Quinn, guardiao da qualidade 🛡️`            |
+| Role           | `persona.role`                                    | Test Architect with Quality Advisory Authority |
+| Commands shown | `filterCommandsByVisibility('full')`              | 27 commands with `full` visibility             |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*code-review {scope}` | qa-run-tests.md | full, quick | No |
-| `*review {story}` | qa-review-story.md | full, quick, key | No |
-| `*review-build {story}` | qa-review-build.md | full, quick, key | No |
-| `*gate {story}` | qa-gate.md + qa-gate-tmpl.yaml | full, quick, key | No |
-| `*nfr-assess {story}` | qa-nfr-assess.md | full | No |
-| `*risk-profile {story}` | qa-risk-profile.md | full | No |
-| `*create-fix-request {story}` | qa-create-fix-request.md | full | No |
-| `*validate-libraries {story}` | qa-library-validation.md | full | No |
-| `*security-check {story}` | qa-security-checklist.md | full | No |
-| `*validate-migrations {story}` | qa-migration-validation.md | full | No |
-| `*evidence-check {story}` | qa-evidence-requirements.md | full | No |
-| `*false-positive-check {story}` | qa-false-positive-detection.md | full | No |
-| `*console-check {story}` | qa-browser-console-check.md | full | No |
-| `*test-design {story}` | qa-test-design.md | full, quick | Yes |
-| `*trace {story}` | qa-trace-requirements.md | full | No |
-| `*create-suite {story}` | create-suite.md | full | Yes |
-| `*critique-spec {story}` | spec-critique.md | full | No |
-| `*backlog-add {story} {type} {priority} {title}` | manage-story-backlog.md (MISSING) | full | No |
-| `*backlog-update {item_id} {status}` | manage-story-backlog.md (MISSING) | full | No |
-| `*backlog-review` | manage-story-backlog.md (MISSING) | full | No |
-| `*session-info` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*exit` | (built-in) | full | No |
+| Command                                          | Task File                           | Visibility       | Elicit |
+| ------------------------------------------------ | ----------------------------------- | ---------------- | ------ |
+| `*help`                                          | (built-in)                          | full, quick, key | No     |
+| `*code-review {scope}`                           | qa-run-tests.md                     | full, quick      | No     |
+| `*review {story}`                                | qa-review-story.md                  | full, quick, key | No     |
+| `*review-build {story}`                          | qa-review-build.md                  | full, quick, key | No     |
+| `*gate {story}`                                  | qa-gate.md + qa-gate-tmpl.yaml      | full, quick, key | No     |
+| `*nfr-assess {story}`                            | qa-nfr-assess.md                    | full             | No     |
+| `*risk-profile {story}`                          | qa-risk-profile.md                  | full             | No     |
+| `*create-fix-request {story}`                    | qa-create-fix-request.md            | full             | No     |
+| `*validate-libraries {story}`                    | qa-library-validation.md            | full             | No     |
+| `*security-check {story}`                        | qa-security-checklist.md            | full             | No     |
+| `*validate-migrations {story}`                   | qa-migration-validation.md          | full             | No     |
+| `*evidence-check {story}`                        | qa-evidence-requirements.md         | full             | No     |
+| `*false-positive-check {story}`                  | qa-false-positive-detection.md      | full             | No     |
+| `*console-check {story}`                         | qa-browser-console-check.md         | full             | No     |
+| `*test-design {story}`                           | qa-test-design.md                   | full, quick      | Yes    |
+| `*trace {story}`                                 | qa-trace-requirements.md            | full             | No     |
+| `*create-suite {story}`                          | create-suite.md                     | full             | Yes    |
+| `*critique-spec {story}`                         | spec-critique.md                    | full             | No     |
+| `*backlog-add {story} {type} {priority} {title}` | manage-story-backlog.md (MISSING)   | full             | No     |
+| `*backlog-update {item_id} {status}`             | manage-story-backlog.md (MISSING)   | full             | No     |
+| `*backlog-review`                                | manage-story-backlog.md (MISSING)   | full             | No     |
+| `*session-info`                                  | (built-in)                          | full             | No     |
+| `*guide`                                         | (built-in, rendered from agent .md) | full, quick      | No     |
+| `*exit`                                          | (built-in)                          | full             | No     |
 
 **Note:** 27 commands total. The 3 backlog commands all depend on `manage-story-backlog.md` which does NOT exist on disk. The PO agent has `po-manage-story-backlog.md` but no QA-specific variant exists.
 
@@ -621,12 +621,12 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## ✅ QA Guide` section from agent .md |
+| Command         | Behavior                                                        |
+| --------------- | --------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition |
+| `*guide`        | Renders the `## ✅ QA Guide` section from agent .md             |
 | `*session-info` | Shows session context (agent history, commands, project status) |
-| `*exit` | Exits QA mode, returns to base Claude Code |
+| `*exit`         | Exits QA mode, returns to base Claude Code                      |
 
 ---
 
@@ -770,31 +770,35 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @dev -> @qa | Receives | Story marked "Ready for Review" triggers QA review |
-| @qa -> @dev | Handoff | `*create-fix-request` generates `QA_FIX_REQUEST.md` for @dev |
-| @coderabbit -> @qa | Receives | Automated code review findings consumed by QA analysis |
-| @qa -> @github-devops | Delegate | Git push operations, PR creation after QA approval |
-| @sm -> @qa | Receives | Sprint risk profiling requests |
-| @po -> @qa | Receives | Spec critique requests via `*critique-spec` |
+| Interaction           | Direction | Trigger                                                      |
+| --------------------- | --------- | ------------------------------------------------------------ |
+| @dev -> @qa           | Receives  | Story marked "Ready for Review" triggers QA review           |
+| @qa -> @dev           | Handoff   | `*create-fix-request` generates `QA_FIX_REQUEST.md` for @dev |
+| @coderabbit -> @qa    | Receives  | Automated code review findings consumed by QA analysis       |
+| @qa -> @github-devops | Delegate  | Git push operations, PR creation after QA approval           |
+| @sm -> @qa            | Receives  | Sprint risk profiling requests                               |
+| @po -> @qa            | Receives  | Spec critique requests via `*critique-spec`                  |
 
 ### Delegation Rules (from agent definition)
 
 **Receives from @dev when:**
+
 - Story is marked "Ready for Review"
 - Code is committed (not pushed yet)
 - @dev requests code quality feedback
 
 **Delegates to @dev when:**
+
 - QA findings require code fixes (`*create-fix-request`)
 - Self-healing loop identifies CRITICAL/HIGH issues needing fix
 
 **Delegates to @github-devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 
 **Retains (Advisory Authority):**
+
 - Quality gate decisions (PASS/CONCERNS/FAIL/WAIVED)
 - Test architecture and strategy
 - Risk assessment and NFR validation
@@ -813,18 +817,20 @@ self_healing:
     - CRITICAL
     - HIGH
   behavior:
-    CRITICAL: auto_fix    # 3 attempts max
-    HIGH: auto_fix        # 3 attempts max
+    CRITICAL: auto_fix # 3 attempts max
+    HIGH: auto_fix # 3 attempts max
     MEDIUM: document_as_debt
     LOW: ignore
 ```
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git commit`, `gh pr create`
 - Redirect: QA reviews, doesn't commit. Use @dev for commits, @github-devops for push.
 
 **Story file permissions:**
+
 - ONLY authorized to update "QA Results" section of story files
 - DO NOT modify Status, Acceptance Criteria, Tasks, Dev Notes, or any other sections
 
@@ -832,16 +838,16 @@ self_healing:
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| `manage-story-backlog.md` | Task | `*backlog-add`, `*backlog-update`, `*backlog-review` | 3 commands non-functional |
-| `qa-gate-tmpl.yaml` | Template | `*gate` (in `dependencies.templates`) | EXISTS in `.aiox-core/product/templates/` but NOT in `.aiox-core/development/templates/` per IDE-FILE-RESOLUTION |
-| `story-tmpl.yaml` | Template | (in `dependencies.templates`) | EXISTS in `.aiox-core/product/templates/` but NOT in `.aiox-core/development/templates/` per IDE-FILE-RESOLUTION |
-| `test-levels-framework.md` | Data | `agent-config-requirements.yaml` | EXISTS at `.aiox-core/product/data/` (NOT in `.aiox-core/data/` where `dependencies.data` resolves) |
-| `test-priorities-matrix.md` | Data | `agent-config-requirements.yaml` | EXISTS at `.aiox-core/product/data/` (NOT in `.aiox-core/data/` where `dependencies.data` resolves) |
+| File                        | Type     | Referenced By                                        | Impact                                                                                                           |
+| --------------------------- | -------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `manage-story-backlog.md`   | Task     | `*backlog-add`, `*backlog-update`, `*backlog-review` | 3 commands non-functional                                                                                        |
+| `qa-gate-tmpl.yaml`         | Template | `*gate` (in `dependencies.templates`)                | EXISTS in `.aiox-core/product/templates/` but NOT in `.aiox-core/development/templates/` per IDE-FILE-RESOLUTION |
+| `story-tmpl.yaml`           | Template | (in `dependencies.templates`)                        | EXISTS in `.aiox-core/product/templates/` but NOT in `.aiox-core/development/templates/` per IDE-FILE-RESOLUTION |
+| `test-levels-framework.md`  | Data     | `agent-config-requirements.yaml`                     | EXISTS at `.aiox-core/product/data/` (NOT in `.aiox-core/data/` where `dependencies.data` resolves)              |
+| `test-priorities-matrix.md` | Data     | `agent-config-requirements.yaml`                     | EXISTS at `.aiox-core/product/data/` (NOT in `.aiox-core/data/` where `dependencies.data` resolves)              |
 
 **Path Resolution Note:** The `IDE-FILE-RESOLUTION` rule in the agent definition maps `dependencies` to `.aiox-core/development/{type}/{name}`. However, 2 templates and 2 data files exist under `.aiox-core/product/` instead. The `agent-config-requirements.yaml` correctly references the full paths under `.aiox-core/product/data/`, but the agent definition's `dependencies` block uses short names that resolve to `.aiox-core/development/templates/` and `.aiox-core/development/data/` respectively, where these files do not exist. Actual runtime loading uses `agent-config-requirements.yaml` paths, so functionality is preserved.
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

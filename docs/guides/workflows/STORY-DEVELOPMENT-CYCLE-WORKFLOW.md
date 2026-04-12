@@ -18,13 +18,13 @@ Garantir que cada story passe por um processo estruturado e rastreavel, com pont
 
 ### Tipos de Projeto Suportados
 
-| Tipo | Descricao |
-|------|-----------|
-| `greenfield` | Projetos novos, do zero |
-| `brownfield` | Projetos existentes, manutencao |
+| Tipo                  | Descricao                                |
+| --------------------- | ---------------------------------------- |
+| `greenfield`          | Projetos novos, do zero                  |
+| `brownfield`          | Projetos existentes, manutencao          |
 | `feature-development` | Desenvolvimento de novas funcionalidades |
-| `bug-fix` | Correcao de bugs |
-| `enhancement` | Melhorias em funcionalidades existentes |
+| `bug-fix`             | Correcao de bugs                         |
+| `enhancement`         | Melhorias em funcionalidades existentes  |
 
 ---
 
@@ -161,12 +161,12 @@ sequenceDiagram
 
 ### Step 1: Create Story (Fase 1)
 
-| Campo | Valor |
-|-------|-------|
-| **ID** | `create` |
+| Campo      | Valor                      |
+| ---------- | -------------------------- |
+| **ID**     | `create`                   |
 | **Agente** | @sm (River - Scrum Master) |
-| **Acao** | Criar proxima story |
-| **Task** | `create-next-story.md` |
+| **Acao**   | Criar proxima story        |
+| **Task**   | `create-next-story.md`     |
 
 #### Descricao
 
@@ -174,21 +174,21 @@ O Scrum Master (River) identifica e cria a proxima story do backlog utilizando o
 
 #### Inputs
 
-| Input | Tipo | Origem | Obrigatorio |
-|-------|------|--------|-------------|
-| `name` | string | User Input | Sim |
-| `options` | object | User Input | Nao |
-| `force` | boolean | User Input | Nao |
-| PRD shardado | arquivo | Sistema de arquivos | Sim |
-| Contexto do epic | documento | docs/stories/epic-X/ | Sim |
+| Input            | Tipo      | Origem               | Obrigatorio |
+| ---------------- | --------- | -------------------- | ----------- |
+| `name`           | string    | User Input           | Sim         |
+| `options`        | object    | User Input           | Nao         |
+| `force`          | boolean   | User Input           | Nao         |
+| PRD shardado     | arquivo   | Sistema de arquivos  | Sim         |
+| Contexto do epic | documento | docs/stories/epic-X/ | Sim         |
 
 #### Outputs
 
-| Output | Tipo | Destino |
-|--------|------|---------|
-| `story_file` | arquivo | `{devStoryLocation}/{epicNum}.{storyNum}.story.md` |
-| `story_id` | string | Contexto do workflow |
-| `validation_report` | object | Memoria |
+| Output              | Tipo    | Destino                                            |
+| ------------------- | ------- | -------------------------------------------------- |
+| `story_file`        | arquivo | `{devStoryLocation}/{epicNum}.{storyNum}.story.md` |
+| `story_id`          | string  | Contexto do workflow                               |
+| `validation_report` | object  | Memoria                                            |
 
 #### Criterios de Sucesso
 
@@ -206,13 +206,13 @@ O Scrum Master (River) identifica e cria a proxima story do backlog utilizando o
 
 ### Step 2: Validate Story (Fase 2)
 
-| Campo | Valor |
-|-------|-------|
-| **ID** | `validate` |
+| Campo      | Valor                     |
+| ---------- | ------------------------- |
+| **ID**     | `validate`                |
 | **Agente** | @po (Pax - Product Owner) |
-| **Acao** | Validar story (10 checks) |
-| **Task** | `validate-next-story.md` |
-| **Requer** | `create` |
+| **Acao**   | Validar story (10 checks) |
+| **Task**   | `validate-next-story.md`  |
+| **Requer** | `create`                  |
 
 #### Descricao
 
@@ -220,43 +220,43 @@ O Product Owner (Pax) valida a story criada usando um checklist rigoroso de 10 p
 
 #### Inputs
 
-| Input | Tipo | Origem | Obrigatorio |
-|-------|------|--------|-------------|
-| `story_file` | arquivo | Output do step anterior | Sim |
-| `target` | string | User Input | Sim |
-| `criteria` | array | Config | Sim |
-| `strict` | boolean | User Input | Nao (default: true) |
+| Input        | Tipo    | Origem                  | Obrigatorio         |
+| ------------ | ------- | ----------------------- | ------------------- |
+| `story_file` | arquivo | Output do step anterior | Sim                 |
+| `target`     | string  | User Input              | Sim                 |
+| `criteria`   | array   | Config                  | Sim                 |
+| `strict`     | boolean | User Input              | Nao (default: true) |
 
 #### Outputs
 
-| Output | Tipo | Destino |
-|--------|------|---------|
-| `validation_report` | object | Arquivo (.ai/*.json) |
-| `validation_result` | boolean | Return value |
-| `errors` | array | Memoria |
-| `story_status` | string | Story file |
+| Output              | Tipo    | Destino               |
+| ------------------- | ------- | --------------------- |
+| `validation_report` | object  | Arquivo (.ai/\*.json) |
+| `validation_result` | boolean | Return value          |
+| `errors`            | array   | Memoria               |
+| `story_status`      | string  | Story file            |
 
 #### Checklist de Validacao (10 Pontos)
 
-| # | Check | Descricao |
-|---|-------|-----------|
-| 1 | Titulo claro e objetivo | O titulo descreve precisamente o que sera feito |
-| 2 | Descricao completa | Problema/necessidade claramente explicado |
-| 3 | Acceptance criteria testaveis | Formato Given/When/Then preferido |
-| 4 | Escopo bem definido | O que esta IN e OUT claramente listado |
-| 5 | Dependencias mapeadas | Stories ou recursos prerequisitos identificados |
-| 6 | Estimativa de complexidade | Pontos de complexidade ou T-shirt sizing |
-| 7 | Valor de negocio | Beneficio para o usuario/negocio claro |
-| 8 | Riscos documentados | Potenciais problemas identificados |
-| 9 | Criterios de Done | Definicao clara de quando esta completa |
-| 10 | Alinhamento com PRD/Epic | Consistencia com documentos fonte |
+| #   | Check                         | Descricao                                       |
+| --- | ----------------------------- | ----------------------------------------------- |
+| 1   | Titulo claro e objetivo       | O titulo descreve precisamente o que sera feito |
+| 2   | Descricao completa            | Problema/necessidade claramente explicado       |
+| 3   | Acceptance criteria testaveis | Formato Given/When/Then preferido               |
+| 4   | Escopo bem definido           | O que esta IN e OUT claramente listado          |
+| 5   | Dependencias mapeadas         | Stories ou recursos prerequisitos identificados |
+| 6   | Estimativa de complexidade    | Pontos de complexidade ou T-shirt sizing        |
+| 7   | Valor de negocio              | Beneficio para o usuario/negocio claro          |
+| 8   | Riscos documentados           | Potenciais problemas identificados              |
+| 9   | Criterios de Done             | Definicao clara de quando esta completa         |
+| 10  | Alinhamento com PRD/Epic      | Consistencia com documentos fonte               |
 
 #### Resultado
 
-| Resultado | Acao |
-|-----------|------|
-| **Aprovada** | Status muda para `Ready`, prossegue para implementacao |
-| **Rejeitada** | Retorna para SM com feedback detalhado |
+| Resultado     | Acao                                                   |
+| ------------- | ------------------------------------------------------ |
+| **Aprovada**  | Status muda para `Ready`, prossegue para implementacao |
+| **Rejeitada** | Retorna para SM com feedback detalhado                 |
 
 #### Status da Story
 
@@ -268,13 +268,13 @@ O Product Owner (Pax) valida a story criada usando um checklist rigoroso de 10 p
 
 ### Step 3: Implement Story (Fase 3)
 
-| Campo | Valor |
-|-------|-------|
-| **ID** | `implement` |
+| Campo      | Valor                             |
+| ---------- | --------------------------------- |
+| **ID**     | `implement`                       |
 | **Agente** | @dev (Dex - Full Stack Developer) |
-| **Acao** | Implementar story |
-| **Task** | `dev-develop-story.md` |
-| **Requer** | `validate` |
+| **Acao**   | Implementar story                 |
+| **Task**   | `dev-develop-story.md`            |
+| **Requer** | `validate`                        |
 
 #### Descricao
 
@@ -282,31 +282,31 @@ O Dev Agent (Dex) implementa a story validada, seguindo os acceptance criteria e
 
 #### Modos de Execucao
 
-| Modo | Descricao | Prompts ao Usuario |
-|------|-----------|-------------------|
-| **YOLO** | Execucao autonoma com logging de decisoes | 0-1 |
-| **Interactive** | Checkpoints de decisao e feedback educacional (DEFAULT) | 5-10 |
-| **Pre-Flight** | Planejamento completo antes da execucao | 10-15 (upfront) |
+| Modo            | Descricao                                               | Prompts ao Usuario |
+| --------------- | ------------------------------------------------------- | ------------------ |
+| **YOLO**        | Execucao autonoma com logging de decisoes               | 0-1                |
+| **Interactive** | Checkpoints de decisao e feedback educacional (DEFAULT) | 5-10               |
+| **Pre-Flight**  | Planejamento completo antes da execucao                 | 10-15 (upfront)    |
 
 #### Inputs
 
-| Input | Tipo | Origem | Obrigatorio |
-|-------|------|--------|-------------|
-| `story_file` | arquivo | Output do step anterior | Sim |
-| `task` | string | User Input | Sim |
-| `parameters` | object | User Input | Nao |
-| `mode` | string | User Input | Nao (default: interactive) |
+| Input        | Tipo    | Origem                  | Obrigatorio                |
+| ------------ | ------- | ----------------------- | -------------------------- |
+| `story_file` | arquivo | Output do step anterior | Sim                        |
+| `task`       | string  | User Input              | Sim                        |
+| `parameters` | object  | User Input              | Nao                        |
+| `mode`       | string  | User Input              | Nao (default: interactive) |
 
 #### Outputs
 
-| Output | Tipo | Destino |
-|--------|------|---------|
-| `implementation_files` | array | Sistema de arquivos |
-| `test_results` | object | Console/logs |
-| `commit_hash` | string | Git |
-| `execution_result` | object | Memoria |
-| `logs` | array | `.ai/logs/*` |
-| `decision_log` | arquivo | `.ai/decision-log-{story-id}.md` (modo YOLO) |
+| Output                 | Tipo    | Destino                                      |
+| ---------------------- | ------- | -------------------------------------------- |
+| `implementation_files` | array   | Sistema de arquivos                          |
+| `test_results`         | object  | Console/logs                                 |
+| `commit_hash`          | string  | Git                                          |
+| `execution_result`     | object  | Memoria                                      |
+| `logs`                 | array   | `.ai/logs/*`                                 |
+| `decision_log`         | arquivo | `.ai/decision-log-{story-id}.md` (modo YOLO) |
 
 #### Fluxo de Execucao
 
@@ -361,13 +361,13 @@ flowchart TD
 
 ### Step 4: QA Review (Fase 4)
 
-| Campo | Valor |
-|-------|-------|
-| **ID** | `review` |
+| Campo      | Valor                        |
+| ---------- | ---------------------------- |
+| **ID**     | `review`                     |
 | **Agente** | @qa (Quinn - Test Architect) |
-| **Acao** | Review final + Quality Gate |
-| **Task** | `qa-gate.md` |
-| **Requer** | `implement` |
+| **Acao**   | Review final + Quality Gate  |
+| **Task**   | `qa-gate.md`                 |
+| **Requer** | `implement`                  |
 
 #### Descricao
 
@@ -375,57 +375,57 @@ O QA Agent (Quinn) executa o review final com quality gate, validando codigo, te
 
 #### Inputs
 
-| Input | Tipo | Origem | Obrigatorio |
-|-------|------|--------|-------------|
-| `story_file` | arquivo | Output do step anterior | Sim |
-| `target` | string | User Input | Sim |
-| `criteria` | array | Config | Sim |
-| `strict` | boolean | User Input | Nao (default: true) |
+| Input        | Tipo    | Origem                  | Obrigatorio         |
+| ------------ | ------- | ----------------------- | ------------------- |
+| `story_file` | arquivo | Output do step anterior | Sim                 |
+| `target`     | string  | User Input              | Sim                 |
+| `criteria`   | array   | Config                  | Sim                 |
+| `strict`     | boolean | User Input              | Nao (default: true) |
 
 #### Outputs
 
-| Output | Tipo | Destino |
-|--------|------|---------|
-| `qa_report` | arquivo | `{qaLocation}/gates/{epic}.{story}-{slug}.yml` |
-| `quality_gate_status` | string | PASS/CONCERNS/FAIL/WAIVED |
-| `story_final_status` | string | Story file |
-| `validation_result` | boolean | Return value |
-| `errors` | array | Memoria |
+| Output                | Tipo    | Destino                                        |
+| --------------------- | ------- | ---------------------------------------------- |
+| `qa_report`           | arquivo | `{qaLocation}/gates/{epic}.{story}-{slug}.yml` |
+| `quality_gate_status` | string  | PASS/CONCERNS/FAIL/WAIVED                      |
+| `story_final_status`  | string  | Story file                                     |
+| `validation_result`   | boolean | Return value                                   |
+| `errors`              | array   | Memoria                                        |
 
 #### Quality Gate Checks
 
-| # | Check | Descricao |
-|---|-------|-----------|
-| 1 | Code review | Padroes, legibilidade, manutenibilidade |
-| 2 | Testes unitarios | Adequados e passando |
-| 3 | Acceptance criteria | Todos atendidos |
-| 4 | Sem regressoes | Funcionalidades existentes preservadas |
-| 5 | Performance | Dentro dos limites aceitaveis |
-| 6 | Seguranca | OWASP basics verificados |
-| 7 | Documentacao | Atualizada se necessario |
+| #   | Check               | Descricao                               |
+| --- | ------------------- | --------------------------------------- |
+| 1   | Code review         | Padroes, legibilidade, manutenibilidade |
+| 2   | Testes unitarios    | Adequados e passando                    |
+| 3   | Acceptance criteria | Todos atendidos                         |
+| 4   | Sem regressoes      | Funcionalidades existentes preservadas  |
+| 5   | Performance         | Dentro dos limites aceitaveis           |
+| 6   | Seguranca           | OWASP basics verificados                |
+| 7   | Documentacao        | Atualizada se necessario                |
 
 #### Decisoes do Quality Gate
 
-| Decisao | Criterios | Acao |
-|---------|-----------|------|
-| **PASS** | Todos os checks passaram, sem issues HIGH | Aprovar story |
-| **CONCERNS** | Issues nao-bloqueantes presentes | Aprovar com observacoes |
-| **FAIL** | Issues HIGH/CRITICAL presentes | Retornar para Dev |
-| **WAIVED** | Issues explicitamente aceitas | Aprovar com waiver documentado |
+| Decisao      | Criterios                                 | Acao                           |
+| ------------ | ----------------------------------------- | ------------------------------ |
+| **PASS**     | Todos os checks passaram, sem issues HIGH | Aprovar story                  |
+| **CONCERNS** | Issues nao-bloqueantes presentes          | Aprovar com observacoes        |
+| **FAIL**     | Issues HIGH/CRITICAL presentes            | Retornar para Dev              |
+| **WAIVED**   | Issues explicitamente aceitas             | Aprovar com waiver documentado |
 
 #### Severidade de Issues
 
-| Severidade | Descricao | Acao |
-|------------|-----------|------|
-| `low` | Issues menores, cosmeticos | Documentar |
-| `medium` | Deveria corrigir em breve | Criar tech debt |
-| `high` | Critico, deveria bloquear release | Retornar para Dev |
+| Severidade | Descricao                         | Acao              |
+| ---------- | --------------------------------- | ----------------- |
+| `low`      | Issues menores, cosmeticos        | Documentar        |
+| `medium`   | Deveria corrigir em breve         | Criar tech debt   |
+| `high`     | Critico, deveria bloquear release | Retornar para Dev |
 
 #### Resultado
 
-| Resultado | Acao |
-|-----------|------|
-| **Aprovada** | Status muda para `Done` |
+| Resultado     | Acao                                    |
+| ------------- | --------------------------------------- |
+| **Aprovada**  | Status muda para `Done`                 |
 | **Rejeitada** | Retorna para Dev com checklist de fixes |
 
 #### Status da Story
@@ -440,15 +440,16 @@ O QA Agent (Quinn) executa o review final com quality gate, validando codigo, te
 
 ### @sm - River (Scrum Master)
 
-| Aspecto | Descricao |
-|---------|-----------|
-| **Icone** | 🌊 |
-| **Arquetipo** | Facilitator |
-| **Papel** | Technical Scrum Master - Story Preparation Specialist |
-| **Foco** | Criar stories claras e acionaveis para agentes de desenvolvimento |
+| Aspecto               | Descricao                                                                 |
+| --------------------- | ------------------------------------------------------------------------- |
+| **Icone**             | 🌊                                                                        |
+| **Arquetipo**         | Facilitator                                                               |
+| **Papel**             | Technical Scrum Master - Story Preparation Specialist                     |
+| **Foco**              | Criar stories claras e acionaveis para agentes de desenvolvimento         |
 | **Responsabilidades** | Story creation, epic management, sprint planning, local branch management |
 
 **Comandos Relevantes:**
+
 - `*draft` - Criar proxima story
 - `*story-checklist` - Executar checklist de story
 
@@ -456,15 +457,16 @@ O QA Agent (Quinn) executa o review final com quality gate, validando codigo, te
 
 ### @po - Pax (Product Owner)
 
-| Aspecto | Descricao |
-|---------|-----------|
-| **Icone** | 🎯 |
-| **Arquetipo** | Balancer |
-| **Papel** | Technical Product Owner & Process Steward |
-| **Foco** | Validar coesao de artefatos e garantir qualidade de documentacao |
+| Aspecto               | Descricao                                                          |
+| --------------------- | ------------------------------------------------------------------ |
+| **Icone**             | 🎯                                                                 |
+| **Arquetipo**         | Balancer                                                           |
+| **Papel**             | Technical Product Owner & Process Steward                          |
+| **Foco**              | Validar coesao de artefatos e garantir qualidade de documentacao   |
 | **Responsabilidades** | Backlog management, story validation, prioritization, PM tool sync |
 
 **Comandos Relevantes:**
+
 - `*validate-story-draft {story}` - Validar qualidade da story
 - `*backlog-review` - Review para sprint planning
 
@@ -472,15 +474,16 @@ O QA Agent (Quinn) executa o review final com quality gate, validando codigo, te
 
 ### @dev - Dex (Full Stack Developer)
 
-| Aspecto | Descricao |
-|---------|-----------|
-| **Icone** | 💻 |
-| **Arquetipo** | Builder |
-| **Papel** | Expert Senior Software Engineer & Implementation Specialist |
-| **Foco** | Executar tarefas de story com precisao e testes abrangentes |
-| **Responsabilidades** | Code implementation, testing, debugging, refactoring |
+| Aspecto               | Descricao                                                   |
+| --------------------- | ----------------------------------------------------------- |
+| **Icone**             | 💻                                                          |
+| **Arquetipo**         | Builder                                                     |
+| **Papel**             | Expert Senior Software Engineer & Implementation Specialist |
+| **Foco**              | Executar tarefas de story com precisao e testes abrangentes |
+| **Responsabilidades** | Code implementation, testing, debugging, refactoring        |
 
 **Comandos Relevantes:**
+
 - `*develop {story-id}` - Implementar story
 - `*run-tests` - Executar linting e testes
 - `*apply-qa-fixes` - Aplicar correcoes do QA
@@ -489,15 +492,16 @@ O QA Agent (Quinn) executa o review final com quality gate, validando codigo, te
 
 ### @qa - Quinn (Test Architect)
 
-| Aspecto | Descricao |
-|---------|-----------|
-| **Icone** | ✅ |
-| **Arquetipo** | Guardian |
-| **Papel** | Test Architect with Quality Advisory Authority |
-| **Foco** | Analise de qualidade abrangente atraves de arquitetura de testes |
-| **Responsabilidades** | Code review, quality gates, test strategy, risk assessment |
+| Aspecto               | Descricao                                                        |
+| --------------------- | ---------------------------------------------------------------- |
+| **Icone**             | ✅                                                               |
+| **Arquetipo**         | Guardian                                                         |
+| **Papel**             | Test Architect with Quality Advisory Authority                   |
+| **Foco**              | Analise de qualidade abrangente atraves de arquitetura de testes |
+| **Responsabilidades** | Code review, quality gates, test strategy, risk assessment       |
 
 **Comandos Relevantes:**
+
 - `*review {story}` - Review abrangente de story
 - `*gate {story}` - Criar decisao de quality gate
 - `*code-review {scope}` - Review automatizado
@@ -535,13 +539,13 @@ graph TD
 
 ### Detalhamento das Tasks
 
-| Task | Arquivo | Agente | Proposito |
-|------|---------|--------|-----------|
-| Create Next Story | `create-next-story.md` | @sm | Criar story a partir do PRD/epic |
-| Validate Next Story | `validate-next-story.md` | @po | Validar completude e qualidade |
-| Develop Story | `dev-develop-story.md` | @dev | Implementar codigo e testes |
-| Story DOD Checklist | `story-dod-checklist.md` | @dev | Verificar Definition of Done |
-| QA Gate | `qa-gate.md` | @qa | Criar decisao de quality gate |
+| Task                | Arquivo                  | Agente | Proposito                        |
+| ------------------- | ------------------------ | ------ | -------------------------------- |
+| Create Next Story   | `create-next-story.md`   | @sm    | Criar story a partir do PRD/epic |
+| Validate Next Story | `validate-next-story.md` | @po    | Validar completude e qualidade   |
+| Develop Story       | `dev-develop-story.md`   | @dev   | Implementar codigo e testes      |
+| Story DOD Checklist | `story-dod-checklist.md` | @dev   | Verificar Definition of Done     |
+| QA Gate             | `qa-gate.md`             | @qa    | Criar decisao de quality gate    |
 
 ---
 
@@ -564,21 +568,21 @@ graph TD
 
 ### Documentacao Prerequisita
 
-| Documento | Local | Obrigatorio |
-|-----------|-------|-------------|
-| PRD (shardado ou monolitico) | Conforme `prd.*` config | Sim |
-| Epic file | `docs/stories/epic-X/` | Sim |
-| Architecture docs | Conforme `architecture.*` config | Sim |
+| Documento                    | Local                            | Obrigatorio |
+| ---------------------------- | -------------------------------- | ----------- |
+| PRD (shardado ou monolitico) | Conforme `prd.*` config          | Sim         |
+| Epic file                    | `docs/stories/epic-X/`           | Sim         |
+| Architecture docs            | Conforme `architecture.*` config | Sim         |
 
 ### Ferramentas Integradas
 
-| Ferramenta | Proposito | Agentes |
-|------------|-----------|---------|
-| `git` | Controle de versao | @sm, @dev, @qa |
-| `coderabbit` | Review automatizado | @dev, @qa |
-| `clickup` | Tracking de stories | @sm, @po |
-| `context7` | Documentacao de libs | Todos |
-| `github-cli` | Operacoes GitHub | @po, @qa |
+| Ferramenta   | Proposito            | Agentes        |
+| ------------ | -------------------- | -------------- |
+| `git`        | Controle de versao   | @sm, @dev, @qa |
+| `coderabbit` | Review automatizado  | @dev, @qa      |
+| `clickup`    | Tracking de stories  | @sm, @po       |
+| `context7`   | Documentacao de libs | Todos          |
+| `github-cli` | Operacoes GitHub     | @po, @qa       |
 
 ---
 
@@ -586,22 +590,22 @@ graph TD
 
 ### Entradas do Workflow
 
-| Entrada | Tipo | Fonte | Descricao |
-|---------|------|-------|-----------|
-| Epic requirements | Documento | `docs/stories/epic-X/` | Requisitos do epic |
-| PRD | Documento | Conforme config | Product Requirements |
-| Architecture docs | Documentos | `docs/architecture/` | Especificacoes tecnicas |
-| Story template | YAML | `.aiox-core/development/templates/` | Template padrao |
+| Entrada           | Tipo       | Fonte                               | Descricao               |
+| ----------------- | ---------- | ----------------------------------- | ----------------------- |
+| Epic requirements | Documento  | `docs/stories/epic-X/`              | Requisitos do epic      |
+| PRD               | Documento  | Conforme config                     | Product Requirements    |
+| Architecture docs | Documentos | `docs/architecture/`                | Especificacoes tecnicas |
+| Story template    | YAML       | `.aiox-core/development/templates/` | Template padrao         |
 
 ### Saidas do Workflow
 
-| Saida | Tipo | Destino | Descricao |
-|-------|------|---------|-----------|
-| Story file | Markdown | `{devStoryLocation}/{epic}.{story}.story.md` | Story completa |
-| Implementation files | Codigo | Conforme story tasks | Codigo implementado |
-| Test files | Codigo | Conforme padrao do projeto | Testes unitarios |
-| QA Gate file | YAML | `{qaLocation}/gates/{epic}.{story}-{slug}.yml` | Decisao de QA |
-| Decision log | Markdown | `.ai/decision-log-{story-id}.md` | Log de decisoes (modo YOLO) |
+| Saida                | Tipo     | Destino                                        | Descricao                   |
+| -------------------- | -------- | ---------------------------------------------- | --------------------------- |
+| Story file           | Markdown | `{devStoryLocation}/{epic}.{story}.story.md`   | Story completa              |
+| Implementation files | Codigo   | Conforme story tasks                           | Codigo implementado         |
+| Test files           | Codigo   | Conforme padrao do projeto                     | Testes unitarios            |
+| QA Gate file         | YAML     | `{qaLocation}/gates/{epic}.{story}-{slug}.yml` | Decisao de QA               |
+| Decision log         | Markdown | `.ai/decision-log-{story-id}.md`               | Log de decisoes (modo YOLO) |
 
 ---
 
@@ -628,11 +632,11 @@ graph TD
 
 ### Pontos de Decisao Detalhados
 
-| Ponto | Fase | Decisor | Criterio | Resultado Positivo | Resultado Negativo |
-|-------|------|---------|----------|-------------------|-------------------|
-| Validacao PO | 2 | @po | 10 checks passam | Status: Ready | Retorna para SM |
-| Self-Healing | 3 | Sistema | Sem CRITICAL issues | Prossegue para DOD | Halt ou auto-fix |
-| Quality Gate | 4 | @qa | Sem HIGH/CRITICAL | Status: Done | Retorna para Dev |
+| Ponto        | Fase | Decisor | Criterio            | Resultado Positivo | Resultado Negativo |
+| ------------ | ---- | ------- | ------------------- | ------------------ | ------------------ |
+| Validacao PO | 2    | @po     | 10 checks passam    | Status: Ready      | Retorna para SM    |
+| Self-Healing | 3    | Sistema | Sem CRITICAL issues | Prossegue para DOD | Halt ou auto-fix   |
+| Quality Gate | 4    | @qa     | Sem HIGH/CRITICAL   | Status: Done       | Retorna para Dev   |
 
 ### Condicoes de Bloqueio
 
@@ -697,11 +701,13 @@ best_for: Requisitos ambiguos e trabalho critico
 **Sintoma:** Erro ao executar `create-next-story`
 
 **Possiveis Causas:**
+
 - `core-config.yaml` nao encontrado
 - Epic file nao existe
 - PRD nao disponivel
 
 **Solucao:**
+
 ```bash
 # Verificar se core-config.yaml existe
 cat .aiox-core/core-config.yaml
@@ -718,11 +724,13 @@ cat docs/prd/PRD.md  # ou localizado conforme config
 **Sintoma:** Story retorna para SM multiplas vezes
 
 **Possiveis Causas:**
+
 - Acceptance criteria mal definidos
 - Falta de informacoes no Dev Notes
 - Escopo nao claro
 
 **Solucao:**
+
 1. Revisar os 10 checks do checklist
 2. Garantir formato Given/When/Then nos ACs
 3. Preencher Dev Notes com referencias de arquitetura
@@ -732,11 +740,13 @@ cat docs/prd/PRD.md  # ou localizado conforme config
 **Sintoma:** CRITICAL issues persistem apos 2 iteracoes
 
 **Possiveis Causas:**
+
 - Issues que requerem refatoracao significativa
 - Problemas de seguranca complexos
 - Codigo que viola padroes de arquitetura
 
 **Solucao:**
+
 ```bash
 # Verificar output do CodeRabbit
 wsl bash -c 'cd /mnt/c/.../aiox-core && ~/.local/bin/coderabbit --prompt-only -t uncommitted'
@@ -750,11 +760,13 @@ wsl bash -c 'cd /mnt/c/.../aiox-core && ~/.local/bin/coderabbit --prompt-only -t
 **Sintoma:** QA rejeita story com HIGH issues
 
 **Possiveis Causas:**
+
 - Acceptance criteria nao atendidos
 - Cobertura de testes insuficiente
 - Problemas de seguranca
 
 **Solucao:**
+
 1. Revisar `qa-gate.yml` gerado
 2. Executar `*apply-qa-fixes` no @dev
 3. Re-submeter para review
@@ -764,11 +776,13 @@ wsl bash -c 'cd /mnt/c/.../aiox-core && ~/.local/bin/coderabbit --prompt-only -t
 **Sintoma:** Transicao entre agentes nao acontece
 
 **Possiveis Causas:**
+
 - Outputs nao gerados corretamente
 - Status da story inconsistente
 - Dependencia de step anterior nao satisfeita
 
 **Solucao:**
+
 ```bash
 # Verificar status da story
 cat docs/stories/{story-file}.md | grep "status:"
@@ -780,11 +794,11 @@ cat docs/stories/{story-file}.md | grep "status:"
 
 ### Logs e Diagnostico
 
-| Arquivo | Local | Conteudo |
-|---------|-------|----------|
-| Decision Log | `.ai/decision-log-{story-id}.md` | Decisoes autonomas (modo YOLO) |
-| QA Gate | `{qaLocation}/gates/{epic}.{story}-{slug}.yml` | Decisao do quality gate |
-| Story File | `{devStoryLocation}/{epic}.{story}.story.md` | Historia completa com logs |
+| Arquivo      | Local                                          | Conteudo                       |
+| ------------ | ---------------------------------------------- | ------------------------------ |
+| Decision Log | `.ai/decision-log-{story-id}.md`               | Decisoes autonomas (modo YOLO) |
+| QA Gate      | `{qaLocation}/gates/{epic}.{story}-{slug}.yml` | Decisao do quality gate        |
+| Story File   | `{devStoryLocation}/{epic}.{story}.story.md`   | Historia completa com logs     |
 
 ---
 
@@ -799,11 +813,11 @@ cat docs/stories/{story-file}.md | grep "status:"
 
 ### Quando NAO Usar Este Workflow
 
-| Situacao | Alternativa |
-|----------|-------------|
-| Hotfixes urgentes | Fluxo simplificado sem QA gate |
-| Spikes/POCs exploratorios | Desenvolvimento ad-hoc |
-| Tasks puramente tecnicas sem story | Tarefas diretas com @dev |
+| Situacao                           | Alternativa                    |
+| ---------------------------------- | ------------------------------ |
+| Hotfixes urgentes                  | Fluxo simplificado sem QA gate |
+| Spikes/POCs exploratorios          | Desenvolvimento ad-hoc         |
+| Tasks puramente tecnicas sem story | Tarefas diretas com @dev       |
 
 ---
 
@@ -811,18 +825,18 @@ cat docs/stories/{story-file}.md | grep "status:"
 
 ### Arquivos Relacionados
 
-| Arquivo | Caminho |
-|---------|---------|
+| Arquivo             | Caminho                                                         |
+| ------------------- | --------------------------------------------------------------- |
 | Workflow Definition | `.aiox-core/development/workflows/story-development-cycle.yaml` |
-| SM Agent | `.aiox-core/development/agents/sm.md` |
-| PO Agent | `.aiox-core/development/agents/po.md` |
-| Dev Agent | `.aiox-core/development/agents/dev.md` |
-| QA Agent | `.aiox-core/development/agents/qa.md` |
-| Create Story Task | `.aiox-core/development/tasks/create-next-story.md` |
-| Validate Story Task | `.aiox-core/development/tasks/validate-next-story.md` |
-| Develop Story Task | `.aiox-core/development/tasks/dev-develop-story.md` |
-| QA Gate Task | `.aiox-core/development/tasks/qa-gate.md` |
-| Story Template | `.aiox-core/development/templates/story-tmpl.yaml` |
+| SM Agent            | `.aiox-core/development/agents/sm.md`                           |
+| PO Agent            | `.aiox-core/development/agents/po.md`                           |
+| Dev Agent           | `.aiox-core/development/agents/dev.md`                          |
+| QA Agent            | `.aiox-core/development/agents/qa.md`                           |
+| Create Story Task   | `.aiox-core/development/tasks/create-next-story.md`             |
+| Validate Story Task | `.aiox-core/development/tasks/validate-next-story.md`           |
+| Develop Story Task  | `.aiox-core/development/tasks/dev-develop-story.md`             |
+| QA Gate Task        | `.aiox-core/development/tasks/qa-gate.md`                       |
+| Story Template      | `.aiox-core/development/templates/story-tmpl.yaml`              |
 
 ### Documentacao Adicional
 
@@ -834,10 +848,10 @@ cat docs/stories/{story-file}.md | grep "status:"
 
 ## Changelog
 
-| Versao | Data | Mudancas |
-|--------|------|----------|
-| 1.0 | 2025-01-30 | Versao inicial do workflow |
+| Versao | Data       | Mudancas                   |
+| ------ | ---------- | -------------------------- |
+| 1.0    | 2025-01-30 | Versao inicial do workflow |
 
 ---
 
-*Documentacao gerada automaticamente baseada no arquivo `story-development-cycle.yaml`*
+_Documentacao gerada automaticamente baseada no arquivo `story-development-cycle.yaml`_

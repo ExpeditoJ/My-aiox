@@ -31,10 +31,10 @@ Esta guia te ayuda a actualizar entre versiones de Synkra AIOX.
 ### Rutas de Actualizacion
 
 | Desde Version | A Version | Tipo de Actualizacion | Dificultad |
-|---------------|-----------|----------------------|------------|
-| v4.3.x | v4.2.11 | Menor | Baja |
-| v4.0-4.2 | v4.2.11 | Menor | Media |
-| v3.x | v4.2.11 | Mayor | Alta |
+| ------------- | --------- | --------------------- | ---------- |
+| v4.3.x        | v4.2.11   | Menor                 | Baja       |
+| v4.0-4.2      | v4.2.11   | Menor                 | Media      |
+| v3.x          | v4.2.11   | Mayor                 | Alta       |
 
 ### Requisitos del Sistema
 
@@ -288,20 +288,24 @@ Si encuentras problemas no cubiertos aqui:
 ### Actualizando a v4.2
 
 **Cambios Clave:**
+
 - Capacidades mejoradas del meta-agente
 - Rendimiento mejorado de la capa de memoria
 - Funciones de seguridad actualizadas
 - Proceso de instalacion simplificado
 
 **Cambios que Rompen Compatibilidad:**
+
 - Ninguno (compatible hacia atras con v4.0+)
 
 **Nuevas Funcionalidades:**
+
 - Mejoras del meta-agente `aiox-developer`
 - Asistente de instalacion interactivo
 - Herramientas de monitoreo de rendimiento
 
 **Deprecaciones:**
+
 - Sintaxis de comandos legacy (aun soportada con advertencias)
 
 ---

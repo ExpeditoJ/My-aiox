@@ -47,9 +47,9 @@ agent:
   name: Ajax
   role: Estratega de Contenido
   archetype: Especialista en Contenido Educativo
-  zodiac: Aries        # Creador, iniciador, comunicador
-  color: Azul          # Conocimiento, confianza, claridad
-  element: Aire        # Comunicacion, ideas, claridad
+  zodiac: Aries # Creador, iniciador, comunicador
+  color: Azul # Conocimiento, confianza, claridad
+  element: Aire # Comunicacion, ideas, claridad
 
   personality:
     traits:
@@ -107,11 +107,11 @@ whenNotToUse: |
 
 collaboration:
   works_with:
-    - "@dev: Traduce cambios de codigo a contenido educativo"
-    - "@qa: Valida que los ejemplos de codigo del tutorial funcionen correctamente"
-    - "@architect: Explica la arquitectura del sistema visualmente"
-    - "@pm: Crea documentacion orientada al usuario para funciones"
-    - "@sm: Genera documentacion de sprint y retrospectivas"
+    - '@dev: Traduce cambios de codigo a contenido educativo'
+    - '@qa: Valida que los ejemplos de codigo del tutorial funcionen correctamente'
+    - '@architect: Explica la arquitectura del sistema visualmente'
+    - '@pm: Crea documentacion orientada al usuario para funciones'
+    - '@sm: Genera documentacion de sprint y retrospectivas'
 
   triggers:
     - feature_merged: Auto-detecta cambios de codigo, sugiere actualizaciones de docs
@@ -970,12 +970,13 @@ Metadata:
 
 Ubicacion: `docs/templates/onboarding-guide-template.md`
 
-```markdown
+````markdown
 # [Nombre de Funcion] - Guia de Incorporacion
 
 **Audiencia Objetivo:** [Principiante|Intermedio|Avanzado]
 **Tiempo Estimado:** [X] minutos
 **Prerequisitos:**
+
 - [Prerequisito 1]
 - [Prerequisito 2]
 
@@ -984,6 +985,7 @@ Ubicacion: `docs/templates/onboarding-guide-template.md`
 ## Lo Que Aprenderas
 
 En esta guia, aprenderas como:
+
 - [ ] [Objetivo de aprendizaje 1]
 - [ ] [Objetivo de aprendizaje 2]
 - [ ] [Objetivo de aprendizaje 3]
@@ -997,6 +999,7 @@ En esta guia, aprenderas como:
 ```mermaid
 [Diagrama de flujo de trabajo mostrando flujo de alto nivel]
 ```
+````
 
 ---
 
@@ -1007,16 +1010,19 @@ En esta guia, aprenderas como:
 **Lo que estas haciendo:** [Explicacion breve]
 
 **Comando/Accion:**
+
 ```bash
 [Comando o fragmento de codigo]
 ```
 
 **Salida esperada:**
+
 ```
 [Como se ve el exito]
 ```
 
 **Solucion de problemas:**
+
 - **Error:** [Mensaje de error comun]
   - **Solucion:** [Como arreglarlo]
 
@@ -1039,10 +1045,12 @@ En esta guia, aprenderas como:
 ## Que Sigue?
 
 Ahora que has aprendido [funcion], puedes:
+
 - [Siguiente paso relacionado 1]
 - [Siguiente paso relacionado 2]
 
 **Guias Relacionadas:**
+
 - [Enlace a tutorial relacionado]
 - [Enlace a tema avanzado]
 
@@ -1051,10 +1059,12 @@ Ahora que has aprendido [funcion], puedes:
 ## Solucion de Problemas
 
 **Problema:** [Problema comun]
+
 - **Sintomas:** [Como lo sabes]
 - **Solucion:** [Arreglo paso a paso]
 
 **Problema:** [Otro problema comun]
+
 - **Sintomas:** [Como lo sabes]
 - **Solucion:** [Arreglo paso a paso]
 
@@ -1070,14 +1080,16 @@ Ahora que has aprendido [funcion], puedes:
 ---
 
 **Necesitas Ayuda?**
+
 - Pregunta en [canal Discord/Slack]
 - Email [support@aiox.dev]
 - Reportar errores: [GitHub Issues]
 
 ---
 
-*Ultima actualizacion: [YYYY-MM-DD] | Version: [X.Y.Z]*
-```
+_Ultima actualizacion: [YYYY-MM-DD] | Version: [X.Y.Z]_
+
+````
 
 ---
 
@@ -1138,9 +1150,10 @@ Ubicacion: `docs/templates/agent-documentation-template.md`
 **Ejemplo:**
 ```bash
 @[agent-name] *[nombre-tarea] --input "ejemplo"
-```
+````
 
 **Salida:**
+
 - [Salida 1]
 - [Salida 2]
 
@@ -1172,6 +1185,7 @@ sequenceDiagram
 ## Configuracion
 
 **Modos de Desarrollo:**
+
 - **YOLO:** [Cuando usar, comportamiento]
 - **Interactive:** [Comportamiento por defecto]
 - **Pre-Flight:** [Cuando usar, comportamiento]
@@ -1185,6 +1199,7 @@ sequenceDiagram
 **Tarea:** [Lo que quieres lograr]
 
 **Comando:**
+
 ```bash
 @[agent-name] *[tarea] --[arg] valor
 ```
@@ -1207,19 +1222,22 @@ R: [Respuesta]
 ## Solucion de Problemas
 
 **Problema:** [Problema comun]
+
 - **Solucion:** [Arreglo]
 
 ---
 
 **Necesitas Ayuda?**
+
 - [Documentacion]
 - [Comunidad]
 - [Reportar Problema]
 
 ---
 
-*Ultima actualizacion: [YYYY-MM-DD]*
-```
+_Ultima actualizacion: [YYYY-MM-DD]_
+
+````
 
 ---
 
@@ -1335,7 +1353,7 @@ Al completar esta capacitacion, podras:
 ---
 
 *Ultima actualizacion: [YYYY-MM-DD] | Version: [X.Y.Z]*
-```
+````
 
 ---
 
@@ -1359,6 +1377,7 @@ flowchart TD
 ```
 
 **Notas de Plantilla:**
+
 - Usar paleta de colores AIOX (Azul primario, Purpura secundario, Rosa terciario)
 - Mantener diagramas enfocados (max 10-12 nodos)
 - Usar etiquetas claras y orientadas a la accion
@@ -1424,14 +1443,14 @@ Ubicacion: `docs/templates/qa-report-template.md`
 
 ## Resultados de Validacion
 
-| Verificacion | Estado | Detalles |
-|--------------|--------|----------|
-| Validacion de Enlaces | PASA | Todos los [N] enlaces funcionando |
-| Legibilidad | ADVERTENCIA | 3 docs por encima de puntuacion objetivo |
-| Ejemplos de Codigo | PASA | Toda sintaxis valida |
-| Diagramas Mermaid | FALLA | 1 error de renderizado de diagrama |
-| Cumplimiento de Plantilla | PASA | 100% cumplimiento |
-| Terminologia | ADVERTENCIA | Nombres de agentes inconsistentes (2 instancias) |
+| Verificacion              | Estado      | Detalles                                         |
+| ------------------------- | ----------- | ------------------------------------------------ |
+| Validacion de Enlaces     | PASA        | Todos los [N] enlaces funcionando                |
+| Legibilidad               | ADVERTENCIA | 3 docs por encima de puntuacion objetivo         |
+| Ejemplos de Codigo        | PASA        | Toda sintaxis valida                             |
+| Diagramas Mermaid         | FALLA       | 1 error de renderizado de diagrama               |
+| Cumplimiento de Plantilla | PASA        | 100% cumplimiento                                |
+| Terminologia              | ADVERTENCIA | Nombres de agentes inconsistentes (2 instancias) |
 
 ---
 
@@ -1449,7 +1468,7 @@ Ubicacion: `docs/templates/qa-report-template.md`
 
 ---
 
-*Generado por @docs (Ajax) - Tarea de QA de Documentacion*
+_Generado por @docs (Ajax) - Tarea de QA de Documentacion_
 ```
 
 ---
@@ -1486,6 +1505,7 @@ fi
 ```
 
 **Instalacion:**
+
 ```bash
 chmod +x .git/hooks/post-merge
 ```
@@ -1514,7 +1534,7 @@ jobs:
       - name: Checkout codigo
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Historial completo para diff
+          fetch-depth: 0 # Historial completo para diff
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -1573,7 +1593,7 @@ on:
     paths:
       - 'docs/**/*.md'
   schedule:
-    - cron: '0 0 * * 0'  # Semanal los domingos
+    - cron: '0 0 * * 0' # Semanal los domingos
 
 jobs:
   qa-docs:
@@ -1667,12 +1687,12 @@ jobs:
   destino: .ai/telemetry/docs-metrics.json
   persistido: true
   schema:
-    event: "task_completed"
-    task_name: "create-onboarding-guide"
+    event: 'task_completed'
+    task_name: 'create-onboarding-guide'
     duration_ms: 180000
     cost_usd: 0.50
     quality_score: 85
-    user_satisfaction: 4.5  # escala 1-5
+    user_satisfaction: 4.5 # escala 1-5
 ```
 
 ### Panel de Analiticas (Futuro)
@@ -1680,24 +1700,24 @@ jobs:
 ```yaml
 # .ai/analytics/docs-dashboard.yaml
 dashboard:
-  - metric: "Docs Generados Este Mes"
-    query: "count(tasks) WHERE month = current AND type IN (onboarding, training)"
+  - metric: 'Docs Generados Este Mes'
+    query: 'count(tasks) WHERE month = current AND type IN (onboarding, training)'
     visualization: bar_chart
 
-  - metric: "Tiempo Ahorrado vs Manual"
-    query: "sum(time_saved_hours) WHERE month = current"
+  - metric: 'Tiempo Ahorrado vs Manual'
+    query: 'sum(time_saved_hours) WHERE month = current'
     visualization: line_chart
     target: 100 hrs/ano
 
-  - metric: "Tendencia de Calidad"
-    query: "avg(quality_score) GROUP BY week"
+  - metric: 'Tendencia de Calidad'
+    query: 'avg(quality_score) GROUP BY week'
     visualization: line_chart
-    target: ">= 80"
+    target: '>= 80'
 
-  - metric: "Preparacion Wave 4"
-    query: "count(partner_training_materials) WHERE status = complete"
+  - metric: 'Preparacion Wave 4'
+    query: 'count(partner_training_materials) WHERE status = complete'
     visualization: progress_bar
-    target: 12  # Requisitos Epic 14-16
+    target: 12 # Requisitos Epic 14-16
 ```
 
 ---
@@ -1707,12 +1727,14 @@ dashboard:
 ### Fase 1: Construccion del Agente (Semana 1)
 
 **Dias 1-2: Fundacion del Agente**
+
 - [ ] Crear `squads/aiox/agents/docs/agent.yaml`
 - [ ] Definir persona Ajax (arquetipo Aries, color Azul)
 - [ ] Escribir prompt de sistema base
 - [ ] Configurar patrones de colaboracion con otros agentes
 
 **Dias 3-4: Implementacion de Tareas**
+
 - [ ] Implementar Tarea 1: `create-onboarding-guide.md`
 - [ ] Implementar Tarea 2: `document-agent-workflow.md`
 - [ ] Implementar Tarea 3: `generate-mermaid-diagram.md`
@@ -1721,6 +1743,7 @@ dashboard:
 - [ ] Implementar Tarea 6: `qa-documentation.md`
 
 **Dia 5: Plantillas**
+
 - [ ] Crear `docs/templates/onboarding-guide-template.md`
 - [ ] Crear `docs/templates/agent-documentation-template.md`
 - [ ] Crear `docs/templates/partner-training-template.md`
@@ -1728,6 +1751,7 @@ dashboard:
 - [ ] Crear `docs/templates/qa-report-template.md`
 
 **Dias 6-7: Pruebas y Validacion**
+
 - [ ] Probar @docs con funcion existente (generacion retrospectiva de docs)
 - [ ] Validar generacion de diagramas Mermaid
 - [ ] Probar puntuacion de legibilidad (Flesch-Kincaid)
@@ -1735,6 +1759,7 @@ dashboard:
 - [ ] QA de activacion y desactivacion del agente
 
 **Entregables:**
+
 - Agente @docs completamente funcional
 - 6 tareas listas para produccion (cumplimiento WORKFLOW-V3.0)
 - 5 plantillas de contenido
@@ -1747,24 +1772,28 @@ dashboard:
 ### Fase 2: Preparacion Wave 4 (Semana 2)
 
 **Dias 8-10: Materiales de Capacitacion de Socios (Epic 14)**
+
 - [ ] Generar guia de incorporacion de socios fundadores
 - [ ] Crear tutorial de creacion de squad
 - [ ] Desarrollar plantillas de check-in semanal
 - [ ] Construir playbook de exito de socios
 
 **Dias 11-12: Documentacion Partner OS (Epic 15)**
+
 - [ ] Escribir guia de usuario de Partner OS
 - [ ] Generar guiones de tutoriales en video
 - [ ] Crear FAQ exhaustivo
 - [ ] Desarrollar guia de solucion de problemas
 
 **Dias 13-14: Escalar a 100 Socios (Epic 16)**
+
 - [ ] Crear plantilla de caso de estudio de socio destacado
 - [ ] Generar estructura de materiales de certificacion
 - [ ] Construir esquema de curriculum de capacitacion
 - [ ] Desarrollar guia de mejores practicas para socios
 
 **Entregables:**
+
 - Paquete de documentacion Wave 4 completo
 - 12+ materiales de capacitacion
 - Plantillas estandarizadas para futuros socios
@@ -1777,6 +1806,7 @@ dashboard:
 ### Fase 3: Integracion y Automatizacion (Semana 3)
 
 **Dias 15-17: Git Hooks y CI/CD**
+
 - [ ] Instalar git hook post-merge
 - [ ] Configurar GitHub Actions: `docs-update-check.yml`
 - [ ] Configurar GitHub Actions: `docs-qa-validation.yml`
@@ -1784,18 +1814,21 @@ dashboard:
 - [ ] Verificar integracion de comentarios en PR
 
 **Dias 18-19: Telemetria y Monitoreo**
+
 - [ ] Implementar recoleccion de telemetria
 - [ ] Configurar panel de metricas
 - [ ] Configurar notificaciones de Slack
 - [ ] Crear automatizacion de reporte semanal
 
 **Dias 20-21: Documentacion y Capacitacion**
+
 - [ ] Documentar el agente @docs mismo (meta-documentacion)
 - [ ] Escribir guia de usuario para @docs
 - [ ] Crear capacitacion interna para equipo
 - [ ] Grabar video demo
 
 **Entregables:**
+
 - Flujos de trabajo de documentacion automatizados
 - Infraestructura de telemetria
 - Documentacion completa de @docs
@@ -1808,24 +1841,28 @@ dashboard:
 ### Fase 4: Validacion e Iteracion (Semanas 4-6)
 
 **Semana 4: Recolectar Metricas**
+
 - [ ] Monitorear conteo de ejecucion de tareas
 - [ ] Rastrear ahorros de tiempo
 - [ ] Recolectar retroalimentacion de usuarios
 - [ ] Identificar puntos de dolor
 
 **Semana 5: Iterar**
+
 - [ ] Refinar plantillas basado en retroalimentacion
 - [ ] Mejorar puntuacion de legibilidad
 - [ ] Mejorar calidad de diagramas Mermaid
 - [ ] Optimizar rendimiento de tareas
 
 **Semana 6: Validacion Final**
+
 - [ ] Validar contra metricas de exito
 - [ ] Preparar para lanzamiento a produccion
 - [ ] Documentar lecciones aprendidas
 - [ ] Planear proximas mejoras
 
 **Entregables:**
+
 - Agente validado listo para produccion
 - Reporte de iteracion con mejoras
 - Documentacion actualizada
@@ -1878,6 +1915,7 @@ dashboard:
 - [ ] **Validacion ROI:** En camino para proyeccion de +$83K a 3 anos
 
 **Criterios de Decision:**
+
 - **ADELANTE:** ≥80% metricas cumplidas → Continuar a lanzamiento Wave 4
 - **ITERAR:** 60-79% → Refinar y re-validar en 30 dias
 - **NO ADELANTE:** <60% → Revisar diseno del agente
@@ -1922,6 +1960,7 @@ dashboard:
 **Impacto:** Alto
 
 **Estrategias de Mitigacion:**
+
 1. **Revision Humana Requerida:** Por defecto modo `interactive` para todos los docs de produccion
 2. **Puntuacion de Calidad:** Exigir Flesch-Kincaid < 10, completitud > 80%
 3. **Adherencia a Plantillas:** Validar estructura contra plantillas
@@ -1937,6 +1976,7 @@ dashboard:
 **Impacto:** Bajo (molesto pero no bloqueante)
 
 **Estrategias de Mitigacion:**
+
 1. **Analisis de Git Diff:** Solo sugerir actualizaciones para cambios de codigo significativos
 2. **Umbral de Confianza:** Solo auto-sugerir si confianza > 0.7
 3. **Capacitacion de Usuarios:** Ensenar a usuarios a ignorar sugerencias irrelevantes
@@ -1952,6 +1992,7 @@ dashboard:
 **Impacto:** Critico
 
 **Estrategias de Mitigacion:**
+
 1. **Investigacion de Usuarios:** Entrevistar socios fundadores (Epic 14) antes de generar materiales
 2. **Retroalimentacion Iterativa:** Prueba A/B de diferentes formatos de tutoriales
 3. **Modo Pre-flight:** Materiales de socios requieren aprobacion PM/SM antes de publicacion
@@ -1967,6 +2008,7 @@ dashboard:
 **Impacto:** Medio
 
 **Estrategias de Mitigacion:**
+
 1. **Deteccion Automatizada de Obsolescencia:** Git hooks detectan cambios de codigo
 2. **Revision Periodica:** Tarea QA mensual marca contenido desactualizado
 3. **Rastreo de Versiones:** Docs tienen numeros de version atados a releases de codigo
@@ -1982,6 +2024,7 @@ dashboard:
 **Impacto:** Bajo ($0.50/tarea es minimo)
 
 **Estrategias de Mitigacion:**
+
 1. **Caching:** Reusar generacion de contenido similar (cache_ttl: 7d)
 2. **Procesamiento por Lotes:** Generar multiples docs en una sola llamada API
 3. **Monitoreo de Costos:** Alertas de panel si costo mensual > $100
@@ -2051,11 +2094,13 @@ dashboard:
 ### Referencias Internas
 
 **Documentacion AIOX:**
+
 - Epics Wave 4: `docs/epics/epic-14-partners-onboarding.md`, `epic-15-partner-os-mvp.md`, `epic-16-scale-100-partners.md`
 - Arquitectura de agentes: `docs/architecture/agent-system.md`
 - Estructura de tareas: `docs/WORKFLOW-COMPLETE-CONSOLIDATED-V3.md`
 
 **Documentos de Decision:**
+
 - Rechazo de @security: `docs/decisions/security-agent-vs-security-module-decision.md`
 - Aprobacion de @docs: `docs/decisions/docs-agent-creation-decision.md`
 
@@ -2074,6 +2119,7 @@ Esta especificacion sigue la estructura **WORKFLOW-V3.0** para todas las tareas:
 - **Metadata** (Story, epic, version, tags) - Rastreado
 
 **Caracteristicas Exclusivas de MMOS (NO USADAS):**
+
 - `responsavel_type: Clone` - No aplicable (agente open-source)
 - `responsavel_type: Worker/Humanos` - No aplicable
 
@@ -2083,21 +2129,21 @@ Esta especificacion sigue la estructura **WORKFLOW-V3.0** para todas las tareas:
 
 Con la adicion de @docs (Ajax), AIOX ahora tiene **13 agentes nombrados**:
 
-| # | Agente | Nombre | Rol | Arquetipo | Color |
-|---|--------|--------|-----|-----------|-------|
-| 1 | @dev | Dex | Constructor | Acuario | Cian |
-| 2 | @qa | Quinn | Guardian | Virgo | Verde |
-| 3 | @po | Pax | Equilibrador | Libra | Amarillo |
-| 4 | @pm | Morgan | Estratega | Capricornio | Gris |
-| 5 | @sm | River | Facilitador | Piscis | Cian |
-| 6 | @architect | Aria | Visionario | Sagitario | Magenta |
-| 7 | @analyst | Atlas | Decodificador | Escorpio | Rojo |
-| 8 | @ux-design-expert | Uma | Empatizador | Cancer | Verde |
-| 9 | @data-engineer | Dara | Sabio | Geminis | Amarillo |
-| 10 | @devops | Gage | Automatizador | Tauro | Verde |
-| 11 | **@docs** | **Ajax** | **Estratega de Contenido** | **Aries** | **Azul** |
-| 12 | ~~@security~~ | ~~Apex~~ | ~~Conductor~~ | ~~Leo~~ | ~~Rojo~~ (CANCELADO) |
-| 13 | @aiox-master | Orion | Comandante | Aries | Cian |
+| #   | Agente            | Nombre   | Rol                        | Arquetipo   | Color                |
+| --- | ----------------- | -------- | -------------------------- | ----------- | -------------------- |
+| 1   | @dev              | Dex      | Constructor                | Acuario     | Cian                 |
+| 2   | @qa               | Quinn    | Guardian                   | Virgo       | Verde                |
+| 3   | @po               | Pax      | Equilibrador               | Libra       | Amarillo             |
+| 4   | @pm               | Morgan   | Estratega                  | Capricornio | Gris                 |
+| 5   | @sm               | River    | Facilitador                | Piscis      | Cian                 |
+| 6   | @architect        | Aria     | Visionario                 | Sagitario   | Magenta              |
+| 7   | @analyst          | Atlas    | Decodificador              | Escorpio    | Rojo                 |
+| 8   | @ux-design-expert | Uma      | Empatizador                | Cancer      | Verde                |
+| 9   | @data-engineer    | Dara     | Sabio                      | Geminis     | Amarillo             |
+| 10  | @devops           | Gage     | Automatizador              | Tauro       | Verde                |
+| 11  | **@docs**         | **Ajax** | **Estratega de Contenido** | **Aries**   | **Azul**             |
+| 12  | ~~@security~~     | ~~Apex~~ | ~~Conductor~~              | ~~Leo~~     | ~~Rojo~~ (CANCELADO) |
+| 13  | @aiox-master      | Orion    | Comandante                 | Aries       | Cian                 |
 
 **Estado:** 13/13 agentes definidos (100% completo para Wave 1)
 
@@ -2134,6 +2180,7 @@ Con la adicion de @docs (Ajax), AIOX ahora tiene **13 agentes nombrados**:
 **Enfoque de Implementacion:** Especificacion tecnica primero, entrevista de usuario despues
 
 **Compromiso de Linea de Tiempo:**
+
 - Semana 1: Construccion del agente completa
 - Semana 2: Materiales Wave 4 listos
 - Semana 3: Automatizacion integrada
@@ -2142,6 +2189,7 @@ Con la adicion de @docs (Ajax), AIOX ahora tiene **13 agentes nombrados**:
 **Revision con Usuario:** Despues de completar especificacion, conducir entrevista de validacion
 
 **Siguientes Pasos:**
+
 1. Especificacion tecnica completa (este documento)
 2. Entrevista de validacion con usuario
 3. Comenzar implementacion (Fase 1)
@@ -2156,6 +2204,7 @@ Con la adicion de @docs (Ajax), AIOX ahora tiene **13 agentes nombrados**:
 
 **Ubicacion del Archivo:** `docs/specifications/docs-agent-technical-specification.md`
 **Archivos Relacionados:**
+
 - Decision: `docs/decisions/docs-agent-creation-decision.md`
 - Epic: `docs/epics/epic-6.1-agent-identity-system.md`
 - Story: Story 6.1.3 (actualizada para crear solo @docs, cancelar @security)

@@ -47,4 +47,4 @@ The **QA Loop Workflow** defines the quality assurance cycle within AIOX develop
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/qa-loop-workflow.md).*
+_For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/qa-loop-workflow.md)._

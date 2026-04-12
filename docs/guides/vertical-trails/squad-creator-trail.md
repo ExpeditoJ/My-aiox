@@ -25,6 +25,7 @@ OUTPUT: Squad criado + Validação verde + Pronto para uso
 ### Cenário
 
 Você precisa criar um squad para automação de marketing com:
+
 1. Agente de criação de conteúdo
 2. Agente de análise de métricas
 3. Tasks para geração de posts e relatórios
@@ -49,6 +50,7 @@ ls squads/  # ou será criado automaticamente
 ```
 
 **Output esperado:**
+
 ```
 -- Craft aqui! Squad Creation & Management Specialist.
 Pronto para criar, validar e gerenciar squads.
@@ -69,6 +71,7 @@ Quick commands:
 ```
 
 **Interação:**
+
 ```
 Craft: Qual domínio do squad?
 Você: Marketing automation
@@ -88,6 +91,7 @@ Você: APIs de redes sociais (Twitter, LinkedIn, Instagram)
 ```
 
 **Output esperado:**
+
 ```
 📐 Generating Blueprint...
 
@@ -129,6 +133,7 @@ Ready to create? Run:
 ```
 
 **Output esperado:**
+
 ```
 🏗️ Creating Squad: marketing-automation
 
@@ -171,6 +176,7 @@ Ready to create? Run:
 ```
 
 **Output esperado:**
+
 ```
 ✅ Validating Squad: marketing-automation
 
@@ -223,6 +229,7 @@ Ready to create? Run:
 ```
 
 **Output esperado:**
+
 ```
 📦 Local Squads (./squads/)
 
@@ -255,20 +262,21 @@ Agora você pode ativar os agentes do squad:
 
 ## Checklist de Validação
 
-| Step | Comando | Output Esperado | ✓ |
-|------|---------|-----------------|---|
-| 1 | `@squad-creator` | Greeting de Craft | [ ] |
-| 2 | `*design-squad` | Blueprint criado | [ ] |
-| 3 | `*create-squad --from-design` | "Squad created" | [ ] |
-| 4 | `*validate-squad` | "VALID" | [ ] |
-| 5 | `*list-squads` | Squad listado | [ ] |
-| 6 | Ativar agente | Agente responde | [ ] |
+| Step | Comando                       | Output Esperado   | ✓   |
+| ---- | ----------------------------- | ----------------- | --- |
+| 1    | `@squad-creator`              | Greeting de Craft | [ ] |
+| 2    | `*design-squad`               | Blueprint criado  | [ ] |
+| 3    | `*create-squad --from-design` | "Squad created"   | [ ] |
+| 4    | `*validate-squad`             | "VALID"           | [ ] |
+| 5    | `*list-squads`                | Squad listado     | [ ] |
+| 6    | Ativar agente                 | Agente responde   | [ ] |
 
 ---
 
 ## Arquivos Gerados
 
 ### squad.yaml (manifest)
+
 ```yaml
 name: marketing-automation
 version: 1.0.0
@@ -276,7 +284,7 @@ short-title: Marketing Automation Squad
 description: Automação de criação de conteúdo e análise de métricas
 
 aiox:
-  minVersion: "4.0.0"
+  minVersion: '4.0.0'
   type: squad
 
 components:
@@ -296,6 +304,7 @@ config:
 ```
 
 ### agents/content-creator.md
+
 ```markdown
 ---
 agent:
@@ -315,6 +324,7 @@ Especialista em criação de conteúdo para redes sociais...
 ```
 
 ### tasks/generate-social-post.md
+
 ```markdown
 ---
 task: generate-social-post
@@ -326,16 +336,19 @@ atomic_layer: execution
 # Generate Social Post
 
 ## Entrada
+
 - Tema/tópico do post
 - Plataforma alvo (Twitter, LinkedIn, Instagram)
 - Tom desejado (formal, casual, técnico)
 
 ## Saida
+
 - Post formatado para a plataforma
 - Sugestões de hashtags
 - Horário sugerido de publicação
 
 ## Checklist
+
 - [ ] Post dentro do limite de caracteres
 - [ ] Hashtags relevantes incluídas
 - [ ] CTA claro
@@ -347,24 +360,28 @@ atomic_layer: execution
 ## Variações da Trilha
 
 ### Variação A: Criar sem Design
+
 ```bash
 *create-squad my-squad --template basic
 # Cria estrutura mínima para customizar manualmente
 ```
 
 ### Variação B: ETL Squad
+
 ```bash
 *create-squad data-pipeline --template etl
 # Cria squad com extractor, transformer, loader
 ```
 
 ### Variação C: Migrar Squad v1 para v2
+
 ```bash
 *migrate-to-v2 old-squad
 # Adiciona orquestração e skills
 ```
 
 ### Variação D: Gerar Skills de Conhecimento
+
 ```bash
 *generate-skills marketing-automation
 # Extrai skills de conhecimento do squad
@@ -374,23 +391,24 @@ atomic_layer: execution
 
 ## Comandos Relacionados
 
-| Comando | Uso |
-|---------|-----|
-| `*design-squad` | Analisar docs e gerar blueprint |
-| `*create-squad` | Criar novo squad |
-| `*validate-squad` | Validar contra schema |
-| `*list-squads` | Listar squads locais |
-| `*analyze-squad` | Sugerir melhorias |
-| `*extend-squad` | Adicionar componentes |
-| `*migrate-to-v2` | Migrar para formato v2 |
-| `*generate-skills` | Gerar skills de conhecimento |
-| `*generate-workflow` | Gerar workflow de orquestração |
+| Comando              | Uso                             |
+| -------------------- | ------------------------------- |
+| `*design-squad`      | Analisar docs e gerar blueprint |
+| `*create-squad`      | Criar novo squad                |
+| `*validate-squad`    | Validar contra schema           |
+| `*list-squads`       | Listar squads locais            |
+| `*analyze-squad`     | Sugerir melhorias               |
+| `*extend-squad`      | Adicionar componentes           |
+| `*migrate-to-v2`     | Migrar para formato v2          |
+| `*generate-skills`   | Gerar skills de conhecimento    |
+| `*generate-workflow` | Gerar workflow de orquestração  |
 
 ---
 
 ## Troubleshooting
 
 ### Validação falha com SCHEMA_ERROR
+
 ```bash
 # Verificar squad.yaml
 cat squads/my-squad/squad.yaml
@@ -399,12 +417,14 @@ cat squads/my-squad/squad.yaml
 ```
 
 ### Task falha validação
+
 ```bash
 # Verificar campos obrigatórios
 # task, responsavel, responsavel_type, atomic_layer, Entrada, Saida, Checklist
 ```
 
 ### Blueprint não gerou agentes
+
 ```bash
 # Fornecer descrição mais detalhada
 *design-squad --domain marketing --verbose
@@ -412,5 +432,5 @@ cat squads/my-squad/squad.yaml
 
 ---
 
-*Trilha criada para Story AIOX-DIFF-4.3.1*
-*-- Craft, sempre estruturando*
+_Trilha criada para Story AIOX-DIFF-4.3.1_
+_-- Craft, sempre estruturando_

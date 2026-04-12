@@ -25,11 +25,11 @@ This directory contains comprehensive installation and setup documentation for S
 
 ### General Documentation
 
-| Document                                    | Description                 | Audience  |
-| ------------------------------------------- | --------------------------- | --------- |
+| Document                                | Description                 | Audience  |
+| --------------------------------------- | --------------------------- | --------- |
 | [Quick Start (v4)](./v4-quick-start.md) | Fast setup for new users    | Beginners |
-| [Troubleshooting](./troubleshooting.md)     | Common issues and solutions | All users |
-| [FAQ](./faq.md)                             | Frequently asked questions  | All users |
+| [Troubleshooting](./troubleshooting.md) | Common issues and solutions | All users |
+| [FAQ](./faq.md)                         | Frequently asked questions  | All users |
 
 ---
 

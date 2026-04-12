@@ -19,13 +19,13 @@
 
 v4.2 模块化架构解决了 v2.0 扁平结构的几个挑战：
 
-| 挑战 | v2.0 问题 | v4.2 解决方案 |
-| --- | --- | --- |
-| **发现** | 200+ 文件混乱在目录中 | 按责任组织 |
-| **维护** | 所有权不清楚 | 模块边界定义所有权 |
-| **依赖** | 隐含的、循环的 | 显式的、单向的 |
-| **可扩展性** | 总是加载所有文件 | 按模块延迟加载 |
-| **测试** | 仅完整系统测试 | 模块级隔离 |
+| 挑战         | v2.0 问题             | v4.2 解决方案      |
+| ------------ | --------------------- | ------------------ |
+| **发现**     | 200+ 文件混乱在目录中 | 按责任组织         |
+| **维护**     | 所有权不清楚          | 模块边界定义所有权 |
+| **依赖**     | 隐含的、循环的        | 显式的、单向的     |
+| **可扩展性** | 总是加载所有文件      | 按模块延迟加载     |
+| **测试**     | 仅完整系统测试        | 模块级隔离         |
 
 ### 设计原则
 
@@ -109,19 +109,19 @@ graph TB
 
 ### 内容
 
-| 目录 | 内容 | 描述 |
-| --- | --- | --- |
-| `config/` | `config-cache.js`、`config-loader.js` | 带 TTL 缓存的配置管理 |
-| `data/` | `aiox-kb.md`、`workflow-patterns.yaml` | 框架知识库 |
-| `docs/` | 内部文档 | 组件指南、故障排除 |
-| `elicitation/` | `elicitation-engine.js`、`session-manager.js` | 交互式提示系统 |
-| `session/` | `context-detector.js`、`context-loader.js` | 会话上下文管理 |
-| `utils/` | `output-formatter.js`、`yaml-validator.js` | 常用实用程序 |
-| `registry/` | `service-registry.json`、`registry-loader.js` | 服务发现系统 |
-| `quality-gates/` | `quality-gate-manager.js`、层配置 | 3 层质量门槛系统 |
-| `mcp/` | `global-config-manager.js`、`os-detector.js` | 全局 MCP 配置 |
-| `manifest/` | `manifest-generator.js`、`manifest-validator.js` | 项目清单系统 |
-| `migration/` | `migration-config.yaml`、`module-mapping.yaml` | 迁移配置 |
+| 目录             | 内容                                             | 描述                  |
+| ---------------- | ------------------------------------------------ | --------------------- |
+| `config/`        | `config-cache.js`、`config-loader.js`            | 带 TTL 缓存的配置管理 |
+| `data/`          | `aiox-kb.md`、`workflow-patterns.yaml`           | 框架知识库            |
+| `docs/`          | 内部文档                                         | 组件指南、故障排除    |
+| `elicitation/`   | `elicitation-engine.js`、`session-manager.js`    | 交互式提示系统        |
+| `session/`       | `context-detector.js`、`context-loader.js`       | 会话上下文管理        |
+| `utils/`         | `output-formatter.js`、`yaml-validator.js`       | 常用实用程序          |
+| `registry/`      | `service-registry.json`、`registry-loader.js`    | 服务发现系统          |
+| `quality-gates/` | `quality-gate-manager.js`、层配置                | 3 层质量门槛系统      |
+| `mcp/`           | `global-config-manager.js`、`os-detector.js`     | 全局 MCP 配置         |
+| `manifest/`      | `manifest-generator.js`、`manifest-validator.js` | 项目清单系统          |
+| `migration/`     | `migration-config.yaml`、`module-mapping.yaml`   | 迁移配置              |
 
 ### 主要 API
 
@@ -156,39 +156,39 @@ const QualityGateManager = require('./.aiox-core/core/quality-gates/quality-gate
 
 ### 内容
 
-| 目录 | 内容 | 描述 |
-| --- | --- | --- |
-| `agents/` | 11 个代理定义 | `dev.md`、`qa.md`、`architect.md` 等 |
-| `agent-teams/` | 5 个团队配置 | 预定义代理组 |
-| `tasks/` | 115+ 任务定义 | 可执行任务工作流 |
-| `workflows/` | 7 个工作流定义 | 多步开发工作流 |
-| `scripts/` | 24 个脚本 | 代理支持实用程序 |
+| 目录           | 内容           | 描述                                 |
+| -------------- | -------------- | ------------------------------------ |
+| `agents/`      | 11 个代理定义  | `dev.md`、`qa.md`、`architect.md` 等 |
+| `agent-teams/` | 5 个团队配置   | 预定义代理组                         |
+| `tasks/`       | 115+ 任务定义  | 可执行任务工作流                     |
+| `workflows/`   | 7 个工作流定义 | 多步开发工作流                       |
+| `scripts/`     | 24 个脚本      | 代理支持实用程序                     |
 
 ### 代理
 
-| 代理 | ID | 责任 |
-| --- | --- | --- |
-| AIOX 主代理 | `aiox-master` | 框架编排 |
-| 开发者 | `dev` | 代码实现 |
-| QA | `qa` | 质量保证 |
-| 架构师 | `architect` | 技术架构 |
-| 产品经理 | `po` | 产品待办 |
-| 产品经理 | `pm` | 产品策略 |
-| Scrum 主管 | `sm` | 过程协调 |
-| 分析师 | `analyst` | 业务分析 |
-| 数据工程师 | `data-engineer` | 数据工程 |
-| DevOps | `devops` | CI/CD 和操作 |
-| UX 专家 | `ux-design-expert` | 用户体验 |
+| 代理        | ID                 | 责任         |
+| ----------- | ------------------ | ------------ |
+| AIOX 主代理 | `aiox-master`      | 框架编排     |
+| 开发者      | `dev`              | 代码实现     |
+| QA          | `qa`               | 质量保证     |
+| 架构师      | `architect`        | 技术架构     |
+| 产品经理    | `po`               | 产品待办     |
+| 产品经理    | `pm`               | 产品策略     |
+| Scrum 主管  | `sm`               | 过程协调     |
+| 分析师      | `analyst`          | 业务分析     |
+| 数据工程师  | `data-engineer`    | 数据工程     |
+| DevOps      | `devops`           | CI/CD 和操作 |
+| UX 专家     | `ux-design-expert` | 用户体验     |
 
 ### 代理团队
 
-| 团队 | 代理 | 用例 |
-| --- | --- | --- |
-| `team-all` | 全部 11 个代理 | 完整开发团队 |
-| `team-fullstack` | dev、qa、architect、devops | 全栈项目 |
-| `team-ide-minimal` | dev、qa | 最小 IDE 设置 |
-| `team-no-ui` | dev、architect、devops、data-engineer | 后端/API 项目 |
-| `team-qa-focused` | qa、dev、architect | 质量关注工作 |
+| 团队               | 代理                                  | 用例          |
+| ------------------ | ------------------------------------- | ------------- |
+| `team-all`         | 全部 11 个代理                        | 完整开发团队  |
+| `team-fullstack`   | dev、qa、architect、devops            | 全栈项目      |
+| `team-ide-minimal` | dev、qa                               | 最小 IDE 设置 |
+| `team-no-ui`       | dev、architect、devops、data-engineer | 后端/API 项目 |
+| `team-qa-focused`  | qa、dev、architect                    | 质量关注工作  |
 
 ### 依赖项
 
@@ -203,21 +203,21 @@ const QualityGateManager = require('./.aiox-core/core/quality-gates/quality-gate
 
 ### 内容
 
-| 目录 | 内容 | 描述 |
-| --- | --- | --- |
-| `templates/` | 52+ 模板 | PRD、故事、架构、IDE 规则 |
-| `checklists/` | 11 个检查表 | 质量验证检查表 |
-| `data/` | 6 个数据文件 | PM 知识库和参考 |
+| 目录          | 内容         | 描述                      |
+| ------------- | ------------ | ------------------------- |
+| `templates/`  | 52+ 模板     | PRD、故事、架构、IDE 规则 |
+| `checklists/` | 11 个检查表  | 质量验证检查表            |
+| `data/`       | 6 个数据文件 | PM 知识库和参考           |
 
 ### 主要模板
 
-| 模板 | 目的 |
-| --- | --- |
-| `story-tmpl.yaml` | v2.0 故事模板 |
-| `prd-tmpl.yaml` | 产品需求文档 |
-| `architecture-tmpl.yaml` | 架构文档 |
-| `qa-gate-tmpl.yaml` | 质量门槛模板 |
-| `ide-rules/` | 9 个 IDE 特定规则文件 |
+| 模板                     | 目的                  |
+| ------------------------ | --------------------- |
+| `story-tmpl.yaml`        | v2.0 故事模板         |
+| `prd-tmpl.yaml`          | 产品需求文档          |
+| `architecture-tmpl.yaml` | 架构文档              |
+| `qa-gate-tmpl.yaml`      | 质量门槛模板          |
+| `ide-rules/`             | 9 个 IDE 特定规则文件 |
 
 ### 检查表
 
@@ -242,22 +242,22 @@ const QualityGateManager = require('./.aiox-core/core/quality-gates/quality-gate
 
 ### 内容
 
-| 目录 | 内容 | 描述 |
-| --- | --- | --- |
-| `scripts/` | 55+ 脚本 | 基础设施实用程序 |
-| `tools/` | 工具配置 | CLI、MCP、本地工具配置 |
+| 目录            | 内容      | 描述                         |
+| --------------- | --------- | ---------------------------- |
+| `scripts/`      | 55+ 脚本  | 基础设施实用程序             |
+| `tools/`        | 工具配置  | CLI、MCP、本地工具配置       |
 | `integrations/` | PM 适配器 | ClickUp、Jira、GitHub 适配器 |
-| `tests/` | 模块测试 | 基础设施验证 |
+| `tests/`        | 模块测试  | 基础设施验证                 |
 
 ### 主要脚本
 
-| 脚本 | 目的 |
-| --- | --- |
-| `git-wrapper.js` | Git 操作包装器 |
-| `backup-manager.js` | 备份/恢复系统 |
-| `template-engine.js` | 模板处理 |
-| `security-checker.js` | 安全验证 |
-| `performance-analyzer.js` | 性能分析 |
+| 脚本                      | 目的           |
+| ------------------------- | -------------- |
+| `git-wrapper.js`          | Git 操作包装器 |
+| `backup-manager.js`       | 备份/恢复系统  |
+| `template-engine.js`      | 模板处理       |
+| `security-checker.js`     | 安全验证       |
+| `performance-analyzer.js` | 性能分析       |
 
 ### 工具配置
 
@@ -327,26 +327,26 @@ graph LR
 
 ### 命名约定
 
-| 类型 | 约定 | 示例 |
-| --- | --- | --- |
-| 脚本 | `kebab-case.js` | `config-loader.js` |
-| 代理 | `agent-id.md` | `dev.md`、`qa.md` |
-| 任务 | `agent-prefix-task-name.md` | `dev-develop-story.md` |
-| 模板 | `name-tmpl.yaml` | `story-tmpl.yaml` |
-| 检查表 | `name-checklist.md` | `pre-push-checklist.md` |
+| 类型   | 约定                        | 示例                    |
+| ------ | --------------------------- | ----------------------- |
+| 脚本   | `kebab-case.js`             | `config-loader.js`      |
+| 代理   | `agent-id.md`               | `dev.md`、`qa.md`       |
+| 任务   | `agent-prefix-task-name.md` | `dev-develop-story.md`  |
+| 模板   | `name-tmpl.yaml`            | `story-tmpl.yaml`       |
+| 检查表 | `name-checklist.md`         | `pre-push-checklist.md` |
 
 ### 添加新文件
 
-| 文件类型 | 位置 | 模块 |
-| --- | --- | --- |
-| 代理定义 | `development/agents/` | 开发 |
-| 任务定义 | `development/tasks/` | 开发 |
-| 工作流 | `development/workflows/` | 开发 |
-| 模板 | `product/templates/` | 产品 |
-| 检查表 | `product/checklists/` | 产品 |
-| 实用脚本 | `infrastructure/scripts/` | 基础设施 |
-| 配置加载器 | `core/config/` | 核心 |
-| 注册表 | `core/registry/` | 核心 |
+| 文件类型   | 位置                      | 模块     |
+| ---------- | ------------------------- | -------- |
+| 代理定义   | `development/agents/`     | 开发     |
+| 任务定义   | `development/tasks/`      | 开发     |
+| 工作流     | `development/workflows/`  | 开发     |
+| 模板       | `product/templates/`      | 产品     |
+| 检查表     | `product/checklists/`     | 产品     |
+| 实用脚本   | `infrastructure/scripts/` | 基础设施 |
+| 配置加载器 | `core/config/`            | 核心     |
+| 注册表     | `core/registry/`          | 核心     |
 
 ---
 

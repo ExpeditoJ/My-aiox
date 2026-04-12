@@ -76,6 +76,7 @@ cd /path/to/your/project
 ```
 
 O diretório do seu projeto deve conter:
+
 - Arquivos de gerenciamento de pacotes (`package.json`, etc.)
 - Diretórios de código-fonte
 
@@ -88,6 +89,7 @@ npx aiox-core install
 ### Etapa 3: Siga os Prompts Interativos
 
 O instalador solicitará que você:
+
 1. Confirme o diretório de instalação (deve ser o diretório atual)
 2. Selecione os componentes para instalar (Core + Squads)
 3. Configure as integrações com a IDE
@@ -98,6 +100,7 @@ O instalador solicitará que você:
 ### macOS
 
 Os diretórios temporários do NPX normalmente aparecem em:
+
 - `/private/var/folders/[hash]/T/npx-[random]/`
 - `/Users/[user]/.npm/_npx/[hash]/`
 
@@ -106,12 +109,14 @@ O Synkra AIOX detecta esses padrões e previne instalação incorreta.
 ### Linux
 
 Padrões de diretório temporário similares:
+
 - `/tmp/npx-[random]/`
 - `~/.npm/_npx/[hash]/`
 
 ### Windows
 
 Usuários do Windows normalmente não encontram esse problema, mas padrões de detecção similares se aplicam:
+
 - `%TEMP%\npx-[random]\`
 - `%APPDATA%\npm-cache\_npx\`
 
@@ -122,6 +127,7 @@ Usuários do Windows normalmente não encontram esse problema, mas padrões de d
 **Causa**: Você está executando o instalador a partir do seu diretório home ou outro local que não é um projeto.
 
 **Solução**:
+
 1. Navegue para o diretório real do seu projeto:
    ```bash
    cd /path/to/your/actual/project
@@ -134,6 +140,7 @@ Usuários do Windows normalmente não encontram esse problema, mas padrões de d
 ### Diretório de Instalação Errado
 
 Se o instalador solicitar um caminho de diretório:
+
 - Use `.` (diretório atual) se você já está no seu projeto
 - Forneça o caminho absoluto para o seu projeto: `/Users/you/projects/my-app`
 - Não use `~` ou caminhos relativos que apontem para fora do seu projeto
@@ -141,8 +148,9 @@ Se o instalador solicitar um caminho de diretório:
 ### IDE Não Detectada
 
 Se sua IDE não for detectada após a instalação:
+
 1. Verifique se você executou o instalador a partir do diretório correto do projeto
-3. Execute o instalador novamente e selecione sua IDE manualmente
+2. Execute o instalador novamente e selecione sua IDE manualmente
 
 ## Alternativa: Instalação Global
 
@@ -174,14 +182,15 @@ O Synkra AIOX v4.31.1+ implementa detecção em duas camadas:
 
 ```javascript
 const patterns = [
-  /\/private\/var\/folders\/.*\/npx-/,  // temp do macOS
-  /\/\.npm\/_npx\//                      // cache do NPX
+  /\/private\/var\/folders\/.*\/npx-/, // temp do macOS
+  /\/\.npm\/_npx\//, // cache do NPX
 ];
 ```
 
 ## Suporte
 
 Para ajuda adicional:
+
 - GitHub Issues: https://github.com/SynkraAIinc/aiox-core/issues
 - Documentação: https://aiox-core.dev/docs
 - Referência da Story: 2.3 - NPX Installation Context Detection

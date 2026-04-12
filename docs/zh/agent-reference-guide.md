@@ -20,17 +20,17 @@
 
 ## 快速参考
 
-| 阶段 | 代理名称                | 命令                    | 工作流中的角色                               | 真实性评分 |
-| ---- | ----------------------- | ----------------------- | -------------------------------------------- | ---------- |
-| 1    | process-mapper-pv       | `/process-mapper`       | 流程发现和分析                               | 0.90       |
-| 2    | process-architect-pv    | `/process-architect`    | 系统架构设计                                 | 0.85       |
-| 3    | executor-designer-pv    | `/executor-designer`    | 执行者分配和角色定义                         | 0.88       |
-| 4    | workflow-designer-pv    | `/workflow-designer`    | 流程优化和工作流自动化                       | 0.85       |
-| 5    | qa-validator-pv         | `/qa-validator`         | 质量保证和验证                               | 0.95       |
-| 6    | clickup-engineer-pv     | `/clickup-engineer`     | ClickUp 中的任务创建                         | 0.80       |
-| 7    | agent-creator-pv        | `/agent-creator`        | 人工智能代理架构和角色设计                   | 0.80       |
-| 8    | validation-reviewer-pv  | `/validation-reviewer`  | 最终质量门审查和批准                         | 0.90       |
-| 9    | documentation-writer-pv | `/documentation-writer` | 技术文档和知识架构                           | 0.85       |
+| 阶段 | 代理名称                | 命令                    | 工作流中的角色             | 真实性评分 |
+| ---- | ----------------------- | ----------------------- | -------------------------- | ---------- |
+| 1    | process-mapper-pv       | `/process-mapper`       | 流程发现和分析             | 0.90       |
+| 2    | process-architect-pv    | `/process-architect`    | 系统架构设计               | 0.85       |
+| 3    | executor-designer-pv    | `/executor-designer`    | 执行者分配和角色定义       | 0.88       |
+| 4    | workflow-designer-pv    | `/workflow-designer`    | 流程优化和工作流自动化     | 0.85       |
+| 5    | qa-validator-pv         | `/qa-validator`         | 质量保证和验证             | 0.95       |
+| 6    | clickup-engineer-pv     | `/clickup-engineer`     | ClickUp 中的任务创建       | 0.80       |
+| 7    | agent-creator-pv        | `/agent-creator`        | 人工智能代理架构和角色设计 | 0.80       |
+| 8    | validation-reviewer-pv  | `/validation-reviewer`  | 最终质量门审查和批准       | 0.90       |
+| 9    | documentation-writer-pv | `/documentation-writer` | 技术文档和知识架构         | 0.85       |
 
 ---
 
@@ -397,13 +397,13 @@
 
 ### 验证检查点
 
-| 检查点 | 阶段 | 代理                 | 启发式/验证器 | 否决条件       |
-| ------ | ---- | -------------------- | ------------- | -------------- |
-| 1      | 2    | process-architect-pv | PV_BS_001     | 无             |
-| 2      | 3    | executor-designer-pv | PV_PA_001     | 真实性 <0.7    |
-| 3      | 4    | workflow-designer-pv | PV_PM_001     | 无护栏         |
+| 检查点 | 阶段 | 代理                 | 启发式/验证器    | 否决条件    |
+| ------ | ---- | -------------------- | ---------------- | ----------- |
+| 1      | 2    | process-architect-pv | PV_BS_001        | 无          |
+| 2      | 3    | executor-designer-pv | PV_PA_001        | 真实性 <0.7 |
+| 3      | 4    | workflow-designer-pv | PV_PM_001        | 无护栏      |
 | 4      | 5    | qa-validator-pv      | axioma-validator | 维度 <6.0   |
-| 5      | 5    | qa-validator-pv      | task-anatomy  | 字段缺失       |
+| 5      | 5    | qa-validator-pv      | task-anatomy     | 字段缺失    |
 
 ---
 
@@ -411,12 +411,12 @@
 
 真实性评分校准代理如何保守地做出断言和建议：
 
-| 评分范围   | 描述                                   | 代理示例                                                                         |
-| ---------- | -------------------------------------- | -------------------------------------------------------------------------------- |
-| 0.95-1.00  | 极高 - 不偏不倚和客观的评估           | qa-validator-pv (0.95)                                                           |
-| 0.85-0.94  | 非常高 - 诚实，最小乐观主义           | process-mapper-pv (0.90), validation-reviewer-pv (0.90), executor-designer-pv (0.88) |
-| 0.75-0.84  | 高 - 客观但允许一些创意               | process-architect-pv (0.85), workflow-designer-pv (0.85), documentation-writer-pv (0.85) |
-| 0.70-0.74  | 中高 - 平衡的现实主义                 | clickup-engineer-pv (0.80), agent-creator-pv (0.80)                             |
+| 评分范围  | 描述                        | 代理示例                                                                                 |
+| --------- | --------------------------- | ---------------------------------------------------------------------------------------- |
+| 0.95-1.00 | 极高 - 不偏不倚和客观的评估 | qa-validator-pv (0.95)                                                                   |
+| 0.85-0.94 | 非常高 - 诚实，最小乐观主义 | process-mapper-pv (0.90), validation-reviewer-pv (0.90), executor-designer-pv (0.88)     |
+| 0.75-0.84 | 高 - 客观但允许一些创意     | process-architect-pv (0.85), workflow-designer-pv (0.85), documentation-writer-pv (0.85) |
+| 0.70-0.74 | 中高 - 平衡的现实主义       | clickup-engineer-pv (0.80), agent-creator-pv (0.80)                                      |
 
 **注**：0.70 以下的评分在一致性验证中触发否决条件（检查点 2）。
 
@@ -554,10 +554,10 @@ const workflowContext = pvMind.getPhaseContext(<phase-number>);
 
 ## 版本历史
 
-| 版本 | 日期       | 更改                                                        | 故事 |
-| ---- | ---------- | ----------------------------------------------------------- | ---- |
+| 版本 | 日期       | 更改                                                          | 故事 |
+| ---- | ---------- | ------------------------------------------------------------- | ---- |
 | 2.0  | 2025-10-19 | 添加了 5 个缺失的代理（阶段 4、5、7、8、9），更新了工作流参考 | 1.9  |
-| 1.0  | 2025-10-19 | 初始指南，有 4 个现有代理                                   | 1.8  |
+| 1.0  | 2025-10-19 | 初始指南，有 4 个现有代理                                     | 1.8  |
 
 ---
 

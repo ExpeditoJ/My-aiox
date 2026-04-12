@@ -14,8 +14,8 @@ Documentación completa del framework Synkra AIOX para servir como baseline para
 
 ## Registro de Cambios
 
-| Fecha | Versión | Descripción | Autor |
-| :--- | :--- | :--- | :--- |
-| 2025-07-24 | 1.0 | Generación inicial de la arquitectura base. | Winston |
-| 2025-07-24 | 2.0 | Estructura de directorios corregida basada en el input del usuario. | Winston |
-| 2025-07-24 | 3.0 | Adición de los nuevos componentes del MVP. | Winston |
+| Fecha      | Versión | Descripción                                                         | Autor   |
+| :--------- | :------ | :------------------------------------------------------------------ | :------ |
+| 2025-07-24 | 1.0     | Generación inicial de la arquitectura base.                         | Winston |
+| 2025-07-24 | 2.0     | Estructura de directorios corregida basada en el input del usuario. | Winston |
+| 2025-07-24 | 3.0     | Adición de los nuevos componentes del MVP.                          | Winston |

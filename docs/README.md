@@ -8,11 +8,11 @@
 
 ## 🌐 Select Language / Selecione o Idioma / Seleccione el Idioma / 选择语言
 
-| Language       | Status          | Link                                                    |
-| -------------- | --------------- | ------------------------------------------------------- |
-| **English**    | ✅ Complete     | [📖 English Documentation](./getting-started.md)        |
-| **Português**  | ✅ Complete     | [📖 Documentação em Português](./pt/getting-started.md) |
-| **Español**    | ✅ Complete     | [📖 Documentación en Español](./es/getting-started.md)  |
+| Language         | Status         | Link                                                    |
+| ---------------- | -------------- | ------------------------------------------------------- |
+| **English**      | ✅ Complete    | [📖 English Documentation](./getting-started.md)        |
+| **Português**    | ✅ Complete    | [📖 Documentação em Português](./pt/getting-started.md) |
+| **Español**      | ✅ Complete    | [📖 Documentación en Español](./es/getting-started.md)  |
 | **中文（简体）** | 🟡 In Progress | [📖 中文文档](./zh/getting-started.md)                  |
 
 ---

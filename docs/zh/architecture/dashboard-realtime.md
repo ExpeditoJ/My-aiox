@@ -48,24 +48,24 @@
 
 ### Dashboard 今天显示什么
 
-| CLI 中的事件      | 当前 Dashboard              | 备注     |
-| ---------------- | -------------------------- | -------- |
-| `@agent` 激活    | ✅ 状态栏显示               | 正常工作 |
-| `*exit` 代理     | ✅ 代理进入待机状态         | 正常工作 |
-| Story 状态变更   | ⚠️ 看板更新                | 无通知   |
+| CLI 中的事件   | 当前 Dashboard      | 备注     |
+| -------------- | ------------------- | -------- |
+| `@agent` 激活  | ✅ 状态栏显示       | 正常工作 |
+| `*exit` 代理   | ✅ 代理进入待机状态 | 正常工作 |
+| Story 状态变更 | ⚠️ 看板更新         | 无通知   |
 
 ### Dashboard 不显示什么
 
-| CLI 中的事件              | 当前 Dashboard |
-| ------------------------ | -------------- |
-| 命令 `*xxx` 正在执行      | ❌ 无          |
-| Claude "思考中"           | ❌ 无          |
+| CLI 中的事件               | 当前 Dashboard |
+| -------------------------- | -------------- |
+| 命令 `*xxx` 正在执行       | ❌ 无          |
+| Claude "思考中"            | ❌ 无          |
 | 工具调用 (Read/Write/Bash) | ❌ 无          |
-| 任务进度                  | ❌ 无          |
-| Claude 输出               | ❌ 无          |
-| git commit/push           | ❌ 无          |
-| 错误                      | ❌ 无          |
-| 任务完成                  | ❌ 无          |
+| 任务进度                   | ❌ 无          |
+| Claude 输出                | ❌ 无          |
+| git commit/push            | ❌ 无          |
+| 错误                       | ❌ 无          |
+| 任务完成                   | ❌ 无          |
 
 ### 视觉差距
 
@@ -268,12 +268,12 @@ JSON Lines (JSONL) - 每行一个 JSON 对象，仅追加。
 
 ### 需要的组件 (仅高级)
 
-| 组件                | 职责                  | 优先级 |
-| ------------------- | --------------------- | ------ |
-| `CommandPanel`      | 显示当前命令和状态     | P0     |
-| `ActivityFeed`      | 最近事件时间线         | P0     |
-| `SessionIndicator`  | 活跃会话状态           | P1     |
-| `RetentionSettings` | 事件保留配置           | P2     |
+| 组件                | 职责               | 优先级 |
+| ------------------- | ------------------ | ------ |
+| `CommandPanel`      | 显示当前命令和状态 | P0     |
+| `ActivityFeed`      | 最近事件时间线     | P0     |
+| `SessionIndicator`  | 活跃会话状态       | P1     |
+| `RetentionSettings` | 事件保留配置       | P2     |
 
 ### CommandPanel
 
@@ -305,10 +305,7 @@ export function CommandPanel() {
 import { useEventsStore, selectRecentEvents } from '@/stores/events-store';
 
 // 仅高级事件 (决策 #2)
-const EVENT_CONFIG: Record<
-  string,
-  { icon: React.ElementType; color: string; label: string }
-> = {
+const EVENT_CONFIG: Record<string, { icon: React.ElementType; color: string; label: string }> = {
   'agent:activated': { icon: User, color: 'text-purple-400', label: '代理已激活' },
   'agent:deactivated': { icon: User, color: 'text-gray-400', label: '代理已停用' },
   'command:start': { icon: Terminal, color: 'text-blue-400', label: '命令' },
@@ -326,23 +323,23 @@ const EVENT_CONFIG: Record<
 
 ### 第一阶段: 基础 (P0)
 
-| 项目                        | 描述                    | 工作量 |
-| --------------------------- | ----------------------- | ------ |
-| Claude Code Hooks 集成      | 连接到原生 hooks        | 2h     |
-| events.jsonl                | 高级格式                | 1h     |
-| 增强的 SSE                  | 监视 events.jsonl       | 2h     |
-| events-store                | 简化的 Store            | 1h     |
+| 项目                   | 描述              | 工作量 |
+| ---------------------- | ----------------- | ------ |
+| Claude Code Hooks 集成 | 连接到原生 hooks  | 2h     |
+| events.jsonl           | 高级格式          | 1h     |
+| 增强的 SSE             | 监视 events.jsonl | 2h     |
+| events-store           | 简化的 Store      | 1h     |
 
 **交付物:** 高级事件从 CLI 流向 Dashboard
 
 ### 第二阶段: 核心 UI (P1)
 
-| 项目                | 描述                  | 工作量 |
-| ------------------- | --------------------- | ------ |
-| CommandPanel        | 当前命令 + 状态       | 1h     |
-| ActivityFeed        | 简化的时间线          | 1h     |
-| SessionIndicator    | 会话状态              | 30min  |
-| StatusBar 集成      | 集成新指标            | 1h     |
+| 项目             | 描述            | 工作量 |
+| ---------------- | --------------- | ------ |
+| CommandPanel     | 当前命令 + 状态 | 1h     |
+| ActivityFeed     | 简化的时间线    | 1h     |
+| SessionIndicator | 会话状态        | 30min  |
+| StatusBar 集成   | 集成新指标      | 1h     |
 
 **交付物:** Dashboard 实时显示高级活动
 
@@ -364,11 +361,11 @@ const EVENT_CONFIG: Record<
 
 **决策:** Claude Code Hooks
 
-| 方面     | 详情                                |
-| -------- | ----------------------------------- |
-| 实现     | 使用 Claude Code 的原生 hooks       |
-| 优势     | 自动、完整、无需额外包装器          |
-| 依赖     | Claude Code hooks API               |
+| 方面 | 详情                          |
+| ---- | ----------------------------- |
+| 实现 | 使用 Claude Code 的原生 hooks |
+| 优势 | 自动、完整、无需额外包装器    |
+| 依赖 | Claude Code hooks API         |
 
 ### 2. 详细程度 ✅
 
@@ -402,11 +399,11 @@ const DEFAULT_RETENTION: EventRetentionSettings = {
 };
 ```
 
-| 模式         | 行为                    | 存储         |
-| ------------ | ----------------------- | ------------ |
-| `session`    | 关闭 dashboard 时清除   | 内存         |
-| `hours`      | 保留最近 N 小时         | localStorage |
-| `persistent` | 保留到达限制            | IndexedDB    |
+| 模式         | 行为                  | 存储         |
+| ------------ | --------------------- | ------------ |
+| `session`    | 关闭 dashboard 时清除 | 内存         |
+| `hours`      | 保留最近 N 小时       | localStorage |
+| `persistent` | 保留到达限制          | IndexedDB    |
 
 **UI:** 在 Settings → Events → Retention 中切换
 

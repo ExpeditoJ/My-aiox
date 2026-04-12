@@ -96,12 +96,12 @@ If your merge to `main` didn't trigger a release:
 
 Common issues and solutions:
 
-| Error | Solution |
-|-------|----------|
-| `ENOGHTOKEN` | GITHUB_TOKEN secret missing or expired |
-| `ENOPKGAUTH` | NPM_TOKEN secret missing or invalid |
-| `ENOTINHISTORY` | Branch doesn't have proper history (use `fetch-depth: 0`) |
-| `EINVALIDNPMTOKEN` | Regenerate NPM token with publish permissions |
+| Error              | Solution                                                  |
+| ------------------ | --------------------------------------------------------- |
+| `ENOGHTOKEN`       | GITHUB_TOKEN secret missing or expired                    |
+| `ENOPKGAUTH`       | NPM_TOKEN secret missing or invalid                       |
+| `ENOTINHISTORY`    | Branch doesn't have proper history (use `fetch-depth: 0`) |
+| `EINVALIDNPMTOKEN` | Regenerate NPM token with publish permissions             |
 
 ### Skip a Release
 
@@ -129,12 +129,12 @@ npm publish
 
 ## Configuration Files
 
-| File | Purpose |
-|------|---------|
-| `.releaserc.json` | Semantic release configuration |
-| `.github/workflows/semantic-release.yml` | GitHub Actions workflow |
-| `package.json` | Version source, npm scripts |
+| File                                     | Purpose                        |
+| ---------------------------------------- | ------------------------------ |
+| `.releaserc.json`                        | Semantic release configuration |
+| `.github/workflows/semantic-release.yml` | GitHub Actions workflow        |
+| `package.json`                           | Version source, npm scripts    |
 
 ---
 
-*Last updated: Story 6.17 - Semantic Release Automation*
+_Last updated: Story 6.17 - Semantic Release Automation_

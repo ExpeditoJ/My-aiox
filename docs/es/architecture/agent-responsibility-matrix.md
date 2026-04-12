@@ -16,6 +16,7 @@
 ## Resumen Ejecutivo
 
 Este documento define límites claros de responsabilidad para todos los agentes AIOX, con enfoque particular en:
+
 1. **Centralización de GitHub DevOps** - Solo @github-devops puede hacer push al repositorio remoto
 2. **Especialización de Arquitectura de Datos** - @data-architect maneja base de datos/ciencia de datos
 3. **División de Gestión de Ramas** - @sm (local) vs @github-devops (remoto)
@@ -29,20 +30,20 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 
 ### Autoridad Completa de Operaciones
 
-| Operación | @github-devops | @dev | @sm | @qa | @architect | @po |
-|-----------|:--------------:|:----:|:---:|:---:|:----------:|:---:|
-| **git push** | ✅ SOLO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **git push --force** | ✅ SOLO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **gh pr create** | ✅ SOLO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **gh pr merge** | ✅ SOLO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **gh release create** | ✅ SOLO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **git commit** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **git add** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **git checkout -b** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **git merge** (local) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **git status** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **git log** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **git diff** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Operación             | @github-devops | @dev | @sm | @qa | @architect | @po |
+| --------------------- | :------------: | :--: | :-: | :-: | :--------: | :-: |
+| **git push**          |    ✅ SOLO     |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **git push --force**  |    ✅ SOLO     |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **gh pr create**      |    ✅ SOLO     |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **gh pr merge**       |    ✅ SOLO     |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **gh release create** |    ✅ SOLO     |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **git commit**        |       ✅       |  ✅  | ❌  | ❌  |     ❌     | ❌  |
+| **git add**           |       ✅       |  ✅  | ❌  | ❌  |     ❌     | ❌  |
+| **git checkout -b**   |       ✅       |  ✅  | ✅  | ❌  |     ❌     | ❌  |
+| **git merge** (local) |       ✅       |  ✅  | ✅  | ❌  |     ❌     | ❌  |
+| **git status**        |       ✅       |  ✅  | ✅  | ✅  |     ✅     | ❌  |
+| **git log**           |       ✅       |  ✅  | ✅  | ✅  |     ✅     | ❌  |
+| **git diff**          |       ✅       |  ✅  | ✅  | ✅  |     ✅     | ❌  |
 
 ### Mecanismo de Aplicación
 
@@ -54,6 +55,7 @@ Este documento define límites claros de responsabilidad para todos los agentes 
    - Acción: Bloquea push si agente != "github-devops"
 
 2. **Variables de Entorno** (Detección en Tiempo de Ejecución)
+
    ```bash
    export AIOX_ACTIVE_AGENT="github-devops"
    export AIOX_GIT_PUSH_ALLOWED="true"
@@ -79,9 +81,11 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ## Límites de Responsabilidad de Agentes
 
 ### @architect (Winston) 🏗️
+
 **Rol**: Arquitecto de Sistemas Holístico y Líder Técnico Full-Stack
 
 **Alcance Principal**:
+
 - Arquitectura de sistemas (microservicios, monolito, serverless, híbrido)
 - Selección de stack tecnológico (frameworks, lenguajes, plataformas)
 - Planificación de infraestructura (despliegue, escalado, monitoreo, CDN)
@@ -94,10 +98,12 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 **Operaciones Git**: Solo lectura (status, log, diff) - SIN PUSH
 
 **Delegar A**:
+
 - **@data-architect**: Diseño de esquemas de base de datos, optimización de consultas, pipelines ETL
 - **@github-devops**: Git push, creación de PR, configuración CI/CD
 
 **Retener**:
+
 - Selección de tecnología de base de datos desde perspectiva de sistema
 - Integración de capa de datos con arquitectura de aplicación
 - Diseño de flujo de trabajo git (estrategia de ramas)
@@ -105,9 +111,11 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ---
 
 ### @data-architect (DataArch) 🗄️
+
 **Rol**: Arquitecto de Base de Datos y Especialista en Flujos de Trabajo de Ciencia de Datos
 
 **Alcance Principal**:
+
 - Diseño de esquemas de base de datos (tablas, relaciones, índices, restricciones)
 - Modelado de datos (estrategias de normalización, desnormalización)
 - Optimización de consultas y ajuste de rendimiento
@@ -119,6 +127,7 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 **Operaciones Git**: Commits locales (add, commit) - SIN PUSH
 
 **Colaborar Con**:
+
 - **@architect**: Selección de tecnología de base de datos, integración de capa de datos
 - **@github-devops**: Push de archivos de migración después de commit local
 
@@ -127,9 +136,11 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ---
 
 ### @dev (James) 💻
+
 **Rol**: Ingeniero de Software Senior Experto y Especialista en Implementación
 
 **Alcance Principal**:
+
 - Implementación de código desde historias
 - Depuración y refactorización
 - Pruebas unitarias/de integración
@@ -137,10 +148,12 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 - Ejecución de tareas de historias
 
 **Operaciones Git**:
+
 - ✅ Permitidas: add, commit, status, diff, log, branch, checkout, merge (local)
 - ❌ Bloqueadas: push, gh pr create
 
 **Flujo de Trabajo Después de Historia Completada**:
+
 1. Marcar estado de historia: "Listo para Revisión"
 2. Notificar al usuario: "Historia completada. Activa @github-devops para hacer push de los cambios"
 3. NO intentar git push
@@ -148,9 +161,11 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ---
 
 ### @sm (Bob) 🏃
+
 **Rol**: Scrum Master Técnico - Especialista en Preparación de Historias
 
 **Alcance Principal**:
+
 - Creación y refinamiento de historias
 - Gestión de épicas y desglose
 - Asistencia en planificación de sprints
@@ -158,10 +173,12 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 - Guía de resolución de conflictos (merges locales)
 
 **Operaciones Git**:
+
 - ✅ Permitidas: checkout -b (crear ramas de características), branch (listar), merge (local)
 - ❌ Bloqueadas: push, gh pr create, eliminación de ramas remotas
 
 **Flujo de Trabajo de Gestión de Ramas**:
+
 1. Historia inicia → Crear rama de características local: `git checkout -b feature/X.Y-nombre-historia`
 2. Desarrollador hace commits localmente
 3. Historia completada → Notificar a @github-devops para hacer push y crear PR
@@ -171,17 +188,20 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ---
 
 ### @github-devops (DevOps) 🚀
+
 **Rol**: Gestor de Repositorio GitHub y Especialista DevOps
 
 **AUTORIDAD PRINCIPAL**: ÚNICO agente autorizado para hacer push al repositorio remoto
 
 **Operaciones Exclusivas**:
+
 - ✅ git push (TODAS las variantes)
 - ✅ gh pr create, gh pr merge
 - ✅ gh release create
 - ✅ Eliminación de ramas remotas
 
 **Alcance Principal**:
+
 - Integridad y gobernanza del repositorio
 - Ejecución de puertas de calidad pre-push (lint, test, typecheck, build)
 - Versionado semántico y gestión de releases
@@ -191,6 +211,7 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 - Generación de changelog
 
 **Puertas de Calidad (Obligatorias Antes de Push)**:
+
 - npm run lint → PASA
 - npm test → PASA
 - npm run typecheck → PASA
@@ -201,6 +222,7 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 - **Confirmación del usuario requerida**
 
 **Lógica de Versionado Semántico**:
+
 - MAJOR (v4 → v5): Cambios incompatibles, rediseño de API
 - MINOR (v4.31 → v4.32): Nuevas características, compatible hacia atrás
 - PATCH (v4.31.0 → v4.31.1): Solo corrección de errores
@@ -208,9 +230,11 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ---
 
 ### @qa (Quinn) 🧪
+
 **Rol**: Arquitecto de Pruebas y Asesor de Calidad
 
 **Alcance Principal**:
+
 - Revisión integral de arquitectura de pruebas
 - Decisiones de puertas de calidad (PASA/PREOCUPACIONES/FALLA/EXENTO)
 - Evaluación de riesgos y estrategia de pruebas
@@ -224,9 +248,11 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ---
 
 ### @po (Sarah) 📝
+
 **Rol**: Product Owner Técnico y Custodio de Procesos
 
 **Alcance Principal**:
+
 - Gestión de backlog y refinamiento de historias
 - Validación de criterios de aceptación
 - Planificación de sprints y priorización
@@ -312,26 +338,28 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 
 ### Matriz de Comparación
 
-| Responsabilidad | @architect | @data-architect |
-|-----------------|:----------:|:---------------:|
-| **Selección de tecnología de BD (vista de sistema)** | ✅ | 🤝 Colaborar |
-| **Diseño de esquema de base de datos** | ❌ Delegar | ✅ Principal |
-| **Optimización de consultas** | ❌ Delegar | ✅ Principal |
-| **Diseño de pipeline ETL** | ❌ Delegar | ✅ Principal |
-| **Diseño de API para acceso a datos** | ✅ Principal | 🤝 Colaborar |
-| **Caché a nivel de aplicación** | ✅ Principal | 🤝 Consultar |
-| **Optimizaciones específicas de BD (RLS, triggers)** | ❌ Delegar | ✅ Principal |
-| **Flujos de trabajo de ciencia de datos** | ❌ Delegar | ✅ Principal |
-| **Infraestructura para BD (escalado, replicación)** | ✅ Principal | 🤝 Consultar |
+| Responsabilidad                                      |  @architect  | @data-architect |
+| ---------------------------------------------------- | :----------: | :-------------: |
+| **Selección de tecnología de BD (vista de sistema)** |      ✅      |  🤝 Colaborar   |
+| **Diseño de esquema de base de datos**               |  ❌ Delegar  |  ✅ Principal   |
+| **Optimización de consultas**                        |  ❌ Delegar  |  ✅ Principal   |
+| **Diseño de pipeline ETL**                           |  ❌ Delegar  |  ✅ Principal   |
+| **Diseño de API para acceso a datos**                | ✅ Principal |  🤝 Colaborar   |
+| **Caché a nivel de aplicación**                      | ✅ Principal |  🤝 Consultar   |
+| **Optimizaciones específicas de BD (RLS, triggers)** |  ❌ Delegar  |  ✅ Principal   |
+| **Flujos de trabajo de ciencia de datos**            |  ❌ Delegar  |  ✅ Principal   |
+| **Infraestructura para BD (escalado, replicación)**  | ✅ Principal |  🤝 Consultar   |
 
 ### Patrón de Colaboración
 
 **Pregunta**: "¿Qué base de datos deberíamos usar?"
+
 - **@architect responde**: Perspectiva de sistema (costo, despliegue, habilidades del equipo, infraestructura)
 - **@data-architect responde**: Perspectiva de datos (patrones de consulta, escalabilidad, ajuste del modelo de datos)
 - **Resultado**: Recomendación combinada
 
 **Pregunta**: "Diseñar esquema de base de datos"
+
 - **@architect**: Delega a @data-architect
 - **@data-architect**: Diseña esquema, crea migraciones
 - **@architect**: Integra esquema en sistema (API, ORM, caché)
@@ -343,11 +371,13 @@ Este documento define límites claros de responsabilidad para todos los agentes 
 ### Ramas Locales (@sm durante desarrollo)
 
 **Responsabilidades**:
+
 - Crear ramas de características cuando inicia historia
 - Gestionar ramas de trabajo del desarrollador
 - Limpieza de ramas locales (eliminar ramas locales mergeadas)
 
 **Comandos**:
+
 ```bash
 # @sm puede ejecutar:
 git checkout -b feature/3.14-github-devops
@@ -358,12 +388,14 @@ git merge feature/branch-to-integrate
 ### Ramas Remotas (@github-devops para repositorio)
 
 **Responsabilidades**:
+
 - Hacer push de ramas a remoto
 - Eliminar ramas remotas (limpieza)
 - Gestionar ramas de release
 - Proteger rama main/master
 
 **Comandos**:
+
 ```bash
 # SOLO @github-devops puede ejecutar:
 git push -u origin feature/3.14-github-devops
@@ -413,12 +445,16 @@ gh pr merge
 ## Consideraciones Futuras
 
 ### Historia 3.19: Capa de Memoria (Condicional)
+
 Si se aprueba después de auditoría de utilidades (Historia 3.17):
+
 - Capa de memoria no necesita restricciones git (utilidad, no agente)
 - Integración con agentes no cambia límites de responsabilidad
 
 ### Squads
+
 Si se agregan nuevos agentes vía Squads:
+
 - **Por defecto**: SIN capacidad de git push
 - **Proceso de Excepción**: Debe ser explícitamente aprobado por PO y justificado
 - **Aplicación**: Hook pre-push bloquea automáticamente a menos que ID de agente esté en lista blanca
@@ -428,6 +464,7 @@ Si se agregan nuevos agentes vía Squads:
 ## Resumen
 
 **Puntos Clave**:
+
 1. ✅ Solo @github-devops puede hacer push al repositorio remoto (aplicado vía hooks git)
 2. ✅ @architect maneja arquitectura de sistema, @data-architect maneja capa de datos
 3. ✅ @sm gestiona ramas locales, @github-devops gestiona operaciones remotas
@@ -440,5 +477,5 @@ Si se agregan nuevos agentes vía Squads:
 
 ---
 
-*Documento mantenido por @architect (Winston) y @po (Sarah)*
-*Última revisión: 2025-10-25*
+_Documento mantenido por @architect (Winston) y @po (Sarah)_
+_Última revisión: 2025-10-25_

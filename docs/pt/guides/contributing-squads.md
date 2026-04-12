@@ -25,22 +25,22 @@ Todos os squads contribuídos devem atender a estes padrões:
 
 ### Obrigatório
 
-| Requisito | Descrição |
-|-----------|-----------|
-| **Manifesto válido** | `squad.yaml` passa validação JSON Schema |
-| **Documentação** | README.md com instruções de uso |
-| **Licença** | Licença open source (MIT, Apache 2.0, etc.) |
-| **Compatibilidade AIOX** | `aiox.minVersion: "2.1.0"` ou superior |
-| **Arquitetura task-first** | Tasks como pontos de entrada principais |
+| Requisito                  | Descrição                                   |
+| -------------------------- | ------------------------------------------- |
+| **Manifesto válido**       | `squad.yaml` passa validação JSON Schema    |
+| **Documentação**           | README.md com instruções de uso             |
+| **Licença**                | Licença open source (MIT, Apache 2.0, etc.) |
+| **Compatibilidade AIOX**   | `aiox.minVersion: "2.1.0"` ou superior      |
+| **Arquitetura task-first** | Tasks como pontos de entrada principais     |
 
 ### Recomendado
 
-| Recomendação | Descrição |
-|--------------|-----------|
-| **Exemplos** | Exemplos de uso no README |
-| **Testes** | Testes unitários para funcionalidade crítica |
-| **Changelog** | Documentação de histórico de versão |
-| **Solução de problemas** | Problemas comuns e soluções |
+| Recomendação             | Descrição                                    |
+| ------------------------ | -------------------------------------------- |
+| **Exemplos**             | Exemplos de uso no README                    |
+| **Testes**               | Testes unitários para funcionalidade crítica |
+| **Changelog**            | Documentação de histórico de versão          |
+| **Solução de problemas** | Problemas comuns e soluções                  |
 
 ## Convenções de Nomenclatura
 
@@ -56,7 +56,7 @@ Todos os squads contribuídos devem atender a estes padrões:
 O `slashPrefix` no `squad.yaml` determina prefixos de comando:
 
 ```yaml
-slashPrefix: etl  # Comandos tornam-se *etl-extract, *etl-transform
+slashPrefix: etl # Comandos tornam-se *etl-extract, *etl-transform
 ```
 
 Escolha um prefixo único e curto (2-5 caracteres).
@@ -68,15 +68,15 @@ Escolha um prefixo único e curto (2-5 caracteres).
 ```yaml
 # Estes campos são OBRIGATÓRIOS
 name: my-squad
-version: 1.0.0              # Versionamento semântico
+version: 1.0.0 # Versionamento semântico
 description: Descrição clara do que este squad faz
 
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 components:
-  agents: []                # Pelo menos um agent OU task
+  agents: [] # Pelo menos um agent OU task
   tasks: []
 ```
 
@@ -118,9 +118,9 @@ Exemplos básicos de uso.
 ## Comandos
 
 | Comando | Descrição |
-|---------|-----------|
-| *cmd1 | O que faz |
-| *cmd2 | O que faz |
+| ------- | --------- |
+| \*cmd1  | O que faz |
+| \*cmd2  | O que faz |
 
 ## Configuração
 
@@ -159,6 +159,7 @@ Informações da licença.
 ```
 
 Isso irá:
+
 1. Fazer fork de `SynkraAI/aiox-squads` (se necessário)
 2. Criar branch com seu squad
 3. Abrir PR para revisão
@@ -192,10 +193,10 @@ export SYNKRA_API_TOKEN="your-token"
 
 ### Opções de Visibilidade
 
-| Flag | Efeito |
-|------|--------|
+| Flag        | Efeito                            |
+| ----------- | --------------------------------- |
 | `--private` | Visível apenas para seu workspace |
-| `--public` | Visível para todos |
+| `--public`  | Visível para todos                |
 
 ## Atualizando Squads Publicados
 

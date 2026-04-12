@@ -54,6 +54,7 @@ npx aiox-core doctor
 ```
 
 The doctor will report:
+
 - **Enabled:** `✔ Git fsmonitor: enabled (git status acceleration active)`
 - **Available but not enabled:** `ℹ️ Git fsmonitor: not enabled (opt-in optimization available)`
 - **Not available:** `ℹ️ Git fsmonitor: not available (Git 2.37+ required)`

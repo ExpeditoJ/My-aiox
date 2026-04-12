@@ -25,15 +25,15 @@ Este documento consolida los hallazgos de investigación sobre mejores práctica
 
 Basado en investigación de [GitHub Docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule), [DEV Community](https://dev.to/n3wt0n/best-practices-for-branch-protection-2pe3), y [Legit Security](https://www.legitsecurity.com/blog/github-security-best-practices-your-team-should-be-following):
 
-| Regla de Protección                   | Recomendación            | Justificación                                    |
-| ------------------------------------- | ------------------------ | ------------------------------------------------ |
-| **Revisiones de PR requeridas**       | Habilitar con 1-2 revisores | Previene código sin revisar de hacer merge     |
-| **Requerir revisiones de code owner** | Habilitar                | Asegura que expertos del dominio revisen cambios |
-| **Descartar revisiones obsoletas**    | Habilitar                | Fuerza re-revisión después de nuevos cambios     |
-| **Status checks requeridos**          | CI debe pasar            | Detecta fallos de build/test antes del merge     |
-| **Requerir resolución de conversación**| Habilitar               | Asegura que todo feedback sea atendido           |
-| **Restringir force pushes**           | Deshabilitar force push  | Previene reescritura del historial               |
-| **Requerir historial lineal**         | Opcional                 | Historial git más limpio (considerar para monorepos)|
+| Regla de Protección                     | Recomendación               | Justificación                                        |
+| --------------------------------------- | --------------------------- | ---------------------------------------------------- |
+| **Revisiones de PR requeridas**         | Habilitar con 1-2 revisores | Previene código sin revisar de hacer merge           |
+| **Requerir revisiones de code owner**   | Habilitar                   | Asegura que expertos del dominio revisen cambios     |
+| **Descartar revisiones obsoletas**      | Habilitar                   | Fuerza re-revisión después de nuevos cambios         |
+| **Status checks requeridos**            | CI debe pasar               | Detecta fallos de build/test antes del merge         |
+| **Requerir resolución de conversación** | Habilitar                   | Asegura que todo feedback sea atendido               |
+| **Restringir force pushes**             | Deshabilitar force push     | Previene reescritura del historial                   |
+| **Requerir historial lineal**           | Opcional                    | Historial git más limpio (considerar para monorepos) |
 
 ### 1.2 Hallazgos Clave
 
@@ -78,12 +78,12 @@ De [CodeRabbit Docs](https://docs.coderabbit.ai/getting-started/yaml-configurati
 
 **Elementos Clave de Configuración:**
 
-| Elemento                    | Propósito                      | Recomendación                             |
-| --------------------------- | ------------------------------ | ----------------------------------------- |
-| `language`                  | Idioma de respuesta            | Coincidir con idioma del proyecto (pt-BR o en-US) |
-| `reviews.auto_review`       | Revisiones automáticas de PR   | Habilitar para OSS                        |
-| `reviews.path_instructions` | Reglas de revisión por ruta    | Esencial para validación de agentes/tareas|
-| `chat.auto_reply`           | Responder a comentarios        | Habilitar para mejor experiencia del contribuidor|
+| Elemento                    | Propósito                    | Recomendación                                     |
+| --------------------------- | ---------------------------- | ------------------------------------------------- |
+| `language`                  | Idioma de respuesta          | Coincidir con idioma del proyecto (pt-BR o en-US) |
+| `reviews.auto_review`       | Revisiones automáticas de PR | Habilitar para OSS                                |
+| `reviews.path_instructions` | Reglas de revisión por ruta  | Esencial para validación de agentes/tareas        |
+| `chat.auto_reply`           | Responder a comentarios      | Habilitar para mejor experiencia del contribuidor |
 
 ### 2.2 Ejemplos del Mundo Real
 
@@ -145,12 +145,12 @@ De [Harness Blog](https://www.harness.io/blog/mastering-codeowners), [Satellytes
 
 **Principios Clave:**
 
-| Principio            | Descripción                                   |
-| -------------------- | --------------------------------------------- |
+| Principio                    | Descripción                                  |
+| ---------------------------- | -------------------------------------------- |
 | **Última coincidencia gana** | Patrones posteriores sobrescriben anteriores |
-| **Usar comodines**   | Consolidar entradas con `*` y `**`            |
-| **Equipos sobre usuarios** | Más fácil mantener cuando personas cambian |
-| **Granularidad**     | Balance entre muy amplio y muy específico     |
+| **Usar comodines**           | Consolidar entradas con `*` y `**`           |
+| **Equipos sobre usuarios**   | Más fácil mantener cuando personas cambian   |
+| **Granularidad**             | Balance entre muy amplio y muy específico    |
 
 ### 3.2 Patrones de Monorepo
 
@@ -279,14 +279,14 @@ De [Prisma CONTRIBUTING.md](https://github.com/prisma/prisma/blob/main/CONTRIBUT
 
 ### 5.3 Patrones Comunes
 
-| Patrón               | Adopción                 | Recomendación        |
-| -------------------- | ------------------------ | -------------------- |
-| Flujo de fork        | Muy común                | Adoptar              |
-| Firma de CLA         | Común en OSS corporativo | Opcional por ahora   |
-| Commits convencionales| Muy común               | Ya adoptado          |
-| Aprobaciones requeridas| Universal              | Adoptar (1 aprobación)|
-| CODEOWNERS           | Común                    | Adoptar (granular)   |
-| CodeRabbit/revisión IA| En crecimiento          | Adoptar              |
+| Patrón                  | Adopción                 | Recomendación          |
+| ----------------------- | ------------------------ | ---------------------- |
+| Flujo de fork           | Muy común                | Adoptar                |
+| Firma de CLA            | Común en OSS corporativo | Opcional por ahora     |
+| Commits convencionales  | Muy común                | Ya adoptado            |
+| Aprobaciones requeridas | Universal                | Adoptar (1 aprobación) |
+| CODEOWNERS              | Común                    | Adoptar (granular)     |
+| CodeRabbit/revisión IA  | En crecimiento           | Adoptar                |
 
 ---
 
@@ -294,13 +294,13 @@ De [Prisma CONTRIBUTING.md](https://github.com/prisma/prisma/blob/main/CONTRIBUT
 
 ### 6.1 Flujo Fork vs Rama Directa
 
-| Aspecto                 | Flujo Fork             | Rama Directa          |
-| ----------------------- | ---------------------- | --------------------- |
-| **Seguridad**           | Mayor (aislado)        | Menor (repo compartido)|
-| **Acceso contribuidor** | Sin escritura necesaria| Acceso escritura necesario|
-| **CI/CD**               | Corre en contexto fork | Corre en repo principal|
-| **Secretos**            | Protegidos             | Accesibles            |
-| **Complejidad**         | Ligeramente mayor      | Menor                 |
+| Aspecto                 | Flujo Fork              | Rama Directa               |
+| ----------------------- | ----------------------- | -------------------------- |
+| **Seguridad**           | Mayor (aislado)         | Menor (repo compartido)    |
+| **Acceso contribuidor** | Sin escritura necesaria | Acceso escritura necesario |
+| **CI/CD**               | Corre en contexto fork  | Corre en repo principal    |
+| **Secretos**            | Protegidos              | Accesibles                 |
+| **Complejidad**         | Ligeramente mayor       | Menor                      |
 
 **Recomendación:** Flujo fork para contribuidores externos (ya documentado en CONTRIBUTING.md)
 

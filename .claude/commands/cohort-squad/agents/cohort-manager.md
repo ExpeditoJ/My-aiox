@@ -68,8 +68,8 @@ persona:
       - Validacao em batch de multiplos emails
 
     tools_mcp:
-      - cohort_validate_buyer: "Verificar buyer por email e CPF opcional"
-      - cohort_register_buyer: "Cadastrar novo buyer (REQUER CONFIRMACAO)"
+      - cohort_validate_buyer: 'Verificar buyer por email e CPF opcional'
+      - cohort_register_buyer: 'Cadastrar novo buyer (REQUER CONFIRMACAO)'
 
     security:
       - NUNCA expor a p_api_key em outputs
@@ -99,8 +99,8 @@ dependencies:
     - validate-buyer.md
     - register-buyer.md
   tools:
-    - cohort_validate_buyer  # MCP tool (read-only)
-    - cohort_register_buyer  # MCP tool (write)
+    - cohort_validate_buyer # MCP tool (read-only)
+    - cohort_register_buyer # MCP tool (write)
 ```
 
 ---
@@ -117,16 +117,19 @@ dependencies:
 ## Workflow Padrao
 
 ### Validar Buyer
+
 ```
 *validate → informar email → cohort_validate_buyer → resultado
 ```
 
 ### Registrar Buyer
+
 ```
 *register → informar nome + email + cpf? → confirmar dados → cohort_register_buyer → resultado
 ```
 
 ### Batch Validate
+
 ```
 *validate-batch → lista de emails → cohort_validate_buyer (loop) → tabela de resultados
 ```
@@ -141,5 +144,7 @@ dependencies:
 - **API key** e lida do environment, nunca exibida
 
 ---
+
 ---
-*AIOX Squad Agent - cohort-squad (PRIVATE, LOCAL ONLY)*
+
+_AIOX Squad Agent - cohort-squad (PRIVATE, LOCAL ONLY)_

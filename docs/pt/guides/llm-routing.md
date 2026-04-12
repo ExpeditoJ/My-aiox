@@ -21,10 +21,10 @@ Roteamento de LLM com custo-benefício para Claude Code. Economize até 99% em c
 
 O Roteamento de LLM fornece dois comandos para diferentes casos de uso:
 
-| Comando | Provedor | Custo | Caso de Uso |
-|---------|----------|-------|-------------|
-| `claude-max` | Claude Max (OAuth) | Assinatura | Experiência premium, tarefas complexas |
-| `claude-free` | DeepSeek | ~$0.14/M tokens | Desenvolvimento, testes, tarefas simples |
+| Comando       | Provedor           | Custo           | Caso de Uso                              |
+| ------------- | ------------------ | --------------- | ---------------------------------------- |
+| `claude-max`  | Claude Max (OAuth) | Assinatura      | Experiência premium, tarefas complexas   |
+| `claude-free` | DeepSeek           | ~$0.14/M tokens | Desenvolvimento, testes, tarefas simples |
 
 ---
 
@@ -33,12 +33,14 @@ O Roteamento de LLM fornece dois comandos para diferentes casos de uso:
 ### Instalação
 
 **Opção 1: Se você tem o aiox-core clonado**
+
 ```bash
 # Do diretório aiox-core
 node .aiox-core/infrastructure/scripts/llm-routing/install-llm-routing.js
 ```
 
 **Opção 2: Instalação nova**
+
 ```bash
 # Clone o repositório
 git clone https://github.com/SynkraAI/aiox-core.git
@@ -76,17 +78,20 @@ claude-free
 Usa sua assinatura Claude Max via OAuth (login claude.ai).
 
 **Recursos:**
+
 - Capacidades completas do Claude
 - Não requer chave API
 - Usa login Claude existente
 - Melhor para tarefas de raciocínio complexo
 
 **Uso:**
+
 ```bash
 claude-max
 ```
 
 **Quando usar:**
+
 - Análise de código complexo
 - Decisões arquiteturais
 - Tarefas que requerem alta precisão
@@ -99,17 +104,20 @@ claude-max
 Usa API DeepSeek com endpoint compatível com Anthropic.
 
 **Recursos:**
+
 - Chamada de ferramentas suportada ✅
 - Streaming suportado ✅
 - ~99% de redução de custo
 - Suporte a arquivo `.env` do projeto
 
 **Uso:**
+
 ```bash
 claude-free
 ```
 
 **Quando usar:**
+
 - Desenvolvimento e testes
 - Tarefas de código simples
 - Aprendizado e experimentação
@@ -119,11 +127,11 @@ claude-free
 
 ## Comparação de Custos
 
-| Provedor | Tokens de Entrada | Tokens de Saída | Mensal (1M tokens) |
-|----------|-------------------|-----------------|---------------------|
-| Claude API | $15.00/M | $75.00/M | $90.00 |
-| Claude Max | Incluído | Incluído | $20/mês |
-| **DeepSeek** | **$0.07/M** | **$0.14/M** | **$0.21** |
+| Provedor     | Tokens de Entrada | Tokens de Saída | Mensal (1M tokens) |
+| ------------ | ----------------- | --------------- | ------------------ |
+| Claude API   | $15.00/M          | $75.00/M        | $90.00             |
+| Claude Max   | Incluído          | Incluído        | $20/mês            |
+| **DeepSeek** | **$0.07/M**       | **$0.14/M**     | **$0.21**          |
 
 **Economia com DeepSeek:** Até 99.7% comparado à API do Claude
 
@@ -136,12 +144,14 @@ claude-free
 `claude-free` procura a chave API do DeepSeek nesta ordem:
 
 1. **Arquivo `.env` do projeto** (recomendado)
+
    ```bash
    # .env na raiz do seu projeto
    DEEPSEEK_API_KEY=sk-your-key-here
    ```
 
 2. **Variável de ambiente**
+
    ```bash
    # Windows
    setx DEEPSEEK_API_KEY "sk-your-key-here"
@@ -152,9 +162,9 @@ claude-free
 
 ### Locais de Instalação
 
-| SO | Diretório de Instalação |
-|----|-------------------------|
-| Windows | `%APPDATA%\npm\` |
+| SO          | Diretório de Instalação       |
+| ----------- | ----------------------------- |
+| Windows     | `%APPDATA%\npm\`              |
 | macOS/Linux | `/usr/local/bin/` ou `~/bin/` |
 
 ---
@@ -162,22 +172,26 @@ claude-free
 ## Como Funciona
 
 ### claude-max
+
 1. Limpa todas as configurações de provedor alternativo
 2. Usa autenticação OAuth padrão do Claude
 3. Inicia Claude Code com sua assinatura Max
 
 ### claude-free
+
 1. Procura arquivo `.env` (diretório atual → diretórios pai)
 2. Carrega `DEEPSEEK_API_KEY` do `.env` ou ambiente
 3. Define endpoint compatível com Anthropic do DeepSeek
 4. Inicia Claude Code com backend DeepSeek
 
 **Endpoint DeepSeek:**
+
 ```text
 https://api.deepseek.com/anthropic
 ```
 
 Este endpoint fornece:
+
 - Compatibilidade com API Anthropic
 - Suporte a chamada de ferramentas/funções
 - Respostas em streaming
@@ -199,6 +213,7 @@ Um aviso é exibido cada vez que você executa esses comandos. Se preferir confi
 ### Comando não encontrado
 
 **Windows:**
+
 ```powershell
 # Verifique se npm global está no PATH
 echo $env:PATH | Select-String "npm"
@@ -208,6 +223,7 @@ $env:PATH += ";$env:APPDATA\npm"
 ```
 
 **Unix:**
+
 ```bash
 # Verifique PATH
 echo $PATH | grep -E "(local/bin|~/bin)"
@@ -225,15 +241,16 @@ export PATH="$HOME/bin:$PATH"
 
 ### Erros de API
 
-| Erro | Causa | Solução |
-|------|-------|---------|
-| 401 Unauthorized | Chave API inválida | Verifique a chave no painel DeepSeek |
-| 429 Rate Limited | Muitas requisições | Aguarde e tente novamente |
-| Connection refused | Problema de rede | Verifique conexão com internet |
+| Erro               | Causa              | Solução                              |
+| ------------------ | ------------------ | ------------------------------------ |
+| 401 Unauthorized   | Chave API inválida | Verifique a chave no painel DeepSeek |
+| 429 Rate Limited   | Muitas requisições | Aguarde e tente novamente            |
+| Connection refused | Problema de rede   | Verifique conexão com internet       |
 
 ### Chamada de ferramentas não funcionando
 
 O endpoint `/anthropic` do DeepSeek suporta chamada de ferramentas. Se as ferramentas não estiverem funcionando:
+
 1. Verifique se o endpoint é `https://api.deepseek.com/anthropic`
 2. Verifique se a chave API tem créditos suficientes
 3. Tente um teste simples sem ferramentas primeiro
@@ -250,30 +267,33 @@ Edite os arquivos de template se precisar de modelos diferentes:
 **Unix:** `.aiox-core/infrastructure/scripts/llm-routing/templates/claude-free.sh`
 
 Altere:
+
 ```bash
 export ANTHROPIC_MODEL="deepseek-chat"
 ```
 
 ### Variáveis de Ambiente
 
-| Variável | Descrição | Padrão |
-|----------|-----------|--------|
-| `ANTHROPIC_BASE_URL` | Endpoint API | `https://api.deepseek.com/anthropic` |
-| `ANTHROPIC_API_KEY` | Chave API | De DEEPSEEK_API_KEY |
-| `ANTHROPIC_MODEL` | Nome do modelo | `deepseek-chat` |
-| `API_TIMEOUT_MS` | Timeout de requisição | `600000` (10 min) |
+| Variável             | Descrição             | Padrão                               |
+| -------------------- | --------------------- | ------------------------------------ |
+| `ANTHROPIC_BASE_URL` | Endpoint API          | `https://api.deepseek.com/anthropic` |
+| `ANTHROPIC_API_KEY`  | Chave API             | De DEEPSEEK_API_KEY                  |
+| `ANTHROPIC_MODEL`    | Nome do modelo        | `deepseek-chat`                      |
+| `API_TIMEOUT_MS`     | Timeout de requisição | `600000` (10 min)                    |
 
 ---
 
 ## Desinstalação
 
 ### Windows
+
 ```powershell
 Remove-Item "$env:APPDATA\npm\claude-free.cmd"
 Remove-Item "$env:APPDATA\npm\claude-max.cmd"
 ```
 
 ### Unix
+
 ```bash
 rm /usr/local/bin/claude-free
 rm /usr/local/bin/claude-max
@@ -309,4 +329,4 @@ R: As chaves são carregadas de arquivos `.env` (não faça commit deles!) ou va
 
 ---
 
-*Gerado pelo AIOX Framework - Story 6.7*
+_Gerado pelo AIOX Framework - Story 6.7_

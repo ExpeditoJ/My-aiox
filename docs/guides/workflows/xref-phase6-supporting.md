@@ -42,27 +42,27 @@ The Workflow Intelligence System (WIS) is organized into three submodules:
 
 ### File Inventory
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `workflow-intelligence/index.js` | Main entry point; exports all WIS modules | CLI commands, orchestration core, tests | `engine/*`, `learning/*`, `registry/*` | No |
-| `engine/confidence-scorer.js` | Calculates confidence scores for workflow suggestions | `suggestion-engine.js`, tests | Consumes workflow data | No |
-| `engine/suggestion-engine.js` | Generates workflow suggestions based on context | `index.js`, tests | Uses `confidence-scorer`, `workflow-registry` | No |
-| `engine/wave-analyzer.js` | Analyzes wave-based execution patterns | `index.js`, wave-executor, tests | Used by `wave-executor.js` in core | No |
-| `engine/output-formatter.js` | Formats WIS output for CLI display | `index.js`, CLI layer | Standalone formatting utility | No |
-| `learning/index.js` | Entry point for pattern learning subsystem | `index.js`, tests | Exports `PatternCapture`, `PatternValidator`, `PatternStore` | No |
-| `learning/pattern-capture.js` | Captures session patterns (commands, agent sequences) | `learning/index.js`, `capture-hook.js` | Unit tests in `tests/unit/workflow-intelligence/` | No |
-| `learning/pattern-store.js` | Persists and retrieves captured patterns | `learning/index.js`, tests | Filesystem-based storage | No |
-| `learning/pattern-validator.js` | Validates captured patterns before storage | `learning/index.js`, tests | Validates against schema rules | No |
-| `learning/capture-hook.js` | Hook to automatically capture patterns during sessions | `index.js` | References `workflow-intelligence/learning` | No |
-| `learning/gotcha-registry.js` | Stores common pitfalls and gotchas per workflow | `learning/index.js` | Referenced by QA feedback | No |
-| `learning/qa-feedback.js` | Integrates QA feedback into learning system | `learning/index.js` | References `gotcha-registry` | No |
-| `learning/semantic-search.js` | Semantic search over captured patterns | `learning/index.js` | Used by suggestion engine | No |
-| `registry/workflow-registry.js` | Central registry of all available workflows | `index.js`, `suggestion-engine.js` | Loads from `.aiox-core/development/workflows/` | No |
-| `__tests__/confidence-scorer.test.js` | Unit tests for confidence scorer | Test runner | Tests `engine/confidence-scorer.js` | No |
-| `__tests__/wave-analyzer.test.js` | Unit tests for wave analyzer | Test runner | Tests `engine/wave-analyzer.js` | No |
-| `__tests__/workflow-registry.test.js` | Unit tests for workflow registry | Test runner | Tests `registry/workflow-registry.js` | No |
-| `__tests__/suggestion-engine.test.js` | Unit tests for suggestion engine | Test runner | Tests `engine/suggestion-engine.js` | No |
-| `__tests__/integration.test.js` | Integration tests for full WIS | Test runner | Tests cross-module interactions | No |
+| File                                  | Purpose                                                | Consumers                               | Cross-refs                                                   | Orphan? |
+| ------------------------------------- | ------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | ------- |
+| `workflow-intelligence/index.js`      | Main entry point; exports all WIS modules              | CLI commands, orchestration core, tests | `engine/*`, `learning/*`, `registry/*`                       | No      |
+| `engine/confidence-scorer.js`         | Calculates confidence scores for workflow suggestions  | `suggestion-engine.js`, tests           | Consumes workflow data                                       | No      |
+| `engine/suggestion-engine.js`         | Generates workflow suggestions based on context        | `index.js`, tests                       | Uses `confidence-scorer`, `workflow-registry`                | No      |
+| `engine/wave-analyzer.js`             | Analyzes wave-based execution patterns                 | `index.js`, wave-executor, tests        | Used by `wave-executor.js` in core                           | No      |
+| `engine/output-formatter.js`          | Formats WIS output for CLI display                     | `index.js`, CLI layer                   | Standalone formatting utility                                | No      |
+| `learning/index.js`                   | Entry point for pattern learning subsystem             | `index.js`, tests                       | Exports `PatternCapture`, `PatternValidator`, `PatternStore` | No      |
+| `learning/pattern-capture.js`         | Captures session patterns (commands, agent sequences)  | `learning/index.js`, `capture-hook.js`  | Unit tests in `tests/unit/workflow-intelligence/`            | No      |
+| `learning/pattern-store.js`           | Persists and retrieves captured patterns               | `learning/index.js`, tests              | Filesystem-based storage                                     | No      |
+| `learning/pattern-validator.js`       | Validates captured patterns before storage             | `learning/index.js`, tests              | Validates against schema rules                               | No      |
+| `learning/capture-hook.js`            | Hook to automatically capture patterns during sessions | `index.js`                              | References `workflow-intelligence/learning`                  | No      |
+| `learning/gotcha-registry.js`         | Stores common pitfalls and gotchas per workflow        | `learning/index.js`                     | Referenced by QA feedback                                    | No      |
+| `learning/qa-feedback.js`             | Integrates QA feedback into learning system            | `learning/index.js`                     | References `gotcha-registry`                                 | No      |
+| `learning/semantic-search.js`         | Semantic search over captured patterns                 | `learning/index.js`                     | Used by suggestion engine                                    | No      |
+| `registry/workflow-registry.js`       | Central registry of all available workflows            | `index.js`, `suggestion-engine.js`      | Loads from `.aiox-core/development/workflows/`               | No      |
+| `__tests__/confidence-scorer.test.js` | Unit tests for confidence scorer                       | Test runner                             | Tests `engine/confidence-scorer.js`                          | No      |
+| `__tests__/wave-analyzer.test.js`     | Unit tests for wave analyzer                           | Test runner                             | Tests `engine/wave-analyzer.js`                              | No      |
+| `__tests__/workflow-registry.test.js` | Unit tests for workflow registry                       | Test runner                             | Tests `registry/workflow-registry.js`                        | No      |
+| `__tests__/suggestion-engine.test.js` | Unit tests for suggestion engine                       | Test runner                             | Tests `engine/suggestion-engine.js`                          | No      |
+| `__tests__/integration.test.js`       | Integration tests for full WIS                         | Test runner                             | Tests cross-module interactions                              | No      |
 
 ### External References (26 files reference this system)
 
@@ -86,18 +86,18 @@ The hooks follow a standard event pattern: each hook enriches event data via `li
 
 ### File Inventory
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `hooks/pre_tool_use.py` | Hook fired before tool invocation; sends telemetry | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/post_tool_use.py` | Hook fired after tool invocation; records tool usage | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/notification.py` | Handles notification events | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/stop.py` | Hook fired on session stop | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/pre_compact.py` | Hook fired before context compaction | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/subagent_stop.py` | Hook fired when a subagent stops | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/user_prompt_submit.py` | Hook fired on user prompt submission | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No |
-| `hooks/lib/__init__.py` | Python package init; exports `enrich` and `send_event` | All hooks | Package marker | No |
-| `hooks/lib/enrich.py` | Enriches event data with context (session, project, agent info) | All hooks | Standalone utility | No |
-| `hooks/lib/send_event.py` | Sends event data to monitor server via HTTP | All hooks | Posts to `MONITOR_URL` | No |
+| File                          | Purpose                                                         | Consumers                | Cross-refs                           | Orphan? |
+| ----------------------------- | --------------------------------------------------------------- | ------------------------ | ------------------------------------ | ------- |
+| `hooks/pre_tool_use.py`       | Hook fired before tool invocation; sends telemetry              | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/post_tool_use.py`      | Hook fired after tool invocation; records tool usage            | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/notification.py`       | Handles notification events                                     | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/stop.py`               | Hook fired on session stop                                      | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/pre_compact.py`        | Hook fired before context compaction                            | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/subagent_stop.py`      | Hook fired when a subagent stops                                | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/user_prompt_submit.py` | Hook fired on user prompt submission                            | Claude Code hooks system | `lib/enrich.py`, `lib/send_event.py` | No      |
+| `hooks/lib/__init__.py`       | Python package init; exports `enrich` and `send_event`          | All hooks                | Package marker                       | No      |
+| `hooks/lib/enrich.py`         | Enriches event data with context (session, project, agent info) | All hooks                | Standalone utility                   | No      |
+| `hooks/lib/send_event.py`     | Sends event data to monitor server via HTTP                     | All hooks                | Posts to `MONITOR_URL`               | No      |
 
 ### External References (3 files reference this system)
 
@@ -120,6 +120,7 @@ This system is **self-contained** and interfaces with an external monitor server
 ### Architecture
 
 The quality gates are organized in layers:
+
 - **Layer 1 (Pre-commit):** `layer1-precommit.js` -- Runs lint, typecheck, and basic validation before commits
 - **Layer 2 (PR Automation):** `layer2-pr-automation.js` -- Automated checks during PR creation
 - **Layer 3 (Human Review):** `layer3-human-review.js` -- Orchestrates human review processes
@@ -128,27 +129,27 @@ All layers extend `base-layer.js` and are managed by `quality-gate-manager.js`. 
 
 ### File Inventory -- core/quality-gates/
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `quality-gate-manager.js` | Central manager for all quality gate layers | Tasks (`qa-gate`, `dev-develop-story`), CLI | Manages all layers | No |
-| `quality-gate-config.yaml` | Configuration for quality gate thresholds and rules | `quality-gate-manager.js` | Referenced by all layers | No |
-| `base-layer.js` | Abstract base class for quality gate layers | `layer1`, `layer2`, `layer3` | Extended by all layers | No |
-| `layer1-precommit.js` | Pre-commit quality checks (lint, typecheck, tests) | `quality-gate-manager.js`, devops tasks | References `base-layer.js` | No |
-| `layer2-pr-automation.js` | PR automation quality checks | `quality-gate-manager.js`, PR automation workflow | References `base-layer.js`, `quality-gate-config.yaml` | No |
-| `layer3-human-review.js` | Human review orchestration | `quality-gate-manager.js` | References `base-layer.js` | No |
-| `checklist-generator.js` | Generates review checklists from quality gate results | `layer3-human-review.js` | Creates checklists for reviewers | No |
-| `focus-area-recommender.js` | Recommends focus areas for human reviewers | `layer3-human-review.js` | Analyzes code changes for risk | No |
-| `human-review-orchestrator.js` | Orchestrates the human review workflow | `layer3-human-review.js` | Manages review sessions | No |
-| `notification-manager.js` | Sends notifications about quality gate results | `quality-gate-manager.js` | Integrates with notification systems | No |
+| File                           | Purpose                                               | Consumers                                         | Cross-refs                                             | Orphan? |
+| ------------------------------ | ----------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------ | ------- |
+| `quality-gate-manager.js`      | Central manager for all quality gate layers           | Tasks (`qa-gate`, `dev-develop-story`), CLI       | Manages all layers                                     | No      |
+| `quality-gate-config.yaml`     | Configuration for quality gate thresholds and rules   | `quality-gate-manager.js`                         | Referenced by all layers                               | No      |
+| `base-layer.js`                | Abstract base class for quality gate layers           | `layer1`, `layer2`, `layer3`                      | Extended by all layers                                 | No      |
+| `layer1-precommit.js`          | Pre-commit quality checks (lint, typecheck, tests)    | `quality-gate-manager.js`, devops tasks           | References `base-layer.js`                             | No      |
+| `layer2-pr-automation.js`      | PR automation quality checks                          | `quality-gate-manager.js`, PR automation workflow | References `base-layer.js`, `quality-gate-config.yaml` | No      |
+| `layer3-human-review.js`       | Human review orchestration                            | `quality-gate-manager.js`                         | References `base-layer.js`                             | No      |
+| `checklist-generator.js`       | Generates review checklists from quality gate results | `layer3-human-review.js`                          | Creates checklists for reviewers                       | No      |
+| `focus-area-recommender.js`    | Recommends focus areas for human reviewers            | `layer3-human-review.js`                          | Analyzes code changes for risk                         | No      |
+| `human-review-orchestrator.js` | Orchestrates the human review workflow                | `layer3-human-review.js`                          | Manages review sessions                                | No      |
+| `notification-manager.js`      | Sends notifications about quality gate results        | `quality-gate-manager.js`                         | Integrates with notification systems                   | No      |
 
 ### File Inventory -- quality/ (Metrics)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `metrics-collector.js` | Collects and aggregates quality metrics across layers | `metrics-hook.js`, CLI metrics commands | Stores to `.aiox/data/quality-metrics.json` | No |
-| `metrics-hook.js` | Hook functions for recording metrics from workflows | Pre-commit hooks, PR automation, `.github/workflows/pr-automation.yml` | Imports `MetricsCollector` | No |
-| `seed-metrics.js` | Seeds initial demo metrics data | CLI `aiox metrics seed` command | Uses `MetricsCollector` | No |
-| `schemas/quality-metrics.schema.json` | JSON Schema for quality metrics data validation | `metrics-collector.js` | Ajv-based validation | No |
+| File                                  | Purpose                                               | Consumers                                                              | Cross-refs                                  | Orphan? |
+| ------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------- | ------- |
+| `metrics-collector.js`                | Collects and aggregates quality metrics across layers | `metrics-hook.js`, CLI metrics commands                                | Stores to `.aiox/data/quality-metrics.json` | No      |
+| `metrics-hook.js`                     | Hook functions for recording metrics from workflows   | Pre-commit hooks, PR automation, `.github/workflows/pr-automation.yml` | Imports `MetricsCollector`                  | No      |
+| `seed-metrics.js`                     | Seeds initial demo metrics data                       | CLI `aiox metrics seed` command                                        | Uses `MetricsCollector`                     | No      |
+| `schemas/quality-metrics.schema.json` | JSON Schema for quality metrics data validation       | `metrics-collector.js`                                                 | Ajv-based validation                        | No      |
 
 ### External References (30+ files reference this system)
 
@@ -170,14 +171,14 @@ All layers extend `base-layer.js` and are managed by `quality-gate-manager.js`. 
 
 ### File Inventory
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `agent-v3-schema.json` | JSON Schema for V3 agent definitions | `validate-v3-schema.js`, migration scripts | Validates agents in `development/agents/` | No |
-| `task-v3-schema.json` | JSON Schema for V3 task definitions | `validate-v3-schema.js` | Validates tasks in `development/tasks/` | No |
-| `squad-schema.json` | JSON Schema for squad manifests | Squad validator scripts | Validates `squads/*/squad.yaml` | No |
-| `squad-design-schema.json` | JSON Schema for squad design documents | Squad creation tasks | Validates squad design files | No |
-| `validate-v3-schema.js` | CLI validator for V3 agents/tasks; supports `--all`, `--diff`, `--strict` | CLI usage, migration scripts (`migrate-agent.js`) | Reads schemas, validates `development/agents/` and `development/tasks/` | No |
-| `README.md` | Documentation for schemas directory | Developers | References all schema files | No |
+| File                       | Purpose                                                                   | Consumers                                         | Cross-refs                                                              | Orphan? |
+| -------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------- | ------- |
+| `agent-v3-schema.json`     | JSON Schema for V3 agent definitions                                      | `validate-v3-schema.js`, migration scripts        | Validates agents in `development/agents/`                               | No      |
+| `task-v3-schema.json`      | JSON Schema for V3 task definitions                                       | `validate-v3-schema.js`                           | Validates tasks in `development/tasks/`                                 | No      |
+| `squad-schema.json`        | JSON Schema for squad manifests                                           | Squad validator scripts                           | Validates `squads/*/squad.yaml`                                         | No      |
+| `squad-design-schema.json` | JSON Schema for squad design documents                                    | Squad creation tasks                              | Validates squad design files                                            | No      |
+| `validate-v3-schema.js`    | CLI validator for V3 agents/tasks; supports `--all`, `--diff`, `--strict` | CLI usage, migration scripts (`migrate-agent.js`) | Reads schemas, validates `development/agents/` and `development/tasks/` | No      |
+| `README.md`                | Documentation for schemas directory                                       | Developers                                        | References all schema files                                             | No      |
 
 ### External References (21 files reference schemas/)
 
@@ -203,85 +204,85 @@ Commands are organized by domain into subdirectories, each with an `index.js` en
 
 #### config/ (1 file) -- NEW/UNTRACKED
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `config/index.js` | Config hierarchy management: show, diff, migrate, validate, init-local | `cli/index.js`, `bin/aiox.js` | Uses `core/config/config-resolver.js`, `merge-utils.js`, `env-interpolator.js` | No |
+| File              | Purpose                                                                | Consumers                     | Cross-refs                                                                     | Orphan? |
+| ----------------- | ---------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------ | ------- |
+| `config/index.js` | Config hierarchy management: show, diff, migrate, validate, init-local | `cli/index.js`, `bin/aiox.js` | Uses `core/config/config-resolver.js`, `merge-utils.js`, `env-interpolator.js` | No      |
 
 #### generate/ (1 file)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `generate/index.js` | Code generation commands | `cli/index.js` | Uses templates and generators | No |
+| File                | Purpose                  | Consumers      | Cross-refs                    | Orphan? |
+| ------------------- | ------------------------ | -------------- | ----------------------------- | ------- |
+| `generate/index.js` | Code generation commands | `cli/index.js` | Uses templates and generators | No      |
 
 #### manifest/ (3 files)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `manifest/index.js` | Manifest command group entry point | `cli/index.js` | Routes to subcommands | No |
-| `manifest/regenerate.js` | Regenerate manifest CSV files | `manifest/index.js` | Uses `core/manifest/manifest-generator.js` | No |
-| `manifest/validate.js` | Validate manifest integrity | `manifest/index.js` | Uses `core/manifest/manifest-validator.js` | No |
+| File                     | Purpose                            | Consumers           | Cross-refs                                 | Orphan? |
+| ------------------------ | ---------------------------------- | ------------------- | ------------------------------------------ | ------- |
+| `manifest/index.js`      | Manifest command group entry point | `cli/index.js`      | Routes to subcommands                      | No      |
+| `manifest/regenerate.js` | Regenerate manifest CSV files      | `manifest/index.js` | Uses `core/manifest/manifest-generator.js` | No      |
+| `manifest/validate.js`   | Validate manifest integrity        | `manifest/index.js` | Uses `core/manifest/manifest-validator.js` | No      |
 
 #### mcp/ (5 files)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `mcp/index.js` | MCP management command group | `cli/index.js` | Routes to subcommands | No |
-| `mcp/add.js` | Add MCP server | `mcp/index.js` | Writes to MCP config files | No |
-| `mcp/link.js` | Link MCP server | `mcp/index.js` | Links existing MCP | No |
-| `mcp/setup.js` | Setup MCP infrastructure | `mcp/index.js` | Docker MCP setup | No |
-| `mcp/status.js` | Show MCP status | `mcp/index.js` | Reads MCP config | No |
+| File            | Purpose                      | Consumers      | Cross-refs                 | Orphan? |
+| --------------- | ---------------------------- | -------------- | -------------------------- | ------- |
+| `mcp/index.js`  | MCP management command group | `cli/index.js` | Routes to subcommands      | No      |
+| `mcp/add.js`    | Add MCP server               | `mcp/index.js` | Writes to MCP config files | No      |
+| `mcp/link.js`   | Link MCP server              | `mcp/index.js` | Links existing MCP         | No      |
+| `mcp/setup.js`  | Setup MCP infrastructure     | `mcp/index.js` | Docker MCP setup           | No      |
+| `mcp/status.js` | Show MCP status              | `mcp/index.js` | Reads MCP config           | No      |
 
 #### metrics/ (5 files)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `metrics/index.js` | Quality metrics command group | `cli/index.js` | Routes to subcommands | No |
-| `metrics/show.js` | Display quality metrics | `metrics/index.js` | Uses `quality/metrics-collector.js` | No |
-| `metrics/record.js` | Record a quality gate run | `metrics/index.js` | Uses `quality/metrics-collector.js` | No |
-| `metrics/cleanup.js` | Clean up old metrics data | `metrics/index.js` | Uses `quality/metrics-collector.js` | No |
-| `metrics/seed.js` | Seed demo metrics data | `metrics/index.js` | Uses `quality/seed-metrics.js` | No |
+| File                 | Purpose                       | Consumers          | Cross-refs                          | Orphan? |
+| -------------------- | ----------------------------- | ------------------ | ----------------------------------- | ------- |
+| `metrics/index.js`   | Quality metrics command group | `cli/index.js`     | Routes to subcommands               | No      |
+| `metrics/show.js`    | Display quality metrics       | `metrics/index.js` | Uses `quality/metrics-collector.js` | No      |
+| `metrics/record.js`  | Record a quality gate run     | `metrics/index.js` | Uses `quality/metrics-collector.js` | No      |
+| `metrics/cleanup.js` | Clean up old metrics data     | `metrics/index.js` | Uses `quality/metrics-collector.js` | No      |
+| `metrics/seed.js`    | Seed demo metrics data        | `metrics/index.js` | Uses `quality/seed-metrics.js`      | No      |
 
 #### migrate/ (7 files)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `migrate/index.js` | Migration command group | `cli/index.js` | Routes to subcommands | No |
-| `migrate/analyze.js` | Analyze migration requirements | `migrate/index.js` | Scans codebase for migration needs | No |
-| `migrate/backup.js` | Backup before migration | `migrate/index.js` | Creates backups | No |
-| `migrate/execute.js` | Execute migration | `migrate/index.js` | Performs file transformations | No |
-| `migrate/rollback.js` | Rollback migration | `migrate/index.js` | Restores from backup | No |
-| `migrate/update-imports.js` | Update import paths after migration | `migrate/index.js` | Fixes import references | No |
-| `migrate/validate.js` | Validate migration results | `migrate/index.js` | Checks post-migration integrity | No |
+| File                        | Purpose                             | Consumers          | Cross-refs                         | Orphan? |
+| --------------------------- | ----------------------------------- | ------------------ | ---------------------------------- | ------- |
+| `migrate/index.js`          | Migration command group             | `cli/index.js`     | Routes to subcommands              | No      |
+| `migrate/analyze.js`        | Analyze migration requirements      | `migrate/index.js` | Scans codebase for migration needs | No      |
+| `migrate/backup.js`         | Backup before migration             | `migrate/index.js` | Creates backups                    | No      |
+| `migrate/execute.js`        | Execute migration                   | `migrate/index.js` | Performs file transformations      | No      |
+| `migrate/rollback.js`       | Rollback migration                  | `migrate/index.js` | Restores from backup               | No      |
+| `migrate/update-imports.js` | Update import paths after migration | `migrate/index.js` | Fixes import references            | No      |
+| `migrate/validate.js`       | Validate migration results          | `migrate/index.js` | Checks post-migration integrity    | No      |
 
 #### qa/ (3 files)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `qa/index.js` | QA command group | `cli/index.js` | Routes to subcommands | No |
-| `qa/run.js` | Run QA checks | `qa/index.js` | Uses quality gates system | No |
-| `qa/status.js` | Show QA status | `qa/index.js` | Reads quality data | No |
+| File           | Purpose          | Consumers      | Cross-refs                | Orphan? |
+| -------------- | ---------------- | -------------- | ------------------------- | ------- |
+| `qa/index.js`  | QA command group | `cli/index.js` | Routes to subcommands     | No      |
+| `qa/run.js`    | Run QA checks    | `qa/index.js`  | Uses quality gates system | No      |
+| `qa/status.js` | Show QA status   | `qa/index.js`  | Reads quality data        | No      |
 
 #### workers/ (10 files)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `workers/index.js` | Workers command group (list, search, info) | `cli/index.js` | Routes to subcommands | No |
-| `workers/list.js` | List workers from manifests | `workers/index.js` | Reads `manifests/workers.csv` | No |
-| `workers/info.js` | Show detailed worker info | `workers/index.js` | Reads worker files | No |
-| `workers/search.js` | Search workers | `workers/index.js` | Routes to search strategies | No |
-| `workers/search-keyword.js` | Keyword-based worker search | `workers/search.js` | Searches `workers.csv` | No |
-| `workers/search-filters.js` | Filter-based worker search | `workers/search.js` | Filter by category, tags | No |
-| `workers/search-semantic.js` | Semantic worker search | `workers/search.js` | Advanced search | No |
-| `workers/formatters/info-formatter.js` | Format worker info for display | `workers/info.js` | Output formatting | No |
-| `workers/formatters/list-table.js` | Table formatter for worker list | `workers/list.js` | Table output | No |
-| `workers/formatters/list-tree.js` | Tree formatter for worker list | `workers/list.js` | Tree output | No |
-| `workers/utils/pagination.js` | Pagination utility | `workers/list.js`, `workers/search.js` | Shared utility | No |
+| File                                   | Purpose                                    | Consumers                              | Cross-refs                    | Orphan? |
+| -------------------------------------- | ------------------------------------------ | -------------------------------------- | ----------------------------- | ------- |
+| `workers/index.js`                     | Workers command group (list, search, info) | `cli/index.js`                         | Routes to subcommands         | No      |
+| `workers/list.js`                      | List workers from manifests                | `workers/index.js`                     | Reads `manifests/workers.csv` | No      |
+| `workers/info.js`                      | Show detailed worker info                  | `workers/index.js`                     | Reads worker files            | No      |
+| `workers/search.js`                    | Search workers                             | `workers/index.js`                     | Routes to search strategies   | No      |
+| `workers/search-keyword.js`            | Keyword-based worker search                | `workers/search.js`                    | Searches `workers.csv`        | No      |
+| `workers/search-filters.js`            | Filter-based worker search                 | `workers/search.js`                    | Filter by category, tags      | No      |
+| `workers/search-semantic.js`           | Semantic worker search                     | `workers/search.js`                    | Advanced search               | No      |
+| `workers/formatters/info-formatter.js` | Format worker info for display             | `workers/info.js`                      | Output formatting             | No      |
+| `workers/formatters/list-table.js`     | Table formatter for worker list            | `workers/list.js`                      | Table output                  | No      |
+| `workers/formatters/list-tree.js`      | Tree formatter for worker list             | `workers/list.js`                      | Tree output                   | No      |
+| `workers/utils/pagination.js`          | Pagination utility                         | `workers/list.js`, `workers/search.js` | Shared utility                | No      |
 
 #### validate/ (1 file)
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `validate/index.js` | Validate AIOX installation integrity | `cli/index.js` | Uses `install-manifest.yaml` | No |
+| File                | Purpose                              | Consumers      | Cross-refs                   | Orphan? |
+| ------------------- | ------------------------------------ | -------------- | ---------------------------- | ------- |
+| `validate/index.js` | Validate AIOX installation integrity | `cli/index.js` | Uses `install-manifest.yaml` | No      |
 
 ### External References (20+ files reference CLI commands)
 
@@ -347,12 +348,12 @@ The `tools/` directory exists (referenced in `core-config.yaml` as `toolsLocatio
 
 ### File Inventory
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `agents.csv` | Registry of all agent definitions (id, name, archetype, icon, version, status, file_path) | CLI `workers` commands, `manifest` commands, install validator | References all files in `development/agents/` | No |
-| `tasks.csv` | Registry of all task definitions (121 tasks; id, name, category, format, has_elicitation, file_path, status) | CLI `workers` commands, `manifest` commands | References all files in `development/tasks/` | No |
-| `workers.csv` | Unified registry of ALL workers (204 entries: checklists, data, scripts, tasks, templates, workflows) | CLI `workers` commands, search system | References files across `development/`, `infrastructure/`, `core/`, `product/` | No |
-| `schema/manifest-schema.json` | JSON Schema defining the structure of all manifest CSV files | `core/manifest/manifest-validator.js`, `manifest` CLI | Validates `agents.csv`, `tasks.csv`, `workers.csv` | No |
+| File                          | Purpose                                                                                                      | Consumers                                                      | Cross-refs                                                                     | Orphan? |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- | ------------------------------------------------------------------------------ | ------- |
+| `agents.csv`                  | Registry of all agent definitions (id, name, archetype, icon, version, status, file_path)                    | CLI `workers` commands, `manifest` commands, install validator | References all files in `development/agents/`                                  | No      |
+| `tasks.csv`                   | Registry of all task definitions (121 tasks; id, name, category, format, has_elicitation, file_path, status) | CLI `workers` commands, `manifest` commands                    | References all files in `development/tasks/`                                   | No      |
+| `workers.csv`                 | Unified registry of ALL workers (204 entries: checklists, data, scripts, tasks, templates, workflows)        | CLI `workers` commands, search system                          | References files across `development/`, `infrastructure/`, `core/`, `product/` | No      |
+| `schema/manifest-schema.json` | JSON Schema defining the structure of all manifest CSV files                                                 | `core/manifest/manifest-validator.js`, `manifest` CLI          | Validates `agents.csv`, `tasks.csv`, `workers.csv`                             | No      |
 
 ### External References (8+ files reference manifests/)
 
@@ -379,6 +380,7 @@ The `tools/` directory exists (referenced in `core-config.yaml` as `toolsLocatio
 ### Architecture
 
 Two directories serve this system:
+
 - **core/elicitation/** -- The engine and session manager (core modules)
 - **elicitation/** -- Domain-specific elicitation step definitions (agent, task, workflow)
 
@@ -386,21 +388,21 @@ The engine uses `inquirer` for interactive prompts, supports smart defaults, con
 
 ### File Inventory -- core/elicitation/
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `elicitation-engine.js` | Main elicitation engine with progressive disclosure, validation, security checks | `create-agent` task, `create-task` task, `create-workflow` task | Uses `session-manager.js`, optional `security-checker` | No |
-| `session-manager.js` | Manages elicitation session persistence (save/load/resume) | `elicitation-engine.js` | Stores sessions in `.aiox-sessions/` | No |
-| `agent-elicitation.js` | Agent-specific elicitation steps (duplicate of sibling?) | `elicitation-engine.js` | Defines agent creation wizard steps | Possible duplicate |
-| `task-elicitation.js` | Task-specific elicitation steps (duplicate of sibling?) | `elicitation-engine.js` | Defines task creation wizard steps | Possible duplicate |
-| `workflow-elicitation.js` | Workflow-specific elicitation steps (duplicate of sibling?) | `elicitation-engine.js` | Defines workflow creation wizard steps | Possible duplicate |
+| File                      | Purpose                                                                          | Consumers                                                       | Cross-refs                                             | Orphan?            |
+| ------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------ | ------------------ |
+| `elicitation-engine.js`   | Main elicitation engine with progressive disclosure, validation, security checks | `create-agent` task, `create-task` task, `create-workflow` task | Uses `session-manager.js`, optional `security-checker` | No                 |
+| `session-manager.js`      | Manages elicitation session persistence (save/load/resume)                       | `elicitation-engine.js`                                         | Stores sessions in `.aiox-sessions/`                   | No                 |
+| `agent-elicitation.js`    | Agent-specific elicitation steps (duplicate of sibling?)                         | `elicitation-engine.js`                                         | Defines agent creation wizard steps                    | Possible duplicate |
+| `task-elicitation.js`     | Task-specific elicitation steps (duplicate of sibling?)                          | `elicitation-engine.js`                                         | Defines task creation wizard steps                     | Possible duplicate |
+| `workflow-elicitation.js` | Workflow-specific elicitation steps (duplicate of sibling?)                      | `elicitation-engine.js`                                         | Defines workflow creation wizard steps                 | Possible duplicate |
 
 ### File Inventory -- elicitation/
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `agent-elicitation.js` | Agent creation wizard steps | Referenced by config as `elicitationLocation` | Same content as core version | Possible duplicate |
-| `task-elicitation.js` | Task creation wizard steps | Referenced by config | Same content as core version | Possible duplicate |
-| `workflow-elicitation.js` | Workflow creation wizard steps | Referenced by config | Same content as core version | Possible duplicate |
+| File                      | Purpose                        | Consumers                                     | Cross-refs                   | Orphan?            |
+| ------------------------- | ------------------------------ | --------------------------------------------- | ---------------------------- | ------------------ |
+| `agent-elicitation.js`    | Agent creation wizard steps    | Referenced by config as `elicitationLocation` | Same content as core version | Possible duplicate |
+| `task-elicitation.js`     | Task creation wizard steps     | Referenced by config                          | Same content as core version | Possible duplicate |
+| `workflow-elicitation.js` | Workflow creation wizard steps | Referenced by config                          | Same content as core version | Possible duplicate |
 
 ### External References (30+ files reference elicitation)
 
@@ -425,24 +427,24 @@ There appears to be **duplication** between `core/elicitation/` (3 domain files)
 
 ### File Inventory
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `STANDARDS-INDEX.md` | Navigation index for all standards documents | All team members, agent definitions | References all standard docs | No |
-| `AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md` | **PRIMARY** -- Complete v4.0.4 framework guide (consolidated) | All agents, onboarding | Supersedes all legacy Livro docs | No |
-| `QUALITY-GATES-SPECIFICATION.md` | 3-layer quality gates system specification | QA agent, devops, quality gate code | Referenced by `core/quality-gates/` | No |
-| `STORY-TEMPLATE-V2-SPECIFICATION.md` | Story template v2.0 specification | PO, SM, story creation tasks | Referenced by story creation workflows | No |
-| `TASK-FORMAT-SPECIFICATION-V1.md` | Task-First architecture format specification | All agents creating tasks | Referenced by task templates | No |
-| `EXECUTOR-DECISION-TREE.md` | Decision tree for Human/Worker/Agent/Clone routing | Orchestration engine | Referenced by workflow patterns | No |
-| `AGENT-PERSONALIZATION-STANDARD-V1.md` | Agent personality and personalization system | Agent creation tasks | Referenced by agent templates | No |
-| `AIOX-COLOR-PALETTE-V2.1.md` | Complete color system for AIOX branding | Dashboard, UI components | Referenced by UX agent | No |
-| `AIOX-COLOR-PALETTE-QUICK-REFERENCE.md` | Quick reference for color palette | Developers, designers | Subset of full palette doc | No |
-| `OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md` | Business model documentation (OSS vs service) | Product decisions | Needs update per index | No |
-| `V3-ARCHITECTURAL-DECISIONS.md` | Old architectural decisions (archive candidate) | Historical reference | Superseded by ADR system | Yes (Archive) |
-| `AIOX-LIVRO-DE-OURO.md` | v2.0 base document (DEPRECATED) | Historical reference | Superseded by V2.1-COMPLETE | Yes (Legacy) |
-| `AIOX-LIVRO-DE-OURO-V2.1.md` | v4.0.4 delta document (DEPRECATED) | Historical reference | Superseded by V2.1-COMPLETE | Yes (Legacy) |
-| `AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md` | v4.0.4 summary (DEPRECATED) | Historical reference | Superseded by V2.1-COMPLETE | Yes (Legacy) |
-| `AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md` | Future v2.2 planning (DRAFT) | Planning only | Not yet active | No (Draft) |
-| `AIOX-FRAMEWORK-MASTER.md` | v2.0 framework doc (DEPRECATED) | Historical reference | Superseded by V2.1-COMPLETE | Yes (Legacy) |
+| File                                    | Purpose                                                       | Consumers                           | Cross-refs                             | Orphan?       |
+| --------------------------------------- | ------------------------------------------------------------- | ----------------------------------- | -------------------------------------- | ------------- |
+| `STANDARDS-INDEX.md`                    | Navigation index for all standards documents                  | All team members, agent definitions | References all standard docs           | No            |
+| `AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md`   | **PRIMARY** -- Complete v4.0.4 framework guide (consolidated) | All agents, onboarding              | Supersedes all legacy Livro docs       | No            |
+| `QUALITY-GATES-SPECIFICATION.md`        | 3-layer quality gates system specification                    | QA agent, devops, quality gate code | Referenced by `core/quality-gates/`    | No            |
+| `STORY-TEMPLATE-V2-SPECIFICATION.md`    | Story template v2.0 specification                             | PO, SM, story creation tasks        | Referenced by story creation workflows | No            |
+| `TASK-FORMAT-SPECIFICATION-V1.md`       | Task-First architecture format specification                  | All agents creating tasks           | Referenced by task templates           | No            |
+| `EXECUTOR-DECISION-TREE.md`             | Decision tree for Human/Worker/Agent/Clone routing            | Orchestration engine                | Referenced by workflow patterns        | No            |
+| `AGENT-PERSONALIZATION-STANDARD-V1.md`  | Agent personality and personalization system                  | Agent creation tasks                | Referenced by agent templates          | No            |
+| `AIOX-COLOR-PALETTE-V2.1.md`            | Complete color system for AIOX branding                       | Dashboard, UI components            | Referenced by UX agent                 | No            |
+| `AIOX-COLOR-PALETTE-QUICK-REFERENCE.md` | Quick reference for color palette                             | Developers, designers               | Subset of full palette doc             | No            |
+| `OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md` | Business model documentation (OSS vs service)                 | Product decisions                   | Needs update per index                 | No            |
+| `V3-ARCHITECTURAL-DECISIONS.md`         | Old architectural decisions (archive candidate)               | Historical reference                | Superseded by ADR system               | Yes (Archive) |
+| `AIOX-LIVRO-DE-OURO.md`                 | v2.0 base document (DEPRECATED)                               | Historical reference                | Superseded by V2.1-COMPLETE            | Yes (Legacy)  |
+| `AIOX-LIVRO-DE-OURO-V2.1.md`            | v4.0.4 delta document (DEPRECATED)                            | Historical reference                | Superseded by V2.1-COMPLETE            | Yes (Legacy)  |
+| `AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md`    | v4.0.4 summary (DEPRECATED)                                   | Historical reference                | Superseded by V2.1-COMPLETE            | Yes (Legacy)  |
+| `AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md`    | Future v2.2 planning (DRAFT)                                  | Planning only                       | Not yet active                         | No (Draft)    |
+| `AIOX-FRAMEWORK-MASTER.md`              | v2.0 framework doc (DEPRECATED)                               | Historical reference                | Superseded by V2.1-COMPLETE            | Yes (Legacy)  |
 
 ### External References (20+ files reference docs/standards)
 
@@ -467,6 +469,7 @@ There appears to be **duplication** between `core/elicitation/` (3 domain files)
 ### Status: DOES NOT EXIST
 
 No `processes/` directory was found under `.aiox-core/`. This may be:
+
 - A planned feature that was never implemented
 - Functionality that was absorbed into the `workflows/` system
 - A naming difference from the expected directory
@@ -483,28 +486,28 @@ No references to `.aiox-core/processes/` were found in the codebase.
 
 ### File Inventory
 
-| File | Purpose | Consumers | Cross-refs | Orphan? |
-|------|---------|-----------|------------|---------|
-| `constitution.md` | **FOUNDATIONAL** -- Defines non-negotiable principles (CLI First, Agent Authority, Story-Driven Development, No Invention, Quality First, Absolute Imports) | All agents, all tasks, CLAUDE.md | Referenced by `dev-develop-story.md`, `github-devops-pre-push-quality-gate.md`, `analyze-cross-artifact.md`, `spec-write-spec.md` | No |
-| `core-config.yaml` | **PRIMARY** Legacy/monolithic config (v2.3.0) with ALL configuration sections (13 sections) | `core/config/config-loader.js`, all agents, all tasks | Central configuration file; being split into L1-L4 hierarchy | No |
-| `framework-config.yaml` | **NEW** L1 Framework config (read-only, shipped with npm) | `core/config/config-resolver.js`, config CLI | Part of ADR-PRO-002 config hierarchy; duplicates framework portions of `core-config.yaml` | No |
-| `project-config.yaml` | **NEW** L2 Project config (team-shared, committed) | `core/config/config-resolver.js`, config CLI | Part of ADR-PRO-002; duplicates project portions of `core-config.yaml` | No |
-| `local-config.yaml.template` | **NEW** L4 Local config template (machine-specific, gitignored) | Developers copy to `local-config.yaml` | Part of ADR-PRO-002; secrets and IDE preferences | No |
-| `install-manifest.yaml` | Complete inventory of all files in the framework | Installer, validator, upgrader | Lists every file in `.aiox-core/` | No |
-| `user-guide.md` | User guide for Synkra AIOX | Users, onboarding | Referenced by workflows, brownfield guide | No |
-| `working-in-the-brownfield.md` | Guide for brownfield (existing project) development | Brownfield workflows | Referenced by agent definitions, brownfield tasks | No |
-| `package.json` | npm package definition for `@aiox-fullstack/core` (v4.31.0) | npm, build system | Defines dependencies, exports, scripts | No |
+| File                           | Purpose                                                                                                                                                     | Consumers                                             | Cross-refs                                                                                                                        | Orphan? |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `constitution.md`              | **FOUNDATIONAL** -- Defines non-negotiable principles (CLI First, Agent Authority, Story-Driven Development, No Invention, Quality First, Absolute Imports) | All agents, all tasks, CLAUDE.md                      | Referenced by `dev-develop-story.md`, `github-devops-pre-push-quality-gate.md`, `analyze-cross-artifact.md`, `spec-write-spec.md` | No      |
+| `core-config.yaml`             | **PRIMARY** Legacy/monolithic config (v2.3.0) with ALL configuration sections (13 sections)                                                                 | `core/config/config-loader.js`, all agents, all tasks | Central configuration file; being split into L1-L4 hierarchy                                                                      | No      |
+| `framework-config.yaml`        | **NEW** L1 Framework config (read-only, shipped with npm)                                                                                                   | `core/config/config-resolver.js`, config CLI          | Part of ADR-PRO-002 config hierarchy; duplicates framework portions of `core-config.yaml`                                         | No      |
+| `project-config.yaml`          | **NEW** L2 Project config (team-shared, committed)                                                                                                          | `core/config/config-resolver.js`, config CLI          | Part of ADR-PRO-002; duplicates project portions of `core-config.yaml`                                                            | No      |
+| `local-config.yaml.template`   | **NEW** L4 Local config template (machine-specific, gitignored)                                                                                             | Developers copy to `local-config.yaml`                | Part of ADR-PRO-002; secrets and IDE preferences                                                                                  | No      |
+| `install-manifest.yaml`        | Complete inventory of all files in the framework                                                                                                            | Installer, validator, upgrader                        | Lists every file in `.aiox-core/`                                                                                                 | No      |
+| `user-guide.md`                | User guide for Synkra AIOX                                                                                                                                  | Users, onboarding                                     | Referenced by workflows, brownfield guide                                                                                         | No      |
+| `working-in-the-brownfield.md` | Guide for brownfield (existing project) development                                                                                                         | Brownfield workflows                                  | Referenced by agent definitions, brownfield tasks                                                                                 | No      |
+| `package.json`                 | npm package definition for `@aiox-fullstack/core` (v4.31.0)                                                                                                 | npm, build system                                     | Defines dependencies, exports, scripts                                                                                            | No      |
 
 ### Configuration Hierarchy (ADR-PRO-002)
 
 The config system is transitioning from a monolithic `core-config.yaml` to a 4-level hierarchy:
 
-| Level | File | Mutability | Git Status |
-|-------|------|------------|------------|
-| L1 | `framework-config.yaml` | Read-only (framework) | Committed |
-| L2 | `project-config.yaml` | Editable (maintainers) | Committed |
-| L3 | *(app-specific, not yet implemented)* | -- | -- |
-| L4 | `local-config.yaml` (from template) | Editable (personal) | Gitignored |
+| Level | File                                  | Mutability             | Git Status |
+| ----- | ------------------------------------- | ---------------------- | ---------- |
+| L1    | `framework-config.yaml`               | Read-only (framework)  | Committed  |
+| L2    | `project-config.yaml`                 | Editable (maintainers) | Committed  |
+| L3    | _(app-specific, not yet implemented)_ | --                     | --         |
+| L4    | `local-config.yaml` (from template)   | Editable (personal)    | Gitignored |
 
 The `core-config.yaml` continues to function as the primary config (legacy mode) until migration is complete. The `config-resolver.js` module handles merging levels.
 
@@ -521,31 +524,31 @@ The `core-config.yaml` continues to function as the primary config (legacy mode)
 
 ### Systems Inventory
 
-| # | System | Location | Files | Status | Health |
-|---|--------|----------|-------|--------|--------|
-| 1 | Workflow Intelligence | `workflow-intelligence/` | 19 | Active | Healthy -- well-tested, well-referenced |
-| 2 | Monitor Hooks | `monitor/hooks/` | 10 | Active | Healthy -- self-contained Python hooks |
-| 3 | Quality Gates (Core) | `core/quality-gates/` | 10 | Active | Healthy -- 3-layer system with config |
-| 4 | Quality (Metrics) | `quality/` | 4 | Active | Healthy -- metrics collection and hooks |
-| 5 | Schemas | `schemas/` | 6 | Active | Healthy -- V3 schema validation |
-| 6 | CLI Commands | `cli/commands/` | 37 | Active | Healthy -- 8 command groups |
-| 7 | Agent Teams | `agent-teams/` | 0 | **Missing** | Empty/nonexistent -- superseded by squads? |
-| 8 | Tools Config | `tools/` | 0 | **Empty** | Referenced but contains no files |
-| 9 | Manifests | `manifests/` | 4 | Active | Healthy -- central component registry |
-| 10 | Elicitation | `core/elicitation/` + `elicitation/` | 8 | Active | Has duplication between two directories |
-| 11 | Docs/Standards | `docs/standards/` | 16 | Active | Has 4 deprecated + 1 archive candidate |
-| 12 | Processes | `processes/` | 0 | **Missing** | Does not exist |
-| 13 | Root Config | `.aiox-core/` root | 8 | Active | In migration (monolithic to layered) |
+| #   | System                | Location                             | Files | Status      | Health                                     |
+| --- | --------------------- | ------------------------------------ | ----- | ----------- | ------------------------------------------ |
+| 1   | Workflow Intelligence | `workflow-intelligence/`             | 19    | Active      | Healthy -- well-tested, well-referenced    |
+| 2   | Monitor Hooks         | `monitor/hooks/`                     | 10    | Active      | Healthy -- self-contained Python hooks     |
+| 3   | Quality Gates (Core)  | `core/quality-gates/`                | 10    | Active      | Healthy -- 3-layer system with config      |
+| 4   | Quality (Metrics)     | `quality/`                           | 4     | Active      | Healthy -- metrics collection and hooks    |
+| 5   | Schemas               | `schemas/`                           | 6     | Active      | Healthy -- V3 schema validation            |
+| 6   | CLI Commands          | `cli/commands/`                      | 37    | Active      | Healthy -- 8 command groups                |
+| 7   | Agent Teams           | `agent-teams/`                       | 0     | **Missing** | Empty/nonexistent -- superseded by squads? |
+| 8   | Tools Config          | `tools/`                             | 0     | **Empty**   | Referenced but contains no files           |
+| 9   | Manifests             | `manifests/`                         | 4     | Active      | Healthy -- central component registry      |
+| 10  | Elicitation           | `core/elicitation/` + `elicitation/` | 8     | Active      | Has duplication between two directories    |
+| 11  | Docs/Standards        | `docs/standards/`                    | 16    | Active      | Has 4 deprecated + 1 archive candidate     |
+| 12  | Processes             | `processes/`                         | 0     | **Missing** | Does not exist                             |
+| 13  | Root Config           | `.aiox-core/` root                   | 8     | Active      | In migration (monolithic to layered)       |
 
 ### File Count Summary
 
-| Category | Count |
-|----------|-------|
-| Active, well-referenced files | 100 |
-| Deprecated/Legacy files | 5 |
-| Duplicate files | 3 |
-| Missing/Empty directories | 3 |
-| **Total tracked** | **111** |
+| Category                      | Count   |
+| ----------------------------- | ------- |
+| Active, well-referenced files | 100     |
+| Deprecated/Legacy files       | 5       |
+| Duplicate files               | 3       |
+| Missing/Empty directories     | 3       |
+| **Total tracked**             | **111** |
 
 ---
 
@@ -553,29 +556,29 @@ The `core-config.yaml` continues to function as the primary config (legacy mode)
 
 ### Confirmed Orphans / Candidates for Removal
 
-| File | System | Reason | Recommendation |
-|------|--------|--------|----------------|
-| `docs/standards/AIOX-LIVRO-DE-OURO.md` | Docs/Standards | Superseded by V2.1-COMPLETE | Move to archive/ |
-| `docs/standards/AIOX-LIVRO-DE-OURO-V2.1.md` | Docs/Standards | Superseded by V2.1-COMPLETE | Move to archive/ |
-| `docs/standards/AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md` | Docs/Standards | Superseded by V2.1-COMPLETE | Move to archive/ |
-| `docs/standards/AIOX-FRAMEWORK-MASTER.md` | Docs/Standards | Superseded by V2.1-COMPLETE | Move to archive/ |
-| `docs/standards/V3-ARCHITECTURAL-DECISIONS.md` | Docs/Standards | Archive candidate per STANDARDS-INDEX | Move to archive/ |
+| File                                                | System         | Reason                                | Recommendation   |
+| --------------------------------------------------- | -------------- | ------------------------------------- | ---------------- |
+| `docs/standards/AIOX-LIVRO-DE-OURO.md`              | Docs/Standards | Superseded by V2.1-COMPLETE           | Move to archive/ |
+| `docs/standards/AIOX-LIVRO-DE-OURO-V2.1.md`         | Docs/Standards | Superseded by V2.1-COMPLETE           | Move to archive/ |
+| `docs/standards/AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md` | Docs/Standards | Superseded by V2.1-COMPLETE           | Move to archive/ |
+| `docs/standards/AIOX-FRAMEWORK-MASTER.md`           | Docs/Standards | Superseded by V2.1-COMPLETE           | Move to archive/ |
+| `docs/standards/V3-ARCHITECTURAL-DECISIONS.md`      | Docs/Standards | Archive candidate per STANDARDS-INDEX | Move to archive/ |
 
 ### Duplication Issues
 
-| Files | System | Issue | Recommendation |
-|-------|--------|-------|----------------|
-| `core/elicitation/agent-elicitation.js` vs `elicitation/agent-elicitation.js` | Elicitation | Same functionality in two locations | Consolidate to `core/elicitation/` and update config references |
-| `core/elicitation/task-elicitation.js` vs `elicitation/task-elicitation.js` | Elicitation | Same functionality in two locations | Consolidate to `core/elicitation/` |
-| `core/elicitation/workflow-elicitation.js` vs `elicitation/workflow-elicitation.js` | Elicitation | Same functionality in two locations | Consolidate to `core/elicitation/` |
+| Files                                                                               | System      | Issue                               | Recommendation                                                  |
+| ----------------------------------------------------------------------------------- | ----------- | ----------------------------------- | --------------------------------------------------------------- |
+| `core/elicitation/agent-elicitation.js` vs `elicitation/agent-elicitation.js`       | Elicitation | Same functionality in two locations | Consolidate to `core/elicitation/` and update config references |
+| `core/elicitation/task-elicitation.js` vs `elicitation/task-elicitation.js`         | Elicitation | Same functionality in two locations | Consolidate to `core/elicitation/`                              |
+| `core/elicitation/workflow-elicitation.js` vs `elicitation/workflow-elicitation.js` | Elicitation | Same functionality in two locations | Consolidate to `core/elicitation/`                              |
 
 ### Ghost References (directories referenced but not present)
 
-| Directory | Referenced By | Status |
-|-----------|---------------|--------|
-| `.aiox-core/agent-teams/` | install-manifest, source-tree docs, core-architecture, data/aiox-kb.md | Directory does not exist |
-| `.aiox-core/tools/` (content) | core-config.yaml, framework-config.yaml | Directory exists but is empty |
-| `.aiox-core/processes/` | Not referenced | Does not exist |
+| Directory                     | Referenced By                                                          | Status                        |
+| ----------------------------- | ---------------------------------------------------------------------- | ----------------------------- |
+| `.aiox-core/agent-teams/`     | install-manifest, source-tree docs, core-architecture, data/aiox-kb.md | Directory does not exist      |
+| `.aiox-core/tools/` (content) | core-config.yaml, framework-config.yaml                                | Directory exists but is empty |
+| `.aiox-core/processes/`       | Not referenced                                                         | Does not exist                |
 
 ---
 
@@ -699,4 +702,4 @@ Agent Activation (@agent-name)
 
 ---
 
-*Cross-Reference Phase 6 Complete -- 12 supporting systems analyzed, 111 files cataloged*
+_Cross-Reference Phase 6 Complete -- 12 supporting systems analyzed, 111 files cataloged_

@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*schema` | Disenar esquema |
-| `*migration` | Crear migracion |
-| `*optimize` | Optimizar consultas |
-| `*model` | Modelar datos |
+| Comando      | Descripcion         |
+| ------------ | ------------------- |
+| `*schema`    | Disenar esquema     |
+| `*migration` | Crear migracion     |
+| `*optimize`  | Optimizar consultas |
+| `*model`     | Modelar datos       |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/data-engineer-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

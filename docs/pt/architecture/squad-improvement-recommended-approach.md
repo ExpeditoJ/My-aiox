@@ -29,6 +29,7 @@
 **Propósito:** Escanear e analisar um squad existente, mostrando sua estrutura, componentes e oportunidades de melhoria.
 
 **Uso:**
+
 ```bash
 @squad-creator
 
@@ -43,6 +44,7 @@
 ```
 
 **Saída:**
+
 - Visão geral do squad (nome, versão, autor)
 - Inventário de componentes (tarefas, agentes, etc.)
 - Análise de dependências
@@ -54,6 +56,7 @@
 **Propósito:** Adicionar interativamente novos componentes a um squad existente.
 
 **Uso:**
+
 ```bash
 @squad-creator
 
@@ -92,6 +95,7 @@
 **Recomendação:** Serviço Utilitário (Tarefas internas + scripts)
 
 **Justificativa:**
+
 - Não é necessária integração com API externa
 - Apenas operações no sistema de arquivos
 - Segue padrões existentes do squad-creator
@@ -197,26 +201,27 @@ atomic_layer: Analysis
 elicit: true
 
 inputs:
-- field: squad_name
-  type: string
-  source: User Input
-  required: true
-  validation: Squad existe em ./squads/
+  - field: squad_name
+    type: string
+    source: User Input
+    required: true
+    validation: Squad existe em ./squads/
 
-- field: output_format
-  type: string
-  source: User Input
-  required: false
-  validation: console|markdown|json
+  - field: output_format
+    type: string
+    source: User Input
+    required: false
+    validation: console|markdown|json
 
 outputs:
-- field: analysis_report
-  type: object
-  destination: Console ou arquivo
-  persisted: false
+  - field: analysis_report
+    type: object
+    destination: Console ou arquivo
+    persisted: false
 ```
 
 **Exemplo de Saída:**
+
 ```
 === Análise do Squad: my-domain-squad ===
 
@@ -261,60 +266,62 @@ atomic_layer: Modification
 elicit: true
 
 inputs:
-- field: squad_name
-  type: string
-  source: User Input
-  required: true
+  - field: squad_name
+    type: string
+    source: User Input
+    required: true
 
-- field: component_type
-  type: string
-  source: User Input
-  required: true
-  validation: agent|task|workflow|checklist|template|tool|script|data
+  - field: component_type
+    type: string
+    source: User Input
+    required: true
+    validation: agent|task|workflow|checklist|template|tool|script|data
 
-- field: component_name
-  type: string
-  source: User Input
-  required: true
-  validation: kebab-case
+  - field: component_name
+    type: string
+    source: User Input
+    required: true
+    validation: kebab-case
 
-- field: story_id
-  type: string
-  source: User Input
-  required: false
-  validation: formato SQS-XX
+  - field: story_id
+    type: string
+    source: User Input
+    required: false
+    validation: formato SQS-XX
 
 outputs:
-- field: created_file
-  type: string
-  destination: Diretório do Squad
-  persisted: true
+  - field: created_file
+    type: string
+    destination: Diretório do Squad
+    persisted: true
 
-- field: updated_manifest
-  type: boolean
-  destination: squad.yaml
-  persisted: true
+  - field: updated_manifest
+    type: boolean
+    destination: squad.yaml
+    persisted: true
 ```
 
 ---
 
 ## Atribuição de Agentes
 
-| Papel | Agente | Responsabilidades |
-|------|-------|------------------|
-| Principal | @dev (Dex) | Implementar scripts e tarefas |
-| Suporte | @qa (Quinn) | Testar implementação |
-| Revisão | @architect (Aria) | Revisão de arquitetura |
+| Papel     | Agente            | Responsabilidades             |
+| --------- | ----------------- | ----------------------------- |
+| Principal | @dev (Dex)        | Implementar scripts e tarefas |
+| Suporte   | @qa (Quinn)       | Testar implementação          |
+| Revisão   | @architect (Aria) | Revisão de arquitetura        |
 
 ---
 
 ## Dependências
 
 ### Dependências de Runtime
+
 - Node.js 18+
 - Scripts existentes de squad (loader, validator, generator)
 
 ### Dependências de Desenvolvimento
+
 - Jest (testes)
 - js-yaml (parsing YAML)
 
@@ -322,13 +329,13 @@ outputs:
 
 ## Estimativa de Esforço
 
-| Fase | Esforço | Dependências |
-|-------|--------|--------------|
-| Fase 1: Tarefa de Análise | 4-6h | SQS-4 (concluído) |
-| Fase 2: Tarefa de Extensão | 6-8h | Fase 1 |
-| Fase 3: Integração com Agente | 2-3h | Fase 2 |
-| Fase 4: Documentação | 2-3h | Fase 3 |
-| **Total** | **14-20h** | |
+| Fase                          | Esforço    | Dependências      |
+| ----------------------------- | ---------- | ----------------- |
+| Fase 1: Tarefa de Análise     | 4-6h       | SQS-4 (concluído) |
+| Fase 2: Tarefa de Extensão    | 6-8h       | Fase 1            |
+| Fase 3: Integração com Agente | 2-3h       | Fase 2            |
+| Fase 4: Documentação          | 2-3h       | Fase 3            |
+| **Total**                     | **14-20h** |                   |
 
 ---
 
@@ -343,6 +350,7 @@ outputs:
 **Sprint:** Sprint 14 (ou próximo disponível)
 
 **Critérios de Aceitação:**
+
 - [ ] `*analyze-squad` mostra inventário completo do squad
 - [ ] `*extend-squad` pode adicionar todos os tipos de componentes
 - [ ] Atualização automática do squad.yaml na extensão
@@ -365,16 +373,19 @@ outputs:
 ## Abordagens Alternativas Consideradas
 
 ### Opção A: Tarefa Única `*improve-squad` (Não Recomendada)
+
 - Combina análise + extensão em uma única tarefa
 - Muito complexa, viola responsabilidade única
 - Difícil de testar
 
 ### Opção B: Múltiplas Tarefas Granulares (Não Recomendada)
+
 - `*add-agent`, `*add-task`, `*add-workflow`, etc.
 - Muitos comandos para lembrar
 - Experiência do usuário inconsistente
 
 ### Opção C: Duas Tarefas - Analisar + Estender (Recomendada ✅)
+
 - Clara separação de responsabilidades
 - Primeiro analisa, depois estende
 - Consistente com padrões existentes
@@ -387,4 +398,4 @@ outputs:
 
 ---
 
-*Próximo: Criar Story SQS-11 ou prosseguir com implementação*
+_Próximo: Criar Story SQS-11 ou prosseguir com implementação_

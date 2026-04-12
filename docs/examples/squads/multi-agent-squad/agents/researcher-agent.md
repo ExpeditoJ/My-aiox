@@ -7,8 +7,8 @@ agent:
   name: Researcher
   id: team-researcher
   title: Research Specialist
-  icon: "🔍"
-  aliases: ["researcher", "research"]
+  icon: '🔍'
+  aliases: ['researcher', 'research']
 
 persona:
   role: Research Specialist
@@ -17,15 +17,15 @@ persona:
 
 commands:
   - name: find
-    description: "Research a topic"
+    description: 'Research a topic'
   - name: deep-dive
-    description: "In-depth research"
+    description: 'In-depth research'
   - name: summarize
-    description: "Summarize findings"
+    description: 'Summarize findings'
   - name: help
-    description: "Show available commands"
+    description: 'Show available commands'
   - name: exit
-    description: "Exit researcher mode"
+    description: 'Exit researcher mode'
 
 dependencies:
   tasks:

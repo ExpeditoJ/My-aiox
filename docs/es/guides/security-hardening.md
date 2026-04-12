@@ -51,14 +51,14 @@ Synkra AIOX opera en una capa privilegiada entre los modelos de IA y tu sistema.
 
 ### Preocupaciones de Seguridad Específicas de AIOX
 
-| Preocupación                   | Nivel de Riesgo | Mitigación                        |
-| ------------------------------ | --------------- | --------------------------------- |
-| Ejecución de código de agentes | CRÍTICO         | Permission Modes, Sandboxing      |
-| Exposición de claves API       | CRÍTICO         | Aislamiento de entorno, cifrado   |
-| Inyección de comandos vía IA   | ALTO            | Sanitización de entrada, hooks    |
-| Acceso no autorizado a archivos| ALTO            | Restricciones de directorio       |
-| Secuestro de sesión            | MEDIO           | Rotación de tokens, almacenamiento seguro |
-| Divulgación de información     | MEDIO           | Audit logging, controles de acceso|
+| Preocupación                    | Nivel de Riesgo | Mitigación                                |
+| ------------------------------- | --------------- | ----------------------------------------- |
+| Ejecución de código de agentes  | CRÍTICO         | Permission Modes, Sandboxing              |
+| Exposición de claves API        | CRÍTICO         | Aislamiento de entorno, cifrado           |
+| Inyección de comandos vía IA    | ALTO            | Sanitización de entrada, hooks            |
+| Acceso no autorizado a archivos | ALTO            | Restricciones de directorio               |
+| Secuestro de sesión             | MEDIO           | Rotación de tokens, almacenamiento seguro |
+| Divulgación de información      | MEDIO           | Audit logging, controles de acceso        |
 
 ### Defensa en Profundidad
 
@@ -134,13 +134,13 @@ process.env.OPENAI_API_KEY = secrets.OPENAI_API_KEY;
 
 ### Política de Rotación de Claves
 
-| Tipo de Clave      | Frecuencia de Rotación | En Caso de Compromiso |
-| ------------------ | ---------------------- | --------------------- |
-| Claves de Proveedores AI | 90 días           | Inmediato             |
-| JWT Secrets        | 30 días                | Inmediato             |
-| Claves de Servidores MCP | 90 días           | Inmediato             |
-| Tokens de Servicio | 7 días                 | Inmediato             |
-| Claves de Desarrollo | Nunca reutilizar     | Revocar inmediatamente|
+| Tipo de Clave            | Frecuencia de Rotación | En Caso de Compromiso  |
+| ------------------------ | ---------------------- | ---------------------- |
+| Claves de Proveedores AI | 90 días                | Inmediato              |
+| JWT Secrets              | 30 días                | Inmediato              |
+| Claves de Servidores MCP | 90 días                | Inmediato              |
+| Tokens de Servicio       | 7 días                 | Inmediato              |
+| Claves de Desarrollo     | Nunca reutilizar       | Revocar inmediatamente |
 
 ### Validación de Claves al Iniciar
 
@@ -540,14 +540,14 @@ const resourceLimits = {
 
 ### Reglas de Validación por Tipo de Entrada
 
-| Tipo de Entrada     | Reglas de Validación                    | Ejemplo                   |
-| ------------------- | --------------------------------------- | ------------------------- |
-| **Rutas de archivo**| Sin traversal, whitelist dirs, normalizar | `/project/src/file.ts`    |
-| **Comandos**        | Whitelist comandos, sanitizar args      | `npm run build`           |
-| **Nombres de proyecto** | Alfanumérico, guiones, guiones bajos| `my-project-01`           |
-| **URLs**            | Whitelist de protocolos, validación de dominio | `https://api.example.com` |
-| **Entrada de usuario** | Límites de longitud, filtrado de caracteres | `Comentario del usuario`  |
-| **Configuración**   | Verificación de tipos, validación de enums | `{ mode: "ask" }`        |
+| Tipo de Entrada         | Reglas de Validación                           | Ejemplo                   |
+| ----------------------- | ---------------------------------------------- | ------------------------- |
+| **Rutas de archivo**    | Sin traversal, whitelist dirs, normalizar      | `/project/src/file.ts`    |
+| **Comandos**            | Whitelist comandos, sanitizar args             | `npm run build`           |
+| **Nombres de proyecto** | Alfanumérico, guiones, guiones bajos           | `my-project-01`           |
+| **URLs**                | Whitelist de protocolos, validación de dominio | `https://api.example.com` |
+| **Entrada de usuario**  | Límites de longitud, filtrado de caracteres    | `Comentario del usuario`  |
+| **Configuración**       | Verificación de tipos, validación de enums     | `{ mode: "ask" }`         |
 
 ### Implementación de Sanitizador de Entrada
 
@@ -693,7 +693,9 @@ function validateConfig(config) {
   const valid = validate(config);
 
   if (!valid) {
-    throw new SecurityError(`Validación de configuración fallida: ${JSON.stringify(validate.errors)}`);
+    throw new SecurityError(
+      `Validación de configuración fallida: ${JSON.stringify(validate.errors)}`
+    );
   }
 
   return config;
@@ -1045,18 +1047,18 @@ function loadSecurityConfig() {
 
 ### Comparación de Configuración
 
-| Configuración          | Desarrollo        | Producción       |
-| ---------------------- | ----------------- | ---------------- |
-| **AIOX_DEBUG**         | `true`            | `false`          |
-| **LOG_LEVEL**          | `debug`           | `info`           |
-| **Permission Mode**    | `auto`            | `ask`            |
-| **Rate Limiting**      | Relajado          | Estricto         |
-| **CORS**               | `*`               | Orígenes específicos |
-| **Detalles de Error**  | Stack traces completos | Mensajes genéricos |
-| **Validación de API Key** | Solo advertencia | Bloquear si inválida |
-| **SSL/TLS**            | Opcional          | Requerido        |
-| **Audit Logging**      | Opcional          | Requerido        |
-| **Timeout de Sesión**  | 24 horas          | 1 hora           |
+| Configuración             | Desarrollo             | Producción           |
+| ------------------------- | ---------------------- | -------------------- |
+| **AIOX_DEBUG**            | `true`                 | `false`              |
+| **LOG_LEVEL**             | `debug`                | `info`               |
+| **Permission Mode**       | `auto`                 | `ask`                |
+| **Rate Limiting**         | Relajado               | Estricto             |
+| **CORS**                  | `*`                    | Orígenes específicos |
+| **Detalles de Error**     | Stack traces completos | Mensajes genéricos   |
+| **Validación de API Key** | Solo advertencia       | Bloquear si inválida |
+| **SSL/TLS**               | Opcional               | Requerido            |
+| **Audit Logging**         | Opcional               | Requerido            |
+| **Timeout de Sesión**     | 24 horas               | 1 hora               |
 
 ### Configuración de Desarrollo
 
@@ -1329,12 +1331,12 @@ Si descubres una vulnerabilidad de seguridad en Synkra AIOX, por favor sigue las
 
 ### Cronograma de Respuesta
 
-| Etapa                    | Plazo                  |
-| ------------------------ | ---------------------- |
-| Acuse de recibo inicial  | 24 horas               |
-| Evaluación preliminar    | 72 horas               |
-| Desarrollo de corrección | 7-14 días              |
-| Lanzamiento del parche   | 14-30 días             |
+| Etapa                    | Plazo                       |
+| ------------------------ | --------------------------- |
+| Acuse de recibo inicial  | 24 horas                    |
+| Evaluación preliminar    | 72 horas                    |
+| Desarrollo de corrección | 7-14 días                   |
+| Lanzamiento del parche   | 14-30 días                  |
 | Divulgación pública      | 90 días (o después del fix) |
 
 ### Salón de la Fama de Seguridad

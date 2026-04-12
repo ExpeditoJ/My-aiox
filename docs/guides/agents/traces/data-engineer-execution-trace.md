@@ -7,15 +7,15 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/data-engineer.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | generate-greeting.js (CLI wrapper) | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, etlLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/data/technical-preferences.md` | AgentConfigLoader.loadFile() | Technical preferences (always loaded, 15KB) |
-| 6 | `.aiox/session-state.json` | SessionContextLoader.loadContext() | Session type detection (CLI wrapper pre-loads) |
-| 7 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                        |
+| ----- | ------------------------------------------------ | --------------------------------------- | ---------------------------------------------- |
+| 1     | `.aiox-core/development/agents/data-engineer.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                  |
+| 2     | `.aiox-core/core-config.yaml`                    | generate-greeting.js (CLI wrapper)      | Core configuration                             |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: dataLocation, etlLocation     |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                       |
+| 5     | `.aiox-core/data/technical-preferences.md`       | AgentConfigLoader.loadFile()            | Technical preferences (always loaded, 15KB)    |
+| 6     | `.aiox/session-state.json`                       | SessionContextLoader.loadContext()      | Session type detection (CLI wrapper pre-loads) |
+| 7     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                |
 
 ### 1.2 Greeting Construction
 
@@ -101,58 +101,58 @@ data-engineer:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `📊 Dara the Sage ready to architect!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Dara, arquitetando dados 🗄️` |
-| Role | `persona.role` | Master Database Architect & Reliability Engineer |
-| Commands shown | `filterCommandsByVisibility('full')` | 31 commands with `full` visibility |
+| Data           | Source                                            | Value                                            |
+| -------------- | ------------------------------------------------- | ------------------------------------------------ |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `📊 Dara the Sage ready to architect!`           |
+| Signature      | `persona_profile.communication.signature_closing` | `— Dara, arquitetando dados 🗄️`                  |
+| Role           | `persona.role`                                    | Master Database Architect & Reliability Engineer |
+| Commands shown | `filterCommandsByVisibility('full')`              | 31 commands with `full` visibility               |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*yolo` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
-| `*doc-out` | (built-in) | full | No |
-| `*execute-checklist {checklist}` | execute-checklist.md | full | Optional |
-| `*create-schema` | create-doc.md + schema-design-tmpl.yaml | full, quick, key | Yes |
-| `*create-rls-policies` | create-doc.md + rls-policies-tmpl.yaml | full, quick | Yes |
-| `*create-migration-plan` | create-doc.md + migration-plan-tmpl.yaml | full | Yes |
-| `*design-indexes` | create-doc.md + index-strategy-tmpl.yaml | full | Yes |
-| `*model-domain` | db-domain-modeling.md | full, quick, key | Yes |
-| `*env-check` | db-env-check.md | full, quick | No |
-| `*bootstrap` | db-bootstrap.md | full, quick | Yes |
-| `*apply-migration {path}` | db-apply-migration.md | full, quick | Yes |
-| `*dry-run {path}` | db-dry-run.md | full | No |
-| `*seed {path}` | db-seed.md | full | No |
-| `*snapshot {label}` | db-snapshot.md | full, quick | No |
-| `*rollback {snapshot_or_file}` | db-rollback.md | full | Yes |
-| `*smoke-test {version}` | db-smoke-test.md | full | No |
-| `*security-audit {scope}` | security-audit.md | full, quick | Yes |
-| `*analyze-performance {type} [query]` | analyze-performance.md | full, quick | Yes |
-| `*policy-apply {table} {mode}` | db-policy-apply.md | full | Yes |
-| `*test-as-user {user_id}` | test-as-user.md | full | Yes |
-| `*verify-order {path}` | db-verify-order.md | full | No |
-| `*load-csv {table} {file}` | db-load-csv.md | full | Yes |
-| `*run-sql {file_or_inline}` | db-run-sql.md | full | Yes |
-| `*setup-database [type]` | setup-database.md | full, quick | Yes |
-| `*research {topic}` | create-deep-research-prompt.md | full, quick | Yes |
+| Command                               | Task File                                | Visibility       | Elicit   |
+| ------------------------------------- | ---------------------------------------- | ---------------- | -------- |
+| `*help`                               | (built-in)                               | full, quick, key | No       |
+| `*guide`                              | (built-in, rendered from agent .md)      | full, quick      | No       |
+| `*yolo`                               | (built-in)                               | full             | No       |
+| `*exit`                               | (built-in)                               | full             | No       |
+| `*doc-out`                            | (built-in)                               | full             | No       |
+| `*execute-checklist {checklist}`      | execute-checklist.md                     | full             | Optional |
+| `*create-schema`                      | create-doc.md + schema-design-tmpl.yaml  | full, quick, key | Yes      |
+| `*create-rls-policies`                | create-doc.md + rls-policies-tmpl.yaml   | full, quick      | Yes      |
+| `*create-migration-plan`              | create-doc.md + migration-plan-tmpl.yaml | full             | Yes      |
+| `*design-indexes`                     | create-doc.md + index-strategy-tmpl.yaml | full             | Yes      |
+| `*model-domain`                       | db-domain-modeling.md                    | full, quick, key | Yes      |
+| `*env-check`                          | db-env-check.md                          | full, quick      | No       |
+| `*bootstrap`                          | db-bootstrap.md                          | full, quick      | Yes      |
+| `*apply-migration {path}`             | db-apply-migration.md                    | full, quick      | Yes      |
+| `*dry-run {path}`                     | db-dry-run.md                            | full             | No       |
+| `*seed {path}`                        | db-seed.md                               | full             | No       |
+| `*snapshot {label}`                   | db-snapshot.md                           | full, quick      | No       |
+| `*rollback {snapshot_or_file}`        | db-rollback.md                           | full             | Yes      |
+| `*smoke-test {version}`               | db-smoke-test.md                         | full             | No       |
+| `*security-audit {scope}`             | security-audit.md                        | full, quick      | Yes      |
+| `*analyze-performance {type} [query]` | analyze-performance.md                   | full, quick      | Yes      |
+| `*policy-apply {table} {mode}`        | db-policy-apply.md                       | full             | Yes      |
+| `*test-as-user {user_id}`             | test-as-user.md                          | full             | Yes      |
+| `*verify-order {path}`                | db-verify-order.md                       | full             | No       |
+| `*load-csv {table} {file}`            | db-load-csv.md                           | full             | Yes      |
+| `*run-sql {file_or_inline}`           | db-run-sql.md                            | full             | Yes      |
+| `*setup-database [type]`              | setup-database.md                        | full, quick      | Yes      |
+| `*research {topic}`                   | create-deep-research-prompt.md           | full, quick      | Yes      |
 
 **Story 6.1.2.3 Consolidation Notes:**
 
-| Deprecated Command/Task | Consolidated Into | Invocation |
-|--------------------------|-------------------|------------|
-| `db-rls-audit.md` | `security-audit.md` | `*security-audit rls` |
-| `db-schema-audit.md` | `security-audit.md` | `*security-audit schema` |
-| `db-explain.md` | `analyze-performance.md` | `*analyze-performance query` |
+| Deprecated Command/Task  | Consolidated Into        | Invocation                      |
+| ------------------------ | ------------------------ | ------------------------------- |
+| `db-rls-audit.md`        | `security-audit.md`      | `*security-audit rls`           |
+| `db-schema-audit.md`     | `security-audit.md`      | `*security-audit schema`        |
+| `db-explain.md`          | `analyze-performance.md` | `*analyze-performance query`    |
 | `db-analyze-hotpaths.md` | `analyze-performance.md` | `*analyze-performance hotpaths` |
-| `db-impersonate.md` | `test-as-user.md` | `*test-as-user {user_id}` |
-| `supabase-setup.md` | `setup-database.md` | `*setup-database [type]` |
+| `db-impersonate.md`      | `test-as-user.md`        | `*test-as-user {user_id}`       |
+| `supabase-setup.md`      | `setup-database.md`      | `*setup-database [type]`        |
 
 ---
 
@@ -775,13 +775,13 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## 📊 Data Engineer Guide` section from agent .md |
-| `*doc-out` | Outputs complete document content |
-| `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits data-engineer mode, returns to base Claude Code |
+| Command    | Behavior                                                        |
+| ---------- | --------------------------------------------------------------- |
+| `*help`    | Renders full command list from `commands[]` in agent definition |
+| `*guide`   | Renders the `## 📊 Data Engineer Guide` section from agent .md  |
+| `*doc-out` | Outputs complete document content                               |
+| `*yolo`    | Toggles confirmation skipping mode                              |
+| `*exit`    | Exits data-engineer mode, returns to base Claude Code           |
 
 ---
 
@@ -960,34 +960,38 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @architect -> @data-engineer | Receives | Database schema design, query optimization, RLS policies |
-| @data-engineer -> @dev | Handoff | Migrations, schema definitions, database access patterns |
-| @dev -> @data-engineer | Feedback | Data layer issues, query performance problems |
-| @data-engineer -> @devops | Delegate | Git push operations, PR creation for migration files |
-| @qa -> @data-engineer | Validate | Database checklists (execute-checklist) |
-| @pm -> @data-engineer | Receives | Data requirements from stories |
+| Interaction                  | Direction | Trigger                                                  |
+| ---------------------------- | --------- | -------------------------------------------------------- |
+| @architect -> @data-engineer | Receives  | Database schema design, query optimization, RLS policies |
+| @data-engineer -> @dev       | Handoff   | Migrations, schema definitions, database access patterns |
+| @dev -> @data-engineer       | Feedback  | Data layer issues, query performance problems            |
+| @data-engineer -> @devops    | Delegate  | Git push operations, PR creation for migration files     |
+| @qa -> @data-engineer        | Validate  | Database checklists (execute-checklist)                  |
+| @pm -> @data-engineer        | Receives  | Data requirements from stories                           |
 
 ### Delegation Rules (from agent definition)
 
 **Receives from @architect (Gate 2 Decision):**
+
 - Database schema design (tables, relationships, indexes)
 - Query optimization and performance tuning
 - RLS policy design and implementation
 - ETL pipeline design
 
 **Hands off to @dev:**
+
 - Completed migration files for application integration
 - Schema documentation for repository/DAL implementation
 - Database access patterns and connection configuration
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation for migration files
 - CI/CD pipeline updates for database operations
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`
 
@@ -1000,20 +1004,22 @@ graph TD
 
 ## 6. CodeRabbit Integration
 
-| Aspect | Detail |
-|--------|--------|
-| Enabled | `true` |
-| Focus | SQL quality, schema design, query performance, RLS security, migration safety |
-| Execution | WSL: `wsl bash -c 'cd ${PROJECT_ROOT} && ~/.local/bin/coderabbit --prompt-only -t uncommitted'` |
-| Timeout | 15 minutes (900000ms) |
-| Severity Levels | CRITICAL (block), HIGH (fix/rollback plan), MEDIUM (document), LOW (note) |
+| Aspect          | Detail                                                                                          |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| Enabled         | `true`                                                                                          |
+| Focus           | SQL quality, schema design, query performance, RLS security, migration safety                   |
+| Execution       | WSL: `wsl bash -c 'cd ${PROJECT_ROOT} && ~/.local/bin/coderabbit --prompt-only -t uncommitted'` |
+| Timeout         | 15 minutes (900000ms)                                                                           |
+| Severity Levels | CRITICAL (block), HIGH (fix/rollback plan), MEDIUM (document), LOW (note)                       |
 
 **Triggered by commands:**
+
 - `*security-audit` - Reviews RLS policies and schema for security issues
 - `*analyze-performance` - Reviews query patterns for performance issues
 - `*apply-migration` - Pre-migration review of DDL changes
 
 **File patterns reviewed:**
+
 - `supabase/migrations/**/*.sql`
 - `supabase/seed.sql`
 - `api/src/db/**/*.js`
@@ -1026,29 +1032,29 @@ graph TD
 
 ## 7. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| `schema-design-tmpl.yaml` | Template | `*create-schema` | Command non-functional |
-| `rls-policies-tmpl.yaml` | Template | `*create-rls-policies` | Command non-functional |
-| `migration-plan-tmpl.yaml` | Template | `*create-migration-plan` | Command non-functional |
-| `index-strategy-tmpl.yaml` | Template | `*design-indexes` | Command non-functional |
-| `tmpl-migration-script.sql` | Template | `*apply-migration` | Falls back to inline generation |
-| `tmpl-rollback-script.sql` | Template | `*rollback` | Falls back to inline generation |
-| `tmpl-smoke-test.sql` | Template | `*smoke-test` | Falls back to inline generation |
-| `tmpl-rls-kiss-policy.sql` | Template | `*policy-apply KISS` | Falls back to inline generation |
-| `tmpl-rls-granular-policies.sql` | Template | `*policy-apply granular` | Falls back to inline generation |
-| `tmpl-staging-copy-merge.sql` | Template | `*load-csv` | Falls back to inline generation |
-| `tmpl-seed-data.sql` | Template | `*seed` | Falls back to inline generation |
-| `tmpl-comment-on-examples.sql` | Template | Documentation reference | Non-critical |
-| `dba-predeploy-checklist.md` | Checklist | `*execute-checklist`, `*apply-migration` | Defaults to other checklists |
-| `dba-rollback-checklist.md` | Checklist | `*execute-checklist`, `*rollback` | Defaults to other checklists |
-| `database-design-checklist.md` | Checklist | `*execute-checklist` | Defaults to other checklists |
-| `database-best-practices.md` | Data | `*security-audit` | Reduced audit context |
-| `supabase-patterns.md` | Data | `*setup-database` | Reduced setup guidance |
-| `postgres-tuning-guide.md` | Data | `*analyze-performance` | Reduced optimization context |
-| `rls-security-patterns.md` | Data | `*security-audit`, `*policy-apply` | Reduced security patterns |
-| `migration-safety-guide.md` | Data | `*apply-migration` | Reduced safety guidance |
+| File                             | Type      | Referenced By                            | Impact                          |
+| -------------------------------- | --------- | ---------------------------------------- | ------------------------------- |
+| `schema-design-tmpl.yaml`        | Template  | `*create-schema`                         | Command non-functional          |
+| `rls-policies-tmpl.yaml`         | Template  | `*create-rls-policies`                   | Command non-functional          |
+| `migration-plan-tmpl.yaml`       | Template  | `*create-migration-plan`                 | Command non-functional          |
+| `index-strategy-tmpl.yaml`       | Template  | `*design-indexes`                        | Command non-functional          |
+| `tmpl-migration-script.sql`      | Template  | `*apply-migration`                       | Falls back to inline generation |
+| `tmpl-rollback-script.sql`       | Template  | `*rollback`                              | Falls back to inline generation |
+| `tmpl-smoke-test.sql`            | Template  | `*smoke-test`                            | Falls back to inline generation |
+| `tmpl-rls-kiss-policy.sql`       | Template  | `*policy-apply KISS`                     | Falls back to inline generation |
+| `tmpl-rls-granular-policies.sql` | Template  | `*policy-apply granular`                 | Falls back to inline generation |
+| `tmpl-staging-copy-merge.sql`    | Template  | `*load-csv`                              | Falls back to inline generation |
+| `tmpl-seed-data.sql`             | Template  | `*seed`                                  | Falls back to inline generation |
+| `tmpl-comment-on-examples.sql`   | Template  | Documentation reference                  | Non-critical                    |
+| `dba-predeploy-checklist.md`     | Checklist | `*execute-checklist`, `*apply-migration` | Defaults to other checklists    |
+| `dba-rollback-checklist.md`      | Checklist | `*execute-checklist`, `*rollback`        | Defaults to other checklists    |
+| `database-design-checklist.md`   | Checklist | `*execute-checklist`                     | Defaults to other checklists    |
+| `database-best-practices.md`     | Data      | `*security-audit`                        | Reduced audit context           |
+| `supabase-patterns.md`           | Data      | `*setup-database`                        | Reduced setup guidance          |
+| `postgres-tuning-guide.md`       | Data      | `*analyze-performance`                   | Reduced optimization context    |
+| `rls-security-patterns.md`       | Data      | `*security-audit`, `*policy-apply`       | Reduced security patterns       |
+| `migration-safety-guide.md`      | Data      | `*apply-migration`                       | Reduced safety guidance         |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

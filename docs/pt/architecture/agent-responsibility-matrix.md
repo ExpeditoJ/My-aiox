@@ -16,6 +16,7 @@
 ## Resumo Executivo
 
 Este documento define limites claros de responsabilidade para todos os agentes AIOX, com foco particular em:
+
 1. **Centralização do GitHub DevOps** - Apenas @github-devops pode fazer push para repositório remoto
 2. **Especialização em Arquitetura de Dados** - @data-architect gerencia banco de dados/ciência de dados
 3. **Divisão de Gerenciamento de Branches** - @sm (local) vs @github-devops (remoto)
@@ -29,20 +30,20 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 ### Autoridade Total de Operações
 
-| Operação | @github-devops | @dev | @sm | @qa | @architect | @po |
-|----------|:--------------:|:----:|:---:|:---:|:----------:|:---:|
-| **git push** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **git push --force** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **gh pr create** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **gh pr merge** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **gh release create** | ✅ ÚNICO | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **git commit** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **git add** | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **git checkout -b** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **git merge** (local) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **git status** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **git log** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| **git diff** | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Operação              | @github-devops | @dev | @sm | @qa | @architect | @po |
+| --------------------- | :------------: | :--: | :-: | :-: | :--------: | :-: |
+| **git push**          |    ✅ ÚNICO    |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **git push --force**  |    ✅ ÚNICO    |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **gh pr create**      |    ✅ ÚNICO    |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **gh pr merge**       |    ✅ ÚNICO    |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **gh release create** |    ✅ ÚNICO    |  ❌  | ❌  | ❌  |     ❌     | ❌  |
+| **git commit**        |       ✅       |  ✅  | ❌  | ❌  |     ❌     | ❌  |
+| **git add**           |       ✅       |  ✅  | ❌  | ❌  |     ❌     | ❌  |
+| **git checkout -b**   |       ✅       |  ✅  | ✅  | ❌  |     ❌     | ❌  |
+| **git merge** (local) |       ✅       |  ✅  | ✅  | ❌  |     ❌     | ❌  |
+| **git status**        |       ✅       |  ✅  | ✅  | ✅  |     ✅     | ❌  |
+| **git log**           |       ✅       |  ✅  | ✅  | ✅  |     ✅     | ❌  |
+| **git diff**          |       ✅       |  ✅  | ✅  | ✅  |     ✅     | ❌  |
 
 ### Mecanismo de Aplicação
 
@@ -54,6 +55,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
    - Ação: Bloqueia push se agent != "github-devops"
 
 2. **Variáveis de Ambiente** (Detecção em Runtime)
+
    ```bash
    export AIOX_ACTIVE_AGENT="github-devops"
    export AIOX_GIT_PUSH_ALLOWED="true"
@@ -79,9 +81,11 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ## Limites de Responsabilidade dos Agentes
 
 ### @architect (Winston) 🏗️
+
 **Papel**: Arquiteto de Sistema Holístico e Líder Técnico Full-Stack
 
 **Escopo Principal**:
+
 - Arquitetura de sistema (microsserviços, monolito, serverless, híbrido)
 - Seleção de stack tecnológico (frameworks, linguagens, plataformas)
 - Planejamento de infraestrutura (implantação, escalabilidade, monitoramento, CDN)
@@ -94,10 +98,12 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 **Operações Git**: Somente leitura (status, log, diff) - SEM PUSH
 
 **Delegar Para**:
+
 - **@data-architect**: Design de schema de banco de dados, otimização de queries, pipelines ETL
 - **@github-devops**: Git push, criação de PR, configuração de CI/CD
 
 **Manter**:
+
 - Seleção de tecnologia de banco de dados da perspectiva do sistema
 - Integração da camada de dados com arquitetura da aplicação
 - Design de workflow Git (estratégia de branching)
@@ -105,9 +111,11 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ---
 
 ### @data-architect (DataArch) 🗄️
+
 **Papel**: Arquiteto de Banco de Dados e Especialista em Workflow de Ciência de Dados
 
 **Escopo Principal**:
+
 - Design de schema de banco de dados (tabelas, relacionamentos, índices, constraints)
 - Modelagem de dados (estratégias de normalização, desnormalização)
 - Otimização de queries e tuning de performance
@@ -119,6 +127,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 **Operações Git**: Commits locais (add, commit) - SEM PUSH
 
 **Colaborar Com**:
+
 - **@architect**: Seleção de tecnologia de banco de dados, integração da camada de dados
 - **@github-devops**: Push de arquivos de migração após commit local
 
@@ -127,9 +136,11 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ---
 
 ### @dev (James) 💻
+
 **Papel**: Engenheiro de Software Sênior Expert e Especialista em Implementação
 
 **Escopo Principal**:
+
 - Implementação de código a partir de stories
 - Debugging e refatoração
 - Testes unitários/de integração
@@ -137,10 +148,12 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 - Execução de tarefas de story
 
 **Operações Git**:
+
 - ✅ Permitido: add, commit, status, diff, log, branch, checkout, merge (local)
 - ❌ Bloqueado: push, gh pr create
 
 **Workflow Após Story Completa**:
+
 1. Marcar status da story: "Pronta para Revisão"
 2. Notificar usuário: "Story completa. Ative @github-devops para fazer push das mudanças"
 3. NÃO tentar git push
@@ -148,9 +161,11 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ---
 
 ### @sm (Bob) 🏃
+
 **Papel**: Scrum Master Técnico - Especialista em Preparação de Stories
 
 **Escopo Principal**:
+
 - Criação e refinamento de stories
 - Gerenciamento de epics e decomposição
 - Assistência no planejamento de sprint
@@ -158,10 +173,12 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 - Orientação de resolução de conflitos (merges locais)
 
 **Operações Git**:
+
 - ✅ Permitido: checkout -b (criar feature branches), branch (listar), merge (local)
 - ❌ Bloqueado: push, gh pr create, deleção de branch remota
 
 **Workflow de Gerenciamento de Branch**:
+
 1. Story inicia → Criar feature branch local: `git checkout -b feature/X.Y-story-name`
 2. Desenvolvedor faz commits localmente
 3. Story completa → Notificar @github-devops para fazer push e criar PR
@@ -171,17 +188,20 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ---
 
 ### @github-devops (DevOps) 🚀
+
 **Papel**: Gerente de Repositório GitHub e Especialista DevOps
 
 **AUTORIDADE PRINCIPAL**: ÚNICO agente autorizado a fazer push para repositório remoto
 
 **Operações Exclusivas**:
+
 - ✅ git push (TODAS as variantes)
 - ✅ gh pr create, gh pr merge
 - ✅ gh release create
 - ✅ Deleção de branch remota
 
 **Escopo Principal**:
+
 - Integridade e governança do repositório
 - Execução de quality gate pré-push (lint, test, typecheck, build)
 - Versionamento semântico e gerenciamento de releases
@@ -191,6 +211,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 - Geração de changelog
 
 **Quality Gates (Obrigatórios Antes do Push)**:
+
 - npm run lint → PASS
 - npm test → PASS
 - npm run typecheck → PASS
@@ -201,6 +222,7 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 - **Confirmação do usuário obrigatória**
 
 **Lógica de Versionamento Semântico**:
+
 - MAJOR (v4 → v5): Breaking changes, redesign de API
 - MINOR (v4.31 → v4.32): Novas features, compatível com versões anteriores
 - PATCH (v4.31.0 → v4.31.1): Apenas correções de bugs
@@ -208,9 +230,11 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ---
 
 ### @qa (Quinn) 🧪
+
 **Papel**: Arquiteto de Testes e Consultor de Qualidade
 
 **Escopo Principal**:
+
 - Revisão abrangente de arquitetura de testes
 - Decisões de quality gate (PASS/PREOCUPAÇÕES/FAIL/DISPENSADO)
 - Avaliação de riscos e estratégia de testes
@@ -224,9 +248,11 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ---
 
 ### @po (Sarah) 📝
+
 **Papel**: Product Owner Técnica e Guardiã de Processos
 
 **Escopo Principal**:
+
 - Gerenciamento de backlog e refinamento de stories
 - Validação de critérios de aceitação
 - Planejamento de sprint e priorização
@@ -312,26 +338,28 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 
 ### Matriz de Comparação
 
-| Responsabilidade | @architect | @data-architect |
-|------------------|:----------:|:---------------:|
-| **Seleção de tecnologia de banco de dados (visão de sistema)** | ✅ | 🤝 Colaborar |
-| **Design de schema de banco de dados** | ❌ Delegar | ✅ Principal |
-| **Otimização de queries** | ❌ Delegar | ✅ Principal |
-| **Design de pipeline ETL** | ❌ Delegar | ✅ Principal |
-| **Design de API para acesso a dados** | ✅ Principal | 🤝 Colaborar |
-| **Cache em nível de aplicação** | ✅ Principal | 🤝 Consultar |
-| **Otimizações específicas de banco (RLS, triggers)** | ❌ Delegar | ✅ Principal |
-| **Workflows de ciência de dados** | ❌ Delegar | ✅ Principal |
-| **Infraestrutura para banco de dados (escalabilidade, replicação)** | ✅ Principal | 🤝 Consultar |
+| Responsabilidade                                                    |  @architect  | @data-architect |
+| ------------------------------------------------------------------- | :----------: | :-------------: |
+| **Seleção de tecnologia de banco de dados (visão de sistema)**      |      ✅      |  🤝 Colaborar   |
+| **Design de schema de banco de dados**                              |  ❌ Delegar  |  ✅ Principal   |
+| **Otimização de queries**                                           |  ❌ Delegar  |  ✅ Principal   |
+| **Design de pipeline ETL**                                          |  ❌ Delegar  |  ✅ Principal   |
+| **Design de API para acesso a dados**                               | ✅ Principal |  🤝 Colaborar   |
+| **Cache em nível de aplicação**                                     | ✅ Principal |  🤝 Consultar   |
+| **Otimizações específicas de banco (RLS, triggers)**                |  ❌ Delegar  |  ✅ Principal   |
+| **Workflows de ciência de dados**                                   |  ❌ Delegar  |  ✅ Principal   |
+| **Infraestrutura para banco de dados (escalabilidade, replicação)** | ✅ Principal |  🤝 Consultar   |
 
 ### Padrão de Colaboração
 
 **Pergunta**: "Qual banco de dados devemos usar?"
+
 - **@architect responde**: Perspectiva de sistema (custo, implantação, habilidades da equipe, infraestrutura)
 - **@data-architect responde**: Perspectiva de dados (padrões de query, escalabilidade, adequação do modelo de dados)
 - **Resultado**: Recomendação combinada
 
 **Pergunta**: "Projetar schema de banco de dados"
+
 - **@architect**: Delega para @data-architect
 - **@data-architect**: Projeta schema, cria migrações
 - **@architect**: Integra schema no sistema (API, ORM, cache)
@@ -343,11 +371,13 @@ Este documento define limites claros de responsabilidade para todos os agentes A
 ### Branches Locais (@sm durante desenvolvimento)
 
 **Responsabilidades**:
+
 - Criar feature branches quando story inicia
 - Gerenciar branches de trabalho do desenvolvedor
 - Limpeza de branch local (deletar branches locais mergeadas)
 
 **Comandos**:
+
 ```bash
 # @sm pode executar:
 git checkout -b feature/3.14-github-devops
@@ -358,12 +388,14 @@ git merge feature/branch-to-integrate
 ### Branches Remotas (@github-devops para repositório)
 
 **Responsabilidades**:
+
 - Fazer push de branches para remoto
 - Deletar branches remotas (limpeza)
 - Gerenciar branches de release
 - Proteger branch main/master
 
 **Comandos**:
+
 ```bash
 # SOMENTE @github-devops pode executar:
 git push -u origin feature/3.14-github-devops
@@ -413,12 +445,16 @@ gh pr merge
 ## Considerações Futuras
 
 ### Story 3.19: Camada de Memória (Condicional)
+
 Se aprovada após auditoria de utilitários (Story 3.17):
+
 - Camada de memória não precisa de restrições git (utilitário, não agente)
 - Integração com agentes não muda limites de responsabilidade
 
 ### Squads
+
 Se novos agentes forem adicionados via Squads:
+
 - **Padrão**: SEM capacidade de git push
 - **Processo de Exceção**: Deve ser explicitamente aprovado pela PO e justificado
 - **Aplicação**: Pre-push hook bloqueia automaticamente a menos que ID do agente esteja na whitelist
@@ -428,6 +464,7 @@ Se novos agentes forem adicionados via Squads:
 ## Resumo
 
 **Pontos-Chave**:
+
 1. ✅ Apenas @github-devops pode fazer push para repositório remoto (aplicado via git hooks)
 2. ✅ @architect gerencia arquitetura de sistema, @data-architect gerencia camada de dados
 3. ✅ @sm gerencia branches locais, @github-devops gerencia operações remotas
@@ -440,5 +477,5 @@ Se novos agentes forem adicionados via Squads:
 
 ---
 
-*Documento mantido por @architect (Winston) e @po (Sarah)*
-*Última revisão: 2025-10-25*
+_Documento mantido por @architect (Winston) e @po (Sarah)_
+_Última revisão: 2025-10-25_

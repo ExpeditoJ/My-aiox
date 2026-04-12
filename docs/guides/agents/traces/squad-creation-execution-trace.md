@@ -7,14 +7,14 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/squad-creator.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation (no squad-creator entry found) |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 6 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                                      |
+| ----- | ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ |
+| 1     | `.aiox-core/development/agents/squad-creator.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                                |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration                                           |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: dataLocation (no squad-creator entry found) |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                                     |
+| 5     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history)          |
+| 6     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                              |
 
 ### 1.2 Greeting Construction
 
@@ -69,11 +69,11 @@ From `agent-config-requirements.yaml`: As of Story ACT-8, squad-creator has an e
 squad-creator:
   config_sections:
     - dataLocation
-    - squadsTemplateLocation        # Added in Story ACT-8
-  files_loaded: []                  # no agent-specific files eagerly loaded
+    - squadsTemplateLocation # Added in Story ACT-8
+  files_loaded: [] # no agent-specific files eagerly loaded
   lazy_loading:
-    agent_registry: true            # Load when validating/creating squads (ACT-8)
-    squad_manifest: true   # Load when managing squads (ACT-8)
+    agent_registry: true # Load when validating/creating squads (ACT-8)
+    squad_manifest: true # Load when managing squads (ACT-8)
   performance_target: <150ms
 ```
 
@@ -81,32 +81,32 @@ squad-creator:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `🏗️ Craft the Architect ready to create!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Craft, sempre estruturando 🏗️` |
-| Role | `persona.role` | Squad Architect & Builder |
-| Commands shown | `filterCommandsByVisibility('full')` | 13 commands with `full` visibility |
+| Data           | Source                                            | Value                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `🏗️ Craft the Architect ready to create!` |
+| Signature      | `persona_profile.communication.signature_closing` | `— Craft, sempre estruturando 🏗️`         |
+| Role           | `persona.role`                                    | Squad Architect & Builder                 |
+| Commands shown | `filterCommandsByVisibility('full')`              | 13 commands with `full` visibility        |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*design-squad` | squad-creator-design.md | full, quick, key | Yes |
-| `*create-squad` | squad-creator-create.md | full, quick, key | Yes |
-| `*validate-squad` | squad-creator-validate.md | full, quick, key | No |
-| `*list-squads` | squad-creator-list.md | full, quick | No |
-| `*migrate-squad` | squad-creator-migrate.md | full, quick | No |
-| `*analyze-squad` | squad-creator-analyze.md | full, quick, key | Yes |
-| `*extend-squad` | squad-creator-extend.md | full, quick, key | Yes |
-| `*download-squad` | squad-creator-download.md | full | No |
-| `*publish-squad` | squad-creator-publish.md | full | No |
-| `*sync-squad-synkra` | squad-creator-sync-synkra.md | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full | No |
-| `*exit` | (built-in) | full, quick, key | No |
+| Command              | Task File                           | Visibility       | Elicit |
+| -------------------- | ----------------------------------- | ---------------- | ------ |
+| `*help`              | (built-in)                          | full, quick, key | No     |
+| `*design-squad`      | squad-creator-design.md             | full, quick, key | Yes    |
+| `*create-squad`      | squad-creator-create.md             | full, quick, key | Yes    |
+| `*validate-squad`    | squad-creator-validate.md           | full, quick, key | No     |
+| `*list-squads`       | squad-creator-list.md               | full, quick      | No     |
+| `*migrate-squad`     | squad-creator-migrate.md            | full, quick      | No     |
+| `*analyze-squad`     | squad-creator-analyze.md            | full, quick, key | Yes    |
+| `*extend-squad`      | squad-creator-extend.md             | full, quick, key | Yes    |
+| `*download-squad`    | squad-creator-download.md           | full             | No     |
+| `*publish-squad`     | squad-creator-publish.md            | full             | No     |
+| `*sync-squad-synkra` | squad-creator-sync-synkra.md        | full             | No     |
+| `*guide`             | (built-in, rendered from agent .md) | full             | No     |
+| `*exit`              | (built-in)                          | full, quick, key | No     |
 
 ---
 
@@ -490,11 +490,11 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## Squad Creator Guide` section from agent .md |
-| `*exit` | Exits squad-creator mode, returns to base Claude Code |
+| Command  | Behavior                                                        |
+| -------- | --------------------------------------------------------------- |
+| `*help`  | Renders full command list from `commands[]` in agent definition |
+| `*guide` | Renders the `## Squad Creator Guide` section from agent .md     |
+| `*exit`  | Exits squad-creator mode, returns to base Claude Code           |
 
 ---
 
@@ -638,31 +638,35 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @squad-creator -> @dev | Handoff | Squad created, needs code implementation |
-| @squad-creator -> @qa | Handoff | Squad created, needs quality review |
-| @squad-creator -> @devops | Delegate | Publishing, deployment, git push operations |
-| @aiox-master -> @squad-creator | Invokes | Component creation (agents, tasks, workflows) |
-| @pm -> @squad-creator | Receives | Requirements for new squads |
-| @architect -> @squad-creator | Receives | Architecture decisions affecting squad structure |
+| Interaction                    | Direction | Trigger                                          |
+| ------------------------------ | --------- | ------------------------------------------------ |
+| @squad-creator -> @dev         | Handoff   | Squad created, needs code implementation         |
+| @squad-creator -> @qa          | Handoff   | Squad created, needs quality review              |
+| @squad-creator -> @devops      | Delegate  | Publishing, deployment, git push operations      |
+| @aiox-master -> @squad-creator | Invokes   | Component creation (agents, tasks, workflows)    |
+| @pm -> @squad-creator          | Receives  | Requirements for new squads                      |
+| @architect -> @squad-creator   | Receives  | Architecture decisions affecting squad structure |
 
 ### Collaboration Rules (from agent definition)
 
 **Delegates to @dev when:**
+
 - Squad code needs implementation
 - Custom scripts/tools within squad need development
 
 **Delegates to @qa when:**
+
 - Squad implementation needs review
 - Quality validation beyond structural checks
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management (via `*publish-squad`)
 - CI/CD pipeline configuration for squad testing
 
 **Cross-agent component creation:**
+
 - Creates agent definitions that @dev implements
 - Creates task workflows that @dev follows
 - Creates templates that other agents consume
@@ -672,8 +676,8 @@ graph TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
+| File                                     | Type         | Referenced By     | Impact                                                         |
+| ---------------------------------------- | ------------ | ----------------- | -------------------------------------------------------------- |
 | (none in agent-config-requirements.yaml) | Config entry | AgentConfigLoader | Falls back to defaults; no agent-specific files eagerly loaded |
 
 **Note:** All task files (10), scripts (10 including index.js and README.md), schemas (2), and component templates (8) referenced by @squad-creator exist on disk. The squad template scaffold (8 files) also exists. This is a fully functional agent with zero missing dependencies.
@@ -681,6 +685,7 @@ graph TD
 ### Complete File Inventory
 
 **Tasks (11 files, all EXISTS):**
+
 - `.aiox-core/development/tasks/squad-creator-design.md`
 - `.aiox-core/development/tasks/squad-creator-create.md`
 - `.aiox-core/development/tasks/squad-creator-validate.md`
@@ -694,6 +699,7 @@ graph TD
 - `.aiox-core/development/tasks/squad-creator-sync-ide-command.md`
 
 **Scripts (11 files in squad/ dir, all EXISTS):**
+
 - `.aiox-core/development/scripts/squad/index.js`
 - `.aiox-core/development/scripts/squad/squad-loader.js`
 - `.aiox-core/development/scripts/squad/squad-validator.js`
@@ -707,10 +713,12 @@ graph TD
 - `.aiox-core/development/scripts/squad/README.md`
 
 **Schemas (2 files, all EXISTS):**
+
 - `.aiox-core/schemas/squad-schema.json`
 - `.aiox-core/schemas/squad-design-schema.json`
 
 **Component Templates (8 files, all EXISTS):**
+
 - `.aiox-core/development/templates/squad/agent-template.md`
 - `.aiox-core/development/templates/squad/task-template.md`
 - `.aiox-core/development/templates/squad/workflow-template.yaml`
@@ -721,6 +729,7 @@ graph TD
 - `.aiox-core/development/templates/squad/data-template.yaml`
 
 **Squad Template Scaffold (10 files, all EXISTS):**
+
 - `.aiox-core/development/templates/squad-template/squad.yaml`
 - `.aiox-core/development/templates/squad-template/README.md`
 - `.aiox-core/development/templates/squad-template/package.json`
@@ -733,9 +742,10 @@ graph TD
 - `.aiox-core/development/templates/squad-template/tests/example-agent.test.js`
 
 **Tools (2, referenced in agent definition):**
+
 - `git` - For checking author info during squad creation
 - `context7` - Library documentation lookup
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

@@ -25,19 +25,19 @@ This folder contains detailed documentation for all AIOX agents, including:
 
 ## Documented Agents
 
-| Agent | Persona | Archetype | Document |
-|-------|---------|-----------|----------|
-| **@aiox-master** | Orion | Orchestrator | [aiox-master-system.md](./aiox-master-system.md) |
-| **@analyst** | Atlas | Researcher | [analyst-system.md](./analyst-system.md) |
-| **@architect** | Aria | Visionary | [architect-system.md](./architect-system.md) |
-| **@data-engineer** | Dara | Data Sage | [data-engineer-system.md](./data-engineer-system.md) |
-| **@dev** | Dex | Builder | [dev-system.md](./dev-system.md) |
-| **@devops** | Gage | Guardian | [devops-system.md](./devops-system.md) |
-| **@pm** | Morgan | Strategist | [pm-system.md](./pm-system.md) |
-| **@qa** | Quinn | Guardian | [qa-system.md](./qa-system.md) |
-| **@sm** | River | Facilitator | [sm-system.md](./sm-system.md) |
-| **@squad-creator** | Nova | Creator | [squad-creator-system.md](./squad-creator-system.md) |
-| **@ux-design-expert** | Uma | Designer | [ux-design-expert-system.md](./ux-design-expert-system.md) |
+| Agent                 | Persona | Archetype    | Document                                                   |
+| --------------------- | ------- | ------------ | ---------------------------------------------------------- |
+| **@aiox-master**      | Orion   | Orchestrator | [aiox-master-system.md](./aiox-master-system.md)           |
+| **@analyst**          | Atlas   | Researcher   | [analyst-system.md](./analyst-system.md)                   |
+| **@architect**        | Aria    | Visionary    | [architect-system.md](./architect-system.md)               |
+| **@data-engineer**    | Dara    | Data Sage    | [data-engineer-system.md](./data-engineer-system.md)       |
+| **@dev**              | Dex     | Builder      | [dev-system.md](./dev-system.md)                           |
+| **@devops**           | Gage    | Guardian     | [devops-system.md](./devops-system.md)                     |
+| **@pm**               | Morgan  | Strategist   | [pm-system.md](./pm-system.md)                             |
+| **@qa**               | Quinn   | Guardian     | [qa-system.md](./qa-system.md)                             |
+| **@sm**               | River   | Facilitator  | [sm-system.md](./sm-system.md)                             |
+| **@squad-creator**    | Nova    | Creator      | [squad-creator-system.md](./squad-creator-system.md)       |
+| **@ux-design-expert** | Uma     | Designer     | [ux-design-expert-system.md](./ux-design-expert-system.md) |
 
 ---
 
@@ -167,12 +167,12 @@ flowchart TB
 
 ## Relationship with Other Documentation
 
-| Documentation | Location | Purpose |
-|---------------|----------|---------|
-| Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md) | Quick reference |
-| Workflows Guide | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Workflows guide |
-| AIOX Workflows | [docs/aiox-workflows/](../../aiox-workflows/) | Detailed workflows |
-| Architecture | [docs/architecture/](../../architecture/) | Technical architecture |
+| Documentation       | Location                                                          | Purpose                |
+| ------------------- | ----------------------------------------------------------------- | ---------------------- |
+| Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md)       | Quick reference        |
+| Workflows Guide     | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Workflows guide        |
+| AIOX Workflows      | [docs/aiox-workflows/](../../aiox-workflows/)                     | Detailed workflows     |
+| Architecture        | [docs/architecture/](../../architecture/)                         | Technical architecture |
 
 ---
 
@@ -187,4 +187,4 @@ To add or update agent documentation:
 
 ---
 
-*AIOX Agent Flows Documentation v1.0 - Detailed documentation of the agent system*
+_AIOX Agent Flows Documentation v1.0 - Detailed documentation of the agent system_

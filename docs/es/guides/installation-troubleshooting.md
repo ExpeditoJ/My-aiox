@@ -20,12 +20,12 @@ Este comando descarga y ejecuta la última versión del instalador de AIOX-Core.
 
 ## Requisitos del Sistema
 
-| Requisito | Versión Mínima | Comando de Verificación |
-|-----------|----------------|-------------------------|
-| **Node.js** | v18.0.0+ | `node --version` |
-| **npm** | v9.0.0+ | `npm --version` |
-| **npx** | (incluido con npm 5.2+) | `npx --version` |
-| **Git** | Cualquier versión reciente (opcional) | `git --version` |
+| Requisito   | Versión Mínima                        | Comando de Verificación |
+| ----------- | ------------------------------------- | ----------------------- |
+| **Node.js** | v18.0.0+                              | `node --version`        |
+| **npm**     | v9.0.0+                               | `npm --version`         |
+| **npx**     | (incluido con npm 5.2+)               | `npx --version`         |
+| **Git**     | Cualquier versión reciente (opcional) | `git --version`         |
 
 ### Enlaces de Descarga
 
@@ -72,16 +72,19 @@ aiox-core
 Si tienes problemas de instalación, ejecuta nuestra herramienta de diagnóstico:
 
 ### Windows (CMD)
+
 ```cmd
 curl -o diagnose.cmd https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/quick-diagnose.cmd && diagnose.cmd
 ```
 
 ### Windows (PowerShell)
+
 ```powershell
 irm https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/quick-diagnose.ps1 | iex
 ```
 
 ### macOS/Linux
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/diagnose-installation.js | node
 ```
@@ -93,12 +96,14 @@ curl -fsSL https://raw.githubusercontent.com/SynkraAI/aiox-core/main/tools/diagn
 ### Problema 1: "Node.js version too old"
 
 **Error:**
+
 ```
 error engine Unsupported engine
 error notsup Required: {"node":">=18.0.0"}
 ```
 
 **Solución:**
+
 1. Descargar Node.js LTS desde https://nodejs.org/
 2. Instalar y reiniciar tu terminal
 3. Verificar: `node --version` (debería mostrar v18+ o v20+)
@@ -108,11 +113,13 @@ error notsup Required: {"node":">=18.0.0"}
 ### Problema 2: "npm version too old"
 
 **Error:**
+
 ```
 npm ERR! Required: {"npm":">=9.0.0"}
 ```
 
 **Solución:**
+
 ```bash
 # Update npm globally
 npm install -g npm@latest
@@ -128,6 +135,7 @@ npm --version
 **Causa:** La carpeta bin de npm no está en el PATH del sistema
 
 **Solución (Windows):**
+
 1. Encontrar el prefix de npm: `npm config get prefix`
 2. Agregar al PATH:
    - Presionar Win+X -> Sistema -> Configuración avanzada del sistema -> Variables de entorno
@@ -136,6 +144,7 @@ npm --version
 3. Reiniciar terminal
 
 **Solución (macOS/Linux):**
+
 ```bash
 # Add to ~/.bashrc or ~/.zshrc
 export PATH="$PATH:$(npm config get prefix)/bin"
@@ -152,6 +161,7 @@ source ~/.bashrc
 Ejecutar terminal como Administrador
 
 **Solución (macOS/Linux):**
+
 ```bash
 # Fix npm permissions (recommended)
 mkdir -p ~/.npm-global
@@ -171,22 +181,26 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 **Soluciones:**
 
 1. **Verificar registro de npm:**
+
    ```bash
    npm config get registry
    # Should be: https://registry.npmjs.org/
    ```
 
 2. **Restablecer registro:**
+
    ```bash
    npm config set registry https://registry.npmjs.org/
    ```
 
 3. **Probar conectividad:**
+
    ```bash
    npm ping
    ```
 
 4. **Detrás de proxy corporativo:**
+
    ```bash
    npm config set proxy http://proxy.company.com:8080
    npm config set https-proxy http://proxy.company.com:8080
@@ -202,11 +216,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ### Problema 6: "PowerShell execution policy" (Windows)
 
 **Error:**
+
 ```
 File cannot be loaded because running scripts is disabled on this system
 ```
 
 **Solución:**
+
 ```powershell
 # Run as Administrator
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -217,6 +233,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Problema 7: "Cannot find module" o "Missing dependencies"
 
 **Solución:**
+
 ```bash
 # Clear npm cache
 npm cache clean --force
@@ -233,6 +250,7 @@ npx aiox-core@latest
 ### Problema 8: "SSL/Certificate errors"
 
 **Solución:**
+
 ```bash
 # Temporarily disable strict SSL (not recommended for production)
 npm config set strict-ssl false
@@ -248,6 +266,7 @@ npm config set cafile /path/to/certificate.pem
 **Causa:** Caché de npm sirviendo versión antigua
 
 **Solución:**
+
 ```bash
 # Clear npx cache
 npx clear-npx-cache
@@ -283,6 +302,7 @@ npx aiox-core@latest --version
 ```
 
 **Salida esperada:**
+
 ```
 v22.x.x (or v18+/v20+)
 11.x.x (or v9+)
@@ -302,6 +322,7 @@ Si sigues teniendo problemas:
 3. **Verificar información del sistema**: `npx aiox-core@latest info`
 
 Al reportar problemas, por favor incluye:
+
 - Sistema operativo y versión
 - Versión de Node.js (`node --version`)
 - Versión de npm (`npm --version`)
@@ -312,16 +333,16 @@ Al reportar problemas, por favor incluye:
 
 ## Referencia Rápida
 
-| Comando | Descripción |
-|---------|-------------|
-| `npx aiox-core@latest` | Instalar/ejecutar asistente |
-| `npx aiox-core@latest --version` | Mostrar versión |
-| `npx aiox-core@latest --help` | Mostrar ayuda |
-| `npx aiox-core@latest install` | Instalar en directorio actual |
-| `npx aiox-core@latest init <name>` | Crear nuevo proyecto |
-| `npx aiox-core@latest doctor` | Ejecutar diagnósticos |
-| `npx aiox-core@latest info` | Mostrar información del sistema |
+| Comando                            | Descripción                     |
+| ---------------------------------- | ------------------------------- |
+| `npx aiox-core@latest`             | Instalar/ejecutar asistente     |
+| `npx aiox-core@latest --version`   | Mostrar versión                 |
+| `npx aiox-core@latest --help`      | Mostrar ayuda                   |
+| `npx aiox-core@latest install`     | Instalar en directorio actual   |
+| `npx aiox-core@latest init <name>` | Crear nuevo proyecto            |
+| `npx aiox-core@latest doctor`      | Ejecutar diagnósticos           |
+| `npx aiox-core@latest info`        | Mostrar información del sistema |
 
 ---
 
-*Última actualización: Diciembre 2025 | AIOX-Core v2.2.0*
+_Última actualización: Diciembre 2025 | AIOX-Core v2.2.0_

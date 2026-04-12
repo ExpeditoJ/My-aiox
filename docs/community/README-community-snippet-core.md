@@ -37,11 +37,11 @@ This repository hosts the **central community hub** for all AIOX projects.
 
 ### Related Repositories
 
-| Repository                                                 | Description                      | License        |
-| ---------------------------------------------------------- | -------------------------------- | -------------- |
-| [aiox-core](https://github.com/SynkraAI/aiox-core)         | Core framework (you are here)    | MIT            |
-| [aiox-squads](https://github.com/SynkraAI/aiox-squads)     | AIOX Squads (ETL, Creator, MMOS) | MIT            |
-| [mcp-ecosystem](https://github.com/SynkraAI/mcp-ecosystem) | Docker MCP Toolkit & IDE configs | Apache 2.0     |
+| Repository                                                 | Description                      | License    |
+| ---------------------------------------------------------- | -------------------------------- | ---------- |
+| [aiox-core](https://github.com/SynkraAI/aiox-core)         | Core framework (you are here)    | MIT        |
+| [aiox-squads](https://github.com/SynkraAI/aiox-squads)     | AIOX Squads (ETL, Creator, MMOS) | MIT        |
+| [mcp-ecosystem](https://github.com/SynkraAI/mcp-ecosystem) | Docker MCP Toolkit & IDE configs | Apache 2.0 |
 
 ### Contributing
 

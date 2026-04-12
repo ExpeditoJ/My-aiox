@@ -47,4 +47,4 @@ The **Story Development Cycle Workflow** is the core development process in AIOX
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/story-development-cycle-workflow.md).*
+_For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/story-development-cycle-workflow.md)._

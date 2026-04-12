@@ -376,13 +376,13 @@ describe('E2E Creacion de Story', () => {
 
 ### Mejores Practicas de Tests E2E
 
-| Practica                  | Descripcion                                      |
-| ------------------------- | ------------------------------------------------ |
-| **Entorno Aislado**       | Cada test E2E debe tener sus propios datos       |
-| **Limpieza Explicita**    | Siempre limpiar recursos creados                 |
-| **Timeouts Extendidos**   | Tests E2E necesitan timeouts mas largos (30-60s) |
-| **Servicios Reales**      | Usar servicios reales, no mocks                  |
-| **Idempotente**           | Los tests deben ser repetibles                   |
+| Practica                | Descripcion                                      |
+| ----------------------- | ------------------------------------------------ |
+| **Entorno Aislado**     | Cada test E2E debe tener sus propios datos       |
+| **Limpieza Explicita**  | Siempre limpiar recursos creados                 |
+| **Timeouts Extendidos** | Tests E2E necesitan timeouts mas largos (30-60s) |
+| **Servicios Reales**    | Usar servicios reales, no mocks                  |
+| **Idempotente**         | Los tests deben ser repetibles                   |
 
 ---
 
@@ -392,12 +392,12 @@ Probar agentes IA requiere consideraciones especiales para comportamiento de per
 
 ### Categorias de Tests de Agentes
 
-| Categoria         | Prueba               | Proposito                              |
-| ----------------- | -------------------- | -------------------------------------- |
-| **Persona**       | Estilo de respuesta  | Verificar que agente mantiene caracter |
-| **Comandos**      | Ejecucion de tareas  | Verificar que comandos funcionan       |
-| **Fallback**      | Manejo de errores    | Verificar degradacion gracil           |
-| **Compatibilidad**| Soporte legacy       | Verificar que agentes viejos funcionan |
+| Categoria          | Prueba              | Proposito                              |
+| ------------------ | ------------------- | -------------------------------------- |
+| **Persona**        | Estilo de respuesta | Verificar que agente mantiene caracter |
+| **Comandos**       | Ejecucion de tareas | Verificar que comandos funcionan       |
+| **Fallback**       | Manejo de errores   | Verificar degradacion gracil           |
+| **Compatibilidad** | Soporte legacy      | Verificar que agentes viejos funcionan |
 
 ### Tests de Compatibilidad Retroactiva de Agentes
 
@@ -639,12 +639,12 @@ module.exports = {
 
 ### Objetivos de Cobertura
 
-| Modulo            | Objetivo | Actual | Notas               |
-| ----------------- | -------- | ------ | ------------------- |
-| **Global**        | 30%      | ~31%   | Linea base minima   |
-| **Core**          | 45%      | ~47%   | Logica de negocio   |
-| **Quality Gates** | 80%      | TBD    | Ruta critica        |
-| **Sistema Squad** | 70%      | TBD    | Cara al usuario     |
+| Modulo            | Objetivo | Actual | Notas             |
+| ----------------- | -------- | ------ | ----------------- |
+| **Global**        | 30%      | ~31%   | Linea base minima |
+| **Core**          | 45%      | ~47%   | Logica de negocio |
+| **Quality Gates** | 80%      | TBD    | Ruta critica      |
+| **Sistema Squad** | 70%      | TBD    | Cara al usuario   |
 
 ### Viendo Reportes de Cobertura
 
@@ -780,11 +780,11 @@ npm test -- --passWithNoTests --testPathIgnorePatterns=integration,e2e
 
 El Sistema de Quality Gate de AIOX (ver [Guia de Quality Gates](./quality-gates.md)) integra testing en multiples capas:
 
-| Capa        | Tipo de Test                  | Cuando         |
-| ----------- | ----------------------------- | -------------- |
-| **Capa 1**  | Unitario + Lint + TypeCheck   | Pre-commit     |
-| **Capa 2**  | Integracion + Review IA       | Creacion de PR |
-| **Capa 3**  | E2E + Review Humano           | Antes de merge |
+| Capa       | Tipo de Test                | Cuando         |
+| ---------- | --------------------------- | -------------- |
+| **Capa 1** | Unitario + Lint + TypeCheck | Pre-commit     |
+| **Capa 2** | Integracion + Review IA     | Creacion de PR |
+| **Capa 3** | E2E + Review Humano         | Antes de merge |
 
 ---
 
@@ -810,11 +810,11 @@ test('deberia calcular precio total con descuento', () => {
 
 ### Guias de Nombres de Tests
 
-| Malo            | Bueno                                                       |
-| --------------- | ----------------------------------------------------------- |
-| `test('test1')` | `test('deberia retornar null para entrada vacia')`          |
-| `test('works')` | `test('deberia calcular impuesto correctamente')`           |
-| `test('error')` | `test('deberia lanzar ValidationError para email invalido')`|
+| Malo            | Bueno                                                        |
+| --------------- | ------------------------------------------------------------ |
+| `test('test1')` | `test('deberia retornar null para entrada vacia')`           |
+| `test('works')` | `test('deberia calcular impuesto correctamente')`            |
+| `test('error')` | `test('deberia lanzar ValidationError para email invalido')` |
 
 ### Casos Limite a Probar
 
@@ -1140,13 +1140,13 @@ npm test -- --changedSince=main
 
 ### Problemas Comunes
 
-| Problema             | Solucion                                             |
-| -------------------- | ---------------------------------------------------- |
-| Tests timeout        | Aumentar `testTimeout` en config o test especifico   |
-| Tests async cuelgan  | Asegurar que todas las promesas estan awaited        |
-| Mock no funciona     | Verificar que mock esta antes de `require()`         |
-| Cobertura baja       | Agregar patrones `--collectCoverageFrom`             |
-| Tests inestables     | Verificar estado compartido, usar limpieza `beforeEach` |
+| Problema            | Solucion                                                |
+| ------------------- | ------------------------------------------------------- |
+| Tests timeout       | Aumentar `testTimeout` en config o test especifico      |
+| Tests async cuelgan | Asegurar que todas las promesas estan awaited           |
+| Mock no funciona    | Verificar que mock esta antes de `require()`            |
+| Cobertura baja      | Agregar patrones `--collectCoverageFrom`                |
+| Tests inestables    | Verificar estado compartido, usar limpieza `beforeEach` |
 
 ### Debuggeando Tests que Cuelgan
 

@@ -101,12 +101,7 @@ El archivo de configuracion principal (`.aiox/config.json`) contiene:
 {
   "version": "1.0.0",
   "projectName": "my-first-project",
-  "features": [
-    "meta-agent",
-    "memory-layer",
-    "self-modification",
-    "telemetry"
-  ],
+  "features": ["meta-agent", "memory-layer", "self-modification", "telemetry"],
   "ai": {
     "provider": "openai",
     "model": "gpt-4"
@@ -247,10 +242,10 @@ instructions: |
 
 examples:
   - input: "*my-helper summarize 'Texto largo aqui...'"
-    output: "Resumen: Puntos clave del texto"
+    output: 'Resumen: Puntos clave del texto'
 
   - input: "*my-helper translate 'Hello' --targetLanguage spanish"
-    output: "Traduccion: Hola"
+    output: 'Traduccion: Hola'
 ```
 
 ### Paso 3: Probar Tu Agente
@@ -282,12 +277,15 @@ Esto crea una plantilla de tarea:
 # tasks/data-processor.md
 
 ## Proposito
+
 Procesar y transformar datos segun especificaciones
 
 ## Patron de Comando
 ```
-*data-processor <input> [options]
-```
+
+\*data-processor <input> [options]
+
+````
 
 ## Parametros
 - `input`: Datos a procesar
@@ -306,8 +304,9 @@ class DataProcessor {
     return this.format(processed, format);
   }
 }
-```
-```
+````
+
+````
 
 ### Usando Tareas en Workflows
 
@@ -333,7 +332,7 @@ steps:
   - task: save-results
     params:
       destination: "processed/data"
-```
+````
 
 ## Fundamentos de la Capa de Memoria
 
@@ -434,8 +433,8 @@ instructions: |
   - Validacion de reglas de negocio
 
 examples:
-  - input: "*validate-api POST /users response"
-    output: "Todas las validaciones pasaron"
+  - input: '*validate-api POST /users response'
+    output: 'Todas las validaciones pasaron'
 ```
 
 ## Patrones Comunes
@@ -531,6 +530,7 @@ Unete a nuestra comunidad para soporte y actualizaciones:
 ### Problemas Comunes
 
 **El meta-agente no inicia**
+
 ```bash
 # Verificar version de Node.js
 node --version  # Deberia ser >= 18.0.0
@@ -543,6 +543,7 @@ npx aiox-core doctor --fix
 ```
 
 **Errores de API Key**
+
 ```bash
 # Verificar que el archivo .env existe
 ls -la .env
@@ -552,6 +553,7 @@ ls -la .env
 ```
 
 **Problemas con la capa de memoria**
+
 ```bash
 # Reconstruir indice
 *memory rebuild

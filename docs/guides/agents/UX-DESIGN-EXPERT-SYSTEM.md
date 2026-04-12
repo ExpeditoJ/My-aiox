@@ -12,12 +12,14 @@
 Este documento descreve o sistema completo do agente **UX-Design Expert (Uma)**, incluindo todos os arquivos envolvidos, fluxos de trabalho, comandos disponiveis, integracoes com outros agentes e workflows AIOX.
 
 O UX-Design Expert e um agente hibrido que combina:
+
 - **Sally's UX Principles** - Empatia, pesquisa de usuario, design centrado no usuario
 - **Brad Frost's System Principles** - Atomic Design, design tokens, metricas e ROI
 
 ### Proposito
 
 O agente e projetado para:
+
 - Conduzir pesquisa de usuario e criar personas
 - Criar wireframes e fluxos de interacao
 - Auditar codebases existentes para identificar redundancias de UI
@@ -85,117 +87,117 @@ flowchart TB
 
 ### Arquivo de Definicao do Agente
 
-| Arquivo | Proposito |
-|---------|-----------|
+| Arquivo                                             | Proposito                                                   |
+| --------------------------------------------------- | ----------------------------------------------------------- |
 | `.aiox-core/development/agents/ux-design-expert.md` | Definicao completa do agente (persona, comandos, workflows) |
-| `.claude/commands/AIOX/agents/ux-design-expert.md` | Comando Claude Code para ativar @ux-design-expert |
+| `.claude/commands/AIOX/agents/ux-design-expert.md`  | Comando Claude Code para ativar @ux-design-expert           |
 
 ### Tasks por Fase
 
 #### Fase 1: UX Research & Design (4 tasks)
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/ux-user-research.md` | `*research` | Conduzir pesquisa de usuario, criar personas e jornadas |
-| `.aiox-core/development/tasks/ux-create-wireframe.md` | `*wireframe` | Criar wireframes low/mid/high fidelity |
-| `.aiox-core/development/tasks/generate-ai-frontend-prompt.md` | `*generate-ui-prompt` | Gerar prompts para v0.dev, Lovable.ai |
-| `.aiox-core/development/tasks/create-doc.md` | `*create-front-end-spec` | Criar especificacao frontend detalhada |
+| Arquivo                                                       | Comando                  | Proposito                                               |
+| ------------------------------------------------------------- | ------------------------ | ------------------------------------------------------- |
+| `.aiox-core/development/tasks/ux-user-research.md`            | `*research`              | Conduzir pesquisa de usuario, criar personas e jornadas |
+| `.aiox-core/development/tasks/ux-create-wireframe.md`         | `*wireframe`             | Criar wireframes low/mid/high fidelity                  |
+| `.aiox-core/development/tasks/generate-ai-frontend-prompt.md` | `*generate-ui-prompt`    | Gerar prompts para v0.dev, Lovable.ai                   |
+| `.aiox-core/development/tasks/create-doc.md`                  | `*create-front-end-spec` | Criar especificacao frontend detalhada                  |
 
 #### Fase 2: Design System Audit (3 tasks)
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/audit-codebase.md` | `*audit {path}` | Escanear codebase para redundancias UI |
-| `.aiox-core/development/tasks/consolidate-patterns.md` | `*consolidate` | Reduzir redundancia com clustering HSL |
-| `.aiox-core/development/tasks/generate-shock-report.md` | `*shock-report` | Gerar relatorio visual HTML |
+| Arquivo                                                 | Comando         | Proposito                              |
+| ------------------------------------------------------- | --------------- | -------------------------------------- |
+| `.aiox-core/development/tasks/audit-codebase.md`        | `*audit {path}` | Escanear codebase para redundancias UI |
+| `.aiox-core/development/tasks/consolidate-patterns.md`  | `*consolidate`  | Reduzir redundancia com clustering HSL |
+| `.aiox-core/development/tasks/generate-shock-report.md` | `*shock-report` | Gerar relatorio visual HTML            |
 
 #### Fase 3: Design Tokens & Setup (7 tasks)
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/extract-tokens.md` | `*tokenize` | Extrair design tokens (YAML, JSON, CSS, DTCG) |
-| `.aiox-core/development/tasks/setup-design-system.md` | `*setup` | Inicializar estrutura do design system |
-| `.aiox-core/development/tasks/generate-migration-strategy.md` | `*migrate` | Gerar estrategia de migracao em 4 fases |
-| `.aiox-core/development/tasks/tailwind-upgrade.md` | `*upgrade-tailwind` | Upgrade para Tailwind CSS v4 |
-| `.aiox-core/development/tasks/audit-tailwind-config.md` | `*audit-tailwind-config` | Validar configuracao Tailwind |
-| `.aiox-core/development/tasks/export-design-tokens-dtcg.md` | `*export-dtcg` | Exportar tokens W3C DTCG |
-| `.aiox-core/development/tasks/bootstrap-shadcn-library.md` | `*bootstrap-shadcn` | Instalar Shadcn/Radix UI |
+| Arquivo                                                       | Comando                  | Proposito                                     |
+| ------------------------------------------------------------- | ------------------------ | --------------------------------------------- |
+| `.aiox-core/development/tasks/extract-tokens.md`              | `*tokenize`              | Extrair design tokens (YAML, JSON, CSS, DTCG) |
+| `.aiox-core/development/tasks/setup-design-system.md`         | `*setup`                 | Inicializar estrutura do design system        |
+| `.aiox-core/development/tasks/generate-migration-strategy.md` | `*migrate`               | Gerar estrategia de migracao em 4 fases       |
+| `.aiox-core/development/tasks/tailwind-upgrade.md`            | `*upgrade-tailwind`      | Upgrade para Tailwind CSS v4                  |
+| `.aiox-core/development/tasks/audit-tailwind-config.md`       | `*audit-tailwind-config` | Validar configuracao Tailwind                 |
+| `.aiox-core/development/tasks/export-design-tokens-dtcg.md`   | `*export-dtcg`           | Exportar tokens W3C DTCG                      |
+| `.aiox-core/development/tasks/bootstrap-shadcn-library.md`    | `*bootstrap-shadcn`      | Instalar Shadcn/Radix UI                      |
 
 #### Fase 4: Atomic Component Building (3 tasks)
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/build-component.md` | `*build {component}` | Construir componente atomico (React + TypeScript) |
-| `.aiox-core/development/tasks/compose-molecule.md` | `*compose {molecule}` | Compor molecule de atoms existentes |
-| `.aiox-core/development/tasks/extend-pattern.md` | `*extend {component}` | Adicionar variante a componente existente |
+| Arquivo                                            | Comando               | Proposito                                         |
+| -------------------------------------------------- | --------------------- | ------------------------------------------------- |
+| `.aiox-core/development/tasks/build-component.md`  | `*build {component}`  | Construir componente atomico (React + TypeScript) |
+| `.aiox-core/development/tasks/compose-molecule.md` | `*compose {molecule}` | Compor molecule de atoms existentes               |
+| `.aiox-core/development/tasks/extend-pattern.md`   | `*extend {component}` | Adicionar variante a componente existente         |
 
 #### Fase 5: Quality & Documentation (3 tasks)
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/generate-documentation.md` | `*document` | Gerar documentacao do pattern library |
-| `.aiox-core/development/tasks/calculate-roi.md` | `*calculate-roi` | Calcular ROI e cost savings |
-| `.aiox-core/development/checklists/accessibility-wcag-checklist.md` | `*a11y-check` | Auditoria de acessibilidade WCAG |
+| Arquivo                                                             | Comando          | Proposito                             |
+| ------------------------------------------------------------------- | ---------------- | ------------------------------------- |
+| `.aiox-core/development/tasks/generate-documentation.md`            | `*document`      | Gerar documentacao do pattern library |
+| `.aiox-core/development/tasks/calculate-roi.md`                     | `*calculate-roi` | Calcular ROI e cost savings           |
+| `.aiox-core/development/checklists/accessibility-wcag-checklist.md` | `*a11y-check`    | Auditoria de acessibilidade WCAG      |
 
 #### Tasks Universais (2 tasks)
 
-| Arquivo | Comando | Proposito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/ux-ds-scan-artifact.md` | `*scan {path\|url}` | Analisar HTML/React para extrair padroes |
-| `.aiox-core/development/tasks/integrate-Squad.md` | `*integrate {squad}` | Conectar com expansion squad |
+| Arquivo                                               | Comando              | Proposito                                |
+| ----------------------------------------------------- | -------------------- | ---------------------------------------- |
+| `.aiox-core/development/tasks/ux-ds-scan-artifact.md` | `*scan {path\|url}`  | Analisar HTML/React para extrair padroes |
+| `.aiox-core/development/tasks/integrate-Squad.md`     | `*integrate {squad}` | Conectar com expansion squad             |
 
 ### Templates
 
-| Arquivo | Proposito |
-|---------|-----------|
-| `.aiox-core/development/templates/front-end-spec-tmpl.yaml` | Template de especificacao frontend |
-| `.aiox-core/development/templates/tokens-schema-tmpl.yaml` | Schema de design tokens |
-| `.aiox-core/development/templates/component-react-tmpl.tsx` | Template de componente React |
-| `.aiox-core/development/templates/state-persistence-tmpl.yaml` | Template de persistencia de estado |
-| `.aiox-core/development/templates/shock-report-tmpl.html` | Template de shock report HTML |
-| `.aiox-core/development/templates/migration-strategy-tmpl.md` | Template de estrategia de migracao |
-| `.aiox-core/development/templates/token-exports-css-tmpl.css` | Template de export CSS |
-| `.aiox-core/development/templates/token-exports-tailwind-tmpl.js` | Template de export Tailwind |
-| `.aiox-core/development/templates/ds-artifact-analysis.md` | Template de analise de artefato |
+| Arquivo                                                           | Proposito                          |
+| ----------------------------------------------------------------- | ---------------------------------- |
+| `.aiox-core/development/templates/front-end-spec-tmpl.yaml`       | Template de especificacao frontend |
+| `.aiox-core/development/templates/tokens-schema-tmpl.yaml`        | Schema de design tokens            |
+| `.aiox-core/development/templates/component-react-tmpl.tsx`       | Template de componente React       |
+| `.aiox-core/development/templates/state-persistence-tmpl.yaml`    | Template de persistencia de estado |
+| `.aiox-core/development/templates/shock-report-tmpl.html`         | Template de shock report HTML      |
+| `.aiox-core/development/templates/migration-strategy-tmpl.md`     | Template de estrategia de migracao |
+| `.aiox-core/development/templates/token-exports-css-tmpl.css`     | Template de export CSS             |
+| `.aiox-core/development/templates/token-exports-tailwind-tmpl.js` | Template de export Tailwind        |
+| `.aiox-core/development/templates/ds-artifact-analysis.md`        | Template de analise de artefato    |
 
 ### Checklists
 
-| Arquivo | Proposito |
-|---------|-----------|
-| `.aiox-core/development/checklists/pattern-audit-checklist.md` | Checklist de auditoria de padroes |
-| `.aiox-core/development/checklists/component-quality-checklist.md` | Checklist de qualidade de componente |
-| `.aiox-core/development/checklists/accessibility-wcag-checklist.md` | Checklist WCAG AA/AAA |
+| Arquivo                                                              | Proposito                            |
+| -------------------------------------------------------------------- | ------------------------------------ |
+| `.aiox-core/development/checklists/pattern-audit-checklist.md`       | Checklist de auditoria de padroes    |
+| `.aiox-core/development/checklists/component-quality-checklist.md`   | Checklist de qualidade de componente |
+| `.aiox-core/development/checklists/accessibility-wcag-checklist.md`  | Checklist WCAG AA/AAA                |
 | `.aiox-core/development/checklists/migration-readiness-checklist.md` | Checklist de readiness para migracao |
 
 ### Data Files
 
-| Arquivo | Proposito |
-|---------|-----------|
-| `.aiox-core/development/data/technical-preferences.md` | Preferencias tecnicas padrao |
-| `.aiox-core/development/data/atomic-design-principles.md` | Principios Atomic Design |
+| Arquivo                                                      | Proposito                       |
+| ------------------------------------------------------------ | ------------------------------- |
+| `.aiox-core/development/data/technical-preferences.md`       | Preferencias tecnicas padrao    |
+| `.aiox-core/development/data/atomic-design-principles.md`    | Principios Atomic Design        |
 | `.aiox-core/development/data/design-token-best-practices.md` | Best practices de design tokens |
-| `.aiox-core/development/data/consolidation-algorithms.md` | Algoritmos de consolidacao |
-| `.aiox-core/development/data/roi-calculation-guide.md` | Guia de calculo de ROI |
-| `.aiox-core/development/data/integration-patterns.md` | Padroes de integracao |
-| `.aiox-core/development/data/wcag-compliance-guide.md` | Guia de conformidade WCAG |
+| `.aiox-core/development/data/consolidation-algorithms.md`    | Algoritmos de consolidacao      |
+| `.aiox-core/development/data/roi-calculation-guide.md`       | Guia de calculo de ROI          |
+| `.aiox-core/development/data/integration-patterns.md`        | Padroes de integracao           |
+| `.aiox-core/development/data/wcag-compliance-guide.md`       | Guia de conformidade WCAG       |
 
 ### Workflows Relacionados
 
-| Arquivo | Proposito |
-|---------|-----------|
+| Arquivo                                                             | Proposito                                      |
+| ------------------------------------------------------------------- | ---------------------------------------------- |
 | `.aiox-core/development/workflows/design-system-build-quality.yaml` | Pipeline pos-migracao (build, docs, a11y, ROI) |
-| `.aiox-core/development/workflows/brownfield-ui.yaml` | Workflow para UI brownfield |
-| `.aiox-core/development/workflows/brownfield-discovery.yaml` | Discovery para projetos existentes |
-| `.aiox-core/development/workflows/greenfield-ui.yaml` | Workflow para UI greenfield |
+| `.aiox-core/development/workflows/brownfield-ui.yaml`               | Workflow para UI brownfield                    |
+| `.aiox-core/development/workflows/brownfield-discovery.yaml`        | Discovery para projetos existentes             |
+| `.aiox-core/development/workflows/greenfield-ui.yaml`               | Workflow para UI greenfield                    |
 
 ### Arquivos de Output
 
-| Arquivo | Proposito |
-|---------|-----------|
-| `outputs/ux-research/{project}/` | Outputs de pesquisa UX |
-| `outputs/wireframes/{project}/` | Wireframes e flows |
-| `outputs/design-system/{project}/` | Design system outputs |
-| `outputs/design-system/{project}/.state.yaml` | Estado do workflow |
+| Arquivo                                       | Proposito              |
+| --------------------------------------------- | ---------------------- |
+| `outputs/ux-research/{project}/`              | Outputs de pesquisa UX |
+| `outputs/wireframes/{project}/`               | Wireframes e flows     |
+| `outputs/design-system/{project}/`            | Design system outputs  |
+| `outputs/design-system/{project}/.state.yaml` | Estado do workflow     |
 
 ---
 
@@ -346,59 +348,59 @@ flowchart TB
 
 ### Fase 1: UX Research & Design
 
-| Comando | Task File | Entrada | Saida |
-|---------|-----------|---------|-------|
-| `*research` | `ux-user-research.md` | Objetivos, metodos | personas.md, user-journeys.md, insights.md |
-| `*wireframe {fidelity}` | `ux-create-wireframe.md` | Screens, use case | wireframes/, flows.md, component-inventory.md |
-| `*generate-ui-prompt` | `generate-ai-frontend-prompt.md` | front-end-spec.md | AI prompts for v0/Lovable |
-| `*create-front-end-spec` | `create-doc.md` | PRD, wireframes | front-end-spec.md |
+| Comando                  | Task File                        | Entrada            | Saida                                         |
+| ------------------------ | -------------------------------- | ------------------ | --------------------------------------------- |
+| `*research`              | `ux-user-research.md`            | Objetivos, metodos | personas.md, user-journeys.md, insights.md    |
+| `*wireframe {fidelity}`  | `ux-create-wireframe.md`         | Screens, use case  | wireframes/, flows.md, component-inventory.md |
+| `*generate-ui-prompt`    | `generate-ai-frontend-prompt.md` | front-end-spec.md  | AI prompts for v0/Lovable                     |
+| `*create-front-end-spec` | `create-doc.md`                  | PRD, wireframes    | front-end-spec.md                             |
 
 ### Fase 2: Design System Audit
 
-| Comando | Task File | Entrada | Saida |
-|---------|-----------|---------|-------|
-| `*audit {path}` | `audit-codebase.md` | Scan path | pattern-inventory.json, .state.yaml |
-| `*consolidate` | `consolidate-patterns.md` | Audit results | consolidation-report.md, pattern-mapping.json |
-| `*shock-report` | `generate-shock-report.md` | Consolidation | shock-report.html |
+| Comando         | Task File                  | Entrada       | Saida                                         |
+| --------------- | -------------------------- | ------------- | --------------------------------------------- |
+| `*audit {path}` | `audit-codebase.md`        | Scan path     | pattern-inventory.json, .state.yaml           |
+| `*consolidate`  | `consolidate-patterns.md`  | Audit results | consolidation-report.md, pattern-mapping.json |
+| `*shock-report` | `generate-shock-report.md` | Consolidation | shock-report.html                             |
 
 ### Fase 3: Design Tokens & Setup
 
-| Comando | Task File | Entrada | Saida |
-|---------|-----------|---------|-------|
-| `*tokenize` | `extract-tokens.md` | Consolidation | tokens.yaml, tokens.json, tokens.css |
-| `*setup` | `setup-design-system.md` | Tokens | components/, lib/, docs/ |
-| `*migrate` | `generate-migration-strategy.md` | Tokens | migration-strategy.md (4 phases) |
-| `*upgrade-tailwind` | `tailwind-upgrade.md` | Config | tailwind.config.ts (v4) |
-| `*audit-tailwind-config` | `audit-tailwind-config.md` | Config | audit-report.md |
-| `*export-dtcg` | `export-design-tokens-dtcg.md` | tokens.yaml | tokens.dtcg.json (W3C) |
-| `*bootstrap-shadcn` | `bootstrap-shadcn-library.md` | Project | Shadcn components |
+| Comando                  | Task File                        | Entrada       | Saida                                |
+| ------------------------ | -------------------------------- | ------------- | ------------------------------------ |
+| `*tokenize`              | `extract-tokens.md`              | Consolidation | tokens.yaml, tokens.json, tokens.css |
+| `*setup`                 | `setup-design-system.md`         | Tokens        | components/, lib/, docs/             |
+| `*migrate`               | `generate-migration-strategy.md` | Tokens        | migration-strategy.md (4 phases)     |
+| `*upgrade-tailwind`      | `tailwind-upgrade.md`            | Config        | tailwind.config.ts (v4)              |
+| `*audit-tailwind-config` | `audit-tailwind-config.md`       | Config        | audit-report.md                      |
+| `*export-dtcg`           | `export-design-tokens-dtcg.md`   | tokens.yaml   | tokens.dtcg.json (W3C)               |
+| `*bootstrap-shadcn`      | `bootstrap-shadcn-library.md`    | Project       | Shadcn components                    |
 
 ### Fase 4: Atomic Component Building
 
-| Comando | Task File | Entrada | Saida |
-|---------|-----------|---------|-------|
-| `*build {component}` | `build-component.md` | Name, variants | Component.tsx, tests, stories, docs |
-| `*compose {molecule}` | `compose-molecule.md` | Atom deps | Molecule.tsx, tests |
-| `*extend {component}` | `extend-pattern.md` | Component, variant | Updated component + tests |
+| Comando               | Task File             | Entrada            | Saida                               |
+| --------------------- | --------------------- | ------------------ | ----------------------------------- |
+| `*build {component}`  | `build-component.md`  | Name, variants     | Component.tsx, tests, stories, docs |
+| `*compose {molecule}` | `compose-molecule.md` | Atom deps          | Molecule.tsx, tests                 |
+| `*extend {component}` | `extend-pattern.md`   | Component, variant | Updated component + tests           |
 
 ### Fase 5: Quality & Documentation
 
-| Comando | Task File | Entrada | Saida |
-|---------|-----------|---------|-------|
-| `*document` | `generate-documentation.md` | Components | Pattern library docs |
-| `*a11y-check` | `accessibility-wcag-checklist.md` | Components | a11y-audit-report.md |
-| `*calculate-roi` | `calculate-roi.md` | Consolidation | roi-analysis.md, executive-summary.md |
+| Comando          | Task File                         | Entrada       | Saida                                 |
+| ---------------- | --------------------------------- | ------------- | ------------------------------------- |
+| `*document`      | `generate-documentation.md`       | Components    | Pattern library docs                  |
+| `*a11y-check`    | `accessibility-wcag-checklist.md` | Components    | a11y-audit-report.md                  |
+| `*calculate-roi` | `calculate-roi.md`                | Consolidation | roi-analysis.md, executive-summary.md |
 
 ### Comandos Universais
 
-| Comando | Task File | Entrada | Saida |
-|---------|-----------|---------|-------|
-| `*scan {path\|url}` | `ux-ds-scan-artifact.md` | Artifact | scan-summary.md, design-tokens.yaml |
-| `*integrate {squad}` | `integrate-Squad.md` | Squad name | Integration config |
-| `*help` | N/A | N/A | Lista de comandos por fase |
-| `*status` | N/A | N/A | Estado atual do workflow |
-| `*guide` | N/A | N/A | Guia completo do agente |
-| `*exit` | N/A | N/A | Sair do modo UX-Design Expert |
+| Comando              | Task File                | Entrada    | Saida                               |
+| -------------------- | ------------------------ | ---------- | ----------------------------------- |
+| `*scan {path\|url}`  | `ux-ds-scan-artifact.md` | Artifact   | scan-summary.md, design-tokens.yaml |
+| `*integrate {squad}` | `integrate-Squad.md`     | Squad name | Integration config                  |
+| `*help`              | N/A                      | N/A        | Lista de comandos por fase          |
+| `*status`            | N/A                      | N/A        | Estado atual do workflow            |
+| `*guide`             | N/A                      | N/A        | Guia completo do agente             |
+| `*exit`              | N/A                      | N/A        | Sair do modo UX-Design Expert       |
 
 ---
 
@@ -448,26 +450,26 @@ flowchart TB
 
 ### Quando Usar Cada Agente
 
-| Necessidade | Agente Recomendado |
-|-------------|-------------------|
-| Pesquisa de usuario, personas | @ux-design-expert |
-| Wireframes e prototipos | @ux-design-expert |
-| Auditoria de design system | @ux-design-expert |
-| Construcao de componentes | @ux-design-expert ou @dev |
-| Arquitetura frontend | @architect |
-| Implementacao de codigo | @dev |
-| Review de acessibilidade | @ux-design-expert ou @qa |
-| Analise de ROI | @ux-design-expert ou @analyst |
+| Necessidade                   | Agente Recomendado            |
+| ----------------------------- | ----------------------------- |
+| Pesquisa de usuario, personas | @ux-design-expert             |
+| Wireframes e prototipos       | @ux-design-expert             |
+| Auditoria de design system    | @ux-design-expert             |
+| Construcao de componentes     | @ux-design-expert ou @dev     |
+| Arquitetura frontend          | @architect                    |
+| Implementacao de codigo       | @dev                          |
+| Review de acessibilidade      | @ux-design-expert ou @qa      |
+| Analise de ROI                | @ux-design-expert ou @analyst |
 
 ### Handoffs Tipicos
 
-| De | Para | Artefato | Proposito |
-|----|------|----------|-----------|
-| @ux-design-expert | @architect | front-end-spec.md | Especificacao para arquitetura |
-| @architect | @ux-design-expert | architecture.md | Constrains tecnicas |
-| @ux-design-expert | @dev | Component specs + tokens | Implementacao |
-| @dev | @ux-design-expert | Feedback de implementacao | Ajustes de design |
-| @qa | @ux-design-expert | A11y report | Remediacoes |
+| De                | Para              | Artefato                  | Proposito                      |
+| ----------------- | ----------------- | ------------------------- | ------------------------------ |
+| @ux-design-expert | @architect        | front-end-spec.md         | Especificacao para arquitetura |
+| @architect        | @ux-design-expert | architecture.md           | Constrains tecnicas            |
+| @ux-design-expert | @dev              | Component specs + tokens  | Implementacao                  |
+| @dev              | @ux-design-expert | Feedback de implementacao | Ajustes de design              |
+| @qa               | @ux-design-expert | A11y report               | Remediacoes                    |
 
 ---
 
@@ -478,26 +480,26 @@ flowchart TB
 ```yaml
 # Localizacao: outputs/ux-design/{project}/.state.yaml
 metadata:
-  version: "1.0.0"
-  generated_by: "Uma (UX-Design Expert)"
-  generated_at: "2026-02-04T12:00:00Z"
+  version: '1.0.0'
+  generated_by: 'Uma (UX-Design Expert)'
+  generated_at: '2026-02-04T12:00:00Z'
 
 # UX Phase (Phase 1)
 ux_research:
   complete: true
-  personas: ["Developer Dave", "Designer Dana", "Manager Mike"]
-  key_insights: ["Users need faster workflows", "Accessibility is priority"]
-  research_date: "2026-02-04"
+  personas: ['Developer Dave', 'Designer Dana', 'Manager Mike']
+  key_insights: ['Users need faster workflows', 'Accessibility is priority']
+  research_date: '2026-02-04'
 
 wireframes:
-  created: ["dashboard", "settings", "profile"]
-  fidelity_level: "mid"
-  component_inventory: ["Button", "Input", "Card", "Modal"]
+  created: ['dashboard', 'settings', 'profile']
+  fidelity_level: 'mid'
+  component_inventory: ['Button', 'Input', 'Card', 'Modal']
 
 # Audit Phase (Phase 2)
 audit:
   complete: true
-  scan_path: "./src"
+  scan_path: './src'
   patterns:
     buttons:
       unique: 47
@@ -517,12 +519,12 @@ consolidation:
     colors:
       before: 89
       after: 12
-      reduction: "86.5%"
+      reduction: '86.5%'
     buttons:
       before: 47
       after: 3
-      reduction: "93.6%"
-  overall_reduction: "81.8%"
+      reduction: '93.6%'
+  overall_reduction: '81.8%'
   target_met: true
 
 # Tokenization Phase (Phase 3)
@@ -535,36 +537,36 @@ tokens:
     radius: 4
     shadows: 3
   total: 36
-  exports: ["yaml", "json", "css", "tailwind", "dtcg"]
-  coverage: "96.3%"
+  exports: ['yaml', 'json', 'css', 'tailwind', 'dtcg']
+  coverage: '96.3%'
 
 # Build Phase (Phase 4)
 components:
-  built: ["Button", "Input", "Label", "Badge"]
+  built: ['Button', 'Input', 'Label', 'Badge']
   atomic_levels:
-    atoms: ["Button", "Input", "Label", "Icon", "Badge"]
-    molecules: ["FormField", "SearchBar", "Card"]
-    organisms: ["Header", "Form", "Modal"]
-  test_coverage: "92.4%"
+    atoms: ['Button', 'Input', 'Label', 'Icon', 'Badge']
+    molecules: ['FormField', 'SearchBar', 'Card']
+    organisms: ['Header', 'Form', 'Modal']
+  test_coverage: '92.4%'
 
 # Quality Phase (Phase 5)
 quality:
   accessibility:
     score: 98
-    wcag_level: "AA"
+    wcag_level: 'AA'
     violations: 0
   documentation:
     complete: true
     components_documented: 15
   roi:
-    annual_savings: "$374,400"
+    annual_savings: '$374,400'
     roi_ratio: 34.6
     breakeven_months: 0.38
 
 # Workflow tracking
 workflow:
-  current_phase: "quality"
-  workflow_type: "brownfield"
+  current_phase: 'quality'
+  workflow_type: 'brownfield'
   phases_completed: [1, 2, 3, 4, 5]
 ```
 
@@ -575,6 +577,7 @@ workflow:
 ### design-system-build-quality.yaml
 
 Pipeline pos-migracao que encadeia:
+
 1. **Build** - Compilar componentes atomicos
 2. **Document** - Gerar documentacao pattern library
 3. **A11y Check** - Auditoria WCAG AA
@@ -610,6 +613,7 @@ graph TD
 ### brownfield-ui.yaml
 
 Workflow completo para projetos UI existentes:
+
 1. **Analyze** - @architect analisa projeto
 2. **PRD** - @pm cria PRD
 3. **Spec** - @ux-design-expert cria front-end-spec
@@ -716,10 +720,11 @@ flowchart BT
 
 ## Troubleshooting
 
-### *audit nao encontra padroes
+### \*audit nao encontra padroes
 
 **Causa:** Path incorreto ou arquivos nao-UI
 **Solucao:**
+
 ```bash
 # Verificar path
 *audit ./src/components
@@ -728,18 +733,20 @@ flowchart BT
 # Suporta: .jsx, .tsx, .vue, .html, .css, .scss
 ```
 
-### *consolidate nao atinge 80%
+### \*consolidate nao atinge 80%
 
 **Causa:** Padroes muito distintos ou threshold muito baixo
 **Solucao:**
+
 - Revisar padroes manualmente
 - Ajustar HSL threshold (padrao 5%)
 - Aceitar reducao menor com justificativa
 
-### *tokenize gera tokens incompletos
+### \*tokenize gera tokens incompletos
 
 **Causa:** Consolidacao incompleta
 **Solucao:**
+
 ```bash
 # Re-executar consolidacao
 *consolidate
@@ -748,10 +755,11 @@ flowchart BT
 # Target: >95%
 ```
 
-### *build falha com token nao encontrado
+### \*build falha com token nao encontrado
 
 **Causa:** Token referenciado nao existe em tokens.yaml
 **Solucao:**
+
 - Verificar nome do token
 - Adicionar token faltante em tokens.yaml
 - Re-executar `*tokenize` se necessario
@@ -760,6 +768,7 @@ flowchart BT
 
 **Causa:** Violacoes WCAG
 **Solucao:**
+
 - Revisar a11y-audit-report.md
 - Corrigir violacoes mais criticas primeiro
 - Re-executar `*a11y-check` apos correcoes
@@ -768,6 +777,7 @@ flowchart BT
 
 **Causa:** Execucao interrompida
 **Solucao:**
+
 ```bash
 # Backup existe em .state.yaml.bak
 # Restaurar ou re-executar comandos desde ultimo estado valido
@@ -808,27 +818,27 @@ flowchart BT
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Total de Tasks** | 22 tasks (4 + 3 + 7 + 3 + 3 + 2) |
-| **Total de Templates** | 9 templates |
-| **Total de Checklists** | 4 checklists |
-| **Total de Data Files** | 7 data files |
-| **Total de Comandos** | 19 comandos + 4 universais |
-| **Fases do Workflow** | 5 (Research, Audit, Tokens, Build, Quality) |
-| **Workflows Relacionados** | 4 (design-system-build-quality, brownfield-ui, brownfield-discovery, greenfield-ui) |
-| **Agentes Colaboradores** | 4 (@architect, @dev, @qa, @analyst) |
-| **Metodologia Central** | Atomic Design (Brad Frost) |
-| **Nivel de Acessibilidade** | WCAG AA minimo, AAA ideal |
+| Aspecto                     | Detalhes                                                                            |
+| --------------------------- | ----------------------------------------------------------------------------------- |
+| **Total de Tasks**          | 22 tasks (4 + 3 + 7 + 3 + 3 + 2)                                                    |
+| **Total de Templates**      | 9 templates                                                                         |
+| **Total de Checklists**     | 4 checklists                                                                        |
+| **Total de Data Files**     | 7 data files                                                                        |
+| **Total de Comandos**       | 19 comandos + 4 universais                                                          |
+| **Fases do Workflow**       | 5 (Research, Audit, Tokens, Build, Quality)                                         |
+| **Workflows Relacionados**  | 4 (design-system-build-quality, brownfield-ui, brownfield-discovery, greenfield-ui) |
+| **Agentes Colaboradores**   | 4 (@architect, @dev, @qa, @analyst)                                                 |
+| **Metodologia Central**     | Atomic Design (Brad Frost)                                                          |
+| **Nivel de Acessibilidade** | WCAG AA minimo, AAA ideal                                                           |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descricao |
-|------|-------|-----------|
+| Data       | Autor             | Descricao                |
+| ---------- | ----------------- | ------------------------ |
 | 2026-02-04 | @ux-design-expert | Documento inicial criado |
 
 ---
 
-*-- Uma, desenhando com empatia*
+_-- Uma, desenhando com empatia_

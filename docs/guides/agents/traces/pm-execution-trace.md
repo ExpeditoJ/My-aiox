@@ -7,14 +7,14 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/pm.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: devStoryLocation, storyBacklog |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 6 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                             |
+| ----- | ------------------------------------------------ | --------------------------------------- | --------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/pm.md`            | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                       |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration                                  |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: devStoryLocation, storyBacklog     |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                            |
+| 5     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history) |
+| 6     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                     |
 
 **Note:** As of Story ACT-8, PM loads `coding-standards.md` (25KB) and `tech-stack.md` (30KB) at activation for technical context. Both files are high-priority cached, so subsequent activations hit cache. Performance target remains <100ms.
 
@@ -73,10 +73,10 @@ pm:
     - devStoryLocation
     - storyBacklog
   files_loaded:
-    - path: docs/framework/coding-standards.md    # Added in Story ACT-8
+    - path: docs/framework/coding-standards.md # Added in Story ACT-8
       lazy: false
       size: 25KB
-    - path: docs/framework/tech-stack.md          # Added in Story ACT-8
+    - path: docs/framework/tech-stack.md # Added in Story ACT-8
       lazy: false
       size: 30KB
   lazy_loading: {}
@@ -87,40 +87,40 @@ pm:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `📋 Morgan the Strategist ready to strategize!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Morgan, planejando o futuro 📊` |
-| Role | `persona.role` | Investigative Product Strategist & Market-Savvy PM |
-| Commands shown | `filterCommandsByVisibility('full')` | 16 commands with `full` visibility |
+| Data           | Source                                            | Value                                              |
+| -------------- | ------------------------------------------------- | -------------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `📋 Morgan the Strategist ready to strategize!`    |
+| Signature      | `persona_profile.communication.signature_closing` | `— Morgan, planejando o futuro 📊`                 |
+| Role           | `persona.role`                                    | Investigative Product Strategist & Market-Savvy PM |
+| Commands shown | `filterCommandsByVisibility('full')`              | 16 commands with `full` visibility                 |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*create-prd` | create-doc.md + prd-tmpl.yaml | full, quick, key | Yes |
-| `*create-brownfield-prd` | create-doc.md + brownfield-prd-tmpl.yaml | full, quick | Yes |
-| `*create-epic` | brownfield-create-epic.md | full, quick, key | Yes |
-| `*create-story` | brownfield-create-story.md | full, quick | Yes |
-| `*doc-out` | (built-in) | full | No |
-| `*shard-prd` | shard-doc.md | full | No |
-| `*research` | create-deep-research-prompt.md | full, quick | Yes |
-| `*gather-requirements` | spec-gather-requirements.md | full, quick | Yes |
-| `*write-spec` | spec-write-spec.md | full, quick | Yes |
-| `*session-info` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*yolo` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
+| Command                  | Task File                                | Visibility       | Elicit |
+| ------------------------ | ---------------------------------------- | ---------------- | ------ |
+| `*help`                  | (built-in)                               | full, quick, key | No     |
+| `*create-prd`            | create-doc.md + prd-tmpl.yaml            | full, quick, key | Yes    |
+| `*create-brownfield-prd` | create-doc.md + brownfield-prd-tmpl.yaml | full, quick      | Yes    |
+| `*create-epic`           | brownfield-create-epic.md                | full, quick, key | Yes    |
+| `*create-story`          | brownfield-create-story.md               | full, quick      | Yes    |
+| `*doc-out`               | (built-in)                               | full             | No     |
+| `*shard-prd`             | shard-doc.md                             | full             | No     |
+| `*research`              | create-deep-research-prompt.md           | full, quick      | Yes    |
+| `*gather-requirements`   | spec-gather-requirements.md              | full, quick      | Yes    |
+| `*write-spec`            | spec-write-spec.md                       | full, quick      | Yes    |
+| `*session-info`          | (built-in)                               | full             | No     |
+| `*guide`                 | (built-in, rendered from agent .md)      | full, quick      | No     |
+| `*yolo`                  | (built-in)                               | full             | No     |
+| `*exit`                  | (built-in)                               | full             | No     |
 
 **Additional task dependencies (not directly mapped to commands):**
 
-| Task File | Used By | Status |
-|-----------|---------|--------|
-| `correct-course.md` | Delegated to @aiox-master | EXISTS |
-| `execute-checklist.md` | Checklist execution | EXISTS |
+| Task File              | Used By                   | Status |
+| ---------------------- | ------------------------- | ------ |
+| `correct-course.md`    | Delegated to @aiox-master | EXISTS |
+| `execute-checklist.md` | Checklist execution       | EXISTS |
 
 ---
 
@@ -336,14 +336,14 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## Product Manager Guide` section from agent .md |
+| Command         | Behavior                                                        |
+| --------------- | --------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition |
+| `*guide`        | Renders the `## Product Manager Guide` section from agent .md   |
 | `*session-info` | Shows session context (agent history, commands, project status) |
-| `*doc-out` | Outputs complete document content |
-| `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits PM mode, returns to base Claude Code |
+| `*doc-out`      | Outputs complete document content                               |
+| `*yolo`         | Toggles confirmation skipping mode                              |
+| `*exit`         | Exits PM mode, returns to base Claude Code                      |
 
 ---
 
@@ -453,16 +453,16 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @pm -> @po | Provides | PRDs and strategic direction |
-| @pm -> @sm | Delegate | Story creation via `*draft` |
-| @pm -> @analyst | Delegate | Deep research via `*research` |
-| @pm -> @architect | Collaborate | Technical architecture decisions |
-| @pm -> @aiox-master | Escalate | Course corrections via `*correct-course` |
-| @pm -> @devops | Delegate | Git push operations, PR creation |
-| @analyst -> @pm | Receives | Project brief for PRD creation |
-| @aiox-master -> @pm | Receives | Framework modification requests |
+| Interaction         | Direction   | Trigger                                  |
+| ------------------- | ----------- | ---------------------------------------- |
+| @pm -> @po          | Provides    | PRDs and strategic direction             |
+| @pm -> @sm          | Delegate    | Story creation via `*draft`              |
+| @pm -> @analyst     | Delegate    | Deep research via `*research`            |
+| @pm -> @architect   | Collaborate | Technical architecture decisions         |
+| @pm -> @aiox-master | Escalate    | Course corrections via `*correct-course` |
+| @pm -> @devops      | Delegate    | Git push operations, PR creation         |
+| @analyst -> @pm     | Receives    | Project brief for PRD creation           |
+| @aiox-master -> @pm | Receives    | Framework modification requests          |
 
 ### Delegation Rules (from agent definition)
 
@@ -471,6 +471,7 @@ graph TD
 PM must NEVER emulate other agents within its context window. When a task requires another agent, PM uses TerminalSpawner to spawn them in SEPARATE terminals, preventing context pollution.
 
 **Spawning Workflow:**
+
 1. **Analyze** - Determine required agent and task from user request
 2. **Assign** - Use ExecutorAssignment to get the correct agent for the work type
 3. **Prepare** - Create context file with story, relevant files, and instructions
@@ -486,23 +487,28 @@ PM must NEVER emulate other agents within its context window. When a task requir
 | PM Script | `.aiox-core/scripts/pm.sh` | EXISTS |
 
 **Delegates to @sm when:**
+
 - Story creation from epics
 - Sprint planning and story breakdown
 
 **Delegates to @analyst when:**
+
 - Deep market research
 - Competitive analysis
 - Data-driven insights
 
 **Delegates to @architect when:**
+
 - Technical architecture decisions
 - Technology selection
 
 **Escalates to @aiox-master when:**
+
 - Course corrections detected
 - Framework modifications needed
 
 **Retains:**
+
 - PRD creation and management
 - Epic structure and breakdown
 - Product strategy and vision
@@ -511,6 +517,7 @@ PM must NEVER emulate other agents within its context window. When a task requir
 - Requirements gathering and spec writing
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`
 
@@ -518,15 +525,15 @@ PM must NEVER emulate other agents within its context window. When a task requir
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| `prd-tmpl.yaml` | Template | `*create-prd` (in development/templates/) | Falls back to product/templates/ (EXISTS there) |
-| `brownfield-prd-tmpl.yaml` | Template | `*create-brownfield-prd` (in development/templates/) | Falls back to product/templates/ (EXISTS there) |
-| `pm-checklist.md` | Checklist | `execute-checklist.md` (in development/checklists/) | Falls back to product/checklists/ (EXISTS there) |
-| `change-checklist.md` | Checklist | `execute-checklist.md` (in development/checklists/) | Falls back to product/checklists/ (EXISTS there) |
+| File                       | Type      | Referenced By                                        | Impact                                           |
+| -------------------------- | --------- | ---------------------------------------------------- | ------------------------------------------------ |
+| `prd-tmpl.yaml`            | Template  | `*create-prd` (in development/templates/)            | Falls back to product/templates/ (EXISTS there)  |
+| `brownfield-prd-tmpl.yaml` | Template  | `*create-brownfield-prd` (in development/templates/) | Falls back to product/templates/ (EXISTS there)  |
+| `pm-checklist.md`          | Checklist | `execute-checklist.md` (in development/checklists/)  | Falls back to product/checklists/ (EXISTS there) |
+| `change-checklist.md`      | Checklist | `execute-checklist.md` (in development/checklists/)  | Falls back to product/checklists/ (EXISTS there) |
 
 **Note:** All 9 task files referenced in dependencies exist in `.aiox-core/development/tasks/`. The 2 templates and 2 checklists are missing from `development/` but exist in `product/` as fallback locations.
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

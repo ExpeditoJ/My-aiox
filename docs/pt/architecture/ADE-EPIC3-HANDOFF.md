@@ -17,12 +17,12 @@ Epic 1 (Worktree) e Epic 2 (Migration V3) estão **100% completos** e aprovados 
 
 ## Pré-requisitos Validados ✅
 
-| Dependência       | Status            | Evidência                                     |
-| ----------------- | ----------------- | --------------------------------------------- |
-| WorktreeManager   | ✅ Funcional      | `manager.list()` executa sem erros            |
-| V3 Schemas        | ✅ Completo       | `agent-v3-schema.json`, `task-v3-schema.json` |
-| Todos Agents V3   | ✅ 12/12 migrados | Seção `autoClaude:` em todos                  |
-| Scripts Migração  | ✅ Prontos        | `asset-inventory.js`, `path-analyzer.js`      |
+| Dependência      | Status            | Evidência                                     |
+| ---------------- | ----------------- | --------------------------------------------- |
+| WorktreeManager  | ✅ Funcional      | `manager.list()` executa sem erros            |
+| V3 Schemas       | ✅ Completo       | `agent-v3-schema.json`, `task-v3-schema.json` |
+| Todos Agents V3  | ✅ 12/12 migrados | Seção `autoClaude:` em todos                  |
+| Scripts Migração | ✅ Prontos        | `asset-inventory.js`, `path-analyzer.js`      |
 
 ---
 

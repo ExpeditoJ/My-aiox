@@ -22,13 +22,13 @@ Este pipeline garante que após a migração ou criação de um Design System:
 
 ### Quando Usar
 
-| Cenário | Recomendação |
-|---------|--------------|
-| Após migração de Design System | Fortemente recomendado |
-| Release de nova versão do Pattern Library | Obrigatório |
-| Auditoria periódica de qualidade | Recomendado (trimestral) |
-| Validação pré-produção de componentes | Obrigatório |
-| Geração de métricas para stakeholders | Conforme necessidade |
+| Cenário                                   | Recomendação             |
+| ----------------------------------------- | ------------------------ |
+| Após migração de Design System            | Fortemente recomendado   |
+| Release de nova versão do Pattern Library | Obrigatório              |
+| Auditoria periódica de qualidade          | Recomendado (trimestral) |
+| Validação pré-produção de componentes     | Obrigatório              |
+| Geração de métricas para stakeholders     | Conforme necessidade     |
 
 ### Tipos de Projeto Suportados
 
@@ -214,13 +214,13 @@ graph TD
 
 ### Step 1: Build Atomic Components
 
-| Atributo | Valor |
-|----------|-------|
-| **ID** | `build` |
-| **Fase** | 1 - Build & Compile |
-| **Agente** | `ux-design-expert` (Uma) |
-| **Ação** | Build de componentes atômicos |
-| **Dependências** | Nenhuma (step inicial) |
+| Atributo         | Valor                         |
+| ---------------- | ----------------------------- |
+| **ID**           | `build`                       |
+| **Fase**         | 1 - Build & Compile           |
+| **Agente**       | `ux-design-expert` (Uma)      |
+| **Ação**         | Build de componentes atômicos |
+| **Dependências** | Nenhuma (step inicial)        |
 
 #### Descrição
 
@@ -241,23 +241,23 @@ Executa o build dos componentes do Design System, compilando tokens e gerando os
 
 #### Outputs
 
-| Artefato | Descrição |
-|----------|-----------|
-| `build_report` | Relatório do processo de build |
-| `compiled_tokens` | Tokens de design compilados (CSS/JS) |
-| `component_bundle` | Bundle de componentes prontos |
+| Artefato           | Descrição                            |
+| ------------------ | ------------------------------------ |
+| `build_report`     | Relatório do processo de build       |
+| `compiled_tokens`  | Tokens de design compilados (CSS/JS) |
+| `component_bundle` | Bundle de componentes prontos        |
 
 ---
 
 ### Step 2: Generate Documentation
 
-| Atributo | Valor |
-|----------|-------|
-| **ID** | `document` |
-| **Fase** | 2 - Documentation |
-| **Agente** | `ux-design-expert` (Uma) |
-| **Ação** | Gerar documentação do Pattern Library |
-| **Dependências** | `build` (Step 1) |
+| Atributo         | Valor                                 |
+| ---------------- | ------------------------------------- |
+| **ID**           | `document`                            |
+| **Fase**         | 2 - Documentation                     |
+| **Agente**       | `ux-design-expert` (Uma)              |
+| **Ação**         | Gerar documentação do Pattern Library |
+| **Dependências** | `build` (Step 1)                      |
 
 #### Descrição
 
@@ -278,23 +278,23 @@ Gera documentação completa do Pattern Library, incluindo API de componentes, e
 
 #### Outputs
 
-| Artefato | Descrição |
-|----------|-----------|
-| `pattern_library_docs` | Documentação completa do Pattern Library |
-| `component_api_reference` | Referência de API dos componentes |
-| `style_guide` | Guia de estilo visual |
+| Artefato                  | Descrição                                |
+| ------------------------- | ---------------------------------------- |
+| `pattern_library_docs`    | Documentação completa do Pattern Library |
+| `component_api_reference` | Referência de API dos componentes        |
+| `style_guide`             | Guia de estilo visual                    |
 
 ---
 
 ### Step 3: Accessibility Audit
 
-| Atributo | Valor |
-|----------|-------|
-| **ID** | `a11y-check` |
-| **Fase** | 3 - Quality Assurance |
-| **Agente** | `ux-design-expert` (Uma) |
-| **Ação** | Auditoria de acessibilidade (WCAG AA) |
-| **Dependências** | `document` (Step 2) |
+| Atributo         | Valor                                 |
+| ---------------- | ------------------------------------- |
+| **ID**           | `a11y-check`                          |
+| **Fase**         | 3 - Quality Assurance                 |
+| **Agente**       | `ux-design-expert` (Uma)              |
+| **Ação**         | Auditoria de acessibilidade (WCAG AA) |
+| **Dependências** | `document` (Step 2)                   |
 
 #### Descrição
 
@@ -317,23 +317,23 @@ Executa auditoria de acessibilidade conforme WCAG 2.1 AA, validando contraste, n
 
 #### Outputs
 
-| Artefato | Descrição |
-|----------|-----------|
-| `a11y_audit_report` | Relatorio completo da auditoria |
-| `violations_list` | Lista de violacoes encontradas |
-| `remediation_plan` | Plano de remediacao para violacoes |
+| Artefato            | Descrição                          |
+| ------------------- | ---------------------------------- |
+| `a11y_audit_report` | Relatorio completo da auditoria    |
+| `violations_list`   | Lista de violacoes encontradas     |
+| `remediation_plan`  | Plano de remediacao para violacoes |
 
 ---
 
 ### Step 4: Calculate ROI
 
-| Atributo | Valor |
-|----------|-------|
-| **ID** | `calculate-roi` |
-| **Fase** | 4 - ROI Analysis |
-| **Agente** | `ux-design-expert` (Uma) |
-| **Acao** | Calculo de ROI e savings |
-| **Dependencias** | `a11y-check` (Step 3) |
+| Atributo         | Valor                    |
+| ---------------- | ------------------------ |
+| **ID**           | `calculate-roi`          |
+| **Fase**         | 4 - ROI Analysis         |
+| **Agente**       | `ux-design-expert` (Uma) |
+| **Acao**         | Calculo de ROI e savings |
+| **Dependencias** | `a11y-check` (Step 3)    |
 
 #### Descricao
 
@@ -356,10 +356,10 @@ Calcula o retorno sobre investimento do Design System, mensurando economia de te
 
 #### Outputs
 
-| Artefato | Descrição |
-|----------|-----------|
-| `roi_report` | Relatorio de ROI completo |
-| `savings_metrics` | Metricas de economia detalhadas |
+| Artefato             | Descrição                            |
+| -------------------- | ------------------------------------ |
+| `roi_report`         | Relatorio de ROI completo            |
+| `savings_metrics`    | Metricas de economia detalhadas      |
 | `adoption_dashboard` | Dashboard de adocao do Design System |
 
 ---
@@ -368,24 +368,26 @@ Calcula o retorno sobre investimento do Design System, mensurando economia de te
 
 ### ux-design-expert (Uma)
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | Uma |
-| **Role** | UX/UI Designer & Design System Architect |
-| **Icon** | 🎨 |
-| **Arquetipo** | Empathizer |
+| Atributo      | Valor                                    |
+| ------------- | ---------------------------------------- |
+| **Nome**      | Uma                                      |
+| **Role**      | UX/UI Designer & Design System Architect |
+| **Icon**      | 🎨                                       |
+| **Arquetipo** | Empathizer                               |
 
 #### Filosofia Hibrida
 
 Uma combina duas abordagens complementares:
 
 **Sally's UX Principles (Fase de Research):**
+
 - User-centric: decisoes baseadas em necessidades reais
 - Empathetic discovery: pesquisa profunda de usuarios
 - Iterative simplicity: comecar simples, refinar com feedback
 - Delight in details: micro-interacoes criam experiencias memoraveis
 
 **Brad Frost's System Principles (Fases de Build & Scale):**
+
 - Metric-driven: numeros sobre opinioes
 - Visual shock therapy: mostrar o caos com dados reais
 - Intelligent consolidation: clustering algoritmico de padroes
@@ -396,12 +398,12 @@ Uma combina duas abordagens complementares:
 
 #### Comandos Relevantes para Este Workflow
 
-| Comando | Descricao | Fase |
-|---------|-----------|------|
-| `*build {component}` | Build de componente atomico | 4 |
-| `*document` | Gerar documentacao Pattern Library | 5 |
-| `*a11y-check` | Auditoria WCAG AA/AAA | 5 |
-| `*calculate-roi` | Calcular ROI e economia | 5 |
+| Comando              | Descricao                          | Fase |
+| -------------------- | ---------------------------------- | ---- |
+| `*build {component}` | Build de componente atomico        | 4    |
+| `*document`          | Gerar documentacao Pattern Library | 5    |
+| `*a11y-check`        | Auditoria WCAG AA/AAA              | 5    |
+| `*calculate-roi`     | Calcular ROI e economia            | 5    |
 
 ---
 
@@ -409,12 +411,12 @@ Uma combina duas abordagens complementares:
 
 ### Mapeamento de Tasks por Step
 
-| Step | Task File | Descricao |
-|------|-----------|-----------|
-| Build | `build-component.md` | Build de componentes atomicos |
-| Documentation | `generate-documentation.md` | Geracao de Pattern Library |
-| A11y Audit | `accessibility-wcag-checklist.md` | Checklist WCAG 2.1 AA |
-| ROI | `calculate-roi.md` | Calculo de ROI e metricas |
+| Step          | Task File                         | Descricao                     |
+| ------------- | --------------------------------- | ----------------------------- |
+| Build         | `build-component.md`              | Build de componentes atomicos |
+| Documentation | `generate-documentation.md`       | Geracao de Pattern Library    |
+| A11y Audit    | `accessibility-wcag-checklist.md` | Checklist WCAG 2.1 AA         |
+| ROI           | `calculate-roi.md`                | Calculo de ROI e metricas     |
 
 ### Diagrama de Dependencias de Tasks
 
@@ -445,12 +447,12 @@ graph TD
 
 ### Requisitos Tecnicos
 
-| Requisito | Descricao |
-|-----------|-----------|
-| Design System existente | Componentes ja migrados/criados |
-| Estrutura de tokens | `tokens.yaml` ou equivalente configurado |
-| Ambiente de build | Node.js 18+, npm/yarn/pnpm |
-| Ferramentas de teste | Jest, Testing Library (recomendado) |
+| Requisito               | Descricao                                |
+| ----------------------- | ---------------------------------------- |
+| Design System existente | Componentes ja migrados/criados          |
+| Estrutura de tokens     | `tokens.yaml` ou equivalente configurado |
+| Ambiente de build       | Node.js 18+, npm/yarn/pnpm               |
+| Ferramentas de teste    | Jest, Testing Library (recomendado)      |
 
 ### Requisitos de Projeto
 
@@ -471,11 +473,11 @@ graph TD
 
 ### Entradas do Pipeline
 
-| Entrada | Tipo | Descricao |
-|---------|------|-----------|
-| Design tokens source | `tokens.yaml` | Definicoes de cores, tipografia, espacamentos |
-| Component source files | `*.tsx`, `*.css` | Codigo fonte dos componentes |
-| Existing documentation | `*.md` | Documentacao existente (se houver) |
+| Entrada                | Tipo             | Descricao                                     |
+| ---------------------- | ---------------- | --------------------------------------------- |
+| Design tokens source   | `tokens.yaml`    | Definicoes de cores, tipografia, espacamentos |
+| Component source files | `*.tsx`, `*.css` | Codigo fonte dos componentes                  |
+| Existing documentation | `*.md`           | Documentacao existente (se houver)            |
 
 ### Saidas do Pipeline
 
@@ -545,11 +547,13 @@ graph TD
 ```
 
 **Criterios de Passagem:**
+
 - Zero erros de compilacao
 - Todos os tokens validos
 - Exports funcionando
 
 **Acoes em Caso de Falha:**
+
 1. Revisar logs de build
 2. Corrigir erros de sintaxe/import
 3. Validar estrutura de tokens
@@ -568,11 +572,13 @@ graph TD
 ```
 
 **Criterios de Passagem:**
+
 - 100% dos componentes documentados
 - Exemplos de codigo funcionais
 - Guia de estilo atualizado
 
 **Acoes em Caso de Falha:**
+
 1. Identificar componentes sem documentacao
 2. Adicionar props e exemplos faltantes
 3. Atualizar changelog
@@ -591,11 +597,13 @@ graph TD
 ```
 
 **Criterios de Passagem:**
+
 - Zero violacoes criticas (Level A)
 - Zero violacoes serias (Level AA)
 - Navegacao por teclado 100% funcional
 
 **Acoes em Caso de Falha:**
+
 1. Revisar `violations_list`
 2. Seguir `remediation_plan`
 3. Corrigir problemas de contraste
@@ -610,11 +618,11 @@ O workflow suporta tres modos de execucao:
 
 ### Modo YOLO (Autonomo)
 
-| Atributo | Valor |
-|----------|-------|
-| **Prompts** | 0-1 |
-| **Interacao** | Minima |
-| **Uso** | Pipelines CI/CD, execucao automatizada |
+| Atributo      | Valor                                  |
+| ------------- | -------------------------------------- |
+| **Prompts**   | 0-1                                    |
+| **Interacao** | Minima                                 |
+| **Uso**       | Pipelines CI/CD, execucao automatizada |
 
 ```bash
 # Execucao autonoma
@@ -623,11 +631,11 @@ O workflow suporta tres modos de execucao:
 
 ### Modo Interactive (Padrao)
 
-| Atributo | Valor |
-|----------|-------|
-| **Prompts** | 5-10 |
-| **Interacao** | Checkpoints de decisao |
-| **Uso** | Desenvolvimento normal, feedback educacional |
+| Atributo      | Valor                                        |
+| ------------- | -------------------------------------------- |
+| **Prompts**   | 5-10                                         |
+| **Interacao** | Checkpoints de decisao                       |
+| **Uso**       | Desenvolvimento normal, feedback educacional |
 
 ```bash
 # Execucao interativa (padrao)
@@ -636,11 +644,11 @@ O workflow suporta tres modos de execucao:
 
 ### Modo Preflight (Planejamento)
 
-| Atributo | Valor |
-|----------|-------|
-| **Prompts** | 10-15 |
+| Atributo      | Valor                                   |
+| ------------- | --------------------------------------- |
+| **Prompts**   | 10-15                                   |
 | **Interacao** | Planejamento completo antes da execucao |
-| **Uso** | Primeira execucao, analise de impacto |
+| **Uso**       | Primeira execucao, analise de impacto   |
 
 ```bash
 # Execucao com planejamento completo
@@ -654,10 +662,12 @@ O workflow suporta tres modos de execucao:
 ### Problema: Build Falha com Erros de Token
 
 **Sintomas:**
+
 - Erro "Token not found"
 - Cores ou espacamentos nao compilam
 
 **Solucao:**
+
 ```bash
 # 1. Verificar estrutura de tokens
 cat tokens.yaml
@@ -674,10 +684,12 @@ grep -r "var(--" src/
 ### Problema: Documentacao Incompleta
 
 **Sintomas:**
+
 - Componentes sem exemplos
 - Props nao documentadas
 
 **Solucao:**
+
 ```bash
 # 1. Listar componentes sem docs
 *audit --check-docs
@@ -694,10 +706,12 @@ grep -r "var(--" src/
 ### Problema: Violacoes de Acessibilidade
 
 **Sintomas:**
+
 - Falhas de contraste
 - ARIA labels ausentes
 
 **Solucao:**
+
 ```bash
 # 1. Revisar relatorio detalhado
 cat outputs/design-system/a11y/violations.json
@@ -717,10 +731,12 @@ cat outputs/design-system/a11y/violations.json
 ### Problema: ROI Nao Calculado Corretamente
 
 **Sintomas:**
+
 - Metricas zeradas
 - Dados historicos ausentes
 
 **Solucao:**
+
 ```bash
 # 1. Verificar dados de entrada
 cat .state.yaml
@@ -785,39 +801,39 @@ Artefatos disponiveis em outputs/design-system/
 
 ### Documentacao Interna
 
-| Documento | Caminho |
-|-----------|---------|
-| Definicao do Workflow | `.aiox-core/development/workflows/design-system-build-quality.yaml` |
-| Agente UX-Design Expert | `.aiox-core/development/agents/ux-design-expert.md` |
-| Task: Build Component | `.aiox-core/development/tasks/build-component.md` |
-| Task: Generate Documentation | `.aiox-core/development/tasks/generate-documentation.md` |
-| Checklist: WCAG A11y | `.aiox-core/development/checklists/accessibility-wcag-checklist.md` |
-| Task: Calculate ROI | `.aiox-core/development/tasks/calculate-roi.md` |
+| Documento                    | Caminho                                                             |
+| ---------------------------- | ------------------------------------------------------------------- |
+| Definicao do Workflow        | `.aiox-core/development/workflows/design-system-build-quality.yaml` |
+| Agente UX-Design Expert      | `.aiox-core/development/agents/ux-design-expert.md`                 |
+| Task: Build Component        | `.aiox-core/development/tasks/build-component.md`                   |
+| Task: Generate Documentation | `.aiox-core/development/tasks/generate-documentation.md`            |
+| Checklist: WCAG A11y         | `.aiox-core/development/checklists/accessibility-wcag-checklist.md` |
+| Task: Calculate ROI          | `.aiox-core/development/tasks/calculate-roi.md`                     |
 
 ### Referencias Externas
 
-| Recurso | Link |
-|---------|------|
-| Atomic Design (Brad Frost) | https://atomicdesign.bradfrost.com/ |
-| WCAG 2.1 Guidelines | https://www.w3.org/WAI/WCAG21/quickref/ |
-| Design Tokens W3C | https://design-tokens.github.io/community-group/format/ |
-| WebAIM Contrast Checker | https://webaim.org/resources/contrastchecker/ |
+| Recurso                    | Link                                                    |
+| -------------------------- | ------------------------------------------------------- |
+| Atomic Design (Brad Frost) | https://atomicdesign.bradfrost.com/                     |
+| WCAG 2.1 Guidelines        | https://www.w3.org/WAI/WCAG21/quickref/                 |
+| Design Tokens W3C          | https://design-tokens.github.io/community-group/format/ |
+| WebAIM Contrast Checker    | https://webaim.org/resources/contrastchecker/           |
 
 ### Workflows Relacionados
 
-| Workflow | Descricao |
-|----------|-----------|
-| `brownfield-migration` | Migracao de Design System existente |
-| `greenfield-design-system` | Criacao de Design System do zero |
-| `component-library-setup` | Setup inicial de biblioteca de componentes |
+| Workflow                   | Descricao                                  |
+| -------------------------- | ------------------------------------------ |
+| `brownfield-migration`     | Migracao de Design System existente        |
+| `greenfield-design-system` | Criacao de Design System do zero           |
+| `component-library-setup`  | Setup inicial de biblioteca de componentes |
 
 ---
 
 ## Historico de Versoes
 
-| Versao | Data | Autor | Mudancas |
-|--------|------|-------|----------|
-| 1.0.0 | 2025-01-30 | Orion (AIOX Master) | Versao inicial do workflow |
+| Versao | Data       | Autor               | Mudancas                   |
+| ------ | ---------- | ------------------- | -------------------------- |
+| 1.0.0  | 2025-01-30 | Orion (AIOX Master) | Versao inicial do workflow |
 
 ---
 
@@ -841,5 +857,5 @@ tags:
 
 ---
 
-*Documentacao gerada por Technical Documentation Specialist*
-*AIOX-FULLSTACK Framework v2.2*
+_Documentacao gerada por Technical Documentation Specialist_
+_AIOX-FULLSTACK Framework v2.2_

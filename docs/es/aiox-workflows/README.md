@@ -27,25 +27,25 @@ Esta carpeta contiene la documentacion detallada de todos los workflows de AIOX,
 
 ### Por Tipo de Proyecto
 
-| Tipo | Workflow | Descripcion | Documento |
-|------|----------|-------------|-----------|
+| Tipo           | Workflow  | Descripcion                        | Documento                                                              |
+| -------------- | --------- | ---------------------------------- | ---------------------------------------------------------------------- |
 | **Greenfield** | Fullstack | Aplicaciones full-stack desde cero | [greenfield-fullstack-workflow.md](./greenfield-fullstack-workflow.md) |
-| **Greenfield** | Service | Backend/API desde cero | [greenfield-service-workflow.md](./greenfield-service-workflow.md) |
-| **Greenfield** | UI | Frontend desde cero | [greenfield-ui-workflow.md](./greenfield-ui-workflow.md) |
-| **Brownfield** | Discovery | Analisis de proyecto existente | [brownfield-discovery-workflow.md](./brownfield-discovery-workflow.md) |
-| **Brownfield** | Fullstack | Evolucion full-stack existente | [brownfield-fullstack-workflow.md](./brownfield-fullstack-workflow.md) |
-| **Brownfield** | Service | Evolucion backend existente | [brownfield-service-workflow.md](./brownfield-service-workflow.md) |
-| **Brownfield** | UI | Evolucion frontend existente | [brownfield-ui-workflow.md](./brownfield-ui-workflow.md) |
+| **Greenfield** | Service   | Backend/API desde cero             | [greenfield-service-workflow.md](./greenfield-service-workflow.md)     |
+| **Greenfield** | UI        | Frontend desde cero                | [greenfield-ui-workflow.md](./greenfield-ui-workflow.md)               |
+| **Brownfield** | Discovery | Analisis de proyecto existente     | [brownfield-discovery-workflow.md](./brownfield-discovery-workflow.md) |
+| **Brownfield** | Fullstack | Evolucion full-stack existente     | [brownfield-fullstack-workflow.md](./brownfield-fullstack-workflow.md) |
+| **Brownfield** | Service   | Evolucion backend existente        | [brownfield-service-workflow.md](./brownfield-service-workflow.md)     |
+| **Brownfield** | UI        | Evolucion frontend existente       | [brownfield-ui-workflow.md](./brownfield-ui-workflow.md)               |
 
 ### Por Proceso
 
-| Proceso | Workflow | Descripcion | Documento |
-|---------|----------|-------------|-----------|
-| **Development** | Story Cycle | Ciclo completo de story | [story-development-cycle-workflow.md](./story-development-cycle-workflow.md) |
-| **Quality** | QA Loop | Ciclo de calidad | [qa-loop-workflow.md](./qa-loop-workflow.md) |
-| **Spec** | Spec Pipeline | Pipeline de especificacion | [spec-pipeline-workflow.md](./spec-pipeline-workflow.md) |
-| **Design** | Design System | Construccion de design system | [design-system-build-quality-workflow.md](./design-system-build-quality-workflow.md) |
-| **Git** | Auto Worktree | Gestion automatica de worktrees | [auto-worktree-workflow.md](./auto-worktree-workflow.md) |
+| Proceso         | Workflow      | Descripcion                     | Documento                                                                            |
+| --------------- | ------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
+| **Development** | Story Cycle   | Ciclo completo de story         | [story-development-cycle-workflow.md](./story-development-cycle-workflow.md)         |
+| **Quality**     | QA Loop       | Ciclo de calidad                | [qa-loop-workflow.md](./qa-loop-workflow.md)                                         |
+| **Spec**        | Spec Pipeline | Pipeline de especificacion      | [spec-pipeline-workflow.md](./spec-pipeline-workflow.md)                             |
+| **Design**      | Design System | Construccion de design system   | [design-system-build-quality-workflow.md](./design-system-build-quality-workflow.md) |
+| **Git**         | Auto Worktree | Gestion automatica de worktrees | [auto-worktree-workflow.md](./auto-worktree-workflow.md)                             |
 
 ---
 
@@ -189,13 +189,13 @@ flowchart TD
 
 ## Flujo entre Workflows
 
-| De | Hacia | Condicion |
-|----|-------|-----------|
-| `brownfield-discovery` | `brownfield-*` | Despues del analisis completo |
-| `greenfield-*` | `story-development-cycle` | Para cada story |
-| `brownfield-*` | `story-development-cycle` | Para cada story |
-| `spec-pipeline` | `story-development-cycle` | Despues de spec aprobada |
-| `story-development-cycle` | `qa-loop` | En la fase de QA |
+| De                        | Hacia                     | Condicion                     |
+| ------------------------- | ------------------------- | ----------------------------- |
+| `brownfield-discovery`    | `brownfield-*`            | Despues del analisis completo |
+| `greenfield-*`            | `story-development-cycle` | Para cada story               |
+| `brownfield-*`            | `story-development-cycle` | Para cada story               |
+| `spec-pipeline`           | `story-development-cycle` | Despues de spec aprobada      |
+| `story-development-cycle` | `qa-loop`                 | En la fase de QA              |
 
 ---
 
@@ -224,11 +224,11 @@ flowchart TD
 
 ## Relacion con Otras Documentaciones
 
-| Documentacion | Ubicacion | Proposito |
-|---------------|-----------|-----------|
-| Workflows Guide | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Guia general |
-| Agent Flows | [docs/aiox-agent-flows/](../../aiox-agent-flows/) | Detalles de agentes |
-| Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md) | Referencia rapida |
+| Documentacion       | Ubicacion                                                         | Proposito           |
+| ------------------- | ----------------------------------------------------------------- | ------------------- |
+| Workflows Guide     | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Guia general        |
+| Agent Flows         | [docs/aiox-agent-flows/](../../aiox-agent-flows/)                 | Detalles de agentes |
+| Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md)       | Referencia rapida   |
 
 ---
 
@@ -244,4 +244,4 @@ Para agregar o actualizar documentacion de workflows:
 
 ---
 
-*AIOX Workflows Documentation v1.0 - Documentacion detallada de los workflows de desarrollo*
+_AIOX Workflows Documentation v1.0 - Documentacion detallada de los workflows de desarrollo_

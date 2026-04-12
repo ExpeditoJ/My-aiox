@@ -25,6 +25,7 @@ OUTPUT: Repo configurado + Pipeline ativo + Push com gates verdes
 ### Cenário
 
 Você está em um projeto AIOX e precisa:
+
 1. Configurar repositório GitHub
 2. Criar pipeline CI/CD (GitHub Actions)
 3. Fazer push seguro com quality gates
@@ -53,6 +54,7 @@ git config user.email  # deve ter valor
 ```
 
 **Output esperado:**
+
 ```
 -- Gage aqui! DevOps & Infrastructure Specialist.
 Pronto para CI/CD, MCP, releases e operações Git.
@@ -73,6 +75,7 @@ Quick commands:
 ```
 
 **Interação:**
+
 ```
 Gage: Qual nome do repositório?
 Você: my-aiox-project
@@ -88,6 +91,7 @@ Você: sim
 ```
 
 **Output esperado:**
+
 ```
 🔧 Configurando repositório GitHub...
 
@@ -106,6 +110,7 @@ Você: sim
 ```
 
 **Evidência de sucesso:**
+
 ```bash
 gh repo view --web  # Abre o repo no browser
 ```
@@ -119,6 +124,7 @@ gh repo view --web  # Abre o repo no browser
 ```
 
 **Interação:**
+
 ```
 Gage: Qual stack tecnológica?
 Você: Node.js
@@ -134,6 +140,7 @@ Você: lint, test, build
 ```
 
 **Output esperado:**
+
 ```
 🔧 Configurando GitHub Actions CI/CD...
 
@@ -190,6 +197,7 @@ jobs:
 ```
 
 **Evidência de sucesso:**
+
 ```bash
 ls .github/workflows/
 # ci.yml
@@ -213,6 +221,7 @@ git commit -m "ci: add GitHub Actions pipeline"
 ```
 
 **Output esperado:**
+
 ```
 🚦 Pre-Push Quality Gate
 
@@ -252,6 +261,7 @@ gh run list --limit 1
 ```
 
 **Output esperado:**
+
 ```
 STATUS  NAME         WORKFLOW  BRANCH  EVENT  ID
 ✓       CI Pipeline  ci.yml    main    push   xxxxx
@@ -261,14 +271,14 @@ STATUS  NAME         WORKFLOW  BRANCH  EVENT  ID
 
 ## Checklist de Validação
 
-| Step | Comando | Output Esperado | ✓ |
-|------|---------|-----------------|---|
-| 1 | `@devops` | Greeting de Gage | [ ] |
-| 2 | `*setup-github` | "Repositório criado" | [ ] |
-| 3 | `*ci-cd github-actions` | "Pipeline criado" | [ ] |
-| 4 | `git commit` | Commit local | [ ] |
-| 5 | `*push` | "All gates passed" | [ ] |
-| 6 | `gh run list` | Pipeline verde | [ ] |
+| Step | Comando                 | Output Esperado      | ✓   |
+| ---- | ----------------------- | -------------------- | --- |
+| 1    | `@devops`               | Greeting de Gage     | [ ] |
+| 2    | `*setup-github`         | "Repositório criado" | [ ] |
+| 3    | `*ci-cd github-actions` | "Pipeline criado"    | [ ] |
+| 4    | `git commit`            | Commit local         | [ ] |
+| 5    | `*push`                 | "All gates passed"   | [ ] |
+| 6    | `gh run list`           | Pipeline verde       | [ ] |
 
 ---
 
@@ -281,6 +291,7 @@ Após várias features:
 ```
 
 **Output:**
+
 ```
 📊 Version Analysis
 
@@ -301,6 +312,7 @@ Suggested bump: minor (1.1.0)
 ```
 
 **Output:**
+
 ```
 🚀 Creating Release v1.1.0
 
@@ -318,18 +330,21 @@ Release URL:
 ## Variações da Trilha
 
 ### Variação A: GitLab CI
+
 ```bash
 *ci-cd gitlab
 # Gera .gitlab-ci.yml
 ```
 
 ### Variação B: CircleCI
+
 ```bash
 *ci-cd circleci
 # Gera .circleci/config.yml
 ```
 
 ### Variação C: MCP Setup
+
 ```bash
 *search-mcp "browser automation"
 *add-mcp playwright -s project
@@ -340,22 +355,23 @@ Release URL:
 
 ## Comandos Relacionados
 
-| Comando | Uso |
-|---------|-----|
-| `*setup-github` | Configurar repo e proteções |
-| `*ci-cd` | Criar pipeline CI/CD |
-| `*push` | Push com quality gates |
-| `*release` | Criar release com changelog |
-| `*version-check` | Analisar versão sugerida |
-| `*cleanup` | Limpar branches merged |
+| Comando          | Uso                           |
+| ---------------- | ----------------------------- |
+| `*setup-github`  | Configurar repo e proteções   |
+| `*ci-cd`         | Criar pipeline CI/CD          |
+| `*push`          | Push com quality gates        |
+| `*release`       | Criar release com changelog   |
+| `*version-check` | Analisar versão sugerida      |
+| `*cleanup`       | Limpar branches merged        |
 | `*security-scan` | Varredura de vulnerabilidades |
-| `*add-mcp` | Adicionar servidor MCP |
+| `*add-mcp`       | Adicionar servidor MCP        |
 
 ---
 
 ## Troubleshooting
 
 ### Quality gate falha em lint
+
 ```bash
 # Fix automático
 npm run lint -- --fix
@@ -364,6 +380,7 @@ npm run lint -- --fix
 ```
 
 ### Pipeline falha no GitHub
+
 ```bash
 # Ver logs
 gh run view --log-failed
@@ -372,6 +389,7 @@ gh run view --log-failed
 ```
 
 ### Sem permissão de push
+
 ```bash
 # Verificar autenticação
 gh auth status
@@ -381,5 +399,5 @@ gh auth login
 
 ---
 
-*Trilha criada para Story AIOX-DIFF-4.3.1*
-*-- Gage, automatizando tudo*
+_Trilha criada para Story AIOX-DIFF-4.3.1_
+_-- Gage, automatizando tudo_

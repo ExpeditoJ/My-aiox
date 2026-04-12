@@ -25,14 +25,14 @@ Workflow para crear frontends desde cero, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Requisitos de UI |
-| @ux-design-expert | Diseno de interfaces |
-| @architect | Arquitectura frontend |
-| @dev | Implementacion |
-| @qa | Tests de UI |
-| @devops | Deploy |
+| Agente            | Rol                   |
+| ----------------- | --------------------- |
+| @pm               | Requisitos de UI      |
+| @ux-design-expert | Diseno de interfaces  |
+| @architect        | Arquitectura frontend |
+| @dev              | Implementacion        |
+| @qa               | Tests de UI           |
+| @devops           | Deploy                |
 
 ## Ver Mas
 
@@ -40,4 +40,4 @@ Workflow para crear frontends desde cero, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

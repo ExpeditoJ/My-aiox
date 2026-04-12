@@ -12,6 +12,7 @@
 Este documento descreve o sistema completo do agente **@analyst (Atlas)**, incluindo todos os arquivos envolvidos, fluxos de trabalho, comandos disponiveis, templates e integracoes entre agentes.
 
 O agente Analyst e projetado para:
+
 - Conduzir pesquisas de mercado e analises competitivas
 - Facilitar sessoes de brainstorming estruturadas
 - Criar project briefs e prompts de pesquisa profunda
@@ -23,15 +24,15 @@ O agente Analyst e projetado para:
 
 ## Perfil do Agente
 
-| Atributo | Valor |
-|----------|-------|
-| **Nome** | Atlas |
-| **ID** | analyst |
-| **Titulo** | Business Analyst |
-| **Icone** | :mag: |
-| **Arquetipo** | Decoder |
-| **Signo** | :scorpius: Scorpio |
-| **Tom** | Analitico, Inquisitivo, Criativo |
+| Atributo       | Valor                                          |
+| -------------- | ---------------------------------------------- |
+| **Nome**       | Atlas                                          |
+| **ID**         | analyst                                        |
+| **Titulo**     | Business Analyst                               |
+| **Icone**      | :mag:                                          |
+| **Arquetipo**  | Decoder                                        |
+| **Signo**      | :scorpius: Scorpio                             |
+| **Tom**        | Analitico, Inquisitivo, Criativo               |
 | **Assinatura** | "-- Atlas, investigando a verdade :mag_right:" |
 
 ### Principios Core
@@ -53,55 +54,55 @@ O agente Analyst e projetado para:
 
 ### Arquivos Core do Agente
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/agents/analyst.md` | Definição core do agente Analyst |
-| `.claude/commands/AIOX/agents/analyst.md` | Comando Claude Code para ativar @analyst |
+| Arquivo                                    | Propósito                                |
+| ------------------------------------------ | ---------------------------------------- |
+| `.aiox-core/development/agents/analyst.md` | Definição core do agente Analyst         |
+| `.claude/commands/AIOX/agents/analyst.md`  | Comando Claude Code para ativar @analyst |
 
 ### Tasks do Analyst
 
-| Arquivo | Comando | Propósito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/facilitate-brainstorming-session.md` | `*brainstorm {topic}` | Task principal - facilita sessoes de brainstorming estruturadas |
-| `.aiox-core/development/tasks/analyst-facilitate-brainstorming.md` | `*brainstorm {topic}` | Variante interativa da task de brainstorming |
-| `.aiox-core/development/tasks/create-deep-research-prompt.md` | `*research-prompt {topic}` | Gera prompts de pesquisa profunda para investigacao |
-| `.aiox-core/development/tasks/advanced-elicitation.md` | `*elicit` | Sessao avancada de elicitacao de requisitos |
-| `.aiox-core/development/tasks/create-doc.md` | `*doc-out` | Criacao de documentos a partir de templates YAML |
-| `.aiox-core/development/tasks/document-project.md` | `*create-project-brief` | Documentação de projetos existentes |
-| `.aiox-core/development/tasks/calculate-roi.md` | (relacionada) | Calculo de ROI e economia de custos |
+| Arquivo                                                            | Comando                    | Propósito                                                       |
+| ------------------------------------------------------------------ | -------------------------- | --------------------------------------------------------------- |
+| `.aiox-core/development/tasks/facilitate-brainstorming-session.md` | `*brainstorm {topic}`      | Task principal - facilita sessoes de brainstorming estruturadas |
+| `.aiox-core/development/tasks/analyst-facilitate-brainstorming.md` | `*brainstorm {topic}`      | Variante interativa da task de brainstorming                    |
+| `.aiox-core/development/tasks/create-deep-research-prompt.md`      | `*research-prompt {topic}` | Gera prompts de pesquisa profunda para investigacao             |
+| `.aiox-core/development/tasks/advanced-elicitation.md`             | `*elicit`                  | Sessao avancada de elicitacao de requisitos                     |
+| `.aiox-core/development/tasks/create-doc.md`                       | `*doc-out`                 | Criacao de documentos a partir de templates YAML                |
+| `.aiox-core/development/tasks/document-project.md`                 | `*create-project-brief`    | Documentação de projetos existentes                             |
+| `.aiox-core/development/tasks/calculate-roi.md`                    | (relacionada)              | Calculo de ROI e economia de custos                             |
 
 ### Tasks Relacionadas de Analise
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/tasks/analyze-brownfield.md` | Analise de projetos brownfield |
-| `.aiox-core/development/tasks/analyze-framework.md` | Analise de frameworks existentes |
-| `.aiox-core/development/tasks/analyze-performance.md` | Analise de performance |
-| `.aiox-core/development/tasks/analyze-project-structure.md` | Analise de estrutura de projeto |
-| `.aiox-core/development/tasks/analyze-cross-artifact.md` | Analise cross-artifact |
+| Arquivo                                                     | Propósito                        |
+| ----------------------------------------------------------- | -------------------------------- |
+| `.aiox-core/development/tasks/analyze-brownfield.md`        | Analise de projetos brownfield   |
+| `.aiox-core/development/tasks/analyze-framework.md`         | Analise de frameworks existentes |
+| `.aiox-core/development/tasks/analyze-performance.md`       | Analise de performance           |
+| `.aiox-core/development/tasks/analyze-project-structure.md` | Analise de estrutura de projeto  |
+| `.aiox-core/development/tasks/analyze-cross-artifact.md`    | Analise cross-artifact           |
 
 ### Templates do Analyst
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/product/templates/project-brief-tmpl.yaml` | Template para Project Brief |
-| `.aiox-core/product/templates/market-research-tmpl.yaml` | Template para Pesquisa de Mercado |
-| `.aiox-core/product/templates/competitor-analysis-tmpl.yaml` | Template para Analise Competitiva |
+| Arquivo                                                       | Propósito                                        |
+| ------------------------------------------------------------- | ------------------------------------------------ |
+| `.aiox-core/product/templates/project-brief-tmpl.yaml`        | Template para Project Brief                      |
+| `.aiox-core/product/templates/market-research-tmpl.yaml`      | Template para Pesquisa de Mercado                |
+| `.aiox-core/product/templates/competitor-analysis-tmpl.yaml`  | Template para Analise Competitiva                |
 | `.aiox-core/product/templates/brainstorming-output-tmpl.yaml` | Template para output de sessoes de brainstorming |
 
 ### Arquivos de Dados
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/data/aiox-kb.md` | Knowledge base do AIOX |
+| Arquivo                                                   | Propósito                             |
+| --------------------------------------------------------- | ------------------------------------- |
+| `.aiox-core/development/data/aiox-kb.md`                  | Knowledge base do AIOX                |
 | `.aiox-core/development/data/brainstorming-techniques.md` | Tecnicas de brainstorming disponiveis |
 
 ### Workflows que Usam o Analyst
 
-| Arquivo | Fase | Propósito |
-|---------|------|-----------|
+| Arquivo                                                      | Fase   | Propósito                                    |
+| ------------------------------------------------------------ | ------ | -------------------------------------------- |
 | `.aiox-core/development/workflows/greenfield-fullstack.yaml` | Fase 1 | Discovery & Planning - cria project-brief.md |
-| `.aiox-core/development/workflows/brownfield-discovery.yaml` | Fase 9 | Relatorio Executivo de Awareness |
+| `.aiox-core/development/workflows/brownfield-discovery.yaml` | Fase 9 | Relatorio Executivo de Awareness             |
 
 ---
 
@@ -324,30 +325,30 @@ flowchart LR
 
 ### Comandos de Research & Analysis
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*perform-market-research` | `create-doc.md` + template | Cria relatorio de pesquisa de mercado |
-| `*create-competitor-analysis` | `create-doc.md` + template | Cria analise competitiva detalhada |
-| `*research-prompt {topic}` | `create-deep-research-prompt.md` | Gera prompt de pesquisa profunda |
+| Comando                       | Task File                        | Operacao                              |
+| ----------------------------- | -------------------------------- | ------------------------------------- |
+| `*perform-market-research`    | `create-doc.md` + template       | Cria relatorio de pesquisa de mercado |
+| `*create-competitor-analysis` | `create-doc.md` + template       | Cria analise competitiva detalhada    |
+| `*research-prompt {topic}`    | `create-deep-research-prompt.md` | Gera prompt de pesquisa profunda      |
 
 ### Comandos de Ideation & Discovery
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*brainstorm {topic}` | `facilitate-brainstorming-session.md` | Facilita sessao de brainstorming estruturada |
-| `*create-project-brief` | `document-project.md` | Cria project brief |
-| `*elicit` | `advanced-elicitation.md` | Sessao avancada de elicitacao |
+| Comando                 | Task File                             | Operacao                                     |
+| ----------------------- | ------------------------------------- | -------------------------------------------- |
+| `*brainstorm {topic}`   | `facilitate-brainstorming-session.md` | Facilita sessao de brainstorming estruturada |
+| `*create-project-brief` | `document-project.md`                 | Cria project brief                           |
+| `*elicit`               | `advanced-elicitation.md`             | Sessao avancada de elicitacao                |
 
 ### Comandos Utilitarios
 
-| Comando | Operacao |
-|---------|----------|
-| `*help` | Mostra todos os comandos disponiveis |
-| `*doc-out` | Output do documento completo |
-| `*session-info` | Mostra detalhes da sessao atual |
-| `*guide` | Guia de uso do agente |
-| `*yolo` | Toggle para pular confirmacoes |
-| `*exit` | Sair do modo analyst |
+| Comando         | Operacao                             |
+| --------------- | ------------------------------------ |
+| `*help`         | Mostra todos os comandos disponiveis |
+| `*doc-out`      | Output do documento completo         |
+| `*session-info` | Mostra detalhes da sessao atual      |
+| `*guide`        | Guia de uso do agente                |
+| `*yolo`         | Toggle para pular confirmacoes       |
+| `*exit`         | Sair do modo analyst                 |
 
 ---
 
@@ -366,6 +367,7 @@ template:
 ```
 
 **Secoes Principais:**
+
 - Executive Summary
 - Problem Statement
 - Proposed Solution
@@ -390,6 +392,7 @@ template:
 ```
 
 **Secoes Principais:**
+
 - Executive Summary
 - Research Objectives & Methodology
 - Market Overview (TAM/SAM/SOM, Trends)
@@ -412,6 +415,7 @@ template:
 ```
 
 **Secoes Principais:**
+
 - Executive Summary
 - Analysis Scope & Methodology
 - Competitive Landscape Overview
@@ -434,6 +438,7 @@ template:
 ```
 
 **Secoes Principais:**
+
 - Executive Summary (Topic, Techniques, Ideas Count)
 - Technique Sessions (per technique used)
 - Idea Categorization
@@ -464,34 +469,45 @@ template:
 
 ```markdown
 ## Research Objective
+
 [Statement claro do objetivo]
 
 ## Background Context
+
 [Informacoes relevantes de inputs]
 
 ## Research Questions
+
 ### Primary Questions (Must Answer)
+
 1. [Pergunta especifica e acionavel]
-...
+   ...
 
 ### Secondary Questions (Nice to Have)
+
 1. [Pergunta de suporte]
-...
+   ...
 
 ## Research Methodology
+
 ### Information Sources
+
 - [Tipos de fontes e prioridades]
 
 ### Analysis Frameworks
+
 - [Frameworks especificos]
 
 ## Expected Deliverables
+
 ### Executive Summary
+
 - Key findings and insights
 - Critical implications
 - Recommended actions
 
 ## Success Criteria
+
 [Como avaliar se a pesquisa atingiu objetivos]
 ```
 
@@ -501,37 +517,40 @@ template:
 
 ### Tools Disponiveis
 
-| Ferramenta | Propósito |
-|------------|-----------|
-| **exa** | Pesquisa web avancada para mercado e tecnologias |
-| **context7** | Lookup de documentacao de bibliotecas |
-| **google-workspace** | Documentação de pesquisa (Drive, Docs, Sheets) |
-| **clickup** | Captura e organizacao de ideias |
+| Ferramenta           | Propósito                                        |
+| -------------------- | ------------------------------------------------ |
+| **exa**              | Pesquisa web avancada para mercado e tecnologias |
+| **context7**         | Lookup de documentacao de bibliotecas            |
+| **google-workspace** | Documentação de pesquisa (Drive, Docs, Sheets)   |
+| **clickup**          | Captura e organizacao de ideias                  |
 
 ### Integracoes com Outros Agentes
 
-| Agente | Tipo de Colaboracao |
-|--------|---------------------|
-| **@pm (Morgan)** | Analyst fornece pesquisa e analise para criação de PRD |
-| **@po (Pax)** | Analyst fornece insights de mercado e analise competitiva |
-| **@architect** | Analyst pode fornecer research de tecnologias |
-| **@ux-design-expert** | Analyst fornece user research para decisoes de UX |
+| Agente                | Tipo de Colaboracao                                       |
+| --------------------- | --------------------------------------------------------- |
+| **@pm (Morgan)**      | Analyst fornece pesquisa e analise para criação de PRD    |
+| **@po (Pax)**         | Analyst fornece insights de mercado e analise competitiva |
+| **@architect**        | Analyst pode fornecer research de tecnologias             |
+| **@ux-design-expert** | Analyst fornece user research para decisoes de UX         |
 
 ---
 
 ## Modos de Execucao
 
 ### 1. YOLO Mode - Rapido e Autonomo (0-1 prompts)
+
 - Tomada de decisao autonoma com logging
 - Interacao minima com usuario
 - **Melhor para:** Tasks simples e deterministicas
 
 ### 2. Interactive Mode - Balanceado e Educativo (5-10 prompts) [DEFAULT]
+
 - Checkpoints explicitos de decisao
 - Explicacoes educativas
 - **Melhor para:** Aprendizado, decisoes complexas
 
 ### 3. Pre-Flight Planning - Planejamento Abrangente
+
 - Fase de analise de task (identificar ambiguidades)
 - Execucao com zero ambiguidade
 - **Melhor para:** Requisitos ambiguos, trabalho critico
@@ -582,6 +601,7 @@ template:
 **Sintomas:** Usuario para de gerar ideias, respostas curtas
 
 **Solucoes:**
+
 1. Verificar nivel de energia: "Como voce esta se sentindo sobre essa direcao?"
 2. Oferecer troca de tecnica: "Quer tentar uma abordagem diferente?"
 3. Usar prompts mais especificos
@@ -592,6 +612,7 @@ template:
 **Sintomas:** EXA retorna poucos resultados, mercado de nicho
 
 **Solucoes:**
+
 1. Expandir escopo de busca (termos relacionados)
 2. Usar analogias de mercados adjacentes
 3. Combinar com pesquisa primaria (entrevistas)
@@ -602,6 +623,7 @@ template:
 **Sintomas:** Secoes vagas, falta de especificidade
 
 **Solucoes:**
+
 1. Usar elicitacao avancada para aprofundar
 2. Pedir exemplos concretos
 3. Desafiar assumptions com cenarios
@@ -612,6 +634,7 @@ template:
 **Sintomas:** Apenas lista de competidores sem insights
 
 **Solucoes:**
+
 1. Aplicar frameworks estruturados (Porter's, SWOT)
 2. Focar em diferenciais e vulnerabilidades
 3. Incluir analise de posicionamento
@@ -649,25 +672,25 @@ template:
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Total de Tasks Core** | 6 task files |
-| **Total de Templates** | 4 templates YAML |
+| Aspecto                  | Detalhes                                                                          |
+| ------------------------ | --------------------------------------------------------------------------------- |
+| **Total de Tasks Core**  | 6 task files                                                                      |
+| **Total de Templates**   | 4 templates YAML                                                                  |
 | **Comandos de Research** | 3 (`*perform-market-research`, `*create-competitor-analysis`, `*research-prompt`) |
-| **Comandos de Ideation** | 3 (`*brainstorm`, `*create-project-brief`, `*elicit`) |
-| **Workflows que Usam** | 2 (greenfield-fullstack, brownfield-discovery) |
-| **Agentes Consumidores** | @pm, @po, @architect, @ux-design-expert |
-| **Tools Integrados** | exa, context7, google-workspace, clickup |
-| **Modos de Execucao** | 3 (YOLO, Interactive, Pre-Flight) |
+| **Comandos de Ideation** | 3 (`*brainstorm`, `*create-project-brief`, `*elicit`)                             |
+| **Workflows que Usam**   | 2 (greenfield-fullstack, brownfield-discovery)                                    |
+| **Agentes Consumidores** | @pm, @po, @architect, @ux-design-expert                                           |
+| **Tools Integrados**     | exa, context7, google-workspace, clickup                                          |
+| **Modos de Execucao**    | 3 (YOLO, Interactive, Pre-Flight)                                                 |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descrição |
-|------|-------|-----------|
+| Data       | Autor    | Descrição                                                       |
+| ---------- | -------- | --------------------------------------------------------------- |
 | 2026-02-04 | @analyst | Documento inicial criado com flowcharts e mapeamentos completos |
 
 ---
 
-*-- Atlas, investigando a verdade :mag_right:*
+_-- Atlas, investigando a verdade :mag_right:_

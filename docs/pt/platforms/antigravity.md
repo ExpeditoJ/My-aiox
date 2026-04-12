@@ -26,12 +26,12 @@ O AntiGravity oferece capacidades distintas:
 
 ### Comparação com Outras Plataformas
 
-| Recurso | AntiGravity | Claude Code | Cursor |
-|---------|:-----------:|:-----------:|:------:|
-| Sistema de Workflow | Sim | Task Tool | Composer |
-| Google Cloud Nativo | Sim | Não | Não |
-| Suporte MCP | Nativo | Nativo | Config |
-| Encadeamento de Agentes | Sim | Subagentes | Não |
+| Recurso                 | AntiGravity | Claude Code |  Cursor  |
+| ----------------------- | :---------: | :---------: | :------: |
+| Sistema de Workflow     |     Sim     |  Task Tool  | Composer |
+| Google Cloud Nativo     |     Sim     |     Não     |   Não    |
+| Suporte MCP             |   Nativo    |   Nativo    |  Config  |
+| Encadeamento de Agentes |     Sim     | Subagentes  |   Não    |
 
 ---
 
@@ -39,11 +39,11 @@ O AntiGravity oferece capacidades distintas:
 
 ### Requisitos de Sistema
 
-| Requisito | Mínimo | Recomendado |
-|-----------|--------|-------------|
-| **RAM** | 4GB | 8GB+ |
-| **Espaço em Disco** | 1GB | 2GB+ |
-| **Node.js** | 18.0+ | 20.0+ |
+| Requisito           | Mínimo | Recomendado |
+| ------------------- | ------ | ----------- |
+| **RAM**             | 4GB    | 8GB+        |
+| **Espaço em Disco** | 1GB    | 2GB+        |
+| **Node.js**         | 18.0+  | 20.0+       |
 
 ### Requisitos de Conta
 
@@ -91,6 +91,7 @@ ls -la .agent/
 ```
 
 Estrutura esperada:
+
 ```
 projeto/
 ├── .antigravity/
@@ -138,10 +139,12 @@ projeto/
 # Regras Synkra AIOX para AntiGravity
 
 ## Sistema de Agentes
+
 - Use @nome-agente ou workflows para ativação
 - Siga definições de workflow para tarefas complexas
 
 ## Padrões de Desenvolvimento
+
 - Escreva código limpo e testado
 - Siga padrões existentes
 - Inclua tratamento abrangente de erros
@@ -154,15 +157,15 @@ projeto/
 ```yaml
 # dev-workflow.yaml
 name: Workflow do Desenvolvedor
-trigger: "@dev"
+trigger: '@dev'
 agent: dev
 steps:
   - name: analyze
     action: read_story
-    input: "${story_path}"
+    input: '${story_path}'
   - name: implement
     action: write_code
-    context: "${analyze.output}"
+    context: '${analyze.output}'
   - name: test
     action: run_tests
 ```
@@ -184,6 +187,7 @@ antigravity run dev-workflow
 ### Ativando Agentes
 
 **Via @mention:**
+
 ```
 @dev implemente a feature de autenticação de usuário
 
@@ -193,6 +197,7 @@ antigravity run dev-workflow
 ```
 
 **Via Workflow:**
+
 ```bash
 antigravity workflow run dev --input "implementar feature de auth"
 ```
@@ -291,17 +296,17 @@ Encadeie múltiplos agentes em um workflow:
 ```yaml
 chain:
   - agent: analyst
-    task: "Analisar requisitos"
+    task: 'Analisar requisitos'
     output: requirements
 
   - agent: architect
-    task: "Projetar solução"
-    input: "${requirements}"
+    task: 'Projetar solução'
+    input: '${requirements}'
     output: design
 
   - agent: dev
-    task: "Implementar solução"
-    input: "${design}"
+    task: 'Implementar solução'
+    input: '${design}'
 ```
 
 ---
@@ -311,6 +316,7 @@ chain:
 ### Dashboard de Workflow
 
 Acesse o editor visual de workflow:
+
 ```bash
 antigravity dashboard
 ```
@@ -321,9 +327,9 @@ antigravity dashboard
 # Use Firebase em workflows
 firebase:
   firestore:
-    collection: "projects/${project_id}/tasks"
+    collection: 'projects/${project_id}/tasks'
   storage:
-    bucket: "project-assets"
+    bucket: 'project-assets'
 ```
 
 ### Cloud Functions
@@ -336,7 +342,7 @@ const { AntiGravity } = require('@google/antigravity');
 
 exports.handleRequest = AntiGravity.createFunction({
   agent: 'dev',
-  workflow: 'code-review'
+  workflow: 'code-review',
 });
 ```
 
@@ -385,9 +391,9 @@ persona:
 workflow:
   default: dev-workflow
   triggers:
-    - "@dev"
-    - "desenvolver"
-    - "implementar"
+    - '@dev'
+    - 'desenvolver'
+    - 'implementar'
 ```
 
 ---
@@ -396,20 +402,20 @@ workflow:
 
 ### Limitações Atuais
 
-| Limitação | Solução Alternativa |
-|-----------|---------------------|
-| Conta Google necessária | Use service accounts |
-| Configuração complexa de workflow | Use templates |
-| Suporte limitado a IDEs | Foco em CLI |
+| Limitação                         | Solução Alternativa  |
+| --------------------------------- | -------------------- |
+| Conta Google necessária           | Use service accounts |
+| Configuração complexa de workflow | Use templates        |
+| Suporte limitado a IDEs           | Foco em CLI          |
 
 ### AntiGravity vs Claude Code
 
-| Aspecto | AntiGravity | Claude Code |
-|---------|-------------|-------------|
-| Sistema de Workflow | Nativo | Task Tool |
-| Cloud Nativo | Google | Qualquer |
-| MCP | Nativo | Nativo |
-| CLI | Sim | Sim |
+| Aspecto             | AntiGravity | Claude Code |
+| ------------------- | ----------- | ----------- |
+| Sistema de Workflow | Nativo      | Task Tool   |
+| Cloud Nativo        | Google      | Qualquer    |
+| MCP                 | Nativo      | Nativo      |
+| CLI                 | Sim         | Sim         |
 
 ---
 
@@ -418,20 +424,26 @@ workflow:
 ### Problemas Comuns
 
 #### Falha de Autenticação
+
 ```
 Error: Unable to authenticate
 ```
+
 **Solução:**
+
 ```bash
 antigravity auth logout
 antigravity auth login
 ```
 
 #### Workflow Não Encontrado
+
 ```
 Error: Workflow 'xyz' not found
 ```
+
 **Solução:**
+
 ```bash
 # Listar workflows disponíveis
 antigravity workflow list
@@ -441,10 +453,13 @@ ls .agent/workflows/
 ```
 
 #### Agente Não Reconhecido
+
 ```
 Error: Unknown agent '@xyz'
 ```
+
 **Solução:**
+
 ```bash
 # Ressincronizar agentes
 npm run sync:ide
@@ -505,4 +520,4 @@ R: Agentes são personas com expertise; workflows orquestram ações de agentes 
 
 ---
 
-*Synkra AIOX - Guia da Plataforma AntiGravity v1.0*
+_Synkra AIOX - Guia da Plataforma AntiGravity v1.0_

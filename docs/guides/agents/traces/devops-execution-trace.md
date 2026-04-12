@@ -7,15 +7,15 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/devops.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, cicdLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/data/technical-preferences.md` | AgentConfigLoader.loadFile() | Technical preferences (always loaded, 15KB) |
-| 6 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 7 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                             |
+| ----- | ------------------------------------------------ | --------------------------------------- | --------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/devops.md`        | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                       |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration                                  |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: dataLocation, cicdLocation         |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                            |
+| 5     | `.aiox-core/data/technical-preferences.md`       | AgentConfigLoader.loadFile()            | Technical preferences (always loaded, 15KB)         |
+| 6     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history) |
+| 7     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                     |
 
 ### 1.2 Greeting Construction
 
@@ -87,49 +87,49 @@ devops:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `⚡ Gage the Operator ready to deploy!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Gage, deployando com confianca 🚀` |
-| Role | `persona.role` | GitHub Repository Guardian & Release Manager |
-| Commands shown | `filterCommandsByVisibility('full')` | 30 commands with `full` visibility |
+| Data           | Source                                            | Value                                        |
+| -------------- | ------------------------------------------------- | -------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `⚡ Gage the Operator ready to deploy!`      |
+| Signature      | `persona_profile.communication.signature_closing` | `— Gage, deployando com confianca 🚀`        |
+| Role           | `persona.role`                                    | GitHub Repository Guardian & Release Manager |
+| Commands shown | `filterCommandsByVisibility('full')`              | 30 commands with `full` visibility           |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Category | Elicit |
-|---------|-----------|----------|--------|
-| `*help` | (built-in) | Core | No |
-| `*detect-repo` | (built-in, uses repository-detector.js) | Core | No |
-| `*version-check` | github-devops-version-management.md | Quality & Push | No |
-| `*pre-push` | github-devops-pre-push-quality-gate.md | Quality & Push | No |
-| `*push` | (built-in, orchestrates quality gates + git push) | Quality & Push | Yes |
-| `*create-pr` | github-devops-github-pr-automation.md | GitHub | Yes |
-| `*configure-ci` | ci-cd-configuration.md | GitHub | Yes |
-| `*release` | release-management.md | GitHub | Yes |
-| `*cleanup` | github-devops-repository-cleanup.md | Repository | Yes |
-| `*init-project-status` | init-project-status.md | Repository | No |
-| `*environment-bootstrap` | environment-bootstrap.md | Environment | Yes |
-| `*setup-github` | setup-github.md | Environment | Yes |
-| `*search-mcp` | search-mcp.md | MCP Management | No |
-| `*add-mcp` | add-mcp.md | MCP Management | Yes |
-| `*list-mcps` | list-mcps.md | MCP Management | No |
-| `*remove-mcp` | remove-mcp.md | MCP Management | Yes |
-| `*setup-mcp-docker` | setup-mcp-docker.md | MCP Management | Yes |
-| `*check-docs` | check-docs-links.md | Documentation | No |
-| `*create-worktree` | create-worktree.md | Worktree | Yes |
-| `*list-worktrees` | list-worktrees.md | Worktree | No |
-| `*remove-worktree` | remove-worktree.md | Worktree | Yes |
-| `*cleanup-worktrees` | cleanup-worktrees.md | Worktree | Yes |
-| `*merge-worktree` | merge-worktree.md | Worktree | Yes |
-| `*inventory-assets` | (uses asset-inventory.js) | Migration | No |
-| `*analyze-paths` | (uses path-analyzer.js) | Migration | No |
-| `*migrate-agent` | (uses migrate-agent.js) | Migration | Yes |
-| `*migrate-batch` | (uses migrate-agent.js in batch mode) | Migration | Yes |
-| `*session-info` | (built-in) | Utilities | No |
-| `*guide` | (built-in, rendered from agent .md) | Utilities | No |
-| `*exit` | (built-in) | Utilities | No |
+| Command                  | Task File                                         | Category       | Elicit |
+| ------------------------ | ------------------------------------------------- | -------------- | ------ |
+| `*help`                  | (built-in)                                        | Core           | No     |
+| `*detect-repo`           | (built-in, uses repository-detector.js)           | Core           | No     |
+| `*version-check`         | github-devops-version-management.md               | Quality & Push | No     |
+| `*pre-push`              | github-devops-pre-push-quality-gate.md            | Quality & Push | No     |
+| `*push`                  | (built-in, orchestrates quality gates + git push) | Quality & Push | Yes    |
+| `*create-pr`             | github-devops-github-pr-automation.md             | GitHub         | Yes    |
+| `*configure-ci`          | ci-cd-configuration.md                            | GitHub         | Yes    |
+| `*release`               | release-management.md                             | GitHub         | Yes    |
+| `*cleanup`               | github-devops-repository-cleanup.md               | Repository     | Yes    |
+| `*init-project-status`   | init-project-status.md                            | Repository     | No     |
+| `*environment-bootstrap` | environment-bootstrap.md                          | Environment    | Yes    |
+| `*setup-github`          | setup-github.md                                   | Environment    | Yes    |
+| `*search-mcp`            | search-mcp.md                                     | MCP Management | No     |
+| `*add-mcp`               | add-mcp.md                                        | MCP Management | Yes    |
+| `*list-mcps`             | list-mcps.md                                      | MCP Management | No     |
+| `*remove-mcp`            | remove-mcp.md                                     | MCP Management | Yes    |
+| `*setup-mcp-docker`      | setup-mcp-docker.md                               | MCP Management | Yes    |
+| `*check-docs`            | check-docs-links.md                               | Documentation  | No     |
+| `*create-worktree`       | create-worktree.md                                | Worktree       | Yes    |
+| `*list-worktrees`        | list-worktrees.md                                 | Worktree       | No     |
+| `*remove-worktree`       | remove-worktree.md                                | Worktree       | Yes    |
+| `*cleanup-worktrees`     | cleanup-worktrees.md                              | Worktree       | Yes    |
+| `*merge-worktree`        | merge-worktree.md                                 | Worktree       | Yes    |
+| `*inventory-assets`      | (uses asset-inventory.js)                         | Migration      | No     |
+| `*analyze-paths`         | (uses path-analyzer.js)                           | Migration      | No     |
+| `*migrate-agent`         | (uses migrate-agent.js)                           | Migration      | Yes    |
+| `*migrate-batch`         | (uses migrate-agent.js in batch mode)             | Migration      | Yes    |
+| `*session-info`          | (built-in)                                        | Utilities      | No     |
+| `*guide`                 | (built-in, rendered from agent .md)               | Utilities      | No     |
+| `*exit`                  | (built-in)                                        | Utilities      | No     |
 
 ---
 
@@ -535,13 +535,13 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## ⚡ DevOps Guide` section from agent .md |
-| `*session-info` | Shows session context (agent history, commands, project status) |
-| `*detect-repo` | Calls `repository-detector.js` to identify repo URL and installation mode |
-| `*exit` | Exits devops mode, returns to base Claude Code |
+| Command         | Behavior                                                                  |
+| --------------- | ------------------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition           |
+| `*guide`        | Renders the `## ⚡ DevOps Guide` section from agent .md                   |
+| `*session-info` | Shows session context (agent history, commands, project status)           |
+| `*detect-repo`  | Calls `repository-detector.js` to identify repo URL and installation mode |
+| `*exit`         | Exits devops mode, returns to base Claude Code                            |
 
 ---
 
@@ -698,36 +698,41 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @dev -> @devops | Delegate | Git push and PR creation after story completion |
-| @sm -> @devops | Delegate | Push operations during sprint workflow |
-| @architect -> @devops | Delegate | Repository operations, PR creation |
-| @devops -> @dev | Redirect | Code development tasks (not in scope) |
-| @devops -> @sm | Redirect | Story management tasks (not in scope) |
-| @devops -> @architect | Redirect | Architecture design tasks (not in scope) |
+| Interaction           | Direction | Trigger                                         |
+| --------------------- | --------- | ----------------------------------------------- |
+| @dev -> @devops       | Delegate  | Git push and PR creation after story completion |
+| @sm -> @devops        | Delegate  | Push operations during sprint workflow          |
+| @architect -> @devops | Delegate  | Repository operations, PR creation              |
+| @devops -> @dev       | Redirect  | Code development tasks (not in scope)           |
+| @devops -> @sm        | Redirect  | Story management tasks (not in scope)           |
+| @devops -> @architect | Redirect  | Architecture design tasks (not in scope)        |
 
 ### Delegation Rules (from agent definition)
 
 **Receives delegation from @dev (Dex) when:**
+
 - Story implementation is complete and needs pushing
 - Pull request creation is required
 - Release tagging is needed after merge
 
 **Receives delegation from @sm (River) when:**
+
 - Sprint push workflow is triggered
 - Coordinated multi-story push is needed
 
 **Receives delegation from @architect (Aria) when:**
+
 - Architecture documents need pushing to remote
 - CI/CD pipeline configuration is required
 - Repository structure changes need deployment
 
 **EXCLUSIVE git push authority:**
+
 - ALLOWED (only @devops): `git push`, `git push --force`, `git push origin --delete`, `gh pr create`, `gh pr merge`, `gh release create`
 - ALL OTHER AGENTS BLOCKED: Must delegate push operations to @devops
 
 **Quality gates are mandatory before any push:**
+
 - CodeRabbit review (0 CRITICAL issues)
 - `npm run lint` (must PASS)
 - `npm test` (must PASS)
@@ -738,6 +743,7 @@ graph TD
 - No merge conflicts
 
 **Enforcement mechanism:**
+
 - Git pre-push hook at `.git/hooks/pre-push`
 - Checks `$AIOX_ACTIVE_AGENT` environment variable
 - Blocks push if agent != "github-devops"
@@ -746,19 +752,19 @@ graph TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Declared Location | Actual Location | Impact |
-|------|------|-------------------|-----------------|--------|
-| `github-pr-template.md` | Template | `.aiox-core/development/templates/` | `.aiox-core/product/templates/` | Path mismatch -- file exists but at different path |
-| `github-actions-ci.yml` | Template | `.aiox-core/development/templates/` | `.aiox-core/product/templates/` | Path mismatch -- file exists but at different path |
-| `github-actions-cd.yml` | Template | `.aiox-core/development/templates/` | `.aiox-core/product/templates/` | Path mismatch -- file exists but at different path |
-| `changelog-template.md` | Template | `.aiox-core/development/templates/` | `.aiox-core/product/templates/` | Path mismatch -- file exists but at different path |
-| `pre-push-checklist.md` | Checklist | `.aiox-core/development/checklists/` | `.aiox-core/product/checklists/` | Path mismatch -- file exists but at different path |
-| `release-checklist.md` | Checklist | `.aiox-core/development/checklists/` | `.aiox-core/product/checklists/` | Path mismatch -- file exists but at different path |
-| `gitignore-manager` | Util | `.aiox-core/development/utils/` | (not found anywhere) | MISSING -- command may fall back to manual gitignore handling |
-| `version-tracker` | Util | `.aiox-core/development/utils/` | (not found anywhere) | MISSING -- version tracking relies on git tags and package.json |
+| File                    | Type      | Declared Location                    | Actual Location                  | Impact                                                          |
+| ----------------------- | --------- | ------------------------------------ | -------------------------------- | --------------------------------------------------------------- |
+| `github-pr-template.md` | Template  | `.aiox-core/development/templates/`  | `.aiox-core/product/templates/`  | Path mismatch -- file exists but at different path              |
+| `github-actions-ci.yml` | Template  | `.aiox-core/development/templates/`  | `.aiox-core/product/templates/`  | Path mismatch -- file exists but at different path              |
+| `github-actions-cd.yml` | Template  | `.aiox-core/development/templates/`  | `.aiox-core/product/templates/`  | Path mismatch -- file exists but at different path              |
+| `changelog-template.md` | Template  | `.aiox-core/development/templates/`  | `.aiox-core/product/templates/`  | Path mismatch -- file exists but at different path              |
+| `pre-push-checklist.md` | Checklist | `.aiox-core/development/checklists/` | `.aiox-core/product/checklists/` | Path mismatch -- file exists but at different path              |
+| `release-checklist.md`  | Checklist | `.aiox-core/development/checklists/` | `.aiox-core/product/checklists/` | Path mismatch -- file exists but at different path              |
+| `gitignore-manager`     | Util      | `.aiox-core/development/utils/`      | (not found anywhere)             | MISSING -- command may fall back to manual gitignore handling   |
+| `version-tracker`       | Util      | `.aiox-core/development/utils/`      | (not found anywhere)             | MISSING -- version tracking relies on git tags and package.json |
 
 **Note on path resolution:** The `dependencies.templates` and `dependencies.checklists` in the agent YAML resolve via `IDE-FILE-RESOLUTION` to `.aiox-core/development/{type}/{name}`. However, all 4 templates and 2 checklists actually reside in `.aiox-core/product/{type}/`. The 3 infrastructure scripts (`asset-inventory.js`, `path-analyzer.js`, `migrate-agent.js`) and 3 utils (`branch-manager.js`, `repository-detector.js`, `git-wrapper.js`) exist at `.aiox-core/infrastructure/scripts/`, not at the declared path.
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

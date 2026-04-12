@@ -13,7 +13,9 @@ Or manually copy to `~/.gemini/extensions/aiox/`
 ## Features
 
 ### Quick Agent Launcher
+
 Use slash commands for fast activation flow (Codex `$`-like UX):
+
 - `/aiox-menu` - show all quick launch commands
 - `/aiox-dev`
 - `/aiox-architect`
@@ -25,6 +27,7 @@ Use slash commands for fast activation flow (Codex `$`-like UX):
 Each launcher returns a ready-to-send activation prompt plus greeting preview.
 
 ### Commands
+
 - `/aiox-status` - Show system status
 - `/aiox-agents` - List available agents
 - `/aiox-validate` - Validate installation
@@ -32,7 +35,9 @@ Each launcher returns a ready-to-send activation prompt plus greeting preview.
 - `/aiox-agent <id>` - Generic launcher by agent id
 
 ### Hooks
+
 Automatic integration with AIOX memory and security:
+
 - Session context loading
 - Gotchas and patterns injection
 - Security validation (blocks secrets)

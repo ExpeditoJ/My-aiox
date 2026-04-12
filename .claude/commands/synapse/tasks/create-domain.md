@@ -20,13 +20,13 @@ Create a new custom domain in `.synapse/` with a corresponding entry in `.synaps
 
 ## Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `domain-name` | Yes | Name for the new domain (kebab-case, lowercase) |
-| `description` | No | Short description of the domain's purpose |
-| `recall-keywords` | No | Comma-separated RECALL keywords for L6 matching |
-| `exclude-keywords` | No | Comma-separated EXCLUDE keywords |
-| `initial-rules` | No | One or more initial rules to include |
+| Parameter          | Required | Description                                     |
+| ------------------ | -------- | ----------------------------------------------- |
+| `domain-name`      | Yes      | Name for the new domain (kebab-case, lowercase) |
+| `description`      | No       | Short description of the domain's purpose       |
+| `recall-keywords`  | No       | Comma-separated RECALL keywords for L6 matching |
+| `exclude-keywords` | No       | Comma-separated EXCLUDE keywords                |
+| `initial-rules`    | No       | One or more initial rules to include            |
 
 ---
 
@@ -44,6 +44,7 @@ If invalid, report: `Error: Domain name must be lowercase kebab-case (e.g., "my-
 ### Step 2: Derive Domain Key
 
 Convert the kebab-case name to UPPERCASE_SNAKE_CASE for use in manifest and domain file:
+
 - `my-custom-rules` -> `MY_CUSTOM_RULES`
 
 ### Step 3: Check Uniqueness
@@ -113,15 +114,15 @@ Append to `.synapse/manifest` using the template from `.claude/commands/synapse/
 
 ## Error Handling
 
-| Error | Message |
-|-------|---------|
-| Invalid name | `Error: Domain name must be lowercase kebab-case (e.g., "my-custom-rules"). Got: "{name}"` |
+| Error                    | Message                                                                                        |
+| ------------------------ | ---------------------------------------------------------------------------------------------- |
+| Invalid name             | `Error: Domain name must be lowercase kebab-case (e.g., "my-custom-rules"). Got: "{name}"`     |
 | Domain exists (manifest) | `Error: Domain "{name}" already exists in the manifest. Use "add" to add rules to it instead.` |
-| Domain exists (file) | `Error: Domain file ".synapse/{name}" already exists on disk.` |
-| Manifest not found | `Error: .synapse/manifest not found. SYNAPSE must be initialized first (SYN-8).` |
-| Write failure | `Error: Failed to write domain file. Check filesystem permissions.` |
+| Domain exists (file)     | `Error: Domain file ".synapse/{name}" already exists on disk.`                                 |
+| Manifest not found       | `Error: .synapse/manifest not found. SYNAPSE must be initialized first (SYN-8).`               |
+| Write failure            | `Error: Failed to write domain file. Check filesystem permissions.`                            |
 
 ---
 
-*Create Domain — SYNAPSE CRUD Command C2*
-*Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3*
+_Create Domain — SYNAPSE CRUD Command C2_
+_Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3_

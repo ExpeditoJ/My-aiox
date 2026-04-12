@@ -17,26 +17,26 @@ AIOX es compatible con 6 plataformas de desarrollo potenciadas por IA. Elige la 
 
 ### Tabla de Comparación Rápida
 
-| Característica         | Claude Code | Codex CLI | Cursor | Copilot | AntiGravity | Gemini CLI |
-| ---------------------- | :---------: | :-------: | :----: | :-----: | :---------: | :--------: |
-| **Activación de agentes** | /command  |  /skills  | @mention | chat modes | workflow-based | prompt mention |
-| **Soporte MCP**        |   Native    |  Native   | Config | Config | Provider-specific | Native |
-| **Tareas de subagentes** |   Yes     |    Yes    |   No   |   No   |     Yes     |     No     |
-| **Auto-sync**          |     Yes     |    Yes    |  Yes   |  Yes   |     Yes     |    Yes     |
-| **Sistema de hooks**   |     Yes     |  Limited  |   No   |   No   |      No     |     Yes    |
-| **Skills/Commands**    |   Native    |  Native   |   No   |   No   |      No     |   Native   |
-| **Recomendación**      |    Best     |   Best    |  Best  |  Good  |     Good    |   Good     |
+| Característica            | Claude Code | Codex CLI |  Cursor  |  Copilot   |    AntiGravity    |   Gemini CLI   |
+| ------------------------- | :---------: | :-------: | :------: | :--------: | :---------------: | :------------: |
+| **Activación de agentes** |  /command   |  /skills  | @mention | chat modes |  workflow-based   | prompt mention |
+| **Soporte MCP**           |   Native    |  Native   |  Config  |   Config   | Provider-specific |     Native     |
+| **Tareas de subagentes**  |     Yes     |    Yes    |    No    |     No     |        Yes        |       No       |
+| **Auto-sync**             |     Yes     |    Yes    |   Yes    |    Yes     |        Yes        |      Yes       |
+| **Sistema de hooks**      |     Yes     |  Limited  |    No    |     No     |        No         |      Yes       |
+| **Skills/Commands**       |   Native    |  Native   |    No    |     No     |        No         |     Native     |
+| **Recomendación**         |    Best     |   Best    |   Best   |    Good    |       Good        |      Good      |
 
 ### Paridad de Hooks e Impacto Funcional
 
-| IDE | Paridad de Hooks vs Claude | Qué se degrada sin hooks completos | Mitigación en AIOX |
-| --- | --- | --- | --- |
-| Claude Code | Completa | Ninguno (comportamiento de referencia) | Hooks nativos + pipeline completo de AIOX |
-| Gemini CLI | Alta | Diferencias menores en el modelo de eventos | Hooks nativos de Gemini + mapeo unificado |
-| Codex CLI | Limitada/parcial | Menor automatización del ciclo de sesión y menor enforcement pre/post-tool | `AGENTS.md` + `/skills` + MCP + scripts de sync/validación |
-| Cursor | Sin hooks de ciclo equivalentes | Sin interceptación nativa pre/post-tool y trazabilidad automática más débil | Reglas sincronizadas + MCP + disciplina de workflow |
-| GitHub Copilot | Sin hooks de ciclo equivalentes | Mismo impacto que Cursor, con mayor dependencia de flujo manual | Instrucciones de repositorio, chat modes y MCP en VS Code |
-| AntiGravity | Basado en workflow (no en hooks) | Sin paridad de ciclo de vida estilo Claude | Generación de workflows + sync de agentes |
+| IDE            | Paridad de Hooks vs Claude       | Qué se degrada sin hooks completos                                          | Mitigación en AIOX                                         |
+| -------------- | -------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Claude Code    | Completa                         | Ninguno (comportamiento de referencia)                                      | Hooks nativos + pipeline completo de AIOX                  |
+| Gemini CLI     | Alta                             | Diferencias menores en el modelo de eventos                                 | Hooks nativos de Gemini + mapeo unificado                  |
+| Codex CLI      | Limitada/parcial                 | Menor automatización del ciclo de sesión y menor enforcement pre/post-tool  | `AGENTS.md` + `/skills` + MCP + scripts de sync/validación |
+| Cursor         | Sin hooks de ciclo equivalentes  | Sin interceptación nativa pre/post-tool y trazabilidad automática más débil | Reglas sincronizadas + MCP + disciplina de workflow        |
+| GitHub Copilot | Sin hooks de ciclo equivalentes  | Mismo impacto que Cursor, con mayor dependencia de flujo manual             | Instrucciones de repositorio, chat modes y MCP en VS Code  |
+| AntiGravity    | Basado en workflow (no en hooks) | Sin paridad de ciclo de vida estilo Claude                                  | Generación de workflows + sync de agentes                  |
 
 ### Consecuencias Prácticas por Capacidad
 

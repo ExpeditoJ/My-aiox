@@ -265,30 +265,30 @@ All data files used by agents during activation must have documented ownership, 
 
 ### Framework Data Files (docs/framework/)
 
-| File | Owner | Fill Rule | Update Trigger | Used By |
-|------|-------|-----------|----------------|---------|
-| `coding-standards.md` | @dev | Updated when coding standards change | `*update-standards` task or manual edit | @dev, @pm, @ux-design-expert, @sm |
-| `tech-stack.md` | @architect | Updated on tech stack decisions | `*create-doc architecture` or manual edit | @dev, @pm, @ux-design-expert, @analyst |
-| `source-tree.md` | @architect | Updated when structure changes | `*update-source-tree` task | @dev, @analyst |
+| File                  | Owner      | Fill Rule                            | Update Trigger                            | Used By                                |
+| --------------------- | ---------- | ------------------------------------ | ----------------------------------------- | -------------------------------------- |
+| `coding-standards.md` | @dev       | Updated when coding standards change | `*update-standards` task or manual edit   | @dev, @pm, @ux-design-expert, @sm      |
+| `tech-stack.md`       | @architect | Updated on tech stack decisions      | `*create-doc architecture` or manual edit | @dev, @pm, @ux-design-expert, @analyst |
+| `source-tree.md`      | @architect | Updated when structure changes       | `*update-source-tree` task                | @dev, @analyst                         |
 
 ### Shared Data Files (.aiox-core/data/)
 
-| File | Owner | Fill Rule | Update Trigger | Used By |
-|------|-------|-----------|----------------|---------|
-| `aiox-kb.md` | @aiox-master | Updated on major framework changes | Manual edit | @aiox-master (lazy) |
-| `agent-config-requirements.yaml` | @architect | Updated when agent config needs change | Story-driven | AgentConfigLoader |
-| `technical-preferences.md` | @architect | Updated on preference changes | Manual edit or `*add-tech-doc` | @dev, @qa, @devops, @architect, @data-engineer |
-| `workflow-patterns.yaml` | @sm | Updated on workflow changes | Manual edit | @sm, WorkflowNavigator |
+| File                             | Owner        | Fill Rule                              | Update Trigger                 | Used By                                        |
+| -------------------------------- | ------------ | -------------------------------------- | ------------------------------ | ---------------------------------------------- |
+| `aiox-kb.md`                     | @aiox-master | Updated on major framework changes     | Manual edit                    | @aiox-master (lazy)                            |
+| `agent-config-requirements.yaml` | @architect   | Updated when agent config needs change | Story-driven                   | AgentConfigLoader                              |
+| `technical-preferences.md`       | @architect   | Updated on preference changes          | Manual edit or `*add-tech-doc` | @dev, @qa, @devops, @architect, @data-engineer |
+| `workflow-patterns.yaml`         | @sm          | Updated on workflow changes            | Manual edit                    | @sm, WorkflowNavigator                         |
 
 ### Product Data Files (.aiox-core/product/data/)
 
-| File | Owner | Fill Rule | Update Trigger | Used By |
-|------|-------|-----------|----------------|---------|
-| `brainstorming-techniques.md` | @analyst | Reference doc, rarely updated | Manual edit | @analyst |
-| `elicitation-methods.md` | @po | Reference doc, rarely updated | Manual edit | @po |
-| `mode-selection-best-practices.md` | @sm | Updated on workflow changes | Manual edit | @sm |
-| `test-levels-framework.md` | @qa | Updated when test strategy changes | `*update-test-strategy` or manual edit | @qa |
-| `test-priorities-matrix.md` | @qa | Updated when priorities shift | `*update-test-strategy` or manual edit | @qa |
+| File                               | Owner    | Fill Rule                          | Update Trigger                         | Used By  |
+| ---------------------------------- | -------- | ---------------------------------- | -------------------------------------- | -------- |
+| `brainstorming-techniques.md`      | @analyst | Reference doc, rarely updated      | Manual edit                            | @analyst |
+| `elicitation-methods.md`           | @po      | Reference doc, rarely updated      | Manual edit                            | @po      |
+| `mode-selection-best-practices.md` | @sm      | Updated on workflow changes        | Manual edit                            | @sm      |
+| `test-levels-framework.md`         | @qa      | Updated when test strategy changes | `*update-test-strategy` or manual edit | @qa      |
+| `test-priorities-matrix.md`        | @qa      | Updated when priorities shift      | `*update-test-strategy` or manual edit | @qa      |
 
 ---
 
@@ -450,12 +450,12 @@ dependencies:
 
 ### Migration from Squads
 
-| Legacy (Deprecated)             | Current (Squads)                |
-| ------------------------------- | ------------------------------- |
-| `Squads/` directory             | `templates/squad/` template     |
+| Legacy (Deprecated)          | Current (Squads)                |
+| ---------------------------- | ------------------------------- |
+| `Squads/` directory          | `templates/squad/` template     |
 | `legacyPacksLocation` config | `squadsTemplateLocation` config |
-| `pack.yaml` manifest            | `squad.yaml` manifest           |
-| Direct loading                  | Template-based creation         |
+| `pack.yaml` manifest         | `squad.yaml` manifest           |
+| Direct loading               | Template-based creation         |
 
 ---
 
@@ -875,13 +875,13 @@ Runtime state is persisted in `.aiox/`:
 
 ## Version History
 
-| Version | Date       | Changes                                                                                                                                                            | Author           |
-| ------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
-| 1.0     | 2025-01-15 | Initial source tree documentation                                                                                                                                  | Aria (architect) |
-| 1.1     | 2025-12-14 | Updated org to SynkraAI, replaced Squads with Squads system [Story 6.10]                                                                                           | Dex (dev)        |
-| 2.0     | 2025-12-15 | Major update to reflect modular architecture (cli/, core/, development/, infrastructure/, product/) [Story 6.13]                                                   | Pax (PO)         |
-| 3.0     | 2026-01-29 | Added ADE (Autonomous Development Engine) section documenting Epics 1-7: workflow-intelligence, ADE scripts, workflows, tasks, and runtime state [ADE Integration] | Aria (architect) |
-| 3.1     | 2026-02-06 | Added Data File Governance section: documented 7 missing data files with owner, fill rule, and update trigger. Expanded .aiox-core/data/ and product/data/ tree listings. [Story ACT-8] | Dex (dev) |
+| Version | Date       | Changes                                                                                                                                                                                 | Author           |
+| ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
+| 1.0     | 2025-01-15 | Initial source tree documentation                                                                                                                                                       | Aria (architect) |
+| 1.1     | 2025-12-14 | Updated org to SynkraAI, replaced Squads with Squads system [Story 6.10]                                                                                                                | Dex (dev)        |
+| 2.0     | 2025-12-15 | Major update to reflect modular architecture (cli/, core/, development/, infrastructure/, product/) [Story 6.13]                                                                        | Pax (PO)         |
+| 3.0     | 2026-01-29 | Added ADE (Autonomous Development Engine) section documenting Epics 1-7: workflow-intelligence, ADE scripts, workflows, tasks, and runtime state [ADE Integration]                      | Aria (architect) |
+| 3.1     | 2026-02-06 | Added Data File Governance section: documented 7 missing data files with owner, fill rule, and update trigger. Expanded .aiox-core/data/ and product/data/ tree listings. [Story ACT-8] | Dex (dev)        |
 
 ---
 

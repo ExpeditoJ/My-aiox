@@ -7,15 +7,15 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/po.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: devStoryLocation, prd, storyBacklog, templatesLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/product/data/elicitation-methods.md` | AgentConfigLoader.loadFile() | Elicitation methods (always loaded, 5KB) |
-| 6 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 7 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                             | Loader                                  | Purpose                                                                 |
+| ----- | ------------------------------------------------ | --------------------------------------- | ----------------------------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/po.md`            | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                                           |
+| 2     | `.aiox-core/core-config.yaml`                    | GreetingBuilder.\_loadConfig()          | Core configuration                                                      |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements()    | Config sections: devStoryLocation, prd, storyBacklog, templatesLocation |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`         | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                                                |
+| 5     | `.aiox-core/product/data/elicitation-methods.md` | AgentConfigLoader.loadFile()            | Elicitation methods (always loaded, 5KB)                                |
+| 6     | `.aiox/session-state.json`                       | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history)                     |
+| 7     | `.aiox/project-status.yaml`                      | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                                         |
 
 ### 1.2 Greeting Construction
 
@@ -78,43 +78,43 @@ po:
       lazy: false
       size: 5KB
   lazy_loading:
-    story_templates: true      # Load when creating stories
-    prd_templates: true        # Load when creating PRDs
+    story_templates: true # Load when creating stories
+    prd_templates: true # Load when creating PRDs
   performance_target: <75ms
 ```
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `🎯 Pax the Balancer ready to balance!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Pax, equilibrando prioridades 🎯` |
-| Role | `persona.role` | Technical Product Owner & Process Steward |
-| Commands shown | `filterCommandsByVisibility('full')` | 18 commands with `full` visibility |
+| Data           | Source                                            | Value                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `🎯 Pax the Balancer ready to balance!`   |
+| Signature      | `persona_profile.communication.signature_closing` | `— Pax, equilibrando prioridades 🎯`      |
+| Role           | `persona.role`                                    | Technical Product Owner & Process Steward |
+| Commands shown | `filterCommandsByVisibility('full')`              | 18 commands with `full` visibility        |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*backlog-add` | po-backlog-add.md | full, quick | Yes |
-| `*backlog-review` | po-manage-story-backlog.md | full, quick | Optional |
-| `*backlog-summary` | po-manage-story-backlog.md | quick, key | No |
-| `*backlog-prioritize` | po-manage-story-backlog.md | full | Yes |
-| `*backlog-schedule` | po-manage-story-backlog.md | full | Yes |
-| `*stories-index` | po-stories-index.md | full, quick | No |
-| `*validate-story-draft` | validate-next-story.md | full, quick, key | Yes |
-| `*sync-story` | po-sync-story.md | full | Yes |
-| `*pull-story` | po-pull-story.md | full | Yes |
-| `*execute-checklist-po` | execute-checklist.md + po-master-checklist.md | quick | Optional |
-| `*shard-doc` | shard-doc.md | full | Yes |
-| `*doc-out` | (built-in) | full | No |
-| `*session-info` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*yolo` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
+| Command                 | Task File                                     | Visibility       | Elicit   |
+| ----------------------- | --------------------------------------------- | ---------------- | -------- |
+| `*help`                 | (built-in)                                    | full, quick, key | No       |
+| `*backlog-add`          | po-backlog-add.md                             | full, quick      | Yes      |
+| `*backlog-review`       | po-manage-story-backlog.md                    | full, quick      | Optional |
+| `*backlog-summary`      | po-manage-story-backlog.md                    | quick, key       | No       |
+| `*backlog-prioritize`   | po-manage-story-backlog.md                    | full             | Yes      |
+| `*backlog-schedule`     | po-manage-story-backlog.md                    | full             | Yes      |
+| `*stories-index`        | po-stories-index.md                           | full, quick      | No       |
+| `*validate-story-draft` | validate-next-story.md                        | full, quick, key | Yes      |
+| `*sync-story`           | po-sync-story.md                              | full             | Yes      |
+| `*pull-story`           | po-pull-story.md                              | full             | Yes      |
+| `*execute-checklist-po` | execute-checklist.md + po-master-checklist.md | quick            | Optional |
+| `*shard-doc`            | shard-doc.md                                  | full             | Yes      |
+| `*doc-out`              | (built-in)                                    | full             | No       |
+| `*session-info`         | (built-in)                                    | full             | No       |
+| `*guide`                | (built-in, rendered from agent .md)           | full, quick      | No       |
+| `*yolo`                 | (built-in)                                    | full             | No       |
+| `*exit`                 | (built-in)                                    | full             | No       |
 
 **NOTE:** `create-epic` and `create-story` have been REMOVED from @po. Epic creation is delegated to @pm, story creation is delegated to @sm.
 
@@ -436,14 +436,14 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## 🎯 Product Owner Guide` section from agent .md |
+| Command         | Behavior                                                        |
+| --------------- | --------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition |
+| `*guide`        | Renders the `## 🎯 Product Owner Guide` section from agent .md  |
 | `*session-info` | Shows session context (agent history, commands, project status) |
-| `*doc-out` | Outputs complete document content to file |
-| `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits PO mode, returns to base Claude Code |
+| `*doc-out`      | Outputs complete document content to file                       |
+| `*yolo`         | Toggles confirmation skipping mode                              |
+| `*exit`         | Exits PO mode, returns to base Claude Code                      |
 
 ---
 
@@ -533,37 +533,42 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @sm -> @po | Coordinates | Backlog prioritization and sprint planning |
-| @pm -> @po | Provides | Strategic direction, PRDs, requirements |
-| @po -> @sm | Delegate | Story creation via `*draft` |
-| @po -> @pm | Delegate | Epic creation via `*create-epic` |
-| @po -> @aiox-master | Escalate | Course corrections via `*correct-course` |
-| @po -> @analyst | Delegate | Research via `*research` |
-| @po -> @devops | Delegate | Git push operations, PR creation |
-| @pm -> @po | Receives | Story validation requests via `*validate-story-draft` |
-| @sm -> @po | Receives | Backlog prioritization via `*backlog-prioritize` |
-| @qa -> @po | Receives | Quality gate review via `*backlog-review` |
+| Interaction         | Direction   | Trigger                                               |
+| ------------------- | ----------- | ----------------------------------------------------- |
+| @sm -> @po          | Coordinates | Backlog prioritization and sprint planning            |
+| @pm -> @po          | Provides    | Strategic direction, PRDs, requirements               |
+| @po -> @sm          | Delegate    | Story creation via `*draft`                           |
+| @po -> @pm          | Delegate    | Epic creation via `*create-epic`                      |
+| @po -> @aiox-master | Escalate    | Course corrections via `*correct-course`              |
+| @po -> @analyst     | Delegate    | Research via `*research`                              |
+| @po -> @devops      | Delegate    | Git push operations, PR creation                      |
+| @pm -> @po          | Receives    | Story validation requests via `*validate-story-draft` |
+| @sm -> @po          | Receives    | Backlog prioritization via `*backlog-prioritize`      |
+| @qa -> @po          | Receives    | Quality gate review via `*backlog-review`             |
 
 ### Delegation Rules (from agent definition)
 
 **Delegates to @sm when:**
+
 - Story creation is needed (uses `*draft` command)
 - Sprint coordination requires SM facilitation
 
 **Delegates to @pm when:**
+
 - Epic creation is needed (uses `*create-epic` command)
 - Strategic direction or PRD creation is required
 
 **Delegates to @aiox-master when:**
+
 - Course corrections are needed (uses `*correct-course` command)
 - Systemic issues require orchestrator-level intervention
 
 **Delegates to @analyst when:**
+
 - Research is needed to inform backlog decisions
 
 **Retains:**
+
 - Backlog management (add, review, prioritize, schedule)
 - Story validation and quality gate execution
 - Story sync/pull with PM tools (ClickUp, GitHub Projects, Jira, local)
@@ -571,10 +576,12 @@ graph TD
 - Stories index generation
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`
 
@@ -582,19 +589,19 @@ graph TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| (none) | -- | -- | All 11 task files exist |
-| (none) | -- | -- | Template story-tmpl.yaml exists |
-| (none) | -- | -- | Both checklists exist |
+| File   | Type | Referenced By | Impact                          |
+| ------ | ---- | ------------- | ------------------------------- |
+| (none) | --   | --            | All 11 task files exist         |
+| (none) | --   | --            | Template story-tmpl.yaml exists |
+| (none) | --   | --            | Both checklists exist           |
 
 **Deprecated but retained for backward compatibility:**
 
-| File | Type | Status | Replacement |
-|------|------|--------|-------------|
-| `po-sync-story-to-clickup.md` | Task | Deprecated | `po-sync-story.md` (PM tool-agnostic) |
+| File                            | Type | Status     | Replacement                           |
+| ------------------------------- | ---- | ---------- | ------------------------------------- |
+| `po-sync-story-to-clickup.md`   | Task | Deprecated | `po-sync-story.md` (PM tool-agnostic) |
 | `po-pull-story-from-clickup.md` | Task | Deprecated | `po-pull-story.md` (PM tool-agnostic) |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

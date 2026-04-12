@@ -62,11 +62,13 @@ npx @synkra/aiox-core update
 ### 问题：找不到 NPX 命令
 
 **症状：**
+
 ```
 bash: npx: command not found
 ```
 
 **解决方案：**
+
 ```bash
 # 检查 npm 版本
 npm --version
@@ -81,6 +83,7 @@ npm exec @synkra/aiox-core init my-project
 ### 问题：安装失败，权限错误
 
 **症状：**
+
 ```
 Error: EACCES: permission denied
 ```
@@ -88,6 +91,7 @@ Error: EACCES: permission denied
 **解决方案：**
 
 **选项 1：修复 npm 权限（推荐）**
+
 ```bash
 # 创建 npm 目录
 mkdir ~/.npm-global
@@ -103,6 +107,7 @@ source ~/.bashrc
 ```
 
 **选项 2：使用不同的目录**
+
 ```bash
 # 在用户目录中安装
 cd ~
@@ -112,11 +117,13 @@ npx @synkra/aiox-core init my-project
 ### 问题：Node.js 版本错误
 
 **症状：**
+
 ```
 Error: Node.js version 18.0.0 or higher required
 ```
 
 **解决方案：**
+
 ```bash
 # 检查当前版本
 node --version
@@ -140,6 +147,7 @@ nvm use 18
 ### 问题：安装挂起或超时
 
 **症状：**
+
 - 安装卡在"安装依赖..."
 - 网络超时错误
 
@@ -166,11 +174,13 @@ npm install --verbose
 ### 问题：磁盘空间错误
 
 **症状：**
+
 ```
 Error: ENOSPC: no space left on device
 ```
 
 **解决方案：**
+
 ```bash
 # 检查可用空间
 df -h
@@ -194,6 +204,7 @@ rmdir /s %TEMP%\npm-*
 ### 问题：元代理无法启动
 
 **症状：**
+
 ```
 Error: Failed to initialize meta-agent
 ```
@@ -201,6 +212,7 @@ Error: Failed to initialize meta-agent
 **解决方案：**
 
 1. **检查配置：**
+
 ```bash
 # 验证配置存在
 ls -la .aiox/config.json
@@ -214,6 +226,7 @@ npx @synkra/aiox-core doctor --fix
 ```
 
 2. **检查依赖：**
+
 ```bash
 # 重新安装核心依赖
 npm install
@@ -223,6 +236,7 @@ ls -la agents/
 ```
 
 3. **检查环境：**
+
 ```bash
 # 验证环境变量
 cat .env
@@ -234,6 +248,7 @@ echo "OPENAI_API_KEY=your-key" >> .env
 ### 问题：命令无法识别
 
 **症状：**
+
 ```
 Unknown command: *create-agent
 ```
@@ -241,6 +256,7 @@ Unknown command: *create-agent
 **解决方案：**
 
 1. **验证代理激活：**
+
 ```bash
 # 列出活动代理
 *list-agents --active
@@ -253,6 +269,7 @@ Unknown command: *create-agent
 ```
 
 2. **检查命令语法：**
+
 ```bash
 # 正确的语法使用星号
 *create-agent my-agent  # ✓ 正确
@@ -260,6 +277,7 @@ create-agent my-agent   # ✗ 错误
 ```
 
 3. **重载代理：**
+
 ```bash
 # 重载所有代理
 *reload-agents
@@ -272,6 +290,7 @@ npx @synkra/aiox-core
 ### 问题：代理创建失败
 
 **症状：**
+
 ```
 Error: Failed to create agent
 ```
@@ -279,6 +298,7 @@ Error: Failed to create agent
 **解决方案：**
 
 1. **检查权限：**
+
 ```bash
 # 验证写入权限
 ls -la agents/
@@ -288,6 +308,7 @@ chmod 755 agents/
 ```
 
 2. **验证代理名称：**
+
 ```bash
 # 有效名称：小写、连字符
 *create-agent my-agent      # ✓ 好
@@ -297,6 +318,7 @@ chmod 755 agents/
 ```
 
 3. **检查重复：**
+
 ```bash
 # 列出现有代理
 *list-agents
@@ -310,12 +332,14 @@ rm agents/duplicate-agent.yaml
 ### 问题：内存搜索返回无结果
 
 **症状：**
+
 - 语义搜索找不到任何内容
 - 模式识别失败
 
 **解决方案：**
 
 1. **重建内存索引：**
+
 ```bash
 # 清除并重建
 *memory clear-cache
@@ -327,6 +351,7 @@ rm agents/duplicate-agent.yaml
 ```
 
 2. **验证内存配置：**
+
 ```bash
 # 检查配置
 cat .aiox/memory-config.json
@@ -336,6 +361,7 @@ cat .aiox/memory-config.json
 ```
 
 3. **检查索引完整性：**
+
 ```bash
 # 运行内存诊断
 *memory diagnose
@@ -347,12 +373,14 @@ cat .aiox/memory-config.json
 ### 问题：内存层使用过多 RAM
 
 **症状：**
+
 - 高内存使用
 - 系统减速
 
 **解决方案：**
 
 1. **调整内存设置：**
+
 ```javascript
 // 编辑 .aiox/memory-config.json
 {
@@ -364,6 +392,7 @@ cat .aiox/memory-config.json
 ```
 
 2. **清除旧数据：**
+
 ```bash
 # 删除旧条目
 *memory prune --older-than "30 days"
@@ -373,6 +402,7 @@ cat .aiox/memory-config.json
 ```
 
 3. **使用内存限制：**
+
 ```bash
 # 设置内存限制
 export NODE_OPTIONS="--max-old-space-size=1024"
@@ -384,6 +414,7 @@ npx @synkra/aiox-core
 ### 问题：LlamaIndex 错误
 
 **症状：**
+
 ```
 Error: LlamaIndex initialization failed
 ```
@@ -391,6 +422,7 @@ Error: LlamaIndex initialization failed
 **解决方案：**
 
 1. **检查 API 密钥：**
+
 ```bash
 # 验证嵌入的 OpenAI 密钥
 echo $OPENAI_API_KEY
@@ -401,6 +433,7 @@ curl https://api.openai.com/v1/models \
 ```
 
 2. **使用本地嵌入：**
+
 ```javascript
 // .aiox/memory-config.json
 {
@@ -410,6 +443,7 @@ curl https://api.openai.com/v1/models \
 ```
 
 3. **重新安装 LlamaIndex：**
+
 ```bash
 npm uninstall llamaindex
 npm install llamaindex@latest
@@ -420,12 +454,14 @@ npm install llamaindex@latest
 ### 问题：命令执行缓慢
 
 **症状：**
+
 - 命令耗时 > 5 秒
 - UI 响应迟钝
 
 **解决方案：**
 
 1. **配置文件性能：**
+
 ```bash
 # 启用分析
 *debug enable --profile
@@ -438,6 +474,7 @@ npm install llamaindex@latest
 ```
 
 2. **优化配置：**
+
 ```javascript
 // .aiox/config.json
 {
@@ -451,6 +488,7 @@ npm install llamaindex@latest
 ```
 
 3. **清理资源：**
+
 ```bash
 # 清除缓存
 *cache clear --all
@@ -465,6 +503,7 @@ npm install llamaindex@latest
 ### 问题：高 CPU 使用率
 
 **症状：**
+
 - 风扇噪音
 - 系统滞后
 - 任务管理器中 CPU 高
@@ -472,6 +511,7 @@ npm install llamaindex@latest
 **解决方案：**
 
 1. **限制并发操作：**
+
 ```bash
 # 设置操作限制
 *config --set performance.maxConcurrent 2
@@ -479,6 +519,7 @@ npm install llamaindex@latest
 ```
 
 2. **禁用实时功能：**
+
 ```bash
 # 禁用实时索引
 *config --set memory.realTimeIndex false
@@ -488,6 +529,7 @@ npm install llamaindex@latest
 ```
 
 3. **检查流氓进程：**
+
 ```bash
 # 列出所有进程
 *debug processes
@@ -501,6 +543,7 @@ npm install llamaindex@latest
 ### 问题：API 密钥不工作
 
 **症状：**
+
 ```
 Error: Invalid API key
 Error: 401 Unauthorized
@@ -509,6 +552,7 @@ Error: 401 Unauthorized
 **解决方案：**
 
 1. **验证 API 密钥格式：**
+
 ```bash
 # OpenAI
 echo $OPENAI_API_KEY
@@ -520,6 +564,7 @@ echo $ANTHROPIC_API_KEY
 ```
 
 2. **直接测试 API：**
+
 ```bash
 # 测试 OpenAI
 curl https://api.openai.com/v1/models \
@@ -532,6 +577,7 @@ curl https://api.anthropic.com/v1/messages \
 ```
 
 3. **检查速率限制：**
+
 ```bash
 # 查看当前使用情况
 *api-status
@@ -543,6 +589,7 @@ curl https://api.anthropic.com/v1/messages \
 ### 问题：网络连接错误
 
 **症状：**
+
 ```
 Error: ECONNREFUSED
 Error: getaddrinfo ENOTFOUND
@@ -551,6 +598,7 @@ Error: getaddrinfo ENOTFOUND
 **解决方案：**
 
 1. **检查代理设置：**
+
 ```bash
 # 企业代理
 export HTTP_PROXY=http://proxy.company.com:8080
@@ -561,6 +609,7 @@ curl -I https://api.openai.com
 ```
 
 2. **使用离线模式：**
+
 ```bash
 # 启用离线模式
 *config --set offline true
@@ -570,6 +619,7 @@ curl -I https://api.openai.com
 ```
 
 3. **配置超时：**
+
 ```bash
 # 增加超时
 *config --set network.timeout 30000
@@ -581,6 +631,7 @@ curl -I https://api.openai.com
 ### 问题：权限被拒绝错误
 
 **症状：**
+
 ```
 Error: EACCES: permission denied
 Error: Cannot write to file
@@ -589,6 +640,7 @@ Error: Cannot write to file
 **解决方案：**
 
 1. **修复文件权限：**
+
 ```bash
 # 修复项目权限
 chmod -R 755 .
@@ -599,6 +651,7 @@ chmod 755 agents/ tasks/ workflows/
 ```
 
 2. **检查文件所有权：**
+
 ```bash
 # 查看所有权
 ls -la
@@ -608,6 +661,7 @@ sudo chown -R $(whoami) .
 ```
 
 3. **以正确的用户运行：**
+
 ```bash
 # 不要对 npm 使用 sudo
 npm install  # ✓ 好
@@ -617,12 +671,14 @@ sudo npm install  # ✗ 坏
 ### 问题：敏感数据泄露
 
 **症状：**
+
 - API 密钥在日志中可见
 - 凭证在错误消息中
 
 **解决方案：**
 
 1. **保护环境变量：**
+
 ```bash
 # 检查 .gitignore
 cat .gitignore | grep .env
@@ -633,6 +689,7 @@ echo ".aiox/logs/" >> .gitignore
 ```
 
 2. **启用安全模式：**
+
 ```bash
 # 启用安全功能
 *config --set security.maskSensitive true
@@ -640,6 +697,7 @@ echo ".aiox/logs/" >> .gitignore
 ```
 
 3. **轮换受损的密钥：**
+
 ```bash
 # 从提供商生成新密钥
 # 更新 .env 文件
@@ -652,11 +710,13 @@ rm -rf .aiox/logs/*
 ### Windows 问题
 
 #### 问题：路径太长错误
+
 ```
 Error: ENAMETOOLONG
 ```
 
 **解决方案：**
+
 ```powershell
 # 启用长路径（以管理员身份运行）
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
@@ -668,11 +728,13 @@ npx @synkra/aiox-core init myapp
 ```
 
 #### 问题：脚本已禁用
+
 ```
 Error: Scripts is disabled on this system
 ```
 
 **解决方案：**
+
 ```powershell
 # 以管理员身份运行
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -681,22 +743,26 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### macOS 问题
 
 #### 问题：命令行工具缺失
+
 ```
 Error: xcrun: error: invalid active developer path
 ```
 
 **解决方案：**
+
 ```bash
 # 安装 Xcode 命令行工具
 xcode-select --install
 ```
 
 #### 问题：Gatekeeper 阻止执行
+
 ```
 Error: "@synkra/aiox-core" cannot be opened
 ```
 
 **解决方案：**
+
 ```bash
 # 允许执行
 sudo spctl --master-disable
@@ -708,11 +774,13 @@ xattr -d com.apple.quarantine /usr/local/bin/@synkra/aiox-core
 ### Linux 问题
 
 #### 问题：缺少依赖
+
 ```
 Error: libssl.so.1.1: cannot open shared object file
 ```
 
 **解决方案：**
+
 ```bash
 # Ubuntu/Debian
 sudo apt-get update
@@ -799,6 +867,7 @@ tar -czf aiox-support.tar.gz .aiox/logs diagnostic.json
 ### 寻求帮助前
 
 1. **运行诊断：**
+
    ```bash
    npx @synkra/aiox-core doctor --verbose > diagnostic.log
    ```
@@ -830,25 +899,31 @@ tar -czf aiox-support.tar.gz .aiox/logs diagnostic.json
 
 ```markdown
 ## 环境
+
 - OS: macOS 13.0
 - Node: 18.17.0
 - AIOX: 1.0.0
 
 ## 重现步骤
+
 1. 运行 `npx @synkra/aiox-core init test`
 2. 选择"企业"模板
 3. 安装过程中出错
 
 ## 预期行为
+
 安装成功完成
 
 ## 实际行为
+
 Error: Cannot find module 'inquirer'
 
 ## 日志
+
 [附加 diagnostic.log]
 
 ## 其他上下文
+
 使用企业代理
 ```
 
@@ -875,6 +950,7 @@ cp .aiox.backup/memory.db .aiox/
 ---
 
 **记住**：大多数问题可以通过以下方式解决：
+
 1. `npx @synkra/aiox-core doctor --fix`
 2. 清除缓存
 3. 更新到最新版本

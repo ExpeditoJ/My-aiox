@@ -21,12 +21,12 @@ O **Spec Pipeline** e um workflow orquestrado que transforma requisitos informai
 
 ### 1.2 Principios Fundamentais
 
-| Principio | Descrição |
-|-----------|-----------|
-| **No Invention** | Nenhuma informação inventada - apenas derivação dos inputs |
-| **Traceability** | Todo statement deve rastrear para um requisito ou pesquisa |
-| **Adaptive Phases** | Fases ajustadas automaticamente pela complexidade |
-| **Quality Gates** | Validacao obrigatoria antes de avancar |
+| Principio           | Descrição                                                  |
+| ------------------- | ---------------------------------------------------------- |
+| **No Invention**    | Nenhuma informação inventada - apenas derivação dos inputs |
+| **Traceability**    | Todo statement deve rastrear para um requisito ou pesquisa |
+| **Adaptive Phases** | Fases ajustadas automaticamente pela complexidade          |
+| **Quality Gates**   | Validacao obrigatoria antes de avancar                     |
 
 ---
 
@@ -219,26 +219,26 @@ sequenceDiagram
 
 ### 3.1 Fase 1: Gather Requirements
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `gather` |
-| **Phase Number** | 1 |
-| **Agente** | @pm (Morgan) |
-| **Task** | `spec-gather-requirements.md` |
-| **Elicit** | Sim - requer interação do usuario |
+| Atributo         | Valor                             |
+| ---------------- | --------------------------------- |
+| **Step ID**      | `gather`                          |
+| **Phase Number** | 1                                 |
+| **Agente**       | @pm (Morgan)                      |
+| **Task**         | `spec-gather-requirements.md`     |
+| **Elicit**       | Sim - requer interação do usuario |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story sendo especificada |
-| `source` | enum | Não | Fonte: `prd`, `user`, `existing` |
-| `prdPath` | string | Não | Caminho para PRD se source=prd |
+| Input     | Tipo   | Obrigatório | Descrição                        |
+| --------- | ------ | ----------- | -------------------------------- |
+| `storyId` | string | Sim         | ID da story sendo especificada   |
+| `source`  | enum   | Não         | Fonte: `prd`, `user`, `existing` |
+| `prdPath` | string | Não         | Caminho para PRD se source=prd   |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output              | Localização                                     |
+| ------------------- | ----------------------------------------------- |
 | `requirements.json` | `docs/stories/{storyId}/spec/requirements.json` |
 
 #### Processo de Elicitação (9 Categorias)
@@ -308,26 +308,26 @@ mindmap
 
 ### 3.2 Fase 2: Assess Complexity
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `assess` |
-| **Phase Number** | 2 |
-| **Agente** | @architect (Aria) |
-| **Task** | `spec-assess-complexity.md` |
+| Atributo           | Valor                                                      |
+| ------------------ | ---------------------------------------------------------- |
+| **Step ID**        | `assess`                                                   |
+| **Phase Number**   | 2                                                          |
+| **Agente**         | @architect (Aria)                                          |
+| **Task**           | `spec-assess-complexity.md`                                |
 | **Skip Condition** | `source === 'simple'` OR `overrideComplexity === 'SIMPLE'` |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story |
-| `requirements` | file | Sim | requirements.json |
-| `overrideComplexity` | enum | Não | Override manual: SIMPLE, STANDARD, COMPLEX |
+| Input                | Tipo   | Obrigatório | Descrição                                  |
+| -------------------- | ------ | ----------- | ------------------------------------------ |
+| `storyId`            | string | Sim         | ID da story                                |
+| `requirements`       | file   | Sim         | requirements.json                          |
+| `overrideComplexity` | enum   | Não         | Override manual: SIMPLE, STANDARD, COMPLEX |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output            | Localização                                   |
+| ----------------- | --------------------------------------------- |
 | `complexity.json` | `docs/stories/{storyId}/spec/complexity.json` |
 
 #### 5 Dimensões de Complexidade
@@ -342,47 +342,47 @@ radar
     "Risk" : 3
 ```
 
-| Dimensão | Score 1 | Score 3 | Score 5 |
-|----------|---------|---------|---------|
-| **Scope** | 1-2 arquivos | 6-10 arquivos | 20+ arquivos |
-| **Integration** | Nenhuma externa | 1-2 APIs externas | Orquestração multipla |
-| **Infrastructure** | Nenhuma mudança | Nova dependencia | Nova infraestrutura |
-| **Knowledge** | Padroes existentes | Nova biblioteca | Dominio desconhecido |
-| **Risk** | Baixo, isolado | Medio, importante | Critico, core do sistema |
+| Dimensão           | Score 1            | Score 3           | Score 5                  |
+| ------------------ | ------------------ | ----------------- | ------------------------ |
+| **Scope**          | 1-2 arquivos       | 6-10 arquivos     | 20+ arquivos             |
+| **Integration**    | Nenhuma externa    | 1-2 APIs externas | Orquestração multipla    |
+| **Infrastructure** | Nenhuma mudança    | Nova dependencia  | Nova infraestrutura      |
+| **Knowledge**      | Padroes existentes | Nova biblioteca   | Dominio desconhecido     |
+| **Risk**           | Baixo, isolado     | Medio, importante | Critico, core do sistema |
 
 #### Thresholds de Classificação
 
-| Classificação | Score Total | Fases Ativadas | Tempo Estimado |
-|---------------|-------------|----------------|----------------|
-| **SIMPLE** | <= 8 | gather, spec, critique | 30-60 min |
-| **STANDARD** | 9-15 | gather, assess, research, spec, critique, plan | 2-4 horas |
-| **COMPLEX** | >= 16 | + revise, critique_2 | 4-8 horas |
+| Classificação | Score Total | Fases Ativadas                                 | Tempo Estimado |
+| ------------- | ----------- | ---------------------------------------------- | -------------- |
+| **SIMPLE**    | <= 8        | gather, spec, critique                         | 30-60 min      |
+| **STANDARD**  | 9-15        | gather, assess, research, spec, critique, plan | 2-4 horas      |
+| **COMPLEX**   | >= 16       | + revise, critique_2                           | 4-8 horas      |
 
 ---
 
 ### 3.3 Fase 3: Research Dependencies
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `research` |
-| **Phase Number** | 3 |
-| **Agente** | @analyst (Atlas) |
-| **Task** | `spec-research-dependencies.md` |
+| Atributo           | Valor                            |
+| ------------------ | -------------------------------- |
+| **Step ID**        | `research`                       |
+| **Phase Number**   | 3                                |
+| **Agente**         | @analyst (Atlas)                 |
+| **Task**           | `spec-research-dependencies.md`  |
 | **Skip Condition** | `complexity.result === 'SIMPLE'` |
-| **Tools** | Context7, EXA |
+| **Tools**          | Context7, EXA                    |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story |
-| `requirements` | file | Sim | requirements.json |
-| `complexity` | file | Sim | complexity.json |
+| Input          | Tipo   | Obrigatório | Descrição         |
+| -------------- | ------ | ----------- | ----------------- |
+| `storyId`      | string | Sim         | ID da story       |
+| `requirements` | file   | Sim         | requirements.json |
+| `complexity`   | file   | Sim         | complexity.json   |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output          | Localização                                 |
+| --------------- | ------------------------------------------- |
 | `research.json` | `docs/stories/{storyId}/spec/research.json` |
 
 #### Fluxo de Pesquisa
@@ -420,37 +420,37 @@ flowchart LR
 
 #### Prioridade de Ferramentas
 
-| Ferramenta | Prioridade | Timeout | Uso |
-|------------|------------|---------|-----|
-| **Context7** | 1 (primaria) | 30s | Documentação de bibliotecas |
-| **EXA** | 2 (fallback) | - | Pesquisa web geral |
-| **Codebase** | - | - | Verificar implementações existentes |
+| Ferramenta   | Prioridade   | Timeout | Uso                                 |
+| ------------ | ------------ | ------- | ----------------------------------- |
+| **Context7** | 1 (primaria) | 30s     | Documentação de bibliotecas         |
+| **EXA**      | 2 (fallback) | -       | Pesquisa web geral                  |
+| **Codebase** | -            | -       | Verificar implementações existentes |
 
 ---
 
 ### 3.4 Fase 4: Write Specification
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `spec` |
-| **Phase Number** | 4 |
-| **Agente** | @pm (Morgan) |
-| **Task** | `spec-write-spec.md` |
+| Atributo                | Valor                     |
+| ----------------------- | ------------------------- |
+| **Step ID**             | `spec`                    |
+| **Phase Number**        | 4                         |
+| **Agente**              | @pm (Morgan)              |
+| **Task**                | `spec-write-spec.md`      |
 | **Constitutional Gate** | Article IV - No Invention |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story |
-| `requirements` | file | Sim | requirements.json |
-| `complexity` | file | Não | complexity.json |
-| `research` | file | Não | research.json |
+| Input          | Tipo   | Obrigatório | Descrição         |
+| -------------- | ------ | ----------- | ----------------- |
+| `storyId`      | string | Sim         | ID da story       |
+| `requirements` | file   | Sim         | requirements.json |
+| `complexity`   | file   | Não         | complexity.json   |
+| `research`     | file   | Não         | research.json     |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output    | Localização                           |
+| --------- | ------------------------------------- |
 | `spec.md` | `docs/stories/{storyId}/spec/spec.md` |
 
 #### Constitutional Gate: No Invention
@@ -520,28 +520,28 @@ flowchart TB
 
 ### 3.5 Fase 5: Critique Specification
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `critique` |
-| **Phase Number** | 5 |
-| **Agente** | @qa (Quinn) |
-| **Task** | `spec-critique.md` |
-| **Gate** | Blocking (APPROVED/NEEDS_REVISION/BLOCKED) |
+| Atributo         | Valor                                      |
+| ---------------- | ------------------------------------------ |
+| **Step ID**      | `critique`                                 |
+| **Phase Number** | 5                                          |
+| **Agente**       | @qa (Quinn)                                |
+| **Task**         | `spec-critique.md`                         |
+| **Gate**         | Blocking (APPROVED/NEEDS_REVISION/BLOCKED) |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story |
-| `spec` | file | Sim | spec.md |
-| `requirements` | file | Sim | requirements.json |
-| `complexity` | file | Não | complexity.json |
-| `research` | file | Não | research.json |
+| Input          | Tipo   | Obrigatório | Descrição         |
+| -------------- | ------ | ----------- | ----------------- |
+| `storyId`      | string | Sim         | ID da story       |
+| `spec`         | file   | Sim         | spec.md           |
+| `requirements` | file   | Sim         | requirements.json |
+| `complexity`   | file   | Não         | complexity.json   |
+| `research`     | file   | Não         | research.json     |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output          | Localização                                 |
+| --------------- | ------------------------------------------- |
 | `critique.json` | `docs/stories/{storyId}/spec/critique.json` |
 
 #### 5 Dimensões de Qualidade
@@ -556,13 +556,13 @@ pie showData
     "Alignment" : 15
 ```
 
-| Dimensão | Peso | Verifica |
-|----------|------|----------|
-| **Accuracy** | 25% | Spec reflete requisitos corretamente? |
-| **Completeness** | 25% | Todas secoes preenchidas? Tests cobrem FRs? |
-| **Consistency** | 20% | IDs validos? Sem contradicoes? |
-| **Feasibility** | 15% | Tecnicamente possivel? Dependencias existem? |
-| **Alignment** | 15% | Alinhado com stack e padroes do projeto? |
+| Dimensão         | Peso | Verifica                                     |
+| ---------------- | ---- | -------------------------------------------- |
+| **Accuracy**     | 25%  | Spec reflete requisitos corretamente?        |
+| **Completeness** | 25%  | Todas secoes preenchidas? Tests cobrem FRs?  |
+| **Consistency**  | 20%  | IDs validos? Sem contradicoes?               |
+| **Feasibility**  | 15%  | Tecnicamente possivel? Dependencias existem? |
+| **Alignment**    | 15%  | Alinhado com stack e padroes do projeto?     |
 
 #### Lógica de Verdict
 
@@ -591,48 +591,48 @@ flowchart TB
     style BLOCKED fill:#ffcdd2
 ```
 
-| Verdict | Condição | Próxima Ação |
-|---------|----------|--------------|
-| **APPROVED** | No HIGH issues, avg >= 4.0, all >= 3 | Ir para Plan |
-| **NEEDS_REVISION** | MEDIUM issues OR avg 3.0-3.9 | Retornar para Spec Write |
-| **BLOCKED** | HIGH issues OR avg < 3.0 OR any <= 1 | Escalar para @architect |
+| Verdict            | Condição                             | Próxima Ação             |
+| ------------------ | ------------------------------------ | ------------------------ |
+| **APPROVED**       | No HIGH issues, avg >= 4.0, all >= 3 | Ir para Plan             |
+| **NEEDS_REVISION** | MEDIUM issues OR avg 3.0-3.9         | Retornar para Spec Write |
+| **BLOCKED**        | HIGH issues OR avg < 3.0 OR any <= 1 | Escalar para @architect  |
 
 ---
 
 ### 3.6 Fase 5b: Revise Specification
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `revise` |
-| **Phase Number** | 5b |
-| **Agente** | @pm (Morgan) |
-| **Condition** | `complexity.result === 'COMPLEX'` OR `critique.verdict === 'NEEDS_REVISION'` |
+| Atributo         | Valor                                                                        |
+| ---------------- | ---------------------------------------------------------------------------- |
+| **Step ID**      | `revise`                                                                     |
+| **Phase Number** | 5b                                                                           |
+| **Agente**       | @pm (Morgan)                                                                 |
+| **Condition**    | `complexity.result === 'COMPLEX'` OR `critique.verdict === 'NEEDS_REVISION'` |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story |
-| `spec` | file | Sim | spec.md atual |
-| `critique` | file | Sim | critique.json com feedback |
+| Input      | Tipo   | Obrigatório | Descrição                  |
+| ---------- | ------ | ----------- | -------------------------- |
+| `storyId`  | string | Sim         | ID da story                |
+| `spec`     | file   | Sim         | spec.md atual              |
+| `critique` | file   | Sim         | critique.json com feedback |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output              | Localização                           |
+| ------------------- | ------------------------------------- |
 | `spec.md` (updated) | `docs/stories/{storyId}/spec/spec.md` |
 
 ---
 
 ### 3.7 Fase 5c: Second Critique
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `critique_2` |
-| **Phase Number** | 5c |
-| **Agente** | @qa (Quinn) |
-| **Task** | `spec-critique.md` |
-| **Condition** | `complexity.result === 'COMPLEX'` |
+| Atributo         | Valor                             |
+| ---------------- | --------------------------------- |
+| **Step ID**      | `critique_2`                      |
+| **Phase Number** | 5c                                |
+| **Agente**       | @qa (Quinn)                       |
+| **Task**         | `spec-critique.md`                |
+| **Condition**    | `complexity.result === 'COMPLEX'` |
 
 > **Nota:** Segunda critica e mais leniente em issues MEDIUM se houver melhoria demonstrada.
 
@@ -640,36 +640,36 @@ flowchart TB
 
 ### 3.8 Fase 6: Create Implementation Plan
 
-| Atributo | Valor |
-|----------|-------|
-| **Step ID** | `plan` |
-| **Phase Number** | 6 |
-| **Agente** | @architect (Aria) |
-| **Task** | `plan-create-implementation.md` |
-| **Condition** | `critique.verdict === 'APPROVED'` |
+| Atributo         | Valor                             |
+| ---------------- | --------------------------------- |
+| **Step ID**      | `plan`                            |
+| **Phase Number** | 6                                 |
+| **Agente**       | @architect (Aria)                 |
+| **Task**         | `plan-create-implementation.md`   |
+| **Condition**    | `critique.verdict === 'APPROVED'` |
 
 #### Inputs
 
-| Input | Tipo | Obrigatório | Descrição |
-|-------|------|-------------|-----------|
-| `storyId` | string | Sim | ID da story |
-| `spec` | file | Sim | spec.md aprovado |
-| `complexity` | file | Não | complexity.json |
+| Input        | Tipo   | Obrigatório | Descrição        |
+| ------------ | ------ | ----------- | ---------------- |
+| `storyId`    | string | Sim         | ID da story      |
+| `spec`       | file   | Sim         | spec.md aprovado |
+| `complexity` | file   | Não         | complexity.json  |
 
 #### Outputs
 
-| Output | Localização |
-|--------|-------------|
+| Output      | Localização                                       |
+| ----------- | ------------------------------------------------- |
 | `plan.json` | `docs/stories/{storyId}/plan/implementation.yaml` |
 
 #### Regras de Subtasks
 
-| Regra | Descrição |
-|-------|-----------|
-| **Single Service** | 1 servico por subtask (frontend, backend, database, infra) |
-| **File Limit** | Maximo 3 arquivos por subtask |
-| **Verification Required** | Cada subtask DEVE ter verificacao definida |
-| **Dependency Order** | Database > Backend > Frontend > Integration |
+| Regra                     | Descrição                                                  |
+| ------------------------- | ---------------------------------------------------------- |
+| **Single Service**        | 1 servico por subtask (frontend, backend, database, infra) |
+| **File Limit**            | Maximo 3 arquivos por subtask                              |
+| **Verification Required** | Cada subtask DEVE ter verificacao definida                 |
+| **Dependency Order**      | Database > Backend > Frontend > Integration                |
 
 ---
 
@@ -695,12 +695,12 @@ graph LR
     style QA fill:#fff8e1
 ```
 
-| Agente | ID | Nome | Papel no Pipeline | Fases |
-|--------|-----|------|-------------------|-------|
-| @pm | pm | Morgan | Product Manager | 1 (Gather), 4 (Spec), 5b (Revise) |
-| @architect | architect | Aria | System Architect | 2 (Assess), 6 (Plan) |
-| @analyst | analyst | Atlas | Business Analyst | 3 (Research) |
-| @qa | qa | Quinn | Test Architect | 5 (Critique), 5c (Critique 2) |
+| Agente     | ID        | Nome   | Papel no Pipeline | Fases                             |
+| ---------- | --------- | ------ | ----------------- | --------------------------------- |
+| @pm        | pm        | Morgan | Product Manager   | 1 (Gather), 4 (Spec), 5b (Revise) |
+| @architect | architect | Aria   | System Architect  | 2 (Assess), 6 (Plan)              |
+| @analyst   | analyst   | Atlas  | Business Analyst  | 3 (Research)                      |
+| @qa        | qa        | Quinn  | Test Architect    | 5 (Critique), 5c (Critique 2)     |
 
 ### 4.1 Perfil: @pm (Morgan)
 
@@ -734,14 +734,14 @@ graph LR
 
 ## 5. Tasks Executadas
 
-| Task | Fase | Agente | Arquivo |
-|------|------|--------|---------|
-| Gather Requirements | 1 | @pm | `.aiox-core/development/tasks/spec-gather-requirements.md` |
-| Assess Complexity | 2 | @architect | `.aiox-core/development/tasks/spec-assess-complexity.md` |
-| Research Dependencies | 3 | @analyst | `.aiox-core/development/tasks/spec-research-dependencies.md` |
-| Write Specification | 4 | @pm | `.aiox-core/development/tasks/spec-write-spec.md` |
-| Critique Specification | 5, 5c | @qa | `.aiox-core/development/tasks/spec-critique.md` |
-| Create Implementation Plan | 6 | @architect | `.aiox-core/development/tasks/plan-create-implementation.md` |
+| Task                       | Fase  | Agente     | Arquivo                                                      |
+| -------------------------- | ----- | ---------- | ------------------------------------------------------------ |
+| Gather Requirements        | 1     | @pm        | `.aiox-core/development/tasks/spec-gather-requirements.md`   |
+| Assess Complexity          | 2     | @architect | `.aiox-core/development/tasks/spec-assess-complexity.md`     |
+| Research Dependencies      | 3     | @analyst   | `.aiox-core/development/tasks/spec-research-dependencies.md` |
+| Write Specification        | 4     | @pm        | `.aiox-core/development/tasks/spec-write-spec.md`            |
+| Critique Specification     | 5, 5c | @qa        | `.aiox-core/development/tasks/spec-critique.md`              |
+| Create Implementation Plan | 6     | @architect | `.aiox-core/development/tasks/plan-create-implementation.md` |
 
 ---
 
@@ -749,23 +749,23 @@ graph LR
 
 ### 6.1 Pre-Flight Checks
 
-| Check | Descrição | Blocking |
-|-------|-----------|----------|
-| `story_exists` | Diretorio da story existe ou pode ser criado | Sim |
+| Check              | Descrição                                     | Blocking      |
+| ------------------ | --------------------------------------------- | ------------- |
+| `story_exists`     | Diretorio da story existe ou pode ser criado  | Sim           |
 | `no_existing_spec` | Verificar spec existente (evitar sobrescrita) | Não (warning) |
-| `agents_available` | Agentes do pipeline estao configurados | Sim |
+| `agents_available` | Agentes do pipeline estao configurados        | Sim           |
 
 ### 6.2 Configuração Necessaria
 
 ```yaml
 config:
   autoSpec:
-    enabled: false        # Ativar auto-spec quando story criada
-  showProgress: true      # Mostrar progresso
-  verbose: true           # Logs detalhados
-  maxRetries: 2           # Tentativas em caso de falha
-  retryDelay: 1000        # Delay entre retries (ms)
-  strictGate: true        # BLOCKED halts pipeline
+    enabled: false # Ativar auto-spec quando story criada
+  showProgress: true # Mostrar progresso
+  verbose: true # Logs detalhados
+  maxRetries: 2 # Tentativas em caso de falha
+  retryDelay: 1000 # Delay entre retries (ms)
+  strictGate: true # BLOCKED halts pipeline
   outputDir: docs/stories/{storyId}/spec/
 ```
 
@@ -775,12 +775,12 @@ config:
 
 ### 7.1 Entradas do Pipeline
 
-| Entrada | Tipo | Descrição | Fornecido Por |
-|---------|------|-----------|---------------|
-| `storyId` | string | ID único da story | Usuario |
-| `source` | enum | `prd`, `user`, `existing` | Usuario (opcional) |
-| `prdPath` | string | Caminho para PRD existente | Usuario (opcional) |
-| `overrideComplexity` | enum | Override manual de complexidade | Usuario (opcional) |
+| Entrada              | Tipo   | Descrição                       | Fornecido Por      |
+| -------------------- | ------ | ------------------------------- | ------------------ |
+| `storyId`            | string | ID único da story               | Usuario            |
+| `source`             | enum   | `prd`, `user`, `existing`       | Usuario (opcional) |
+| `prdPath`            | string | Caminho para PRD existente      | Usuario (opcional) |
+| `overrideComplexity` | enum   | Override manual de complexidade | Usuario (opcional) |
 
 ### 7.2 Saidas do Pipeline
 
@@ -809,14 +809,14 @@ flowchart LR
     O6 --> LP
 ```
 
-| Artefato | Fase | Descrição |
-|----------|------|-----------|
-| `requirements.json` | 1 | Requisitos estruturados (9 categorias) |
-| `complexity.json` | 2 | Avaliacao de complexidade (5 dimensoes) |
-| `research.json` | 3 | Dependencias pesquisadas e validadas |
-| `spec.md` | 4 | Especificacao completa executavel |
-| `critique.json` | 5 | Resultado da avaliação de qualidade |
-| `plan.json` | 6 | Plano de implementação com subtasks |
+| Artefato            | Fase | Descrição                               |
+| ------------------- | ---- | --------------------------------------- |
+| `requirements.json` | 1    | Requisitos estruturados (9 categorias)  |
+| `complexity.json`   | 2    | Avaliacao de complexidade (5 dimensoes) |
+| `research.json`     | 3    | Dependencias pesquisadas e validadas    |
+| `spec.md`           | 4    | Especificacao completa executavel       |
+| `critique.json`     | 5    | Resultado da avaliação de qualidade     |
+| `plan.json`         | 6    | Plano de implementação com subtasks     |
 
 ---
 
@@ -879,15 +879,15 @@ flowchart TB
 
 ### 9.1 Erros Comuns
 
-| Erro | Causa | Solução |
-|------|-------|---------|
-| `missing_story_id` | Story ID nao fornecido | `*create-spec STORY-42` |
-| `phase_failed` | Fase falhou durante execucao | Verificar logs, usar `--resume` |
-| `max_iterations_reached` | Limite de revisoes atingido | Escalr para @architect |
-| `critique_blocked` | Spec bloqueado pelo QA gate | Revisar critique.json, corrigir HIGH issues |
-| `missing-requirements` | requirements.json nao encontrado | Executar fase Gather primeiro |
-| `empty-functional` | Nenhum requisito funcional | Re-executar elicitacao |
-| `context7-unavailable` | Context7 MCP nao responde | Usar EXA como fallback |
+| Erro                     | Causa                            | Solução                                     |
+| ------------------------ | -------------------------------- | ------------------------------------------- |
+| `missing_story_id`       | Story ID nao fornecido           | `*create-spec STORY-42`                     |
+| `phase_failed`           | Fase falhou durante execucao     | Verificar logs, usar `--resume`             |
+| `max_iterations_reached` | Limite de revisoes atingido      | Escalr para @architect                      |
+| `critique_blocked`       | Spec bloqueado pelo QA gate      | Revisar critique.json, corrigir HIGH issues |
+| `missing-requirements`   | requirements.json nao encontrado | Executar fase Gather primeiro               |
+| `empty-functional`       | Nenhum requisito funcional       | Re-executar elicitacao                      |
+| `context7-unavailable`   | Context7 MCP nao responde        | Usar EXA como fallback                      |
 
 ### 9.2 Como Retomar Execucao
 
@@ -907,6 +907,7 @@ resume:
 ```
 
 **Comando para retomar:**
+
 ```bash
 *create-spec STORY-42 --resume
 ```
@@ -944,24 +945,24 @@ flowchart TB
 
 ### 10.1 Arquivos do Workflow
 
-| Arquivo | Localização |
-|---------|-------------|
-| Definicao do Workflow | `.aiox-core/development/workflows/spec-pipeline.yaml` |
-| Task: Gather | `.aiox-core/development/tasks/spec-gather-requirements.md` |
-| Task: Assess | `.aiox-core/development/tasks/spec-assess-complexity.md` |
-| Task: Research | `.aiox-core/development/tasks/spec-research-dependencies.md` |
-| Task: Write Spec | `.aiox-core/development/tasks/spec-write-spec.md` |
-| Task: Critique | `.aiox-core/development/tasks/spec-critique.md` |
-| Task: Create Plan | `.aiox-core/development/tasks/plan-create-implementation.md` |
+| Arquivo               | Localização                                                  |
+| --------------------- | ------------------------------------------------------------ |
+| Definicao do Workflow | `.aiox-core/development/workflows/spec-pipeline.yaml`        |
+| Task: Gather          | `.aiox-core/development/tasks/spec-gather-requirements.md`   |
+| Task: Assess          | `.aiox-core/development/tasks/spec-assess-complexity.md`     |
+| Task: Research        | `.aiox-core/development/tasks/spec-research-dependencies.md` |
+| Task: Write Spec      | `.aiox-core/development/tasks/spec-write-spec.md`            |
+| Task: Critique        | `.aiox-core/development/tasks/spec-critique.md`              |
+| Task: Create Plan     | `.aiox-core/development/tasks/plan-create-implementation.md` |
 
 ### 10.2 Agentes Relacionados
 
-| Agente | Localização |
-|--------|-------------|
-| @pm (Morgan) | `.aiox-core/development/agents/pm.md` |
+| Agente            | Localização                                  |
+| ----------------- | -------------------------------------------- |
+| @pm (Morgan)      | `.aiox-core/development/agents/pm.md`        |
 | @architect (Aria) | `.aiox-core/development/agents/architect.md` |
-| @analyst (Atlas) | `.aiox-core/development/agents/analyst.md` |
-| @qa (Quinn) | `.aiox-core/development/agents/qa.md` |
+| @analyst (Atlas)  | `.aiox-core/development/agents/analyst.md`   |
+| @qa (Quinn)       | `.aiox-core/development/agents/qa.md`        |
 
 ### 10.3 Documentação Relacionada
 
@@ -971,14 +972,14 @@ flowchart TB
 
 ### 10.4 Commands Rapidos
 
-| Comando | Descrição | Agente |
-|---------|-----------|--------|
-| `*create-spec STORY-ID` | Executar pipeline completo | - |
-| `*gather-requirements STORY-ID` | Apenas fase Gather | @pm |
-| `*assess-complexity STORY-ID` | Apenas fase Assess | @architect |
-| `*research-deps STORY-ID` | Apenas fase Research | @analyst |
-| `*write-spec STORY-ID` | Apenas fase Write | @pm |
-| `*critique-spec STORY-ID` | Apenas fase Critique | @qa |
+| Comando                         | Descrição                  | Agente     |
+| ------------------------------- | -------------------------- | ---------- |
+| `*create-spec STORY-ID`         | Executar pipeline completo | -          |
+| `*gather-requirements STORY-ID` | Apenas fase Gather         | @pm        |
+| `*assess-complexity STORY-ID`   | Apenas fase Assess         | @architect |
+| `*research-deps STORY-ID`       | Apenas fase Research       | @analyst   |
+| `*write-spec STORY-ID`          | Apenas fase Write          | @pm        |
+| `*critique-spec STORY-ID`       | Apenas fase Critique       | @qa        |
 
 ---
 

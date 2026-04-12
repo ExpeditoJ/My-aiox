@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
+| Comando      | Descripcion         |
+| ------------ | ------------------- |
 | `*implement` | Implementar feature |
-| `*fix` | Corregir bug |
-| `*refactor` | Refactorizar codigo |
-| `*test` | Escribir tests |
+| `*fix`       | Corregir bug        |
+| `*refactor`  | Refactorizar codigo |
+| `*test`      | Escribir tests      |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/dev-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

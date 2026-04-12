@@ -46,6 +46,7 @@ O Sistema de Greeting Contextual é uma melhoria de UX que torna os greetings do
 ### ⏳ Pendente (Story Futura - 6.1.4 ou 6.1.6)
 
 **Integração com Processo de Ativação:**
+
 - Interceptar ativação do agente (quando você digita `@dev`, `@po`, etc.)
 - Chamar GreetingBuilder automaticamente
 - Injetar greeting contextual no lugar do greeting padrão
@@ -57,12 +58,14 @@ O Sistema de Greeting Contextual é uma melhoria de UX que torna os greetings do
 **Quando:** Primeira interação ou após 1 hora de inatividade
 
 **Características:**
+
 - Apresentação completa (greeting archetypal)
 - Descrição do papel do agente
 - Status do projeto (se git configurado)
 - Comandos completos (até 12 comandos com visibility=full)
 
 **Exemplo:**
+
 ```
 💻 Dex (Builder) ready. Let's build something solid!
 
@@ -87,12 +90,14 @@ O Sistema de Greeting Contextual é uma melhoria de UX que torna os greetings do
 **Quando:** Continuando trabalho na mesma sessão
 
 **Características:**
+
 - Apresentação resumida (greeting named)
 - Status do projeto
 - Contexto atual (última ação)
 - Comandos rápidos (6-8 comandos com visibility=quick)
 
 **Exemplo:**
+
 ```
 💻 Dex (Builder) ready.
 
@@ -116,6 +121,7 @@ O Sistema de Greeting Contextual é uma melhoria de UX que torna os greetings do
 **Quando:** No meio de um workflow ativo (ex: após validar story)
 
 **Características:**
+
 - Apresentação mínima (greeting minimal)
 - Status condensado do projeto
 - Contexto do workflow (working on X)
@@ -123,6 +129,7 @@ O Sistema de Greeting Contextual é uma melhoria de UX que torna os greetings do
 - Comandos chave (3-5 comandos com visibility=key)
 
 **Exemplo:**
+
 ```
 ⚖️ Pax ready.
 
@@ -151,39 +158,42 @@ Cada comando agora tem um atributo `visibility` que controla quando ele aparece:
 ```yaml
 commands:
   - name: help
-    visibility: [full, quick, key]  # Sempre visível
-    description: "Show all available commands"
+    visibility: [full, quick, key] # Sempre visível
+    description: 'Show all available commands'
 
   - name: develop
-    visibility: [full, quick, key]  # Comando principal
-    description: "Implement story tasks"
+    visibility: [full, quick, key] # Comando principal
+    description: 'Implement story tasks'
 
   - name: review-code
-    visibility: [full, quick]  # Usado frequentemente, mas não crítico
-    description: "Review code changes"
+    visibility: [full, quick] # Usado frequentemente, mas não crítico
+    description: 'Review code changes'
 
   - name: build
-    visibility: [full]  # Menos usado, só em new session
-    description: "Build for production"
+    visibility: [full] # Menos usado, só em new session
+    description: 'Build for production'
 
   - name: qa-gate
-    visibility: [key]  # Crítico em workflows, mas não sempre necessário
-    description: "Run quality gate"
+    visibility: [key] # Crítico em workflows, mas não sempre necessário
+    description: 'Run quality gate'
 ```
 
 ### Guidelines de Categorização
 
 **`full` (12 comandos)** - New Session
+
 - Todos os comandos disponíveis
 - Mostra capacidades completas do agente
 - Ideal para descoberta
 
 **`quick` (6-8 comandos)** - Existing Session
+
 - Comandos usados frequentemente
 - Focado em produtividade
 - Remove comandos raramente usados
 
 **`key` (3-5 comandos)** - Workflow Session
+
 - Comandos críticos para o workflow atual
 - Mínimo de distração
 - Máxima eficiência
@@ -208,6 +218,7 @@ commands:
 ### Transições de Estado
 
 Cada workflow define transições entre estados com:
+
 - **Trigger:** Comando que completa com sucesso
 - **Greeting Message:** Mensagem contextual
 - **Next Steps:** Sugestões de próximos comandos com args pré-populados
@@ -218,18 +229,18 @@ Cada workflow define transições entre estados com:
 story_development:
   transitions:
     validated:
-      trigger: "validate-story-draft completed successfully"
-      greeting_message: "Story validated! Ready to implement."
+      trigger: 'validate-story-draft completed successfully'
+      greeting_message: 'Story validated! Ready to implement.'
       next_steps:
         - command: develop-yolo
-          args_template: "${story_path}"
-          description: "Autonomous YOLO mode (no interruptions)"
+          args_template: '${story_path}'
+          description: 'Autonomous YOLO mode (no interruptions)'
         - command: develop-interactive
-          args_template: "${story_path}"
-          description: "Interactive mode with checkpoints (default)"
+          args_template: '${story_path}'
+          description: 'Interactive mode with checkpoints (default)'
         - command: develop-preflight
-          args_template: "${story_path}"
-          description: "Plan everything upfront, then execute"
+          args_template: '${story_path}'
+          description: 'Plan everything upfront, then execute'
 ```
 
 ## 🧪 Como Testar Agora
@@ -241,6 +252,7 @@ node .aiox-core/development/scripts/test-greeting-system.js
 ```
 
 Este script testa os 4 cenários:
+
 1. New session greeting (Dev)
 2. Existing session greeting (Dev)
 3. Workflow session greeting (PO)
@@ -258,18 +270,17 @@ const mockAgent = {
   icon: '💻',
   persona_profile: {
     greeting_levels: {
-      named: '💻 Dex (Builder) ready!'
-    }
+      named: '💻 Dex (Builder) ready!',
+    },
   },
   persona: { role: 'Developer' },
-  commands: [
-    { name: 'help', visibility: ['full', 'quick', 'key'] }
-  ]
+  commands: [{ name: 'help', visibility: ['full', 'quick', 'key'] }],
 };
 
 // Test new session
-builder.buildGreeting(mockAgent, { conversationHistory: [] })
-  .then(greeting => console.log(greeting));
+builder
+  .buildGreeting(mockAgent, { conversationHistory: [] })
+  .then((greeting) => console.log(greeting));
 ```
 
 ### Opção 3: Aguardar Integração Completa
@@ -285,6 +296,7 @@ Quando a integração com o processo de ativação estiver implementada (Story 6
 ## 📁 Arquivos Relacionados
 
 ### Scripts Core
+
 - `.aiox-core/core/session/context-detector.js` - Detecção de tipo de sessão
 - `.aiox-core/infrastructure/scripts/git-config-detector.js` - Detecção de git config
 - `.aiox-core/development/scripts/greeting-builder.js` - Montagem do greeting
@@ -292,18 +304,22 @@ Quando a integração com o processo de ativação estiver implementada (Story 6
 - `.aiox-core/development/scripts/agent-exit-hooks.js` - Hooks de saída (para persistência)
 
 ### Data Files
+
 - `.aiox-core/data/workflow-patterns.yaml` - Definições de workflows
 
 ### Tests
+
 - `tests/unit/context-detector.test.js` - 23 testes
 - `tests/unit/git-config-detector.test.js` - 19 testes
 - `tests/unit/greeting-builder.test.js` - 23 testes
 - `tests/integration/performance.test.js` - Performance validation
 
 ### Configuration
+
 - `.aiox-core/core-config.yaml` - Configuração global (git + agentIdentity sections)
 
 ### Agents (Updated)
+
 - `.aiox-core/agents/dev.md` - ✅ Command visibility metadata
 - `.aiox-core/agents/po.md` - ✅ Command visibility metadata
 - `.aiox-core/agents/*.md` - ⏳ Remaining 9 agents (pending update)
@@ -311,16 +327,19 @@ Quando a integração com o processo de ativação estiver implementada (Story 6
 ## 🎯 Próximos Passos
 
 ### Immediate (Fix Test Issues)
+
 1. Fix test configuration issues (1-2 hours)
 2. Run full test suite
 3. Execute performance tests
 
 ### Short-term (Story 6.1.4 ou 6.1.6)
+
 1. Implement integration with agent activation process
 2. Update remaining 9 agents with command visibility metadata
 3. Test with real agent activations
 
 ### Long-term (Story 6.1.2.6)
+
 1. Implement dynamic workflow pattern learning
 2. Add usage-based command prioritization
 3. Implement agent collaboration hints
@@ -328,11 +347,13 @@ Quando a integração com o processo de ativação estiver implementada (Story 6
 ## 📊 Performance Metrics
 
 **Target (from Story 6.1.2.5):**
+
 - P50 latency: <100ms
 - P95 latency: <130ms
 - P99 latency: <150ms (hard limit)
 
 **Expected (based on code review):**
+
 - Git config (cache hit): <5ms ✅
 - Git config (cache miss): <50ms ✅
 - Context detection: <50ms ✅
@@ -341,6 +362,7 @@ Quando a integração com o processo de ativação estiver implementada (Story 6
 - **Total P99:** ~100-120ms ✅ (well under limit)
 
 **Optimizations:**
+
 - Parallel execution (Promise.all)
 - TTL-based caching
 - Timeout protection
@@ -349,6 +371,7 @@ Quando a integração com o processo de ativação estiver implementada (Story 6
 ## 🛡️ Backwards Compatibility
 
 **100% Backwards Compatible:**
+
 - Agents sem metadata de visibilidade mostram todos os comandos (max 12)
 - Fallback gracioso para simple greeting em qualquer erro
 - Zero breaking changes no processo de ativação

@@ -26,13 +26,13 @@ O GitHub Copilot fornece vantagens únicas:
 
 ### Comparação com Outras Plataformas
 
-| Recurso | GitHub Copilot | Cursor | Claude Code |
-|---------|:--------------:|:------:|:-----------:|
-| GitHub Nativo | Sim | Não | Não |
-| Modos de Agente | 4 Built-in | @mention | /comando |
-| Suporte MCP | Sim | Config | Nativo |
-| Integração PR | Sim | Limitada | gh CLI |
-| Code Completion | Sim | Sim | Não |
+| Recurso         | GitHub Copilot |  Cursor  | Claude Code |
+| --------------- | :------------: | :------: | :---------: |
+| GitHub Nativo   |      Sim       |   Não    |     Não     |
+| Modos de Agente |   4 Built-in   | @mention |  /comando   |
+| Suporte MCP     |      Sim       |  Config  |   Nativo    |
+| Integração PR   |      Sim       | Limitada |   gh CLI    |
+| Code Completion |      Sim       |   Sim    |     Não     |
 
 ---
 
@@ -40,11 +40,11 @@ O GitHub Copilot fornece vantagens únicas:
 
 ### Requisitos de Sistema
 
-| Requisito | Mínimo | Recomendado |
-|-----------|--------|-------------|
-| **VS Code** | 1.101+ | Última versão |
-| **RAM** | 4GB | 8GB+ |
-| **Node.js** | 18.0+ (para AIOX) | 20.0+ |
+| Requisito   | Mínimo            | Recomendado   |
+| ----------- | ----------------- | ------------- |
+| **VS Code** | 1.101+            | Última versão |
+| **RAM**     | 4GB               | 8GB+          |
+| **Node.js** | 18.0+ (para AIOX) | 20.0+         |
 
 ### Requisitos de Conta
 
@@ -54,6 +54,7 @@ O GitHub Copilot fornece vantagens únicas:
 ### Configurações do VS Code
 
 Habilite o modo de agente no VS Code:
+
 ```json
 {
   "chat.agent.enabled": true
@@ -94,6 +95,7 @@ ls -la .github/
 ```
 
 Estrutura esperada:
+
 ```
 .github/
 ├── copilot-instructions.md    # Instruções principais
@@ -118,15 +120,18 @@ Este arquivo fornece contexto global ao Copilot:
 # Instruções do Projeto para GitHub Copilot
 
 ## Visão Geral do Projeto
+
 Este projeto usa Synkra AIOX para desenvolvimento orquestrado por IA.
 
 ## Padrões de Código
+
 - TypeScript com modo strict
 - Siga padrões existentes
 - Inclua tratamento de erros
 - Escreva testes unitários
 
 ## Sistema de Agentes
+
 Use modos de chat para assistência especializada.
 ```
 
@@ -137,10 +142,11 @@ Use modos de chat para assistência especializada.
 Cada agente tem um modo de chat dedicado:
 
 ```markdown
-<!-- aiox-dev.chatmode.md -->
----
+## <!-- aiox-dev.chatmode.md -->
+
 name: AIOX Developer
 description: Agente Desenvolvedor Full Stack Sênior
+
 ---
 
 # Agente Desenvolvedor
@@ -148,11 +154,13 @@ description: Agente Desenvolvedor Full Stack Sênior
 Você é um Desenvolvedor Full Stack Sênior trabalhando com Synkra AIOX.
 
 ## Expertise
+
 - TypeScript/JavaScript
 - Node.js, React
 - Design de banco de dados
 
 ## Fluxo de Trabalho
+
 1. Ler requisitos da story
 2. Planejar implementação
 3. Escrever código limpo e testado
@@ -165,6 +173,7 @@ Você é um Desenvolvedor Full Stack Sênior trabalhando com Synkra AIOX.
 ### Abrindo o Chat do Copilot
 
 **Atalhos de Teclado:**
+
 - Windows/Linux: `Ctrl + Alt + I`
 - macOS: `⌃⌘I`
 
@@ -174,12 +183,12 @@ Ou: View > Chat
 
 O VS Code fornece quatro modos built-in:
 
-| Modo | Propósito |
-|------|-----------|
+| Modo      | Propósito                                                               |
+| --------- | ----------------------------------------------------------------------- |
 | **Agent** | Codificação autônoma - edita arquivos, executa comandos, itera em erros |
-| **Plan** | Cria planos de implementação detalhados antes de codificar |
-| **Ask** | Responde perguntas sem fazer alterações |
-| **Edit** | Controle granular sobre edições propostas |
+| **Plan**  | Cria planos de implementação detalhados antes de codificar              |
+| **Ask**   | Responde perguntas sem fazer alterações                                 |
+| **Edit**  | Controle granular sobre edições propostas                               |
 
 ### Ativando Modos de Agente AIOX
 
@@ -190,12 +199,12 @@ O VS Code fornece quatro modos built-in:
 
 ### Modos AIOX Personalizados
 
-| Modo | Propósito |
-|------|-----------|
-| `aiox-dev` | Desenvolvimento full-stack |
-| `aiox-qa` | Garantia de qualidade |
-| `aiox-architect` | Design de sistema |
-| `aiox-pm` | Gerenciamento de projeto |
+| Modo             | Propósito                  |
+| ---------------- | -------------------------- |
+| `aiox-dev`       | Desenvolvimento full-stack |
+| `aiox-qa`        | Garantia de qualidade      |
+| `aiox-architect` | Design de sistema          |
+| `aiox-pm`        | Gerenciamento de projeto   |
 
 ### Exemplos de Interação
 
@@ -223,6 +232,7 @@ Referencie todo o seu projeto:
 ### Completações Inline
 
 O GitHub Copilot fornece sugestões inline:
+
 1. Comece a digitar código
 2. Aguarde a sugestão cinza
 3. Pressione Tab para aceitar
@@ -280,30 +290,30 @@ crie um productService
 
 ### Atalhos de Teclado
 
-| Atalho | Ação |
-|--------|------|
-| `Tab` | Aceitar sugestão |
-| `Escape` | Dispensar sugestão |
-| `Alt + ]` | Próxima sugestão |
-| `Alt + [` | Sugestão anterior |
-| `Ctrl + Alt + I` | Abrir Chat |
+| Atalho           | Ação               |
+| ---------------- | ------------------ |
+| `Tab`            | Aceitar sugestão   |
+| `Escape`         | Dispensar sugestão |
+| `Alt + ]`        | Próxima sugestão   |
+| `Alt + [`        | Sugestão anterior  |
+| `Ctrl + Alt + I` | Abrir Chat         |
 
 ### Referências de Contexto
 
-| Referência | Descrição |
-|------------|-----------|
-| `@workspace` | Projeto completo |
-| `@file` | Arquivo específico |
-| `@terminal` | Contexto do terminal |
-| `@vscode` | Configurações do VS Code |
+| Referência   | Descrição                |
+| ------------ | ------------------------ |
+| `@workspace` | Projeto completo         |
+| `@file`      | Arquivo específico       |
+| `@terminal`  | Contexto do terminal     |
+| `@vscode`    | Configurações do VS Code |
 
 ### Participantes do Chat
 
-| Participante | Propósito |
-|--------------|-----------|
+| Participante | Propósito                   |
+| ------------ | --------------------------- |
 | `@workspace` | Consultas em todo o projeto |
-| `@terminal` | Assistência com comandos |
-| `@vscode` | Configurações do editor |
+| `@terminal`  | Assistência com comandos    |
+| `@vscode`    | Configurações do editor     |
 
 ---
 
@@ -340,15 +350,18 @@ description: Assistência de desenvolvimento full-stack
 # Agente Desenvolvedor
 
 ## Papel
+
 Você é um Desenvolvedor Full Stack Sênior.
 
 ## Capacidades
+
 - Desenvolvimento TypeScript/JavaScript
 - Design e implementação de API
 - Design de schema de banco de dados
 - Testes unitários e de integração
 
 ## Diretrizes
+
 1. Siga os padrões de código do projeto
 2. Escreva tratamento de erros abrangente
 3. Inclua testes para novas funcionalidades
@@ -361,11 +374,11 @@ Você é um Desenvolvedor Full Stack Sênior.
 
 ### Limitações Atuais
 
-| Limitação | Solução Alternativa |
-|-----------|---------------------|
-| Janela de contexto limitada | Use @workspace seletivamente |
-| Sem spawn de subagente | Use background agents (VS Code 1.107+) |
-| Seleção de modelo limitada | Usa seleção de modelo do GitHub |
+| Limitação                   | Solução Alternativa                    |
+| --------------------------- | -------------------------------------- |
+| Janela de contexto limitada | Use @workspace seletivamente           |
+| Sem spawn de subagente      | Use background agents (VS Code 1.107+) |
+| Seleção de modelo limitada  | Usa seleção de modelo do GitHub        |
 
 ### Adições Recentes (2025)
 
@@ -376,12 +389,12 @@ Você é um Desenvolvedor Full Stack Sênior.
 
 ### Copilot vs Claude Code
 
-| Aspecto | Copilot | Claude Code |
-|---------|---------|-------------|
-| Task Tool | Não | Sim |
-| MCP | Não | Nativo |
-| GitHub Nativo | Sim | gh CLI |
-| Completação Inline | Sim | Não |
+| Aspecto            | Copilot | Claude Code |
+| ------------------ | ------- | ----------- |
+| Task Tool          | Não     | Sim         |
+| MCP                | Não     | Nativo      |
+| GitHub Nativo      | Sim     | gh CLI      |
+| Completação Inline | Sim     | Não         |
 
 ---
 
@@ -390,30 +403,39 @@ Você é um Desenvolvedor Full Stack Sênior.
 ### Problemas Comuns
 
 #### Modos de Chat Não Aparecendo
+
 ```
 Problema: Modos de agente AIOX não no seletor
 ```
+
 **Solução:**
+
 1. Certifique-se de ter VS Code 1.101+
 2. Habilite `chat.agent.enabled: true`
 3. Recarregue o VS Code
 4. Verifique arquivos em `.github/chatmodes/`
 
 #### Copilot Não Sugerindo
+
 ```
 Problema: Sem completações inline
 ```
+
 **Solução:**
+
 1. Verifique status da assinatura
 2. Verifique conexão com internet
 3. Verifique se o tipo de arquivo é suportado
 4. Reinicie o VS Code
 
 #### Instruções Não Aplicadas
+
 ```
 Problema: Copilot ignorando regras do projeto
 ```
+
 **Solução:**
+
 1. Verifique se `.github/copilot-instructions.md` existe
 2. Confira sintaxe do arquivo
 3. Recarregue o VS Code
@@ -451,6 +473,7 @@ R: Modos de chat são contextos persistentes, enquanto @mentions são referênci
 ### Do Cursor para Copilot
 
 1. Instale AIOX para Copilot:
+
    ```bash
    npx @anthropic/aiox init --ide github-copilot
    ```
@@ -475,4 +498,4 @@ R: Modos de chat são contextos persistentes, enquanto @mentions são referênci
 
 ---
 
-*Synkra AIOX - Guia da Plataforma GitHub Copilot v1.0*
+_Synkra AIOX - Guia da Plataforma GitHub Copilot v1.0_

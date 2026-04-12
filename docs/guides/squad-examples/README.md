@@ -11,6 +11,7 @@ This directory contains example Squad configurations to help you get started.
 ### 1. Simple Agent (`simple-agent.yaml`)
 
 A minimal agent example focused on documentation tasks. Great starting point for:
+
 - Understanding agent structure
 - Learning command definitions
 - Basic system prompt patterns
@@ -18,6 +19,7 @@ A minimal agent example focused on documentation tasks. Great starting point for
 ### 2. Data Processor Squad (`data-processor-squad.yaml`)
 
 A complete squad manifest showing:
+
 - Multiple agents working together
 - Task definitions with dependencies
 - Workflow orchestration
@@ -39,6 +41,7 @@ code my-squad/agents/my-agent.yaml
 ### Learn by Reading
 
 Each example includes comments explaining:
+
 - Why certain patterns are used
 - Best practices being demonstrated
 - Common customization points
@@ -60,4 +63,4 @@ Have a useful squad pattern? We welcome contributions!
 
 ---
 
-*AIOX Squads: Equipes de AI agents trabalhando com você* 🤖
+_AIOX Squads: Equipes de AI agents trabalhando com você_ 🤖

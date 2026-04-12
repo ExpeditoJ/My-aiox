@@ -17,13 +17,13 @@ Epic 2 (V2→V3 迁移) **100% 完成**并通过 QA Gate。将所有代理和任
 
 ## 交付物
 
-| 工件                 | 路径                                                      | 类型        | 状态 |
-| -------------------- | --------------------------------------------------------- | ----------- | ---- |
-| asset-inventory.js   | `.aiox-core/infrastructure/scripts/asset-inventory.js`    | JS 脚本     | ✅   |
-| path-analyzer.js     | `.aiox-core/infrastructure/scripts/path-analyzer.js`      | JS 脚本     | ✅   |
-| migrate-agent.js     | `.aiox-core/infrastructure/scripts/migrate-agent.js`      | JS 脚本     | ✅   |
-| agent-v3-schema.json | `.aiox-core/infrastructure/schemas/agent-v3-schema.json`  | JSON Schema | ✅   |
-| task-v3-schema.json  | `.aiox-core/infrastructure/schemas/task-v3-schema.json`   | JSON Schema | ✅   |
+| 工件                 | 路径                                                     | 类型        | 状态 |
+| -------------------- | -------------------------------------------------------- | ----------- | ---- |
+| asset-inventory.js   | `.aiox-core/infrastructure/scripts/asset-inventory.js`   | JS 脚本     | ✅   |
+| path-analyzer.js     | `.aiox-core/infrastructure/scripts/path-analyzer.js`     | JS 脚本     | ✅   |
+| migrate-agent.js     | `.aiox-core/infrastructure/scripts/migrate-agent.js`     | JS 脚本     | ✅   |
+| agent-v3-schema.json | `.aiox-core/infrastructure/schemas/agent-v3-schema.json` | JSON Schema | ✅   |
+| task-v3-schema.json  | `.aiox-core/infrastructure/schemas/task-v3-schema.json`  | JSON Schema | ✅   |
 
 ---
 

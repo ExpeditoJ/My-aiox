@@ -19,21 +19,21 @@
 
 ### 必需
 
-| 要求 | 描述 |
-|------|------|
-| **有效的清单** | `squad.yaml` 通过JSON Schema验证 |
-| **文档** | README.md包含使用说明 |
-| **许可证** | 开源许可证（MIT、Apache 2.0等） |
-| **AIOX兼容性** | `aiox.minVersion: "2.1.0"` 或更高 |
-| **Task优先架构** | Task作为主要入口点 |
+| 要求             | 描述                              |
+| ---------------- | --------------------------------- |
+| **有效的清单**   | `squad.yaml` 通过JSON Schema验证  |
+| **文档**         | README.md包含使用说明             |
+| **许可证**       | 开源许可证（MIT、Apache 2.0等）   |
+| **AIOX兼容性**   | `aiox.minVersion: "2.1.0"` 或更高 |
+| **Task优先架构** | Task作为主要入口点                |
 
 ### 推荐
 
-| 建议 | 描述 |
-|------|------|
-| **示例** | README中的使用示例 |
-| **测试** | 关键功能的单元测试 |
-| **变更日志** | 版本历史文档 |
+| 建议         | 描述               |
+| ------------ | ------------------ |
+| **示例**     | README中的使用示例 |
+| **测试**     | 关键功能的单元测试 |
+| **变更日志** | 版本历史文档       |
 | **故障排除** | 常见问题和解决方案 |
 
 ## 命名约定
@@ -50,7 +50,7 @@
 `squad.yaml` 中的 `slashPrefix` 决定命令前缀：
 
 ```yaml
-slashPrefix: etl  # 命令变为 *etl-extract, *etl-transform
+slashPrefix: etl # 命令变为 *etl-extract, *etl-transform
 ```
 
 选择唯一的、短的前缀（2-5个字符）。
@@ -62,15 +62,15 @@ slashPrefix: etl  # 命令变为 *etl-extract, *etl-transform
 ```yaml
 # 这些字段是必需的
 name: my-squad
-version: 1.0.0              # 语义版本控制
+version: 1.0.0 # 语义版本控制
 description: 此Squad的功能说明
 
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 components:
-  agents: []                # 至少一个agent或task
+  agents: [] # 至少一个agent或task
   tasks: []
 ```
 
@@ -111,10 +111,10 @@ dependencies:
 
 ## 命令
 
-| 命令 | 描述 |
-|------|------|
-| *cmd1 | 它的作用 |
-| *cmd2 | 它的作用 |
+| 命令   | 描述     |
+| ------ | -------- |
+| \*cmd1 | 它的作用 |
+| \*cmd2 | 它的作用 |
 
 ## 配置
 
@@ -153,6 +153,7 @@ dependencies:
 ```
 
 这将：
+
 1. Fork `SynkraAI/aiox-squads` （如需要）
 2. 用你的Squad创建分支
 3. 开启审查PR
@@ -186,10 +187,10 @@ export SYNKRA_API_TOKEN="your-token"
 
 ### 可见性选项
 
-| 标志 | 效果 |
-|------|------|
+| 标志        | 效果               |
+| ----------- | ------------------ |
 | `--private` | 仅对你的工作区可见 |
-| `--public` | 对所有人可见 |
+| `--public`  | 对所有人可见       |
 
 ## 更新已发布的Squad
 

@@ -18,6 +18,7 @@
 **Definición:** La integración de utilidades es el proceso de hacer que un script de utilidad huérfano sea **descubrible, documentado y utilizable** dentro del framework AIOX.
 
 Una utilidad se considera **completamente integrada** cuando:
+
 1. ✅ **Registrada** en core-config.yaml
 2. ✅ **Referenciada** por al menos un agente o tarea
 3. ✅ **Documentada** con propósito y uso
@@ -33,6 +34,7 @@ Una utilidad se considera **completamente integrada** cuando:
 **Cuándo Usar:** La utilidad proporciona funciones auxiliares que los agentes usan directamente
 
 **Pasos de Integración:**
+
 1. Agregar utilidad al array `dependencies.utils` del agente objetivo
 2. Documentar propósito de la utilidad en archivo del agente
 3. Registrar en core-config.yaml si no está ya
@@ -46,11 +48,12 @@ id: dev
 name: Development Agent
 dependencies:
   utils:
-    - batch-creator  # Crea lotes de tareas relacionadas
+    - batch-creator # Crea lotes de tareas relacionadas
     - code-quality-improver
 ```
 
 **Archivos Modificados:**
+
 - `.aiox-core/agents/{agent}.yaml` (agregar a dependencies.utils)
 - `.aiox-core/core-config.yaml` (registrar si es necesario)
 - `.aiox-core/utils/README.md` (documentar utilidad)
@@ -62,6 +65,7 @@ dependencies:
 **Cuándo Usar:** La utilidad es llamada por una tarea durante la ejecución
 
 **Pasos de Integración:**
+
 1. Identificar o crear tarea que usa la utilidad
 2. Agregar referencia de utilidad en sección `execution.utils` de la tarea
 3. Documentar cómo la tarea usa la utilidad
@@ -76,7 +80,7 @@ id: generate-commit-message
 name: Generate Commit Message
 execution:
   utils:
-    - commit-message-generator  # Utilidad principal para esta tarea
+    - commit-message-generator # Utilidad principal para esta tarea
   steps:
     - Analizar cambios preparados
     - Generar mensaje de commit semántico usando util
@@ -84,6 +88,7 @@ execution:
 ```
 
 **Archivos Modificados:**
+
 - `.aiox-core/tasks/{task}.md` (agregar execution.utils)
 - `.aiox-core/agents/{agent}.yaml` (agregar tarea a lista executes)
 - `.aiox-core/core-config.yaml` (registrar si es necesario)
@@ -96,6 +101,7 @@ execution:
 **Cuándo Usar:** La utilidad es usada por el framework mismo, no directamente por agentes/tareas
 
 **Pasos de Integración:**
+
 1. Registrar en core-config.yaml bajo categoría apropiada
 2. Documentar en utils/README.md como "utilidad de framework"
 3. Agregar a documentación del framework
@@ -107,11 +113,12 @@ execution:
 # .aiox-core/core-config.yaml
 utils:
   framework:
-    - elicitation-engine  # Usado por flujo de trabajo de creación de agentes
+    - elicitation-engine # Usado por flujo de trabajo de creación de agentes
     - aiox-validator
 ```
 
 **Archivos Modificados:**
+
 - `.aiox-core/core-config.yaml` (registrar bajo framework)
 - `.aiox-core/utils/README.md` (documentar como utilidad de framework)
 - Documentación del framework (si aplica)
@@ -123,6 +130,7 @@ utils:
 **Cuándo Usar:** La utilidad realiza análisis o generación de documentación
 
 **Pasos de Integración:**
+
 1. Agregar a utils del agente relevante (usualmente architect, qa, o agente docs)
 2. Crear o actualizar tarea que usa utilidad
 3. Documentar formato de análisis/salida
@@ -134,11 +142,12 @@ utils:
 # .aiox-core/agents/architect.yaml
 dependencies:
   utils:
-    - documentation-synchronizer  # Mantiene docs sincronizados con código
+    - documentation-synchronizer # Mantiene docs sincronizados con código
     - dependency-analyzer
 ```
 
 **Archivos Modificados:**
+
 - `.aiox-core/agents/{agent}.yaml`
 - `.aiox-core/tasks/{task}.md` (si se crea tarea)
 - `.aiox-core/core-config.yaml`
@@ -186,26 +195,31 @@ dependencies:
 Las utilidades deberían categorizarse para integración más fácil:
 
 ### Categoría 1: Calidad de Código
+
 **Propósito:** Analizar, mejorar, validar código
 **Patrón:** Auxiliar de Agente (agentes dev, qa)
 **Ejemplos:** aiox-validator, code-quality-improver, coverage-analyzer
 
 ### Categoría 2: Git/Flujo de Trabajo
+
 **Propósito:** Operaciones Git, automatización de flujo de trabajo
 **Patrón:** Ejecución de Tarea (agentes dev, github-devops)
 **Ejemplos:** commit-message-generator, branch-manager, conflict-resolver
 
 ### Categoría 3: Gestión de Componentes
+
 **Propósito:** Generar, gestionar, buscar componentes
 **Patrón:** Auxiliar de Agente + Ejecución de Tarea
 **Ejemplos:** component-generator, component-search, deprecation-manager
 
 ### Categoría 4: Documentación
+
 **Propósito:** Generar, sincronizar, analizar documentación
 **Patrón:** Utilidad de Documentación (agentes architect, docs)
 **Ejemplos:** documentation-synchronizer, dependency-impact-analyzer
 
 ### Categoría 5: Lotes/Auxiliares
+
 **Propósito:** Operaciones por lotes, auxiliares de framework
 **Patrón:** Varía (Auxiliar de Agente o Framework)
 **Ejemplos:** batch-creator, clickup-helpers, elicitation-engine
@@ -217,6 +231,7 @@ Las utilidades deberían categorizarse para integración más fácil:
 ### Para Cada Utilidad Integrada:
 
 **1. Prueba de Carga**
+
 ```javascript
 // Verificar que utilidad carga sin errores
 const utility = require('.aiox-core/utils/{utility-name}');
@@ -224,12 +239,14 @@ const utility = require('.aiox-core/utils/{utility-name}');
 ```
 
 **2. Validación de Referencias**
+
 ```bash
 # Verificar que referencias de agente/tarea son válidas
 node outputs/architecture-map/schemas/validate-tool-references.js
 ```
 
 **3. Detección de Brechas**
+
 ```bash
 # Verificar que brecha está resuelta
 node outputs/architecture-map/schemas/detect-gaps.js
@@ -237,6 +254,7 @@ node outputs/architecture-map/schemas/detect-gaps.js
 ```
 
 **4. Prueba de Integración** (si aplica)
+
 ```javascript
 // Verificar que agente carga con dependencia de utilidad
 const agent = loadAgent('agent-name');
@@ -255,6 +273,7 @@ const agent = loadAgent('agent-name');
 **Propósito:** Descripción breve de lo que hace la utilidad
 
 **Usado Por:**
+
 - agent-{name} (para {propósito})
 - task-{name} (durante {fase})
 
@@ -305,21 +324,25 @@ utils:
 Una utilidad está exitosamente integrada cuando:
 
 ✅ **Descubrible:**
+
 - Listada en core-config.yaml
 - Documentada en utils/README.md
 - Referenciada por agente/tarea
 
 ✅ **Funcional:**
+
 - Carga sin errores
 - Agente/tarea puede usarla
 - Pruebas pasan
 
 ✅ **Validada:**
+
 - Detección de brechas muestra 0 brechas
 - Validación de referencias pasa
 - Pruebas de integración pasan
 
 ✅ **Documentada:**
+
 - Propósito claramente establecido
 - Ejemplos de uso proporcionados
 - Patrón de integración identificado
@@ -344,12 +367,12 @@ Una utilidad está exitosamente integrada cuando:
 
 ## Referencia Rápida
 
-| Patrón | Objetivo | Archivos Modificados | Prueba |
-|--------|----------|----------------------|--------|
-| Auxiliar de Agente | YAML de Agente | agent.yaml, core-config, README | Cargar agente |
-| Ejecución de Tarea | MD de Tarea + Agente | task.md, agent.yaml, core-config, README | Ejecutar tarea |
-| Framework | Framework | core-config, README, docs | Cargar utilidad |
-| Documentación | Architect/Docs | agent.yaml, core-config, README | Detección de brechas |
+| Patrón             | Objetivo             | Archivos Modificados                     | Prueba               |
+| ------------------ | -------------------- | ---------------------------------------- | -------------------- |
+| Auxiliar de Agente | YAML de Agente       | agent.yaml, core-config, README          | Cargar agente        |
+| Ejecución de Tarea | MD de Tarea + Agente | task.md, agent.yaml, core-config, README | Ejecutar tarea       |
+| Framework          | Framework            | core-config, README, docs                | Cargar utilidad      |
+| Documentación      | Architect/Docs       | agent.yaml, core-config, README          | Detección de brechas |
 
 ---
 

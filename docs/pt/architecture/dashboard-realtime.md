@@ -461,12 +461,12 @@ Quando `events.jsonl` excede 10MB:
 
 ### Atual vs Aprimorado
 
-| Aspecto         | Current `/api/events` | Aprimorado                     |
-| --------------- | --------------------- | ------------------------------ |
-| Source          | `status.json` apenas  | `status.json` + `events.jsonl` |
-| Trigger update  | Polling interval      | File watch + polling           |
-| Event types     | `status:update` apenas| Todos os tipos de evento       |
-| History         | Nenhum                | Últimos N eventos              |
+| Aspecto        | Current `/api/events`  | Aprimorado                     |
+| -------------- | ---------------------- | ------------------------------ |
+| Source         | `status.json` apenas   | `status.json` + `events.jsonl` |
+| Trigger update | Polling interval       | File watch + polling           |
+| Event types    | `status:update` apenas | Todos os tipos de evento       |
+| History        | Nenhum                 | Últimos N eventos              |
 
 ### Implementação
 

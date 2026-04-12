@@ -14,14 +14,14 @@ When the user requests a SYNAPSE management operation (create domain, add rule, 
 
 Analyze the user's request and match to one of these operations:
 
-| Intent Keywords | Sub-Command | Task File |
-|-----------------|-------------|-----------|
-| "create domain", "new domain", "add domain" | **create** | `.claude/commands/synapse/tasks/create-domain.md` |
-| "add rule", "new rule", "append rule" | **add** | `.claude/commands/synapse/tasks/add-rule.md` |
-| "edit rule", "change rule", "remove rule", "delete rule", "update rule" | **edit** | `.claude/commands/synapse/tasks/edit-rule.md` |
-| "toggle domain", "enable domain", "disable domain", "activate", "deactivate" | **toggle** | `.claude/commands/synapse/tasks/toggle-domain.md` |
-| "create command", "add command", "new command", "new star-command" | **add-command** | `.claude/commands/synapse/tasks/create-command.md` |
-| "suggest domain", "which domain", "where should", "best domain for" | **suggest** | `.claude/commands/synapse/tasks/suggest-domain.md` |
+| Intent Keywords                                                              | Sub-Command     | Task File                                          |
+| ---------------------------------------------------------------------------- | --------------- | -------------------------------------------------- |
+| "create domain", "new domain", "add domain"                                  | **create**      | `.claude/commands/synapse/tasks/create-domain.md`  |
+| "add rule", "new rule", "append rule"                                        | **add**         | `.claude/commands/synapse/tasks/add-rule.md`       |
+| "edit rule", "change rule", "remove rule", "delete rule", "update rule"      | **edit**        | `.claude/commands/synapse/tasks/edit-rule.md`      |
+| "toggle domain", "enable domain", "disable domain", "activate", "deactivate" | **toggle**      | `.claude/commands/synapse/tasks/toggle-domain.md`  |
+| "create command", "add command", "new command", "new star-command"           | **add-command** | `.claude/commands/synapse/tasks/create-command.md` |
+| "suggest domain", "which domain", "where should", "best domain for"          | **suggest**     | `.claude/commands/synapse/tasks/suggest-domain.md` |
 
 ---
 
@@ -71,5 +71,5 @@ Reference: .claude/commands/synapse/utils/manifest-parser-reference.md
 
 ---
 
-*SYNAPSE Manager — Router for CRUD operations on `.synapse/` content.*
-*Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3 (C1)*
+_SYNAPSE Manager — Router for CRUD operations on `.synapse/` content._
+_Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3 (C1)_

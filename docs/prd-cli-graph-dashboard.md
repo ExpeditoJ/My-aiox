@@ -18,9 +18,9 @@ Este PRD define um CLI Graph Dashboard que expõe essa riqueza de dados de forma
 
 ### Change Log
 
-| Date | Version | Description | Author |
-|------|---------|-------------|--------|
-| 2026-02-21 | 1.0 | Initial PRD draft baseado em deep research | Morgan (@pm) |
+| Date       | Version | Description                                | Author       |
+| ---------- | ------- | ------------------------------------------ | ------------ |
+| 2026-02-21 | 1.0     | Initial PRD draft baseado em deep research | Morgan (@pm) |
 
 ---
 
@@ -249,6 +249,7 @@ Unit + Integration tests. Unit tests para cada widget/data-source adapter. Integ
 > PRD gerado em YOLO mode baseado em deep research completo (`docs/research/2026-02-21-cli-graph-dashboard/`). Research cobriu 5 sub-queries com 16+ sources analisadas.
 
 **Validações aplicadas:**
+
 - [x] Goals claros e alinhados com Constitution (CLI First)
 - [x] Requirements rastreáveis (FR1-FR10, NFR1-NFR6)
 - [x] Epics sequenciais (MVP → Interactive → Advanced)
@@ -271,4 +272,4 @@ Unit + Integration tests. Unit tests para cada widget/data-source adapter. Integ
 
 ---
 
-*— Morgan, planejando o futuro 📊*
+_— Morgan, planejando o futuro 📊_

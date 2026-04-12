@@ -1,210 +1,210 @@
-# AIOX Standards Documentation Index
+# Índice de Documentação de Padrões do AIOX
 
-**Version:** 2.1.0
-**Last Updated:** 2025-12-09
-**Status:** Official Reference
-
----
-
-## 📋 Quick Start Guide
-
-### For New Contributors
-
-1. **Start Here:** Read [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md) - Complete framework guide
-2. **Story Creation:** Follow [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md)
-3. **Quality Gates:** Understand [QUALITY-GATES-SPECIFICATION.md](./QUALITY-GATES-SPECIFICATION.md)
-
-### For Existing Users
-
-- **v2.0 → v4.0.4 Migration:** See "What's New" section in [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md)
-- **Architecture Changes:** Review [ARCHITECTURE-INDEX.md](../../docs/architecture/ARCHITECTURE-INDEX.md)
+**Versão:** 2.1.0
+**Última Atualização:** 2025-12-09
+**Status:** Referência Oficial
 
 ---
 
-## 📚 Standards by Category
+## 📋 Guia de Início Rápido
 
-### Core Framework Standards (Current v4.2)
+### Para Novos Contribuidores
 
-| Document | Description | Status | Version |
-|----------|-------------|--------|---------|
-| [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md) | **Complete v4.2 framework guide** | ✅ Current | 2.1.0 |
-| [QUALITY-GATES-SPECIFICATION.md](./QUALITY-GATES-SPECIFICATION.md) | 3-layer quality gates system | ✅ Current | 2.1.0 |
-| [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md) | Story template v2.0 specification | ✅ Current | 2.0.0 |
-| [TASK-FORMAT-SPECIFICATION-V1.md](./TASK-FORMAT-SPECIFICATION-V1.md) | Task-First architecture format | ✅ Current | 1.0.0 |
-| [EXECUTOR-DECISION-TREE.md](./EXECUTOR-DECISION-TREE.md) | Humano/Worker/Agente/Clone routing | ✅ Current | 1.0.0 |
-| [OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md](./OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md) | Business model documentation | ⚠️ Needs Update | 2.0.0 |
+1. **Comece Aqui:** Leia [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md) - Guia completo do framework
+2. **Criação de Stories:** Siga [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md)
+3. **Quality Gates:** Compreenda [QUALITY-GATES-SPECIFICATION.md](./QUALITY-GATES-SPECIFICATION.md)
 
-### Agent Standards
+### Para Usuários Existentes
 
-| Document | Description | Status | Version |
-|----------|-------------|--------|---------|
-| [AGENT-PERSONALIZATION-STANDARD-V1.md](./AGENT-PERSONALIZATION-STANDARD-V1.md) | Agent personality system | ✅ Current | 1.0.0 |
-
-### Visual & Branding
-
-| Document | Description | Status | Version |
-|----------|-------------|--------|---------|
-| [AIOX-COLOR-PALETTE-V2.1.md](./AIOX-COLOR-PALETTE-V2.1.md) | Complete color system | ✅ Current | 2.1.0 |
-| [AIOX-COLOR-PALETTE-QUICK-REFERENCE.md](./AIOX-COLOR-PALETTE-QUICK-REFERENCE.md) | Quick color reference | ✅ Current | 2.1.0 |
-
-### Legacy Documents (Reference Only)
-
-| Document | Description | Status | Superseded By |
-|----------|-------------|--------|---------------|
-| [AIOX-LIVRO-DE-OURO.md](./AIOX-LIVRO-DE-OURO.md) | v2.0.0 base document | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [AIOX-LIVRO-DE-OURO-V2.1.md](./AIOX-LIVRO-DE-OURO-V2.1.md) | v4.0.4 delta (partial) | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md](./AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md) | v4.0.4 summary | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md](./AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md) | Future v2.2 planning | 📋 Draft | N/A |
-| [AIOX-FRAMEWORK-MASTER.md](./AIOX-FRAMEWORK-MASTER.md) | v2.0.0 framework doc | ⚠️ Deprecated | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
-| [V3-ARCHITECTURAL-DECISIONS.md](./V3-ARCHITECTURAL-DECISIONS.md) | Old architectural decisions | 📦 Archive Candidate | Current architecture docs |
+- **Migração v2.0 → v4.0.4:** Veja a seção "O que há de novo" em [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md)
+- **Mudanças de Arquitetura:** Revise [ARCHITECTURE-INDEX.md](../../docs/architecture/ARCHITECTURE-INDEX.md)
 
 ---
 
-## 🔄 What Changed in v4.2
+## 📚 Padrões por Categoria
 
-### New Documents Created
+### Padrões Core do Framework (Atual v4.2)
 
-| Document | Purpose |
-|----------|---------|
-| AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md | Consolidated v4.2 documentation |
-| QUALITY-GATES-SPECIFICATION.md | 3-layer quality gates |
-| STORY-TEMPLATE-V2-SPECIFICATION.md | Story template v2.0 |
-| STANDARDS-INDEX.md | This navigation document |
+| Documento                                                                        | Descrição                               | Status                | Versão |
+| -------------------------------------------------------------------------------- | --------------------------------------- | --------------------- | ------ |
+| [AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md](./AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md)     | **Guia completo do framework v4.2**     | ✅ Atual              | 2.1.0  |
+| [QUALITY-GATES-SPECIFICATION.md](./QUALITY-GATES-SPECIFICATION.md)               | Sistema de quality gates em 3 camadas   | ✅ Atual              | 2.1.0  |
+| [STORY-TEMPLATE-V2-SPECIFICATION.md](./STORY-TEMPLATE-V2-SPECIFICATION.md)       | Especificação do template de story v2.0 | ✅ Atual              | 2.0.0  |
+| [TASK-FORMAT-SPECIFICATION-V1.md](./TASK-FORMAT-SPECIFICATION-V1.md)             | Formato Task-First de arquitetura       | ✅ Atual              | 1.0.0  |
+| [EXECUTOR-DECISION-TREE.md](./EXECUTOR-DECISION-TREE.md)                         | Roteamento Humano/Worker/Agente/Clone   | ✅ Atual              | 1.0.0  |
+| [OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md](./OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md) | Documentação do modelo de negócios      | ⚠️ Requer Atualização | 2.0.0  |
 
-### Key Terminology Changes
+### Padrões de Agente
 
-| Old Term | New Term | Affected Documents |
-|----------|----------|-------------------|
-| Squad | **Squad** | All standards |
-| Squads/ | **squads/** | Directory references |
-| pack.yaml | **squad.yaml** | Manifest references |
-| @expansion/* | **@aiox/squad-*** | npm scope |
-| 16 Agents | **11 Agents** | Agent counts |
+| Documento                                                                      | Descrição                          | Status   | Versão |
+| ------------------------------------------------------------------------------ | ---------------------------------- | -------- | ------ |
+| [AGENT-PERSONALIZATION-STANDARD-V1.md](./AGENT-PERSONALIZATION-STANDARD-V1.md) | Sistema de personalidade de agente | ✅ Atual | 1.0.0  |
 
-### Concepts Added
+### Visual e Branding
 
-| Concept | Description | Documented In |
-|---------|-------------|---------------|
-| Modular Architecture | 4 modules (core, development, product, infrastructure) | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
-| Multi-Repo Strategy | 3 public + 2 private repos | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
-| Quality Gates 3 Layers | Pre-commit, PR Automation, Human Review | QUALITY-GATES-SPECIFICATION |
-| Story Template v2.0 | Cross-Story Decisions, CodeRabbit Integration | STORY-TEMPLATE-V2-SPECIFICATION |
-| npm Scoping | @aiox/core, @aiox/squad-* | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
+| Documento                                                                        | Descrição                  | Status   | Versão |
+| -------------------------------------------------------------------------------- | -------------------------- | -------- | ------ |
+| [AIOX-COLOR-PALETTE-V2.1.md](./AIOX-COLOR-PALETTE-V2.1.md)                       | Sistema completo de cores  | ✅ Atual | 2.1.0  |
+| [AIOX-COLOR-PALETTE-QUICK-REFERENCE.md](./AIOX-COLOR-PALETTE-QUICK-REFERENCE.md) | Referência rápida de cores | ✅ Atual | 2.1.0  |
+
+### Documentos Legados (Apenas Referência)
+
+| Documento                                                                  | Descrição                       | Status                 | Substituído Por                     |
+| -------------------------------------------------------------------------- | ------------------------------- | ---------------------- | ----------------------------------- |
+| [AIOX-LIVRO-DE-OURO.md](./AIOX-LIVRO-DE-OURO.md)                           | Documento base v2.0.0           | ⚠️ Descontinuado       | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO-V2.1.md](./AIOX-LIVRO-DE-OURO-V2.1.md)                 | Delta v4.0.4 (parcial)          | ⚠️ Descontinuado       | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md](./AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md) | Resumo v4.0.4                   | ⚠️ Descontinuado       | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md](./AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md) | Planejamento futuro v2.2        | 📋 Rascunho            | N/A                                 |
+| [AIOX-FRAMEWORK-MASTER.md](./AIOX-FRAMEWORK-MASTER.md)                     | Documento do framework v2.0.0   | ⚠️ Descontinuado       | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md |
+| [V3-ARCHITECTURAL-DECISIONS.md](./V3-ARCHITECTURAL-DECISIONS.md)           | Decisões antigas de arquitetura | 📦 Candidato a Arquivo | Documentos de arquitetura atuais    |
 
 ---
 
-## 📂 Document Organization
+## 🔄 O que Mudou na v4.2
 
-### Standards Directory Structure
+### Novos Documentos Criados
+
+| Documento                           | Propósito                     |
+| ----------------------------------- | ----------------------------- |
+| AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md | Documentação v4.2 consolidada |
+| QUALITY-GATES-SPECIFICATION.md      | Quality gates de 3 camadas    |
+| STORY-TEMPLATE-V2-SPECIFICATION.md  | Template de story v2.0        |
+| STANDARDS-INDEX.md                  | Este documento de navegação   |
+
+### Principais Mudanças de Terminologia
+
+| Termo Antigo  | Novo Termo         | Documentos Afetados      |
+| ------------- | ------------------ | ------------------------ |
+| Squad         | **Squad**          | Todos os padrões         |
+| Squads/       | **squads/**        | Referências de diretório |
+| pack.yaml     | **squad.yaml**     | Referências de manifesto |
+| @expansion/\* | **@aiox/squad-\*** | Escopo de npm            |
+| 16 Agents     | **11 Agents**      | Contagem de agentes      |
+
+### Conceitos Adicionados
+
+| Conceito               | Descrição                                              | Documentado Em                   |
+| ---------------------- | ------------------------------------------------------ | -------------------------------- |
+| Modular Architecture   | 4 módulos (core, development, product, infrastructure) | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
+| Multi-Repo Strategy    | 3 repositórios públicos + 2 privados                   | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
+| Quality Gates 3 Layers | Automação pré-commit, PR, Revisão Humana               | QUALITY-GATES-SPECIFICATION      |
+| Story Template v2.0    | Decisões Inter-Stories, Integração CodeRabbit          | STORY-TEMPLATE-V2-SPECIFICATION  |
+| npm Scoping            | @aiox/core, @aiox/squad-\*                             | AIOX-LIVRO-DE-OURO-V2.1-COMPLETE |
+
+---
+
+## 📂 Organização de Documentos
+
+### Estrutura do Diretório de Padrões
 
 ```
 .aiox-core/docs/standards/
-├── STANDARDS-INDEX.md                     # This file - navigation
+├── STANDARDS-INDEX.md                     # Este arquivo - navegação
 │
-├── Current v4.2 Standards
-│   ├── AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md  # Complete v4.2 guide
+├── Padrões Atuais v4.2
+│   ├── AIOX-LIVRO-DE-OURO-V2.1-COMPLETE.md  # Guia completo v4.2
 │   ├── QUALITY-GATES-SPECIFICATION.md       # Quality gates
-│   ├── STORY-TEMPLATE-V2-SPECIFICATION.md   # Story template
-│   ├── TASK-FORMAT-SPECIFICATION-V1.md      # Task format
-│   ├── EXECUTOR-DECISION-TREE.md            # Executor routing
-│   ├── AGENT-PERSONALIZATION-STANDARD-V1.md # Agent personalities
-│   ├── AIOX-COLOR-PALETTE-V2.1.md           # Color system
+│   ├── STORY-TEMPLATE-V2-SPECIFICATION.md   # Template de story
+│   ├── TASK-FORMAT-SPECIFICATION-V1.md      # Formato de tasks
+│   ├── EXECUTOR-DECISION-TREE.md            # Roteamento de executores
+│   ├── AGENT-PERSONALIZATION-STANDARD-V1.md # Personalidades de agentes
+│   ├── AIOX-COLOR-PALETTE-V2.1.md           # Sistema de cores
 │   └── AIOX-COLOR-PALETTE-QUICK-REFERENCE.md
 │
-├── Legacy (Reference Only)
-│   ├── AIOX-LIVRO-DE-OURO.md              # v2.0.0 base (deprecated)
-│   ├── AIOX-LIVRO-DE-OURO-V2.1.md         # v4.0.4 delta (deprecated)
-│   ├── AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md # v4.0.4 summary (deprecated)
-│   ├── AIOX-FRAMEWORK-MASTER.md           # v2.0.0 (deprecated)
-│   └── V3-ARCHITECTURAL-DECISIONS.md      # Archive candidate
+├── Legados (Apenas Referência)
+│   ├── AIOX-LIVRO-DE-OURO.md              # Base v2.0.0 (descontinuado)
+│   ├── AIOX-LIVRO-DE-OURO-V2.1.md         # Delta v4.0.4 (descontinuado)
+│   ├── AIOX-LIVRO-DE-OURO-V2.1-SUMMARY.md # Resumo v4.0.4 (descontinuado)
+│   ├── AIOX-FRAMEWORK-MASTER.md           # v2.0.0 (descontinuado)
+│   └── V3-ARCHITECTURAL-DECISIONS.md      # Candidato a arquivo
 │
-├── Needs Update
-│   └── OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md # Update with multi-repo
+├── Requer Atualização
+│   └── OPEN-SOURCE-VS-SERVICE-DIFFERENCES.md # Atualizar c/ multi-repo
 │
-└── Future Planning
-    └── AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md    # v2.2 draft
+└── Planejamento Futuro
+    └── AIOX-LIVRO-DE-OURO-V2.2-SUMMARY.md    # Rascunho v2.2
 ```
 
 ---
 
-## 🔗 Related Documentation
+## 🔗 Documentação Relacionada
 
-### Architecture Documentation
+### Documentação de Arquitetura
 
-Located in `docs/architecture/`:
+Localizada em `docs/architecture/`:
 
-| Document | Description |
-|----------|-------------|
-| [ARCHITECTURE-INDEX.md](../../docs/architecture/ARCHITECTURE-INDEX.md) | Architecture doc navigation |
-| [high-level-architecture.md](../../docs/architecture/high-level-architecture.md) | High-level overview |
-| [module-system.md](../../docs/architecture/module-system.md) | 4-module architecture |
-| [multi-repo-strategy.md](../../docs/architecture/multi-repo-strategy.md) | Multi-repo guide |
+| Documento                                                                        | Descrição                         |
+| -------------------------------------------------------------------------------- | --------------------------------- |
+| [ARCHITECTURE-INDEX.md](../../docs/architecture/ARCHITECTURE-INDEX.md)           | Navegação dos docs de arquitetura |
+| [high-level-architecture.md](../../docs/architecture/high-level-architecture.md) | Visão geral de alto nível         |
+| [module-system.md](../../docs/architecture/module-system.md)                     | Arquitetura de 4 módulos          |
+| [multi-repo-strategy.md](../../docs/architecture/multi-repo-strategy.md)         | Guia de multi-repositório         |
 
-### Project Documentation
+### Documentação do Projeto
 
-Located in `docs/`:
+Localizada em `docs/`:
 
-| Directory | Contents |
-|-----------|----------|
-| `docs/stories/` | Development stories (Sprint 1-6) |
-| `docs/epics/` | Epic planning documents |
-| `docs/decisions/` | Decision records (ADR, PMDR, DBDR) |
-
----
-
-## 📝 Document Status Legend
-
-| Status | Meaning | Action |
-|--------|---------|--------|
-| ✅ Current | Up-to-date with v4.2 | Use as reference |
-| ⚠️ Deprecated | Superseded by newer document | Refer to replacement |
-| ⚠️ Needs Update | Content outdated | Update planned |
-| 📦 Archive Candidate | Should be archived | Move to _archived/ |
-| 📋 Draft | Work in progress | Not official yet |
+| Diretório         | Conteúdos                               |
+| ----------------- | --------------------------------------- |
+| `docs/stories/`   | Stories de desenvolvimento (Sprint 1-6) |
+| `docs/epics/`     | Documentos de planejamento de épicos    |
+| `docs/decisions/` | Registros de decisões (ADR, PMDR, DBDR) |
 
 ---
 
-## 🚀 Maintaining Standards
+## 📝 Legenda de Status de Documentos
 
-### When to Update Standards
+| Status                 | Significado                         | Ação                   |
+| ---------------------- | ----------------------------------- | ---------------------- |
+| ✅ Atual               | Atualizado com a v4.2               | Usar como referência   |
+| ⚠️ Descontinuado       | Substituído por documento mais novo | Consulte substituto    |
+| ⚠️ Requer Atualização  | Conteúdo desatualizado              | Atualização planejada  |
+| 📦 Candidato a Arquivo | Deve ser arquivado                  | Mover para \_archived/ |
+| 📋 Rascunho            | Trabalho em andamento               | Não é oficial ainda    |
 
-1. **New features** that change framework behavior
-2. **Terminology changes** (like Squad → Squad)
-3. **Architecture changes** (like modular architecture)
-4. **Process changes** (like Quality Gates)
+---
 
-### Update Process
+## 🚀 Mantendo Padrões
 
-1. Create story for documentation update
-2. Update relevant documents
-3. Update STANDARDS-INDEX.md
-4. Update Change Log in each document
-5. Run validation (link check, terminology check)
+### Quando Atualizar Padrões
 
-### Validation Commands
+1. **Novas features** que alteram o comportamento do framework
+2. **Mudanças de terminologia** (como Squad → Squad)
+3. **Mudanças de arquitetura** (como arquitetura modular)
+4. **Mudanças de processo** (como Quality Gates)
+
+### Processo de Atualização
+
+1. Crie uma story para atualização da documentação
+2. Atualize documentos relevantes
+3. Atualize o STANDARDS-INDEX.md
+4. Atualize o Log de Mudanças em cada documento
+5. Rode a validação (verificação de links, verificação de terminologia)
+
+### Comandos de Validação
 
 ```bash
-# Check for broken links
+# Procurar por links quebrados
 find .aiox-core/docs/standards -name "*.md" -exec markdown-link-check {} \;
 
-# Search for deprecated terminology
+# Procurar por terminologia descontinuada
 grep -r "squad" .aiox-core/docs/standards --include="*.md"
 grep -r "Squad" .aiox-core/docs/standards --include="*.md"
 
-# Verify version numbers
+# Verificar números de versão
 grep -r "v2.0" .aiox-core/docs/standards --include="*.md"
 ```
 
 ---
 
-## 📜 Change Log
+## 📜 Log de Mudanças
 
-| Date | Version | Changes | Author |
-|------|---------|---------|--------|
-| 2025-12-09 | 2.1.0 | Initial STANDARDS-INDEX creation for v4.2 | @dev (Dex) |
+| Data       | Versão | Mudanças                                     | Autor      |
+| ---------- | ------ | -------------------------------------------- | ---------- |
+| 2025-12-09 | 2.1.0  | Criação inicial do STANDARDS-INDEX para v4.2 | @dev (Dex) |
 
 ---
 
-**Last Updated:** 2025-12-09
-**Version:** 2.1.0
-**Maintainer:** @po (Pax)
+**Última Atualização:** 2025-12-09
+**Versão:** 2.1.0
+**Mantenedor:** @po (Pax)

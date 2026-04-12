@@ -96,12 +96,12 @@ git push && git push --tags
 
 常见问题和解决方案：
 
-| 错误 | 解决方案 |
-|------|----------|
-| `ENOGHTOKEN` | GITHUB_TOKEN 密钥缺失或过期 |
-| `ENOPKGAUTH` | NPM_TOKEN 密钥缺失或无效 |
-| `ENOTINHISTORY` | 分支没有正确的历史（使用 `fetch-depth: 0`） |
-| `EINVALIDNPMTOKEN` | 重新生成具有发布权限的 NPM 令牌 |
+| 错误               | 解决方案                                    |
+| ------------------ | ------------------------------------------- |
+| `ENOGHTOKEN`       | GITHUB_TOKEN 密钥缺失或过期                 |
+| `ENOPKGAUTH`       | NPM_TOKEN 密钥缺失或无效                    |
+| `ENOTINHISTORY`    | 分支没有正确的历史（使用 `fetch-depth: 0`） |
+| `EINVALIDNPMTOKEN` | 重新生成具有发布权限的 NPM 令牌             |
 
 ### 跳过发布
 
@@ -129,12 +129,12 @@ npm publish
 
 ## 配置文件
 
-| 文件 | 目的 |
-|------|------|
-| `.releaserc.json` | 语义发布配置 |
+| 文件                                     | 目的                  |
+| ---------------------------------------- | --------------------- |
+| `.releaserc.json`                        | 语义发布配置          |
 | `.github/workflows/semantic-release.yml` | GitHub Actions 工作流 |
-| `package.json` | 版本源，npm 脚本 |
+| `package.json`                           | 版本源，npm 脚本      |
 
 ---
 
-*上次更新：Story 6.17 - 语义发布自动化*
+_上次更新：Story 6.17 - 语义发布自动化_

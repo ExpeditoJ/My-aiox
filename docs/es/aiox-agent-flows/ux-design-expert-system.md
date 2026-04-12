@@ -19,18 +19,19 @@
 
 ## Comandos Principales
 
-| Comando | Descripcion |
-|---------|-------------|
-| `*design` | Crear diseno UI |
+| Comando      | Descripcion       |
+| ------------ | ----------------- |
+| `*design`    | Crear diseno UI   |
 | `*wireframe` | Generar wireframe |
-| `*prototype` | Crear prototipo |
-| `*review-ux` | Revisar UX |
+| `*prototype` | Crear prototipo   |
+| `*review-ux` | Revisar UX        |
 
 ## Ver Mas
 
 Para documentacion detallada incluyendo flowcharts, integraciones y troubleshooting, consulte:
+
 - **[Documentacion completa (PT)](../../aiox-agent-flows/ux-design-expert-system.md)**
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

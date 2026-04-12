@@ -25,12 +25,12 @@ Workflow para analizar proyectos existentes, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @analyst | Investigacion y analisis |
+| Agente     | Rol                      |
+| ---------- | ------------------------ |
+| @analyst   | Investigacion y analisis |
 | @architect | Revision de arquitectura |
-| @dev | Analisis de codigo |
-| @qa | Evaluacion de calidad |
+| @dev       | Analisis de codigo       |
+| @qa        | Evaluacion de calidad    |
 
 ## Ver Mas
 
@@ -38,4 +38,4 @@ Workflow para analizar proyectos existentes, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

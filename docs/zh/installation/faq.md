@@ -46,13 +46,13 @@ npm install -g @synkra/aiox-core
 
 **答案:**
 
-| 组件          | 最小版本                        | 推荐版本    |
-| ------------- | ------------------------------- | ----------- |
-| **Node.js**   | 18.0.0                          | 20.x LTS    |
-| **npm**       | 9.0.0                           | 10.x        |
-| **磁盘空间**  | 100 MB                          | 500 MB      |
-| **RAM**       | 2 GB                            | 8 GB        |
-| **OS**        | Windows 10, macOS 12, Ubuntu 20.04 | 最新版本 |
+| 组件         | 最小版本                           | 推荐版本 |
+| ------------ | ---------------------------------- | -------- |
+| **Node.js**  | 18.0.0                             | 20.x LTS |
+| **npm**      | 9.0.0                              | 10.x     |
+| **磁盘空间** | 100 MB                             | 500 MB   |
+| **RAM**      | 2 GB                               | 8 GB     |
+| **OS**       | Windows 10, macOS 12, Ubuntu 20.04 | 最新版本 |
 
 **检查您的系统：**
 
@@ -89,11 +89,11 @@ npx @synkra/aiox-core install
 
 **答案:**
 
-| 场景                | 时间          |
-| ------------------- | ------------- |
-| **首次安装**        | 2-5 分钟      |
-| **更新现有安装**    | 1-2 分钟      |
-| **仅安装启动 Squad** | 30-60 秒     |
+| 场景                 | 时间     |
+| -------------------- | -------- |
+| **首次安装**         | 2-5 分钟 |
+| **更新现有安装**     | 1-2 分钟 |
+| **仅安装启动 Squad** | 30-60 秒 |
 
 影响安装时间的因素：
 
@@ -170,11 +170,11 @@ npx @synkra/aiox-core status
 
 **答案:** 我们建议：
 
-| 更新类型        | 频率       | 命令                           |
-| --------------- | ---------- | ------------------------------ |
-| **安全补丁**    | 立即       | `npx @synkra/aiox-core update` |
-| **次要更新**    | 每月       | `npx @synkra/aiox-core update` |
-| **主要版本**    | 每季度     | 先查看变更日志                 |
+| 更新类型     | 频率   | 命令                           |
+| ------------ | ------ | ------------------------------ |
+| **安全补丁** | 立即   | `npx @synkra/aiox-core update` |
+| **次要更新** | 每月   | `npx @synkra/aiox-core update` |
+| **主要版本** | 每季度 | 先查看变更日志                 |
 
 **检查更新：**
 
@@ -278,12 +278,12 @@ tar -xzvf aiox-offline.tar.gz
 
 **答案:**
 
-| IDE                | 状态       | 代理激活           |
-| ------------------ | ---------- | ------------------- |
-| **Claude Code**    | 完全支持   | `/dev`、`/qa` 等   |
-| **Cursor**         | 完全支持   | `@dev`、`@qa` 等   |
-| **Gemini CLI**     | 完全支持   | 在提示中提及       |
-| **GitHub Copilot** | 完全支持   | 聊天模式           |
+| IDE                | 状态     | 代理激活         |
+| ------------------ | -------- | ---------------- |
+| **Claude Code**    | 完全支持 | `/dev`、`/qa` 等 |
+| **Cursor**         | 完全支持 | `@dev`、`@qa` 等 |
+| **Gemini CLI**     | 完全支持 | 在提示中提及     |
+| **GitHub Copilot** | 完全支持 | 聊天模式         |
 
 **为新 IDE 添加支持:** 使用 IDE 的代理/规则规范打开 GitHub 问题。
 
@@ -347,19 +347,19 @@ npx @synkra/aiox-core install
 
 **答案:** AIOX 包括 11+ 个专门代理：
 
-| 代理           | 角色             | 最适合的工作                      |
-| -------------- | ---------------- | --------------------------------- |
-| `dev`          | 全栈开发者       | 代码实现、调试                    |
-| `qa`           | QA 工程师        | 测试、代码审查                    |
-| `architect`    | 系统架构师       | 设计、架构决策                    |
-| `pm`           | 项目经理         | 规划、跟踪                        |
-| `po`           | 产品所有者       | 积压工作、需求                    |
-| `sm`           | Scrum 主管       | 便利化、冲刺管理                  |
-| `analyst`      | 业务分析师       | 需求分析                         |
-| `ux-expert`    | UX 设计师        | 用户体验设计                      |
-| `data-engineer` | 数据工程师       | 数据管道、ETL                     |
-| `devops`       | DevOps 工程师    | CI/CD、部署                       |
-| `db-sage`      | 数据库架构师     | 模式设计、查询                    |
+| 代理            | 角色          | 最适合的工作     |
+| --------------- | ------------- | ---------------- |
+| `dev`           | 全栈开发者    | 代码实现、调试   |
+| `qa`            | QA 工程师     | 测试、代码审查   |
+| `architect`     | 系统架构师    | 设计、架构决策   |
+| `pm`            | 项目经理      | 规划、跟踪       |
+| `po`            | 产品所有者    | 积压工作、需求   |
+| `sm`            | Scrum 主管    | 便利化、冲刺管理 |
+| `analyst`       | 业务分析师    | 需求分析         |
+| `ux-expert`     | UX 设计师     | 用户体验设计     |
+| `data-engineer` | 数据工程师    | 数据管道、ETL    |
+| `devops`        | DevOps 工程师 | CI/CD、部署      |
+| `db-sage`       | 数据库架构师  | 模式设计、查询   |
 
 ---
 
@@ -433,8 +433,8 @@ npx @synkra/aiox-core install
 
 **答案:** 启动 Squad 是可选的扩展，用于扩展 AIOX 功能：
 
-| 包            | 功能                                                      |
-| -------------- | --------------------------------------------------------- |
+| 包             | 功能                                 |
+| -------------- | ------------------------------------ |
 | **hybrid-ops** | ClickUp 集成、流程自动化、专门工作流 |
 
 **安装 Squad：**
@@ -476,7 +476,7 @@ name: my-expansion
 version: 1.0.0
 description: My custom Squad
 dependencies:
-  aiox-core: ">=1.0.0"
+  aiox-core: '>=1.0.0'
 agents:
   - my-agent
 tasks:
@@ -503,7 +503,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
       - run: npx @synkra/aiox-core install --full --ide claude-code
       - run: npm test
 ```
@@ -589,12 +589,12 @@ projectStatus:
 
 **答案:**
 
-| 资源            | 链接                                                   |
-| --------------- | ------------------------------------------------------ |
-| **文档**        | `docs/` 在您的项目中                                   |
-| **故障排除**    | [troubleshooting.md](./troubleshooting.md)             |
+| 资源              | 链接                                         |
+| ----------------- | -------------------------------------------- |
+| **文档**          | `docs/` 在您的项目中                         |
+| **故障排除**      | [troubleshooting.md](./troubleshooting.md)   |
 | **GitHub Issues** | https://github.com/SynkraAI/aiox-core/issues |
-| **源代码**      | https://github.com/SynkraAI/aiox-core        |
+| **源代码**        | https://github.com/SynkraAI/aiox-core        |
 
 **在寻求帮助之前：**
 

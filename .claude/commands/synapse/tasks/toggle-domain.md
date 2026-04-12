@@ -19,9 +19,9 @@ Enable or disable a domain by changing its `_STATE` value in `.synapse/manifest`
 
 ## Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `domain-name` | Yes | Domain name to toggle (kebab-case) |
+| Parameter     | Required | Description                        |
+| ------------- | -------- | ---------------------------------- |
+| `domain-name` | Yes      | Domain name to toggle (kebab-case) |
 
 ---
 
@@ -71,13 +71,13 @@ Toggled domain "{domain-name}":
 
 ## Error Handling
 
-| Error | Message |
-|-------|---------|
-| Domain not in manifest | `Error: Domain "{name}" not found in manifest.` |
-| Manifest not found | `Error: .synapse/manifest not found. SYNAPSE must be initialized first.` |
-| Invalid state value | `Error: Unexpected state value "{value}" for domain "{name}". Expected "active" or "inactive".` |
+| Error                  | Message                                                                                         |
+| ---------------------- | ----------------------------------------------------------------------------------------------- |
+| Domain not in manifest | `Error: Domain "{name}" not found in manifest.`                                                 |
+| Manifest not found     | `Error: .synapse/manifest not found. SYNAPSE must be initialized first.`                        |
+| Invalid state value    | `Error: Unexpected state value "{value}" for domain "{name}". Expected "active" or "inactive".` |
 
 ---
 
-*Toggle Domain — SYNAPSE CRUD Command C5*
-*Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3*
+_Toggle Domain — SYNAPSE CRUD Command C5_
+_Source: SYNAPSE-HOOK-SKILL-COMMAND-ANALYSIS.md section 2.3_

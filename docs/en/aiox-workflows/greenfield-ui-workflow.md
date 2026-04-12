@@ -42,4 +42,4 @@ The **Greenfield UI Workflow** is designed for creating new frontend application
 
 ---
 
-*For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/greenfield-ui-workflow.md).*
+_For complete details, diagrams, and step-by-step instructions, see the [Portuguese documentation](../../aiox-workflows/greenfield-ui-workflow.md)._

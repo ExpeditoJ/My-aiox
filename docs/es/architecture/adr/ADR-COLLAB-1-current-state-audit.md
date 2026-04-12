@@ -120,38 +120,38 @@ Auditar el estado actual de:
 
 ### Severidad CRITICA
 
-| Configuracion                     | Actual    | Esperado  | Riesgo                            |
-| --------------------------------- | --------- | --------- | --------------------------------- |
-| `required_approving_review_count` | **0**     | **1**     | Codigo sin revisar puede mergearse |
-| `require_code_owner_reviews`      | **false** | **true**  | Sin validacion de expertos        |
+| Configuracion                     | Actual    | Esperado | Riesgo                             |
+| --------------------------------- | --------- | -------- | ---------------------------------- |
+| `required_approving_review_count` | **0**     | **1**    | Codigo sin revisar puede mergearse |
+| `require_code_owner_reviews`      | **false** | **true** | Sin validacion de expertos         |
 
 **Impacto:** Cualquier colaborador con acceso de escritura puede mergear PRs sin aprobacion, evitando la revision de codigo.
 
 ### Severidad ALTA
 
-| Configuracion               | Actual         | Esperado      | Riesgo                     |
-| --------------------------- | -------------- | ------------- | -------------------------- |
-| CodeRabbit `.coderabbit.yaml` | Faltante     | Configurado   | Sin revision AI automatizada |
-| Granularidad de CODEOWNERS  | Nivel de org   | Por ruta      | Sin enrutamiento de expertos |
+| Configuracion                 | Actual       | Esperado    | Riesgo                       |
+| ----------------------------- | ------------ | ----------- | ---------------------------- |
+| CodeRabbit `.coderabbit.yaml` | Faltante     | Configurado | Sin revision AI automatizada |
+| Granularidad de CODEOWNERS    | Nivel de org | Por ruta    | Sin enrutamiento de expertos |
 
 **Impacto:** Calidad de revision reducida y sin feedback automatizado para contribuidores.
 
 ### Severidad MEDIA
 
-| Configuracion                         | Actual       | Esperado  | Riesgo                         |
-| ------------------------------------- | ------------ | --------- | ------------------------------ |
-| `test` en verificaciones requeridas   | No requerido | Requerido | Tests pueden omitirse          |
-| `required_conversation_resolution`    | false        | true      | Feedback puede ignorarse       |
-| `story-validation` en verificaciones  | No requerido | Opcional  | Consistencia de historias no aplicada |
+| Configuracion                        | Actual       | Esperado  | Riesgo                                |
+| ------------------------------------ | ------------ | --------- | ------------------------------------- |
+| `test` en verificaciones requeridas  | No requerido | Requerido | Tests pueden omitirse                 |
+| `required_conversation_resolution`   | false        | true      | Feedback puede ignorarse              |
+| `story-validation` en verificaciones | No requerido | Opcional  | Consistencia de historias no aplicada |
 
 **Impacto:** Los PRs pueden mergearse con tests fallando o feedback sin abordar.
 
 ### Severidad BAJA
 
-| Configuracion           | Actual | Esperado | Riesgo                            |
-| ----------------------- | ------ | -------- | --------------------------------- |
-| Firmas requeridas       | false  | Opcional | Autenticidad de commits no verificada |
-| Historial lineal requerido | false | Opcional | Historial de merge complejo      |
+| Configuracion              | Actual | Esperado | Riesgo                                |
+| -------------------------- | ------ | -------- | ------------------------------------- |
+| Firmas requeridas          | false  | Opcional | Autenticidad de commits no verificada |
+| Historial lineal requerido | false  | Opcional | Historial de merge complejo           |
 
 **Impacto:** Preocupaciones menores de trazabilidad.
 
@@ -159,14 +159,14 @@ Auditar el estado actual de:
 
 ## Tabla Resumen
 
-| Categoria                   | Estado   | Accion Requerida   |
-| --------------------------- | -------- | ------------------ |
-| Revisiones aprobadoras      | CRITICO  | Habilitar 1 requerida |
-| Revisiones de code owner    | CRITICO  | Habilitar          |
-| Config de CodeRabbit        | ALTO     | Crear              |
-| Detalle de CODEOWNERS       | ALTO     | Mejorar            |
-| Test en verificaciones      | MEDIO    | Agregar            |
-| Resolucion de conversacion  | MEDIO    | Habilitar          |
+| Categoria                  | Estado  | Accion Requerida      |
+| -------------------------- | ------- | --------------------- |
+| Revisiones aprobadoras     | CRITICO | Habilitar 1 requerida |
+| Revisiones de code owner   | CRITICO | Habilitar             |
+| Config de CodeRabbit       | ALTO    | Crear                 |
+| Detalle de CODEOWNERS      | ALTO    | Mejorar               |
+| Test en verificaciones     | MEDIO   | Agregar               |
+| Resolucion de conversacion | MEDIO   | Habilitar             |
 
 ---
 

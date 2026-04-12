@@ -52,11 +52,11 @@
 
 ### 依赖类型
 
-| 类型           | 描述                           | 位置                        |
-| -------------- | ------------------------------ | -------------------------- |
-| `tools`        | CLI 工具和外部服务             | 系统 PATH 或 MCP           |
-| `tasks`        | 任务工作流文件                 | `.aiox-core/development/tasks/`    |
-| `checklists`   | 验证清单                       | `.aiox-core/product/checklists/`   |
+| 类型         | 描述               | 位置                             |
+| ------------ | ------------------ | -------------------------------- |
+| `tools`      | CLI 工具和外部服务 | 系统 PATH 或 MCP                 |
+| `tasks`      | 任务工作流文件     | `.aiox-core/development/tasks/`  |
+| `checklists` | 验证清单           | `.aiox-core/product/checklists/` |
 
 ### 声明示例
 
@@ -86,15 +86,15 @@ dependencies:
 
 ### @dev (Dex - 开发代理)
 
-| 工具   | 类型     | 目的                                    |
-| ------ | -------- | -------------------------------------- |
-| `git`        | CLI      | 版本控制 (仅本地操作) |
-| `coderabbit` | 外部  | 提交前代码质量审查    |
-| `context7`   | MCP      | 库文档查询        |
-| `supabase`   | 外部  | 数据库操作和迁移      |
-| `n8n`        | 外部  | 工作流自动化                       |
-| `browser`    | MCP      | Web 应用测试                     |
-| `ffmpeg`     | CLI      | 媒体文件处理           |
+| 工具         | 类型 | 目的                  |
+| ------------ | ---- | --------------------- |
+| `git`        | CLI  | 版本控制 (仅本地操作) |
+| `coderabbit` | 外部 | 提交前代码质量审查    |
+| `context7`   | MCP  | 库文档查询            |
+| `supabase`   | 外部 | 数据库操作和迁移      |
+| `n8n`        | 外部 | 工作流自动化          |
+| `browser`    | MCP  | Web 应用测试          |
+| `ffmpeg`     | CLI  | 媒体文件处理          |
 
 **@dev 的 Git 限制**:
 
@@ -104,12 +104,12 @@ dependencies:
 
 ### @devops (Gage - DevOps 代理)
 
-| 工具   | 类型     | 目的                           |
-| ------ | -------- | ------------------------------- |
-| `git`        | CLI      | 完整 git 操作包括推送 |
-| `gh`         | CLI      | GitHub CLI 用于 PR 操作 |
-| `docker`     | CLI      | 容器操作             |
-| `coderabbit` | 外部  | 自动代码审查 |
+| 工具         | 类型 | 目的                    |
+| ------------ | ---- | ----------------------- |
+| `git`        | CLI  | 完整 git 操作包括推送   |
+| `gh`         | CLI  | GitHub CLI 用于 PR 操作 |
+| `docker`     | CLI  | 容器操作                |
+| `coderabbit` | 外部 | 自动代码审查            |
 
 **独占能力**:
 
@@ -119,18 +119,18 @@ dependencies:
 
 ### @qa (Quinn - QA 代理)
 
-| 工具   | 类型 | 目的                          |
-| ------ | ---- | ----------------------------- |
-| `jest`       | CLI  | 单元测试                   |
-| `playwright` | MCP  | E2E 测试和浏览器自动化  |
-| `npm test`   | CLI  | 测试执行器                 |
+| 工具         | 类型 | 目的                   |
+| ------------ | ---- | ---------------------- |
+| `jest`       | CLI  | 单元测试               |
+| `playwright` | MCP  | E2E 测试和浏览器自动化 |
+| `npm test`   | CLI  | 测试执行器             |
 
 ### @architect (Aria - 架构师代理)
 
-| 工具 | 类型 | 目的                   |
-| ---- | ---- | ---------------------- |
-| `exa`      | MCP  | 研究和分析          |
-| `context7` | MCP  | 文档参考  |
+| 工具       | 类型 | 目的       |
+| ---------- | ---- | ---------- |
+| `exa`      | MCP  | 研究和分析 |
+| `context7` | MCP  | 文档参考   |
 
 ---
 
@@ -140,12 +140,12 @@ dependencies:
 
 MCP 服务器 (Model Context Protocol) 为代理使用提供结构化 API。
 
-| MCP 服务器 | 提供的工具                                               | 使用者        |
-| ---------- | -------------------------------------------------------- | ------------- |
-| EXA        | `web_search_exa`、`company_research_exa`、`get_code_context_exa`    | @architect       |
-| Context7   | `resolve-library-id`、`query-docs`                  | @dev、@architect |
-| Playwright | `browser_navigate`、`browser_screenshot`、`browser_click`           | @qa              |
-| Apify      | `search-actors`、`call-actor`、`get-actor-output`                   | @devops          |
+| MCP 服务器 | 提供的工具                                                       | 使用者           |
+| ---------- | ---------------------------------------------------------------- | ---------------- |
+| EXA        | `web_search_exa`、`company_research_exa`、`get_code_context_exa` | @architect       |
+| Context7   | `resolve-library-id`、`query-docs`                               | @dev、@architect |
+| Playwright | `browser_navigate`、`browser_screenshot`、`browser_click`        | @qa              |
+| Apify      | `search-actors`、`call-actor`、`get-actor-output`                | @devops          |
 
 ### MCP 配置
 

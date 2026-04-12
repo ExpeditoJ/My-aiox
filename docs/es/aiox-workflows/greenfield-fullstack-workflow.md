@@ -25,15 +25,15 @@ Workflow para crear aplicaciones full-stack desde cero, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Requisitos y planificacion |
-| @architect | Diseno de arquitectura |
-| @ux-design-expert | Diseno de UI |
-| @data-engineer | Modelado de datos |
-| @dev | Implementacion |
-| @qa | Tests y validacion |
-| @devops | Deploy y CI/CD |
+| Agente            | Rol                        |
+| ----------------- | -------------------------- |
+| @pm               | Requisitos y planificacion |
+| @architect        | Diseno de arquitectura     |
+| @ux-design-expert | Diseno de UI               |
+| @data-engineer    | Modelado de datos          |
+| @dev              | Implementacion             |
+| @qa               | Tests y validacion         |
+| @devops           | Deploy y CI/CD             |
 
 ## Ver Mas
 
@@ -41,4 +41,4 @@ Workflow para crear aplicaciones full-stack desde cero, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

@@ -56,11 +56,13 @@ Squads privados (no repositório `aiox-Squads`) podem requerer variáveis de amb
 ### Criando o Arquivo `.env`
 
 1. Copie o arquivo de exemplo (se disponível):
+
    ```bash
    cp .env.example .env
    ```
 
 2. Ou crie um novo arquivo `.env` na raiz do projeto:
+
    ```bash
    touch .env
    ```
@@ -105,6 +107,7 @@ env:
 ### Outras Plataformas de CI/CD
 
 Consulte a documentação da sua plataforma para gerenciamento de secrets:
+
 - **GitLab CI:** Use variáveis de CI/CD do GitLab
 - **CircleCI:** Use variáveis de ambiente do CircleCI
 - **Jenkins:** Use credenciais do Jenkins
@@ -121,6 +124,7 @@ Consulte a documentação da sua plataforma para gerenciamento de secrets:
 ### Variáveis de Ambiente Faltando
 
 Se você ver erros sobre variáveis de ambiente faltando:
+
 1. Consulte este documento para variáveis obrigatórias
 2. Consulte a documentação do Squad
 3. Verifique se o arquivo `.env` contém todas as variáveis necessárias
@@ -129,6 +133,7 @@ Se você ver erros sobre variáveis de ambiente faltando:
 ## Contribuindo
 
 Ao adicionar novas variáveis de ambiente:
+
 1. Documente-as neste arquivo
 2. Adicione-as ao `.env.example` (se criar um)
 3. Atualize a documentação relevante

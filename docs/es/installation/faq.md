@@ -52,13 +52,13 @@ aiox-core install
 
 **Respuesta:**
 
-| Componente      | Mínimo                            | Recomendado     |
-| -------------- | ---------------------------------- | --------------- |
-| **Node.js**    | 18.0.0                             | 20.x LTS        |
-| **npm**        | 9.0.0                              | 10.x            |
-| **Espacio en Disco** | 100 MB                             | 500 MB          |
-| **RAM**        | 2 GB                               | 8 GB            |
-| **SO**         | Windows 10, macOS 12, Ubuntu 20.04 | Últimas versiones |
+| Componente           | Mínimo                             | Recomendado       |
+| -------------------- | ---------------------------------- | ----------------- |
+| **Node.js**          | 18.0.0                             | 20.x LTS          |
+| **npm**              | 9.0.0                              | 10.x              |
+| **Espacio en Disco** | 100 MB                             | 500 MB            |
+| **RAM**              | 2 GB                               | 8 GB              |
+| **SO**               | Windows 10, macOS 12, Ubuntu 20.04 | Últimas versiones |
 
 **Verifique su sistema:**
 
@@ -95,10 +95,10 @@ El instalador:
 
 **Respuesta:**
 
-| Escenario                | Tiempo          |
-| ----------------------- | ------------- |
-| **Primera instalación**  | 2-5 minutos   |
-| **Actualizar existente**     | 1-2 minutos   |
+| Escenario                     | Tiempo         |
+| ----------------------------- | -------------- |
+| **Primera instalación**       | 2-5 minutos    |
+| **Actualizar existente**      | 1-2 minutos    |
 | **Solo paquete de expansión** | 30-60 segundos |
 
 Factores que afectan el tiempo de instalación:
@@ -176,11 +176,11 @@ npx aiox-core status
 
 **Respuesta:** Recomendamos:
 
-| Tipo de Actualización          | Frecuencia   | Comando                     |
-| -------------------- | ----------- | --------------------------- |
-| **Parches de seguridad** | Inmediatamente | `npx aiox-core update` |
-| **Actualizaciones menores**    | Mensualmente     | `npx aiox-core update` |
-| **Versiones mayores**   | Trimestralmente   | Revise el changelog primero      |
+| Tipo de Actualización       | Frecuencia      | Comando                     |
+| --------------------------- | --------------- | --------------------------- |
+| **Parches de seguridad**    | Inmediatamente  | `npx aiox-core update`      |
+| **Actualizaciones menores** | Mensualmente    | `npx aiox-core update`      |
+| **Versiones mayores**       | Trimestralmente | Revise el changelog primero |
 
 **Verificar actualizaciones:**
 
@@ -284,12 +284,12 @@ tar -xzvf aiox-offline.tar.gz
 
 **Respuesta:**
 
-| IDE                | Estado       | Activación de Agentes    |
-| ------------------ | ------------ | ------------------- |
-| **Claude Code**    | Soporte Completo | `/dev`, `/qa`, etc. |
-| **Cursor**         | Soporte Completo | `@dev`, `@qa`, etc. |
-| **Gemini CLI**     | Soporte Completo | Mención en prompt   |
-| **GitHub Copilot** | Soporte Completo | Modos de chat          |
+| IDE                | Estado           | Activación de Agentes |
+| ------------------ | ---------------- | --------------------- |
+| **Claude Code**    | Soporte Completo | `/dev`, `/qa`, etc.   |
+| **Cursor**         | Soporte Completo | `@dev`, `@qa`, etc.   |
+| **Gemini CLI**     | Soporte Completo | Mención en prompt     |
+| **GitHub Copilot** | Soporte Completo | Modos de chat         |
 
 **Agregar soporte para un nuevo IDE:** Abra un issue en GitHub con la especificación de agentes/reglas del IDE.
 
@@ -310,6 +310,7 @@ tar -xzvf aiox-offline.tar.gz
 **Línea de comandos:**
 
 ```bash
+
 ```
 
 Cada IDE obtiene su propio directorio de configuración:
@@ -352,19 +353,19 @@ npx aiox-core install
 
 **Respuesta:** AIOX incluye 11+ agentes especializados:
 
-| Agente           | Rol                 | Ideal Para                        |
-| --------------- | -------------------- | ------------------------------- |
-| `dev`           | Desarrollador Full-Stack | Implementación de código, depuración  |
-| `qa`            | Ingeniero QA          | Pruebas, revisión de código            |
-| `architect`     | Arquitecto de Sistemas     | Diseño, decisiones de arquitectura  |
-| `pm`            | Gerente de Proyecto      | Planificación, seguimiento              |
-| `po`            | Product Owner        | Backlog, requisitos           |
-| `sm`            | Scrum Master         | Facilitación, gestión de sprints |
-| `analyst`       | Analista de Negocios     | Análisis de requisitos           |
-| `ux-expert`     | Diseñador UX          | Diseño de experiencia de usuario          |
-| `data-engineer` | Ingeniero de Datos        | Pipelines de datos, ETL             |
-| `devops`        | Ingeniero DevOps      | CI/CD, despliegue               |
-| `db-sage`       | Arquitecto de Base de Datos   | Diseño de esquemas, consultas          |
+| Agente          | Rol                         | Ideal Para                           |
+| --------------- | --------------------------- | ------------------------------------ |
+| `dev`           | Desarrollador Full-Stack    | Implementación de código, depuración |
+| `qa`            | Ingeniero QA                | Pruebas, revisión de código          |
+| `architect`     | Arquitecto de Sistemas      | Diseño, decisiones de arquitectura   |
+| `pm`            | Gerente de Proyecto         | Planificación, seguimiento           |
+| `po`            | Product Owner               | Backlog, requisitos                  |
+| `sm`            | Scrum Master                | Facilitación, gestión de sprints     |
+| `analyst`       | Analista de Negocios        | Análisis de requisitos               |
+| `ux-expert`     | Diseñador UX                | Diseño de experiencia de usuario     |
+| `data-engineer` | Ingeniero de Datos          | Pipelines de datos, ETL              |
+| `devops`        | Ingeniero DevOps            | CI/CD, despliegue                    |
+| `db-sage`       | Arquitecto de Base de Datos | Diseño de esquemas, consultas        |
 
 ---
 
@@ -438,8 +439,8 @@ npx aiox-core install
 
 **Respuesta:** Los paquetes de expansión son complementos opcionales que extienden las capacidades de AIOX:
 
-| Paquete           | Características                                                       |
-| -------------- | -------------------------------------------------------------- |
+| Paquete        | Características                                                                       |
+| -------------- | ------------------------------------------------------------------------------------- |
 | **hybrid-ops** | Integración con ClickUp, automatización de procesos, flujos de trabajo especializados |
 
 **Instalar un Squad:**
@@ -481,7 +482,7 @@ name: my-expansion
 version: 1.0.0
 description: Mi Squad personalizado
 dependencies:
-  aiox-core: ">=1.0.0"
+  aiox-core: '>=1.0.0'
 agents:
   - my-agent
 tasks:
@@ -508,7 +509,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
       - run: npx aiox-core install --full --ide claude-code
       - run: npm test
 ```
@@ -594,12 +595,12 @@ projectStatus:
 
 **Respuesta:**
 
-| Recurso            | Enlace                                                       |
-| ------------------- | ---------------------------------------------------------- |
-| **Documentación**   | `docs/` en su proyecto                                    |
-| **Solución de Problemas** | [troubleshooting.md](./troubleshooting.md)                 |
-| **Issues de GitHub**   | https://github.com/SynkraAI/aiox-core/issues |
-| **Código Fuente**     | https://github.com/SynkraAI/aiox-core        |
+| Recurso                   | Enlace                                       |
+| ------------------------- | -------------------------------------------- |
+| **Documentación**         | `docs/` en su proyecto                       |
+| **Solución de Problemas** | [troubleshooting.md](./troubleshooting.md)   |
+| **Issues de GitHub**      | https://github.com/SynkraAI/aiox-core/issues |
+| **Código Fuente**         | https://github.com/SynkraAI/aiox-core        |
 
 **Antes de pedir ayuda:**
 

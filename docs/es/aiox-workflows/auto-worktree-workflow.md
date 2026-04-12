@@ -25,10 +25,10 @@ Workflow para gestion automatica de git worktrees, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
+| Agente  | Rol                  |
+| ------- | -------------------- |
 | @devops | Gestion de worktrees |
-| @dev | Uso de worktrees |
+| @dev    | Uso de worktrees     |
 
 ## Ver Mas
 
@@ -36,4 +36,4 @@ Workflow para gestion automatica de git worktrees, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

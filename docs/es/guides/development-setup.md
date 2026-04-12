@@ -31,19 +31,19 @@ Guia completa para desarrolladores que quieren contribuir al proyecto Synkra AIO
 
 Antes de comenzar, asegurate de tener instalado lo siguiente:
 
-| Herramienta    | Version Minima  | Comando de Verificacion | Proposito          |
-| -------------- | --------------- | ----------------------- | ------------------ |
-| **Node.js**    | 18.0.0          | `node --version`        | Runtime JavaScript |
-| **npm**        | 9.0.0           | `npm --version`         | Gestor de paquetes |
-| **Git**        | 2.30+           | `git --version`         | Control de versiones |
-| **GitHub CLI** | 2.0+            | `gh --version`          | Operaciones GitHub |
+| Herramienta    | Version Minima | Comando de Verificacion | Proposito            |
+| -------------- | -------------- | ----------------------- | -------------------- |
+| **Node.js**    | 18.0.0         | `node --version`        | Runtime JavaScript   |
+| **npm**        | 9.0.0          | `npm --version`         | Gestor de paquetes   |
+| **Git**        | 2.30+          | `git --version`         | Control de versiones |
+| **GitHub CLI** | 2.0+           | `gh --version`          | Operaciones GitHub   |
 
 ### Herramientas Recomendadas
 
-| Herramienta          | Proposito                                   |
-| -------------------- | ------------------------------------------- |
+| Herramienta          | Proposito                                     |
+| -------------------- | --------------------------------------------- |
 | **Claude Code**      | Desarrollo potenciado por IA con agentes AIOX |
-| **VS Code / Cursor** | IDE con integracion AIOX                    |
+| **VS Code / Cursor** | IDE con integracion AIOX                      |
 | **Docker Desktop**   | Servidores MCP y herramientas containerizadas |
 
 ### Instalacion de Prerrequisitos
@@ -260,15 +260,15 @@ aiox-core/
 
 ### Directorios Clave
 
-| Directorio                          | Proposito                        | Cuando Modificar          |
-| ----------------------------------- | -------------------------------- | ------------------------- |
+| Directorio                          | Proposito                             | Cuando Modificar          |
+| ----------------------------------- | ------------------------------------- | ------------------------- |
 | `.aiox-core/development/agents/`    | Personas y comportamientos de agentes | Agregar/modificar agentes |
-| `.aiox-core/development/tasks/`     | Workflows de tasks ejecutables   | Agregar/modificar tasks   |
-| `.aiox-core/development/workflows/` | Orquestaciones multi-paso        | Crear workflows           |
-| `.claude/rules/`                    | Reglas de comportamiento AI      | Agregar restricciones     |
-| `docs/stories/`                     | Stories de desarrollo            | Trabajar en features      |
-| `src/`                              | Codigo fuente del framework      | Funcionalidad core        |
-| `tests/`                            | Suites de tests                  | Todos los cambios         |
+| `.aiox-core/development/tasks/`     | Workflows de tasks ejecutables        | Agregar/modificar tasks   |
+| `.aiox-core/development/workflows/` | Orquestaciones multi-paso             | Crear workflows           |
+| `.claude/rules/`                    | Reglas de comportamiento AI           | Agregar restricciones     |
+| `docs/stories/`                     | Stories de desarrollo                 | Trabajar en features      |
+| `src/`                              | Codigo fuente del framework           | Funcionalidad core        |
+| `tests/`                            | Suites de tests                       | Todos los cambios         |
 
 ---
 
@@ -344,12 +344,12 @@ Los agentes son personas AI que proveen capacidades especializadas. Cada agente 
 
 ### Paso 1: Planificar tu Agente
 
-| Aspecto           | Preguntas a Responder                          |
-| ----------------- | ---------------------------------------------- |
-| **Proposito**     | Que problema especifico resuelve este agente?  |
-| **Expertise**     | Que conocimiento de dominio deberia tener?     |
-| **Comandos**      | Que acciones puede realizar el agente?         |
-| **Colaboracion**  | Con que otros agentes trabaja?                 |
+| Aspecto          | Preguntas a Responder                         |
+| ---------------- | --------------------------------------------- |
+| **Proposito**    | Que problema especifico resuelve este agente? |
+| **Expertise**    | Que conocimiento de dominio deberia tener?    |
+| **Comandos**     | Que acciones puede realizar el agente?        |
+| **Colaboracion** | Con que otros agentes trabaja?                |
 
 ### Paso 2: Crear Archivo de Agente
 
@@ -476,13 +476,13 @@ Las tasks son workflows ejecutables que los agentes usan para realizar acciones.
 
 ### Paso 1: Planificar tu Task
 
-| Aspecto        | Descripcion                       |
-| -------------- | --------------------------------- |
-| **Proposito**  | Que logra esta task?              |
-| **Entradas**   | Que datos necesita?               |
-| **Salidas**    | Que produce?                      |
-| **Pasos**      | Cual es el flujo de ejecucion?    |
-| **Validacion** | Como sabemos que tuvo exito?      |
+| Aspecto        | Descripcion                    |
+| -------------- | ------------------------------ |
+| **Proposito**  | Que logra esta task?           |
+| **Entradas**   | Que datos necesita?            |
+| **Salidas**    | Que produce?                   |
+| **Pasos**      | Cual es el flujo de ejecucion? |
+| **Validacion** | Como sabemos que tuvo exito?   |
 
 ### Paso 2: Crear Archivo de Task
 
@@ -647,12 +647,12 @@ Los workflows orquestan multiples agentes y tasks para operaciones complejas.
 
 ### Paso 1: Planificar tu Workflow
 
-| Aspecto         | Descripcion                     |
-| --------------- | ------------------------------- |
-| **Objetivo**    | Cual es el resultado final?     |
-| **Etapas**      | Que fases tiene?                |
-| **Agentes**     | Que agentes participan?         |
-| **Transiciones**| Como se conectan las etapas?    |
+| Aspecto          | Descripcion                  |
+| ---------------- | ---------------------------- |
+| **Objetivo**     | Cual es el resultado final?  |
+| **Etapas**       | Que fases tiene?             |
+| **Agentes**      | Que agentes participan?      |
+| **Transiciones** | Como se conectan las etapas? |
 
 ### Paso 2: Crear Archivo de Workflow
 
@@ -802,14 +802,14 @@ npm run format
 
 ### Convenciones de Nomenclatura
 
-| Tipo          | Convencion  | Ejemplo                     |
-| ------------- | ----------- | --------------------------- |
-| **Archivos**  | kebab-case  | `my-component.js`           |
-| **Clases**    | PascalCase  | `MyComponent`               |
-| **Funciones** | camelCase   | `myFunction`                |
-| **Constantes**| UPPER_SNAKE | `MAX_RETRIES`               |
-| **Agentes**   | kebab-case  | `dev`, `qa`, `architect`    |
-| **Tasks**     | kebab-case  | `create-story`, `dev-build` |
+| Tipo           | Convencion  | Ejemplo                     |
+| -------------- | ----------- | --------------------------- |
+| **Archivos**   | kebab-case  | `my-component.js`           |
+| **Clases**     | PascalCase  | `MyComponent`               |
+| **Funciones**  | camelCase   | `myFunction`                |
+| **Constantes** | UPPER_SNAKE | `MAX_RETRIES`               |
+| **Agentes**    | kebab-case  | `dev`, `qa`, `architect`    |
+| **Tasks**      | kebab-case  | `create-story`, `dev-build` |
 
 ### Convenciones de Commit
 
@@ -928,13 +928,13 @@ EOF
 
 ### Requisitos de Merge
 
-| Requisito              | Descripcion                       |
-| ---------------------- | --------------------------------- |
-| **Tests pasan**        | Todos los tests CI deben pasar    |
-| **Lint limpio**        | Sin errores de ESLint             |
-| **Tipos validos**      | Compilacion TypeScript exitosa    |
-| **Review aprobado**    | Al menos una aprobacion           |
-| **Conflictos resueltos**| Sin conflictos de merge          |
+| Requisito                | Descripcion                    |
+| ------------------------ | ------------------------------ |
+| **Tests pasan**          | Todos los tests CI deben pasar |
+| **Lint limpio**          | Sin errores de ESLint          |
+| **Tipos validos**        | Compilacion TypeScript exitosa |
+| **Review aprobado**      | Al menos una aprobacion        |
+| **Conflictos resueltos** | Sin conflictos de merge        |
 
 ---
 
@@ -1082,11 +1082,11 @@ node --inspect node_modules/.bin/jest
 
 ### Etiquetas de Issues
 
-| Etiqueta           | Caso de Uso                    |
-| ------------------ | ------------------------------ |
-| `bug`              | Algo esta roto                 |
+| Etiqueta           | Caso de Uso                      |
+| ------------------ | -------------------------------- |
+| `bug`              | Algo esta roto                   |
 | `feature`          | Solicitud de nueva funcionalidad |
-| `documentation`    | Mejoras de documentacion       |
+| `documentation`    | Mejoras de documentacion         |
 | `good-first-issue` | Bueno para nuevos contribuidores |
 | `help-wanted`      | Se aprecia ayuda de la comunidad |
 

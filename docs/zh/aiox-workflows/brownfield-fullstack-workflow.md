@@ -167,11 +167,11 @@ flowchart LR
 
 ### 步骤1：增强分类
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @analyst (Atlas) |
-| **操作** | 分类增强范围 |
-| **输入** | 用户的增强描述 |
+| 属性     | 值                                                     |
+| -------- | ------------------------------------------------------ |
+| **代理** | @analyst (Atlas)                                       |
+| **操作** | 分类增强范围                                           |
+| **输入** | 用户的增强描述                                         |
 | **输出** | 分类：single_story / small_feature / major_enhancement |
 
 **流程：**
@@ -190,22 +190,22 @@ flowchart LR
 
 ### 步骤2：决策路由
 
-| 路由 | 代理 | 任务 | 下一步操作 |
-|------|------|------|----------|
-| `single_story` | @pm | `brownfield-create-story` | 创建故事后退出工作流 |
-| `small_feature` | @pm | `brownfield-create-epic` | 创建史诗后退出工作流 |
-| `major_enhancement` | - | - | 继续下一步 |
+| 路由                | 代理 | 任务                      | 下一步操作           |
+| ------------------- | ---- | ------------------------- | -------------------- |
+| `single_story`      | @pm  | `brownfield-create-story` | 创建故事后退出工作流 |
+| `small_feature`     | @pm  | `brownfield-create-epic`  | 创建史诗后退出工作流 |
+| `major_enhancement` | -    | -                         | 继续下一步           |
 
 ---
 
 ### 步骤3：文档验证
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @analyst (Atlas) |
-| **操作** | 验证现有文档 |
-| **条件** | 仅适用于 `major_enhancement` |
-| **输入** | 代码库和现有文档 |
+| 属性     | 值                                                      |
+| -------- | ------------------------------------------------------- |
+| **代理** | @analyst (Atlas)                                        |
+| **操作** | 验证现有文档                                            |
+| **条件** | 仅适用于 `major_enhancement`                            |
+| **输入** | 代码库和现有文档                                        |
 | **输出** | 评估：documentation_adequate / documentation_inadequate |
 
 **验证清单：**
@@ -224,12 +224,12 @@ flowchart LR
 
 ### 步骤4：项目分析（条件性）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @architect (Aria) |
-| **任务** | `document-project` |
-| **条件** | 如果文档不充分，则执行 |
-| **输入** | 现有代码库 |
+| 属性     | 值                                        |
+| -------- | ----------------------------------------- |
+| **代理** | @architect (Aria)                         |
+| **任务** | `document-project`                        |
+| **条件** | 如果文档不充分，则执行                    |
+| **输入** | 现有代码库                                |
 | **输出** | `brownfield-architecture.md` (或多个文档) |
 
 **目的：**
@@ -242,12 +242,12 @@ flowchart LR
 
 ### 步骤5：创建棕地项目PRD
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @pm (Morgan) |
+| 属性     | 值                    |
+| -------- | --------------------- |
+| **代理** | @pm (Morgan)          |
 | **模板** | `brownfield-prd-tmpl` |
 | **要求** | 现有文档或步骤4的分析 |
-| **输出** | `docs/prd.md` |
+| **输出** | `docs/prd.md`         |
 
 **说明：**
 
@@ -259,11 +259,11 @@ flowchart LR
 
 ### 步骤6：架构决策
 
-| 属性 | 值 |
-|------|-----|
+| 属性     | 值                               |
+| -------- | -------------------------------- |
 | **代理** | @pm (Morgan) / @architect (Aria) |
-| **操作** | 确定是否需要架构文档 |
-| **条件** | 创建PRD后 |
+| **操作** | 确定是否需要架构文档             |
+| **条件** | 创建PRD后                        |
 
 **创建架构文档的标准：**
 
@@ -276,13 +276,13 @@ flowchart LR
 
 ### 步骤7：创建架构（条件性）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @architect (Aria) |
+| 属性     | 值                             |
+| -------- | ------------------------------ |
+| **代理** | @architect (Aria)              |
 | **模板** | `brownfield-architecture-tmpl` |
-| **要求** | `prd.md` |
-| **条件** | 需要架构变更 |
-| **输出** | `docs/architecture.md` |
+| **要求** | `prd.md`                       |
+| **条件** | 需要架构变更                   |
+| **输出** | `docs/architecture.md`         |
 
 **说明：**
 
@@ -294,18 +294,19 @@ flowchart LR
 
 ### 步骤8：PO验证
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @po (Pax) |
+| 属性     | 值                    |
+| -------- | --------------------- |
+| **代理** | @po (Pax)             |
 | **清单** | `po-master-checklist` |
-| **输入** | 所有创建的工件 |
-| **输出** | 验证或问题列表 |
+| **输入** | 所有创建的工件        |
+| **输出** | 验证或问题列表        |
 
 **清单文件：** `.aiox-core/development/checklists/po-master-checklist.md`
 
 **流程：**
 
 验证所有文档的：
+
 - 集成安全性
 - 完整性
 - 需求对齐
@@ -315,10 +316,10 @@ flowchart LR
 
 ### 步骤9：问题修复（条件性）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | 可变（取决于问题） |
-| **条件** | PO发现问题 |
+| 属性     | 值                       |
+| -------- | ------------------------ |
+| **代理** | 可变（取决于问题）       |
+| **条件** | PO发现问题               |
 | **操作** | 修复并重新导出更新的文档 |
 
 **流程：**
@@ -332,11 +333,11 @@ flowchart LR
 
 ### 步骤10：文档分片
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @po (Pax) |
-| **任务** | `shard-doc` |
-| **输入** | 项目中验证的文档 |
+| 属性     | 值                                               |
+| -------- | ------------------------------------------------ |
+| **代理** | @po (Pax)                                        |
+| **任务** | `shard-doc`                                      |
+| **输入** | 项目中验证的文档                                 |
 | **输出** | `docs/prd/` 和 `docs/architecture/` 中的分片内容 |
 
 **执行选项：**
@@ -350,21 +351,22 @@ flowchart LR
 
 ### 步骤11：创建故事
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @sm (River) |
-| **重复** | 对于每个史诗或增强 |
-| **输入** | 分片的文档或棕地文档 |
+| 属性     | 值                        |
+| -------- | ------------------------- |
+| **代理** | @sm (River)               |
+| **重复** | 对于每个史诗或增强        |
+| **输入** | 分片的文档或棕地文档      |
 | **输出** | `story.md` 处于"草稿"状态 |
 
 **任务决策：**
 
-| 文档类型 | 任务 |
-|---------|------|
-| PRD分片 | `create-next-story` |
+| 文档类型 | 任务                      |
+| -------- | ------------------------- |
+| PRD分片  | `create-next-story`       |
 | 棕地文档 | `create-brownfield-story` |
 
 **任务文件：**
+
 - `.aiox-core/development/tasks/create-next-story.md`
 - `.aiox-core/development/tasks/create-brownfield-story.md`
 
@@ -372,11 +374,11 @@ flowchart LR
 
 ### 步骤12：草稿审查（可选）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @analyst / @pm |
-| **条件** | 用户希望审查故事 |
-| **输入** | `story.md` 处于草稿状态 |
+| 属性     | 值                         |
+| -------- | -------------------------- |
+| **代理** | @analyst / @pm             |
+| **条件** | 用户希望审查故事           |
+| **输入** | `story.md` 处于草稿状态    |
 | **输出** | 更新的故事：草稿 -> 已批准 |
 
 **注意**：任务 `story-review` 正在开发中。
@@ -385,11 +387,11 @@ flowchart LR
 
 ### 步骤13：实现
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @dev (Dex) |
+| 属性     | 值           |
+| -------- | ------------ |
+| **代理** | @dev (Dex)   |
 | **要求** | 已批准的故事 |
-| **输出** | 实现文件 |
+| **输出** | 实现文件     |
 
 **说明：**
 
@@ -402,12 +404,12 @@ flowchart LR
 
 ### 步骤14：QA审查（可选）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @qa (Quinn) |
+| 属性     | 值             |
+| -------- | -------------- |
+| **代理** | @qa (Quinn)    |
 | **任务** | `review-story` |
-| **要求** | 实现的文件 |
-| **输出** | 审查的实现 |
+| **要求** | 实现的文件     |
+| **输出** | 审查的实现     |
 
 **流程：**
 
@@ -421,11 +423,11 @@ flowchart LR
 
 ### 步骤15：修复QA反馈（条件性）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @dev (Dex) |
+| 属性     | 值                 |
+| -------- | ------------------ |
+| **代理** | @dev (Dex)         |
 | **条件** | QA留下未检查的项目 |
-| **操作** | 处理剩余项目 |
+| **操作** | 处理剩余项目       |
 
 **流程：**
 
@@ -444,10 +446,10 @@ flowchart LR
 
 ### 步骤17：史诗回顾（可选）
 
-| 属性 | 值 |
-|------|-----|
-| **代理** | @po (Pax) |
-| **条件** | 史诗完成 |
+| 属性     | 值                      |
+| -------- | ----------------------- |
+| **代理** | @po (Pax)               |
+| **条件** | 史诗完成                |
 | **输出** | `epic-retrospective.md` |
 
 **流程：**
@@ -469,32 +471,32 @@ flowchart LR
 
 ## 参与的代理
 
-| 代理 | 名称 | 工作流中的角色 | 步骤 |
-|------|------|--------------|------|
-| @analyst | Atlas | 范围分类、文档验证 | 1, 3 |
-| @architect | Aria | 项目文档、架构设计 | 4, 6, 7 |
-| @pm | Morgan | PRD创建、史诗和简单故事 | 2, 5, 6 |
-| @po | Pax | 工件验证、分片、回顾 | 8, 10, 17 |
-| @sm | River | 详细故事创建 | 11 |
-| @dev | Dex | 故事实现 | 13, 15 |
-| @qa | Quinn | 实现审查 | 14 |
+| 代理       | 名称   | 工作流中的角色          | 步骤      |
+| ---------- | ------ | ----------------------- | --------- |
+| @analyst   | Atlas  | 范围分类、文档验证      | 1, 3      |
+| @architect | Aria   | 项目文档、架构设计      | 4, 6, 7   |
+| @pm        | Morgan | PRD创建、史诗和简单故事 | 2, 5, 6   |
+| @po        | Pax    | 工件验证、分片、回顾    | 8, 10, 17 |
+| @sm        | River  | 详细故事创建            | 11        |
+| @dev       | Dex    | 故事实现                | 13, 15    |
+| @qa        | Quinn  | 实现审查                | 14        |
 
 ---
 
 ## 执行的任务
 
-| 任务 | 步骤 | 代理 | 目的 |
-|------|------|------|------|
-| `brownfield-create-story` | 2 | @pm | 为简单增强创建单个故事 |
-| `brownfield-create-epic` | 2 | @pm | 创建聚焦的史诗（1-3个故事） |
-| `document-project` | 4 | @architect | 记录棕地项目的当前状态 |
-| `brownfield-prd-tmpl` | 5 | @pm | 棕地项目PRD的模板 |
-| `brownfield-architecture-tmpl` | 7 | @architect | 棕地架构的模板 |
-| `po-master-checklist` | 8 | @po | 工件的全面验证 |
-| `shard-doc` | 10 | @po | 将文档分割成较小的文件 |
-| `create-next-story` | 11 | @sm | 从分片PRD创建故事 |
-| `create-brownfield-story` | 11 | @sm | 从棕地文档创建故事 |
-| `review-story` | 14 | @qa | 实现审查 |
+| 任务                           | 步骤 | 代理       | 目的                        |
+| ------------------------------ | ---- | ---------- | --------------------------- |
+| `brownfield-create-story`      | 2    | @pm        | 为简单增强创建单个故事      |
+| `brownfield-create-epic`       | 2    | @pm        | 创建聚焦的史诗（1-3个故事） |
+| `document-project`             | 4    | @architect | 记录棕地项目的当前状态      |
+| `brownfield-prd-tmpl`          | 5    | @pm        | 棕地项目PRD的模板           |
+| `brownfield-architecture-tmpl` | 7    | @architect | 棕地架构的模板              |
+| `po-master-checklist`          | 8    | @po        | 工件的全面验证              |
+| `shard-doc`                    | 10   | @po        | 将文档分割成较小的文件      |
+| `create-next-story`            | 11   | @sm        | 从分片PRD创建故事           |
+| `create-brownfield-story`      | 11   | @sm        | 从棕地文档创建故事          |
+| `review-story`                 | 14   | @qa        | 实现审查                    |
 
 ---
 
@@ -526,23 +528,23 @@ flowchart LR
 
 ### 工作流输入
 
-| 输入 | 来源 | 格式 | 必需 |
-|------|------|------|------|
-| 增强请求 | 用户 | 文本描述 | 是 |
-| 现有代码库 | 存储库 | 源代码 | 是 |
-| 现有文档 | `docs/` | Markdown | 否 |
-| 利益相关者需求 | 用户/PM工具 | 文本/工单 | 否 |
+| 输入           | 来源        | 格式      | 必需 |
+| -------------- | ----------- | --------- | ---- |
+| 增强请求       | 用户        | 文本描述  | 是   |
+| 现有代码库     | 存储库      | 源代码    | 是   |
+| 现有文档       | `docs/`     | Markdown  | 否   |
+| 利益相关者需求 | 用户/PM工具 | 文本/工单 | 否   |
 
 ### 工作流输出
 
-| 输出 | 目标 | 格式 | 条件 |
-|------|------|------|------|
-| `brownfield-architecture.md` | `docs/` | Markdown | 如果文档不充分 |
-| `prd.md` | `docs/` | Markdown | 主要增强 |
-| `architecture.md` | `docs/` | Markdown | 如果架构变更 |
-| 分片故事 | `docs/stories/` | Markdown | 总是 |
-| 实现的代码 | `src/` | 各种 | 总是 |
-| `epic-retrospective.md` | `docs/` | Markdown | 可选 |
+| 输出                         | 目标            | 格式     | 条件           |
+| ---------------------------- | --------------- | -------- | -------------- |
+| `brownfield-architecture.md` | `docs/`         | Markdown | 如果文档不充分 |
+| `prd.md`                     | `docs/`         | Markdown | 主要增强       |
+| `architecture.md`            | `docs/`         | Markdown | 如果架构变更   |
+| 分片故事                     | `docs/stories/` | Markdown | 总是           |
+| 实现的代码                   | `src/`          | 各种     | 总是           |
+| `epic-retrospective.md`      | `docs/`         | Markdown | 可选           |
 
 ---
 
@@ -616,6 +618,7 @@ flowchart LR
 **症状：** 简单工作流用于复杂增强或反之亦然
 
 **解决方案：**
+
 1. 暂停当前工作流
 2. 使用 @analyst 重新执行分类
 3. 提供关于集成和复杂性的更多背景
@@ -625,6 +628,7 @@ flowchart LR
 **症状：** 未对系统有充分背景的情况下创建PRD
 
 **解决方案：**
+
 1. 使用 @architect 手动执行 `document-project`
 2. 使用新发现更新PRD
 3. 使用 @po 重新验证
@@ -634,6 +638,7 @@ flowchart LR
 **症状：** 更正后问题仍然出现
 
 **解决方案：**
+
 1. 与利益相关者安排同步会议
 2. 记录更清晰的验收标准
 3. 如有必要，考虑减少增强范围
@@ -643,6 +648,7 @@ flowchart LR
 **症状：** 故事无法在一个会话中完成
 
 **解决方案：**
+
 1. 将故事分成多个子故事
 2. 重新评估增强分类
 3. 考虑使用 `brownfield-create-epic` 而不是单个故事
@@ -652,6 +658,7 @@ flowchart LR
 **症状：** 回归测试失败
 
 **解决方案：**
+
 1. 审查PRD中的影响分析
 2. 添加更多集成测试
 3. 考虑使用功能标志进行渐进式推出
@@ -661,6 +668,7 @@ flowchart LR
 **症状：** 问题在开发和QA之间来回
 
 **解决方案：**
+
 1. 记录更清晰的验收标准
 2. 为复杂问题安排结对编程
 3. 考虑添加自动化测试
@@ -706,13 +714,13 @@ stateDiagram-v2
 
 ## 成功指标
 
-| 指标 | 描述 | 目标 |
-|------|------|------|
-| 分类准确度 | 正确分类的增强百分比 | > 90% |
-| 到PRD的时间 | 从请求到批准PRD的天数 | < 3天 |
-| 每次验证的问题 | PO发现的平均问题数 | < 3 |
-| QA周期 | 开发/QA往返的平均数 | < 2 |
-| 零回归 | 发布中没有回归错误的百分比 | 100% |
+| 指标           | 描述                       | 目标  |
+| -------------- | -------------------------- | ----- |
+| 分类准确度     | 正确分类的增强百分比       | > 90% |
+| 到PRD的时间    | 从请求到批准PRD的天数      | < 3天 |
+| 每次验证的问题 | PO发现的平均问题数         | < 3   |
+| QA周期         | 开发/QA往返的平均数        | < 2   |
+| 零回归         | 发布中没有回归错误的百分比 | 100%  |
 
 ---
 
@@ -720,45 +728,45 @@ stateDiagram-v2
 
 ### 工作流核心文件
 
-| 文件 | 目的 |
-|------|------|
-| `.aiox-core/development/workflows/brownfield-fullstack.yaml` | 工作流定义 |
-| `.aiox-core/development/tasks/brownfield-create-story.md` | 创建简单故事的任务 |
-| `.aiox-core/development/tasks/brownfield-create-epic.md` | 创建史诗的任务 |
-| `.aiox-core/development/tasks/document-project.md` | 记录现有项目的任务 |
-| `.aiox-core/development/tasks/shard-doc.md` | 分割文档的任务 |
-| `.aiox-core/development/tasks/create-brownfield-story.md` | 创建棕地故事的任务 |
-| `.aiox-core/development/tasks/create-next-story.md` | 从PRD创建故事的任务 |
-| `.aiox-core/product/checklists/po-master-checklist.md` | PO验证清单 |
+| 文件                                                         | 目的                |
+| ------------------------------------------------------------ | ------------------- |
+| `.aiox-core/development/workflows/brownfield-fullstack.yaml` | 工作流定义          |
+| `.aiox-core/development/tasks/brownfield-create-story.md`    | 创建简单故事的任务  |
+| `.aiox-core/development/tasks/brownfield-create-epic.md`     | 创建史诗的任务      |
+| `.aiox-core/development/tasks/document-project.md`           | 记录现有项目的任务  |
+| `.aiox-core/development/tasks/shard-doc.md`                  | 分割文档的任务      |
+| `.aiox-core/development/tasks/create-brownfield-story.md`    | 创建棕地故事的任务  |
+| `.aiox-core/development/tasks/create-next-story.md`          | 从PRD创建故事的任务 |
+| `.aiox-core/product/checklists/po-master-checklist.md`       | PO验证清单          |
 
 ### 代理文件
 
-| 文件 | 代理 |
-|------|------|
-| `.aiox-core/development/agents/analyst.md` | @analyst (Atlas) |
+| 文件                                         | 代理              |
+| -------------------------------------------- | ----------------- |
+| `.aiox-core/development/agents/analyst.md`   | @analyst (Atlas)  |
 | `.aiox-core/development/agents/architect.md` | @architect (Aria) |
-| `.aiox-core/development/agents/pm.md` | @pm (Morgan) |
-| `.aiox-core/development/agents/po.md` | @po (Pax) |
-| `.aiox-core/development/agents/sm.md` | @sm (River) |
-| `.aiox-core/development/agents/dev.md` | @dev (Dex) |
-| `.aiox-core/development/agents/qa.md` | @qa (Quinn) |
+| `.aiox-core/development/agents/pm.md`        | @pm (Morgan)      |
+| `.aiox-core/development/agents/po.md`        | @po (Pax)         |
+| `.aiox-core/development/agents/sm.md`        | @sm (River)       |
+| `.aiox-core/development/agents/dev.md`       | @dev (Dex)        |
+| `.aiox-core/development/agents/qa.md`        | @qa (Quinn)       |
 
 ### 相关文档
 
-| 文档 | 目的 |
-|------|------|
-| `docs/guides/BACKLOG-MANAGEMENT-SYSTEM.md` | 待办事项管理系统 |
-| `docs/guides/workflows/GREENFIELD-SERVICE-WORKFLOW.md` | 绿地项目工作流 |
-| `.aiox-core/working-in-the-brownfield.md` | 棕地工作指南 |
+| 文档                                                   | 目的             |
+| ------------------------------------------------------ | ---------------- |
+| `docs/guides/BACKLOG-MANAGEMENT-SYSTEM.md`             | 待办事项管理系统 |
+| `docs/guides/workflows/GREENFIELD-SERVICE-WORKFLOW.md` | 绿地项目工作流   |
+| `.aiox-core/working-in-the-brownfield.md`              | 棕地工作指南     |
 
 ---
 
 ## 变更日志
 
-| 日期 | 作者 | 描述 |
-|------|------|------|
+| 日期       | 作者     | 描述         |
+| ---------- | -------- | ------------ |
 | 2026-02-04 | @analyst | 初始文档创建 |
 
 ---
 
-*-- Atlas，将复杂性解码为清晰度*
+_-- Atlas，将复杂性解码为清晰度_

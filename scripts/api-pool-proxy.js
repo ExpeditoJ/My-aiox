@@ -133,7 +133,7 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
     }
 
     if (proxyRes.statusCode >= 400 && retryCount >= providers.length - 1) {
-      console.error(red(`[POOL] ALL PROVIDERS EXHAUSTED OR ERRORING. Returning fake AI response.`));
+      console.error(red('[POOL] ALL PROVIDERS EXHAUSTED OR ERRORING. Returning fake AI response.'));
       const fakeResponse = {
         id: 'chatcmpl-aiox-err',
         object: 'chat.completion',
@@ -143,10 +143,10 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
           {
             index: 0,
             message: { role: 'assistant', content: '❌ **AIOX Pool Failure:** Todas as APIs estão sobrecarregadas (Rate Limit). Espere um minuto antes de continuar.' },
-            finish_reason: 'stop'
-          }
+            finish_reason: 'stop',
+          },
         ],
-        usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 }
+        usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
       };
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(fakeResponse));
@@ -169,6 +169,41 @@ function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, re
   });
 
   proxyReq.write(payload);
+  proxyReq.end();
+}
+
+// ── Forward Binary Audio (STT) ──
+function forwardAudioRequest(providerObj, reqPath, reqMethod, bodyBuffer, contentType, res) {
+  const parsed = new URL(providerObj.base_url);
+  // Remove /v1/chat/completions suffix to get base path for audio
+  const basePath = parsed.pathname.replace(/\/v1$/, '');
+  const targetPath = basePath + '/v1/audio/transcriptions';
+
+  const options = {
+    hostname: parsed.hostname,
+    port: parsed.port || 443,
+    path: targetPath,
+    method: reqMethod,
+    headers: {
+      'Content-Type': contentType,
+      'Authorization': `Bearer ${providerObj.api_key}`,
+      'Content-Length': bodyBuffer.length,
+    },
+  };
+
+  const proto = parsed.protocol === 'http:' ? http : https;
+  const proxyReq = proto.request(options, proxyRes => {
+    res.writeHead(proxyRes.statusCode, proxyRes.headers);
+    proxyRes.pipe(res);
+  });
+
+  proxyReq.on('error', err => {
+    console.error(red(`[POOL-AUDIO] Erro de rede (${providerObj.id}):`), err.message);
+    res.statusCode = 502;
+    res.end(JSON.stringify({ error: 'Audio provider network error' }));
+  });
+
+  proxyReq.write(bodyBuffer);
   proxyReq.end();
 }
 
@@ -212,9 +247,26 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /v1/chat/completions (and others)
+  // POST handling
   if (req.method === 'POST') {
-    let body = [];
+    if (req.url.includes('/v1/audio/transcriptions')) {
+      // ── STT (Speech-to-Text): /v1/audio/transcriptions ──
+      const body = [];
+      req.on('data', chunk => body.push(chunk));
+      req.on('end', () => {
+        const bodyBuffer = Buffer.concat(body);
+        console.log(cyan(`[POOL-AUDIO] Recebido payload de áudio (${bodyBuffer.length} bytes)`));
+        
+        // Encontrar stt-provider ou usar o padrão se houver (Whisper local etc)
+        const p = providers.find(prov => prov.provider === 'whisper' || prov.id.includes('whisper')) || current();
+        
+        forwardAudioRequest(p, req.url, 'POST', bodyBuffer, req.headers['content-type'], res);
+      });
+      return;
+    }
+
+    // General JSON POST (completions, etc)
+    const body = [];
     req.on('data', chunk => body.push(chunk));
     req.on('end', () => {
       try {
@@ -225,13 +277,11 @@ const server = http.createServer((req, res) => {
         let p = current();
 
         // ── AIOX ESTRATÉGIA HÍBRIDA (Smart Demand Routing) ──
-        // Se a demanda de contexto (arquivos) estourar o limite local razoável,
-        // o roteador faz um hot-swap automático para nuvem apenas para esta request.
-        if (raw.length > 15000 && p.provider === 'ollama') {
+        if (raw.length > 128000 && p.provider === 'ollama') {
           const cloudP = providers.find(prov => prov.provider !== 'ollama' && prov.provider !== 'groq' && prov.enabled);
           if (cloudP) {
             console.log(cyan(`\n⚡ [HYBRID ROUTER] Demanda massiva detectada (${Math.round(raw.length/1024)} KB)!`));
-            console.log(cyan(`⚡ Bypass Local-First: Direcionando para Nuvem Gratuita (${cloudP.id}) provisoriamente.\n`));
+            console.log(cyan(`⚡ Bypass Local-First: Direcionando para Nuvem Gratuita (${cloudP.id}) provisoriamente para evitar lentidão.\n`));
             p = cloudP;
           }
         }
@@ -250,11 +300,12 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify({ error: 'Invalid JSON' }));
       }
     });
+
   } else {
     // Catch-all for any unhandled routes to prevent indefinite connection hanging
     console.log(red(`[POOL] Route not found: ${req.method} ${req.url}`));
     res.statusCode = 404;
-    res.end(JSON.stringify({ error: { message: "Route not found in AIOX proxy." } }));
+    res.end(JSON.stringify({ error: { message: 'Route not found in AIOX proxy.' } }));
   }
 });
 

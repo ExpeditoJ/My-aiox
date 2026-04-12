@@ -47,8 +47,8 @@ Después del análisis, se categorizan en:
 
 ### 1.2 Incorporación de Usuarios
 
-| Documento             | Ubicación               | Complejidad | Descripción                                |
-| --------------------- | ----------------------- | ----------- | ------------------------------------------ |
+| Documento           | Ubicación               | Complejidad | Descripción                                |
+| ------------------- | ----------------------- | ----------- | ------------------------------------------ |
 | `v4-quick-start.md` | `docs/en/installation/` | Simple      | Guía de inicio rápido para nuevos usuarios |
 
 **Esquema de contenido:**
@@ -103,8 +103,8 @@ Estos documentos deben **fusionarse en documentación existente**:
 
 | Documento Faltante                                | Fusionar En                                  | Acción                               |
 | ------------------------------------------------- | -------------------------------------------- | ------------------------------------ |
-| `installation/migration-migration-guide.md`          | `migration-guide.md`                         | Agregar sección v2.0→v4.0.4            |
-| `migration-migration-guide.md`                       | `migration-guide.md`                         | Igual que arriba                     |
+| `installation/migration-migration-guide.md`       | `migration-guide.md`                         | Agregar sección v2.0→v4.0.4          |
+| `migration-migration-guide.md`                    | `migration-guide.md`                         | Igual que arriba                     |
 | `coderabbit-integration-decisions.md`             | `architecture/adr/`                          | Crear nuevo ADR                      |
 | `technical-review-greeting-system-unification.md` | `guides/contextual-greeting-system-guide.md` | Agregar sección técnica              |
 | `hybrid-ops-pv-mind-integration.md`               | `architecture/high-level-architecture.md`    | Agregar sección de integración       |

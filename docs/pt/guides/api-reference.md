@@ -54,12 +54,12 @@ O AIOX fornece uma API unificada para interagir com agentes de IA especializados
 
 ### Princípios Fundamentais
 
-| Princípio                    | Descrição                                                         |
-| ---------------------------- | ----------------------------------------------------------------- |
-| **Task-First**               | Tudo é uma task. Requisições do usuário resolvem para execução de tasks. |
-| **Especialização de Agentes** | Cada agente tem um escopo e responsabilidade definidos            |
-| **Comandos Declarativos**    | Comandos descrevem intenção, agentes tratam a execução            |
-| **Aprimoramento Progressivo** | Comandos simples expandem para workflows complexos                |
+| Princípio                     | Descrição                                                                |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| **Task-First**                | Tudo é uma task. Requisições do usuário resolvem para execução de tasks. |
+| **Especialização de Agentes** | Cada agente tem um escopo e responsabilidade definidos                   |
+| **Comandos Declarativos**     | Comandos descrevem intenção, agentes tratam a execução                   |
+| **Aprimoramento Progressivo** | Comandos simples expandem para workflows complexos                       |
 
 ---
 
@@ -75,19 +75,19 @@ O AIOX fornece uma API unificada para interagir com agentes de IA especializados
 
 ### Agentes Disponíveis
 
-| Agent ID         | Nome   | Arquétipo    | Responsabilidade Principal                      |
-| ---------------- | ------ | ------------ | ----------------------------------------------- |
-| `@dev`           | Dex    | Builder      | Implementação de código, debugging, testes      |
-| `@qa`            | Quinn  | Guardian     | Garantia de qualidade, code review, testes      |
-| `@architect`     | Aria   | Visionary    | Arquitetura de sistema, design de API           |
-| `@pm`            | Morgan | Strategist   | Requisitos de produto, epics, estratégia        |
-| `@po`            | Pax    | Champion     | Gestão de backlog, critérios de aceitação       |
-| `@sm`            | River  | Facilitator  | Planejamento de sprint, criação de stories      |
-| `@analyst`       | Atlas  | Explorer     | Pesquisa de mercado, análise competitiva        |
-| `@data-engineer` | Dara   | Architect    | Schema de banco, migrations, queries            |
-| `@devops`        | Gage   | Optimizer    | CI/CD, deployment, operações git                |
-| `@ux-expert`     | Uma    | Creator      | Design UI/UX, wireframes                        |
-| `@aiox-master`   | Orion  | Orchestrator | Orquestração do framework, meta-operações       |
+| Agent ID         | Nome   | Arquétipo    | Responsabilidade Principal                 |
+| ---------------- | ------ | ------------ | ------------------------------------------ |
+| `@dev`           | Dex    | Builder      | Implementação de código, debugging, testes |
+| `@qa`            | Quinn  | Guardian     | Garantia de qualidade, code review, testes |
+| `@architect`     | Aria   | Visionary    | Arquitetura de sistema, design de API      |
+| `@pm`            | Morgan | Strategist   | Requisitos de produto, epics, estratégia   |
+| `@po`            | Pax    | Champion     | Gestão de backlog, critérios de aceitação  |
+| `@sm`            | River  | Facilitator  | Planejamento de sprint, criação de stories |
+| `@analyst`       | Atlas  | Explorer     | Pesquisa de mercado, análise competitiva   |
+| `@data-engineer` | Dara   | Architect    | Schema de banco, migrations, queries       |
+| `@devops`        | Gage   | Optimizer    | CI/CD, deployment, operações git           |
+| `@ux-expert`     | Uma    | Creator      | Design UI/UX, wireframes                   |
+| `@aiox-master`   | Orion  | Orchestrator | Orquestração do framework, meta-operações  |
 
 ### Comportamento de Ativação
 
@@ -129,13 +129,13 @@ Você pode ativar um agente e executar um comando em um único passo:
 
 Estes comandos estão disponíveis em todos os agentes:
 
-| Comando         | Descrição                                | Exemplo         |
-| --------------- | ---------------------------------------- | --------------- |
-| `*help`         | Mostrar todos os comandos disponíveis    | `*help`         |
-| `*guide`        | Mostrar guia de uso abrangente           | `*guide`        |
-| `*session-info` | Mostrar detalhes da sessão atual         | `*session-info` |
-| `*exit`         | Sair do modo de agente atual             | `*exit`         |
-| `*yolo`         | Alternar pulo de confirmações            | `*yolo`         |
+| Comando         | Descrição                             | Exemplo         |
+| --------------- | ------------------------------------- | --------------- |
+| `*help`         | Mostrar todos os comandos disponíveis | `*help`         |
+| `*guide`        | Mostrar guia de uso abrangente        | `*guide`        |
+| `*session-info` | Mostrar detalhes da sessão atual      | `*session-info` |
+| `*exit`         | Sair do modo de agente atual          | `*exit`         |
+| `*yolo`         | Alternar pulo de confirmações         | `*yolo`         |
 
 ### Sintaxe de Comandos
 
@@ -169,19 +169,19 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Desenvolvimento de Story:**
 
-| Comando                | Argumentos   | Descrição                                                    |
-| ---------------------- | ------------ | ------------------------------------------------------------ |
+| Comando                | Argumentos   | Descrição                                                        |
+| ---------------------- | ------------ | ---------------------------------------------------------------- |
 | `*develop`             | `{story-id}` | Implementar tasks da story (modos: yolo, interactive, preflight) |
-| `*develop-yolo`        | `{story-id}` | Modo de desenvolvimento autônomo                             |
-| `*develop-interactive` | `{story-id}` | Modo de desenvolvimento interativo (padrão)                  |
-| `*develop-preflight`   | `{story-id}` | Modo de planejamento antes da implementação                  |
+| `*develop-yolo`        | `{story-id}` | Modo de desenvolvimento autônomo                                 |
+| `*develop-interactive` | `{story-id}` | Modo de desenvolvimento interativo (padrão)                      |
+| `*develop-preflight`   | `{story-id}` | Modo de planejamento antes da implementação                      |
 
 **Execução de Subtask (ADE):**
 
-| Comando            | Argumentos     | Descrição                                                 |
-| ------------------ | -------------- | --------------------------------------------------------- |
+| Comando            | Argumentos     | Descrição                                                  |
+| ------------------ | -------------- | ---------------------------------------------------------- |
 | `*execute-subtask` | `{subtask-id}` | Executar subtask única (workflow Coder Agent de 13 passos) |
-| `*verify-subtask`  | `{subtask-id}` | Verificar conclusão de subtask                            |
+| `*verify-subtask`  | `{subtask-id}` | Verificar conclusão de subtask                             |
 
 **Sistema de Recuperação:**
 
@@ -192,13 +192,13 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Operações de Build:**
 
-| Comando             | Argumentos   | Descrição                                |
-| ------------------- | ------------ | ---------------------------------------- |
-| `*build`            | `{story-id}` | Pipeline de build autônomo completo      |
-| `*build-autonomous` | `{story-id}` | Iniciar loop de build autônomo           |
-| `*build-resume`     | `{story-id}` | Retomar build do checkpoint              |
-| `*build-status`     | `[--all]`    | Mostrar status do build                  |
-| `*build-log`        | `{story-id}` | Visualizar log de tentativas de build    |
+| Comando             | Argumentos   | Descrição                             |
+| ------------------- | ------------ | ------------------------------------- |
+| `*build`            | `{story-id}` | Pipeline de build autônomo completo   |
+| `*build-autonomous` | `{story-id}` | Iniciar loop de build autônomo        |
+| `*build-resume`     | `{story-id}` | Retomar build do checkpoint           |
+| `*build-status`     | `[--all]`    | Mostrar status do build               |
+| `*build-log`        | `{story-id}` | Visualizar log de tentativas de build |
 
 **Qualidade & Débito:**
 
@@ -219,12 +219,12 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Camada de Memória:**
 
-| Comando             | Argumentos                      | Descrição                      |
-| ------------------- | ------------------------------- | ------------------------------ |
-| `*capture-insights` | -                               | Capturar insights da sessão    |
-| `*list-gotchas`     | -                               | Listar gotchas conhecidos      |
-| `*gotcha`           | `{title} - {description}`       | Adicionar gotcha manualmente   |
-| `*gotchas`          | `[--category X] [--severity Y]` | Listar e pesquisar gotchas     |
+| Comando             | Argumentos                      | Descrição                    |
+| ------------------- | ------------------------------- | ---------------------------- |
+| `*capture-insights` | -                               | Capturar insights da sessão  |
+| `*list-gotchas`     | -                               | Listar gotchas conhecidos    |
+| `*gotcha`           | `{title} - {description}`       | Adicionar gotcha manualmente |
+| `*gotchas`          | `[--category X] [--severity Y]` | Listar e pesquisar gotchas   |
 
 ---
 
@@ -240,35 +240,35 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Quality Gates:**
 
-| Comando         | Argumentos   | Descrição                                   |
-| --------------- | ------------ | ------------------------------------------- |
-| `*gate`         | `{story-id}` | Criar decisão de quality gate               |
-| `*nfr-assess`   | `{story-id}` | Validar requisitos não-funcionais           |
-| `*risk-profile` | `{story-id}` | Gerar matriz de avaliação de riscos         |
+| Comando         | Argumentos   | Descrição                           |
+| --------------- | ------------ | ----------------------------------- |
+| `*gate`         | `{story-id}` | Criar decisão de quality gate       |
+| `*nfr-assess`   | `{story-id}` | Validar requisitos não-funcionais   |
+| `*risk-profile` | `{story-id}` | Gerar matriz de avaliação de riscos |
 
 **Validação Aprimorada:**
 
-| Comando                | Argumentos   | Descrição                                            |
-| ---------------------- | ------------ | ---------------------------------------------------- |
-| `*validate-libraries`  | `{story-id}` | Validar uso de bibliotecas de terceiros              |
-| `*security-check`      | `{story-id}` | Executar scan de vulnerabilidades de 8 pontos        |
-| `*validate-migrations` | `{story-id}` | Validar migrations de banco de dados                 |
-| `*evidence-check`      | `{story-id}` | Verificar requisitos de QA baseados em evidências    |
-| `*console-check`       | `{story-id}` | Detecção de erros no console do navegador            |
+| Comando                | Argumentos   | Descrição                                         |
+| ---------------------- | ------------ | ------------------------------------------------- |
+| `*validate-libraries`  | `{story-id}` | Validar uso de bibliotecas de terceiros           |
+| `*security-check`      | `{story-id}` | Executar scan de vulnerabilidades de 8 pontos     |
+| `*validate-migrations` | `{story-id}` | Validar migrations de banco de dados              |
+| `*evidence-check`      | `{story-id}` | Verificar requisitos de QA baseados em evidências |
+| `*console-check`       | `{story-id}` | Detecção de erros no console do navegador         |
 
 **Solicitações de Correção:**
 
-| Comando               | Argumentos   | Descrição                                |
-| --------------------- | ------------ | ---------------------------------------- |
-| `*create-fix-request` | `{story-id}` | Gerar QA_FIX_REQUEST.md para @dev        |
+| Comando               | Argumentos   | Descrição                         |
+| --------------------- | ------------ | --------------------------------- |
+| `*create-fix-request` | `{story-id}` | Gerar QA_FIX_REQUEST.md para @dev |
 
 **Estratégia de Testes:**
 
-| Comando          | Argumentos   | Descrição                                           |
-| ---------------- | ------------ | --------------------------------------------------- |
-| `*test-design`   | `{story-id}` | Criar cenários de teste abrangentes                 |
-| `*trace`         | `{story-id}` | Mapear requisitos para testes (Given-When-Then)     |
-| `*critique-spec` | `{story-id}` | Revisar especificação para completude               |
+| Comando          | Argumentos   | Descrição                                       |
+| ---------------- | ------------ | ----------------------------------------------- |
+| `*test-design`   | `{story-id}` | Criar cenários de teste abrangentes             |
+| `*trace`         | `{story-id}` | Mapear requisitos para testes (Given-When-Then) |
+| `*critique-spec` | `{story-id}` | Revisar especificação para completude           |
 
 ---
 
@@ -276,21 +276,21 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Design de Arquitetura:**
 
-| Comando                           | Argumentos | Descrição                                |
-| --------------------------------- | ---------- | ---------------------------------------- |
-| `*create-full-stack-architecture` | -          | Arquitetura completa do sistema          |
-| `*create-backend-architecture`    | -          | Design de arquitetura backend            |
-| `*create-front-end-architecture`  | -          | Design de arquitetura frontend           |
-| `*create-brownfield-architecture` | -          | Arquitetura para projetos existentes     |
+| Comando                           | Argumentos | Descrição                            |
+| --------------------------------- | ---------- | ------------------------------------ |
+| `*create-full-stack-architecture` | -          | Arquitetura completa do sistema      |
+| `*create-backend-architecture`    | -          | Design de arquitetura backend        |
+| `*create-front-end-architecture`  | -          | Design de arquitetura frontend       |
+| `*create-brownfield-architecture` | -          | Arquitetura para projetos existentes |
 
 **Documentação & Análise:**
 
-| Comando                      | Argumentos    | Descrição                               |
-| ---------------------------- | ------------- | --------------------------------------- |
-| `*document-project`          | -             | Gerar documentação do projeto           |
-| `*execute-checklist`         | `{checklist}` | Executar checklist de arquitetura       |
-| `*research`                  | `{topic}`     | Gerar prompt de pesquisa profunda       |
-| `*analyze-project-structure` | -             | Analisar projeto para novas features    |
+| Comando                      | Argumentos    | Descrição                            |
+| ---------------------------- | ------------- | ------------------------------------ |
+| `*document-project`          | -             | Gerar documentação do projeto        |
+| `*execute-checklist`         | `{checklist}` | Executar checklist de arquitetura    |
+| `*research`                  | `{topic}`     | Gerar prompt de pesquisa profunda    |
+| `*analyze-project-structure` | -             | Analisar projeto para novas features |
 
 **Pipeline ADE:**
 
@@ -307,26 +307,26 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Criação de Documentos:**
 
-| Comando                  | Argumentos | Descrição                                  |
-| ------------------------ | ---------- | ------------------------------------------ |
-| `*create-prd`            | -          | Criar documento de requisitos de produto   |
-| `*create-brownfield-prd` | -          | Criar PRD para projetos existentes         |
-| `*create-epic`           | -          | Criar epic para brownfield                 |
-| `*create-story`          | -          | Criar user story                           |
+| Comando                  | Argumentos | Descrição                                |
+| ------------------------ | ---------- | ---------------------------------------- |
+| `*create-prd`            | -          | Criar documento de requisitos de produto |
+| `*create-brownfield-prd` | -          | Criar PRD para projetos existentes       |
+| `*create-epic`           | -          | Criar epic para brownfield               |
+| `*create-story`          | -          | Criar user story                         |
 
 **Operações de Documentação:**
 
-| Comando      | Argumentos | Descrição                         |
-| ------------ | ---------- | --------------------------------- |
-| `*doc-out`   | -          | Produzir documento completo       |
-| `*shard-prd` | -          | Dividir PRD em partes menores     |
+| Comando      | Argumentos | Descrição                     |
+| ------------ | ---------- | ----------------------------- |
+| `*doc-out`   | -          | Produzir documento completo   |
+| `*shard-prd` | -          | Dividir PRD em partes menores |
 
 **Pipeline ADE:**
 
-| Comando                | Argumentos | Descrição                                  |
-| ---------------------- | ---------- | ------------------------------------------ |
-| `*gather-requirements` | -          | Levantar requisitos com stakeholders       |
-| `*write-spec`          | -          | Gerar especificação formal                 |
+| Comando                | Argumentos | Descrição                            |
+| ---------------------- | ---------- | ------------------------------------ |
+| `*gather-requirements` | -          | Levantar requisitos com stakeholders |
+| `*write-spec`          | -          | Gerar especificação formal           |
 
 ---
 
@@ -334,11 +334,11 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Gestão de Stories:**
 
-| Comando              | Argumentos   | Descrição                          |
-| -------------------- | ------------ | ---------------------------------- |
-| `*create-next-story` | -            | Criar próxima user story           |
-| `*validate-story`    | `{story-id}` | Validar completude da story        |
-| `*manage-backlog`    | -            | Gerenciar backlog de stories       |
+| Comando              | Argumentos   | Descrição                    |
+| -------------------- | ------------ | ---------------------------- |
+| `*create-next-story` | -            | Criar próxima user story     |
+| `*validate-story`    | `{story-id}` | Validar completude da story  |
+| `*manage-backlog`    | -            | Gerenciar backlog de stories |
 
 ---
 
@@ -346,18 +346,18 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Pesquisa:**
 
-| Comando                 | Argumentos  | Descrição                                 |
-| ----------------------- | ----------- | ----------------------------------------- |
-| `*brainstorm`           | `{topic}`   | Facilitar sessão de brainstorming         |
-| `*research-deps`        | `{topic}`   | Pesquisar dependências e restrições       |
-| `*competitive-analysis` | `{company}` | Realizar análise competitiva              |
-| `*market-research`      | `{topic}`   | Conduzir pesquisa de mercado              |
+| Comando                 | Argumentos  | Descrição                           |
+| ----------------------- | ----------- | ----------------------------------- |
+| `*brainstorm`           | `{topic}`   | Facilitar sessão de brainstorming   |
+| `*research-deps`        | `{topic}`   | Pesquisar dependências e restrições |
+| `*competitive-analysis` | `{company}` | Realizar análise competitiva        |
+| `*market-research`      | `{topic}`   | Conduzir pesquisa de mercado        |
 
 **Pipeline ADE:**
 
-| Comando             | Argumentos | Descrição                              |
-| ------------------- | ---------- | -------------------------------------- |
-| `*extract-patterns` | -          | Extrair padrões de código do codebase  |
+| Comando             | Argumentos | Descrição                             |
+| ------------------- | ---------- | ------------------------------------- |
+| `*extract-patterns` | -          | Extrair padrões de código do codebase |
 
 ---
 
@@ -365,29 +365,29 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Operações Git:**
 
-| Comando      | Argumentos    | Descrição                    |
-| ------------ | ------------- | ---------------------------- |
+| Comando      | Argumentos    | Descrição                      |
+| ------------ | ------------- | ------------------------------ |
 | `*push`      | `[--force]`   | Push de alterações para remote |
-| `*create-pr` | `{title}`     | Criar pull request           |
-| `*merge-pr`  | `{pr-number}` | Fazer merge de pull request  |
+| `*create-pr` | `{title}`     | Criar pull request             |
+| `*merge-pr`  | `{pr-number}` | Fazer merge de pull request    |
 
 **Gestão de Worktree:**
 
-| Comando              | Argumentos   | Descrição                        |
-| -------------------- | ------------ | -------------------------------- |
-| `*create-worktree`   | `{story-id}` | Criar Git worktree isolado       |
-| `*list-worktrees`    | -            | Listar worktrees ativos          |
+| Comando              | Argumentos   | Descrição                         |
+| -------------------- | ------------ | --------------------------------- |
+| `*create-worktree`   | `{story-id}` | Criar Git worktree isolado        |
+| `*list-worktrees`    | -            | Listar worktrees ativos           |
 | `*merge-worktree`    | `{story-id}` | Fazer merge do worktree para main |
-| `*cleanup-worktrees` | -            | Remover worktrees obsoletos      |
+| `*cleanup-worktrees` | -            | Remover worktrees obsoletos       |
 
 **Gestão de Migração:**
 
-| Comando             | Argumentos   | Descrição                        |
-| ------------------- | ------------ | -------------------------------- |
-| `*inventory-assets` | -            | Gerar inventário de migração     |
-| `*analyze-paths`    | -            | Analisar dependências de paths   |
-| `*migrate-agent`    | `{agent-id}` | Migrar agente único              |
-| `*migrate-batch`    | -            | Migrar todos os agentes em lote  |
+| Comando             | Argumentos   | Descrição                       |
+| ------------------- | ------------ | ------------------------------- |
+| `*inventory-assets` | -            | Gerar inventário de migração    |
+| `*analyze-paths`    | -            | Analisar dependências de paths  |
+| `*migrate-agent`    | `{agent-id}` | Migrar agente único             |
+| `*migrate-batch`    | -            | Migrar todos os agentes em lote |
 
 ---
 
@@ -395,36 +395,36 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 **Desenvolvimento do Framework:**
 
-| Comando                | Argumentos      | Descrição                                           |
-| ---------------------- | --------------- | --------------------------------------------------- |
-| `*create`              | `{type} {name}` | Criar componente AIOX (agent/task/workflow)         |
-| `*modify`              | `{type} {name}` | Modificar componente existente                      |
-| `*validate-component`  | `{name}`        | Validar segurança do componente                     |
-| `*deprecate-component` | `{name}`        | Depreciar com caminho de migração                   |
+| Comando                | Argumentos      | Descrição                                   |
+| ---------------------- | --------------- | ------------------------------------------- |
+| `*create`              | `{type} {name}` | Criar componente AIOX (agent/task/workflow) |
+| `*modify`              | `{type} {name}` | Modificar componente existente              |
+| `*validate-component`  | `{name}`        | Validar segurança do componente             |
+| `*deprecate-component` | `{name}`        | Depreciar com caminho de migração           |
 
 **Execução de Tasks:**
 
-| Comando              | Argumentos        | Descrição                   |
-| -------------------- | ----------------- | --------------------------- |
-| `*task`              | `{task-name}`     | Executar task específica    |
-| `*workflow`          | `{workflow-name}` | Iniciar workflow            |
-| `*execute-checklist` | `{checklist}`     | Executar checklist          |
+| Comando              | Argumentos        | Descrição                |
+| -------------------- | ----------------- | ------------------------ |
+| `*task`              | `{task-name}`     | Executar task específica |
+| `*workflow`          | `{workflow-name}` | Iniciar workflow         |
+| `*execute-checklist` | `{checklist}`     | Executar checklist       |
 
 **Planejamento:**
 
-| Comando | Argumentos                 | Descrição                                        |
-| ------- | -------------------------- | ------------------------------------------------ |
-| `*plan` | `[create\|status\|update]` | Planejamento de workflow                         |
-| `*kb`   | -                          | Alternar modo KB (conhecimento do AIOX Method)   |
+| Comando | Argumentos                 | Descrição                                      |
+| ------- | -------------------------- | ---------------------------------------------- |
+| `*plan` | `[create\|status\|update]` | Planejamento de workflow                       |
+| `*kb`   | -                          | Alternar modo KB (conhecimento do AIOX Method) |
 
 **Operações de Documentos:**
 
-| Comando              | Argumentos     | Descrição                         |
-| -------------------- | -------------- | --------------------------------- |
-| `*create-doc`        | `{template}`   | Criar documento de template       |
-| `*create-next-story` | -              | Criar próxima user story          |
-| `*doc-out`           | -              | Produzir documento completo       |
-| `*shard-doc`         | `{doc} {dest}` | Dividir documento em partes       |
+| Comando              | Argumentos     | Descrição                   |
+| -------------------- | -------------- | --------------------------- |
+| `*create-doc`        | `{template}`   | Criar documento de template |
+| `*create-next-story` | -              | Criar próxima user story    |
+| `*doc-out`           | -              | Produzir documento completo |
+| `*shard-doc`         | `{doc} {dest}` | Dividir documento em partes |
 
 ---
 
@@ -432,14 +432,14 @@ Execução de task com argumentos: { story: "story-1.2.3" }
 
 ### Workflows Disponíveis
 
-| Workflow               | Descrição                    | Agentes Envolvidos   |
-| ---------------------- | ---------------------------- | -------------------- |
-| `greenfield-fullstack` | Novo projeto full-stack      | Todos os agentes     |
-| `greenfield-service`   | Novo microserviço            | architect, dev, qa   |
-| `greenfield-ui`        | Novo projeto frontend        | architect, ux, dev   |
-| `brownfield-fullstack` | Adicionar feature a existente | architect, dev, qa   |
-| `brownfield-service`   | Estender serviço existente   | dev, qa              |
-| `brownfield-ui`        | Estender frontend existente  | ux, dev, qa          |
+| Workflow               | Descrição                     | Agentes Envolvidos |
+| ---------------------- | ----------------------------- | ------------------ |
+| `greenfield-fullstack` | Novo projeto full-stack       | Todos os agentes   |
+| `greenfield-service`   | Novo microserviço             | architect, dev, qa |
+| `greenfield-ui`        | Novo projeto frontend         | architect, ux, dev |
+| `brownfield-fullstack` | Adicionar feature a existente | architect, dev, qa |
+| `brownfield-service`   | Estender serviço existente    | dev, qa            |
+| `brownfield-ui`        | Estender frontend existente   | ux, dev, qa        |
 
 ### Execução de Workflow
 
@@ -482,36 +482,36 @@ phases:
 
 ### Opções Globais
 
-| Opção       | Tipo    | Descrição                       |
-| ----------- | ------- | ------------------------------- |
-| `--verbose` | boolean | Habilitar saída detalhada       |
-| `--dry-run` | boolean | Visualizar sem executar         |
-| `--force`   | boolean | Forçar operação                 |
-| `--help`    | boolean | Mostrar ajuda do comando        |
+| Opção       | Tipo    | Descrição                 |
+| ----------- | ------- | ------------------------- |
+| `--verbose` | boolean | Habilitar saída detalhada |
+| `--dry-run` | boolean | Visualizar sem executar   |
+| `--force`   | boolean | Forçar operação           |
+| `--help`    | boolean | Mostrar ajuda do comando  |
 
 ### Parâmetros de Story
 
-| Parâmetro    | Tipo   | Descrição               | Exemplo                      |
-| ------------ | ------ | ----------------------- | ---------------------------- |
-| `{story-id}` | string | Identificador da story  | `story-1.2.3`, `STORY-42`    |
-| `--status`   | enum   | Filtro de status        | `draft`, `ready`, `complete` |
-| `--epic`     | string | Filtrar por epic        | `--epic=AUTH`                |
+| Parâmetro    | Tipo   | Descrição              | Exemplo                      |
+| ------------ | ------ | ---------------------- | ---------------------------- |
+| `{story-id}` | string | Identificador da story | `story-1.2.3`, `STORY-42`    |
+| `--status`   | enum   | Filtro de status       | `draft`, `ready`, `complete` |
+| `--epic`     | string | Filtrar por epic       | `--epic=AUTH`                |
 
 ### Parâmetros de Build
 
-| Parâmetro      | Tipo   | Descrição                  | Exemplo                            |
-| -------------- | ------ | -------------------------- | ---------------------------------- |
-| `--mode`       | enum   | Modo de build              | `yolo`, `interactive`, `preflight` |
-| `--retry`      | number | Máximo de tentativas       | `--retry=3`                        |
-| `--checkpoint` | string | Retomar de checkpoint      | `--checkpoint=build-001`           |
+| Parâmetro      | Tipo   | Descrição             | Exemplo                            |
+| -------------- | ------ | --------------------- | ---------------------------------- |
+| `--mode`       | enum   | Modo de build         | `yolo`, `interactive`, `preflight` |
+| `--retry`      | number | Máximo de tentativas  | `--retry=3`                        |
+| `--checkpoint` | string | Retomar de checkpoint | `--checkpoint=build-001`           |
 
 ### Parâmetros de Review
 
-| Parâmetro    | Tipo   | Descrição              | Exemplo                      |
-| ------------ | ------ | ---------------------- | ---------------------------- |
-| `--scope`    | enum   | Escopo do review       | `uncommitted`, `committed`   |
-| `--base`     | string | Branch base para diff  | `--base=main`                |
-| `--severity` | enum   | Severidade mínima      | `critical`, `high`, `medium` |
+| Parâmetro    | Tipo   | Descrição             | Exemplo                      |
+| ------------ | ------ | --------------------- | ---------------------------- |
+| `--scope`    | enum   | Escopo do review      | `uncommitted`, `committed`   |
+| `--base`     | string | Branch base para diff | `--base=main`                |
+| `--severity` | enum   | Severidade mínima     | `critical`, `high`, `medium` |
 
 ---
 
@@ -519,25 +519,25 @@ phases:
 
 ### Códigos de Retorno Padrão
 
-| Código | Status  | Descrição                                           |
-| ------ | ------- | --------------------------------------------------- |
-| `0`    | SUCCESS | Operação completada com sucesso                     |
-| `1`    | ERROR   | Erro geral                                          |
-| `2`    | BLOCKED | Operação bloqueada (requer aprovação)               |
-| `3`    | HALTED  | Operação parada (requer intervenção do usuário)     |
-| `4`    | SKIP    | Operação pulada                                     |
-| `5`    | TIMEOUT | Operação expirou                                    |
+| Código | Status  | Descrição                                       |
+| ------ | ------- | ----------------------------------------------- |
+| `0`    | SUCCESS | Operação completada com sucesso                 |
+| `1`    | ERROR   | Erro geral                                      |
+| `2`    | BLOCKED | Operação bloqueada (requer aprovação)           |
+| `3`    | HALTED  | Operação parada (requer intervenção do usuário) |
+| `4`    | SKIP    | Operação pulada                                 |
+| `5`    | TIMEOUT | Operação expirou                                |
 
 ### Categorias de Erro
 
-| Categoria            | Descrição                       | Resolução                                     |
-| -------------------- | ------------------------------- | --------------------------------------------- |
-| `AGENT_NOT_FOUND`    | Definição de agente ausente     | Verificar `.aiox-core/development/agents/`    |
-| `TASK_NOT_FOUND`     | Definição de task ausente       | Verificar dependências do agente              |
-| `STORY_NOT_FOUND`    | Arquivo de story não encontrado | Verificar caminho `docs/stories/`             |
-| `VALIDATION_FAILED`  | Pré-condição não atendida       | Verificar pré-requisitos                      |
-| `PERMISSION_DENIED`  | Operação não permitida          | Verificar restrições do agente                |
-| `DEPENDENCY_MISSING` | Dependência necessária ausente  | Instalar ou configurar dependência            |
+| Categoria            | Descrição                       | Resolução                                  |
+| -------------------- | ------------------------------- | ------------------------------------------ |
+| `AGENT_NOT_FOUND`    | Definição de agente ausente     | Verificar `.aiox-core/development/agents/` |
+| `TASK_NOT_FOUND`     | Definição de task ausente       | Verificar dependências do agente           |
+| `STORY_NOT_FOUND`    | Arquivo de story não encontrado | Verificar caminho `docs/stories/`          |
+| `VALIDATION_FAILED`  | Pré-condição não atendida       | Verificar pré-requisitos                   |
+| `PERMISSION_DENIED`  | Operação não permitida          | Verificar restrições do agente             |
+| `DEPENDENCY_MISSING` | Dependência necessária ausente  | Instalar ou configurar dependência         |
 
 ### Formato de Resposta de Erro
 
@@ -557,12 +557,12 @@ phases:
 
 ### Decisões de Quality Gate
 
-| Decisão    | Descrição                          | Ação                                      |
-| ---------- | ---------------------------------- | ----------------------------------------- |
-| `PASS`     | Todos os critérios atendidos       | Prosseguir para próxima fase              |
-| `CONCERNS` | Problemas menores encontrados      | Documentar e prosseguir com cautela       |
-| `FAIL`     | Problemas críticos encontrados     | Deve corrigir antes de prosseguir         |
-| `WAIVED`   | Problemas reconhecidos, prosseguindo | Documentar motivo da dispensa            |
+| Decisão    | Descrição                            | Ação                                |
+| ---------- | ------------------------------------ | ----------------------------------- |
+| `PASS`     | Todos os critérios atendidos         | Prosseguir para próxima fase        |
+| `CONCERNS` | Problemas menores encontrados        | Documentar e prosseguir com cautela |
+| `FAIL`     | Problemas críticos encontrados       | Deve corrigir antes de prosseguir   |
+| `WAIVED`   | Problemas reconhecidos, prosseguindo | Documentar motivo da dispensa       |
 
 ---
 
@@ -570,12 +570,12 @@ phases:
 
 ### IDEs Suportadas
 
-| IDE         | Diretório    | Formato           | Nível de Suporte |
-| ----------- | ------------ | ----------------- | ---------------- |
-| Claude Code | `.claude/`   | Markdown          | Completo         |
-| Cursor      | `.cursor/`   | MDC (frontmatter) | Completo         |
-| VS Code     | `.vscode/`   | JSON              | Parcial          |
-| Gemini      | `.gemini/`   | Markdown          | Básico           |
+| IDE         | Diretório  | Formato           | Nível de Suporte |
+| ----------- | ---------- | ----------------- | ---------------- |
+| Claude Code | `.claude/` | Markdown          | Completo         |
+| Cursor      | `.cursor/` | MDC (frontmatter) | Completo         |
+| VS Code     | `.vscode/` | JSON              | Parcial          |
+| Gemini      | `.gemini/` | Markdown          | Básico           |
 
 ### Configuração de IDE
 
@@ -665,7 +665,6 @@ alwaysApply: false
 ---
 # Agent content...
 ```
-
 
 ```
 └── agents/

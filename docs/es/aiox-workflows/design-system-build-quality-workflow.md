@@ -25,11 +25,11 @@ Workflow para construccion de design system, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @ux-design-expert | Lider de diseno |
-| @dev | Implementacion de componentes |
-| @qa | Validacion de calidad |
+| Agente            | Rol                           |
+| ----------------- | ----------------------------- |
+| @ux-design-expert | Lider de diseno               |
+| @dev              | Implementacion de componentes |
+| @qa               | Validacion de calidad         |
 
 ## Ver Mas
 
@@ -37,4 +37,4 @@ Workflow para construccion de design system, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

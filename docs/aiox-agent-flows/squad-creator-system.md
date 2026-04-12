@@ -36,69 +36,69 @@ Este sistema implementa a **arquitetura task-first** do AIOX, onde tasks sao o p
 
 ### Arquivos Core de Definição do Agente
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/development/agents/squad-creator.md` | Definição core do agente Squad Creator |
-| `.claude/commands/AIOX/agents/squad-creator.md` | Comando Claude Code para ativar @squad-creator |
+| Arquivo                                          | Propósito                                      |
+| ------------------------------------------------ | ---------------------------------------------- |
+| `.aiox-core/development/agents/squad-creator.md` | Definição core do agente Squad Creator         |
+| `.claude/commands/AIOX/agents/squad-creator.md`  | Comando Claude Code para ativar @squad-creator |
 
 ### Arquivos de Tasks do @squad-creator
 
-| Arquivo | Comando | Propósito | Status |
-|---------|---------|-----------|--------|
-| `.aiox-core/development/tasks/squad-creator-create.md` | `*create-squad` | Cria novo squad com estrutura completa | Ativo |
-| `.aiox-core/development/tasks/squad-creator-design.md` | `*design-squad` | Analisa documentacao e gera blueprint | Ativo |
-| `.aiox-core/development/tasks/squad-creator-validate.md` | `*validate-squad` | Valida squad contra schema e padroes | Ativo |
-| `.aiox-core/development/tasks/squad-creator-list.md` | `*list-squads` | Lista squads locais | Ativo |
-| `.aiox-core/development/tasks/squad-creator-analyze.md` | `*analyze-squad` | Analisa estrutura e sugere melhorias | Ativo |
-| `.aiox-core/development/tasks/squad-creator-extend.md` | `*extend-squad` | Estende squad com novos componentes | Ativo |
-| `.aiox-core/development/tasks/squad-creator-migrate.md` | `*migrate-to-v2` | Migra squad para formato v2 | Ativo |
-| `.aiox-core/development/tasks/squad-generate-skills.md` | `*generate-skills` | Gera skills de conhecimento do squad | Ativo |
-| `.aiox-core/development/tasks/squad-generate-workflow.md` | `*generate-workflow` | Gera workflow de orquestracao YAML | Ativo |
-| `.aiox-core/development/tasks/squad-creator-download.md` | `*download-squad` | Baixa squad do repositorio publico | Placeholder (Sprint 8) |
-| `.aiox-core/development/tasks/squad-creator-publish.md` | `*publish-squad` | Publica squad no aiox-squads | Placeholder (Sprint 8) |
-| `.aiox-core/development/tasks/squad-creator-sync-synkra.md` | `*sync-squad-synkra` | Sincroniza squad com Synkra API | Placeholder (Sprint 8) |
+| Arquivo                                                     | Comando              | Propósito                              | Status                 |
+| ----------------------------------------------------------- | -------------------- | -------------------------------------- | ---------------------- |
+| `.aiox-core/development/tasks/squad-creator-create.md`      | `*create-squad`      | Cria novo squad com estrutura completa | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-design.md`      | `*design-squad`      | Analisa documentacao e gera blueprint  | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-validate.md`    | `*validate-squad`    | Valida squad contra schema e padroes   | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-list.md`        | `*list-squads`       | Lista squads locais                    | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-analyze.md`     | `*analyze-squad`     | Analisa estrutura e sugere melhorias   | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-extend.md`      | `*extend-squad`      | Estende squad com novos componentes    | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-migrate.md`     | `*migrate-to-v2`     | Migra squad para formato v2            | Ativo                  |
+| `.aiox-core/development/tasks/squad-generate-skills.md`     | `*generate-skills`   | Gera skills de conhecimento do squad   | Ativo                  |
+| `.aiox-core/development/tasks/squad-generate-workflow.md`   | `*generate-workflow` | Gera workflow de orquestracao YAML     | Ativo                  |
+| `.aiox-core/development/tasks/squad-creator-download.md`    | `*download-squad`    | Baixa squad do repositorio publico     | Placeholder (Sprint 8) |
+| `.aiox-core/development/tasks/squad-creator-publish.md`     | `*publish-squad`     | Publica squad no aiox-squads           | Placeholder (Sprint 8) |
+| `.aiox-core/development/tasks/squad-creator-sync-synkra.md` | `*sync-squad-synkra` | Sincroniza squad com Synkra API        | Placeholder (Sprint 8) |
 
 ### Arquivos de Tasks Relacionadas
 
-| Arquivo | Comando | Propósito |
-|---------|---------|-----------|
-| `.aiox-core/development/tasks/create-agent.md` | `*create-agent` | Cria definicao de agente individual |
-| `.aiox-core/development/tasks/create-task.md` | `*create-task` | Cria arquivo de task individual |
-| `.aiox-core/development/tasks/create-workflow.md` | `*create-workflow` | Cria workflow de orquestracao |
+| Arquivo                                           | Comando            | Propósito                           |
+| ------------------------------------------------- | ------------------ | ----------------------------------- |
+| `.aiox-core/development/tasks/create-agent.md`    | `*create-agent`    | Cria definicao de agente individual |
+| `.aiox-core/development/tasks/create-task.md`     | `*create-task`     | Cria arquivo de task individual     |
+| `.aiox-core/development/tasks/create-workflow.md` | `*create-workflow` | Cria workflow de orquestracao       |
 
 ### Scripts de Suporte
 
-| Arquivo | Classe/Funcao | Propósito |
-|---------|---------------|-----------|
-| `.aiox-core/development/scripts/squad/squad-generator.js` | `SquadGenerator` | Gera estrutura de squad completa |
-| `.aiox-core/development/scripts/squad/squad-validator.js` | `SquadValidator` | Valida squad contra schema e padroes |
-| `.aiox-core/development/scripts/squad/squad-loader.js` | `SquadLoader` | Carrega e resolve squads |
-| `.aiox-core/development/scripts/squad/squad-designer.js` | `SquadDesigner` | Analisa docs e gera blueprints |
-| `.aiox-core/development/scripts/squad/squad-analyzer.js` | `SquadAnalyzer` | Analisa estrutura de squads |
-| `.aiox-core/development/scripts/squad/squad-extender.js` | `SquadExtender` | Estende squads existentes |
-| `.aiox-core/development/scripts/squad/squad-migrator.js` | `SquadMigrator` | Migra squads para v2 |
-| `.aiox-core/development/scripts/squad/squad-downloader.js` | `SquadDownloader` | Baixa squads do repositorio |
-| `.aiox-core/development/scripts/squad/squad-publisher.js` | `SquadPublisher` | Publica squads |
+| Arquivo                                                    | Classe/Funcao     | Propósito                            |
+| ---------------------------------------------------------- | ----------------- | ------------------------------------ |
+| `.aiox-core/development/scripts/squad/squad-generator.js`  | `SquadGenerator`  | Gera estrutura de squad completa     |
+| `.aiox-core/development/scripts/squad/squad-validator.js`  | `SquadValidator`  | Valida squad contra schema e padroes |
+| `.aiox-core/development/scripts/squad/squad-loader.js`     | `SquadLoader`     | Carrega e resolve squads             |
+| `.aiox-core/development/scripts/squad/squad-designer.js`   | `SquadDesigner`   | Analisa docs e gera blueprints       |
+| `.aiox-core/development/scripts/squad/squad-analyzer.js`   | `SquadAnalyzer`   | Analisa estrutura de squads          |
+| `.aiox-core/development/scripts/squad/squad-extender.js`   | `SquadExtender`   | Estende squads existentes            |
+| `.aiox-core/development/scripts/squad/squad-migrator.js`   | `SquadMigrator`   | Migra squads para v2                 |
+| `.aiox-core/development/scripts/squad/squad-downloader.js` | `SquadDownloader` | Baixa squads do repositorio          |
+| `.aiox-core/development/scripts/squad/squad-publisher.js`  | `SquadPublisher`  | Publica squads                       |
 
 ### Schemas JSON
 
-| Arquivo | Propósito |
-|---------|-----------|
-| `.aiox-core/schemas/squad-schema.json` | Schema de validação do squad.yaml |
+| Arquivo                                       | Propósito                         |
+| --------------------------------------------- | --------------------------------- |
+| `.aiox-core/schemas/squad-schema.json`        | Schema de validação do squad.yaml |
 | `.aiox-core/schemas/squad-design-schema.json` | Schema de validação de blueprints |
 
 ### Arquivos de Output (Squads Gerados)
 
-| Diretorio | Propósito |
-|-----------|-----------|
-| `./squads/{squad-name}/` | Diretorio raiz do squad |
-| `./squads/{squad-name}/squad.yaml` | Manifest do squad (obrigatorio) |
-| `./squads/{squad-name}/README.md` | Documentação do squad |
-| `./squads/{squad-name}/agents/` | Definicoes de agentes |
-| `./squads/{squad-name}/tasks/` | Definicoes de tasks |
-| `./squads/{squad-name}/workflows/` | Workflows de orquestracao |
-| `./squads/{squad-name}/config/` | Arquivos de configuracao |
-| `./squads/.designs/` | Blueprints gerados pelo *design-squad |
+| Diretorio                          | Propósito                              |
+| ---------------------------------- | -------------------------------------- |
+| `./squads/{squad-name}/`           | Diretorio raiz do squad                |
+| `./squads/{squad-name}/squad.yaml` | Manifest do squad (obrigatorio)        |
+| `./squads/{squad-name}/README.md`  | Documentação do squad                  |
+| `./squads/{squad-name}/agents/`    | Definicoes de agentes                  |
+| `./squads/{squad-name}/tasks/`     | Definicoes de tasks                    |
+| `./squads/{squad-name}/workflows/` | Workflows de orquestracao              |
+| `./squads/{squad-name}/config/`    | Arquivos de configuracao               |
+| `./squads/.designs/`               | Blueprints gerados pelo \*design-squad |
 
 ---
 
@@ -326,38 +326,38 @@ flowchart TB
 
 ### Comandos de Gerenciamento de Squads
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*create-squad` | `squad-creator-create.md` | CREATE squad com estrutura completa |
-| `*create-squad --from-design` | `squad-creator-create.md` | CREATE squad a partir de blueprint |
-| `*design-squad` | `squad-creator-design.md` | DESIGN squad via analise de docs |
-| `*validate-squad` | `squad-creator-validate.md` | VALIDATE squad contra schema |
-| `*list-squads` | `squad-creator-list.md` | LIST squads locais |
-| `*analyze-squad` | `squad-creator-analyze.md` | ANALYZE estrutura e sugerir melhorias |
-| `*extend-squad` | `squad-creator-extend.md` | EXTEND squad com novos componentes |
+| Comando                       | Task File                   | Operacao                              |
+| ----------------------------- | --------------------------- | ------------------------------------- |
+| `*create-squad`               | `squad-creator-create.md`   | CREATE squad com estrutura completa   |
+| `*create-squad --from-design` | `squad-creator-create.md`   | CREATE squad a partir de blueprint    |
+| `*design-squad`               | `squad-creator-design.md`   | DESIGN squad via analise de docs      |
+| `*validate-squad`             | `squad-creator-validate.md` | VALIDATE squad contra schema          |
+| `*list-squads`                | `squad-creator-list.md`     | LIST squads locais                    |
+| `*analyze-squad`              | `squad-creator-analyze.md`  | ANALYZE estrutura e sugerir melhorias |
+| `*extend-squad`               | `squad-creator-extend.md`   | EXTEND squad com novos componentes    |
 
 ### Comandos de Orquestracao e Skills (v2)
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*generate-skills` | `squad-generate-skills.md` | GENERATE skills do conhecimento do squad |
-| `*generate-workflow` | `squad-generate-workflow.md` | GENERATE workflow YAML de orquestracao |
-| `*migrate-to-v2` | `squad-creator-migrate.md` | MIGRATE squad para formato v2 |
+| Comando              | Task File                    | Operacao                                 |
+| -------------------- | ---------------------------- | ---------------------------------------- |
+| `*generate-skills`   | `squad-generate-skills.md`   | GENERATE skills do conhecimento do squad |
+| `*generate-workflow` | `squad-generate-workflow.md` | GENERATE workflow YAML de orquestracao   |
+| `*migrate-to-v2`     | `squad-creator-migrate.md`   | MIGRATE squad para formato v2            |
 
 ### Comandos de Distribuicao (Sprint 8 - Placeholders)
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*download-squad` | `squad-creator-download.md` | DOWNLOAD squad do aiox-squads |
-| `*publish-squad` | `squad-creator-publish.md` | PUBLISH squad para aiox-squads |
-| `*sync-squad-synkra` | `squad-creator-sync-synkra.md` | SYNC squad para Synkra API |
+| Comando              | Task File                      | Operacao                       |
+| -------------------- | ------------------------------ | ------------------------------ |
+| `*download-squad`    | `squad-creator-download.md`    | DOWNLOAD squad do aiox-squads  |
+| `*publish-squad`     | `squad-creator-publish.md`     | PUBLISH squad para aiox-squads |
+| `*sync-squad-synkra` | `squad-creator-sync-synkra.md` | SYNC squad para Synkra API     |
 
 ### Comandos de Componentes Individuais
 
-| Comando | Task File | Operacao |
-|---------|-----------|----------|
-| `*create-agent` | `create-agent.md` | CREATE definicao de agente |
-| `*create-task` | `create-task.md` | CREATE arquivo de task |
+| Comando            | Task File            | Operacao                        |
+| ------------------ | -------------------- | ------------------------------- |
+| `*create-agent`    | `create-agent.md`    | CREATE definicao de agente      |
+| `*create-task`     | `create-task.md`     | CREATE arquivo de task          |
 | `*create-workflow` | `create-workflow.md` | CREATE workflow de orquestracao |
 
 ---
@@ -474,19 +474,19 @@ flowchart LR
 
 ## Templates Disponiveis
 
-| Template | Descrição | Componentes |
-|----------|-----------|-------------|
-| `basic` | Estrutura minima | 1 agent, 1 task |
-| `etl` | Processamento de dados | 2 agents (extractor, transformer), 3 tasks, scripts |
-| `agent-only` | Apenas agentes | 2 agents (primary, helper), sem tasks |
-| `custom` | Via blueprint | Definido pelo design |
+| Template     | Descrição              | Componentes                                         |
+| ------------ | ---------------------- | --------------------------------------------------- |
+| `basic`      | Estrutura minima       | 1 agent, 1 task                                     |
+| `etl`        | Processamento de dados | 2 agents (extractor, transformer), 3 tasks, scripts |
+| `agent-only` | Apenas agentes         | 2 agents (primary, helper), sem tasks               |
+| `custom`     | Via blueprint          | Definido pelo design                                |
 
 ## Versoes de Template
 
-| Versao | Descrição | Features |
-|--------|-----------|----------|
-| `v2` | **Padrao** - Orquestracao completa | squad.yaml v2, workflow.yaml, skill_dispatch em agents |
-| `v1` | Estrutura legacy | squad.yaml basico, sem orquestracao/skills |
+| Versao | Descrição                          | Features                                               |
+| ------ | ---------------------------------- | ------------------------------------------------------ |
+| `v2`   | **Padrao** - Orquestracao completa | squad.yaml v2, workflow.yaml, skill_dispatch em agents |
+| `v1`   | Estrutura legacy                   | squad.yaml basico, sem orquestracao/skills             |
 
 ---
 
@@ -495,27 +495,27 @@ flowchart LR
 ### Campos Obrigatorios
 
 ```yaml
-name: string          # kebab-case, 2-50 caracteres
-version: string       # semver (1.0.0)
+name: string # kebab-case, 2-50 caracteres
+version: string # semver (1.0.0)
 ```
 
 ### Campos Opcionais
 
 ```yaml
-short-title: string   # max 100 chars
-description: string   # max 500 chars
+short-title: string # max 100 chars
+description: string # max 500 chars
 author: string
 license: MIT | Apache-2.0 | ISC | GPL-3.0 | UNLICENSED
-slashPrefix: string   # prefixo para comandos
-tags: string[]        # keywords para descoberta
+slashPrefix: string # prefixo para comandos
+tags: string[] # keywords para descoberta
 
 aiox:
-  minVersion: string  # versao minima do AIOX
+  minVersion: string # versao minima do AIOX
   type: squad
 
 components:
-  tasks: string[]     # arquivos de tasks
-  agents: string[]    # arquivos de agents
+  tasks: string[] # arquivos de tasks
+  agents: string[] # arquivos de agents
   workflows: string[]
   checklists: string[]
   templates: string[]
@@ -538,18 +538,18 @@ dependencies:
 
 ## Codigos de Erro de Validacao
 
-| Codigo | Severidade | Descrição |
-|--------|------------|-----------|
-| `MANIFEST_NOT_FOUND` | Error | squad.yaml ou config.yaml não encontrado |
-| `YAML_PARSE_ERROR` | Error | Sintaxe YAML invalida |
-| `SCHEMA_ERROR` | Error | Manifest não corresponde ao JSON Schema |
-| `FILE_NOT_FOUND` | Error | Arquivo referenciado não existe |
-| `DEPRECATED_MANIFEST` | Warning | Usando config.yaml ao inves de squad.yaml |
-| `MISSING_DIRECTORY` | Warning | Diretorio esperado não encontrado |
-| `NO_TASKS` | Warning | Nenhum arquivo de task em tasks/ |
-| `TASK_MISSING_FIELD` | Warning | Task sem campo recomendado |
-| `AGENT_INVALID_FORMAT` | Warning | Arquivo de agente pode não seguir formato |
-| `INVALID_NAMING` | Warning | Nome do arquivo não e kebab-case |
+| Codigo                 | Severidade | Descrição                                 |
+| ---------------------- | ---------- | ----------------------------------------- |
+| `MANIFEST_NOT_FOUND`   | Error      | squad.yaml ou config.yaml não encontrado  |
+| `YAML_PARSE_ERROR`     | Error      | Sintaxe YAML invalida                     |
+| `SCHEMA_ERROR`         | Error      | Manifest não corresponde ao JSON Schema   |
+| `FILE_NOT_FOUND`       | Error      | Arquivo referenciado não existe           |
+| `DEPRECATED_MANIFEST`  | Warning    | Usando config.yaml ao inves de squad.yaml |
+| `MISSING_DIRECTORY`    | Warning    | Diretorio esperado não encontrado         |
+| `NO_TASKS`             | Warning    | Nenhum arquivo de task em tasks/          |
+| `TASK_MISSING_FIELD`   | Warning    | Task sem campo recomendado                |
+| `AGENT_INVALID_FORMAT` | Warning    | Arquivo de agente pode não seguir formato |
+| `INVALID_NAMING`       | Warning    | Nome do arquivo não e kebab-case          |
 
 ---
 
@@ -620,7 +620,7 @@ flowchart LR
 
 ## Troubleshooting
 
-### Squad não aparece em *list-squads
+### Squad não aparece em \*list-squads
 
 - Verificar se diretorio existe em `./squads/`
 - Checar se `squad.yaml` ou `config.yaml` existe
@@ -651,7 +651,7 @@ flowchart LR
 - Usar `--verbose` para ver analise
 - Usar `--domain` para dar contexto
 
-### *create-squad --from-design falha
+### \*create-squad --from-design falha
 
 - Verificar se blueprint existe no path especificado
 - Validar YAML syntax do blueprint
@@ -674,25 +674,25 @@ flowchart LR
 
 ## Resumo
 
-| Aspecto | Detalhes |
-|---------|----------|
-| **Total de Tasks Core** | 12 task files |
-| **Tasks Ativas** | 9 (create, design, validate, list, analyze, extend, migrate, generate-skills, generate-workflow) |
-| **Tasks Placeholder** | 3 (download, publish, sync-synkra) |
-| **Scripts de Suporte** | 9 scripts em squad/ |
-| **Schemas** | 2 (squad-schema, squad-design-schema) |
-| **Templates** | 3 (basic, etl, agent-only) |
-| **Versoes Template** | 2 (v1 legacy, v2 orchestration) |
-| **Niveis Distribuicao** | 3 (Local, aiox-squads, Synkra API) |
+| Aspecto                 | Detalhes                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------------ |
+| **Total de Tasks Core** | 12 task files                                                                                    |
+| **Tasks Ativas**        | 9 (create, design, validate, list, analyze, extend, migrate, generate-skills, generate-workflow) |
+| **Tasks Placeholder**   | 3 (download, publish, sync-synkra)                                                               |
+| **Scripts de Suporte**  | 9 scripts em squad/                                                                              |
+| **Schemas**             | 2 (squad-schema, squad-design-schema)                                                            |
+| **Templates**           | 3 (basic, etl, agent-only)                                                                       |
+| **Versoes Template**    | 2 (v1 legacy, v2 orchestration)                                                                  |
+| **Niveis Distribuicao** | 3 (Local, aiox-squads, Synkra API)                                                               |
 
 ---
 
 ## Changelog
 
-| Data | Autor | Descrição |
-|------|-------|-----------|
+| Data       | Autor          | Descrição                                        |
+| ---------- | -------------- | ------------------------------------------------ |
 | 2026-02-04 | @squad-creator | Documento inicial criado com 7 diagramas Mermaid |
 
 ---
 
-*-- Craft, sempre estruturando*
+_-- Craft, sempre estruturando_

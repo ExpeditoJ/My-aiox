@@ -7,15 +7,15 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/analyst.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: dataLocation, analyticsLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/product/data/brainstorming-techniques.md` | AgentConfigLoader.loadFile() | Brainstorming techniques (always loaded, 2KB) |
-| 6 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 7 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                                  | Loader                                  | Purpose                                             |
+| ----- | ----------------------------------------------------- | --------------------------------------- | --------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/analyst.md`            | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                       |
+| 2     | `.aiox-core/core-config.yaml`                         | GreetingBuilder.\_loadConfig()          | Core configuration                                  |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml`      | AgentConfigLoader.loadRequirements()    | Config sections: dataLocation, analyticsLocation    |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`              | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                            |
+| 5     | `.aiox-core/product/data/brainstorming-techniques.md` | AgentConfigLoader.loadFile()            | Brainstorming techniques (always loaded, 2KB)       |
+| 6     | `.aiox/session-state.json`                            | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history) |
+| 7     | `.aiox/project-status.yaml`                           | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                     |
 
 ### 1.2 Greeting Construction
 
@@ -75,10 +75,10 @@ analyst:
     - path: .aiox-core/product/data/brainstorming-techniques.md
       lazy: false
       size: 2KB
-    - path: docs/framework/tech-stack.md          # Added in Story ACT-8
+    - path: docs/framework/tech-stack.md # Added in Story ACT-8
       lazy: false
       size: 30KB
-    - path: docs/framework/source-tree.md         # Added in Story ACT-8
+    - path: docs/framework/source-tree.md # Added in Story ACT-8
       lazy: false
       size: 20KB
   lazy_loading: {}
@@ -89,33 +89,33 @@ analyst:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `🔍 Atlas the Decoder ready to investigate!` |
-| Signature | `persona_profile.communication.signature_closing` | `— Atlas, investigando a verdade 🔎` |
-| Role | `persona.role` | Insightful Analyst & Strategic Ideation Partner |
-| Commands shown | `filterCommandsByVisibility('full')` | 15 commands with `full` visibility |
+| Data           | Source                                            | Value                                           |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `🔍 Atlas the Decoder ready to investigate!`    |
+| Signature      | `persona_profile.communication.signature_closing` | `— Atlas, investigando a verdade 🔎`            |
+| Role           | `persona.role`                                    | Insightful Analyst & Strategic Ideation Partner |
+| Commands shown | `filterCommandsByVisibility('full')`              | 15 commands with `full` visibility              |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*create-project-brief` | create-doc.md + project-brief-tmpl.yaml | full, quick | Yes |
-| `*perform-market-research` | create-doc.md + market-research-tmpl.yaml | full, quick | Yes |
-| `*create-competitor-analysis` | create-doc.md + competitor-analysis-tmpl.yaml | full, quick | Yes |
-| `*research-prompt` | create-deep-research-prompt.md | full | Yes |
-| `*brainstorm` | facilitate-brainstorming-session.md + brainstorming-techniques.md | full, quick, key | Yes |
-| `*elicit` | advanced-elicitation.md | full | Yes |
-| `*research-deps` | spec-research-dependencies.md | full | Yes |
-| `*extract-patterns` | pattern-extractor.js | full | No |
-| `*doc-out` | (built-in) | full | No |
-| `*session-info` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*yolo` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
+| Command                       | Task File                                                         | Visibility       | Elicit |
+| ----------------------------- | ----------------------------------------------------------------- | ---------------- | ------ |
+| `*help`                       | (built-in)                                                        | full, quick, key | No     |
+| `*create-project-brief`       | create-doc.md + project-brief-tmpl.yaml                           | full, quick      | Yes    |
+| `*perform-market-research`    | create-doc.md + market-research-tmpl.yaml                         | full, quick      | Yes    |
+| `*create-competitor-analysis` | create-doc.md + competitor-analysis-tmpl.yaml                     | full, quick      | Yes    |
+| `*research-prompt`            | create-deep-research-prompt.md                                    | full             | Yes    |
+| `*brainstorm`                 | facilitate-brainstorming-session.md + brainstorming-techniques.md | full, quick, key | Yes    |
+| `*elicit`                     | advanced-elicitation.md                                           | full             | Yes    |
+| `*research-deps`              | spec-research-dependencies.md                                     | full             | Yes    |
+| `*extract-patterns`           | pattern-extractor.js                                              | full             | No     |
+| `*doc-out`                    | (built-in)                                                        | full             | No     |
+| `*session-info`               | (built-in)                                                        | full             | No     |
+| `*guide`                      | (built-in, rendered from agent .md)                               | full, quick      | No     |
+| `*yolo`                       | (built-in)                                                        | full             | No     |
+| `*exit`                       | (built-in)                                                        | full             | No     |
 
 ---
 
@@ -375,14 +375,14 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## 🔍 Analyst Guide` section from agent .md |
+| Command         | Behavior                                                        |
+| --------------- | --------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition |
+| `*guide`        | Renders the `## 🔍 Analyst Guide` section from agent .md        |
 | `*session-info` | Shows session context (agent history, commands, project status) |
-| `*doc-out` | Outputs complete document content |
-| `*yolo` | Toggles confirmation skipping mode |
-| `*exit` | Exits analyst mode, returns to base Claude Code |
+| `*doc-out`      | Outputs complete document content                               |
+| `*yolo`         | Toggles confirmation skipping mode                              |
+| `*exit`         | Exits analyst mode, returns to base Claude Code                 |
 
 ---
 
@@ -474,42 +474,48 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @pm -> @analyst | Delegates | Market research, competitive analysis, feasibility studies |
-| @architect -> @analyst | Delegates | Technical research, dependency analysis |
-| @po -> @analyst | Delegates | Market insights, user research, competitive intelligence |
-| @analyst -> @pm | Handoff | Research findings for PRD creation |
-| @analyst -> @po | Handoff | Market insights for story prioritization |
-| @analyst -> @devops | Delegate | Git push operations, PR creation |
+| Interaction            | Direction | Trigger                                                    |
+| ---------------------- | --------- | ---------------------------------------------------------- |
+| @pm -> @analyst        | Delegates | Market research, competitive analysis, feasibility studies |
+| @architect -> @analyst | Delegates | Technical research, dependency analysis                    |
+| @po -> @analyst        | Delegates | Market insights, user research, competitive intelligence   |
+| @analyst -> @pm        | Handoff   | Research findings for PRD creation                         |
+| @analyst -> @po        | Handoff   | Market insights for story prioritization                   |
+| @analyst -> @devops    | Delegate  | Git push operations, PR creation                           |
 
 ### Delegation Rules (from agent definition)
 
 **Receives from @pm when:**
+
 - Market research required for PRD creation
 - Competitive landscape analysis needed
 - Feasibility studies for new features
 - Industry trend analysis for strategic planning
 
 **Receives from @architect when:**
+
 - Technical dependency research needed
 - Library/framework evaluation required
 - Technology comparison analysis
 
 **Receives from @po when:**
+
 - Market insights needed for epic/story prioritization
 - User research for feature validation
 - Competitive analysis for backlog grooming
 
 **Hands off to @pm:**
+
 - Completed research reports for PRD integration
 - Market analysis findings for product strategy
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch -a`
 - BLOCKED: `git push`, `git push --force`, `gh pr create`
 
@@ -517,22 +523,22 @@ graph TD
 
 ## 6. MCP Tools
 
-| Tool | Purpose | Usage |
-|------|---------|-------|
-| exa | Advanced web research, market data, competitor intelligence | `*research-prompt`, `*perform-market-research`, `*create-competitor-analysis` |
-| context7 | Library documentation lookup, technology evaluation | `*research-prompt`, `*research-deps` |
-| browser | Web testing, page interaction, visual verification | Ad-hoc web research and validation |
+| Tool     | Purpose                                                     | Usage                                                                         |
+| -------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| exa      | Advanced web research, market data, competitor intelligence | `*research-prompt`, `*perform-market-research`, `*create-competitor-analysis` |
+| context7 | Library documentation lookup, technology evaluation         | `*research-prompt`, `*research-deps`                                          |
+| browser  | Web testing, page interaction, visual verification          | Ad-hoc web research and validation                                            |
 
 ---
 
 ## 7. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| (none) | - | - | All task files, templates, data files, and scripts exist |
+| File   | Type | Referenced By | Impact                                                   |
+| ------ | ---- | ------------- | -------------------------------------------------------- |
+| (none) | -    | -             | All task files, templates, data files, and scripts exist |
 
 **Note:** All 6 task files, all 4 templates, both data files, and the pattern-extractor script are present on disk. The analyst agent has no missing dependencies.
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

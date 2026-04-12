@@ -30,13 +30,13 @@ AIOX v4 adota uma **estratégia multi-repositório** para viabilizar desenvolvim
 
 ### Objetivos de Design
 
-| Objetivo                     | Descrição                                          |
-| ---------------------------- | -------------------------------------------------- |
-| **Modularidade**             | Squads podem ser desenvolvidas e versionadas independentemente |
-| **Comunidade**               | Squads open-source incentivam contribuições comunitárias |
-| **Proteção de IP**           | Componentes proprietários permanecem em repositórios privados |
-| **Escalabilidade**           | Equipes podem trabalhar em repos separadas sem conflitos |
-| **Flexibilidade de Licenças** | Componentes diferentes podem ter licenças diferentes |
+| Objetivo                      | Descrição                                                      |
+| ----------------------------- | -------------------------------------------------------------- |
+| **Modularidade**              | Squads podem ser desenvolvidas e versionadas independentemente |
+| **Comunidade**                | Squads open-source incentivam contribuições comunitárias       |
+| **Proteção de IP**            | Componentes proprietários permanecem em repositórios privados  |
+| **Escalabilidade**            | Equipes podem trabalhar em repos separadas sem conflitos       |
+| **Flexibilidade de Licenças** | Componentes diferentes podem ter licenças diferentes           |
 
 ---
 
@@ -110,13 +110,13 @@ O repositório principal contém o framework AIOX fundamental que todos os proje
 
 ### Conteúdo
 
-| Diretório                    | Descrição                                                |
-| ---------------------------- | -------------------------------------------------------- |
+| Diretório                    | Descrição                                                     |
+| ---------------------------- | ------------------------------------------------------------- |
 | `.aiox-core/core/`           | Fundações do framework (config, registry, gates de qualidade) |
-| `.aiox-core/development/`    | Definições de agentes, tarefas, workflows                |
-| `.aiox-core/product/`        | Templates, checklists, dados de PM                       |
-| `.aiox-core/infrastructure/` | Scripts, ferramentas, integrações                        |
-| `docs/`                      | Documentação do framework                                |
+| `.aiox-core/development/`    | Definições de agentes, tarefas, workflows                     |
+| `.aiox-core/product/`        | Templates, checklists, dados de PM                            |
+| `.aiox-core/infrastructure/` | Scripts, ferramentas, integrações                             |
+| `docs/`                      | Documentação do framework                                     |
 
 ### Licença
 
@@ -317,13 +317,13 @@ git submodule add https://github.com/SynkraAI/mcp-ecosystem.git mcp
 
 ### Escopo de Pacotes npm
 
-| Pacote               | Registry   | Licença        | Repositório   |
-| -------------------- | ---------- | -------------- | ------------- |
-| `@aiox/core`         | npm public | MIT            | aiox-core     |
-| `@aiox/squad-etl`    | npm public | MIT            | aiox-squads   |
-| `@aiox/squad-creator`| npm public | MIT            | aiox-squads   |
-| `@aiox/squad-mmos`   | npm public | MIT            | aiox-squads   |
-| `@aiox/mcp-presets`  | npm public | Apache 2.0     | mcp-ecosystem |
+| Pacote                | Registry   | Licença    | Repositório   |
+| --------------------- | ---------- | ---------- | ------------- |
+| `@aiox/core`          | npm public | MIT        | aiox-core     |
+| `@aiox/squad-etl`     | npm public | MIT        | aiox-squads   |
+| `@aiox/squad-creator` | npm public | MIT        | aiox-squads   |
+| `@aiox/squad-mmos`    | npm public | MIT        | aiox-squads   |
+| `@aiox/mcp-presets`   | npm public | Apache 2.0 | mcp-ecosystem |
 
 ### Workflow de Publicação
 
@@ -365,12 +365,12 @@ npm publish --access public
 
 ### Manutenção de Repositório
 
-| Tarefa                 | Frequência   | Responsabilidade |
-| ---------------------- | ------------ | --------------- |
-| Atualizações de deps   | Semanal      | DevOps          |
-| Auditorias de segurança| Mensal       | DevOps          |
-| Releases de versão     | Conforme necessário | Mantenedores |
-| Sincronização de docs  | Por release  | Contribuidores  |
+| Tarefa                  | Frequência          | Responsabilidade |
+| ----------------------- | ------------------- | ---------------- |
+| Atualizações de deps    | Semanal             | DevOps           |
+| Auditorias de segurança | Mensal              | DevOps           |
+| Releases de versão      | Conforme necessário | Mantenedores     |
+| Sincronização de docs   | Por release         | Contribuidores   |
 
 ---
 

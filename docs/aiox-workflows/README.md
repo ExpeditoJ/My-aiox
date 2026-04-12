@@ -27,25 +27,25 @@ Esta pasta contém a documentação detalhada de todos os workflows do AIOX, inc
 
 ### Por Tipo de Projeto
 
-| Tipo | Workflow | Descrição | Documento |
-|------|----------|-----------|-----------|
+| Tipo           | Workflow  | Descrição                     | Documento                                                              |
+| -------------- | --------- | ----------------------------- | ---------------------------------------------------------------------- |
 | **Greenfield** | Fullstack | Aplicações full-stack do zero | [greenfield-fullstack-workflow.md](./greenfield-fullstack-workflow.md) |
-| **Greenfield** | Service | Backend/API do zero | [greenfield-service-workflow.md](./greenfield-service-workflow.md) |
-| **Greenfield** | UI | Frontend do zero | [greenfield-ui-workflow.md](./greenfield-ui-workflow.md) |
-| **Brownfield** | Discovery | Análise de projeto existente | [brownfield-discovery-workflow.md](./brownfield-discovery-workflow.md) |
+| **Greenfield** | Service   | Backend/API do zero           | [greenfield-service-workflow.md](./greenfield-service-workflow.md)     |
+| **Greenfield** | UI        | Frontend do zero              | [greenfield-ui-workflow.md](./greenfield-ui-workflow.md)               |
+| **Brownfield** | Discovery | Análise de projeto existente  | [brownfield-discovery-workflow.md](./brownfield-discovery-workflow.md) |
 | **Brownfield** | Fullstack | Evolução full-stack existente | [brownfield-fullstack-workflow.md](./brownfield-fullstack-workflow.md) |
-| **Brownfield** | Service | Evolução backend existente | [brownfield-service-workflow.md](./brownfield-service-workflow.md) |
-| **Brownfield** | UI | Evolução frontend existente | [brownfield-ui-workflow.md](./brownfield-ui-workflow.md) |
+| **Brownfield** | Service   | Evolução backend existente    | [brownfield-service-workflow.md](./brownfield-service-workflow.md)     |
+| **Brownfield** | UI        | Evolução frontend existente   | [brownfield-ui-workflow.md](./brownfield-ui-workflow.md)               |
 
 ### Por Processo
 
-| Processo | Workflow | Descrição | Documento |
-|----------|----------|-----------|-----------|
-| **Development** | Story Cycle | Ciclo completo de story | [story-development-cycle-workflow.md](./story-development-cycle-workflow.md) |
-| **Quality** | QA Loop | Ciclo de qualidade | [qa-loop-workflow.md](./qa-loop-workflow.md) |
-| **Spec** | Spec Pipeline | Pipeline de especificação | [spec-pipeline-workflow.md](./spec-pipeline-workflow.md) |
-| **Design** | Design System | Construção de design system | [design-system-build-quality-workflow.md](./design-system-build-quality-workflow.md) |
-| **Git** | Auto Worktree | Gestão automática de worktrees | [auto-worktree-workflow.md](./auto-worktree-workflow.md) |
+| Processo        | Workflow      | Descrição                      | Documento                                                                            |
+| --------------- | ------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
+| **Development** | Story Cycle   | Ciclo completo de story        | [story-development-cycle-workflow.md](./story-development-cycle-workflow.md)         |
+| **Quality**     | QA Loop       | Ciclo de qualidade             | [qa-loop-workflow.md](./qa-loop-workflow.md)                                         |
+| **Spec**        | Spec Pipeline | Pipeline de especificação      | [spec-pipeline-workflow.md](./spec-pipeline-workflow.md)                             |
+| **Design**      | Design System | Construção de design system    | [design-system-build-quality-workflow.md](./design-system-build-quality-workflow.md) |
+| **Git**         | Auto Worktree | Gestão automática de worktrees | [auto-worktree-workflow.md](./auto-worktree-workflow.md)                             |
 
 ---
 
@@ -189,13 +189,13 @@ flowchart TD
 
 ## Fluxo entre Workflows
 
-| De | Para | Condição |
-|----|------|----------|
-| `brownfield-discovery` | `brownfield-*` | Após análise completa |
-| `greenfield-*` | `story-development-cycle` | Para cada story |
-| `brownfield-*` | `story-development-cycle` | Para cada story |
-| `spec-pipeline` | `story-development-cycle` | Após spec aprovada |
-| `story-development-cycle` | `qa-loop` | Na fase de QA |
+| De                        | Para                      | Condição              |
+| ------------------------- | ------------------------- | --------------------- |
+| `brownfield-discovery`    | `brownfield-*`            | Após análise completa |
+| `greenfield-*`            | `story-development-cycle` | Para cada story       |
+| `brownfield-*`            | `story-development-cycle` | Para cada story       |
+| `spec-pipeline`           | `story-development-cycle` | Após spec aprovada    |
+| `story-development-cycle` | `qa-loop`                 | Na fase de QA         |
 
 ---
 
@@ -224,11 +224,11 @@ flowchart TD
 
 ## Relacionamento com Outras Documentações
 
-| Documentação | Localização | Propósito |
-|--------------|-------------|-----------|
-| Workflows Guide | [docs/guides/workflows-guide.md](../guides/workflows-guide.md) | Guia geral |
-| Agent Flows | [docs/aiox-agent-flows/](../aiox-agent-flows/) | Detalhes de agentes |
-| Meta-Agent Commands | [docs/meta-agent-commands.md](../meta-agent-commands.md) | Referência rápida |
+| Documentação        | Localização                                                    | Propósito           |
+| ------------------- | -------------------------------------------------------------- | ------------------- |
+| Workflows Guide     | [docs/guides/workflows-guide.md](../guides/workflows-guide.md) | Guia geral          |
+| Agent Flows         | [docs/aiox-agent-flows/](../aiox-agent-flows/)                 | Detalhes de agentes |
+| Meta-Agent Commands | [docs/meta-agent-commands.md](../meta-agent-commands.md)       | Referência rápida   |
 
 ---
 
@@ -244,4 +244,4 @@ Para adicionar ou atualizar documentação de workflows:
 
 ---
 
-*AIOX Workflows Documentation v1.0 - Documentação detalhada dos workflows de desenvolvimento*
+_AIOX Workflows Documentation v1.0 - Documentação detalhada dos workflows de desenvolvimento_

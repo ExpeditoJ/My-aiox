@@ -25,13 +25,13 @@ Workflow para evolucionar aplicaciones full-stack existentes, incluyendo:
 
 ## Agentes Participantes
 
-| Agente | Rol |
-|--------|-----|
-| @pm | Requisitos de cambio |
+| Agente     | Rol                   |
+| ---------- | --------------------- |
+| @pm        | Requisitos de cambio  |
 | @architect | Impacto arquitectural |
-| @dev | Implementacion |
-| @qa | Tests de regresion |
-| @devops | Deploy incremental |
+| @dev       | Implementacion        |
+| @qa        | Tests de regresion    |
+| @devops    | Deploy incremental    |
 
 ## Ver Mas
 
@@ -39,4 +39,4 @@ Workflow para evolucionar aplicaciones full-stack existentes, incluyendo:
 
 ---
 
-*Stub v1.0 - Referencia a documentacion principal*
+_Stub v1.0 - Referencia a documentacion principal_

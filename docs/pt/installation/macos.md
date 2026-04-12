@@ -100,8 +100,7 @@ O instalador automaticamente:
 1. Os comandos são instalados em `.claude/commands/AIOX/`
 2. Use `/agent-name` para ativar agentes
 
-
-2. Use `@agent-name` para ativar agentes
+3. Use `@agent-name` para ativar agentes
 
 ## Solução de Problemas
 

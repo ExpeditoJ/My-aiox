@@ -23,4 +23,4 @@ For complete documentation including flowcharts, command mappings, integrations,
 
 ---
 
-*AIOX Agent Flows - @architect System v1.0*
+_AIOX Agent Flows - @architect System v1.0_

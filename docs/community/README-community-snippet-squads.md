@@ -12,20 +12,20 @@ For discussions, questions, and community interaction, visit our central hub:
 
 👉 **[AIOX Community Discussions](https://github.com/SynkraAI/aiox-core/discussions)**
 
-| Need | Where to Go |
-|------|-------------|
-| 📦 **Squad questions?** | Use the ["Squads" category](https://github.com/SynkraAI/aiox-core/discussions/categories/squads) |
-| 💡 **Feature ideas?** | Start a [Discussion in "Ideas"](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas) |
-| 🐛 **Found a bug?** | [Open an issue](https://github.com/SynkraAI/aiox-squads/issues/new/choose) in **this repository** |
-| 🙏 **Need help?** | Ask in ["Q&A"](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a) |
+| Need                         | Where to Go                                                                                            |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 📦 **Squad questions?**      | Use the ["Squads" category](https://github.com/SynkraAI/aiox-core/discussions/categories/squads)       |
+| 💡 **Feature ideas?**        | Start a [Discussion in "Ideas"](https://github.com/SynkraAI/aiox-core/discussions/categories/ideas)    |
+| 🐛 **Found a bug?**          | [Open an issue](https://github.com/SynkraAI/aiox-squads/issues/new/choose) in **this repository**      |
+| 🙏 **Need help?**            | Ask in ["Q&A"](https://github.com/SynkraAI/aiox-core/discussions/categories/q-a)                       |
 | 🙌 **Built something cool?** | Share in ["Show and Tell"](https://github.com/SynkraAI/aiox-core/discussions/categories/show-and-tell) |
 
 ### Available Squads
 
-| Squad | Description | Status |
-|-------|-------------|--------|
-| 🔄 **ETL Squad** | Data collection, transformation, and pipeline automation | Active |
-| ✍️ **Creator Squad** | Content generation, blog posts, course creation | Active |
+| Squad                | Description                                              | Status |
+| -------------------- | -------------------------------------------------------- | ------ |
+| 🔄 **ETL Squad**     | Data collection, transformation, and pipeline automation | Active |
+| ✍️ **Creator Squad** | Content generation, blog posts, course creation          | Active |
 
 ### Proposing a New Squad
 
@@ -37,4 +37,4 @@ Have an idea for a new AIOX Squad? We'd love to hear it!
 
 ---
 
-**Tagline:** *AIOX Squads: Equipes de AI agents trabalhando com você* 🤖
+**Tagline:** _AIOX Squads: Equipes de AI agents trabalhando com você_ 🤖

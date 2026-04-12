@@ -31,10 +31,10 @@
 
 O sistema de memoria do AIOX opera em **duas camadas independentes** que coexistem mas **nao se comunicam entre si**:
 
-| Camada | Gerenciado Por | Escopo |
-|--------|---------------|--------|
-| **Camada 1: Claude Code Nativo** | Claude Code CLI | Auto Memory, CLAUDE.md, Session Transcripts |
-| **Camada 2: AIOX Framework** | Scripts JS em `.aiox-core/` | Gotchas, Session State, Context Snapshots, Timeline |
+| Camada                           | Gerenciado Por              | Escopo                                              |
+| -------------------------------- | --------------------------- | --------------------------------------------------- |
+| **Camada 1: Claude Code Nativo** | Claude Code CLI             | Auto Memory, CLAUDE.md, Session Transcripts         |
+| **Camada 2: AIOX Framework**     | Scripts JS em `.aiox-core/` | Gotchas, Session State, Context Snapshots, Timeline |
 
 ### Principios Chave
 
@@ -799,13 +799,13 @@ flowchart LR
 
 ### Status dos Hooks por CLI
 
-| Hook | Arquivo | Gemini | Claude Code | Status |
-|------|---------|--------|-------------|--------|
-| `session-start` | `hooks/gemini/session-start.js` | `SessionStart` | `null` (sem evento) | **Gemini only** |
-| `session-end` | `hooks/gemini/session-end.js` | `SessionEnd` | `Stop` (mapeado mas nao wired) | **Gemini only** |
-| `before-agent` | `hooks/gemini/before-agent.js` | `BeforeAgent` | `PreToolUse` | Ambos |
-| `before-tool` | `hooks/gemini/before-tool.js` | `BeforeTool` | `PreToolUse` | Ambos |
-| `after-tool` | `hooks/gemini/after-tool.js` | `AfterTool` | `PostToolUse` | Ambos |
+| Hook            | Arquivo                         | Gemini         | Claude Code                    | Status          |
+| --------------- | ------------------------------- | -------------- | ------------------------------ | --------------- |
+| `session-start` | `hooks/gemini/session-start.js` | `SessionStart` | `null` (sem evento)            | **Gemini only** |
+| `session-end`   | `hooks/gemini/session-end.js`   | `SessionEnd`   | `Stop` (mapeado mas nao wired) | **Gemini only** |
+| `before-agent`  | `hooks/gemini/before-agent.js`  | `BeforeAgent`  | `PreToolUse`                   | Ambos           |
+| `before-tool`   | `hooks/gemini/before-tool.js`   | `BeforeTool`   | `PreToolUse`                   | Ambos           |
+| `after-tool`    | `hooks/gemini/after-tool.js`    | `AfterTool`    | `PostToolUse`                  | Ambos           |
 
 ### Gap Critico: session-start no Claude Code
 
@@ -827,50 +827,50 @@ flowchart TD
 
 ### Scripts do Sistema de Memoria
 
-| Arquivo | Modulo | Story/Epic | Funcao |
-|---------|--------|------------|--------|
-| `.aiox-core/core/memory/gotchas-memory.js` | Memory | Epic 9, Story 9.4 | Auto-capture de erros repetidos, gotchas manuais, injecao em tasks |
-| `.aiox-core/core/memory/context-snapshot.js` | Memory | Story 12.6 | Captura e restaura contexto de desenvolvimento |
-| `.aiox-core/core/memory/file-evolution-tracker.js` | Memory | Gap impl | Rastreia evolucao de arquivos, detecta drift |
-| `.aiox-core/core/memory/timeline-manager.js` | Memory | Gap impl | Facade unificada para timeline cross-session |
-| `.aiox-core/core/session/context-loader.js` | Session | Story 2.2, 6.1.2.5 | Continuidade inter-agente, handoff de contexto |
-| `.aiox-core/core/session/context-detector.js` | Session | Story 2.2 | Deteccao hibrida de tipo de sessao (new/existing/workflow) |
-| `.aiox-core/core/orchestration/session-state.js` | Orchestration | Story 11.5 | Estado persistente de epic/story, crash recovery |
-| `.aiox-core/core/orchestration/context-manager.js` | Orchestration | Legacy | Estado de workflow entre fases (migrado para session-state) |
-| `.aiox-core/core/elicitation/session-manager.js` | Elicitation | — | Sessions de elicitacao save/load |
+| Arquivo                                            | Modulo        | Story/Epic         | Funcao                                                             |
+| -------------------------------------------------- | ------------- | ------------------ | ------------------------------------------------------------------ |
+| `.aiox-core/core/memory/gotchas-memory.js`         | Memory        | Epic 9, Story 9.4  | Auto-capture de erros repetidos, gotchas manuais, injecao em tasks |
+| `.aiox-core/core/memory/context-snapshot.js`       | Memory        | Story 12.6         | Captura e restaura contexto de desenvolvimento                     |
+| `.aiox-core/core/memory/file-evolution-tracker.js` | Memory        | Gap impl           | Rastreia evolucao de arquivos, detecta drift                       |
+| `.aiox-core/core/memory/timeline-manager.js`       | Memory        | Gap impl           | Facade unificada para timeline cross-session                       |
+| `.aiox-core/core/session/context-loader.js`        | Session       | Story 2.2, 6.1.2.5 | Continuidade inter-agente, handoff de contexto                     |
+| `.aiox-core/core/session/context-detector.js`      | Session       | Story 2.2          | Deteccao hibrida de tipo de sessao (new/existing/workflow)         |
+| `.aiox-core/core/orchestration/session-state.js`   | Orchestration | Story 11.5         | Estado persistente de epic/story, crash recovery                   |
+| `.aiox-core/core/orchestration/context-manager.js` | Orchestration | Legacy             | Estado de workflow entre fases (migrado para session-state)        |
+| `.aiox-core/core/elicitation/session-manager.js`   | Elicitation   | —                  | Sessions de elicitacao save/load                                   |
 
 ### Scripts de Ativacao (consomem memoria)
 
-| Arquivo | Funcao |
-|---------|--------|
+| Arquivo                                                         | Funcao                                            |
+| --------------------------------------------------------------- | ------------------------------------------------- |
 | `.aiox-core/development/scripts/unified-activation-pipeline.js` | Orchestrador principal — carrega sessao no Tier 3 |
-| `.aiox-core/development/scripts/greeting-builder.js` | Monta greeting com contexto de sessao/memoria |
+| `.aiox-core/development/scripts/greeting-builder.js`            | Monta greeting com contexto de sessao/memoria     |
 
 ### Hooks (persistencia de sessao)
 
-| Arquivo | CLI | Funcao |
-|---------|-----|--------|
-| `.aiox-core/hooks/gemini/session-start.js` | Gemini | Carrega contexto AIOX no inicio da sessao |
-| `.aiox-core/hooks/gemini/session-end.js` | Gemini | Persiste sumario da sessao em `.aiox/sessions/` |
-| `.aiox-core/hooks/gemini/before-agent.js` | Gemini | Pre-processamento antes de agente |
-| `.aiox-core/hooks/gemini/before-tool.js` | Ambos | Pre-processamento antes de tool |
-| `.aiox-core/hooks/gemini/after-tool.js` | Ambos | Pos-processamento apos tool |
-| `.aiox-core/hooks/unified/hook-interface.js` | Ambos | Classe base UnifiedHook + EVENT_MAPPING |
-| `.aiox-core/hooks/unified/hook-registry.js` | Ambos | Registro central de hooks |
-| `.aiox-core/hooks/unified/index.js` | Ambos | Entry point do sistema unificado |
+| Arquivo                                      | CLI    | Funcao                                          |
+| -------------------------------------------- | ------ | ----------------------------------------------- |
+| `.aiox-core/hooks/gemini/session-start.js`   | Gemini | Carrega contexto AIOX no inicio da sessao       |
+| `.aiox-core/hooks/gemini/session-end.js`     | Gemini | Persiste sumario da sessao em `.aiox/sessions/` |
+| `.aiox-core/hooks/gemini/before-agent.js`    | Gemini | Pre-processamento antes de agente               |
+| `.aiox-core/hooks/gemini/before-tool.js`     | Ambos  | Pre-processamento antes de tool                 |
+| `.aiox-core/hooks/gemini/after-tool.js`      | Ambos  | Pos-processamento apos tool                     |
+| `.aiox-core/hooks/unified/hook-interface.js` | Ambos  | Classe base UnifiedHook + EVENT_MAPPING         |
+| `.aiox-core/hooks/unified/hook-registry.js`  | Ambos  | Registro central de hooks                       |
+| `.aiox-core/hooks/unified/index.js`          | Ambos  | Entry point do sistema unificado                |
 
 ### Arquivos Claude Code (memoria nativa)
 
-| Arquivo | Funcao |
-|---------|--------|
-| `~/.claude/CLAUDE.md` | Instrucoes globais (carregado sempre) |
-| `Workspaces/.claude/CLAUDE.md` | Instrucoes workspace (carregado sempre) |
-| `aiox-core/.claude/CLAUDE.md` | Instrucoes projeto (carregado sempre) |
-| `aiox-core/.claude/rules/*.md` | 5 arquivos de regras (carregados sempre) |
-| `~/.claude/projects/.../memory/MEMORY.md` | Auto memory (primeiras 200 linhas, carregado sempre) |
+| Arquivo                                                | Funcao                                                         |
+| ------------------------------------------------------ | -------------------------------------------------------------- |
+| `~/.claude/CLAUDE.md`                                  | Instrucoes globais (carregado sempre)                          |
+| `Workspaces/.claude/CLAUDE.md`                         | Instrucoes workspace (carregado sempre)                        |
+| `aiox-core/.claude/CLAUDE.md`                          | Instrucoes projeto (carregado sempre)                          |
+| `aiox-core/.claude/rules/*.md`                         | 5 arquivos de regras (carregados sempre)                       |
+| `~/.claude/projects/.../memory/MEMORY.md`              | Auto memory (primeiras 200 linhas, carregado sempre)           |
 | `~/.claude/projects/.../memory/compound-analysis/*.md` | 9 arquivos de analise sintetizada (referenciados do MEMORY.md) |
-| `.claude/agent-memory/{agent}/MEMORY.md` | Memoria por agente de squad (6 agentes) |
-| `~/.claude/settings.json` | Config: language, thinking, plugins |
+| `.claude/agent-memory/{agent}/MEMORY.md`               | Memoria por agente de squad (6 agentes)                        |
+| `~/.claude/settings.json`                              | Config: language, thinking, plugins                            |
 
 ---
 
@@ -936,6 +936,7 @@ IMPACTO: HIGH
 ```
 
 Quando uma sessao fecha, o conhecimento contextual e **perdido** exceto:
+
 - O que o Claude escreveu no MEMORY.md **durante** a sessao
 - A transcricao bruta em `.jsonl` (nao sumarizada)
 
@@ -977,26 +978,26 @@ Os 9 arquivos em `memory/compound-analysis/` foram gerados por ferramenta extern
 
 ## Referencias
 
-| Recurso | Caminho |
-|---------|---------|
+| Recurso                   | Caminho                                                      |
+| ------------------------- | ------------------------------------------------------------ |
 | Activation Pipeline Guide | `docs/guides/agents/traces/00-shared-activation-pipeline.md` |
-| Gotchas Memory Script | `.aiox-core/core/memory/gotchas-memory.js` |
-| Context Snapshot Script | `.aiox-core/core/memory/context-snapshot.js` |
-| File Evolution Tracker | `.aiox-core/core/memory/file-evolution-tracker.js` |
-| Timeline Manager | `.aiox-core/core/memory/timeline-manager.js` |
-| Session Context Loader | `.aiox-core/core/session/context-loader.js` |
-| Context Detector | `.aiox-core/core/session/context-detector.js` |
-| Session State | `.aiox-core/core/orchestration/session-state.js` |
-| Unified Hook Interface | `.aiox-core/hooks/unified/hook-interface.js` |
-| Hook Registry | `.aiox-core/hooks/unified/hook-registry.js` |
-| Gemini Session Start | `.aiox-core/hooks/gemini/session-start.js` |
-| Gemini Session End | `.aiox-core/hooks/gemini/session-end.js` |
-| Core Config | `.aiox-core/core-config.yaml` |
-| Claude Settings | `~/.claude/settings.json` |
-| Story Development Cycle | `docs/guides/workflows/STORY-DEVELOPMENT-CYCLE-WORKFLOW.md` |
+| Gotchas Memory Script     | `.aiox-core/core/memory/gotchas-memory.js`                   |
+| Context Snapshot Script   | `.aiox-core/core/memory/context-snapshot.js`                 |
+| File Evolution Tracker    | `.aiox-core/core/memory/file-evolution-tracker.js`           |
+| Timeline Manager          | `.aiox-core/core/memory/timeline-manager.js`                 |
+| Session Context Loader    | `.aiox-core/core/session/context-loader.js`                  |
+| Context Detector          | `.aiox-core/core/session/context-detector.js`                |
+| Session State             | `.aiox-core/core/orchestration/session-state.js`             |
+| Unified Hook Interface    | `.aiox-core/hooks/unified/hook-interface.js`                 |
+| Hook Registry             | `.aiox-core/hooks/unified/hook-registry.js`                  |
+| Gemini Session Start      | `.aiox-core/hooks/gemini/session-start.js`                   |
+| Gemini Session End        | `.aiox-core/hooks/gemini/session-end.js`                     |
+| Core Config               | `.aiox-core/core-config.yaml`                                |
+| Claude Settings           | `~/.claude/settings.json`                                    |
+| Story Development Cycle   | `docs/guides/workflows/STORY-DEVELOPMENT-CYCLE-WORKFLOW.md`  |
 
 ---
 
-*AIOX Memory System Architecture Guide v1.0*
-*Traced from source code, not documentation.*
-*@architect (Aria) — arquitetando o futuro*
+_AIOX Memory System Architecture Guide v1.0_
+_Traced from source code, not documentation._
+_@architect (Aria) — arquitetando o futuro_

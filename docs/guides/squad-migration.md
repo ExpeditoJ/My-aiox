@@ -9,6 +9,7 @@ How to migrate legacy squads to AIOX 2.1 format.
 ## Overview
 
 AIOX 2.1 introduced a new squad format with:
+
 - Task-first architecture
 - JSON Schema validation
 - Three-level distribution
@@ -20,12 +21,12 @@ Legacy squads using `config.yaml` or older formats need migration.
 
 ### Signs of Legacy Format
 
-| Indicator | Legacy | Current (2.1+) |
-|-----------|--------|----------------|
-| Manifest file | `config.yaml` | `squad.yaml` |
-| AIOX type field | Missing | `aiox.type: squad` |
-| Min version | Missing | `aiox.minVersion: "2.1.0"` |
-| Structure | Agent-first | Task-first |
+| Indicator       | Legacy        | Current (2.1+)             |
+| --------------- | ------------- | -------------------------- |
+| Manifest file   | `config.yaml` | `squad.yaml`               |
+| AIOX type field | Missing       | `aiox.type: squad`         |
+| Min version     | Missing       | `aiox.minVersion: "2.1.0"` |
+| Structure       | Agent-first   | Task-first                 |
 
 ### Check Command
 
@@ -79,7 +80,7 @@ config.yaml → squad.yaml
 ```yaml
 # These fields are added if missing
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 ```
 
@@ -113,14 +114,15 @@ role: Helper
 
 ```markdown
 # After: agents/my-agent.md
+
 # my-agent
 
 ACTIVATION-NOTICE: ...
 
 \`\`\`yaml
 agent:
-  name: my-agent
-  ...
+name: my-agent
+...
 \`\`\`
 ```
 
@@ -129,6 +131,7 @@ agent:
 ### Scenario 1: Simple Squad (config.yaml only)
 
 **Before:**
+
 ```
 my-squad/
 ├── config.yaml
@@ -136,11 +139,13 @@ my-squad/
 ```
 
 **Command:**
+
 ```bash
 *migrate-squad ./squads/my-squad
 ```
 
 **After:**
+
 ```
 my-squad/
 ├── squad.yaml         # Renamed + updated
@@ -152,6 +157,7 @@ my-squad/
 ### Scenario 2: Squad with YAML Agents
 
 **Before:**
+
 ```
 my-squad/
 ├── config.yaml
@@ -160,11 +166,13 @@ my-squad/
 ```
 
 **Command:**
+
 ```bash
 *migrate-squad ./squads/my-squad
 ```
 
 **After:**
+
 ```
 my-squad/
 ├── squad.yaml
@@ -178,6 +186,7 @@ my-squad/
 ### Scenario 3: Partial Migration (Already Has Some 2.1 Features)
 
 **Before:**
+
 ```
 my-squad/
 ├── squad.yaml         # Already renamed
@@ -187,11 +196,13 @@ my-squad/
 ```
 
 **Command:**
+
 ```bash
 *migrate-squad ./squads/my-squad
 ```
 
 **Result:**
+
 - Adds missing `aiox` fields to manifest
 - Converts remaining YAML files
 - Skips already-migrated files
@@ -246,7 +257,7 @@ version: 1.0.0
 description: My squad
 
 aiox:
-  minVersion: "2.1.0"
+  minVersion: '2.1.0'
   type: squad
 
 components:
@@ -261,6 +272,7 @@ Error: YAML parse error at line 15
 ```
 
 **Solution:**
+
 1. Check YAML syntax with a linter
 2. Common issues: tabs (use spaces), missing quotes
 3. Fix errors, then retry migration
@@ -272,6 +284,7 @@ Error: Could not create backup directory
 ```
 
 **Solution:**
+
 1. Check write permissions: `chmod 755 ./squads/my-squad`
 2. Check disk space
 3. Try with sudo (if appropriate)
@@ -283,6 +296,7 @@ Warning: Some files could not be migrated
 ```
 
 **Solution:**
+
 1. Run with `--verbose` to see which files failed
 2. Manually fix problematic files
 3. Re-run migration
@@ -308,7 +322,7 @@ const { SquadMigrator } = require('./.aiox-core/development/scripts/squad');
 const migrator = new SquadMigrator({
   verbose: true,
   dryRun: false,
-  backupDir: '.backup'
+  backupDir: '.backup',
 });
 
 // Check if migration needed

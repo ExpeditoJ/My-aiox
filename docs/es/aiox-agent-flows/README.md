@@ -25,19 +25,19 @@ Esta carpeta contiene la documentacion detallada de todos los agentes de AIOX, i
 
 ## Agentes Documentados
 
-| Agente | Persona | Arquetipo | Documento |
-|--------|---------|-----------|-----------|
-| **@aiox-master** | Orion | Orchestrator | [aiox-master-system.md](./aiox-master-system.md) |
-| **@analyst** | Atlas | Researcher | [analyst-system.md](./analyst-system.md) |
-| **@architect** | Aria | Visionary | [architect-system.md](./architect-system.md) |
-| **@data-engineer** | Dara | Data Sage | [data-engineer-system.md](./data-engineer-system.md) |
-| **@dev** | Dex | Builder | [dev-system.md](./dev-system.md) |
-| **@devops** | Gage | Guardian | [devops-system.md](./devops-system.md) |
-| **@pm** | Morgan | Strategist | [pm-system.md](./pm-system.md) |
-| **@qa** | Quinn | Guardian | [qa-system.md](./qa-system.md) |
-| **@sm** | River | Facilitator | [sm-system.md](./sm-system.md) |
-| **@squad-creator** | Nova | Creator | [squad-creator-system.md](./squad-creator-system.md) |
-| **@ux-design-expert** | Uma | Designer | [ux-design-expert-system.md](./ux-design-expert-system.md) |
+| Agente                | Persona | Arquetipo    | Documento                                                  |
+| --------------------- | ------- | ------------ | ---------------------------------------------------------- |
+| **@aiox-master**      | Orion   | Orchestrator | [aiox-master-system.md](./aiox-master-system.md)           |
+| **@analyst**          | Atlas   | Researcher   | [analyst-system.md](./analyst-system.md)                   |
+| **@architect**        | Aria    | Visionary    | [architect-system.md](./architect-system.md)               |
+| **@data-engineer**    | Dara    | Data Sage    | [data-engineer-system.md](./data-engineer-system.md)       |
+| **@dev**              | Dex     | Builder      | [dev-system.md](./dev-system.md)                           |
+| **@devops**           | Gage    | Guardian     | [devops-system.md](./devops-system.md)                     |
+| **@pm**               | Morgan  | Strategist   | [pm-system.md](./pm-system.md)                             |
+| **@qa**               | Quinn   | Guardian     | [qa-system.md](./qa-system.md)                             |
+| **@sm**               | River   | Facilitator  | [sm-system.md](./sm-system.md)                             |
+| **@squad-creator**    | Nova    | Creator      | [squad-creator-system.md](./squad-creator-system.md)       |
+| **@ux-design-expert** | Uma     | Designer     | [ux-design-expert-system.md](./ux-design-expert-system.md) |
 
 ---
 
@@ -167,12 +167,12 @@ flowchart TB
 
 ## Relacion con Otras Documentaciones
 
-| Documentacion | Ubicacion | Proposito |
-|---------------|-----------|-----------|
-| Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md) | Referencia rapida |
-| Workflows Guide | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Guia de workflows |
-| AIOX Workflows | [docs/aiox-workflows/](../../aiox-workflows/) | Detalle de workflows |
-| Architecture | [docs/architecture/](../../architecture/) | Arquitectura tecnica |
+| Documentacion       | Ubicacion                                                         | Proposito            |
+| ------------------- | ----------------------------------------------------------------- | -------------------- |
+| Meta-Agent Commands | [docs/meta-agent-commands.md](../../meta-agent-commands.md)       | Referencia rapida    |
+| Workflows Guide     | [docs/guides/workflows-guide.md](../../guides/workflows-guide.md) | Guia de workflows    |
+| AIOX Workflows      | [docs/aiox-workflows/](../../aiox-workflows/)                     | Detalle de workflows |
+| Architecture        | [docs/architecture/](../../architecture/)                         | Arquitectura tecnica |
 
 ---
 
@@ -187,4 +187,4 @@ Para agregar o actualizar documentacion de agentes:
 
 ---
 
-*AIOX Agent Flows Documentation v1.0 - Documentacion detallada del sistema de agentes*
+_AIOX Agent Flows Documentation v1.0 - Documentacion detallada del sistema de agentes_

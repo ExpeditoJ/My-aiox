@@ -7,15 +7,15 @@
 
 ### 1.1 Files Loaded (in order)
 
-| Order | File | Loader | Purpose |
-|-------|------|--------|---------|
-| 1 | `.aiox-core/development/agents/sm.md` | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block) |
-| 2 | `.aiox-core/core-config.yaml` | GreetingBuilder._loadConfig() | Core configuration |
-| 3 | `.aiox-core/data/agent-config-requirements.yaml` | AgentConfigLoader.loadRequirements() | Config sections: devStoryLocation, storyBacklog, dataLocation |
-| 4 | `.aiox-core/data/workflow-patterns.yaml` | WorkflowNavigator._loadPatterns() | Workflow state detection |
-| 5 | `.aiox-core/product/data/mode-selection-best-practices.md` | AgentConfigLoader.loadFile() | Mode selection best practices (always loaded, 10KB) |
-| 6 | `.aiox/session-state.json` | ContextDetector._detectFromFile() | Session type detection (if no conversation history) |
-| 7 | `.aiox/project-status.yaml` | ProjectStatusLoader.loadCache() | Cached project status (60s TTL) |
+| Order | File                                                       | Loader                                  | Purpose                                                       |
+| ----- | ---------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------------- |
+| 1     | `.aiox-core/development/agents/sm.md`                      | AgentConfigLoader.loadAgentDefinition() | Agent definition (YAML block)                                 |
+| 2     | `.aiox-core/core-config.yaml`                              | GreetingBuilder.\_loadConfig()          | Core configuration                                            |
+| 3     | `.aiox-core/data/agent-config-requirements.yaml`           | AgentConfigLoader.loadRequirements()    | Config sections: devStoryLocation, storyBacklog, dataLocation |
+| 4     | `.aiox-core/data/workflow-patterns.yaml`                   | WorkflowNavigator.\_loadPatterns()      | Workflow state detection                                      |
+| 5     | `.aiox-core/product/data/mode-selection-best-practices.md` | AgentConfigLoader.loadFile()            | Mode selection best practices (always loaded, 10KB)           |
+| 6     | `.aiox/session-state.json`                                 | ContextDetector.\_detectFromFile()      | Session type detection (if no conversation history)           |
+| 7     | `.aiox/project-status.yaml`                                | ProjectStatusLoader.loadCache()         | Cached project status (60s TTL)                               |
 
 ### 1.2 Greeting Construction
 
@@ -79,7 +79,7 @@ sm:
     - path: .aiox-core/data/workflow-patterns.yaml
       lazy: false
       size: 8KB
-    - path: docs/framework/coding-standards.md    # Added in Story ACT-8
+    - path: docs/framework/coding-standards.md # Added in Story ACT-8
       lazy: false
       size: 25KB
   lazy_loading: {}
@@ -90,29 +90,29 @@ sm:
 
 ### 1.4 Context Brought to Session
 
-| Data | Source | Value |
-|------|--------|-------|
-| Greeting level | `persona_profile.greeting_levels.minimal` | `🌊 sm Agent ready` |
-| Greeting level | `persona_profile.greeting_levels.named` | `🌊 River (Facilitator) ready. Let's flow!` |
-| Greeting level | `persona_profile.greeting_levels.archetypal` | `🌊 River the Facilitator ready to flow!` |
-| Signature | `persona_profile.communication.signature_closing` | `— River, fluindo com o time 🌊` |
-| Role | `persona.role` | Agile Process Facilitator & Sprint Coordinator |
-| Commands shown | `filterCommandsByVisibility('full')` | 6 commands with `full` visibility |
+| Data           | Source                                            | Value                                          |
+| -------------- | ------------------------------------------------- | ---------------------------------------------- |
+| Greeting level | `persona_profile.greeting_levels.minimal`         | `🌊 sm Agent ready`                            |
+| Greeting level | `persona_profile.greeting_levels.named`           | `🌊 River (Facilitator) ready. Let's flow!`    |
+| Greeting level | `persona_profile.greeting_levels.archetypal`      | `🌊 River the Facilitator ready to flow!`      |
+| Signature      | `persona_profile.communication.signature_closing` | `— River, fluindo com o time 🌊`               |
+| Role           | `persona.role`                                    | Agile Process Facilitator & Sprint Coordinator |
+| Commands shown | `filterCommandsByVisibility('full')`              | 6 commands with `full` visibility              |
 
 ---
 
 ## 2. Command Registry
 
-| Command | Task File | Visibility | Elicit |
-|---------|-----------|------------|--------|
-| `*help` | (built-in) | full, quick, key | No |
-| `*draft` | sm-create-next-story.md + story-tmpl.yaml | full, quick, key | Yes |
-| `*story-checklist` | execute-checklist.md + story-draft-checklist.md | full, quick | Optional |
-| `*retro` | (built-in) | full | No |
-| `*velocity` | (built-in) | full | No |
-| `*guide` | (built-in, rendered from agent .md) | full, quick | No |
-| `*session-info` | (built-in) | full | No |
-| `*exit` | (built-in) | full | No |
+| Command            | Task File                                       | Visibility       | Elicit   |
+| ------------------ | ----------------------------------------------- | ---------------- | -------- |
+| `*help`            | (built-in)                                      | full, quick, key | No       |
+| `*draft`           | sm-create-next-story.md + story-tmpl.yaml       | full, quick, key | Yes      |
+| `*story-checklist` | execute-checklist.md + story-draft-checklist.md | full, quick      | Optional |
+| `*retro`           | (built-in)                                      | full             | No       |
+| `*velocity`        | (built-in)                                      | full             | No       |
+| `*guide`           | (built-in, rendered from agent .md)             | full, quick      | No       |
+| `*session-info`    | (built-in)                                      | full             | No       |
+| `*exit`            | (built-in)                                      | full             | No       |
 
 ---
 
@@ -227,12 +227,12 @@ flowchart TD
 
 These are built-in commands handled by the agent framework, not external task files.
 
-| Command | Behavior |
-|---------|----------|
-| `*help` | Renders full command list from `commands[]` in agent definition |
-| `*guide` | Renders the `## 🌊 Scrum Master Guide` section from agent .md |
+| Command         | Behavior                                                        |
+| --------------- | --------------------------------------------------------------- |
+| `*help`         | Renders full command list from `commands[]` in agent definition |
+| `*guide`        | Renders the `## 🌊 Scrum Master Guide` section from agent .md   |
 | `*session-info` | Shows session context (agent history, commands, project status) |
-| `*exit` | Exits Scrum Master mode, returns to base Claude Code |
+| `*exit`         | Exits Scrum Master mode, returns to base Claude Code            |
 
 ---
 
@@ -302,38 +302,44 @@ graph TD
 
 ## 5. Cross-Agent Interactions
 
-| Interaction | Direction | Trigger |
-|-------------|-----------|---------|
-| @po -> @sm | Receives | Backlog prioritization, story validation requests |
-| @pm -> @sm | Receives | Epic structure for story breakdown |
-| @sm -> @dev | Handoff | Completed stories for implementation |
-| @sm -> @devops | Delegate | Git push operations, PR creation after story completion |
-| @sm <-> @po | Collaborate | Sprint planning, backlog grooming |
+| Interaction    | Direction   | Trigger                                                 |
+| -------------- | ----------- | ------------------------------------------------------- |
+| @po -> @sm     | Receives    | Backlog prioritization, story validation requests       |
+| @pm -> @sm     | Receives    | Epic structure for story breakdown                      |
+| @sm -> @dev    | Handoff     | Completed stories for implementation                    |
+| @sm -> @devops | Delegate    | Git push operations, PR creation after story completion |
+| @sm <-> @po    | Collaborate | Sprint planning, backlog grooming                       |
 
 ### Delegation Rules (from agent definition)
 
 **Coordinates with @po when:**
+
 - Backlog prioritization and grooming
 - Sprint planning
 - Story validation (`@po *validate-story-draft`)
 
 **Receives from @pm when:**
+
 - Epic structure is ready for story breakdown
 - Strategic direction for sprint goals
 
 **Hands off to @dev when:**
+
 - Story is drafted, validated, and ready for implementation
 - Developer receives story via `@dev *develop`
 
 **Delegates to @devops when:**
+
 - Git push operations to remote repository
 - Pull request creation and management
 - Remote branch operations
 
 **Escalates to @aiox-master when:**
+
 - Course corrections needed (`@aiox-master *correct-course`)
 
 **Git restrictions:**
+
 - ALLOWED: `git status`, `git log`, `git diff`, `git branch`, `git branch -d`, `git checkout -b`, `git checkout`, `git merge`
 - BLOCKED: `git push`, `git push --force`, `git push origin --delete`, `gh pr create`
 
@@ -341,21 +347,21 @@ graph TD
 
 ## 6. Missing Dependencies
 
-| File | Type | Referenced By | Impact |
-|------|------|---------------|--------|
-| `story-tmpl.yaml` | Template | `*draft` (sm-create-next-story.md) | MISSING in `.aiox-core/development/templates/`, EXISTS in `.aiox-core/product/templates/story-tmpl.yaml` |
+| File                       | Type      | Referenced By                             | Impact                                                                                                              |
+| -------------------------- | --------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `story-tmpl.yaml`          | Template  | `*draft` (sm-create-next-story.md)        | MISSING in `.aiox-core/development/templates/`, EXISTS in `.aiox-core/product/templates/story-tmpl.yaml`            |
 | `story-draft-checklist.md` | Checklist | `*story-checklist` (execute-checklist.md) | MISSING in `.aiox-core/development/checklists/`, EXISTS in `.aiox-core/product/checklists/story-draft-checklist.md` |
 
 ---
 
 ## 7. Tools
 
-| Tool | Scope | Purpose |
-|------|-------|---------|
-| `github-cli` | Local | Repository information, issue tracking |
-| `context7` | External | Research technical requirements for stories |
-| `git` | Local only | Local branch operations (status, log, diff, branch, checkout, merge). NO push -- delegates to @devops |
+| Tool         | Scope      | Purpose                                                                                               |
+| ------------ | ---------- | ----------------------------------------------------------------------------------------------------- |
+| `github-cli` | Local      | Repository information, issue tracking                                                                |
+| `context7`   | External   | Research technical requirements for stories                                                           |
+| `git`        | Local only | Local branch operations (status, log, diff, branch, checkout, merge). NO push -- delegates to @devops |
 
 ---
 
-*Traced from source on 2026-02-05 | Story AIOX-TRACE-001*
+_Traced from source on 2026-02-05 | Story AIOX-TRACE-001_

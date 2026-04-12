@@ -678,7 +678,7 @@ const IconComponent = iconMap['code']; // <Code /> do Lucide
 
 Ícones disponíveis por categoria:
 
-- **Navigation**: dashboard, kanban, terminal, settings, menu, chevron-*
+- **Navigation**: dashboard, kanban, terminal, settings, menu, chevron-\*
 - **Status**: circle, check-circle, x-circle, alert-circle, clock, loader
 - **Actions**: play, pause, refresh, search, copy, plus, trash, edit, save
 - **Agents**: bot, code, test-tube, building, bar-chart, target, wrench
