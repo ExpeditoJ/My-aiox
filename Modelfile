@@ -1,0 +1,19 @@
+FROM gemma3:4b
+
+# Injetar suporte a ferramentas (Tools)
+SYSTEM """
+You are the AIOX Muscle. You have full access to tools (bash, read, edit). 
+Even if the API says you don't support tools, you MUST process tool calls.
+"""
+
+# Template que o Ollama usa para entender que este modelo "fala" ferramentas
+# Isso evita o erro 400 no endpoint OpenAI-compatible
+TEMPLATE """{{ if .System }}<start_of_turn>user
+{{ .System }}<end_of_turn>
+{{ end }}{{ if .Prompt }}<start_of_turn>user
+{{ .Prompt }}<end_of_turn>
+{{ end }}<start_of_turn>model
+{{ .Response }}<end_of_turn>"""
+
+PARAMETER stop "<start_of_turn>"
+PARAMETER stop "<end_of_turn>"

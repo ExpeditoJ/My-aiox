@@ -13,6 +13,8 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 
+const poolPath = path.join(process.cwd(), '.aiox-core', 'local', 'api-pool.json');
+
 // ── Colors ──
 const cyan   = s => `\x1b[1;36m${s}\x1b[0m`;
 const green  = s => `\x1b[32m${s}\x1b[0m`;
@@ -20,27 +22,41 @@ const yellow = s => `\x1b[33m${s}\x1b[0m`;
 const red    = s => `\x1b[31m${s}\x1b[0m`;
 const dim    = s => `\x1b[2m${s}\x1b[0m`;
 
-// ── Load pool config ──
-const poolPath = path.join(process.cwd(), '.aiox-core', 'local', 'api-pool.json');
-let pool;
-try {
-  pool = JSON.parse(fs.readFileSync(poolPath, 'utf8'));
-} catch (e) {
-  console.error(red('[POOL] Falha ao ler api-pool.json:'), e.message);
-  process.exit(1);
-}
-
-const providers = pool.providers
-  .filter(p => p.enabled)
-  .sort((a, b) => a.priority - b.priority);
-
-if (providers.length === 0) {
-  console.error(red('[POOL] Nenhum provider habilitado no pool!'));
-  process.exit(1);
-}
-
+// ── Pool State ──
+let providers = [];
+let pool = {};
 let currentIdx = 0;
 let rotationCount = 0;
+
+function loadPool() {
+  try {
+    const data = fs.readFileSync(poolPath, 'utf8');
+    pool = JSON.parse(data);
+    providers = pool.providers
+      .filter(p => p.enabled)
+      .sort((a, b) => a.priority - b.priority);
+    
+    if (providers.length === 0) {
+      console.error(red('[POOL] Nenhum provider habilitado no pool!'));
+    } else {
+      console.log(green(`[POOL] Configuração carregada (${providers.length} ativos)`));
+      currentIdx = 0;
+    }
+  } catch (e) {
+    console.error(red('[POOL] Falha ao carregar pool:'), e.message);
+  }
+}
+
+loadPool();
+
+// ── Hot Reloading ──
+fs.watch(poolPath, (eventType) => {
+  if (eventType === 'change') {
+    console.log(cyan('[POOL] Mudança detectada no api-pool.json. Recarregando...'));
+    loadPool();
+  }
+});
+
 const MAX_SHIELD = pool.shield?.max_string_length || 12000;
 const SHIELD_ON  = pool.shield?.enabled !== false;
 

@@ -1,0 +1,49 @@
+{
+  "version": "1.0",
+  "shield": {
+    "enabled": true,
+    "max_string_length": 12000
+  },
+  "providers": [
+    {
+      "id": "ollama-turbo",
+      "provider": "ollama",
+      "api_key": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "aiox-turbo",
+      "priority": 0,
+      "enabled": true,
+      "description": "Marcha 1: Músculo Turbo (1B Brainwashed)"
+    },
+    {
+      "id": "ollama-logic",
+      "provider": "ollama",
+      "api_key": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "llama3.2",
+      "priority": 10,
+      "enabled": false,
+      "description": "Marcha 2: Equilíbrio e Lógica (3B)"
+    },
+    {
+      "id": "ollama-heavy",
+      "provider": "ollama",
+      "api_key": "local",
+      "base_url": "http://localhost:11434/v1",
+      "model": "aiox-muscle",
+      "priority": 10,
+      "enabled": false,
+      "description": "Marcha 3: Força Bruta (Gemma 3 Forge)"
+    },
+    {
+      "id": "openrouter-free",
+      "provider": "openrouter",
+      "api_key": "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",
+      "base_url": "https://openrouter.ai/api/v1",
+      "model": "meta-llama/llama-3.3-70b-instruct:free",
+      "priority": 20,
+      "enabled": true,
+      "description": "Nuvem: Backup Gratuito 70B"
+    }
+  ]
+}
