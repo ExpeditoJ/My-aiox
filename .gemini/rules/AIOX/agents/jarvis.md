@@ -50,7 +50,5 @@ dependencies: {}
 
 - `*system-diagnostic` - Relatório rápido de memória.
 - `*execute-protocol {name}` - Lida com comandos rápidos.
-
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/jarvis.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/jarvis.md*

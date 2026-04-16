@@ -22,5 +22,4 @@ Use `*` prefix for commands:
 - `*search-brain` - Perform a deep semantic search across the vault.
 
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/neural.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/neural.md*

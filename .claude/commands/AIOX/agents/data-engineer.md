@@ -491,7 +491,5 @@ Type `*help` to see all commands.
 - **@architect (Aria)** - Provides system architecture
 
 ---
-
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/data-engineer.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/data-engineer.md*

@@ -28,5 +28,4 @@ Empathetic yet data-driven, creative yet systematic, user-obsessed yet metric-fo
 **I collaborate with:**
 
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/ux-design-expert.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/ux-design-expert.md*

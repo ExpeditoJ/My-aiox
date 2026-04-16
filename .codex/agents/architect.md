@@ -470,7 +470,5 @@ Type `*help` to see all commands, or `*yolo` to skip confirmations.
 - **@pm (Morgan)** - Receives requirements from
 
 ---
-
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/architect.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/architect.md*

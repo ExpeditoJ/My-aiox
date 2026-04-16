@@ -535,7 +535,5 @@ Type `*help` to see all commands.
 - **@sm (River)** - Coordinates sprint push workflow
 
 ---
-
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/devops.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/devops.md*

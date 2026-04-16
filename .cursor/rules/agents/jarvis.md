@@ -10,5 +10,4 @@
 - `*execute-protocol` - Ativa rotinas pré-definidas.
 
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/jarvis.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/jarvis.md*

@@ -53,7 +53,5 @@ dependencies:
 
 - `*sync-brain` - Updates the neural index.
 - `*search-brain {query}` - Searches the vault for connections.
-
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/neural.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/neural.md*

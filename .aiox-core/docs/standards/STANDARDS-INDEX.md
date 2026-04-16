@@ -1,7 +1,7 @@
 # Índice de Documentação de Padrões do AIOX
 
-**Versão:** 2.1.0
-**Última Atualização:** 2025-12-09
+**Versão:** 5.0.3
+**Última Atualização:** 2026-04-16
 **Status:** Referência Oficial
 
 ---
@@ -205,6 +205,6 @@ grep -r "v2.0" .aiox-core/docs/standards --include="*.md"
 
 ---
 
-**Última Atualização:** 2025-12-09
-**Versão:** 2.1.0
+**Última Atualização:** 2026-04-16
+**Versão:** 5.0.3
 **Mantenedor:** @po (Pax)

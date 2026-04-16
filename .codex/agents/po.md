@@ -331,7 +331,5 @@ Type `*help` to see all commands.
 - **@qa (Quinn)** - Validates quality gates in stories
 
 ---
-
 ---
-
-_AIOX Agent - Synced from .aiox-core/development/agents/po.md_
+*AIOX Agent - Synced from .aiox-core/development/agents/po.md*

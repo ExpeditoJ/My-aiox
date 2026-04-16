@@ -8,7 +8,7 @@
 # - File types for categorization
 #
 version: 5.0.3
-generated_at: "2026-04-16T22:54:11.152Z"
+generated_at: "2026-04-16T22:57:53.976Z"
 generator: scripts/generate-install-manifest.js
 file_count: 1099
 files:
@@ -2813,7 +2813,7 @@ files:
     type: documentation
     size: 20674
   - path: docs/standards/STANDARDS-INDEX.md
-    hash: sha256:8457233ca1c64692f83a5377a42c421b6e52e056feb60ea647a1b07936d43da8
+    hash: sha256:62b88445915588819e3c89ec485fea1dbd600e17b659ce4c41eebfd59e0f4064
     type: documentation
     size: 11341
   - path: docs/standards/STORY-TEMPLATE-V2-SPECIFICATION.md
