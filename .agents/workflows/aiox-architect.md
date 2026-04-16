@@ -1,5 +1,5 @@
 ---
-description: "🏗️ AIOX Architect — System architecture, tech stack selection, design patterns"
+description: '🏗️ AIOX Architect — System architecture, tech stack selection, design patterns'
 ---
 
 # Ativar agente architect

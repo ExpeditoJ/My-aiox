@@ -1,5 +1,5 @@
 ---
-description: "🎯 AIOX Squad Creator — Create, validate, publish and manage squads"
+description: '🎯 AIOX Squad Creator — Create, validate, publish and manage squads'
 ---
 
 # Ativar agente squad-creator

@@ -1,5 +1,5 @@
 ---
-description: "👑 AIOX Master Orchestrator — Orion (framework dev, workflow orchestration, cross-agent coordination)"
+description: '👑 AIOX Master Orchestrator — Orion (framework dev, workflow orchestration, cross-agent coordination)'
 ---
 
 # Ativar agente aiox-master (Orion)

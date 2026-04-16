@@ -1,5 +1,5 @@
 ---
-description: "🗄️ AIOX Data Engineer — Database design, Supabase, migrations, query optimization"
+description: '🗄️ AIOX Data Engineer — Database design, Supabase, migrations, query optimization'
 ---
 
 # Ativar agente data-engineer

@@ -1,5 +1,5 @@
 ---
-description: "📋 AIOX PM — Product Manager (PRD, epic creation, product strategy, feature prioritization)"
+description: '📋 AIOX PM — Product Manager (PRD, epic creation, product strategy, feature prioritization)'
 ---
 
 # Ativar agente pm

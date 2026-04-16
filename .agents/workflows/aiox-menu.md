@@ -1,5 +1,5 @@
 ---
-description: "📜 AIOX Menu — Lista todos os agentes disponíveis e orienta qual ativar"
+description: '📜 AIOX Menu — Lista todos os agentes disponíveis e orienta qual ativar'
 ---
 
 # Menu rápido AIOX

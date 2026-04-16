@@ -1,4 +1,5 @@
 # 🎮 Guia Completo: Mercado de Mods do Minecraft
+
 ## De Zero a Negócio — Automação, Outreach & Monetização
 
 > Gerado por Orion (AIOX Master Orchestrator) — Abril 2026
@@ -11,50 +12,50 @@
 
 ### O Mercado de Modding em Números
 
-| Métrica | Valor |
-|---------|-------|
-| Tamanho do mercado global de modding | ~$5.5B/ano (2025) |
-| Crescimento anual | ~12-15% |
-| Mods baixados só no Nexus Mods | 15+ bilhões (total histórico) |
-| CurseForge downloads/mês | ~800 milhões |
-| Creators que ganham dinheiro com mods | ~50,000 ativos globalmente |
-| Top modders (Minecraft) | $10k-$50k/mês |
+| Métrica                               | Valor                         |
+| ------------------------------------- | ----------------------------- |
+| Tamanho do mercado global de modding  | ~$5.5B/ano (2025)             |
+| Crescimento anual                     | ~12-15%                       |
+| Mods baixados só no Nexus Mods        | 15+ bilhões (total histórico) |
+| CurseForge downloads/mês              | ~800 milhões                  |
+| Creators que ganham dinheiro com mods | ~50,000 ativos globalmente    |
+| Top modders (Minecraft)               | $10k-$50k/mês                 |
 
 ### Os 4 Segmentos de Dinheiro no Minecraft
 
-| Segmento | Receita Potencial | Investimento Inicial | Tempo até 1ª receita | Skill principal |
-|----------|-------------------|---------------------|---------------------|-----------------|
-| Mods individuais | $100-5k/mês | $0 | 1-3 meses | Java/JavaScript |
-| Modpacks | $1k-25k/mês | $0 | 2-4 meses | Curadoria + Config |
-| Servidores | $5k-500k/mês | $20-100/mês (hosting) | 1-2 meses | Sysadmin + Marketing |
-| Marketplace (Bedrock) | $100k-1M+/ano | $0 (precisa aprovação) | 6-12 meses | Arte + Dev |
+| Segmento              | Receita Potencial | Investimento Inicial   | Tempo até 1ª receita | Skill principal      |
+| --------------------- | ----------------- | ---------------------- | -------------------- | -------------------- |
+| Mods individuais      | $100-5k/mês       | $0                     | 1-3 meses            | Java/JavaScript      |
+| Modpacks              | $1k-25k/mês       | $0                     | 2-4 meses            | Curadoria + Config   |
+| Servidores            | $5k-500k/mês      | $20-100/mês (hosting)  | 1-2 meses            | Sysadmin + Marketing |
+| Marketplace (Bedrock) | $100k-1M+/ano     | $0 (precisa aprovação) | 6-12 meses           | Arte + Dev           |
 
 ### Jogos com Maior Ecossistema de Mods
 
-| Tier | Jogo | Tamanho do mercado | Linguagem de Modding |
-|------|------|-------------------|---------------------|
-| S | **Minecraft** | Gigantesco — o maior de todos | Java, JavaScript (Bedrock) |
-| S | **Skyrim / Fallout** | Massivo — Nexus Mods domina | Papyrus, C++ (SKSE) |
-| A | **GTA V** (FiveM) | Enorme — servidores RP são indústria | Lua, C# |
-| A | **Garry's Mod** | Clássico — Workshop gigante | Lua |
-| A | **Cities: Skylines** | Premium — mods vendem no DLC level | C# |
-| A | **Stardew Valley** | Comunidade leal e ativa | C# (SMAPI) |
-| B | **Project Zomboid** | Crescendo rápido — Build 42 vai explodir | Lua |
-| B | **Factorio** | Nicho mas hardcore e dedicado | Lua |
-| B | **RimWorld** | Muito ativo, comunidade generosa | C# |
-| B | **Terraria** (tModLoader) | Grande e crescendo | C# |
+| Tier | Jogo                      | Tamanho do mercado                       | Linguagem de Modding       |
+| ---- | ------------------------- | ---------------------------------------- | -------------------------- |
+| S    | **Minecraft**             | Gigantesco — o maior de todos            | Java, JavaScript (Bedrock) |
+| S    | **Skyrim / Fallout**      | Massivo — Nexus Mods domina              | Papyrus, C++ (SKSE)        |
+| A    | **GTA V** (FiveM)         | Enorme — servidores RP são indústria     | Lua, C#                    |
+| A    | **Garry's Mod**           | Clássico — Workshop gigante              | Lua                        |
+| A    | **Cities: Skylines**      | Premium — mods vendem no DLC level       | C#                         |
+| A    | **Stardew Valley**        | Comunidade leal e ativa                  | C# (SMAPI)                 |
+| B    | **Project Zomboid**       | Crescendo rápido — Build 42 vai explodir | Lua                        |
+| B    | **Factorio**              | Nicho mas hardcore e dedicado            | Lua                        |
+| B    | **RimWorld**              | Muito ativo, comunidade generosa         | C#                         |
+| B    | **Terraria** (tModLoader) | Grande e crescendo                       | C#                         |
 
 ### Plataformas de Distribuição
 
-| Plataforma | Foco | Monetização |
-|-----------|------|-------------|
-| **CurseForge** | Minecraft, WoW, outros | Programa de pontos por download |
-| **Modrinth** | Minecraft (alternativa open-source) | Payouts por download |
-| **Nexus Mods** | Bethesda, gerais | Donation Points + Premium |
-| **Steam Workshop** | Qualquer jogo Steam | Limitado |
-| **Planet Minecraft** | Minecraft exclusivo | Ads apenas |
-| **Patreon / Ko-fi** | Qualquer | Assinatura direta |
-| **GitHub** | Open source | Sponsors apenas |
+| Plataforma           | Foco                                | Monetização                     |
+| -------------------- | ----------------------------------- | ------------------------------- |
+| **CurseForge**       | Minecraft, WoW, outros              | Programa de pontos por download |
+| **Modrinth**         | Minecraft (alternativa open-source) | Payouts por download            |
+| **Nexus Mods**       | Bethesda, gerais                    | Donation Points + Premium       |
+| **Steam Workshop**   | Qualquer jogo Steam                 | Limitado                        |
+| **Planet Minecraft** | Minecraft exclusivo                 | Ads apenas                      |
+| **Patreon / Ko-fi**  | Qualquer                            | Assinatura direta               |
+| **GitHub**           | Open source                         | Sponsors apenas                 |
 
 ### Cadeia de Valor do Mercado
 
@@ -83,14 +84,14 @@ Content Creator (YouTube/Twitch)
 
 ### Oportunidades de Mercado em 2026
 
-| Oportunidade | Por quê | Potencial |
-|-------------|---------|-----------|
-| **Project Zomboid Build 42** | Multiplayer novo + hype | Alto |
-| **Minecraft 1.22+** | Cada update reseta o mercado de mods | Alto |
-| **GTA VI + FiveM 2.0** | Novo GTA = nova febre de RP servers | Muito Alto |
-| **Modpacks com IA** | Mods que usam GPT/AI para NPCs, quests dinâmicas | Alto |
-| **Palworld modding** | Comunidade nascendo, pouca competição | Médio |
-| **Ferramentas para modders** | Tools que facilitam criar mods | Médio |
+| Oportunidade                 | Por quê                                          | Potencial  |
+| ---------------------------- | ------------------------------------------------ | ---------- |
+| **Project Zomboid Build 42** | Multiplayer novo + hype                          | Alto       |
+| **Minecraft 1.22+**          | Cada update reseta o mercado de mods             | Alto       |
+| **GTA VI + FiveM 2.0**       | Novo GTA = nova febre de RP servers              | Muito Alto |
+| **Modpacks com IA**          | Mods que usam GPT/AI para NPCs, quests dinâmicas | Alto       |
+| **Palworld modding**         | Comunidade nascendo, pouca competição            | Médio      |
+| **Ferramentas para modders** | Tools que facilitam criar mods                   | Médio      |
 
 ---
 
@@ -102,22 +103,23 @@ Content Creator (YouTube/Twitch)
 
 Não tente ser genérico. Escolha UM foco:
 
-| Nicho | Público | Competição | Exemplo |
-|-------|---------|------------|---------|
-| **Quality of Life** | Enorme | Média | Inventory sorting, minimap, waypoints |
-| **Tech/Automação** | Grande | Alta | Máquinas, energy, pipes |
-| **Magic/RPG** | Grande | Alta | Spells, classes, dungeons |
-| **Building/Decoração** | Enorme | Média | Blocos decorativos, furniture |
-| **Performance** | Enorme | Baixa | Optimization mods (tipo Sodium) |
-| **Adventure/Dungeons** | Grande | Média | Estruturas, mobs, bosses |
-| **Utility/Tools** | Enorme | Média | Dev tools, config editors |
-| **Hardcore/Survival** | Médio | Baixa | Dificuldade, realismo, seasons |
+| Nicho                  | Público | Competição | Exemplo                               |
+| ---------------------- | ------- | ---------- | ------------------------------------- |
+| **Quality of Life**    | Enorme  | Média      | Inventory sorting, minimap, waypoints |
+| **Tech/Automação**     | Grande  | Alta       | Máquinas, energy, pipes               |
+| **Magic/RPG**          | Grande  | Alta       | Spells, classes, dungeons             |
+| **Building/Decoração** | Enorme  | Média      | Blocos decorativos, furniture         |
+| **Performance**        | Enorme  | Baixa      | Optimization mods (tipo Sodium)       |
+| **Adventure/Dungeons** | Grande  | Média      | Estruturas, mobs, bosses              |
+| **Utility/Tools**      | Enorme  | Média      | Dev tools, config editors             |
+| **Hardcore/Survival**  | Médio   | Baixa      | Dificuldade, realismo, seasons        |
 
 **Melhor estratégia para iniciantes:** Comece com mods de Quality of Life ou Utility. São os mais baixados, mais fáceis de criar e resolvem problemas reais. A competição é menor do que parece porque muitos mods populares estão abandonados.
 
 ### 1.2 Setup Técnico
 
 **Java Edition (Forge/Fabric/NeoForge):**
+
 - JDK 21+ (Java Development Kit)
 - IntelliJ IDEA Community (IDE gratuita)
 - Minecraft Development Plugin (IntelliJ)
@@ -126,12 +128,12 @@ Não tente ser genérico. Escolha UM foco:
 
 **Escolha o mod loader:**
 
-| Loader | Prós | Contras | Recomendação |
-|--------|------|---------|-------------|
-| **Fabric** | Leve, rápido, moderno | Menor comunidade | Melhor pra começar |
-| **NeoForge** | Fork do Forge, futuro | Ainda estabilizando | Espere um pouco |
-| **Forge** | Maior comunidade, mais mods | Pesado, lento pra atualizar | Legacy |
-| **Multi-loader** (Architectury) | Publica pra todos | Mais complexo | Avançado |
+| Loader                          | Prós                        | Contras                     | Recomendação       |
+| ------------------------------- | --------------------------- | --------------------------- | ------------------ |
+| **Fabric**                      | Leve, rápido, moderno       | Menor comunidade            | Melhor pra começar |
+| **NeoForge**                    | Fork do Forge, futuro       | Ainda estabilizando         | Espere um pouco    |
+| **Forge**                       | Maior comunidade, mais mods | Pesado, lento pra atualizar | Legacy             |
+| **Multi-loader** (Architectury) | Publica pra todos           | Mais complexo               | Avançado           |
 
 ### 1.3 Crie suas contas (todas gratuitas)
 
@@ -152,16 +154,16 @@ Não tente ser genérico. Escolha UM foco:
 
 **Ideias comprovadas de alto download:**
 
-| Ideia | Downloads esperados (6 meses) | Dificuldade |
-|-------|------------------------------|-------------|
-| Better death screen (mostra coords, itens perdidos) | 100k-500k | Fácil |
-| Auto-replant (replanta colheita automaticamente) | 200k-1M | Fácil |
-| Inventory profiles (salva loadouts) | 300k-1M | Médio |
-| Mob health bars | 500k-2M | Fácil |
-| Better enchantment UI | 200k-800k | Médio |
-| Chunk loader acessível | 300k-1M | Médio |
-| Recipe conflict viewer | 100k-300k | Médio |
-| Server performance monitor | 50k-200k | Médio |
+| Ideia                                               | Downloads esperados (6 meses) | Dificuldade |
+| --------------------------------------------------- | ----------------------------- | ----------- |
+| Better death screen (mostra coords, itens perdidos) | 100k-500k                     | Fácil       |
+| Auto-replant (replanta colheita automaticamente)    | 200k-1M                       | Fácil       |
+| Inventory profiles (salva loadouts)                 | 300k-1M                       | Médio       |
+| Mob health bars                                     | 500k-2M                       | Fácil       |
+| Better enchantment UI                               | 200k-800k                     | Médio       |
+| Chunk loader acessível                              | 300k-1M                       | Médio       |
+| Recipe conflict viewer                              | 100k-300k                     | Médio       |
+| Server performance monitor                          | 50k-200k                      | Médio       |
 
 ### 2.2 Estrutura do projeto
 
@@ -187,6 +189,7 @@ meu-mod/
 ### 2.3 Publicação
 
 **CurseForge:**
+
 1. Crie o projeto em authors.curseforge.com
 2. Preencha: título, descrição (detalhada!), screenshots, icon
 3. Upload do .jar
@@ -194,6 +197,7 @@ meu-mod/
 5. Escolha a licença
 
 **Modrinth:**
+
 1. Mesmo processo em modrinth.com/dashboard
 2. Pode sincronizar releases via GitHub Actions
 
@@ -206,32 +210,40 @@ meu-mod/
 ### 3.1 Otimização da página do mod
 
 **Título:**
+
 - Inclua keywords: "Better X", "Enhanced X", "Simple X"
 - Ex: "Better Death Screen - Coords, Items & Respawn"
 
 **Descrição — formato ideal:**
+
 ```markdown
 ## O que este mod faz
+
 [GIF animado mostrando o mod em ação — OBRIGATÓRIO]
 
 ## Features
+
 - Feature 1 (com screenshot)
 - Feature 2 (com screenshot)
 - Feature 3
 
 ## Compatibilidade
+
 - Fabric 1.20.x, 1.21.x
 - Forge (em breve)
 - Funciona com: Sodium, Iris, ModMenu
 
 ## FAQ
+
 Perguntas frequentes aqui
 
 ## Suporte
+
 [Link Discord] | [Link GitHub Issues]
 ```
 
 **O que faz download disparar:**
+
 - GIF animado como primeira coisa na descrição (90% dos mods não têm)
 - Screenshots de alta qualidade com shaders
 - Tags corretas no CurseForge
@@ -255,15 +267,16 @@ Frequência ideal:
 
 ### 1. Reddit (MAIOR impacto gratuito)
 
-| Subreddit | Membros | O que postar |
-|-----------|---------|-------------|
-| r/Minecraft | 9M+ | Showcase visual do mod |
-| r/feedthebeast | 500k+ | Announcement + features |
-| r/fabricmc | 100k+ | Release post técnico |
-| r/MinecraftMod | 50k+ | WIP posts, betas |
-| r/admincraft | 100k+ | Se for server-side mod |
+| Subreddit      | Membros | O que postar            |
+| -------------- | ------- | ----------------------- |
+| r/Minecraft    | 9M+     | Showcase visual do mod  |
+| r/feedthebeast | 500k+   | Announcement + features |
+| r/fabricmc     | 100k+   | Release post técnico    |
+| r/MinecraftMod | 50k+    | WIP posts, betas        |
+| r/admincraft   | 100k+   | Se for server-side mod  |
 
 **Template de post que funciona:**
+
 ```
 Título: "I made a mod that [benefício óbvio] - [nome do mod]"
 
@@ -280,12 +293,13 @@ A pergunta no final é CRUCIAL. Reddit recompensa engagement (comentários). Ped
 
 **Dois tipos de vídeo:**
 
-| Tipo | Formato | Objetivo |
-|------|---------|----------|
-| **Showcase** | 2-5 min mostrando o mod em ação | Links na descrição = downloads |
-| **Dev log** | 5-15 min mostrando o processo de criação | Constrói comunidade de seguidores |
+| Tipo         | Formato                                  | Objetivo                          |
+| ------------ | ---------------------------------------- | --------------------------------- |
+| **Showcase** | 2-5 min mostrando o mod em ação          | Links na descrição = downloads    |
+| **Dev log**  | 5-15 min mostrando o processo de criação | Constrói comunidade de seguidores |
 
 **YouTubers que fazem reviews de mods (contate-os):**
+
 - AsianHalfSquat (~500k subs) — maior reviewer de mods
 - ChosenArchitect (~1M) — modpacks
 - Direwolf20 (~1M) — tech mods
@@ -293,6 +307,7 @@ A pergunta no final é CRUCIAL. Reddit recompensa engagement (comentários). Ped
 - SystemZee (~2M) — mods criativos
 
 **Email template para YouTuber:**
+
 ```
 Subject: New [Fabric/Forge] Mod — [Nome] (Minecraft 1.21)
 
@@ -319,15 +334,16 @@ Cheers,
 
 **Servidores para divulgar:**
 
-| Servidor | Como usar |
-|----------|-----------|
-| Fabric Discord | Canal #showcase — poste releases |
-| Forge Discord | Canal #mods |
-| Quilt Discord | Se suportar Quilt |
-| Minecraft Modding | Geral |
-| **Seu próprio server** | Hub central da comunidade |
+| Servidor               | Como usar                        |
+| ---------------------- | -------------------------------- |
+| Fabric Discord         | Canal #showcase — poste releases |
+| Forge Discord          | Canal #mods                      |
+| Quilt Discord          | Se suportar Quilt                |
+| Minecraft Modding      | Geral                            |
+| **Seu próprio server** | Hub central da comunidade        |
 
 **Estrutura do seu Discord:**
+
 ```
 📢 announcements    — releases e updates
 💬 general          — chat geral
@@ -340,12 +356,14 @@ Cheers,
 ### 4. Twitter/X (Networking)
 
 **Quem seguir e interagir:**
+
 - Desenvolvedores de mods populares
 - Modpack creators
 - MC YouTubers
 - @fabricmc, @NeoForged (contas oficiais)
 
 **O que postar:**
+
 - GIFs de desenvolvimento "WIP do novo mod!"
 - Screenshots com shaders
 - Polls "Qual feature vocês querem?"
@@ -358,11 +376,13 @@ Cheers,
 Esse é o canal #1 de crescimento passivo. Um mod incluído em modpacks populares ganha milhões de downloads sem esforço.
 
 **Como ser incluído:**
+
 1. Torne seu mod compatível com os mods mais usados (JEI, Sodium, etc.)
 2. Licença permissiva (MIT) — pack creators evitam mods com licença restritiva
 3. Contate pack creators diretamente
 
 **Maiores modpacks para contatar:**
+
 - All The Mods (ATM9, ATM10) — ~5M downloads
 - Better Minecraft — ~10M downloads
 - RLCraft — ~15M downloads
@@ -376,6 +396,7 @@ Esse é o canal #1 de crescimento passivo. Um mod incluído em modpacks populare
 ## Modelos de Monetização
 
 ### 1. Por Downloads (Passivo)
+
 ```
 CurseForge: ~$3-5 por 1000 downloads
 Modrinth:   ~$2-4 por 1000 downloads
@@ -384,6 +405,7 @@ Mod popular (1M downloads/mês) = $3,000-5,000/mês passivo
 ```
 
 ### 2. Patreon/Membership (Recorrente)
+
 ```
 Early access a versões novas
 Builds exclusivas
@@ -394,6 +416,7 @@ Top modders: 500-5,000 patrons = $2,000-25,000/mês
 ```
 
 ### 3. Server Packs Customizados (Serviço)
+
 ```
 Modpack montado sob medida para servidores
 Inclui: seleção, configs, integração, balanceamento
@@ -402,6 +425,7 @@ Manutenção mensal: $50-300/mês
 ```
 
 ### 4. Minecraft Marketplace (Bedrock)
+
 ```
 Microsoft/Mojang Marketplace para Bedrock Edition
 Precisa ser "Minecraft Partner" aprovado
@@ -411,6 +435,7 @@ Barreira de entrada: alta (aprovação + qualidade AAA)
 ```
 
 ### 5. Servidores Monetizados
+
 ```
 Minecraft Servers: Top networks = $50,000-500,000/mês
 Modelo: VIP, cosméticos, ranks, loot boxes
@@ -428,15 +453,15 @@ Ano 2+:    $1000-10k+ (portfólio + modpack + server)
 
 ### Multiplicadores de Receita
 
-| Estratégia | Multiplicador |
-|-----------|---------------|
-| Publicar só CurseForge | 1x (baseline) |
-| + Modrinth | 1.3x |
-| + Patreon (early access) | 2-3x |
-| + Múltiplos mods (portfólio) | 3-5x |
-| + Modpack próprio | 5-10x |
-| + Servidor monetizado | 10-50x |
-| + YouTube dev logs | 2x (ads + awareness) |
+| Estratégia                   | Multiplicador        |
+| ---------------------------- | -------------------- |
+| Publicar só CurseForge       | 1x (baseline)        |
+| + Modrinth                   | 1.3x                 |
+| + Patreon (early access)     | 2-3x                 |
+| + Múltiplos mods (portfólio) | 3-5x                 |
+| + Modpack próprio            | 5-10x                |
+| + Servidor monetizado        | 10-50x               |
+| + YouTube dev logs           | 2x (ads + awareness) |
 
 ### Como Configurar o Patreon
 
@@ -469,6 +494,7 @@ NÍVEL 6: Studio (contrata outros devs, múltiplos projetos)
 ```
 
 **Exemplos reais de quem fez isso:**
+
 - **Simion** (Create mod) — de 1 mod pra um dos maiores da história
 - **Vazkii** (Botania, Quark) — portfólio de mods, agora na Violet Moon
 - **CFB Team** (Cobblemon) — de mod pra studio com 15+ devs
@@ -480,6 +506,7 @@ NÍVEL 6: Studio (contrata outros devs, múltiplos projetos)
 ## O que pode ser automatizado vs. manual
 
 **Automatizável (80%):**
+
 - Scaffolding do mod
 - Build e compile
 - Upload CurseForge/Modrinth
@@ -494,6 +521,7 @@ NÍVEL 6: Studio (contrata outros devs, múltiplos projetos)
 - Version bumping
 
 **Manual (20%):**
+
 - Design da ideia/conceito
 - Gameplay testing
 - Responder feedback
@@ -544,22 +572,22 @@ jobs:
       - uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "Nova versão: ${{ github.ref_name }}"
+          title: 'Nova versão: ${{ github.ref_name }}'
 ```
 
 **Resultado:** git tag v1.0.0 && git push --tags e TUDO acontece sozinho.
 
 ## APIs que Conectam Tudo
 
-| API | O que permite | Auth |
-|-----|--------------|------|
-| **CurseForge API** | Upload, stats, gerenciar projetos | API Key gratuita |
-| **Modrinth API** | Upload, stats, search | OAuth/Token |
-| **GitHub API** | Releases, issues, actions | PAT |
-| **Discord Webhooks** | Announcements automáticos | Webhook URL |
-| **Twitter/X API** | Posts automáticos | OAuth 2.0 |
-| **Reddit API** | Posts (com cuidado — anti-spam) | OAuth 2.0 |
-| **SendGrid / Resend** | Emails de outreach | API Key |
+| API                   | O que permite                     | Auth             |
+| --------------------- | --------------------------------- | ---------------- |
+| **CurseForge API**    | Upload, stats, gerenciar projetos | API Key gratuita |
+| **Modrinth API**      | Upload, stats, search             | OAuth/Token      |
+| **GitHub API**        | Releases, issues, actions         | PAT              |
+| **Discord Webhooks**  | Announcements automáticos         | Webhook URL      |
+| **Twitter/X API**     | Posts automáticos                 | OAuth 2.0        |
+| **Reddit API**        | Posts (com cuidado — anti-spam)   | OAuth 2.0        |
+| **SendGrid / Resend** | Emails de outreach                | API Key          |
 
 ## Pipeline Automatizado Completo
 
@@ -586,22 +614,23 @@ Tudo publicado e divulgado — zero cliques
 
 ## Ferramentas Externas
 
-| Ferramenta | O que faz | Preço |
-|-----------|-----------|-------|
-| **mc-publish** (GitHub Action) | Publica em CF + Modrinth + GitHub de uma vez | Grátis |
-| **Packwiz** | Gerencia modpacks como código | Grátis |
-| **CurseForge Studio** | Interface visual pra gerenciar mods | Grátis |
-| **Modstats.org** | Analytics público de mods | Grátis |
-| **Minotaur** (Gradle plugin) | Upload pra Modrinth via Gradle | Grátis |
-| **CurseGradle** | Upload pra CurseForge via Gradle | Grátis |
-| **n8n / Make** | Automação visual (conecta tudo) | Freemium |
-| **Lemlist / Instantly** | Email outreach automatizado | ~$30/mês |
+| Ferramenta                     | O que faz                                    | Preço    |
+| ------------------------------ | -------------------------------------------- | -------- |
+| **mc-publish** (GitHub Action) | Publica em CF + Modrinth + GitHub de uma vez | Grátis   |
+| **Packwiz**                    | Gerencia modpacks como código                | Grátis   |
+| **CurseForge Studio**          | Interface visual pra gerenciar mods          | Grátis   |
+| **Modstats.org**               | Analytics público de mods                    | Grátis   |
+| **Minotaur** (Gradle plugin)   | Upload pra Modrinth via Gradle               | Grátis   |
+| **CurseGradle**                | Upload pra CurseForge via Gradle             | Grátis   |
+| **n8n / Make**                 | Automação visual (conecta tudo)              | Freemium |
+| **Lemlist / Instantly**        | Email outreach automatizado                  | ~$30/mês |
 
 ---
 
 # CHECKLIST DE LANÇAMENTO
 
 ## Pré-Lançamento
+
 - [ ] Mod funcional e testado no MC mais recente
 - [ ] GIF animado de 15-30 segundos
 - [ ] 3-5 screenshots com shaders
@@ -610,6 +639,7 @@ Tudo publicado e divulgado — zero cliques
 - [ ] Changelog escrito
 
 ## Lançamento
+
 - [ ] Upload CurseForge (descrição completa)
 - [ ] Upload Modrinth (pode copiar descrição)
 - [ ] Post no Reddit (r/feedthebeast + r/fabricmc)
@@ -618,6 +648,7 @@ Tudo publicado e divulgado — zero cliques
 - [ ] Anúncio no seu Discord
 
 ## Pós-Lançamento (Semana 1)
+
 - [ ] Responder TODOS os comentários e issues
 - [ ] Email para 3-5 YouTubers
 - [ ] Contatar 2-3 modpack creators
@@ -625,5 +656,5 @@ Tudo publicado e divulgado — zero cliques
 
 ---
 
-*Documento gerado pela plataforma AIOX — Synkra*
-*Orion (Master Orchestrator) — abril 2026*
+_Documento gerado pela plataforma AIOX — Synkra_
+_Orion (Master Orchestrator) — abril 2026_

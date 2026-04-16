@@ -5,6 +5,7 @@ Este arquivo configura o comportamento esperado de agentes no Codex CLI neste re
 ## Constitution
 
 Siga `.aiox-core/constitution.md` como fonte de verdade:
+
 - CLI First
 - Agent Authority
 - Story-Driven Development
@@ -50,12 +51,14 @@ npm test
 ## Agent Shortcuts (Codex)
 
 Preferencia de ativacao no Codex CLI:
+
 1. Use `/skills` e selecione `aiox-<agent-id>` vindo de `.codex/skills` (ex.: `aiox-architect`)
 2. Se preferir, use os atalhos abaixo (`@architect`, `/architect`, etc.)
 
 Quando a mensagem do usuario for um atalho de agente, carregue o arquivo correspondente em `.aiox-core/development/agents/` (fallback: `.codex/agents/`), renderize o greeting via `generate-greeting.js` e assuma a persona ate receber `*exit`.
 
 Atalhos aceitos por agente:
+
 - `@aiox-master`, `/aiox-master`, `/aiox-master.md` -> `.aiox-core/development/agents/aiox-master.md`
 - `@analyst`, `/analyst`, `/analyst.md` -> `.aiox-core/development/agents/analyst.md`
 - `@architect`, `/architect`, `/architect.md` -> `.aiox-core/development/agents/architect.md`
@@ -70,6 +73,7 @@ Atalhos aceitos por agente:
 - `@ux-design-expert`, `/ux-design-expert`, `/ux-design-expert.md` -> `.aiox-core/development/agents/ux-design-expert.md`
 
 Resposta esperada ao ativar atalho:
+
 1. Confirmar agente ativado
 2. Mostrar 3-6 comandos principais (`*help`, etc.)
 3. Seguir na persona do agente

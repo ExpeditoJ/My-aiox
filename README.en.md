@@ -19,6 +19,7 @@
 If this is your first time with AIOX, follow this linear path:
 
 1. Install in a new or existing project:
+
 ```bash
 # new project
 npx aiox-core init my-project
@@ -27,29 +28,31 @@ npx aiox-core init my-project
 cd your-project
 npx aiox-core install
 ```
+
 2. Choose your IDE/CLI and the activation path:
+
 - Claude Code: `/agent-name`
 - Gemini CLI: `/aiox-menu` → `/aiox-<agent>`
 - Codex CLI: `/skills` → `aiox-<agent-id>`
 - Cursor/Copilot/AntiGravity: follow the limits and workarounds in `docs/ide-integration.md`
+
 3. Activate 1 agent and confirm the greeting.
 4. Run 1 initial command (`*help` or equivalent) to validate first-value.
 
 First-value definition (binary): agent activation + valid greeting + initial command with useful output in <= 10 minutes.
 
-
 ## IDE Hook Compatibility (AIOX 4.2 Reality)
 
 Many advanced AIOX features depend on lifecycle events (hooks). The table below shows the actual parity between IDEs/platforms:
 
-| IDE/CLI | Hook Parity vs Claude | Practical Impact |
-| --- | --- | --- |
-| Claude Code | Complete (reference) | Maximum context automation, guardrails, and auditing |
-| Gemini CLI | High (native events) | Strong coverage of pre/post tool and session automations |
-| Codex CLI | Partial/limited | Some automations depend on `AGENTS.md`, `/skills`, MCP, and operational flow |
-| Cursor | No equivalent lifecycle hooks | Less pre/post tool automation; focus on rules, MCP, and agent flow |
-| GitHub Copilot | No equivalent lifecycle hooks | Less session/tooling automation; focus on repository instructions + MCP in VS Code |
-| AntiGravity | Workflow-based (not hook-based) | Integration via workflows, not via hook events equivalent to Claude |
+| IDE/CLI        | Hook Parity vs Claude           | Practical Impact                                                                   |
+| -------------- | ------------------------------- | ---------------------------------------------------------------------------------- |
+| Claude Code    | Complete (reference)            | Maximum context automation, guardrails, and auditing                               |
+| Gemini CLI     | High (native events)            | Strong coverage of pre/post tool and session automations                           |
+| Codex CLI      | Partial/limited                 | Some automations depend on `AGENTS.md`, `/skills`, MCP, and operational flow       |
+| Cursor         | No equivalent lifecycle hooks   | Less pre/post tool automation; focus on rules, MCP, and agent flow                 |
+| GitHub Copilot | No equivalent lifecycle hooks   | Less session/tooling automation; focus on repository instructions + MCP in VS Code |
+| AntiGravity    | Workflow-based (not hook-based) | Integration via workflows, not via hook events equivalent to Claude                |
 
 Detailed impacts and mitigation: `docs/ide-integration.md`.
 
@@ -63,11 +66,11 @@ AIOX follows a clear priority hierarchy:
 CLI First → Observability Second → UI Third
 ```
 
-| Layer             | Priority  | Focus                                                                          | Examples                                     |
-| ----------------- | --------- | ------------------------------------------------------------------------------ | -------------------------------------------- |
+| Layer             | Priority  | Focus                                                                               | Examples                                    |
+| ----------------- | --------- | ----------------------------------------------------------------------------------- | ------------------------------------------- |
 | **CLI**           | Highest   | Where the intelligence lives. All execution, decisions, and automation happen here. | Agents (`@dev`, `@qa`), workflows, commands |
-| **Observability** | Secondary | Observe and monitor what happens in the CLI in real time.                      | SSE Dashboard, logs, metrics, timeline       |
-| **UI**            | Tertiary  | Ad-hoc management and visualizations when needed.                              | Kanban, settings, story management           |
+| **Observability** | Secondary | Observe and monitor what happens in the CLI in real time.                           | SSE Dashboard, logs, metrics, timeline      |
+| **UI**            | Tertiary  | Ad-hoc management and visualizations when needed.                                   | Kanban, settings, story management          |
 
 **Derived principles:**
 
@@ -496,15 +499,15 @@ AIOX introduces the **Autonomous Development Engine (ADE)** - a complete system 
 
 ADE is a set of **7 Epics** that enable autonomous development execution:
 
-| Epic  | Name             | Description                                |
-| ----- | ---------------- | ------------------------------------------ |
-| **1** | Worktree Manager | Branch isolation via Git worktrees         |
-| **2** | Migration V2→V3  | Migration to autoClaude V3 format          |
+| Epic  | Name             | Description                                   |
+| ----- | ---------------- | --------------------------------------------- |
+| **1** | Worktree Manager | Branch isolation via Git worktrees            |
+| **2** | Migration V2→V3  | Migration to autoClaude V3 format             |
 | **3** | Spec Pipeline    | Transforms requirements into executable specs |
-| **4** | Execution Engine | Executes specs with 13 steps + self-critique |
-| **5** | Recovery System  | Automatic failure recovery                 |
-| **6** | QA Evolution     | Structured review in 10 phases             |
-| **7** | Memory Layer     | Persistent memory of patterns and insights |
+| **4** | Execution Engine | Executes specs with 13 steps + self-critique  |
+| **5** | Recovery System  | Automatic failure recovery                    |
+| **6** | QA Evolution     | Structured review in 10 phases                |
+| **7** | Memory Layer     | Persistent memory of patterns and insights    |
 
 ### 🔄 Main Flow
 
@@ -709,18 +712,18 @@ See also:
 
 ## 📄 Legal
 
-| Document              | English                                     | Português                             |
-| --------------------- | ------------------------------------------- | ------------------------------------- |
-| **License**           | [MIT License](LICENSE)                      | -                                     |
-| **License Model**     | [Core vs Pro](docs/legal/license-clarification.md) | -                               |
-| **Privacy**           | [Privacy Policy](docs/legal/privacy.md)     | -                                     |
-| **Terms of Use**      | [Terms of Use](docs/legal/terms.md)         | -                                     |
-| **Code of Conduct**   | [Code of Conduct](CODE_OF_CONDUCT.md)       | [PT-BR](docs/pt/code-of-conduct.md)   |
-| **Contributing**      | [Contributing](CONTRIBUTING.md)             | [PT-BR](docs/pt/contributing.md)      |
-| **Security**          | [Security](docs/security.md)                | [PT-BR](docs/pt/security.md)          |
-| **Community**         | [Community](docs/community.md)              | [PT-BR](docs/pt/community.md)         |
-| **Roadmap**           | [Roadmap](docs/roadmap.md)                  | [PT-BR](docs/pt/roadmap.md)           |
-| **Changelog**         | [Version History](CHANGELOG.md)             | -                                     |
+| Document            | English                                            | Português                           |
+| ------------------- | -------------------------------------------------- | ----------------------------------- |
+| **License**         | [MIT License](LICENSE)                             | -                                   |
+| **License Model**   | [Core vs Pro](docs/legal/license-clarification.md) | -                                   |
+| **Privacy**         | [Privacy Policy](docs/legal/privacy.md)            | -                                   |
+| **Terms of Use**    | [Terms of Use](docs/legal/terms.md)                | -                                   |
+| **Code of Conduct** | [Code of Conduct](CODE_OF_CONDUCT.md)              | [PT-BR](docs/pt/code-of-conduct.md) |
+| **Contributing**    | [Contributing](CONTRIBUTING.md)                    | [PT-BR](docs/pt/contributing.md)    |
+| **Security**        | [Security](docs/security.md)                       | [PT-BR](docs/pt/security.md)        |
+| **Community**       | [Community](docs/community.md)                     | [PT-BR](docs/pt/community.md)       |
+| **Roadmap**         | [Roadmap](docs/roadmap.md)                         | [PT-BR](docs/pt/roadmap.md)         |
+| **Changelog**       | [Version History](CHANGELOG.md)                    | -                                   |
 
 ## Contributors
 

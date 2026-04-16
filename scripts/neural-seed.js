@@ -9,15 +9,15 @@ const categories = ['FS', 'Network', 'Data', 'Web', 'Math', 'Crypto', 'OS', 'Reg
 const prefixes = ['analyze', 'process', 'generate', 'read', 'write', 'fetch', 'parse', 'validate', 'sync', 'deploy'];
 
 function generateSkills() {
-    let skillList = [];
-    console.log('Generating 500 skills into Obsidian...');
-    for (let i = 1; i <= 500; i++) {
-        const category = categories[i % categories.length];
-        const prefix = prefixes[i % prefixes.length];
-        const skillName = `${prefix}_${category.toLowerCase()}_asset_${i}`;
-        skillList.push(skillName);
+  const skillList = [];
+  console.log('Generating 500 skills into Obsidian...');
+  for (let i = 1; i <= 500; i++) {
+    const category = categories[i % categories.length];
+    const prefix = prefixes[i % prefixes.length];
+    const skillName = `${prefix}_${category.toLowerCase()}_asset_${i}`;
+    skillList.push(skillName);
 
-        const content = `---
+    const content = `---
 type: skill
 category: ${category}
 id: ${i}
@@ -51,34 +51,34 @@ export async function execute_${skillName}(payload) {
 
 **Tags:** #${category.toLowerCase()} #aiox-skill
 `;
-        fs.writeFileSync(path.join(SKILLS_DIR, `${skillName}.md`), content, 'utf8');
-    }
-    return skillList;
+    fs.writeFileSync(path.join(SKILLS_DIR, `${skillName}.md`), content, 'utf8');
+  }
+  return skillList;
 }
 
 function generateAgents(skillList) {
-    console.log('Generating 100 Agents into Obsidian...');
-    const roles = ['Architect', 'DevOps', 'DataScientist', 'QA', 'Security', 'Frontend', 'Backend', 'Analyst', 'Cloud', 'ScrumMaster'];
+  console.log('Generating 100 Agents into Obsidian...');
+  const roles = ['Architect', 'DevOps', 'DataScientist', 'QA', 'Security', 'Frontend', 'Backend', 'Analyst', 'Cloud', 'ScrumMaster'];
     
-    for (let i = 1; i <= 100; i++) {
-        const role = roles[(i - 1) % roles.length];
-        const agentName = `Neural_Agent_${role}_00${i}`;
+  for (let i = 1; i <= 100; i++) {
+    const role = roles[(i - 1) % roles.length];
+    const agentName = `Neural_Agent_${role}_00${i}`;
         
-        // Randomly pick 5 unique skills for this agent to form the neural connection
-        const agentSkills = [];
-        for (let s = 0; s < 5; s++) {
-            const randomIdx = Math.floor(Math.random() * skillList.length);
-            agentSkills.push(skillList[randomIdx]);
-        }
+    // Randomly pick 5 unique skills for this agent to form the neural connection
+    const agentSkills = [];
+    for (let s = 0; s < 5; s++) {
+      const randomIdx = Math.floor(Math.random() * skillList.length);
+      agentSkills.push(skillList[randomIdx]);
+    }
 
-        const skillLinks = agentSkills.map(s => `[[${s}]]`).join('\n- ');
+    const skillLinks = agentSkills.map(s => `[[${s}]]`).join('\n- ');
 
-        // Connect this agent to another random agent to form the swarm network
-        const peerId = Math.floor(Math.random() * 100) + 1;
-        const peerRole = roles[(peerId - 1) % roles.length];
-        const peerLink = `[[Neural_Agent_${peerRole}_00${peerId}]]`;
+    // Connect this agent to another random agent to form the swarm network
+    const peerId = Math.floor(Math.random() * 100) + 1;
+    const peerRole = roles[(peerId - 1) % roles.length];
+    const peerLink = `[[Neural_Agent_${peerRole}_00${peerId}]]`;
 
-        const content = `---
+    const content = `---
 type: agent
 role: ${role}
 level: ${i % 10 === 0 ? 'Master' : 'Senior'}
@@ -99,14 +99,14 @@ Você foi treinado para utilizar e aplicar as seguintes skills, as quais você p
 ---
 *Gerado automaticamente pelo processo de hibridização AIOX Neural Database*
 `;
-        fs.writeFileSync(path.join(AGENTS_DIR, `${agentName}.md`), content, 'utf8');
-    }
+    fs.writeFileSync(path.join(AGENTS_DIR, `${agentName}.md`), content, 'utf8');
+  }
 }
 
 try {
-    const skills = generateSkills();
-    generateAgents(skills);
-    console.log('✅ Neural Database injection complete! 100 Agents and 500 Skills processed.');
+  const skills = generateSkills();
+  generateAgents(skills);
+  console.log('✅ Neural Database injection complete! 100 Agents and 500 Skills processed.');
 } catch (error) {
-    console.error('Error generating neural database:', error);
+  console.error('Error generating neural database:', error);
 }

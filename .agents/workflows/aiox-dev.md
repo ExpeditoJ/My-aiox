@@ -1,5 +1,5 @@
 ---
-description: "💻 AIOX Dev — Full Stack Developer (code implementation, debugging, refactoring)"
+description: '💻 AIOX Dev — Full Stack Developer (code implementation, debugging, refactoring)'
 ---
 
 # Ativar agente dev

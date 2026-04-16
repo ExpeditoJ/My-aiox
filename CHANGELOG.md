@@ -77,6 +77,7 @@ This release introduces **Squad Continuous Improvement** capabilities with analy
 ### Added
 
 #### Story SQS-11: Squad Analyze & Extend
+
 - **`*analyze-squad` command** - Analyze squad structure, coverage, and get improvement suggestions
 - **`*extend-squad` command** - Add new components (agents, tasks, workflows, etc.) incrementally
 - **New Scripts:**
@@ -93,12 +94,14 @@ This release introduces **Squad Continuous Improvement** capabilities with analy
 ### Changed
 
 #### Story TD-1: Tech Debt Cleanup
+
 - Fixed ESLint warnings in 5 core files
 - Removed 284 deprecated files (~116,978 lines deleted)
 - Cleaned `.github/deprecated-docs/` directory
 - Removed obsolete backup files
 
 ### Fixed
+
 - ESLint `_error` variable warnings in test utilities
 - Context loader error handling improvements
 
@@ -106,7 +109,7 @@ This release introduces **Squad Continuous Improvement** capabilities with analy
 
 ## [3.8.0] - 2025-12-26
 
-*Previous release with WIS and SQS features.*
+_Previous release with WIS and SQS features._
 
 ---
 
@@ -230,6 +233,7 @@ This release marks the **Open-Source Community Readiness** milestone, preparing 
 ## [4.32.0] - 2025-11-12
 
 ### Removed
+
 - **Private squads** - Moved to separate private repository (`aiox-squads`)
   - Removed `squads/creator/` (CreatorOS)
   - Removed `squads/innerlens/`
@@ -251,6 +255,7 @@ This release marks the **Open-Source Community Readiness** milestone, preparing 
   - Repository: https://github.com/SynkraAI/aiox-hybrid-ops-pedro-valerio
 
 ### Changed
+
 - README.md - hybrid-ops now listed under "Squads Externos"
 - Squad can now be installed independently via GitHub
 - **Squad naming convention** - Applied consistent `{agent-id}-` prefix to agent-specific tasks across all 6 squads
@@ -264,6 +269,7 @@ This release marks the **Open-Source Community Readiness** milestone, preparing 
   - Shared tasks correctly have NO prefix (conservative approach)
 
 ### Technical
+
 - Story: 4.6 - Move Hybrid-Ops to Separate Repository
 - Breaking Change: hybrid-ops no longer bundled with aiox-core
 - Migration: Users can install from external repo to `squads/hybrid-ops/`
@@ -277,6 +283,7 @@ This release marks the **Open-Source Community Readiness** milestone, preparing 
 ## [4.31.1] - 2025-10-22
 
 ### Added
+
 - NPX temporary directory detection with defense-in-depth architecture
 - PRIMARY detection layer in `tools/aiox-npx-wrapper.js` using `__dirname`
 - SECONDARY fallback detection in `tools/installer/bin/aiox.js` using `process.cwd()`
@@ -285,15 +292,18 @@ This release marks the **Open-Source Community Readiness** milestone, preparing 
 - JSDoc documentation for NPX detection functions
 
 ### Fixed
+
 - NPX installation from temporary directory no longer attempts IDE detection
 - Clear error message guides users to correct installation directory
 - Prevents confusion when running `npx aiox-core install` from home directory
 
 ### Changed
+
 - Early exit with `process.exit(1)` when NPX temporary context detected
 - Help message provides actionable solution: `cd /path/to/your/project && npx aiox-core install`
 
 ### Technical
+
 - Story: 2.3 - NPX Installation Context Detection & Help Text (macOS)
 - Defense in depth: Two independent detection layers provide redundancy
 - macOS-specific implementation (other platforms unaffected)
@@ -301,4 +311,4 @@ This release marks the **Open-Source Community Readiness** milestone, preparing 
 
 ## [4.31.0] - Previous Release
 
-*(Previous changelog entries to be added)*
+_(Previous changelog entries to be added)_

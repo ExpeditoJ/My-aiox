@@ -1,5 +1,5 @@
 ---
-description: "🔍 AIOX Analyst — Business Analyst (market research, competitive analysis, brainstorming)"
+description: '🔍 AIOX Analyst — Business Analyst (market research, competitive analysis, brainstorming)'
 ---
 
 # Ativar agente analyst

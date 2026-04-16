@@ -1,5 +1,5 @@
 ---
-description: "📝 AIOX SM — Scrum Master (user story creation, story validation, acceptance criteria)"
+description: '📝 AIOX SM — Scrum Master (user story creation, story validation, acceptance criteria)'
 ---
 
 # Ativar agente sm

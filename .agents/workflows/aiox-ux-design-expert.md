@@ -1,5 +1,5 @@
 ---
-description: "🎨 AIOX UX Design Expert — UX/UI Designer, design systems, wireframes, component building"
+description: '🎨 AIOX UX Design Expert — UX/UI Designer, design systems, wireframes, component building'
 ---
 
 # Ativar agente ux-design-expert

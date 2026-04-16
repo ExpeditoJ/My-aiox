@@ -44,7 +44,7 @@ function httpPost(hostname, port, path, payload, timeout = 30000) {
     const req = http.request({
       hostname, port, path, method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data) },
-      timeout
+      timeout,
     }, res => {
       let body = '';
       res.on('data', chunk => body += chunk);
@@ -73,7 +73,7 @@ async function main() {
     const ollamaRes = await httpPost('localhost', 11434, '/v1/chat/completions', {
       model: 'qwen2.5-coder:3b',
       messages: [{ role: 'user', content: 'Respond with exactly: AIOX_OK' }],
-      max_tokens: 20
+      max_tokens: 20,
     });
     if (ollamaRes.status === 200) {
       const parsed = JSON.parse(ollamaRes.body);

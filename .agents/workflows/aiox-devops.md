@@ -1,5 +1,5 @@
 ---
-description: "⚙️ AIOX DevOps — GitHub Repository Manager, CI/CD, quality gates, version management"
+description: '⚙️ AIOX DevOps — GitHub Repository Manager, CI/CD, quality gates, version management'
 ---
 
 # Ativar agente devops

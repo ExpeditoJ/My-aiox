@@ -331,14 +331,14 @@ tasks:
 
 When you submit a PR, the following checks run automatically:
 
-| Check          | Description            | Required |
-| -------------- | ---------------------- | -------- |
-| **ESLint**     | Code style and quality | Yes      |
-| **TypeScript** | Type checking          | Yes      |
-| **Jest Tests** | Test suite (Node 18 & 20) | Yes   |
-| **Validation Summary** | Aggregate gate  | Yes      |
-| **Build**      | Build verification     | No (advisory) |
-| **Coverage**   | Coverage reporting     | No (advisory) |
+| Check                  | Description               | Required      |
+| ---------------------- | ------------------------- | ------------- |
+| **ESLint**             | Code style and quality    | Yes           |
+| **TypeScript**         | Type checking             | Yes           |
+| **Jest Tests**         | Test suite (Node 18 & 20) | Yes           |
+| **Validation Summary** | Aggregate gate            | Yes           |
+| **Build**              | Build verification        | No (advisory) |
+| **Coverage**           | Coverage reporting        | No (advisory) |
 
 ### CodeRabbit AI Review
 
@@ -422,13 +422,13 @@ All changes to `main` must go through a Pull Request. Direct pushes are blocked.
 
 All of these must pass before a PR can be merged:
 
-| Check | Description |
-|-------|-------------|
-| **ESLint** | Code style and quality |
-| **TypeScript Type Checking** | No type errors |
-| **Jest Tests (Node 18)** | Full test suite on Node 18 |
-| **Jest Tests (Node 20)** | Full test suite on Node 20 |
-| **Validation Summary** | Aggregate gate |
+| Check                        | Description                |
+| ---------------------------- | -------------------------- |
+| **ESLint**                   | Code style and quality     |
+| **TypeScript Type Checking** | No type errors             |
+| **Jest Tests (Node 18)**     | Full test suite on Node 18 |
+| **Jest Tests (Node 20)**     | Full test suite on Node 20 |
+| **Validation Summary**       | Aggregate gate             |
 
 ### PR Review Rules
 
@@ -441,13 +441,13 @@ All of these must pass before a PR can be merged:
 
 Critical paths require approval from `@Pedrovaleriolopez` or `@oalanicolas` (maintainers):
 
-| Path | Why |
-|------|-----|
+| Path                             | Why                                                     |
+| -------------------------------- | ------------------------------------------------------- |
 | `.aiox-core/core/orchestration/` | Orchestration layer (MasterOrchestrator, GateEvaluator) |
-| `.aiox-core/core/execution/` | Execution engine (WaveExecutor, ParallelExecutor) |
-| `packages/` | Installer, CLI, shared libraries |
-| `.github/` | CI/CD workflows, branch protection |
-| `.aiox-core/core-config.yaml` | Framework configuration |
+| `.aiox-core/core/execution/`     | Execution engine (WaveExecutor, ParallelExecutor)       |
+| `packages/`                      | Installer, CLI, shared libraries                        |
+| `.github/`                       | CI/CD workflows, branch protection                      |
+| `.aiox-core/core-config.yaml`    | Framework configuration                                 |
 
 All other paths require review from any maintainer (`@Pedrovaleriolopez` or `@oalanicolas`).
 
@@ -616,6 +616,7 @@ git push --force-with-lease origin main
 > **Submodule push error?** If you see `remote: fatal: did not receive expected object` when pushing after syncing, it means the `pro/` submodule pointer changed upstream and your fork cannot resolve the private reference.
 >
 > **If your fork already had a successful push before** (existing submodule pointer):
+>
 > ```bash
 > git checkout origin/main -- pro
 > git commit -m "chore: reset pro submodule pointer for fork"
@@ -623,6 +624,7 @@ git push --force-with-lease origin main
 > ```
 >
 > **If this is a new fork** (no previous pro pointer on remote):
+>
 > ```bash
 > git rm --cached pro
 > git commit -m "chore: remove pro submodule reference for fork"

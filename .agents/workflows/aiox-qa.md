@@ -1,5 +1,5 @@
 ---
-description: "🧪 AIOX QA — Test Architect & Quality Advisor (test architecture, quality gates, code review)"
+description: '🧪 AIOX QA — Test Architect & Quality Advisor (test architecture, quality gates, code review)'
 ---
 
 # Ativar agente qa

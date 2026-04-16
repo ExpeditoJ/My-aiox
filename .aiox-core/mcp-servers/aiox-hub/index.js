@@ -33,7 +33,7 @@ const {
   CallToolRequestSchema,
   ListToolsRequestSchema,
   ErrorCode,
-  McpError
+  McpError,
 } = require('@modelcontextprotocol/sdk/types.js');
 
 // ── Paths ──────────────────────────────────────────────
@@ -64,7 +64,7 @@ function httpRequest(url, options = {}, body = null) {
       hostname, port, path: pathname,
       method: options.method || 'GET',
       headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
-      timeout: 30000
+      timeout: 30000,
     }, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
@@ -83,7 +83,7 @@ function httpRequest(url, options = {}, body = null) {
 // ── Server Setup ───────────────────────────────────────
 const server = new Server(
   { name: 'aiox-hub', version: '1.1.0' },
-  { capabilities: { tools: {} } }
+  { capabilities: { tools: {} } },
 );
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
@@ -101,8 +101,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     { name: 'read_memory', description: 'Recupera memórias recentes.', inputSchema: { type: 'object', properties: { limit: { type: 'number' } } } },
     { name: 'search_memory', description: 'Busca na memória neural por query.', inputSchema: { type: 'object', properties: { query: { type: 'string' } }, required: ['query'] } },
     { name: 'spawn_muscle', description: 'Lança uma tarefa do OpenClaude em background (Músculo). Operação assíncrona que não bloqueia o cérebro.', inputSchema: { type: 'object', properties: { instruction: { type: 'string', description: 'O comando ou prompt para o músculo' }, agent: { type: 'string', description: 'ID do agente (ex: dev, qa)' } }, required: ['instruction'] } },
-    { name: 'list_active_muscles', description: 'Lista processos de músculos ativos em background.', inputSchema: { type: 'object', properties: {} } }
-  ]
+    { name: 'list_active_muscles', description: 'Lista processos de músculos ativos em background.', inputSchema: { type: 'object', properties: {} } },
+  ],
 }));
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -121,7 +121,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     const model = args.model || 'gemma3:4b';
     try {
       const res = await httpRequest('http://127.0.0.1:11434/api/chat', { method: 'POST' }, {
-        model, messages: [{ role: 'user', content: args.prompt }], stream: false
+        model, messages: [{ role: 'user', content: args.prompt }], stream: false,
       });
       return { content: [{ type: 'text', text: res.data?.message?.content || 'Erro na resposta' }] };
     } catch (e) { return { content: [{ type: 'text', text: `❌ Erro Ollama: ${e.message}` }] }; }
@@ -214,7 +214,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       // Adicionado --session-id para evitar erro de escolha de sessão no Gateway
       const muscle = spawn('openclaw', ['agent', '--message', instruction, '--agent', agentId, '--thinking', 'low', '--session-id', sessionId], {
         detached: true,
-        stdio: 'ignore'
+        stdio: 'ignore',
       });
       muscle.unref();
       

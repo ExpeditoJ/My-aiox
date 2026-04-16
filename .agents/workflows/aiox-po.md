@@ -1,5 +1,5 @@
 ---
-description: "📌 AIOX PO — Product Owner (backlog management, story refinement, sprint planning)"
+description: '📌 AIOX PO — Product Owner (backlog management, story refinement, sprint planning)'
 ---
 
 # Ativar agente po

@@ -14,7 +14,7 @@ Checklist:
   - [ ] Return result
 ---
 
-# *test-task
+# \*test-task
 
 A valid test task that follows TASK-FORMAT-SPECIFICATION-V1.
 

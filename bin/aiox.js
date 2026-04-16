@@ -416,7 +416,7 @@ async function runOpenClaude() {
     for (const line of envConfig.split('\n')) {
       const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)??\s*$/);
       if (match) {
-        let key = match[1];
+        const key = match[1];
         let value = match[2] || '';
         if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
           value = value.slice(1, -1);
@@ -459,7 +459,7 @@ async function runOpenClaude() {
 
   // ── Step 4: Build env and args for child process ──
   const isAgentSubcommand = args[0] === 'run' || args[0] === 'agent';
-  let openClaudeArgs = isAgentSubcommand ? args.slice(2) : args.slice(1);
+  const openClaudeArgs = isAgentSubcommand ? args.slice(2) : args.slice(1);
   const env = { ...process.env };
   
   // ── Step 4.5: Configure Antigravity MCP Bridge ──
@@ -474,15 +474,15 @@ async function runOpenClaude() {
       const unifiedMcpScript = path.resolve(__dirname, '..', 'scripts', 'aiox-mcp-server.js');
       const mcpConfigContent = {
         mcpServers: {
-          "aiox-antigravity": {
-            command: "node",
-            args: [bridgeScript]
+          'aiox-antigravity': {
+            command: 'node',
+            args: [bridgeScript],
           },
-          "aiox-unified-mcp": {
-            command: "node",
-            args: [unifiedMcpScript]
-          }
-        }
+          'aiox-unified-mcp': {
+            command: 'node',
+            args: [unifiedMcpScript],
+          },
+        },
       };
       fs.writeFileSync(mcpConfigPath, JSON.stringify(mcpConfigContent, null, 2), 'utf8');
       
@@ -605,7 +605,7 @@ async function runOpenClaude() {
             detached: true, 
             stdio: 'ignore', 
             windowsHide: true,
-            shell: false 
+            shell: false, 
           }).on('error', (e) => { console.log('Ollama auto-start error:', e.message); }).unref();
           
           // Pause execution to allow Ollama to load its weights into RAM/VRAM

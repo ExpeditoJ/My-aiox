@@ -1,4 +1,5 @@
 # macOS Testing Suite for AIOX
+
 **Story 1.10b - macOS Testing & Validation**
 
 Comprehensive test automation framework for validating AIOX installation on macOS (Intel and Apple Silicon).
@@ -30,18 +31,18 @@ chmod +x *.sh
 
 ### Test Scripts (10 files)
 
-| Script | AC | Description | Duration |
-|--------|----|---------|----|
-| `test-intel-installation.sh` | AC1 | Intel Mac installation validation | ~10 min |
-| `test-apple-silicon-installation.sh` | AC2 | Apple Silicon (M1/M2/M3) validation | ~10 min |
-| `test-shell-compatibility.sh` | AC3 | Bash/Zsh shell compatibility | ~5 min |
-| `test-path-handling.sh` | AC4 | Path handling & symlinks | ~3 min |
-| `test-line-endings.sh` | AC5 | LF line ending verification | ~2 min |
-| `test-permissions.sh` | AC6 | File permission validation | ~3 min |
-| `test-homebrew-integration.sh` | AC7 | Homebrew & package managers | ~5 min |
-| `test-performance.sh` | AC8 | Performance benchmarks | ~10 min |
-| `test-security.sh` | AC9 | Security compliance (Gatekeeper, TCC, SIP) | ~5 min |
-| `test-error-recovery.sh` | AC10 | Error handling & rollback | ~10 min |
+| Script                               | AC   | Description                                | Duration |
+| ------------------------------------ | ---- | ------------------------------------------ | -------- |
+| `test-intel-installation.sh`         | AC1  | Intel Mac installation validation          | ~10 min  |
+| `test-apple-silicon-installation.sh` | AC2  | Apple Silicon (M1/M2/M3) validation        | ~10 min  |
+| `test-shell-compatibility.sh`        | AC3  | Bash/Zsh shell compatibility               | ~5 min   |
+| `test-path-handling.sh`              | AC4  | Path handling & symlinks                   | ~3 min   |
+| `test-line-endings.sh`               | AC5  | LF line ending verification                | ~2 min   |
+| `test-permissions.sh`                | AC6  | File permission validation                 | ~3 min   |
+| `test-homebrew-integration.sh`       | AC7  | Homebrew & package managers                | ~5 min   |
+| `test-performance.sh`                | AC8  | Performance benchmarks                     | ~10 min  |
+| `test-security.sh`                   | AC9  | Security compliance (Gatekeeper, TCC, SIP) | ~5 min   |
+| `test-error-recovery.sh`             | AC10 | Error handling & rollback                  | ~10 min  |
 
 **Total estimated time:** ~63 minutes
 
@@ -125,6 +126,7 @@ Each test produces:
 Location: `.github/workflows/macos-testing.yml`
 
 **Features:**
+
 - Parallel execution on Intel (macos-13) and Apple Silicon (macos-14) runners
 - Automated test reporting
 - Artifact collection (logs, summaries)
@@ -132,6 +134,7 @@ Location: `.github/workflows/macos-testing.yml`
 - Performance comparison between architectures
 
 **Triggers:**
+
 - Push to `main` or `develop`
 - Pull requests
 - Manual workflow dispatch
@@ -163,6 +166,7 @@ Location: `.github/workflows/macos-testing.yml`
 ### Manual Test Execution
 
 Follow the guide:
+
 ```bash
 open MANUAL-TESTING-GUIDE.md
 # Or: cat MANUAL-TESTING-GUIDE.md
@@ -181,6 +185,7 @@ chmod +x tests/macos/*.sh
 ### Architecture Mismatch
 
 Some tests automatically skip on incompatible architectures:
+
 - `test-intel-installation.sh` - Skips on Apple Silicon
 - `test-apple-silicon-installation.sh` - Skips on Intel
 
@@ -197,6 +202,7 @@ cd ~/path/to/aiox-core/tests/macos
 ### Missing Dependencies
 
 Install required tools:
+
 ```bash
 # Homebrew (optional but recommended)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -213,6 +219,7 @@ brew install node@20
 ### Information to Include
 
 1. **System Information:**
+
    ```bash
    sw_vers && uname -a && node --version
    ```
@@ -230,6 +237,7 @@ brew install node@20
 ### Create Issue
 
 Use format:
+
 ```
 Title: [Story 1.10b] Test Failure: AC# - Description
 Labels: testing, macos
