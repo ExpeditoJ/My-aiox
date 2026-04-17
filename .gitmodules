@@ -3,3 +3,6 @@
 	url = https://github.com/SynkraAI/aiox-pro.git
 	branch = main
 	ignore = dirty
+[submodule "packages/openclaude-src"]
+	path = packages/openclaude-src
+	url = https://github.com/Gitlawb/openclaude
