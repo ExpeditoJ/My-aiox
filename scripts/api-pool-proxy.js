@@ -1,26 +1,28 @@
+#!/usr/bin/env node
 /**
- * AIOX API Pool Proxy — Smart reverse-proxy with automatic key rotation.
- * When a provider returns 429 / quota-exceeded, the proxy hot-swaps to the
- * next enabled provider in the pool and retries transparently.
- *
- * Usage: node scripts/api-pool-proxy.js          (reads .aiox-core/local/api-pool.json)
- *   or:  fork()'d from bin/aiox.js automatically
+ * AIOX API Pool Proxy v3.0 (Definitive)
+ * 
+ * Reverse proxy that sits between OpenClaude and Ollama/Cloud providers.
+ * Features:
+ *   - Provider rotation with priority-based fallback
+ *   - AIOX Brain Wash: Force-injects execution directives
+ *   - Tool Strip: Removes tools[] from payload for models that don't support it
+ *   - Payload Shield: Truncates oversized strings
+ *   - Hot Reload: Watches api-pool.json for live config changes
  */
 
 const http = require('http');
-const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
 
-const poolPath = path.join(process.cwd(), '.aiox-core', 'local', 'api-pool.json');
+const poolPath = path.join(__dirname, '..', '.aiox-core', 'local', 'api-pool.json');
 
-// ── Colors ──
-const cyan   = s => `\x1b[1;36m${s}\x1b[0m`;
+// ── ANSI Colors ──
 const green  = s => `\x1b[32m${s}\x1b[0m`;
-const yellow = s => `\x1b[33m${s}\x1b[0m`;
+const cyan   = s => `\x1b[36m${s}\x1b[0m`;
 const red    = s => `\x1b[31m${s}\x1b[0m`;
 const dim    = s => `\x1b[2m${s}\x1b[0m`;
+const yellow = s => `\x1b[33m${s}\x1b[0m`;
 
 // ── Pool State ──
 let providers = [];
@@ -35,7 +37,7 @@ function loadPool() {
     providers = pool.providers
       .filter(p => p.enabled)
       .sort((a, b) => a.priority - b.priority);
-    
+
     if (providers.length === 0) {
       console.error(red('[POOL] Nenhum provider habilitado no pool!'));
     } else {
@@ -50,293 +52,264 @@ function loadPool() {
 loadPool();
 
 // ── Hot Reloading ──
+let reloadDebounce = null;
 fs.watch(poolPath, (eventType) => {
   if (eventType === 'change') {
-    console.log(cyan('[POOL] Mudança detectada no api-pool.json. Recarregando...'));
-    loadPool();
+    if (reloadDebounce) clearTimeout(reloadDebounce);
+    reloadDebounce = setTimeout(() => {
+      console.log(cyan('[POOL] Mudança detectada no api-pool.json. Recarregando...'));
+      loadPool();
+    }, 500);
   }
 });
 
 const MAX_SHIELD = pool.shield?.max_string_length || 12000;
 const SHIELD_ON  = pool.shield?.enabled !== false;
 
-function current() { return providers[currentIdx]; }
+// ── Provider Rotation ──
+function current() {
+  if (providers.length === 0) return null;
+  return providers[currentIdx % providers.length];
+}
 
 function rotate(reason) {
-  const prev = current();
-  currentIdx = (currentIdx + 1) % providers.length;
   rotationCount++;
+  currentIdx = (currentIdx + 1) % providers.length;
   const next = current();
-  console.log(yellow(`[POOL] 🔄 Rotação #${rotationCount}: ${prev.id} → ${next.id} (${reason})`));
+  if (next) {
+    console.log(yellow(`[POOL] Rotação #${rotationCount}: ${reason} → Novo: ${next.id}`));
+  }
   return next;
 }
 
-// ── Shield: truncate large payloads (Groq protection) ──
-function applyShield(data, providerObj) {
-  if (!SHIELD_ON) return false;
-  // Apply aggressive truncation for Groq (small context)
-  const limit = providerObj.provider === 'groq' ? 8000 : MAX_SHIELD * 4;
-  let chopped = false;
-  if (data.messages && Array.isArray(data.messages)) {
-    data.messages = data.messages.map(msg => {
-      if (msg.content && typeof msg.content === 'string' && msg.content.length > limit) {
-        msg.content = msg.content.substring(0, limit) + '\n...[TRUNCATED]...';
-        chopped = true;
-      }
-      if (Array.isArray(msg.content)) {
-        msg.content.forEach(c => {
-          if (c.type === 'text' && c.text && c.text.length > limit) {
-            c.text = c.text.substring(0, limit) + '\n...[TRUNCATED]...';
-            chopped = true;
-          }
-        });
-      }
-      return msg;
-    });
+// ── Payload Shield ──
+function shieldPayload(obj) {
+  if (!SHIELD_ON) return obj;
+  if (typeof obj === 'string') {
+    return obj.length > MAX_SHIELD ? obj.slice(0, MAX_SHIELD) + '...[TRUNCATED]' : obj;
   }
-
-  // AIOX AGGRESSIVE COMPRESSION for Tools!
-  if (providerObj.provider === 'groq' && data.tools && Array.isArray(data.tools)) {
-    data.tools = data.tools.map(t => {
-      if (t.function && t.function.description && t.function.description.length > 200) {
-        t.function.description = t.function.description.substring(0, 200) + '...';
-        chopped = true;
-      }
-      if (t.description && t.description.length > 200) {
-        t.description = t.description.substring(0, 200) + '...';
-        chopped = true;
-      }
-      return t;
-    });
+  if (Array.isArray(obj)) return obj.map(shieldPayload);
+  if (obj && typeof obj === 'object') {
+    const out = {};
+    for (const [k, v] of Object.entries(obj)) {
+      out[k] = shieldPayload(v);
+    }
+    return out;
   }
-  return chopped;
+  return obj;
 }
 
-// ── Forward request to actual provider ──
-function forwardRequest(providerObj, reqPath, reqMethod, payload, authHeader, res, retryCount) {
-  const parsed = new URL(providerObj.base_url);
-  const relativePath = reqPath.startsWith('/v1') ? reqPath.substring(3) : reqPath;
-  const targetPath = parsed.pathname.replace(/\/$/, '') + relativePath;
+// ── AIOX Brain Wash ──
+const BRAIN_WASH = [
+  'CRITICAL INSTRUCTION:',
+  '1. DO NOT describe, list, or summarize tools/functions.',
+  '2. JUST EXECUTE the user request using available tools OR answer directly.',
+  '3. Respond ALWAYS in Português do Brasil (PT-BR).',
+  '4. Be extremely direct and technical.',
+  '5. If user says hello/hi, respond "AIOX ONLINE" and wait for orders.',
+].join(' ');
+
+function injectBrainWash(data) {
+  if (!data.messages || !Array.isArray(data.messages)) return;
+
+  const systemMsg = data.messages.find(m => m.role === 'system');
+  if (systemMsg) {
+    systemMsg.content += `\n\n[AIOX DIRECTIVE]: ${BRAIN_WASH}`;
+  } else {
+    data.messages.unshift({ role: 'system', content: BRAIN_WASH });
+  }
+}
+
+// ── Tool Strip (for models without native tool support) ──
+function shouldStripTools(provider) {
+  // Models known to NOT support tools natively via Ollama
+  const noToolModels = ['gemma3', 'gemma:'];
+  const model = (provider?.model || '').toLowerCase();
+  return noToolModels.some(m => model.includes(m));
+}
+
+function stripTools(data) {
+  if (data.tools) {
+    console.log(dim(`[SHIELD] Stripping ${data.tools.length} tools from payload (model doesn't support native tools)`));
+    delete data.tools;
+    delete data.tool_choice;
+  }
+}
+
+// ── Proxy Request Handler ──
+function proxyRequest(data, provider, res) {
+  const url = new URL(provider.base_url);
+  const payload = JSON.stringify(data);
 
   const options = {
-    hostname: parsed.hostname,
-    port: parsed.port || 443,
-    path: targetPath,
-    method: reqMethod,
+    hostname: url.hostname,
+    port: url.port || (url.protocol === 'https:' ? 443 : 80),
+    path: `${url.pathname.replace(/\/+$/, '')}/chat/completions`,
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${providerObj.api_key}`,
       'Content-Length': Buffer.byteLength(payload),
+      'Authorization': `Bearer ${provider.api_key}`,
     },
+    timeout: 120000,
   };
 
-  const proto = parsed.protocol === 'http:' ? http : https;
-  const proxyReq = proto.request(options, proxyRes => {
-    // ── Any provider error >= 400? Rotate and retry next provider ──
-    if (proxyRes.statusCode >= 400 && retryCount < providers.length - 1) {
-      // Consume body to free socket
-      proxyRes.resume();
-      const next = rotate(`HTTP ${proxyRes.statusCode} (${proxyRes.statusMessage})`);
+  // Use https for cloud providers
+  const transport = url.protocol === 'https:' ? require('https') : http;
 
-      // Re-parse & re-shield for new provider
-      const newData = JSON.parse(payload);
-      if (next.model) newData.model = next.model;
-      applyShield(newData, next);
-      const newPayload = JSON.stringify(newData);
+  const proxyReq = transport.request(options, (proxyRes) => {
+    let body = '';
+    proxyRes.on('data', chunk => body += chunk);
+    proxyRes.on('end', () => {
+      if (proxyRes.statusCode >= 400) {
+        console.log(red(`[PROXY] ${provider.id} respondeu ${proxyRes.statusCode}: ${body.slice(0, 200)}`));
 
-      forwardRequest(next, reqPath, reqMethod, newPayload, authHeader, res, retryCount + 1);
-      return;
-    }
+        // Try rotation on failure
+        if (proxyRes.statusCode === 429 || proxyRes.statusCode >= 500) {
+          const next = rotate(`HTTP ${proxyRes.statusCode}`);
+          if (next && next.id !== provider.id) {
+            console.log(cyan(`[POOL] Tentando fallback: ${next.id}`));
+            // Adjust model for new provider
+            data.model = next.model;
+            if (shouldStripTools(next)) stripTools(data);
+            return proxyRequest(data, next, res);
+          }
+        }
+      }
 
-    if (proxyRes.statusCode >= 400 && retryCount >= providers.length - 1) {
-      console.error(red('[POOL] ALL PROVIDERS EXHAUSTED OR ERRORING. Returning fake AI response.'));
-      const fakeResponse = {
-        id: 'chatcmpl-aiox-err',
-        object: 'chat.completion',
-        created: Date.now(),
-        model: 'gemini/groq-pool',
-        choices: [
-          {
-            index: 0,
-            message: { role: 'assistant', content: '❌ **AIOX Pool Failure:** Todas as APIs estão sobrecarregadas (Rate Limit). Espere um minuto antes de continuar.' },
-            finish_reason: 'stop',
-          },
-        ],
-        usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
-      };
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify(fakeResponse));
-      return;
-    }
-
-    res.writeHead(proxyRes.statusCode, proxyRes.headers);
-    proxyRes.pipe(res);
+      res.writeHead(proxyRes.statusCode, {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      });
+      res.end(body);
+    });
   });
 
-  proxyReq.on('error', err => {
-    console.error(red(`[POOL] Erro de rede (${providerObj.id}):`), err.message);
-    if (retryCount < providers.length) {
-      const next = rotate('network error');
-      forwardRequest(next, reqPath, reqMethod, payload, authHeader, res, retryCount + 1);
-    } else {
-      res.statusCode = 502;
-      res.end(JSON.stringify({ error: 'All providers exhausted' }));
+  proxyReq.on('error', (err) => {
+    console.log(red(`[PROXY] Erro de conexão com ${provider.id}: ${err.message}`));
+    const next = rotate(`Connection error: ${err.message}`);
+    if (next && next.id !== provider.id) {
+      data.model = next.model;
+      if (shouldStripTools(next)) stripTools(data);
+      return proxyRequest(data, next, res);
     }
+
+    res.writeHead(502, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      error: {
+        message: `AIOX Pool Failure: Todas as APIs estão indisponíveis. Último erro: ${err.message}`,
+        type: 'proxy_error',
+      },
+    }));
+  });
+
+  proxyReq.on('timeout', () => {
+    proxyReq.destroy();
+    console.log(red(`[PROXY] Timeout com ${provider.id}`));
+    const next = rotate('Timeout');
+    if (next && next.id !== provider.id) {
+      data.model = next.model;
+      if (shouldStripTools(next)) stripTools(data);
+      return proxyRequest(data, next, res);
+    }
+
+    res.writeHead(504, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      error: { message: 'AIOX Pool Failure: Timeout em todos os providers.', type: 'proxy_error' },
+    }));
   });
 
   proxyReq.write(payload);
   proxyReq.end();
 }
 
-// ── Forward Binary Audio (STT) ──
-function forwardAudioRequest(providerObj, reqPath, reqMethod, bodyBuffer, contentType, res) {
-  const parsed = new URL(providerObj.base_url);
-  // Remove /v1/chat/completions suffix to get base path for audio
-  const basePath = parsed.pathname.replace(/\/v1$/, '');
-  const targetPath = basePath + '/v1/audio/transcriptions';
-
-  const options = {
-    hostname: parsed.hostname,
-    port: parsed.port || 443,
-    path: targetPath,
-    method: reqMethod,
-    headers: {
-      'Content-Type': contentType,
-      'Authorization': `Bearer ${providerObj.api_key}`,
-      'Content-Length': bodyBuffer.length,
-    },
-  };
-
-  const proto = parsed.protocol === 'http:' ? http : https;
-  const proxyReq = proto.request(options, proxyRes => {
-    res.writeHead(proxyRes.statusCode, proxyRes.headers);
-    proxyRes.pipe(res);
-  });
-
-  proxyReq.on('error', err => {
-    console.error(red(`[POOL-AUDIO] Erro de rede (${providerObj.id}):`), err.message);
-    res.statusCode = 502;
-    res.end(JSON.stringify({ error: 'Audio provider network error' }));
-  });
-
-  proxyReq.write(bodyBuffer);
-  proxyReq.end();
-}
+// ── HTTP Server ──
+const PORT = process.env.AIOX_POOL_PORT || 3100;
 
 const server = http.createServer((req, res) => {
-  console.log(`[PROXY DEBUG] Incoming request: ${req.method} ${req.url}`);
-  // GET /v1/models — return synthetic list so OpenClaude's validator is satisfied.
-  // We match startsWith because OpenClaude queries /v1/models/gpt-4o specifically.
-  if (req.url.startsWith('/v1/models') && req.method === 'GET') {
-    const isSingleModel = req.url.length > '/v1/models'.length;
-    
-    // If it's querying a specific model (e.g. /v1/models/gpt-4o), return just that model object
-    if (isSingleModel) {
-      const requestedId = req.url.split('/').pop() || 'gpt-4o';
-      const syntheticModel = {
-        id: requestedId,
-        object: 'model',
-        created: Date.now(),
-        owned_by: 'aiox-pool',
-      };
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify(syntheticModel));
-      console.log(dim(`[POOL] ${req.url} → synthetic model object served`));
-      return;
-    }
-    const syntheticModels = {
-      object: 'list',
-      data: [
-        // Include all models the pool knows about + the placeholder OpenClaude expects
-        { id: 'gpt-4o', object: 'model', created: Date.now(), owned_by: 'aiox-pool' },
-        ...providers.map(p => ({
-          id: p.model,
-          object: 'model',
-          created: Date.now(),
-          owned_by: `aiox-pool:${p.provider}`,
-        })),
-      ],
-    };
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(syntheticModels));
-    console.log(dim(`[POOL] /v1/models → synthetic list served (${syntheticModels.data.length} models)`));
-    return;
+  // CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.writeHead(200, {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    });
+    return res.end();
   }
 
-  // POST handling
-  if (req.method === 'POST') {
-    if (req.url.includes('/v1/audio/transcriptions')) {
-      // ── STT (Speech-to-Text): /v1/audio/transcriptions ──
-      const body = [];
-      req.on('data', chunk => body.push(chunk));
-      req.on('end', () => {
-        const bodyBuffer = Buffer.concat(body);
-        console.log(cyan(`[POOL-AUDIO] Recebido payload de áudio (${bodyBuffer.length} bytes)`));
-        
-        // Encontrar stt-provider ou usar o padrão se houver (Whisper local etc)
-        const p = providers.find(prov => prov.provider === 'whisper' || prov.id.includes('whisper')) || current();
-        
-        forwardAudioRequest(p, req.url, 'POST', bodyBuffer, req.headers['content-type'], res);
-      });
-      return;
-    }
+  // Health check
+  if (req.method === 'GET' && (req.url === '/health' || req.url === '/v1/models')) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify({
+      status: 'ok',
+      activeProviders: providers.map(p => p.id),
+      currentProvider: current()?.id,
+      rotationCount,
+    }));
+  }
 
-    // General JSON POST (completions, etc)
+  // Chat completions
+  if (req.method === 'POST' && req.url?.includes('/chat/completions')) {
     const body = [];
     req.on('data', chunk => body.push(chunk));
     req.on('end', () => {
       try {
         const raw = Buffer.concat(body).toString();
         const data = JSON.parse(raw);
-        console.log(dim(`[PROXY] Payload size: ${raw.length} chars. Messages: ${data.messages?.length || 0}`));
-        
-        let p = current();
 
-        // ── AIOX ESTRATÉGIA HÍBRIDA (Smart Demand Routing) ──
-        if (raw.length > 128000 && p.provider === 'ollama') {
-          const cloudP = providers.find(prov => prov.provider !== 'ollama' && prov.provider !== 'groq' && prov.enabled);
-          if (cloudP) {
-            console.log(cyan(`\n⚡ [HYBRID ROUTER] Demanda massiva detectada (${Math.round(raw.length/1024)} KB)!`));
-            console.log(cyan(`⚡ Bypass Local-First: Direcionando para Nuvem Gratuita (${cloudP.id}) provisoriamente para evitar lentidão.\n`));
-            p = cloudP;
-          }
+        // Brain Wash injection
+        injectBrainWash(data);
+
+        // Shield payload
+        const shielded = shieldPayload(data);
+
+        let p = current();
+        if (!p) {
+          res.writeHead(503, { 'Content-Type': 'application/json' });
+          return res.end(JSON.stringify({
+            error: { message: 'AIOX Pool: Nenhum provider disponível.', type: 'proxy_error' },
+          }));
         }
 
-        // Override model with pool's configured model
-        if (p.model) data.model = p.model;
+        // Override model with provider's configured model
+        shielded.model = p.model;
 
-        // Apply shield
-        applyShield(data, p);
+        // Strip tools for incompatible models
+        if (shouldStripTools(p)) {
+          stripTools(shielded);
+        }
 
-        const payload = JSON.stringify(data);
-        forwardRequest(p, req.url, 'POST', payload, req.headers['authorization'], res, 0);
+        console.log(dim(`[PROXY] ${p.id} ← ${shielded.messages?.length || 0} msgs, model: ${shielded.model}, tools: ${shielded.tools?.length || 0}`));
+
+        proxyRequest(shielded, p, res);
       } catch (e) {
-        console.error(red('[POOL] Parse error:'), e.message);
-        res.statusCode = 400;
-        res.end(JSON.stringify({ error: 'Invalid JSON' }));
+        console.log(red(`[PROXY] Parse error: ${e.message}`));
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: { message: e.message, type: 'parse_error' } }));
       }
     });
-
-  } else {
-    // Catch-all for any unhandled routes to prevent indefinite connection hanging
-    console.log(red(`[POOL] Route not found: ${req.method} ${req.url}`));
-    res.statusCode = 404;
-    res.end(JSON.stringify({ error: { message: 'Route not found in AIOX proxy.' } }));
+    return;
   }
+
+  // Fallback
+  res.writeHead(404, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ error: { message: 'Not found', type: 'not_found' } }));
 });
 
-const PORT = process.env.AIOX_POOL_PORT || 3100;
 server.listen(PORT, () => {
-  console.log('');
-  console.log(cyan('╔══════════════════════════════════════════════════╗'));
-  console.log(cyan('║   🔄 AIOX API POOL PROXY — Multi-Provider v1    ║'));
-  console.log(cyan('╚══════════════════════════════════════════════════╝'));
+  console.log(green(`\n🛡️  AIOX Pool Proxy v3.0 (Definitive)`));
   console.log(green(`   Porta: ${PORT}`));
-  console.log('   Providers no pool:');
-  providers.forEach((p, i) => {
-    const marker = i === currentIdx ? ' ➜ ' : '   ';
-    console.log(`${marker}${green(`[${p.priority}]`)} ${p.id} (${p.provider}) — ${dim(p.model)}`);
-  });
-  console.log(dim(`   Shield: ${SHIELD_ON ? 'ON' : 'OFF'} (max ${MAX_SHIELD} chars)`));
-  console.log('');
+  console.log(green(`   Providers: ${providers.map(p => p.id).join(', ')}`));
+  console.log(green(`   Brain Wash: ON`));
+  console.log(green(`   Shield: ${SHIELD_ON ? 'ON' : 'OFF'} (max: ${MAX_SHIELD} chars)`));
+  console.log(green(`   Hot Reload: ON\n`));
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.log(yellow(`[POOL] Porta ${PORT} já em uso. Proxy provavelmente já está rodando.`));
+    process.exit(0);
+  }
+  console.error(red('[POOL] Erro fatal:'), err.message);
+  process.exit(1);
 });
